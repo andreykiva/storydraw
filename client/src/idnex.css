@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'Rubik Medium';
+	font-weight: normal;
+	src: url('./assets/fonts/Rubik-Medium.woff') format('woff');
+}
+
+body {
+	font-family: 'Rubik Medium';
+	padding: 0;
+	margin: 0;
+}
