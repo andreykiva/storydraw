@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Layout.module.css';
-import Navbar from '../../components/Navbar/Navbar';
+import Header from '../../components/Header/Header';
 
 const Layout = ({ children }) => {
 	return (
 		<>
-			<Navbar />
+			<Header />
 			<main className={styles.Content}>{children}</main>
 		</>
 	);

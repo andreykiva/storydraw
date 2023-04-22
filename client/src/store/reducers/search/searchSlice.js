@@ -13,7 +13,13 @@ export const searchSlice = createSlice({
 			state.isOpen = true;
 		},
 		changeSearchValue: (state, action) => {
-			state.value = action.payload;
+			if (action.payload.trim()) {
+				state.value = action.payload;
+				state.isOpen = true;
+			} else {
+				state.value = '';
+				state.isOpen = false;
+			}
 		}
 	},
 
