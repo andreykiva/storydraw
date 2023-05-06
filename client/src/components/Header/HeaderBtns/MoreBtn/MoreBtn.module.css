@@ -1,0 +1,70 @@
+.MoreBtn {
+	width: 36px;
+	height: 36px;
+	display: flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border-radius: 50%;
+	background: transparent;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.MoreBtn:hover {
+	background: #f5f5f513;
+}
+
+.MoreBtn:hover .MoreMenu {
+	visibility: visible;
+	opacity: 1;
+}
+
+.MoreDots {
+	opacity: 0.6;
+}
+
+.MoreMenu {
+	visibility: hidden;
+	position: absolute;
+	width: 200px;
+	background: rgb(20, 20, 20);
+	border-radius: 10px;
+	right: -10px;
+	top: 44px;
+	padding: 10px 0;
+	opacity: 0;
+	transition: 0.5s ease-in-out;
+}
+
+.MoreMenuItem {
+	display: flex;
+	align-items: center;
+	padding: 10px 16px;
+}
+
+.ItemIcon {
+	margin-right: 10px;
+}
+
+.ItemText {
+	font-family: 'Rubik Medium';
+	font-size: 16px;
+	color: #D1D1D1;
+}
+
+.MoreMenuItem:hover {
+	background-color: #ffffff07;
+}
+
+.MenuTriangle {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 10px solid rgb(20, 20, 20);
+	right: 8px;
+	top: -6px;
+}

@@ -1,0 +1,7 @@
+.Sidebar {
+	max-width: 250px;
+	width: 100%;
+	height: calc(100vh - 60px);
+	padding: 20px 10px;
+	color: var(--main-color);
+}

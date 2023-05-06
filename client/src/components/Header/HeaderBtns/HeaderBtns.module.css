@@ -45,76 +45,13 @@
 	padding: 0 14px;
 	height: 36px;
 	border-radius: 20px;
-	background: rgba(11, 87, 64, 0.822);
+	background: var(--green-color);
 	font-family: 'Rubik Medium';
 	font-size: 16px;
-	color: #D1D1D1;
+	color: var(--main-color);
 	cursor: pointer;
 }
 
 .LoginBtn:hover {
-	background: rgba(11, 87, 64, 0.945);
-}
-
-.MoreBtn {
-	width: 36px;
-	height: 36px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	position: relative;
-	border-radius: 50%;
-	background: transparent;
-	padding: 10px;
-	cursor: pointer;
-}
-
-.MoreBtn .Dot {
-	width: 3px;
-	height: 3px;
-	border-radius: 50%;
-	background-color: #d1d1d1ab;
-}
-
-.MoreBtn:hover {
-	background: #f5f5f513;
-}
-
-.MoreBtn:hover .MoreMenu {
-	visibility: visible;
-	opacity: 1;
-}
-
-.MoreMenu {
-	visibility: hidden;
-	position: absolute;
-	width: 200px;
-	background: rgb(20, 20, 20);
-	border-radius: 10px;
-	right: 0;
-	top: 42px;
-	padding: 10px 0;
-	opacity: 0;
-	transition: 0.5s ease-in-out;
-}
-
-.MoreMenuItem {
-	display: flex;
-	align-items: center;
-	padding: 10px 16px;
-}
-
-.ItemIcon {
-	margin-right: 10px;
-}
-
-.ItemText {
-	font-family: 'Rubik Medium';
-	font-size: 16px;
-	color: #D1D1D1;
-}
-
-.MoreMenuItem:hover {
-	background-color: #ffffff07;
+	background: #0a523c;
 }
