@@ -2,15 +2,17 @@ import React from 'react';
 import styles from './Sidebar.module.css';
 import Footer from '../Footer/Footer';
 import Nav from './Nav/Nav';
-import RecList from './RecList/RecList';
+import Suggested from './Suggested/Suggested';
 
 const Sidebar = () => {
 	return (
 		<div className={styles.Sidebar}>
 			<Nav />
-			{/* <button className={styles.LoginBtn}>Login</button> */}
-			{/* <RecList /> */}
-			{/* <Footer /> */}
+			<div className={styles.LoginBtnWr}>
+				<button className={styles.LoginBtn}>Log in</button>
+			</div>
+			<Suggested />
+			<Footer />
 		</div>
 	);
 };

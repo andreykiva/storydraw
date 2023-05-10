@@ -10,7 +10,7 @@ const HeaderBtns = () => {
 				<img src={createIcon} alt="Create" className={styles.CreateIcon} />
 				<span className={styles.CreateText}>Create</span>
 			</a>
-			<button className={styles.LoginBtn}>Login</button>
+			<button className={styles.LoginBtn}>Log in</button>
 			<MoreBtn />
 		</div>
 	);
