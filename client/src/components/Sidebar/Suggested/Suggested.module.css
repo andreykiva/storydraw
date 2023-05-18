@@ -5,33 +5,3 @@
 	margin-bottom: 15px;
 	padding-left: 10px;
 }
-
-.SuggestedItem {
-	display: flex;
-	align-items: center;
-	height: 48px;
-	padding-left: 10px;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color .3s ease-in-out;
-}
-
-.SuggestedItem:hover {
-	background-color: #ffffff0a;
-}
-
-.ItemImg {
-	width: 38px;
-	border-radius: 50%;
-	margin-right: 10px;
-}
-
-.ItemUsername {
-	font-size: 15px;
-	margin-bottom: 2px;
-}
-
-.ItemStatus {
-	font-size: 13px;
-	color: #8f8f8f;
-}

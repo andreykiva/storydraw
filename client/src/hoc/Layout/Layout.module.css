@@ -1,3 +1,7 @@
 .LayoutContainer {
 	display: flex;
 }
+
+.Content {
+	flex: 1;
+}
