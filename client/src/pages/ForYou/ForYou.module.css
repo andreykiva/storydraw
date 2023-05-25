@@ -1,0 +1,20 @@
+.ForYou {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-height: calc(100vh - 60px);
+	overflow-y: scroll;
+}
+
+.ForYou::-webkit-scrollbar {
+	width: 8px;
+}
+
+.ForYou::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.ForYou::-webkit-scrollbar-thumb {
+	background: #09483549;
+	border-radius: 4px;
+}

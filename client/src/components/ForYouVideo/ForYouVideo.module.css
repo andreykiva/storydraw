@@ -1,0 +1,14 @@
+.ForYouVideo {
+	max-width: 1000px;
+	width: 100%;
+	padding: 30px 0;
+	border-bottom: 1px solid #2b2b2b;
+}
+
+.ProfileImg {
+	width: 38px;
+}
+
+.Video {
+	width: 100%;
+}

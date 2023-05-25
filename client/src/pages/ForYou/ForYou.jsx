@@ -11,6 +11,7 @@ const testVideos = [
 		userImage: '',
 		video: '',
 		description: 'today was a good day',
+		musicName: "Andre - My life",
 		musicId: '123',
 		tags: ['song', 'video', 'day'],
 		likes: 100013,
@@ -25,6 +26,7 @@ const testVideos = [
 		userImage: '',
 		video: '',
 		description: 'today was a good day',
+		musicName: "Andre - My life",
 		musicId: '123',
 		tags: ['song', 'video', 'day'],
 		likes: 100013,
@@ -39,6 +41,7 @@ const testVideos = [
 		userImage: '',
 		video: '',
 		description: 'today was a good day',
+		musicName: "Andre - My life",
 		musicId: '123',
 		tags: ['song', 'video', 'day'],
 		likes: 100013,
@@ -53,6 +56,7 @@ const testVideos = [
 		userImage: '',
 		video: '',
 		description: 'today was a good day',
+		musicName: "Andre - My life",
 		musicId: '123',
 		tags: ['song', 'video', 'day'],
 		likes: 100013,
@@ -67,6 +71,7 @@ const testVideos = [
 		userImage: '',
 		video: '',
 		description: 'today was a good day',
+		musicName: "Andre - My life",
 		musicId: '123',
 		tags: ['song', 'video', 'day'],
 		likes: 100013,
@@ -78,7 +83,7 @@ const testVideos = [
 const ForYou = () => {
 	return <div className={styles.ForYou}>
 		{testVideos.map((video) => (
-			<ForYouVideo />
+			<ForYouVideo key={video.id} {...video} />
 		))}
 	</div>;
 };
