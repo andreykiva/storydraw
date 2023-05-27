@@ -3,13 +3,14 @@ import styles from './Sidebar.module.css';
 import Footer from '../Footer/Footer';
 import Nav from './Nav/Nav';
 import Suggested from './Suggested/Suggested';
+import Button from '../../UI/Button/Button';
 
 const Sidebar = () => {
 	return (
 		<div className={styles.Sidebar}>
 			<Nav />
 			<div className={styles.LoginBtnWr}>
-				<button className={styles.LoginBtn}>Log in</button>
+				<Button className={styles.LoginBtn}>Log in</Button>
 			</div>
 			<Suggested />
 			<Footer />

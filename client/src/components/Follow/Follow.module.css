@@ -45,20 +45,7 @@
 }
 
 .FollowBtn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 70%;
-	padding: 0 14px;
 	height: 35px;
 	border-radius: 30px;
-	background: var(--green-color);
-	font-family: 'Rubik Medium';
-	font-size: 16px;
-	color: var(--main-color);
-}
-
-
-.FollowBtn:hover {
-	background: #0a523c;
 }

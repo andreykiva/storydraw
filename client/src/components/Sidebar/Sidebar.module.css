@@ -13,21 +13,7 @@
 }
 
 .LoginBtn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
 	margin-bottom: 30px;
-	padding: 0 14px;
 	height: 45px;
 	border-radius: 30px;
-	background: var(--green-color);
-	font-family: 'Rubik Medium';
-	font-size: 16px;
-	color: var(--main-color);
-	cursor: pointer;
-}
-
-.LoginBtn:hover {
-	background: #0a523c;
 }

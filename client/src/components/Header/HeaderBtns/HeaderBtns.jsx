@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './HeaderBtns.module.css';
 import createIcon from '../../../assets/icons/create.svg';
 import MoreBtn from './MoreBtn/MoreBtn';
+import Button from '../../../UI/Button/Button';
 
 const HeaderBtns = () => {
 	return (
@@ -10,7 +11,7 @@ const HeaderBtns = () => {
 				<img src={createIcon} alt="Create" className={styles.CreateIcon} />
 				<span className={styles.CreateText}>Create</span>
 			</a>
-			<button className={styles.LoginBtn}>Log in</button>
+			<Button className={styles.LoginBtn}>Log in</Button>
 			<MoreBtn />
 		</div>
 	);
