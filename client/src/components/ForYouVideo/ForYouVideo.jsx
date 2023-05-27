@@ -2,6 +2,12 @@ import React from 'react';
 import styles from './ForYouVideo.module.css';
 import defaultImg from '../../assets/icons/default.svg';
 import previewImg from '../../assets/images/preview.jpg';
+import musicImg from '../../assets/icons/music.svg';
+import Button from '../../UI/Button/Button';
+import LikeIcon from '../../UI/icons/LikeIcon';
+import CommentIcon from '../../UI/icons/CommentIcon';
+import FavoriteIcon from '../../UI/icons/FavoriteIcon';
+import ShareIcon from '../../UI/icons/ShareIcon';
 
 const ForYouVideo = (props) => {
 	const {
@@ -16,6 +22,7 @@ const ForYouVideo = (props) => {
 		tags,
 		likes,
 		comments,
+		favorites,
 		share,
 	} = props;
 
@@ -40,12 +47,32 @@ const ForYouVideo = (props) => {
 							))}
 						</span>
 					</p>
-					<div className={styles.InfoMusic}>{musicName}</div>
+					<div className={styles.InfoMusic}>
+						<img src={musicImg} alt="Music" className={styles.MusicIcon} /> {musicName}
+					</div>
 				</div>
-				<button className={styles.FollowBtn}>Follow</button>
+				<Button className={styles.FollowBtn}>Follow</Button>
 			</div>
-			<div>
+			<div className={styles.VideoWrapper}>
 				<img src={video || previewImg} alt="Video" className={styles.Video} />
+				<div className={styles.VideoInfo}>
+					<div className={styles.VideoInfoItem}>
+						<LikeIcon className={styles.ItemIcon} />
+						<div className={styles.ItemNumber}>99k</div>
+					</div>
+					<div className={styles.VideoInfoItem}>
+						<CommentIcon className={styles.ItemIcon} />
+						<div className={styles.ItemNumber}>{comments}</div>
+					</div>
+					<div className={styles.VideoInfoItem}>
+						<FavoriteIcon className={styles.ItemIcon} />
+						<div className={styles.ItemNumber}>{favorites}</div>
+					</div>
+					<div className={styles.VideoInfoItem}>
+						<ShareIcon className={styles.ItemIcon} />
+						<div className={styles.ItemNumber}>{share}</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
