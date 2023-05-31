@@ -1,6 +1,8 @@
 .SearchResults {
 	width: 100%;
 	max-height: 600px;
+	position: relative;
+	z-index: 10;
 	background-color: rgb(34, 34, 34);
 	border-radius: 15px;
 	padding: 14px 0;

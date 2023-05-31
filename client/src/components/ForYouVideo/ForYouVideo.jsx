@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ForYouVideo.module.css';
 import defaultImg from '../../assets/icons/default.svg';
 import previewImg from '../../assets/images/preview.jpg';
@@ -41,9 +42,9 @@ const ForYouVideo = (props) => {
 						<span className={styles.DescrText}>{description}</span>
 						<span className={styles.DescrTags}>
 							{tags.map((tag) => (
-								<a key={tag} className={styles.Tag}>
+								<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
 									#{tag}
-								</a>
+								</Link>
 							))}
 						</span>
 					</p>

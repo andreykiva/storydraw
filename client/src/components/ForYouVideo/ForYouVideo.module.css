@@ -37,6 +37,12 @@
 	margin-bottom: 8px;
 }
 
+.Tag {
+	color: var(--main-color);
+	margin: 0 2px;
+	text-decoration: none;
+}
+
 .MusicIcon {
 	width: 12px;
 	height: 12px;
