@@ -1,7 +1,7 @@
 .Tag {
 	max-height: calc(100vh - 60px);
 	overflow-y: scroll;
-	padding: 30px 15px;
+	padding: 30px 10px;
 }
 
 .Tag::-webkit-scrollbar {
@@ -20,6 +20,7 @@
 .TagHeader {
 	display: flex;
 	margin-bottom: 20px;
+	padding-left: 10px;
 }
 
 .TagIcon {
@@ -41,4 +42,9 @@
 .TagTitle {
 	font-size: 30px;
 	margin-bottom: 8px;
+}
+
+.TagVideos {
+	display: flex;
+	flex-wrap: wrap;
 }
