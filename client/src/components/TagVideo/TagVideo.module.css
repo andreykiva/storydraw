@@ -1,0 +1,39 @@
+.TagVideo {
+	max-width: 306px;
+	width: 100%;
+	margin: 10px;
+}
+
+.TagVideoContent {
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.Video {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.UserInfo {
+	position: absolute;
+	left: 12px;
+	bottom: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.ProfileImg {
+	width: 32px;
+	margin-right: 5px;
+}
+
+.Username {
+	font-size: 15px;
+}
+
+.TagVideoDescr {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 4px;
+}
