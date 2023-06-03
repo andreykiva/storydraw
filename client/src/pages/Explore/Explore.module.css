@@ -1,0 +1,56 @@
+.Explore {
+	max-height: calc(100vh - 60px);
+	overflow-y: scroll;
+	padding: 90px 30px 20px;
+}
+
+.Explore::-webkit-scrollbar {
+	width: 8px;
+}
+
+.Explore::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.Explore::-webkit-scrollbar-thumb {
+	background: #09483549;
+	border-radius: 4px;
+}
+
+.ExploreCategories {
+	width: calc(100% - 350px);
+	position: fixed;
+	left: 290px;
+	top: 60px;
+	display: flex;
+	padding: 25px 0;
+	background-color: rgb(0, 3, 1);
+	z-index: 10;
+}
+
+.ExploreCategory {
+	height: 38px;
+	padding: 0 14px;
+	margin-right: 12px;
+	border: 1px solid rgb(34, 34, 34);
+	border-radius: 10px;
+	background-color:aqua;
+	display: flex;
+	align-items: center;
+	background-color: rgb(34, 34, 34);
+	cursor: pointer;
+}
+
+.ExploreCategory.Active {
+	border-color: var(--main-color);
+}
+
+.CategoryIcon {
+	width: 18px;
+	margin-right: 8px;
+}
+
+.ExploreVideos {
+	display: flex;
+	flex-wrap: wrap;
+}

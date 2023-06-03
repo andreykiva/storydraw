@@ -1,0 +1,77 @@
+.ExploreVideo {
+	max-width: 510px;
+	width: 100%;
+	margin: 10px;
+}
+
+.ExploreVideoContent {
+	position: relative;
+	margin-bottom: 8px;
+}
+
+.Video {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.ViewsInfo {
+	position: absolute;
+	bottom: 14px;
+	left: 14px;
+	display: flex;
+	align-items: center;
+}
+
+.ViewsIcon {
+	width: 24px;
+	margin-right: 2px;
+}
+
+.Views {
+	font-size: 16px;
+}
+
+.InfoDescr {
+	margin-bottom: 5px;
+	font-size: 15px;
+	height: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.DescrText {
+	margin-right: 2px;
+}
+
+.Tag {
+	color: var(--main-color);
+	margin: 0 2px;
+	text-decoration: none;
+}
+
+.UserInfo {
+	display: flex;
+	align-items: center;
+}
+
+.ProfileImg {
+	width: 30px;
+	margin-right: 6px;
+	border-radius: 50%;
+}
+
+.Username {
+	font-size: 15px;
+}
+
+.LikesInfo {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+}
+
+.LikeIcon {
+	width: 20px;
+	margin-right: 6px;
+}
