@@ -8,7 +8,6 @@ const FavoriteIcon = ({ className }) => {
 			width="24px"
 			height="24px"
 			viewBox="0 0 52 52"
-			enable-background="new 0 0 52 52"
 			fill="#fff"
 		>
 			<path
