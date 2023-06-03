@@ -25,6 +25,7 @@
 .ProfileImg {
 	width: 32px;
 	margin-right: 5px;
+	border-radius: 50%;
 }
 
 .Username {
@@ -32,6 +33,7 @@
 }
 
 .TagVideoDescr {
+	height: 18px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;

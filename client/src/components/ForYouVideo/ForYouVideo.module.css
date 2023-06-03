@@ -12,6 +12,7 @@
 .ProfileImg {
 	width: 62px;
 	margin-right: 10px;
+	border-radius: 50%;
 }
 
 .HeaderInfo {
@@ -35,6 +36,10 @@
 
 .InfoDescr {
 	margin-bottom: 8px;
+}
+
+.DescrText {
+	margin-right: 2px;
 }
 
 .Tag {

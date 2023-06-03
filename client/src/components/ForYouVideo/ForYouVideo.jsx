@@ -40,13 +40,11 @@ const ForYouVideo = (props) => {
 					</div>
 					<p className={styles.InfoDescr}>
 						<span className={styles.DescrText}>{description}</span>
-						<span className={styles.DescrTags}>
-							{tags.map((tag) => (
-								<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
-									#{tag}
-								</Link>
-							))}
-						</span>
+						{tags.map((tag) => (
+							<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
+								#{tag}
+							</Link>
+						))}
 					</p>
 					<div className={styles.InfoMusic}>
 						<img src={musicImg} alt="Music" className={styles.MusicIcon} /> {musicName}
