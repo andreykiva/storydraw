@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './Header.module.css';
 import Logo from '../Logo/Logo';
-import Search from '../Search/Search';
+import SearchBar from '../SearchBar/SearchBar';
 import HeaderBtns from './HeaderBtns/HeaderBtns';
 
 const Header = () => {
 	return (
 		<header className={styles.Header}>
 			<Logo />
-			<Search />
+			<SearchBar />
 			<HeaderBtns />
 		</header>
 	);

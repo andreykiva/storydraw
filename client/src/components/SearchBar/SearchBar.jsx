@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Search.module.css';
+import styles from './SearchBar.module.css';
 import { openSearch, changeSearchValue } from '../../store/reducers/search/searchSlice';
 import searchImg from '../../assets/icons/search.svg';
 import SearchResults from './SearchResults/SearchResults';
@@ -29,7 +29,7 @@ const testResults = [
 	},
 ];
 
-const Search = () => {
+const SearchBar = () => {
 	const { isOpen, value } = useSelector((state) => state.search);
 	const dispatch = useDispatch();
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
@@ -39,7 +39,7 @@ const Search = () => {
 	};
 
 	return (
-		<div className={styles.Search}>
+		<div className={styles.SearchBar}>
 			<form className={styles.SearchForm}>
 				<input
 					type="text"
@@ -57,4 +57,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default SearchBar;
