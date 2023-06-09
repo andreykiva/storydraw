@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
-import { openSearch, changeSearchValue } from '../../store/reducers/search/searchSlice';
+import { changeSearchValue } from '../../store/reducers/search/searchSlice';
 import searchImg from '../../assets/icons/search.svg';
 import SearchResults from './SearchResults/SearchResults';
 // import { searchAPI } from '../../services/searchService';
@@ -48,9 +49,9 @@ const SearchBar = () => {
 					onChange={handlerChange}
 					placeholder="Search"
 				/>
-				<button className={styles.SearchBtn}>
+				<Link to={value ? `/search?q=${value}` : window.location.href} className={styles.SearchBtn}>
 					<img src={searchImg} alt="Search" className={styles.SearchIcon} />
-				</button>
+				</Link>
 			</form>
 			{isOpen && <SearchResults results={testResults} />}
 		</div>

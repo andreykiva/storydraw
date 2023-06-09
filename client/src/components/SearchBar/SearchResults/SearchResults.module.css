@@ -12,7 +12,7 @@
 	display: flex;
 	align-items: center;
 	padding: 12px 16px;
-	cursor: pointer;
+	text-decoration: none;
 }
 
 .SearchResult:hover {
@@ -26,6 +26,6 @@
 }
 
 .ResultTitle {
-	color: #D1D1D1;
+	color: var(--main-color);
 	font-size: 14px;
 }
