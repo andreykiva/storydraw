@@ -9,8 +9,13 @@ export const searchSlice = createSlice({
 	name: 'search',
 	initialState,
 	reducers: {
-		openSearch: (state) => {
-			state.isOpen = true;
+		search: (state, action) => {
+			state.isOpen = false;
+			state.value = action.payload;
+			console.log("Грузим видео " + action.payload);
+		},
+		closeSearch: (state) => {
+			state.isOpen = false;
 		},
 		changeSearchValue: (state, action) => {
 			if (action.payload.trim()) {
@@ -25,6 +30,6 @@ export const searchSlice = createSlice({
 
 });
 
-export const { openSearch, changeSearchValue } = searchSlice.actions;
+export const { closeSearch, loadSearchPage, search, changeSearchValue } = searchSlice.actions;
 
 export default searchSlice.reducer;

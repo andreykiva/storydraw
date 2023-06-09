@@ -7,10 +7,10 @@ import LikeIcon from '../../UI/icons/LikeIcon';
 import viewsImg from '../../assets/icons/views.svg';
 
 const ExploreVideo = (props) => {
-	const { userId, username, userImage, video, description, tags, likes, views } = props;
+	const { userId, username, userImage, video, description, tags, likes, views, className } = props;
 
 	return (
-		<div className={styles.ExploreVideo}>
+		<div className={[styles.ExploreVideo, className].join(' ')}>
 			<div className={styles.ExploreVideoContent}>
 				<img src={video || previewImg} alt="Video" className={styles.Video} />
 				<div className={styles.ViewsInfo}>
