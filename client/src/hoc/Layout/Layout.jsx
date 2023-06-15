@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Layout.module.css';
-import Header from '../../components/Header/Header';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import Header from '../../layouts/Header/Header';
+import Sidebar from '../../layouts/Sidebar/Sidebar';
 
 const Layout = ({ children }) => {
 	return (
