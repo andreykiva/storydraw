@@ -31,13 +31,15 @@ const ForYouVideo = (props) => {
 		<div className={styles.ForYouVideo}>
 			<div className={styles.VideoHeader}>
 				<div className={styles.HeaderImg}>
-					<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<Link to={`/@${username}`}>
+						<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					</Link>
 				</div>
 				<div className={styles.HeaderInfo}>
-					<div className={styles.HeaderInfoTop}>
+					<Link to={`/@${username}`} className={styles.HeaderInfoTop}>
 						<div className={styles.InfoUsername}>{username}</div>
 						<div className={styles.InfoTitle}>{userTitle}</div>
-					</div>
+					</Link>
 					<p className={styles.InfoDescr}>
 						<span className={styles.DescrText}>{description}</span>
 						{tags.map((tag) => (

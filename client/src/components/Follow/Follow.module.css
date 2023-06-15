@@ -24,8 +24,9 @@
 }
 
 .FollowImg {
-	width: 50px;
-	margin-bottom: 8px;
+	width: 48px;
+	margin-bottom: 10px;
+	border-radius: 50%;
 }
 
 .FollowDescr {

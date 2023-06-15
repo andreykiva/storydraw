@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './Follow.module.css';
 import defaultImg from '../../assets/icons/default.svg';
 import previewImg from '../../assets/images/preview.jpg';
@@ -7,7 +8,7 @@ import Button from '../../UI/Button/Button';
 
 const Follow = ({ username, description, image, preview }) => {
 	return (
-		<div className={styles.Follow}>
+		<Link to={`/@${username}`} className={styles.Follow}>
 			<img src={preview || previewImg} alt="Preview" className={styles.FollowPreview} />
 			<div className={styles.FollowContent}>
 				<img src={image || defaultImg} alt="Profile picture" className={styles.FollowImg} />
@@ -15,7 +16,7 @@ const Follow = ({ username, description, image, preview }) => {
 				<div className={styles.FollowUsername}>{username}</div>
 				<Button className={styles.FollowBtn}>Follow</Button>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

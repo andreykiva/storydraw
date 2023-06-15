@@ -4,8 +4,8 @@
 }
 
 .AccountImgWr {
-	width: 70px;
-	margin-right: 14px;
+	width: 60px;
+	margin-right: 20px;
 }
 
 .AccountImg {
@@ -14,7 +14,7 @@
 }
 
 .AccountInfo {
-	padding-top: 14px;
+	padding-top: 8px;
 }
 
 .Username {

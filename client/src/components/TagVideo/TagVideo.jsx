@@ -11,10 +11,10 @@ const TagVideo = (props) => {
 		<div className={styles.TagVideo}>
 			<div className={styles.TagVideoContent}>
 				<img src={video || previewImg} alt="Video" className={styles.Video} />
-				<div className={styles.UserInfo}>
+				<Link to={`/@${username}`} className={styles.UserInfo}>
 					<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					<span className={styles.Username}>{username}</span>
-				</div>
+				</Link>
 			</div>
 			<p className={styles.TagVideoDescr}>
 				{description} #{tags.join(' #')}

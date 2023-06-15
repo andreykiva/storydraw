@@ -47,7 +47,6 @@
 .Tag {
 	color: var(--main-color);
 	margin: 0 2px;
-	text-decoration: none;
 }
 
 .UserInfo {
@@ -55,8 +54,13 @@
 	align-items: center;
 }
 
+.UserLink {
+	display: flex;
+	align-items: center;
+}
+
 .ProfileImg {
-	width: 30px;
+	width: 26px;
 	margin-right: 6px;
 	border-radius: 50%;
 }

@@ -27,8 +27,10 @@ const ExploreVideo = (props) => {
 				))}
 			</p>
 			<div className={styles.UserInfo}>
-				<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
-				<span className={styles.Username}>{username}</span>
+				<Link to={`/@${username}`} className={styles.UserLink}>
+					<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<span className={styles.Username}>{username}</span>
+				</Link>
 				<div className={styles.LikesInfo}>
 					<LikeIcon className={styles.LikeIcon} />
 					<span className={styles.Likes}>{likes}</span>

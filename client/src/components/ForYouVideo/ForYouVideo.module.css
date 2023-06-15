@@ -10,14 +10,14 @@
 }
 
 .ProfileImg {
-	width: 62px;
-	margin-right: 10px;
+	width: 56px;
+	margin-right: 14px;
 	border-radius: 50%;
 }
 
 .HeaderInfo {
 	max-width: 50%;
-	padding-top: 12px;
+	padding-top: 8px;
 	margin-bottom: 10px;
 }
 
@@ -45,7 +45,6 @@
 .Tag {
 	color: var(--main-color);
 	margin: 0 2px;
-	text-decoration: none;
 }
 
 .MusicIcon {
