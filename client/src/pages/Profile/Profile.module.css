@@ -1,0 +1,80 @@
+.Profile {
+	width: 100%;
+	max-height: calc(100vh - 60px);
+	padding: 35px 25px;
+	overflow-y: scroll;
+}
+
+.Profile::-webkit-scrollbar {
+	width: 8px;
+}
+
+.Profile::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.Profile::-webkit-scrollbar-thumb {
+	background: #09483549;
+	border-radius: 4px;
+}
+
+.ProfileInfo {
+	margin-bottom: 40px;
+}
+
+.TopInfo {
+	display: flex;
+	margin-bottom: 30px;
+}
+
+.ProfileImgWr {
+	max-width: 115px;
+	margin-right: 20px;
+}
+
+.ProfileImg {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.InfoMain {
+	padding-top: 4px;
+}
+
+.Username {
+	font-weight: normal;
+	font-size: 30px;
+	margin-bottom: 6px;
+}
+
+.UserTitle {
+	display: block;
+	margin-bottom: 18px;
+}
+
+.UserStatistics {
+	display: flex;
+	margin-bottom: 14px;
+}
+
+.StatisticsItem {
+	margin-right: 20px;
+}
+
+.ItemValue {
+	font-weight: 600;
+	margin-right: 2px;
+}
+
+.ProfileVideos {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding-top: 10px;
+	border-top: 1px solid #d1d1d11a;
+}
+
+.ProfileVideos >* {
+	flex: 1 1 50px;
+}
