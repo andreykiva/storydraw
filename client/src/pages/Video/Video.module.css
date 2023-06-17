@@ -1,0 +1,131 @@
+.Video {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: flex;
+	z-index: 1;
+}
+
+.VideoContent {
+	position: relative;
+	flex: 1 0;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: rgb(20, 20, 20);
+}
+
+.BackgroundImg {
+	position: absolute;
+	left: -20%;
+	top: -20%;
+	height: 150%;
+	filter: blur(10px);
+	opacity: .6;
+	z-index: 0;
+}
+
+.VideoHeader {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	display: flex;
+	padding: 20px 20px 15px;
+	justify-content: space-between;
+	z-index: 1;
+}
+
+.Back {
+	width: 100px;
+}
+
+.BackBtn {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background-color: rgb(71, 71, 71);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.BackBtn:hover {
+	opacity: .7;
+}
+
+.CloseIcon {
+	width: 22px;
+}
+
+.ReportBtn {
+	width: 100px;
+	height: 38px;
+	background-color: rgb(71, 71, 71);
+	color: #fff;
+	font-size: 14px;
+}
+
+.ReportBtn:hover {
+	background-color: rgba(71, 71, 71, 0.7);
+}
+
+.ReportIcon {
+	width: 16px;
+	margin-right: 4px;
+}
+
+.VideoNav {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-right: 20px;
+	z-index: 1;
+}
+
+.VideoNavLink {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background-color: rgb(71, 71, 71);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.VideoNavLink:hover {
+	opacity: .7;
+}
+
+.NavLinkIcon {
+	width: 30px;
+}
+
+.VideoNavLink:first-child {
+	margin-bottom: 14px;
+}
+
+.VideoNavLink:nth-child(2) {
+	transform: rotate(180deg);
+}
+
+.ActiveVideo {
+	position: relative;
+	width: 100%;
+}
+
+.VideoInfo {
+	position: relative;
+	max-width: 540px;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(0, 3, 1);
+}
