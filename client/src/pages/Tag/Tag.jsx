@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './Tag.module.css';
-import TagVideo from '../../components/TagVideo/TagVideo';
+import TagVideo from './TagVideo/TagVideo';
 
 const testTagInfo = {
 	views: '123k',

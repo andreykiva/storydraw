@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SearchAccount.module.css';
-import defaultImg from '../../../assets/icons/default.svg';
+import defaultImg from '../../../../assets/icons/default.svg';
 
 const SearchAccount = (props) => {
 	const { image, username, title, description, followers } = props;

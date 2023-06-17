@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ForYouVideo.module.css';
-import defaultImg from '../../assets/icons/default.svg';
-import previewImg from '../../assets/images/preview.jpg';
-import musicImg from '../../assets/icons/music.svg';
-import Button from '../../UI/Button/Button';
-import LikeIcon from '../../UI/icons/LikeIcon';
-import CommentIcon from '../../UI/icons/CommentIcon';
-import FavoriteIcon from '../../UI/icons/FavoriteIcon';
-import ShareIcon from '../../UI/icons/ShareIcon';
+import defaultImg from '../../../assets/icons/default.svg';
+import previewImg from '../../../assets/images/preview.jpg';
+import musicImg from '../../../assets/icons/music.svg';
+import Button from '../../../UI/Button/Button';
+import LikeIcon from '../../../UI/icons/LikeIcon';
+import CommentIcon from '../../../UI/icons/CommentIcon';
+import FavoriteIcon from '../../../UI/icons/FavoriteIcon';
+import ShareIcon from '../../../UI/icons/ShareIcon';
 
 const ForYouVideo = (props) => {
 	const {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './TagVideo.module.css';
-import defaultImg from '../../assets/icons/default.svg';
-import previewImg from '../../assets/images/preview.jpg';
+import defaultImg from '../../../assets/icons/default.svg';
+import previewImg from '../../../assets/images/preview.jpg';
 
 const TagVideo = (props) => {
 	const { userId, username, userImage, video, description, tags } = props;

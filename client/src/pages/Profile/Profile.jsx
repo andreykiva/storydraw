@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Profile.module.css';
 import defaultImg from '../../assets/icons/default.svg';
 import Button from '../../UI/Button/Button';
-import ProfileVideo from '../../components/ProfileVideo/ProfileVideo';
+import ProfileVideo from './ProfileVideo/ProfileVideo';
 
 const testProfileInfo = {
 	userId: 123,

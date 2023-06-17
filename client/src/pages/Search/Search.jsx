@@ -3,9 +3,9 @@ import { useSearchParams, Routes, Route, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Search.module.css';
 import { search } from '../../store/reducers/search/searchSlice';
-import SearchTop from '../../components/SearchTop/SearchTop';
-import SearchAccounts from '../../components/SearchAccounts/SearchAccounts';
-import SearchVideos from '../../components/SearchVideos/SearchVideos';
+import SearchTop from './SearchTop/SearchTop';
+import SearchAccounts from './SearchAccounts/SearchAccounts';
+import SearchVideos from './SearchVideos/SearchVideos';
 
 const Search = () => {
 	const [searchParams] = useSearchParams();

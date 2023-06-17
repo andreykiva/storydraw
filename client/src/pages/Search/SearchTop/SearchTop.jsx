@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SearchTop.module.css';
 import SearchAccount from '../SearchAccounts/SearchAccount/SearchAccount';
-import ExploreVideo from '../ExploreVideo/ExploreVideo';
+import ExploreVideo from '../../../components/ExploreVideo/ExploreVideo';
 
 const testSearchData = {
 	accounts: [

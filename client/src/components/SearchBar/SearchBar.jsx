@@ -30,7 +30,7 @@ const testResults = [
 	},
 ];
 
-const SearchBar = () => {
+const SearchBar = ({ light }) => {
 	const { isOpen, value } = useSelector((state) => state.search);
 	const dispatch = useDispatch();
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
@@ -40,7 +40,7 @@ const SearchBar = () => {
 	};
 
 	return (
-		<div className={styles.SearchBar}>
+		<div className={[styles.SearchBar, light ? styles.Light : ''].join(' ')}>
 			<form className={styles.SearchForm}>
 				<input
 					type="text"

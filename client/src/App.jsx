@@ -8,6 +8,7 @@ import Tag from './pages/Tag/Tag';
 import Search from './pages/Search/Search';
 import ValidateUser from './components/ValidateUser/ValidateUser';
 import Profile from './pages/Profile/Profile';
+import Video from './pages/Video/Video';
 
 export const App = () => {
 	return (
@@ -20,14 +21,8 @@ export const App = () => {
 					<Route path="/search" element={<Search />}>
 						<Route path=":type" element={<Search />} />
 					</Route>
-					<Route
-						path="/:user"
-						element={
-							<ValidateUser>
-								<Profile />
-							</ValidateUser>
-						}
-					/>
+					<Route path="/:userId" element={<ValidateUser><Profile /></ValidateUser>} />
+					<Route path="/:userId/video/:videoId" element={<ValidateUser><Video /></ValidateUser>} />
 					<Route path="/" exact element={<ForYou />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>

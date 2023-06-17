@@ -47,3 +47,26 @@
 	opacity: 0.3;
 	width: 24px;
 }
+
+/* Light */
+
+.SearchBar.Light .SearchForm {
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	background-color: transparent;
+}
+
+.SearchBar.Light .SearchInput {
+	color: #fff;
+}
+
+.SearchBar.Light .SearchInput::placeholder {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.SearchBar.Light .SearchIcon {
+	opacity: .8;
+}
+
+.SearchBar.Light .SearchBtn:hover {
+	background-color: rgba(255, 255, 255, 0.144);
+}

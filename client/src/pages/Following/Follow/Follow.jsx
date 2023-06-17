@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './Follow.module.css';
-import defaultImg from '../../assets/icons/default.svg';
-import previewImg from '../../assets/images/preview.jpg';
-import Button from '../../UI/Button/Button';
+import defaultImg from '../../../assets/icons/default.svg';
+import previewImg from '../../../assets/images/preview.jpg';
+import Button from '../../../UI/Button/Button';
 
 const Follow = ({ username, description, image, preview }) => {
 	return (

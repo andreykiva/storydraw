@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Following.module.css';
-import Follow from '../../components/Follow/Follow';
+import Follow from './Follow/Follow';
 
 const testFollowing = [
 	{

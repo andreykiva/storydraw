@@ -3,9 +3,9 @@ import { Navigate, useParams } from 'react-router-dom';
 
 const ValidateUser = (props) => {
 	let params = useParams();
-	let username = params.user.match(/\@[a-zA-Z0-9_-]+/);
+	let userId = params.userId.match(/\@[a-zA-Z0-9_-]+/);
 
-	if (!username) {
+	if (!userId) {
 		return <Navigate to="/" />;
 	}
 

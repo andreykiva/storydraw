@@ -1,8 +1,10 @@
 .Header {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	height: 60px;
 	padding: 10px 20px;
 	border-bottom: 1px solid #1f1f1f;
+	z-index: 1;
 }

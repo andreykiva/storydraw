@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SearchVideos.module.css';
-import ExploreVideo from '../ExploreVideo/ExploreVideo';
+import ExploreVideo from '../../../components/ExploreVideo/ExploreVideo';
 
 const testVideos = [
 	{

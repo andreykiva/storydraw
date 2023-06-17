@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ForYou.module.css';
-import ForYouVideo from '../../components/ForYouVideo/ForYouVideo';
+import ForYouVideo from './ForYouVideo/ForYouVideo';
 
 const testVideos = [
 	{

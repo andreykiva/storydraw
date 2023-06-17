@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProfileVideo.module.css';
-import previewImg from '../../assets/images/preview.jpg';
-import viewsImg from '../../assets/icons/views.svg';
+import previewImg from '../../../assets/images/preview.jpg';
+import viewsImg from '../../../assets/icons/views.svg';
 
 const ProfileVideo = (props) => {
 	const { video, description, tags, views } = props;
