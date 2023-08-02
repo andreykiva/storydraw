@@ -5,7 +5,7 @@ import styles from './Search.module.css';
 import { search } from '../../store/reducers/search/searchSlice';
 import SearchTop from './SearchTop/SearchTop';
 import SearchAccounts from './SearchAccounts/SearchAccounts';
-import SearchVideos from './SearchVideos/SearchVideos';
+import SearchStories from './SearchStories/SearchStories';
 
 const Search = () => {
 	const [searchParams] = useSearchParams();
@@ -26,8 +26,8 @@ const Search = () => {
 			to: `/search/user?q=${searchParam}`,
 		},
 		{
-			title: 'Video',
-			to: `/search/video?q=${searchParam}`,
+			title: 'Stories',
+			to: `/search/story?q=${searchParam}`,
 		},
 	];
 
@@ -49,7 +49,7 @@ const Search = () => {
 				<Routes>
 					<Route path="/" element={<SearchTop />} />
 					<Route path="/user" element={<SearchAccounts />} />
-					<Route path="/video" element={<SearchVideos />} />
+					<Route path="/story" element={<SearchStories />} />
 				</Routes>
 			</div>
 		</div>

@@ -1,41 +1,40 @@
-.TagVideo {
+.ProfileStory {
 	max-width: 306px;
-	width: 100%;
-	margin: 10px;
+	min-width: 270px;
 }
 
-.TagVideoContent {
+.ProfileStoryContent {
 	position: relative;
 	margin-bottom: 5px;
 }
 
-.Video {
+.Story {
 	width: 100%;
 	border-radius: 8px;
 }
 
-.UserInfo {
+.ViewsInfo {
 	position: absolute;
-	left: 12px;
 	bottom: 12px;
+	left: 12px;
 	display: flex;
 	align-items: center;
 }
 
-.ProfileImg {
-	width: 28px;
-	margin-right: 6px;
-	border-radius: 50%;
+.ViewsIcon {
+	width: 24px;
+	margin-right: 2px;
 }
 
-.Username {
+.Views {
+	font-size: 16px;
+}
+
+.InfoDescr {
+	margin-bottom: 5px;
 	font-size: 15px;
-}
-
-.TagVideoDescr {
 	height: 18px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	padding: 0 4px;
 }

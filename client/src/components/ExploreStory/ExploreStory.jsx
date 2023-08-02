@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ExploreVideo.module.css';
+import styles from './ExploreStory.module.css';
 import defaultImg from '../../assets/icons/default.svg';
 import previewImg from '../../assets/images/preview.jpg';
 import LikeIcon from '../../UI/icons/LikeIcon';
 import viewsImg from '../../assets/icons/views.svg';
 
-const ExploreVideo = (props) => {
-	const { userId, username, userImage, video, description, tags, likes, views, className } = props;
+const ExploreStory = (props) => {
+	const { userId, username, userImage, story, description, tags, likes, views, className } = props;
 
 	return (
-		<div className={[styles.ExploreVideo, className].join(' ')}>
-			<div className={styles.ExploreVideoContent}>
-				<img src={video || previewImg} alt="Video" className={styles.Video} />
+		<div className={[styles.ExploreStory, className].join(' ')}>
+			<div className={styles.ExploreStoryContent}>
+				<img src={story || previewImg} alt="Story" className={styles.Story} />
 				<div className={styles.ViewsInfo}>
 					<img src={viewsImg} alt="Views" className={styles.ViewsIcon} />
 					<span className={styles.Views}>{views}</span>
@@ -40,4 +40,4 @@ const ExploreVideo = (props) => {
 	);
 };
 
-export default ExploreVideo;
+export default ExploreStory;

@@ -4,7 +4,7 @@ import drawnImg from '../../assets/icons/brush.svg';
 import pixelImg from '../../assets/icons/pixelated.svg';
 import frameImg from '../../assets/icons/movie-roll.svg';
 import lengthyImg from '../../assets/icons/movie.svg';
-import ExploreVideo from '../../components/ExploreVideo/ExploreVideo';
+import ExploreStory from '../../components/ExploreStory/ExploreStory';
 
 const exploreCategories = [
 	{
@@ -25,15 +25,15 @@ const exploreCategories = [
 	},
 ];
 
-const testVideos = [
+const testStories = [
 	{
 		id: 1,
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -42,9 +42,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -53,9 +53,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -64,9 +64,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -75,9 +75,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -86,9 +86,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -97,9 +97,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -108,9 +108,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -119,9 +119,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -130,9 +130,9 @@ const testVideos = [
 		userId: '123',
 		username: 'andrey.kiva',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		views: 1244,
 	},
@@ -149,9 +149,9 @@ const Explore = () => {
 					</div>
 				))}
 			</div>
-			<div className={styles.ExploreVideos}>
-				{testVideos.map((video) => (
-					<ExploreVideo key={video.id} {...video} />
+			<div className={styles.ExploreStories}>
+				{testStories.map((story) => (
+					<ExploreStory key={story.id} {...story} />
 				))}
 			</div>
 		</div>

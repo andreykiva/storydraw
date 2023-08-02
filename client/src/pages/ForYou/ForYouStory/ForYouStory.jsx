@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ForYouVideo.module.css';
+import styles from './ForYouStory.module.css';
 import defaultImg from '../../../assets/icons/default.svg';
 import previewImg from '../../../assets/images/preview.jpg';
 import musicImg from '../../../assets/icons/music.svg';
@@ -10,13 +10,13 @@ import CommentIcon from '../../../UI/icons/CommentIcon';
 import FavoriteIcon from '../../../UI/icons/FavoriteIcon';
 import ShareIcon from '../../../UI/icons/ShareIcon';
 
-const ForYouVideo = (props) => {
+const ForYouStory = (props) => {
 	const {
 		userId,
 		username,
 		userTitle,
 		userImage,
-		video,
+		story,
 		description,
 		musicName,
 		musicId,
@@ -28,8 +28,8 @@ const ForYouVideo = (props) => {
 	} = props;
 
 	return (
-		<div className={styles.ForYouVideo}>
-			<div className={styles.VideoHeader}>
+		<div className={styles.ForYouStory}>
+			<div className={styles.StoryHeader}>
 				<div className={styles.HeaderImg}>
 					<Link to={`/@${username}`}>
 						<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
@@ -54,22 +54,22 @@ const ForYouVideo = (props) => {
 				</div>
 				<Button className={styles.FollowBtn}>Follow</Button>
 			</div>
-			<div className={styles.VideoWrapper}>
-				<img src={video || previewImg} alt="Video" className={styles.Video} />
-				<div className={styles.VideoInfo}>
-					<div className={styles.VideoInfoItem}>
+			<div className={styles.StoryWrapper}>
+				<img src={story || previewImg} alt="Story" className={styles.Story} />
+				<div className={styles.StoryInfo}>
+					<div className={styles.StoryInfoItem}>
 						<LikeIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>99k</div>
 					</div>
-					<div className={styles.VideoInfoItem}>
+					<div className={styles.StoryInfoItem}>
 						<CommentIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{comments}</div>
 					</div>
-					<div className={styles.VideoInfoItem}>
+					<div className={styles.StoryInfoItem}>
 						<FavoriteIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{favorites}</div>
 					</div>
-					<div className={styles.VideoInfoItem}>
+					<div className={styles.StoryInfoItem}>
 						<ShareIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{share}</div>
 					</div>
@@ -79,4 +79,4 @@ const ForYouVideo = (props) => {
 	);
 };
 
-export default ForYouVideo;
+export default ForYouStory;

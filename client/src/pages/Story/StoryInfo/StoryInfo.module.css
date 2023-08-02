@@ -1,8 +1,8 @@
-.VideoInfo {
+.StoryInfo {
 	padding: 30px;
 }
 
-.VideoInfoTop {
+.StoryInfoTop {
 	display: flex;
 	align-items: center;
 	margin-bottom: 17px;
@@ -53,13 +53,13 @@
 	margin-right: 10px;
 }
 
-.VideoInfoBottom {
+.StoryInfoBottom {
 	display: flex;
 	align-items: center;
 	gap: 24px;
 }
 
-.VideoInfoItem {
+.StoryInfoItem {
 	display: flex;
 	align-items: center;
 }

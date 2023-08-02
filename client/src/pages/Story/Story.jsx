@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Video.module.css';
-import videoImg from '../../assets/images/preview.jpg';
+import styles from './Story.module.css';
+import storyImg from '../../assets/images/preview.jpg';
 import closeImg from '../../assets/icons/close.svg';
 import reportImg from '../../assets/icons/report.svg';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../UI/Button/Button';
-import VideoInfo from './VideoInfo/VideoInfo';
+import StoryInfo from './StoryInfo/StoryInfo';
 import Comments from './Comments/Comments';
 import ArrowIcon from '../../UI/icons/ArrowIcon';
 
-const testVideoInfo = {
+const testStoryInfo = {
 	user: {
 		userId: 123,
 		username: 'andrey.kiva',
@@ -27,12 +27,12 @@ const testVideoInfo = {
 	favorites: 213,
 };
 
-const Video = () => {
+const Story = () => {
 	return (
-		<div className={styles.Video}>
-			<div className={styles.VideoContent}>
-				<img src={videoImg} alt="Background" className={styles.BackgroundImg} />
-				<div className={styles.VideoHeader}>
+		<div className={styles.Story}>
+			<div className={styles.StoryContent}>
+				<img src={storyImg} alt="Background" className={styles.BackgroundImg} />
+				<div className={styles.StoryHeader}>
 					<div className={styles.Back}>
 						<Link to={-1} className={styles.BackBtn}>
 							<img src={closeImg} alt="Close" className={styles.CloseIcon} />
@@ -44,19 +44,19 @@ const Video = () => {
 						<span>Report</span>
 					</Button>
 				</div>
-				<div className={styles.VideoNav}>
-					<Link to="/@andrey/video/777" className={styles.VideoNavLink}>
+				<div className={styles.StoryNav}>
+					<Link to="/@andrey/story/777" className={styles.StoryNavLink}>
 						<ArrowIcon className={styles.NavLinkIcon} />
 					</Link>
-					<Link to="/@andrey/video/888" className={styles.VideoNavLink}>
+					<Link to="/@andrey/story/888" className={styles.StoryNavLink}>
 						<ArrowIcon className={styles.NavLinkIcon} />
 					</Link>
 				</div>
-				<img src={videoImg} alt="Video" className={styles.ActiveVideo} />
+				<img src={storyImg} alt="Story" className={styles.ActiveStory} />
 			</div>
-			<div className={styles.VideoDetails}>
+			<div className={styles.StoryDetails}>
 				<div className={styles.DetailsTop}>
-					<VideoInfo {...testVideoInfo} />
+					<StoryInfo {...testStoryInfo} />
 					<div className={styles.Underline}></div>
 					<Comments />
 				</div>
@@ -68,4 +68,4 @@ const Video = () => {
 	);
 };
 
-export default Video;
+export default Story;

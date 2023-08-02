@@ -1,15 +1,15 @@
-.ExploreVideo {
+.ExploreStory {
 	max-width: 510px;
 	width: 100%;
 	margin: 10px;
 }
 
-.ExploreVideoContent {
+.ExploreStoryContent {
 	position: relative;
 	margin-bottom: 8px;
 }
 
-.Video {
+.Story {
 	width: 100%;
 	border-radius: 8px;
 }

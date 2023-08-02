@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SearchTop.module.css';
 import SearchAccount from '../SearchAccounts/SearchAccount/SearchAccount';
-import ExploreVideo from '../../../components/ExploreVideo/ExploreVideo';
+import ExploreStory from '../../../components/ExploreStory/ExploreStory';
 
 const testSearchData = {
 	accounts: [
@@ -30,15 +30,15 @@ const testSearchData = {
 			image: '',
 		},
 	],
-	videos: [
+	stories: [
 		{
 			id: 1,
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -47,9 +47,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -58,9 +58,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -69,9 +69,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -80,9 +80,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -91,9 +91,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -102,9 +102,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -113,9 +113,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -124,9 +124,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -135,9 +135,9 @@ const testSearchData = {
 			userId: '123',
 			username: 'andrey.kiva',
 			userImage: '',
-			video: '',
+			story: '',
 			description: 'today was a good day',
-			tags: ['song', 'video', 'day'],
+			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
 		},
@@ -153,10 +153,10 @@ const SearchTop = () => {
 					<SearchAccount key={account.id} {...account} />
 				))}
 			</div>
-			<h5 className={styles.VideosTitle}>Videos</h5>
-			<div className={styles.SearchVideos}>
-				{testSearchData.videos.map((video) => (
-					<ExploreVideo key={video.id} className={styles.SearchVideo} {...video} />
+			<h5 className={styles.StoriesTitle}>Stories</h5>
+			<div className={styles.SearchStories}>
+				{testSearchData.stories.map((story) => (
+					<ExploreStory key={story.id} className={styles.SearchStory} {...story} />
 				))}
 			</div>
 		</div>

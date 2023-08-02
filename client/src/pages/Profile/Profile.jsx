@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Profile.module.css';
 import defaultImg from '../../assets/icons/default.svg';
 import Button from '../../UI/Button/Button';
-import ProfileVideo from './ProfileVideo/ProfileVideo';
+import ProfileStory from './ProfileStory/ProfileStory';
 
 const testProfileInfo = {
 	userId: 123,
@@ -15,143 +15,143 @@ const testProfileInfo = {
 	likes: 131,
 };
 
-const testProfileVideos = [
+const testProfileStories = [
 	{
 		id: 1,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 2,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 3,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 4,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 5,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 6,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 7,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 8,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 9,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 10,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 11,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 12,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 13,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 14,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 15,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 16,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 17,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 18,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 19,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
 		id: 20,
-		video: '',
+		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
@@ -189,9 +189,9 @@ const Profile = () => {
 					<p className={styles.UserDescr}>{description || 'No bio yet.'}</p>
 				</div>
 			</div>
-			<div className={styles.ProfileVideos}>
-				{testProfileVideos.map((video) => (
-					<ProfileVideo key={video.id} {...video } />
+			<div className={styles.ProfileStories}>
+				{testProfileStories.map((story) => (
+					<ProfileStory key={story.id} {...story } />
 				))}
 			</div>
 		</div>

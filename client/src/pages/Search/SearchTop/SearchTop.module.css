@@ -4,7 +4,7 @@
 	height: 100%;
 }
 
-.AccountsTitle, .VideosTitle {
+.AccountsTitle, .StoriesTitle {
 	font-weight: normal;
 	margin-bottom: 20px;
 }
@@ -13,7 +13,7 @@
 	padding-bottom: 20px;
 }
 
-.SearchVideos {
+.SearchStories {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -21,7 +21,7 @@
 	padding-bottom: 20px;
 }
 
-.SearchVideo {
+.SearchStory {
 	max-width: 340px;
 	width: 100%;
 	margin: 0 0 20px;

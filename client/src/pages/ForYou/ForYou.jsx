@@ -1,19 +1,19 @@
 import React from 'react';
 import styles from './ForYou.module.css';
-import ForYouVideo from './ForYouVideo/ForYouVideo';
+import ForYouStory from './ForYouStory/ForYouStory';
 
-const testVideos = [
+const testStories = [
 	{
 		id: 1,
 		userId: '123',
 		username: 'andrey.kiva',
 		userTitle: 'hey man',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
 		musicName: "Andre - My life",
 		musicId: '123',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		favorites: 419,
 		comments: 28,
@@ -25,11 +25,11 @@ const testVideos = [
 		username: 'andrey.kiva',
 		userTitle: 'hey man',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
 		musicName: "Andre - My life",
 		musicId: '123',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		favorites: 419,
 		comments: 28,
@@ -41,11 +41,11 @@ const testVideos = [
 		username: 'andrey.kiva',
 		userTitle: 'hey man',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
 		musicName: "Andre - My life",
 		musicId: '123',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		favorites: 419,
 		comments: 28,
@@ -57,11 +57,11 @@ const testVideos = [
 		username: 'andrey.kiva',
 		userTitle: 'hey man',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
 		musicName: "Andre - My life",
 		musicId: '123',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		favorites: 419,
 		comments: 28,
@@ -73,11 +73,11 @@ const testVideos = [
 		username: 'andrey.kiva',
 		userTitle: 'hey man',
 		userImage: '',
-		video: '',
+		story: '',
 		description: 'today was a good day',
 		musicName: "Andre - My life",
 		musicId: '123',
-		tags: ['song', 'video', 'day'],
+		tags: ['song', 'story', 'day'],
 		likes: 99142,
 		favorites: 419,
 		comments: 28,
@@ -87,8 +87,8 @@ const testVideos = [
 
 const ForYou = () => {
 	return <div className={styles.ForYou}>
-		{testVideos.map((video) => (
-			<ForYouVideo key={video.id} {...video} />
+		{testStories.map((story) => (
+			<ForYouStory key={story.id} {...story} />
 		))}
 	</div>;
 };

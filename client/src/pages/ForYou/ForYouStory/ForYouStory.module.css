@@ -1,11 +1,11 @@
-.ForYouVideo {
+.ForYouStory {
 	max-width: 1000px;
 	width: 100%;
 	padding: 30px 0;
 	border-bottom: 1px solid #d1d1d11a;
 }
 
-.VideoHeader {
+.StoryHeader {
 	display: flex;
 }
 
@@ -60,16 +60,16 @@
 	margin-top: 8px;
 }
 
-.VideoWrapper {
+.StoryWrapper {
 	position: relative;
 }
 
-.Video {
+.Story {
 	width: 100%;
 	border-radius: 12px;
 }
 
-.VideoInfo {
+.StoryInfo {
 	position: absolute;
 	right: 20px;
 	top: 50%;
@@ -83,7 +83,7 @@
 	transform: translateY(-50%);
 }
 
-.VideoInfoItem {
+.StoryInfoItem {
 	text-align: center;
 	margin: 10px 0;
 }
