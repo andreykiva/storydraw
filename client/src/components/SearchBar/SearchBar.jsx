@@ -30,7 +30,7 @@ const testResults = [
 	},
 ];
 
-const SearchBar = ({ light }) => {
+const SearchBar = ({ light = false }) => {
 	const { isOpen, value } = useSelector((state) => state.search);
 	const dispatch = useDispatch();
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
