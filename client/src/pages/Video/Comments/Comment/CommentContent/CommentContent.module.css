@@ -1,0 +1,67 @@
+.CommentContent {
+	display: flex;
+}
+
+.ProfileImg {
+	width: 40px;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+
+.CommentContent.Reply .ProfileImg {
+	width: 24px;
+}
+
+.CommentInfo {
+	flex: 1;
+	padding-top: 3px;
+}
+
+.UserLink {
+	display: inline-block;
+	margin-bottom: 3px;
+	font-size: 14px;
+}
+
+.CommentText {
+	margin-bottom: 8px;
+	line-height: 1.3;
+}
+
+.BottomInfo {
+	display: flex;
+	font-size: 14px;
+	color: rgb(114, 114, 114);
+}
+
+.CommentDate {
+	margin-right: 35px;
+}
+
+.ReplyBtn {
+	cursor: pointer;
+}
+
+.ReplyBtn:hover {
+	opacity: .8;
+}
+
+.CommentLikes {
+	padding-left: 18px;
+	padding-top: 16px;	
+}
+
+.LikeBtn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: rgb(114, 114, 114);
+	cursor: pointer;
+}
+
+.LikeIcon {
+	width: 20px;
+	height: 20px;
+	margin-bottom: 4px;
+	fill: rgb(114, 114, 114);
+}

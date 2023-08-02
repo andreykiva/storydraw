@@ -1,0 +1,41 @@
+.Comment {
+	margin-bottom: 22px;
+}
+
+.ViewRepliesBtn {
+	display: inline-flex;
+	align-items: center;
+	margin: 12px 0 0 50px;
+	font-size: 14px;
+	color: rgb(114, 114, 114);
+	cursor: pointer;
+}
+
+.ViewRepliesBtn:hover {
+	opacity: .7;
+}
+
+.ArrowIcon {
+	width: 18px;
+	height: 18px;
+	fill: rgb(114, 114, 114);
+	margin-left: 5px;
+}
+
+.HideReplies {
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 6px;
+}
+
+.HideRepliesBtn {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	color: rgb(114, 114, 114);
+	cursor: pointer;
+}
+
+.HideRepliesBtn .ArrowIcon {
+	transform: rotate(-180deg);
+}

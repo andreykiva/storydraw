@@ -4,12 +4,28 @@ import styles from './Video.module.css';
 import videoImg from '../../assets/images/preview.jpg';
 import closeImg from '../../assets/icons/close.svg';
 import reportImg from '../../assets/icons/report.svg';
-import arrowImg from '../../assets/icons/arrow.svg';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../UI/Button/Button';
+import VideoInfo from './VideoInfo/VideoInfo';
+import Comments from './Comments/Comments';
+import ArrowIcon from '../../UI/icons/ArrowIcon';
 
-const testVideoInfo = {};
-const testComments = [];
+const testVideoInfo = {
+	user: {
+		userId: 123,
+		username: 'andrey.kiva',
+		title: 'hey man',
+		image: '',
+	},
+	id: 123123,
+	description: 'I wanna be a bee',
+	date: '06-23',
+	musicId: 41,
+	musicName: 'Andre - My life',
+	likes: 723,
+	comments: 412,
+	favorites: 213,
+};
 
 const Video = () => {
 	return (
@@ -29,16 +45,25 @@ const Video = () => {
 					</Button>
 				</div>
 				<div className={styles.VideoNav}>
-						<Link to='/@andrey/video/777' className={styles.VideoNavLink} >
-							<img src={arrowImg} alt='Prev' className={styles.NavLinkIcon} />
-						</Link>
-						<Link to='/@andrey/video/888' className={styles.VideoNavLink}>
-							<img src={arrowImg} alt='Next' className={styles.NavLinkIcon} />
-						</Link>
+					<Link to="/@andrey/video/777" className={styles.VideoNavLink}>
+						<ArrowIcon className={styles.NavLinkIcon} />
+					</Link>
+					<Link to="/@andrey/video/888" className={styles.VideoNavLink}>
+						<ArrowIcon className={styles.NavLinkIcon} />
+					</Link>
 				</div>
 				<img src={videoImg} alt="Video" className={styles.ActiveVideo} />
 			</div>
-			<div className={styles.VideoInfo}></div>
+			<div className={styles.VideoDetails}>
+				<div className={styles.DetailsTop}>
+					<VideoInfo {...testVideoInfo} />
+					<div className={styles.Underline}></div>
+					<Comments />
+				</div>
+				<div className={styles.DetailsBottom}>
+					<div className={styles.LoginMessage}>Log in to comment</div>
+				</div>
+			</div>
 		</div>
 	);
 };
