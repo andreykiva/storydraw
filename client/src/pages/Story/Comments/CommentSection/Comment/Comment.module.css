@@ -1,4 +1,4 @@
-.CommentContent {
+.Comment {
 	display: flex;
 }
 
@@ -8,7 +8,7 @@
 	border-radius: 50%;
 }
 
-.CommentContent.Reply .ProfileImg {
+.Comment.Reply .ProfileImg {
 	width: 24px;
 }
 

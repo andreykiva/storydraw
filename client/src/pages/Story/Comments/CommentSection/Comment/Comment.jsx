@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './CommentContent.module.css';
+import styles from './Comment.module.css';
 import defaultImg from '../../../../../assets/icons/default.svg';
 import LikeIcon from '../../../../../UI/icons/LikeIcon';
 import { formatNumber } from '../../../../../utils/numberUtils';
 
-const CommentContent = (props) => {
+const Comment = (props) => {
 	const { user, id, text, date, likes, reply = false } = props;
 
 	return (
-		<div className={[styles.CommentContent, reply ? styles.Reply : ''].join(' ')}>
+		<div className={[styles.Comment, reply ? styles.Reply : ''].join(' ')}>
 			<div className={styles.UserImg}>
 				<Link to={`/@${user.username}`}>
 					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
@@ -35,4 +35,4 @@ const CommentContent = (props) => {
 	);
 };
 
-export default CommentContent;
+export default Comment;

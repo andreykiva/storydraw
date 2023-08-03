@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import styles from './Comment.module.css';
+import styles from './CommentSection.module.css';
 import ArrowIcon from '../../../../UI/icons/ArrowIcon';
-import CommentContent from './CommentContent/CommentContent';
+import Comment from './Comment/Comment';
 import Replies from './Replies/Replies';
 import { formatNumber } from '../../../../utils/numberUtils';
 
-const Comment = (props) => {
+const CommentSection = (props) => {
 	const [showReplies, setShowReplies] = useState(false);
 	const { replies } = props;
 
@@ -14,8 +14,8 @@ const Comment = (props) => {
 	};
 
 	return (
-		<div className={styles.Comment}>
-			<CommentContent {...props} />
+		<div className={styles.CommentSection}>
+			<Comment {...props} />
 			{replies && !showReplies ? (
 				<div className={styles.ViewRepliesBtn} onClick={toggleReplies}>
 					View {formatNumber(replies)} Replies
@@ -37,4 +37,4 @@ const Comment = (props) => {
 	);
 };
 
-export default Comment;
+export default CommentSection;

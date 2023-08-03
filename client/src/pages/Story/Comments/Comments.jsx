@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Comments.module.css';
-import Comment from './Comment/Comment';
+import CommentSection from './CommentSection/CommentSection';
 
 const testComments = [
 	{
@@ -48,7 +48,7 @@ const Comments = () => {
 	return (
 		<div className={styles.Comments}>
 			{testComments.map((comment) => (
-				<Comment key={comment.id} {...comment} />
+				<CommentSection key={comment.id} {...comment} />
 			))}
 		</div>
 	);

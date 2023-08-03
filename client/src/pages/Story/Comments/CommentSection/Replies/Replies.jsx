@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Replies.module.css';
-import CommentContent from '../CommentContent/CommentContent';
+import Comment from '../Comment/Comment';
 
 const testReplies = [
 	{
@@ -70,7 +70,7 @@ const Replies = () => {
 		<div className={styles.Replies}>
 			{testReplies.map((reply) => (
 				<div key={reply.id} className={styles.Reply}>
-					<CommentContent reply {...reply} />
+					<Comment reply {...reply} />
 				</div>
 			))}
 		</div>
