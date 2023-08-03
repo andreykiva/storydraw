@@ -5,17 +5,18 @@ import defaultImg from '../../assets/icons/default.svg';
 import previewImg from '../../assets/images/preview.jpg';
 import LikeIcon from '../../UI/icons/LikeIcon';
 import viewsImg from '../../assets/icons/views.svg';
+import { formatNumber } from '../../utils/numberUtils';
 
 const ExploreStory = (props) => {
-	const { userId, username, userImage, story, description, tags, likes, views, className } = props;
+	const { id, userId, username, userImage, story, description, tags, likes, views, className } = props;
 
 	return (
-		<div className={[styles.ExploreStory, className].join(' ')}>
+		<Link className={[styles.ExploreStory, className].join(' ')} to={`/@${username}/story/${id}`}>
 			<div className={styles.ExploreStoryContent}>
 				<img src={story || previewImg} alt="Story" className={styles.Story} />
 				<div className={styles.ViewsInfo}>
 					<img src={viewsImg} alt="Views" className={styles.ViewsIcon} />
-					<span className={styles.Views}>{views}</span>
+					<span className={styles.Views}>{formatNumber(views)}</span>
 				</div>
 			</div>
 			<p className={styles.InfoDescr}>
@@ -33,10 +34,10 @@ const ExploreStory = (props) => {
 				</Link>
 				<div className={styles.LikesInfo}>
 					<LikeIcon className={styles.LikeIcon} />
-					<span className={styles.Likes}>{likes}</span>
+					<span className={styles.Likes}>{formatNumber(likes)}</span>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

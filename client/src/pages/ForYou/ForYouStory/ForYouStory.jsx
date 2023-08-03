@@ -9,9 +9,11 @@ import LikeIcon from '../../../UI/icons/LikeIcon';
 import CommentIcon from '../../../UI/icons/CommentIcon';
 import FavoriteIcon from '../../../UI/icons/FavoriteIcon';
 import ShareIcon from '../../../UI/icons/ShareIcon';
+import { formatNumber } from '../../../utils/numberUtils';
 
 const ForYouStory = (props) => {
 	const {
+		id,
 		userId,
 		username,
 		userTitle,
@@ -55,23 +57,25 @@ const ForYouStory = (props) => {
 				<Button className={styles.FollowBtn}>Follow</Button>
 			</div>
 			<div className={styles.StoryWrapper}>
-				<img src={story || previewImg} alt="Story" className={styles.Story} />
+				<Link to={`/@${username}/story/${id}`}>
+					<img src={story || previewImg} alt="Story" className={styles.Story} />
+				</Link>
 				<div className={styles.StoryInfo}>
 					<div className={styles.StoryInfoItem}>
 						<LikeIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>99k</div>
+						<div className={styles.ItemNumber}>{formatNumber(likes)}</div>
 					</div>
 					<div className={styles.StoryInfoItem}>
 						<CommentIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>{comments}</div>
+						<div className={styles.ItemNumber}>{formatNumber(comments)}</div>
 					</div>
 					<div className={styles.StoryInfoItem}>
 						<FavoriteIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>{favorites}</div>
+						<div className={styles.ItemNumber}>{formatNumber(favorites)}</div>
 					</div>
 					<div className={styles.StoryInfoItem}>
 						<ShareIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>{share}</div>
+						<div className={styles.ItemNumber}>{formatNumber(share)}</div>
 					</div>
 				</div>
 			</div>

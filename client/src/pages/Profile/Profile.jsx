@@ -3,6 +3,7 @@ import styles from './Profile.module.css';
 import defaultImg from '../../assets/icons/default.svg';
 import Button from '../../UI/Button/Button';
 import ProfileStory from './ProfileStory/ProfileStory';
+import { formatNumber } from '../../utils/numberUtils';
 
 const testProfileInfo = {
 	userId: 123,
@@ -177,13 +178,13 @@ const Profile = () => {
 				<div className={styles.BottomInfo}>
 					<div className={styles.UserStatistics}>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{following}</span> Following
+							<span className={styles.ItemValue}>{formatNumber(following)}</span> Following
 						</div>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{followers}</span> Followers
+							<span className={styles.ItemValue}>{formatNumber(followers)}</span> Followers
 						</div>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{likes}</span> Likes
+							<span className={styles.ItemValue}>{formatNumber(likes)}</span> Likes
 						</div>
 					</div>
 					<p className={styles.UserDescr}>{description || 'No bio yet.'}</p>

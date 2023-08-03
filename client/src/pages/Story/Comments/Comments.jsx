@@ -7,7 +7,7 @@ const testComments = [
 		id: 1323,
 		text: 'nice video dude',
 		date: '13-23',
-		likes: 32,
+		likes: 323333333,
 		user: {
 			id: 123,
 			username: 'andrey777',

@@ -6,6 +6,7 @@ import musicImg from '../../../assets/icons/music.svg';
 import LikeIcon from '../../../UI/icons/LikeIcon';
 import CommentIcon from '../../../UI/icons/CommentIcon';
 import FavoriteIcon from '../../../UI/icons/FavoriteIcon';
+import { formatNumber } from '../../../utils/numberUtils';
 
 const StoryInfo = (props) => {
 	const { user: { username, title, image }, description, date, musicName, likes, comments, favorites } = props;
@@ -31,15 +32,15 @@ const StoryInfo = (props) => {
 			<div className={styles.StoryInfoBottom}>
 				<div className={styles.StoryInfoItem}>
 					<LikeIcon className={styles.ItemIcon} />
-					<div className={styles.ItemNumber}>{likes}</div>
+					<div className={styles.ItemNumber}>{formatNumber(likes)}</div>
 				</div>
 				<div className={styles.StoryInfoItem}>
 					<CommentIcon className={styles.ItemIcon} />
-					<div className={styles.ItemNumber}>{comments}</div>
+					<div className={styles.ItemNumber}>{formatNumber(comments)}</div>
 				</div>
 				<div className={styles.StoryInfoItem}>
 					<FavoriteIcon className={styles.ItemIcon} />
-					<div className={styles.ItemNumber}>{favorites}</div>
+					<div className={styles.ItemNumber}>{formatNumber(favorites)}</div>
 				</div>
 			</div>
 		</div>

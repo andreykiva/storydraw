@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SearchAccount.module.css';
 import defaultImg from '../../../../assets/icons/default.svg';
+import { formatNumber } from '../../../../utils/numberUtils';
 
 const SearchAccount = (props) => {
 	const { image, username, title, description, followers } = props;
@@ -16,7 +17,7 @@ const SearchAccount = (props) => {
 				<div className={styles.AdditInfo}>
 					<span className={styles.Title}>{title}</span>
 					<div className={styles.Dot}></div>
-					<p className={styles.Followers}>{followers} Followers</p>
+					<p className={styles.Followers}>{formatNumber(followers)} Followers</p>
 				</div>
 				<p className={styles.Descr}>{description}</p>
 			</div>

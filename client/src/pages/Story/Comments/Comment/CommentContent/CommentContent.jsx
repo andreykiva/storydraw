@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './CommentContent.module.css';
 import defaultImg from '../../../../../assets/icons/default.svg';
 import LikeIcon from '../../../../../UI/icons/LikeIcon';
+import { formatNumber } from '../../../../../utils/numberUtils';
 
 const CommentContent = (props) => {
 	const { user, id, text, date, likes, reply = false } = props;
@@ -27,7 +28,7 @@ const CommentContent = (props) => {
 			<div className={styles.CommentLikes}>
 				<div className={styles.LikeBtn}>
 					<LikeIcon className={styles.LikeIcon} />
-					<span className={styles.LikesAmount}>{likes}</span>
+					<span className={styles.LikesAmount}>{formatNumber(likes)}</span>
 				</div>
 			</div>
 		</div>

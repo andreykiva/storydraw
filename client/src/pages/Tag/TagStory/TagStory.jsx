@@ -5,10 +5,10 @@ import defaultImg from '../../../assets/icons/default.svg';
 import previewImg from '../../../assets/images/preview.jpg';
 
 const TagStory = (props) => {
-	const { userId, username, userImage, story, description, tags } = props;
+	const { id, userId, username, userImage, story, description, tags } = props;
 
 	return (
-		<div className={styles.TagStory}>
+		<Link className={styles.TagStory} to={`/@${username}/story/${id}`}>
 			<div className={styles.TagStoryContent}>
 				<img src={story || previewImg} alt="Story" className={styles.Story} />
 				<Link to={`/@${username}`} className={styles.UserInfo}>
@@ -19,7 +19,7 @@ const TagStory = (props) => {
 			<p className={styles.TagStoryDescr}>
 				{description} #{tags.join(' #')}
 			</p>
-		</div>
+		</Link>
 	);
 };
 

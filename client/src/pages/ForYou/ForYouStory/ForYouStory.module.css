@@ -47,6 +47,10 @@
 	margin: 0 2px;
 }
 
+.Tag:hover {
+	opacity: .7;
+}
+
 .MusicIcon {
 	width: 12px;
 	height: 12px;

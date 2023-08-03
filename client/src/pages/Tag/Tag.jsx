@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './Tag.module.css';
-import TagStory from './Tagstory/Tagstory';
+import TagStory from './TagStory/TagStory';
+import { formatNumber } from '../../utils/numberUtils';
 
 const testTagInfo = {
-	views: '123k',
+	views: '23123123',
 	stories: [
 		{
 			id: 1,
@@ -198,7 +199,7 @@ const Tag = () => {
 				<div className={styles.TagIcon}>#</div>
 				<div className={styles.TagInfo}>
 					<h3 className={styles.TagTitle}>#{tag}</h3>
-					<p className={styles.TagViews}>{testTagInfo.views} views</p>
+					<p className={styles.TagViews}>{formatNumber(testTagInfo.views)} views</p>
 				</div>
 			</div>
 			<div className={styles.TagStories}>

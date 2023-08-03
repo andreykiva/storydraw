@@ -1,31 +1,21 @@
 .Explore {
+	position: relative;
 	max-height: 100%;
-	overflow-y: scroll;
-	padding: 90px 30px 20px;
-}
-
-.Explore::-webkit-scrollbar {
-	width: 8px;
-}
-
-.Explore::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-.Explore::-webkit-scrollbar-thumb {
-	background: #09483549;
-	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
 }
 
 .ExploreCategories {
-	width: calc(100% - 350px);
-	position: fixed;
-	left: 290px;
-	top: 60px;
+	position: absolute;
+	top: 0;
+	left: 30px;
 	display: flex;
-	padding: 25px 0;
+	max-width: calc(100% - 38px);
+	width: 100%;
+	margin-right: 8px;
+	padding: 26px 0;
 	background-color: rgb(0, 3, 1);
-	z-index: 5;
+	z-index: 1;
 }
 
 .ExploreCategory {
@@ -53,4 +43,20 @@
 .ExploreStories {
 	display: flex;
 	flex-wrap: wrap;
+	max-height: 100%;
+	overflow-y: scroll;
+	padding: 90px 30px 20px;
+}
+
+.ExploreStories::-webkit-scrollbar {
+	width: 8px;
+}
+
+.ExploreStories::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.ExploreStories::-webkit-scrollbar-thumb {
+	background: #09483549;
+	border-radius: 4px;
 }

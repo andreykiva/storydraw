@@ -3,6 +3,7 @@ import styles from './Comment.module.css';
 import ArrowIcon from '../../../../UI/icons/ArrowIcon';
 import CommentContent from './CommentContent/CommentContent';
 import Replies from './Replies/Replies';
+import { formatNumber } from '../../../../utils/numberUtils';
 
 const Comment = (props) => {
 	const [showReplies, setShowReplies] = useState(false);
@@ -17,7 +18,7 @@ const Comment = (props) => {
 			<CommentContent {...props} />
 			{replies && !showReplies ? (
 				<div className={styles.ViewRepliesBtn} onClick={toggleReplies}>
-					View {replies} Replies
+					View {formatNumber(replies)} Replies
 					<ArrowIcon className={styles.ArrowIcon} />
 				</div>
 			) : null}
