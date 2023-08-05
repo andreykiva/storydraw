@@ -11,7 +11,7 @@ const TagStory = (props) => {
 		<Link className={styles.TagStory} to={`/@${username}/story/${id}`}>
 			<div className={styles.TagStoryContent}>
 				<img src={story || previewImg} alt="Story" className={styles.Story} />
-				<Link to={`/@${username}`} className={styles.UserInfo}>
+				<Link to={`/@${username}`} className={styles.UserInfoLink}>
 					<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					<span className={styles.Username}>{username}</span>
 				</Link>

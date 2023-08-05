@@ -9,21 +9,29 @@
 	display: flex;
 }
 
+.ImgUserLink {
+	display: flex;
+	margin-right: 14px;
+}
+
 .ProfileImg {
 	width: 56px;
-	margin-right: 14px;
 	border-radius: 50%;
 }
 
 .HeaderInfo {
 	max-width: 50%;
-	padding-top: 8px;
+	padding-top: 6px;
 	margin-bottom: 10px;
 }
 
-.HeaderInfoTop {
-	display: flex;
-	margin-bottom: 8px;
+.HeaderUserLink {
+	display: inline-flex;
+	margin-bottom: 4px;
+}
+
+.HeaderUserLink:hover .InfoUsername {
+	opacity: .7;
 }
 
 .InfoUsername {
@@ -35,7 +43,7 @@
 }
 
 .InfoDescr {
-	margin-bottom: 8px;
+	margin-bottom: 4px;
 }
 
 .DescrText {
@@ -66,6 +74,10 @@
 
 .StoryWrapper {
 	position: relative;
+}
+
+.StoryLink {
+	display: flex;
 }
 
 .Story {

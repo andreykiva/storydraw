@@ -32,6 +32,7 @@
 
 .CreateText {
 	font-size: 16px;
+	line-height: 1;
 	color: #D1D1D1;
 	margin-right: 6px;
 }

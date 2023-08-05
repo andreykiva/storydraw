@@ -45,11 +45,11 @@
 .BackBtn {
 	width: 38px;
 	height: 38px;
-	border-radius: 50%;
-	background-color: rgb(71, 71, 71);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 50%;
+	background-color: rgb(71, 71, 71);
 	cursor: pointer;
 }
 
@@ -94,11 +94,11 @@
 .StoryNavLink {
 	width: 38px;
 	height: 38px;
-	border-radius: 50%;
-	background-color: rgb(71, 71, 71);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 50%;
+	background-color: rgb(71, 71, 71);
 	cursor: pointer;
 }
 

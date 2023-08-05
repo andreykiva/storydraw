@@ -14,18 +14,16 @@
 }
 
 .AccountInfo {
-	padding-top: 8px;
+	padding-top: 4px;
 }
 
 .Username {
 	font-weight: normal;
-	margin-bottom: 4px;
 }
 
 .AdditInfo {
 	display: flex;
 	align-items: center;
-	margin-bottom: 4px;
 	font-size: 14px;
 }
 

@@ -4,6 +4,7 @@
 }
 
 .ProfileStoryContent {
+	display: flex;
 	position: relative;
 	margin-bottom: 5px;
 }
@@ -15,7 +16,7 @@
 
 .ViewsInfo {
 	position: absolute;
-	bottom: 12px;
+	bottom: 8px;
 	left: 12px;
 	display: flex;
 	align-items: center;

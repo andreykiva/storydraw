@@ -25,20 +25,20 @@
 
 .FollowImg {
 	width: 48px;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 	border-radius: 50%;
 }
 
 .FollowDescr {
 	font-size: 18px;
 	color: #ffffff;
-	margin-bottom: 6px;
+	margin-bottom: 2px;
 }
 
 .FollowUsername {
 	font-size: 14px;
 	color: #ffffff;
-	margin-bottom: 14px;
+	margin-bottom: 12px;
 }
 
 .FollowBtn {

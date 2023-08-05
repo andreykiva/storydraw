@@ -32,15 +32,15 @@ const ForYouStory = (props) => {
 	return (
 		<div className={styles.ForYouStory}>
 			<div className={styles.StoryHeader}>
-				<div className={styles.HeaderImg}>
-					<Link to={`/@${username}`}>
+				<div className={styles.HeaderImgSection}>
+					<Link to={`/@${username}`} className={styles.ImgUserLink}>
 						<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					</Link>
 				</div>
 				<div className={styles.HeaderInfo}>
-					<Link to={`/@${username}`} className={styles.HeaderInfoTop}>
-						<div className={styles.InfoUsername}>{username}</div>
-						<div className={styles.InfoTitle}>{userTitle}</div>
+					<Link to={`/@${username}`} className={styles.HeaderUserLink}>
+						<span className={styles.InfoUsername}>{username}</span>
+						<span className={styles.InfoTitle}>{userTitle}</span>
 					</Link>
 					<p className={styles.InfoDescr}>
 						<span className={styles.DescrText}>{description}</span>
@@ -57,7 +57,7 @@ const ForYouStory = (props) => {
 				<Button className={styles.FollowBtn}>Follow</Button>
 			</div>
 			<div className={styles.StoryWrapper}>
-				<Link to={`/@${username}/story/${id}`}>
+				<Link to={`/@${username}/story/${id}`} className={styles.StoryLink}>
 					<img src={story || previewImg} alt="Story" className={styles.Story} />
 				</Link>
 				<div className={styles.StoryInfo}>

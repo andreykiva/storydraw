@@ -27,4 +27,5 @@ body {
 	margin: 0;
 	overflow: hidden;
 	color: var(--main-color);
+	line-height: 1.3;
 }

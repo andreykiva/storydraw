@@ -2,9 +2,13 @@
 	display: flex;
 }
 
+.ImgUserLink {
+	display: flex;
+	margin-right: 10px;
+}
+
 .ProfileImg {
 	width: 40px;
-	margin-right: 10px;
 	border-radius: 50%;
 }
 
@@ -14,17 +18,20 @@
 
 .CommentInfo {
 	flex: 1;
-	padding-top: 3px;
 }
 
 .UserLink {
 	display: inline-block;
-	margin-bottom: 3px;
+	margin-bottom: 2px;
 	font-size: 14px;
 }
 
+.UserLink:hover {
+	opacity: .7;
+}
+
 .CommentText {
-	margin-bottom: 8px;
+	margin-bottom: 6px;
 	line-height: 1.3;
 }
 
@@ -47,8 +54,7 @@
 }
 
 .CommentLikes {
-	padding-left: 18px;
-	padding-top: 16px;	
+	padding: 16px 0 0 18px;
 }
 
 .LikeBtn {

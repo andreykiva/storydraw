@@ -22,9 +22,13 @@
 	margin-right: 10px;
 }
 
+.ItemInfo {
+	display: flex;
+	flex-direction: column;
+}
+
 .ItemUsername {
 	font-size: 15px;
-	margin-bottom: 2px;
 }
 
 .ItemTitle {

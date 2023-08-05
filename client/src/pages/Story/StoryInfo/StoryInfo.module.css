@@ -8,14 +8,18 @@
 	margin-bottom: 17px;
 }
 
+.ImgUserLink {
+	display: flex;
+	margin-right: 12px;
+}
+
 .ProfileImg {
 	width: 40px;
-	margin-right: 12px;
 	border-radius: 50%;
 }
 
-.Username {
-	margin-bottom: 4px;
+.UserLink:hover {
+	opacity: .7;
 }
 
 .UserInfoBottom {
@@ -44,7 +48,7 @@
 .InfoMusic {
 	display: flex;
 	align-items: center;
-	margin-bottom: 24px;
+	margin-bottom: 20px;
 }
 
 .MusicIcon {

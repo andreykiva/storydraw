@@ -10,8 +10,8 @@ const SuggestedItem = ({ username, title, image }) => {
 			<Link to={`/@${username}`} className={styles.SuggestedLink}>
 				<img src={image || defaultImg} alt="Profile picture" className={styles.ItemImg} />
 				<div className={styles.ItemInfo}>
-					<div className={styles.ItemUsername}>{username}</div>
-					<div className={styles.ItemTitle}>{title}</div>
+					<span className={styles.ItemUsername}>{username}</span>
+					<span className={styles.ItemTitle}>{title}</span>
 				</div>
 			</Link>
 		</li>

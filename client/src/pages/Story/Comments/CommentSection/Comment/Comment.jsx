@@ -10,14 +10,14 @@ const Comment = (props) => {
 
 	return (
 		<div className={[styles.Comment, reply ? styles.Reply : ''].join(' ')}>
-			<div className={styles.UserImg}>
-				<Link to={`/@${user.username}`}>
+			<div className={styles.ProfileImgSection}>
+				<Link to={`/@${user.username}`} className={styles.ImgUserLink}>
 					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 				</Link>
 			</div>
 			<div className={styles.CommentInfo}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
-					<div className={styles.UserTitle}>{user.title}</div>
+					<span className={styles.UserTitle}>{user.title}</span>
 				</Link>
 				<p className={styles.CommentText}>{text}</p>
 				<div className={styles.BottomInfo}>

@@ -23,8 +23,8 @@ const testStoryInfo = {
 	musicId: 41,
 	musicName: 'Andre - My life',
 	likes: 723,
-	comments: 412,
 	favorites: 213,
+	share: 412,
 };
 
 const Story = () => {
