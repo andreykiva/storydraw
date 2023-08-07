@@ -8,10 +8,55 @@ html {
 	box-sizing: inherit;
 }
 
+
 @font-face {
-	font-family: 'Rubik Medium';
-	font-weight: normal;
-	src: url('./assets/fonts/Rubik-Medium.woff') format('woff');
+	font-family: 'Karla';
+	src: url('./assets/fonts/Karla-ExtraLight.woff') format('woff');
+	font-weight: 200;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Karla';
+	src: url('./assets/fonts/Karla-Light.woff') format('woff');
+	font-weight: 300;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Karla';
+	src: url('./assets/fonts/Karla-Regular.woff') format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Karla';
+	src: url('./assets/fonts/Karla-Medium.woff') format('woff');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Karla';
+	src: url('./assets/fonts/Karla-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-display: swap;
+}
+
+
+@font-face {
+	font-family: 'Karla';
+	src: url('./assets/fonts/Karla-Bold.woff') format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Karla';
+	src: url('./assets/fonts/Karla-ExtraBold.woff') format('woff');
+	font-weight: 800;
+	font-display: swap;
 }
 
 :root {
@@ -21,11 +66,12 @@ html {
 }
 
 body {
-	font-family: 'Rubik Medium', sans-serif;
+	font-family: 'Karla', sans-serif;
 	background-color: rgb(0, 3, 1);
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
 	color: var(--main-color);
+	font-weight: 600;
 	line-height: 1.3;
 }
