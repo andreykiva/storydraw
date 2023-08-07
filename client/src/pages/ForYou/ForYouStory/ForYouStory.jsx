@@ -38,7 +38,7 @@ const ForYouStory = (props) => {
 					</Link>
 				</div>
 				<div className={styles.HeaderInfo}>
-					<Link to={`/@${username}`} className={styles.HeaderUserLink}>
+					<Link to={`/@${username}`} className={styles.HeaderInfoUser}>
 						<span className={styles.InfoUsername}>{username}</span>
 						<span className={styles.InfoTitle}>{userTitle}</span>
 					</Link>

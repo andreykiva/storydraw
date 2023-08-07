@@ -28,13 +28,17 @@
 }
 
 .Views {
+	font-weight: 700;
 	font-size: 16px;
+	line-height: 1;
 }
 
 .InfoDescr {
 	margin-bottom: 5px;
-	font-size: 15px;
-	height: 18px;
+	font-size: 16px;
+	height: 20px;
+	padding: 0 4px;
+	font-weight: 500;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;

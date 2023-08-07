@@ -1,7 +1,6 @@
 .ExploreStory {
 	max-width: 510px;
-	width: 100%;
-	margin: 10px;
+	min-width: 400px;
 }
 
 .ExploreStoryContent {
@@ -28,13 +27,13 @@
 }
 
 .Views {
-	font-size: 16px;
+	line-height: 1;
+	font-weight: 700;
 }
 
 .InfoDescr {
 	margin-bottom: 5px;
-	font-size: 15px;
-	height: 18px;
+	height: 20px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -55,6 +54,7 @@
 
 .UserInfo {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	padding-top: 2px;
 }
@@ -71,7 +71,7 @@
 }
 
 .Username {
-	font-size: 15px;
+	font-weight: 500;
 }
 
 .Username:hover {
@@ -81,7 +81,6 @@
 .LikesInfo {
 	display: flex;
 	align-items: center;
-	margin-left: auto;
 }
 
 .LikeIcon {

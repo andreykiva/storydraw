@@ -39,14 +39,19 @@
 }
 
 .Username {
-	font-weight: normal;
+	font-weight: 800;
 	font-size: 30px;
 	margin-bottom: 2px;
 }
 
 .UserTitle {
 	display: block;
+	font-size: 18px;
 	margin-bottom: 14px;
+}
+
+.FollowBtn {
+	max-width: 160px;
 }
 
 .UserStatistics {
@@ -56,11 +61,17 @@
 
 .StatisticsItem {
 	margin-right: 20px;
+	font-size: 18px;
+	font-weight: 400;
 }
 
 .ItemValue {
-	font-weight: 600;
+	font-weight: 700;
 	margin-right: 2px;
+}
+
+.UserDescr {
+	font-weight: 500;
 }
 
 .ProfileStories {

@@ -18,13 +18,14 @@
 }
 
 .Username {
-	font-weight: normal;
+	font-weight: 800;
 }
 
-.AdditInfo {
+.InfoBottom {
 	display: flex;
 	align-items: center;
-	font-size: 14px;
+	font-size: 15px;
+	font-weight: 500;
 }
 
 .Dot {
@@ -35,6 +36,16 @@
 	margin: 0 6px;
 }
 
-.Descr {
-	font-size: 14px;
+.FollowersInfo {
+	font-weight: 400;
 }
+
+.Followers {
+	font-weight: 700;
+}
+
+.Descr {
+	font-size: 15px;
+	font-weight: 500;
+}
+

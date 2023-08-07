@@ -14,10 +14,10 @@ const SearchAccount = (props) => {
 			</div>
 			<div className={styles.AccountInfo}>
 				<h6 className={styles.Username}>{username}</h6>
-				<div className={styles.AdditInfo}>
+				<div className={styles.InfoBottom}>
 					<span className={styles.Title}>{title}</span>
 					<div className={styles.Dot}></div>
-					<p className={styles.Followers}>{formatNumber(followers)} Followers</p>
+					<p className={styles.FollowersInfo}><span className={styles.Followers}>{formatNumber(followers)}</span> Followers</p>
 				</div>
 				<p className={styles.Descr}>{description}</p>
 			</div>

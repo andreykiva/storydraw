@@ -11,14 +11,14 @@ const ExploreStory = (props) => {
 	const { id, userId, username, userImage, story, description, tags, likes, views, className } = props;
 
 	return (
-		<Link className={[styles.ExploreStory, className].join(' ')} to={`/@${username}/story/${id}`}>
-			<div className={styles.ExploreStoryContent}>
+		<div className={[styles.ExploreStory, className].join(' ')}>
+			<Link className={styles.ExploreStoryContent} to={`/@${username}/story/${id}`}>
 				<img src={story || previewImg} alt="Story" className={styles.Story} />
 				<div className={styles.ViewsInfo}>
 					<img src={viewsImg} alt="Views" className={styles.ViewsIcon} />
 					<span className={styles.Views}>{formatNumber(views)}</span>
 				</div>
-			</div>
+			</Link>
 			<p className={styles.InfoDescr}>
 				<span className={styles.DescrText}>{description}</span>
 				{tags.map((tag) => (
@@ -32,12 +32,12 @@ const ExploreStory = (props) => {
 					<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					<span className={styles.Username}>{username}</span>
 				</Link>
-				<div className={styles.LikesInfo}>
+				<Link to={`/@${username}/story/${id}`} className={styles.LikesInfo}>
 					<LikeIcon className={styles.LikeIcon} />
 					<span className={styles.Likes}>{formatNumber(likes)}</span>
-				</div>
+				</Link>
 			</div>
-		</Link>
+		</div>
 	);
 };
 

@@ -1,10 +1,10 @@
 .Follow {
 	max-width: 360px;
-	width: 100%;
+	min-width: 270px;
 	position: relative;
 	overflow: hidden;
-	margin: 10px;
 	border-radius: 12px;
+	display: flex;
 	cursor: pointer;
 }
 
@@ -18,9 +18,9 @@
 	flex-direction: column;
 	align-items: center;
 	position: absolute;
-	top: 25px;
+	top: 50%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 }
 
 .FollowImg {
@@ -29,9 +29,10 @@
 	border-radius: 50%;
 }
 
-.FollowDescr {
+.FollowTitle {
 	font-size: 18px;
 	color: #ffffff;
+	font-weight: 700;
 	margin-bottom: 2px;
 }
 
