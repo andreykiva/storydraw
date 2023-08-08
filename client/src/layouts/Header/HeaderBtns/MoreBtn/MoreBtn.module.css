@@ -53,7 +53,7 @@
 .ItemText {
 	font-weight: 600;
 	font-size: 16px;
-	color: #D1D1D1;
+	color: var(--main-color);
 }
 
 .MoreMenuItem:hover {

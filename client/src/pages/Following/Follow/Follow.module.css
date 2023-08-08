@@ -2,9 +2,10 @@
 	max-width: 360px;
 	min-width: 270px;
 	position: relative;
+	display: flex;
 	overflow: hidden;
 	border-radius: 12px;
-	display: flex;
+	color: var(--white-color);
 	cursor: pointer;
 }
 
@@ -31,14 +32,12 @@
 
 .FollowTitle {
 	font-size: 18px;
-	color: #ffffff;
 	font-weight: 700;
 	margin-bottom: 2px;
 }
 
 .FollowUsername {
 	font-size: 14px;
-	color: #ffffff;
 	margin-bottom: 12px;
 }
 

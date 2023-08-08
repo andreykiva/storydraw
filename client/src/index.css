@@ -63,6 +63,8 @@ html {
 	--main-color: #D1D1D1;
 	--green-color: #094835;
 	--bright-green-color: #1dc995;
+	--white-color: #FFFFFF;
+	--white-dark-color: rgba(255, 255, 255, 0.9);
 }
 
 body {
