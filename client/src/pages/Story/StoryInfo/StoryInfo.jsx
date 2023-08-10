@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './StoryInfo.module.css';
-import Button from '../../../UI/Button/Button';
+import Button from '../../../components/UI/Button/Button';
 import defaultImg from '../../../assets/icons/default.svg';
 import musicImg from '../../../assets/icons/music.svg';
-import LikeIcon from '../../../UI/icons/LikeIcon';
-import ShareIcon from '../../../UI/icons/ShareIcon';
-import FavoriteIcon from '../../../UI/icons/FavoriteIcon';
+import LikeIcon from '../../../components/UI/icons/LikeIcon';
+import ShareIcon from '../../../components/UI/icons/ShareIcon';
+import FavoriteIcon from '../../../components/UI/icons/FavoriteIcon';
 import { formatNumber } from '../../../utils/numberUtils';
 
 const StoryInfo = (props) => {

@@ -5,10 +5,10 @@ import storyImg from '../../assets/images/preview.jpg';
 import closeImg from '../../assets/icons/close.svg';
 import reportImg from '../../assets/icons/report.svg';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import Button from '../../UI/Button/Button';
+import Button from '../../components/UI/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
 import Comments from './Comments/Comments';
-import ArrowIcon from '../../UI/icons/ArrowIcon';
+import ArrowIcon from '../../components/UI/icons/ArrowIcon';
 
 const testStoryInfo = {
 	user: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
-import Layout from './hoc/Layout/Layout';
+import Layout from './components/layouts/Layout/Layout';
 import ForYou from './pages/ForYou/ForYou';
 import Following from './pages/Following/Following';
 import Explore from './pages/Explore/Explore';

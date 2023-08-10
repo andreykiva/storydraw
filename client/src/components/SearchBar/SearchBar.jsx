@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
-import { changeSearchValue, closeSearch } from '../../store/reducers/search/searchSlice';
+import { changeSearchValue, closeSearch } from '../../features/search/searchSlice';
 import searchImg from '../../assets/icons/search.svg';
 import SearchResults from './SearchResults/SearchResults';
 // import { searchAPI } from '../../services/searchService';

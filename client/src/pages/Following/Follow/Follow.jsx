@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './Follow.module.css';
 import defaultImg from '../../../assets/icons/default.svg';
 import previewImg from '../../../assets/images/preview.jpg';
-import Button from '../../../UI/Button/Button';
+import Button from '../../../components/UI/Button/Button';
 
 const Follow = ({ username, title, image, preview }) => {
 	return (
