@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	isOpen: false,
-	value: ''
+	isSearchOpen: false,
 };
 
 export const searchSlice = createSlice({
@@ -10,26 +9,19 @@ export const searchSlice = createSlice({
 	initialState,
 	reducers: {
 		search: (state, action) => {
-			state.isOpen = false;
-			state.value = action.payload;
+			state.isSearchOpen = false;
 			console.log("Грузим видео " + action.payload);
 		},
 		closeSearch: (state) => {
-			state.isOpen = false;
+			state.isSearchOpen = false;
 		},
-		changeSearchValue: (state, action) => {
-			if (action.payload.trim()) {
-				state.value = action.payload;
-				state.isOpen = true;
-			} else {
-				state.value = '';
-				state.isOpen = false;
-			}
-		}
+		openSearch: (state) => {
+			state.isSearchOpen = true;
+		},
 	},
 
 });
 
-export const { closeSearch, loadSearchPage, search, changeSearchValue } = searchSlice.actions;
+export const { openSearch, closeSearch, search } = searchSlice.actions;
 
 export default searchSlice.reducer;
