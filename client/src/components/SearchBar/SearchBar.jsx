@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
-import { changeSearchValue, closeSearch } from '../../features/search/searchSlice';
+// import { openSearch, closeSearch } from '../../features/search/searchSlice';
 import searchImg from '../../assets/icons/search.svg';
 import SearchResults from './SearchResults/SearchResults';
 // import { searchAPI } from '../../services/searchService';
@@ -31,27 +31,36 @@ const testResults = [
 ];
 
 const SearchBar = ({ light = false }) => {
-	const { isOpen, value } = useSelector((state) => state.search);
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
+	// const { isSearchOpen } = useSelector((state) => state.search);
+	const [value, setValue] = useState('');
+	const [isOpen, setIsOpen] = useState('');
 	const searchInputRef = useRef(null);
-	const bodyRef = useRef(document.body);
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
 
-	const handleDocumentClick = (e) => {
-		if (!searchInputRef.current.contains(e.target)) {
-			dispatch(closeSearch());
-		}
-	};
-
 	useEffect(() => {
-		bodyRef.current.addEventListener('click', handleDocumentClick);
+		document.body.addEventListener('click', handleBodyClick);
 		return () => {
-			bodyRef.current.removeEventListener('click', handleDocumentClick);
+			document.body.removeEventListener('click', handleBodyClick);
 		};
 	}, []);
 
-	const handlerChange = (e) => {
-		dispatch(changeSearchValue(e.target.value));
+	const handleBodyClick = (e) => {
+		if (!searchInputRef.current.contains(e.target)) {
+			setIsOpen(false);
+		}
+	};
+
+	const handleChange = (e) => {
+		const newValue = e.target.value;
+
+		if (newValue.trim()) {
+			setValue(newValue);
+			setIsOpen(true);
+		} else {
+			setValue('');
+			setIsOpen(false);
+		}
 	};
 
 	return (
@@ -61,7 +70,7 @@ const SearchBar = ({ light = false }) => {
 					type="text"
 					className={styles.SearchInput}
 					value={value}
-					onChange={handlerChange}
+					onChange={handleChange}
 					placeholder="Search"
 					ref={searchInputRef}
 				/>
