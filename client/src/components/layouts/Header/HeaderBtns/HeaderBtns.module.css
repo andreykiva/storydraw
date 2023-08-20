@@ -6,21 +6,12 @@
 	width: 100%;
 }
 
-.CreateBtn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.HeaderBtns .CreateBtn {
 	max-width: 130px;
-	width: 100%;
-	padding: 0 14px;
-	height: 36px;
-	border: 1px solid rgba(22, 24, 35, 0.12);
-	border-radius: 20px;
 	background: rgba(255, 255, 255, .08);
-	cursor: pointer;
 }
 
-.CreateBtn:hover {
+.HeaderBtns .CreateBtn:hover {
 	background: rgba(255, 255, 255, 0.11);
 }
 
