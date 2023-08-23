@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
 // import { openSearch, closeSearch } from '../../features/search/searchSlice';
@@ -33,10 +33,18 @@ const testResults = [
 const SearchBar = ({ light = false }) => {
 	// const dispatch = useDispatch();
 	// const { isSearchOpen } = useSelector((state) => state.search);
+	const [searchParams] = useSearchParams();
 	const [value, setValue] = useState('');
 	const [isOpen, setIsOpen] = useState('');
 	const searchInputRef = useRef(null);
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
+	
+	useEffect(() => {
+		const param = searchParams.get('q');
+		if (param && value != param) {
+			setValue(param)
+		}
+	}, [searchParams.get('q')]);
 
 	useEffect(() => {
 		document.body.addEventListener('click', handleBodyClick);

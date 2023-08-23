@@ -56,7 +56,7 @@
 }
 
 .SearchBar.Light .SearchInput {
-	color: var(--white-color);
+	color: var(--light-color);
 }
 
 .SearchBar.Light .SearchInput::placeholder {
