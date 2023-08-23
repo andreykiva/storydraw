@@ -5,7 +5,7 @@
 	display: flex;
 	overflow: hidden;
 	border-radius: 12px;
-	color: var(--white-color);
+	color: var(--light-color);
 	cursor: pointer;
 }
 
