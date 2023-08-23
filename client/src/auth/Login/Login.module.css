@@ -1,0 +1,37 @@
+.Title {
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+	letter-spacing: -1px;
+	margin-bottom: 25px;
+}
+
+.LoginOptions {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 0 50px;
+	list-style: none;
+}
+
+.LoginOption {
+	height: 45px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(46, 46, 46);
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.LoginOption:hover {
+	opacity: .8;
+}
+
+.OptionIcon {
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	left: 14px;
+}

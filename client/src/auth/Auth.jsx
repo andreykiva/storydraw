@@ -9,7 +9,7 @@ import { closeAuth } from '../features/auth/authSlice';
 
 const Auth = () => {
 	const dispatch = useDispatch();
-	const [authMode, setAuthMode] = useState('register');
+	const [authMode, setAuthMode] = useState('registerOptions');
 
 	const handleModeChange = (newMode) => {
 		setAuthMode(newMode);
@@ -25,9 +25,28 @@ const Auth = () => {
 				<button className={styles.CloseBtn} onClick={handleModalClose}>
 					<img src={closeImg} alt="CLose" className={styles.CloseIcon} />
 				</button>
-				{authMode === 'login' && <Login handleModeChange />}
-				{authMode === 'register' && <Register handleModeChange />}
-				{authMode === 'resetPassword' && <ResetPassword handleModeChange />}
+
+				{authMode === 'loginOptions' && <Login />}
+				{authMode === 'registerOptions' && <Register />}
+				{authMode === 'resetPassword' && <ResetPassword />}
+
+				<div className={styles.AuthModalFooter}>
+					{authMode === 'loginOptions' ? (
+						<>
+							Don't have an account?
+							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'registerOptions')}>
+								Sign up
+							</span>
+						</>
+					) : (
+						<>
+							Already have an account?
+							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'loginOptions')}>
+								Log in
+							</span>
+						</>
+					)}
+				</div>
 			</div>
 		</div>
 	);
