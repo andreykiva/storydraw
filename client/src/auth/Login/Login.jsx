@@ -1,47 +1,32 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-import qrCodeImg from '../../assets/icons/qr-code.svg';
-import userImg from '../../assets/icons/user.svg';
-import googleImg from '../../assets/icons/google.svg';
-import facebookImg from '../../assets/icons/facebook.svg';
-import twitterImg from '../../assets/icons/twitter.svg';
-import appleImg from '../../assets/icons/apple.svg';
-import instagramImg from '../../assets/icons/instagram.svg';
+import LoginOptions from './LoginOptions/LoginOptions';
+import LoginForm from './LoginForm/LoginForm';
+import ResetPasswordForm from './ResetPasswordForm/ResetPasswordForm';
+import LoginWithQR from './LoginWithQR/LoginWithQR';
+import ArrowIcon from '../../components/UI/icons/ArrowIcon';
+import RoundButton from '../../components/UI/RoundButton/RoundButton';
 
 const Login = () => {
+	const [displayMode, setDisplayMode] = useState('options');
+
 	return (
 		<div className={styles.Login}>
-			<h3 className={styles.Title}>Log in to StoryDraw</h3>
-			<ul className={styles.LoginOptions}>
-				<li className={styles.LoginOption}>
-					<img src={qrCodeImg} alt="QR code" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Use QR code</span>
-				</li>
-				<li className={styles.LoginOption}>
-					<img src={userImg} alt="Phone/Email/Username" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Use phone / email / username</span>
-				</li>
-				<li className={styles.LoginOption}>
-					<img src={googleImg} alt="Google" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Google</span>
-				</li>
-				<li className={styles.LoginOption}>
-					<img src={facebookImg} alt="Facebook" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Facebook</span>
-				</li>
-				<li className={styles.LoginOption}>
-					<img src={twitterImg} alt="Twitter" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Twitter</span>
-				</li>
-				<li className={styles.LoginOption}>
-					<img src={appleImg} alt="Apple" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Apple</span>
-				</li>
-				<li className={styles.LoginOption}>
-					<img src={instagramImg} alt="Instagram" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Instagram</span>
-				</li>
-			</ul>
+			{displayMode !== 'options' && (
+				<RoundButton className={styles.BackBtn} onClick={setDisplayMode.bind(this, 'options')}>
+					<ArrowIcon className={styles.BackIcon} />
+				</RoundButton>
+			)}
+
+			{displayMode === 'options' && (
+				<LoginOptions
+					openForm={setDisplayMode.bind(this, 'form')}
+					openQRCode={setDisplayMode.bind(this, 'qrcode')}
+				/>
+			)}
+			{displayMode === 'form' && <LoginForm openReset={setDisplayMode.bind(this, 'reset')} />}
+			{displayMode === 'reset' && <ResetPasswordForm />}
+			{displayMode === 'qrcode' && <LoginWithQR />}
 		</div>
 	);
 };

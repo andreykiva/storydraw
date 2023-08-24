@@ -1,32 +1,23 @@
 import React, { useState } from 'react';
 import styles from './Register.module.css';
-import userImg from '../../assets/icons/user.svg';
-import googleImg from '../../assets/icons/google.svg';
-import facebookImg from '../../assets/icons/facebook.svg';
-import twitterImg from '../../assets/icons/twitter.svg';
+import RegisterOptions from './RegisterOptions/RegisterOptions';
+import RegisterForm from './RegisterForm/RegisterForm';
+import ArrowIcon from '../../components/UI/icons/ArrowIcon';
+import RoundButton from '../../components/UI/RoundButton/RoundButton';
 
 const Register = () => {
+	const [displayMode, setDisplayMode] = useState('options');
+
 	return (
 		<div className={styles.Register}>
-			<h3 className={styles.Title}>Sign Up for StoryDraw</h3>
-			<ul className={styles.RegisterOptions}>
-				<li className={styles.RegisterOption}>
-					<img src={userImg} alt="Phone/Email" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Use phone or email</span>
-				</li>
-				<li className={styles.RegisterOption}>
-					<img src={googleImg} alt="Google" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Google</span>
-				</li>
-				<li className={styles.RegisterOption}>
-					<img src={facebookImg} alt="Facebook" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Facebook</span>
-				</li>
-				<li className={styles.RegisterOption}>
-					<img src={twitterImg} alt="Twitter" className={styles.OptionIcon} />
-					<span className={styles.OptionTitle}>Continue with Twitter</span>
-				</li>
-			</ul>
+			{displayMode === 'form' && (
+				<RoundButton className={styles.BackBtn} onClick={setDisplayMode.bind(this, 'options')}>
+					<ArrowIcon className={styles.BackIcon} />
+				</RoundButton>
+			)}
+
+			{displayMode === 'options' && <RegisterOptions openForm={setDisplayMode.bind(this, 'form')} />}
+			{displayMode === 'form' && <RegisterForm />}
 		</div>
 	);
 };

@@ -1,0 +1,14 @@
+.Title {
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+	letter-spacing: -1px;
+	margin-bottom: 25px;
+}
+
+.LoginOptionsList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	list-style: none;
+}

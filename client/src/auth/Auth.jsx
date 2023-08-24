@@ -3,16 +3,16 @@ import { useDispatch } from 'react-redux';
 import styles from './Auth.module.css';
 import Login from './Login/Login';
 import Register from './Register/Register';
-import ResetPassword from './ResetPassword/ResetPassword';
 import closeImg from '../assets/icons/close.svg';
 import { closeAuth } from '../features/auth/authSlice';
+import RoundButton from '../components/UI/RoundButton/RoundButton';
 
 const Auth = () => {
 	const dispatch = useDispatch();
-	const [authMode, setAuthMode] = useState('registerOptions');
+	const [displayMode, setDisplayMode] = useState('login');
 
 	const handleModeChange = (newMode) => {
-		setAuthMode(newMode);
+		setDisplayMode(newMode);
 	};
 
 	const handleModalClose = () => {
@@ -22,26 +22,25 @@ const Auth = () => {
 	return (
 		<div className={styles.Auth}>
 			<div className={styles.AuthModal}>
-				<button className={styles.CloseBtn} onClick={handleModalClose}>
+				<RoundButton className={styles.CloseBtn} onClick={handleModalClose}>
 					<img src={closeImg} alt="CLose" className={styles.CloseIcon} />
-				</button>
+				</RoundButton>
 
-				{authMode === 'loginOptions' && <Login />}
-				{authMode === 'registerOptions' && <Register />}
-				{authMode === 'resetPassword' && <ResetPassword />}
+				{displayMode === 'login' && <Login />}
+				{displayMode === 'register' && <Register />}
 
 				<div className={styles.AuthModalFooter}>
-					{authMode === 'loginOptions' ? (
+					{displayMode === 'login' ? (
 						<>
 							Don't have an account?
-							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'registerOptions')}>
+							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'register')}>
 								Sign up
 							</span>
 						</>
 					) : (
 						<>
 							Already have an account?
-							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'loginOptions')}>
+							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'login')}>
 								Log in
 							</span>
 						</>
