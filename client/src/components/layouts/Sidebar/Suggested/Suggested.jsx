@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Suggested.module.css';
 import SuggestedItem from './SuggestedItem/SuggestedItem';
+import Htag from '../../../UI/HTag/HTag';
 
 const testSuggested = [
 	{
@@ -38,7 +39,9 @@ const testSuggested = [
 const Suggested = () => {
 	return (
 		<div className={styles.Suggested}>
-			<h6 className={styles.SuggestedTitle}>Suggested accounts</h6>
+			<Htag tag="h5" className={styles.SuggestedTitle}>
+				Suggested accounts
+			</Htag>
 			<ul className={styles.SuggestedList}>
 				{testSuggested.map((item) => (
 					<SuggestedItem key={item.id} image={item.image} username={item.username} title={item.title} />

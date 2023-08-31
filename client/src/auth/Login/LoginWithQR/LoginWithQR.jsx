@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styles from './LoginWithQR.module.css';
+import Htag from '../../../components/UI/HTag/HTag';
 
 const LoginWithQR = () => {
 	return (
 		<div className={styles.LoginWithQR}>
-			<h3 className={styles.Title}>Log in with QR code</h3>
+			<Htag tag="h2" className={styles.Title}>Log in with QR code</Htag>
 			<div className={styles.QRcodeWrapper}>
 				<div className={styles.QRcode}></div>
 			</div>

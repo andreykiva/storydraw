@@ -198,7 +198,7 @@ const Tag = () => {
 			<div className={styles.TagHeader}>
 				<div className={styles.TagIcon}>#</div>
 				<div className={styles.TagInfo}>
-					<h3 className={styles.TagTitle}>#{tag}</h3>
+					<span className={styles.TagTitle}>#{tag}</span>
 					<p className={styles.TagViews}>{formatNumber(testTagInfo.views)} views</p>
 				</div>
 			</div>

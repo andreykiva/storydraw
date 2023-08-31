@@ -8,6 +8,7 @@ import twitterImg from '../../../assets/icons/twitter.svg';
 import appleImg from '../../../assets/icons/apple.svg';
 import instagramImg from '../../../assets/icons/instagram.svg';
 import AuthOption from '../../AuthOption/AuthOption';
+import Htag from '../../../components/UI/HTag/HTag';
 
 const LoginOptions = ({openForm, openQRCode}) => {
 	const loginWith = () => {
@@ -61,7 +62,7 @@ const LoginOptions = ({openForm, openQRCode}) => {
 
 	return (
 		<div className={styles.LoginOptions}>
-			<h3 className={styles.Title}>Log in to StoryDraw</h3>
+			<Htag tag="h2" className={styles.Title}>Log in to StoryDraw</Htag>
 			<ul className={styles.LoginOptionsList}>
 				{options.map((option) => (
 					<AuthOption key={option.alt} {...option} />

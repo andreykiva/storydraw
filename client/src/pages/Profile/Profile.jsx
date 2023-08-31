@@ -170,7 +170,7 @@ const Profile = () => {
 						<img src={image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					</div>
 					<div className={styles.InfoMain}>
-						<h3 className={styles.Username}>{username}</h3>
+						<span className={styles.Username}>{username}</span>
 						<span className={styles.UserTitle}>{title}</span>
 						<Button className={styles.FollowBtn}>Follow</Button>
 					</div>

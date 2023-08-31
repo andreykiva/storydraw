@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './SearchTop.module.css';
 import SearchAccount from '../SearchAccounts/SearchAccount/SearchAccount';
 import ExploreStory from '../../../components/ExploreStory/ExploreStory';
+import HTag from '../../../components/UI/HTag/HTag';
 
 const testSearchData = {
 	accounts: [
@@ -147,13 +148,13 @@ const testSearchData = {
 const SearchTop = () => {
 	return (
 		<div className={styles.SearchTop}>
-			<h5 className={styles.AccountsTitle}>Accounts</h5>
+			<HTag tag="h4" className={styles.Title}>Accounts</HTag>
 			<div className={styles.SearchAccounts}>
 				{testSearchData.accounts.map((account) => (
 					<SearchAccount key={account.id} {...account} />
 				))}
 			</div>
-			<h5 className={styles.StoriesTitle}>Stories</h5>
+			<HTag tag="h4" className={styles.Title}>Stories</HTag>
 			<div className={styles.SearchStories}>
 				{testSearchData.stories.map((story) => (
 					<ExploreStory key={story.id} className={styles.SearchStory} {...story} />

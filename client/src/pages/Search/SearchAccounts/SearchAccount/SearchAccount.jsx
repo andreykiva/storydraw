@@ -13,7 +13,7 @@ const SearchAccount = (props) => {
 				<img src={image || defaultImg} alt="Profile picture" className={styles.AccountImg} />
 			</div>
 			<div className={styles.AccountInfo}>
-				<h6 className={styles.Username}>{username}</h6>
+				<span className={styles.Username}>{username}</span>
 				<div className={styles.InfoBottom}>
 					<span className={styles.Title}>{title}</span>
 					<div className={styles.Dot}></div>

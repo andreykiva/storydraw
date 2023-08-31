@@ -5,6 +5,7 @@ import googleImg from '../../../assets/icons/google.svg';
 import facebookImg from '../../../assets/icons/facebook.svg';
 import twitterImg from '../../../assets/icons/twitter.svg';
 import AuthOption from '../../AuthOption/AuthOption';
+import Htag from '../../../components/UI/HTag/HTag';
 
 const RegisterOptions = ({ openForm }) => {
 	const loginWith = () => {
@@ -40,7 +41,7 @@ const RegisterOptions = ({ openForm }) => {
 
 	return (
 		<div className={styles.RegisterOptions}>
-			<h3 className={styles.Title}>Sign Up for StoryDraw</h3>
+			<Htag tag="h2" className={styles.Title}>Sign Up for StoryDraw</Htag>
 			<ul className={styles.RegisterOptionsList}>
 				{options.map((option) => (
 					<AuthOption key={option.alt} {...option} />
