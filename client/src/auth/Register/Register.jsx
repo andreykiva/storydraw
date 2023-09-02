@@ -6,18 +6,18 @@ import ArrowIcon from '../../components/UI/icons/ArrowIcon';
 import RoundButton from '../../components/UI/RoundButton/RoundButton';
 
 const Register = () => {
-	const [displayMode, setDisplayMode] = useState('options');
+	const [registerView, setRegisterView] = useState('options');
 
 	return (
 		<div className={styles.Register}>
-			{displayMode === 'form' && (
-				<RoundButton className={styles.BackBtn} onClick={setDisplayMode.bind(this, 'options')}>
+			{registerView === 'form' && (
+				<RoundButton className={styles.BackBtn} onClick={setRegisterView.bind(this, 'options')}>
 					<ArrowIcon className={styles.BackIcon} />
 				</RoundButton>
 			)}
 
-			{displayMode === 'options' && <RegisterOptions openForm={setDisplayMode.bind(this, 'form')} />}
-			{displayMode === 'form' && <RegisterForm />}
+			{registerView === 'options' && <RegisterOptions openForm={setRegisterView.bind(this, 'form')} />}
+			{registerView === 'form' && <RegisterForm />}
 		</div>
 	);
 };

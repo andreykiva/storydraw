@@ -8,25 +8,28 @@ import ArrowIcon from '../../components/UI/icons/ArrowIcon';
 import RoundButton from '../../components/UI/RoundButton/RoundButton';
 
 const Login = () => {
-	const [displayMode, setDisplayMode] = useState('options');
+	const [loginView, setLoginView] = useState('form');
 
 	return (
 		<div className={styles.Login}>
-			{displayMode !== 'options' && (
-				<RoundButton className={styles.BackBtn} onClick={setDisplayMode.bind(this, 'options')}>
+			{loginView !== 'options' && (
+				<RoundButton
+					className={styles.BackBtn}
+					onClick={setLoginView.bind(this, loginView === 'reset' ? 'form' : 'options')}
+				>
 					<ArrowIcon className={styles.BackIcon} />
 				</RoundButton>
 			)}
 
-			{displayMode === 'options' && (
+			{loginView === 'options' && (
 				<LoginOptions
-					openForm={setDisplayMode.bind(this, 'form')}
-					openQRCode={setDisplayMode.bind(this, 'qrcode')}
+					openForm={setLoginView.bind(this, 'form')}
+					openQRCode={setLoginView.bind(this, 'qrcode')}
 				/>
 			)}
-			{displayMode === 'form' && <LoginForm openReset={setDisplayMode.bind(this, 'reset')} />}
-			{displayMode === 'reset' && <ResetPasswordForm />}
-			{displayMode === 'qrcode' && <LoginWithQR />}
+			{loginView === 'form' && <LoginForm openReset={setLoginView.bind(this, 'reset')} />}
+			{loginView === 'reset' && <ResetPasswordForm />}
+			{loginView === 'qrcode' && <LoginWithQR />}
 		</div>
 	);
 };

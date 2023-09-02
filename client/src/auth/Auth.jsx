@@ -9,10 +9,10 @@ import RoundButton from '../components/UI/RoundButton/RoundButton';
 
 const Auth = () => {
 	const dispatch = useDispatch();
-	const [displayMode, setDisplayMode] = useState('login');
+	const [authMode, setAuthMode] = useState('login');
 
 	const handleModeChange = (newMode) => {
-		setDisplayMode(newMode);
+		setAuthMode(newMode);
 	};
 
 	const handleModalClose = () => {
@@ -26,26 +26,24 @@ const Auth = () => {
 					<img src={closeImg} alt="CLose" className={styles.CloseIcon} />
 				</RoundButton>
 
-				{displayMode === 'login' && <Login />}
-				{displayMode === 'register' && <Register />}
+				{authMode === 'login' && <Login />}
+				{authMode === 'register' && <Register />}
 
-				<div className={styles.AuthModalFooter}>
-					{displayMode === 'login' ? (
-						<>
-							Don't have an account?
-							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'register')}>
-								Sign up
-							</span>
-						</>
-					) : (
-						<>
-							Already have an account?
-							<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'login')}>
-								Log in
-							</span>
-						</>
-					)}
-				</div>
+				{authMode === 'login' ? (
+					<div className={styles.AuthModalFooter}>
+						Don't have an account?
+						<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'register')}>
+							Sign up
+						</span>
+					</div>
+				) : (
+					<div className={styles.AuthModalFooter}>
+						Already have an account?
+						<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'login')}>
+							Log in
+						</span>
+					</div>
+				)}
 			</div>
 		</div>
 	);

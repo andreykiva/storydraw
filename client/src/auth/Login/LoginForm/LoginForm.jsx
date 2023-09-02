@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import styles from './LoginForm.module.css';
+import HTag from '../../../components/UI/HTag/HTag';
+import WithLogin from './WithLogin/WIthLogin';
+import WithPhone from './WithPhone/WithPhone';
 
-const LoginForm = () => {
+const LoginForm = ({ openReset }) => {
+	const [loginMethod, setLoginMethod] = useState('phone');
+
 	return (
 		<div className={styles.LoginForm}>
-			LoginForm
+			<HTag tag="h2" className={styles.Title}>
+				Log in
+			</HTag>
+			{loginMethod === 'login' && (
+				<WithLogin openReset={openReset} openWithPhone={setLoginMethod.bind(this, 'phone')} />
+			)}
+			{loginMethod === 'phone' && (
+				<WithPhone openReset={openReset} openWithLogin={setLoginMethod.bind(this, 'login')} />
+			)}
 		</div>
 	);
 };
