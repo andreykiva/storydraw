@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
-import Logo from '../../UI/Logo/Logo';
+import Logo from '../../ui/Logo/Logo';
 import SearchBar from '../../SearchBar/SearchBar';
 import HeaderBtns from './HeaderBtns/HeaderBtns';
 

@@ -4,11 +4,11 @@ import styles from './ForYouStory.module.css';
 import defaultImg from '../../../assets/icons/default.svg';
 import previewImg from '../../../assets/images/preview.jpg';
 import musicImg from '../../../assets/icons/music.svg';
-import Button from '../../../components/UI/Button/Button';
-import LikeIcon from '../../../components/UI/icons/LikeIcon';
-import CommentIcon from '../../../components/UI/icons/CommentIcon';
-import FavoriteIcon from '../../../components/UI/icons/FavoriteIcon';
-import ShareIcon from '../../../components/UI/icons/ShareIcon';
+import Button from '../../../components/ui/Button/Button';
+import LikeIcon from '../../../components/ui/icons/LikeIcon';
+import CommentIcon from '../../../components/ui/icons/CommentIcon';
+import FavoriteIcon from '../../../components/ui/icons/FavoriteIcon';
+import ShareIcon from '../../../components/ui/icons/ShareIcon';
 import { formatNumber } from '../../../utils/numberUtils';
 
 const ForYouStory = (props) => {

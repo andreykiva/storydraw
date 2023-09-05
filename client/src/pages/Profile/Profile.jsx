@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Profile.module.css';
 import defaultImg from '../../assets/icons/default.svg';
-import Button from '../../components/UI/Button/Button';
+import Button from '../../components/ui/Button/Button';
 import ProfileStory from './ProfileStory/ProfileStory';
 import { formatNumber } from '../../utils/numberUtils';
 
@@ -192,7 +192,7 @@ const Profile = () => {
 			</div>
 			<div className={styles.ProfileStories}>
 				{testProfileStories.map((story) => (
-					<ProfileStory key={story.id} {...story } />
+					<ProfileStory key={story.id} {...story} />
 				))}
 			</div>
 		</div>

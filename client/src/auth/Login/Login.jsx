@@ -4,8 +4,8 @@ import LoginOptions from './LoginOptions/LoginOptions';
 import LoginForm from './LoginForm/LoginForm';
 import ResetPasswordForm from './ResetPasswordForm/ResetPasswordForm';
 import LoginWithQR from './LoginWithQR/LoginWithQR';
-import ArrowIcon from '../../components/UI/icons/ArrowIcon';
-import RoundButton from '../../components/UI/RoundButton/RoundButton';
+import ArrowIcon from '../../components/ui/icons/ArrowIcon';
+import RoundButton from '../../components/ui/RoundButton/RoundButton';
 
 const Login = () => {
 	const [loginView, setLoginView] = useState('form');

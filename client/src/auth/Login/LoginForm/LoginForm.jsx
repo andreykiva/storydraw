@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './LoginForm.module.css';
-import HTag from '../../../components/UI/HTag/HTag';
+import HTag from '../../../components/ui/HTag/HTag';
 import WithLogin from './WithLogin/WIthLogin';
 import WithPhone from './WithPhone/WithPhone';
 

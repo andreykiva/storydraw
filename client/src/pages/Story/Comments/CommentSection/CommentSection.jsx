@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './CommentSection.module.css';
-import ArrowIcon from '../../../../components/UI/icons/ArrowIcon';
+import ArrowIcon from '../../../../components/ui/icons/ArrowIcon';
 import Comment from './Comment/Comment';
 import Replies from './Replies/Replies';
 import { formatNumber } from '../../../../utils/numberUtils';

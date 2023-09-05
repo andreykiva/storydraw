@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './Register.module.css';
 import RegisterOptions from './RegisterOptions/RegisterOptions';
 import RegisterForm from './RegisterForm/RegisterForm';
-import ArrowIcon from '../../components/UI/icons/ArrowIcon';
-import RoundButton from '../../components/UI/RoundButton/RoundButton';
+import ArrowIcon from '../../components/ui/icons/ArrowIcon';
+import RoundButton from '../../components/ui/RoundButton/RoundButton';
 
 const Register = () => {
 	const [registerView, setRegisterView] = useState('options');

@@ -3,7 +3,7 @@ import styles from './Sidebar.module.css';
 import Footer from '../Footer/Footer';
 import Nav from './Nav/Nav';
 import Suggested from './Suggested/Suggested';
-import Button from '../../UI/Button/Button';
+import Button from '../../ui/Button/Button';
 
 const Sidebar = () => {
 	return (
