@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Suggested.module.css';
 import SuggestedItem from './SuggestedItem/SuggestedItem';
-import Htag from '../../../ui/HTag/HTag';
+import Htag from '@/components/ui/HTag/HTag';
 
 const testSuggested = [
 	{

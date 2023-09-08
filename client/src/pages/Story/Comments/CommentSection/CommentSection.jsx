@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './CommentSection.module.css';
-import ArrowIcon from '../../../../components/ui/icons/ArrowIcon';
+import ArrowIcon from '@/components/ui/icons/ArrowIcon';
 import Comment from './Comment/Comment';
 import Replies from './Replies/Replies';
-import { formatNumber } from '../../../../utils/numberUtils';
+import { formatNumber } from '@/utils/numberUtils';
 
 const CommentSection = (props) => {
 	const [showReplies, setShowReplies] = useState(false);

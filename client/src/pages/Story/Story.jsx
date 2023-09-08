@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Story.module.css';
-import storyImg from '../../assets/images/preview.jpg';
-import closeImg from '../../assets/icons/close.svg';
-import reportImg from '../../assets/icons/report.svg';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import Button from '../../components/ui/Button/Button';
+import storyImg from '@/assets/images/preview.jpg';
+import closeImg from '@/assets/icons/close.svg';
+import reportImg from '@/assets/icons/report.svg';
+import SearchBar from '@/components/SearchBar/SearchBar';
+import Button from '@/components/ui/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
 import Comments from './Comments/Comments';
-import ArrowIcon from '../../components/ui/icons/ArrowIcon';
+import ArrowIcon from '@/components/ui/icons/ArrowIcon';
 
 const testStoryInfo = {
 	user: {

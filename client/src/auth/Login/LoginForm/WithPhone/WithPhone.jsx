@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './WithPhone.module.css';
-import formStyles from '../../../FormStyles.module.css';
-import Button from '../../../../components/ui/Button/Button';
+import formStyles from '@/auth/FormStyles.module.css';
+import Button from '@/components/ui/Button/Button';
 
 const WithPhone = ({ openReset, openWithLogin }) => {
 	const [formData, setFormData] = useState({

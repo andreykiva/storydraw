@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
 // import { openSearch, closeSearch } from '../../features/search/searchSlice';
-import searchImg from '../../assets/icons/search.svg';
+import searchImg from '@/assets/icons/search.svg';
 import SearchResults from './SearchResults/SearchResults';
 // import { searchAPI } from '../../services/searchService';
 

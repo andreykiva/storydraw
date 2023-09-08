@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProfileStory.module.css';
-import previewImg from '../../../assets/images/preview.jpg';
-import viewsImg from '../../../assets/icons/views.svg';
-import { formatNumber } from '../../../utils/numberUtils.js';
+import previewImg from '@/assets/images/preview.jpg';
+import viewsImg from '@/assets/icons/views.svg';
+import { formatNumber } from '@/utils/numberUtils.js';
 
 const ProfileStory = (props) => {
 	const { id, story, description, tags, views } = props;

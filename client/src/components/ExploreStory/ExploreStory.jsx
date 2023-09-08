@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ExploreStory.module.css';
-import defaultImg from '../../assets/icons/default.svg';
-import previewImg from '../../assets/images/preview.jpg';
-import LikeIcon from '../../components/ui/icons/LikeIcon';
-import viewsImg from '../../assets/icons/views.svg';
-import { formatNumber } from '../../utils/numberUtils';
+import defaultImg from '@/assets/icons/default.svg';
+import previewImg from '@/assets/images/preview.jpg';
+import LikeIcon from '@/components/ui/icons/LikeIcon';
+import viewsImg from '@/assets/icons/views.svg';
+import { formatNumber } from '@/utils/numberUtils';
 
 const ExploreStory = (props) => {
 	const { id, userId, username, userImage, story, description, tags, likes, views, className } = props;

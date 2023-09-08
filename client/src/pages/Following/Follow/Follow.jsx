@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './Follow.module.css';
-import defaultImg from '../../../assets/icons/default.svg';
-import previewImg from '../../../assets/images/preview.jpg';
-import Button from '../../../components/ui/Button/Button';
+import defaultImg from '@/assets/icons/default.svg';
+import previewImg from '@/assets/images/preview.jpg';
+import Button from '@/components/ui/Button/Button';
 
 const Follow = ({ username, title, image, preview }) => {
 	return (
@@ -18,13 +17,6 @@ const Follow = ({ username, title, image, preview }) => {
 			</div>
 		</Link>
 	);
-};
-
-Follow.propTypes = {
-	username: PropTypes.string,
-	title: PropTypes.string,
-	image: PropTypes.string,
-	preview: PropTypes.string,
 };
 
 export default Follow;

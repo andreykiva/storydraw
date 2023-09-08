@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './SignIn.module.css';
-import LogoImg from '../../assets/icons/logo.png'
+import LogoImg from '@/assets/icons/logo.png'
 
 const SignIn = () => {
 	return (

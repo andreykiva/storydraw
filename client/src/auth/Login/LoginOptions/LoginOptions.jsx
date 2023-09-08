@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './LoginOptions.module.css';
-import qrCodeImg from '../../../assets/icons/qr-code.svg';
-import userImg from '../../../assets/icons/user.svg';
-import googleImg from '../../../assets/icons/google.svg';
-import facebookImg from '../../../assets/icons/facebook.svg';
-import twitterImg from '../../../assets/icons/twitter.svg';
-import appleImg from '../../../assets/icons/apple.svg';
-import instagramImg from '../../../assets/icons/instagram.svg';
-import AuthOption from '../../AuthOption/AuthOption';
-import Htag from '../../../components/ui/HTag/HTag';
+import qrCodeImg from '@/assets/icons/qr-code.svg';
+import userImg from '@/assets/icons/user.svg';
+import googleImg from '@/assets/icons/google.svg';
+import facebookImg from '@/assets/icons/facebook.svg';
+import twitterImg from '@/assets/icons/twitter.svg';
+import appleImg from '@/assets/icons/apple.svg';
+import instagramImg from '@/assets/icons/instagram.svg';
+import AuthOption from '@/auth/AuthOption/AuthOption';
+import Htag from '@/components/ui/HTag/HTag';
 
 const LoginOptions = ({ openForm, openQRCode }) => {
 	const loginWith = () => {

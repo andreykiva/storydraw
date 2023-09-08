@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Nav.module.css';
 import { NavLink } from 'react-router-dom';
-import LikeIcon from '../../../ui/icons/LikeIcon';
-import PersonIcon from '../../../ui/icons/PersonIcon';
-import ExploreIcon from '../../../ui/icons/ExploreIcon';
+import LikeIcon from '@/components/ui/icons/LikeIcon';
+import PersonIcon from '@/components/ui/icons/PersonIcon';
+import ExploreIcon from '@/components/ui/icons/ExploreIcon';
 
 const links = [
 	{

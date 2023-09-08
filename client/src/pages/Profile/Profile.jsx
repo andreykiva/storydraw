@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Profile.module.css';
-import defaultImg from '../../assets/icons/default.svg';
-import Button from '../../components/ui/Button/Button';
+import defaultImg from '@/assets/icons/default.svg';
+import Button from '@/components/ui/Button/Button';
 import ProfileStory from './ProfileStory/ProfileStory';
-import { formatNumber } from '../../utils/numberUtils';
+import { formatNumber } from '@/utils/numberUtils';
 
 const testProfileInfo = {
 	userId: 123,

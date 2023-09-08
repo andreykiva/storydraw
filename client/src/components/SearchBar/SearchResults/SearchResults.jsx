@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SearchResults.module.css';
-import searchImg from '../../../assets/icons/search.svg';
+import searchImg from '@/assets/icons/search.svg';
 
 const SearchResults = ({ results }) => {
 	return (

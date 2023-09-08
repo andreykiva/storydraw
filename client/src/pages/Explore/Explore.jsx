@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Explore.module.css';
-import drawnImg from '../../assets/icons/brush.svg';
-import pixelImg from '../../assets/icons/pixelated.svg';
-import frameImg from '../../assets/icons/movie-roll.svg';
-import lengthyImg from '../../assets/icons/movie.svg';
-import ExploreStory from '../../components/ExploreStory/ExploreStory';
+import drawnImg from '@/assets/icons/brush.svg';
+import pixelImg from '@/assets/icons/pixelated.svg';
+import frameImg from '@/assets/icons/movie-roll.svg';
+import lengthyImg from '@/assets/icons/movie.svg';
+import ExploreStory from '@/components/ExploreStory/ExploreStory';
 
 const exploreCategories = [
 	{

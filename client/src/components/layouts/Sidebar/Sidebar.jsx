@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Sidebar.module.css';
-import Footer from '../Footer/Footer';
+import Footer from '@/components/layouts/Footer/Footer';
 import Nav from './Nav/Nav';
 import Suggested from './Suggested/Suggested';
-import Button from '../../ui/Button/Button';
+import Button from '@/components/ui/Button/Button';
 
 const Sidebar = () => {
 	return (

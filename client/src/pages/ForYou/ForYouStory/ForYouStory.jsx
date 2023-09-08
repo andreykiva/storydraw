@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ForYouStory.module.css';
-import defaultImg from '../../../assets/icons/default.svg';
-import previewImg from '../../../assets/images/preview.jpg';
-import musicImg from '../../../assets/icons/music.svg';
-import Button from '../../../components/ui/Button/Button';
-import LikeIcon from '../../../components/ui/icons/LikeIcon';
-import CommentIcon from '../../../components/ui/icons/CommentIcon';
-import FavoriteIcon from '../../../components/ui/icons/FavoriteIcon';
-import ShareIcon from '../../../components/ui/icons/ShareIcon';
-import { formatNumber } from '../../../utils/numberUtils';
+import defaultImg from '@/assets/icons/default.svg';
+import previewImg from '@/assets/images/preview.jpg';
+import musicImg from '@/assets/icons/music.svg';
+import Button from '@/components/ui/Button/Button';
+import LikeIcon from '@/components/ui/icons/LikeIcon';
+import CommentIcon from '@/components/ui/icons/CommentIcon';
+import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
+import ShareIcon from '@/components/ui/icons/ShareIcon';
+import { formatNumber } from '@/utils/numberUtils';
 
 const ForYouStory = (props) => {
 	const {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './LoginWithQR.module.css';
-import Htag from '../../../components/ui/HTag/HTag';
+import Htag from '@/components/ui/HTag/HTag';
 
 const LoginWithQR = () => {
 	return (

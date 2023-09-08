@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './TagStory.module.css';
-import defaultImg from '../../../assets/icons/default.svg';
-import previewImg from '../../../assets/images/preview.jpg';
+import defaultImg from '@/assets/icons/default.svg';
+import previewImg from '@/assets/images/preview.jpg';
 
 const TagStory = (props) => {
 	const { id, userId, username, userImage, story, description, tags } = props;

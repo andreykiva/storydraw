@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './RegisterOptions.module.css';
-import userImg from '../../../assets/icons/user.svg';
-import googleImg from '../../../assets/icons/google.svg';
-import facebookImg from '../../../assets/icons/facebook.svg';
-import twitterImg from '../../../assets/icons/twitter.svg';
-import AuthOption from '../../AuthOption/AuthOption';
-import Htag from '../../../components/ui/HTag/HTag';
+import userImg from '@/assets/icons/user.svg';
+import googleImg from '@/assets/icons/google.svg';
+import facebookImg from '@/assets/icons/facebook.svg';
+import twitterImg from '@/assets/icons/twitter.svg';
+import AuthOption from '@/auth/AuthOption/AuthOption';
+import Htag from '@/components/ui/HTag/HTag';
 
 const RegisterOptions = ({ openForm }) => {
 	const loginWith = () => {

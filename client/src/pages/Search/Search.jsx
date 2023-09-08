@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSearchParams, Routes, Route, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Search.module.css';
-import { search } from '../../features/search/searchSlice';
+import { search } from '@/features/search/searchSlice';
 import SearchTop from './SearchTop/SearchTop';
 import SearchAccounts from './SearchAccounts/SearchAccounts';
 import SearchStories from './SearchStories/SearchStories';

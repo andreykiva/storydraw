@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Comment.module.css';
-import defaultImg from '../../../../../assets/icons/default.svg';
-import LikeIcon from '../../../../../components/ui/icons/LikeIcon';
-import { formatNumber } from '../../../../../utils/numberUtils';
+import defaultImg from '@/assets/icons/default.svg';
+import LikeIcon from '@/components/ui/icons/LikeIcon';
+import { formatNumber } from '@/utils/numberUtils';
 
 const Comment = (props) => {
 	const { user, id, text, date, likes, reply = false } = props;

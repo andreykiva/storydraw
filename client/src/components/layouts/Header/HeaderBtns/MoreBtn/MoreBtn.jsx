@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './MoreBtn.module.css';
-import languageIcon from '../../../../../assets/icons/language.svg';
-import helpIcon from '../../../../../assets/icons/help.svg';
-import darkModeIcon from '../../../../../assets/icons/mode-dark.svg';
-import moreIcon from '../../../../../assets/icons/more.svg';
+import languageIcon from '@/assets/icons/language.svg';
+import helpIcon from '@/assets/icons/help.svg';
+import darkModeIcon from '@/assets/icons/mode-dark.svg';
+import moreIcon from '@/assets/icons/more.svg';
 
 const MoreBtn = () => {
 	return (
