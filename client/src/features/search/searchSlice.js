@@ -10,7 +10,7 @@ export const searchSlice = createSlice({
 	reducers: {
 		search: (state, action) => {
 			state.isSearchOpen = false;
-			console.log("Грузим видео " + action.payload);
+			console.log('Грузим видео ' + action.payload);
 		},
 		closeSearch: (state) => {
 			state.isSearchOpen = false;
@@ -19,7 +19,6 @@ export const searchSlice = createSlice({
 			state.isSearchOpen = true;
 		},
 	},
-
 });
 
 export const { openSearch, closeSearch, search } = searchSlice.actions;

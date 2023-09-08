@@ -12,7 +12,7 @@ export const searchAPI = createApi({
 					q: searchString,
 				},
 			}),
-			providesTags: (result) => ['Search'],
+			providesTags: () => ['Search'],
 		}),
 		// createPost: build.mutation<IPost, IPost>({
 		//     query: (post) => ({
