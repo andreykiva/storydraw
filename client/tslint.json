@@ -1,7 +1,7 @@
 {
 	"rules": {
 		"no-var-requires": true,
-		"no-any": true,
+		"no-any": false,
 		"promise-function-async": true,
 		"await-promise": true,
 		"curly": true,
@@ -26,17 +26,15 @@
 		"prefer-const": true,
 		"arrow-return-shorthand": true,
 		"class-name": true,
-		"file-name-casing": [false, "kebab-case"],
+		"file-name-casing": [true, "kebab-case"],
 		"prefer-switch": [true, {
 			"min-cases": 3
 		}],
-		"directive-selector": [true, "attribute", "app", "camelCase"],
-		"component-selector": [true, "element", "app", "kebab-case"],
 		"switch-final-break": true,
 		"import-spacing": true,
 		"max-line-length": [true, 120],
 		"no-trailing-whitespace": false,
-		"quotemark": [false, "single"],
+		"quotemark": [true, "single"],
 		"semicolon": [true, "always"],
 		"trailing-comma": false,
 		"indent": [true, "tabs", 4],

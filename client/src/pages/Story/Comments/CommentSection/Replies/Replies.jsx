@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Replies.module.css';
-import Comment from '../Comment/Comment';
+import Comment from '@/pages/Story/Comments/CommentSection/Comment/Comment';
 
 const testReplies = [
 	{

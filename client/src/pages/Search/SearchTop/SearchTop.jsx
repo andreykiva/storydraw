@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SearchTop.module.css';
-import SearchAccount from '../SearchAccounts/SearchAccount/SearchAccount';
+import SearchAccount from '@/pages/Search/SearchAccounts/SearchAccount/SearchAccount';
 import ExploreStory from '@/components/ExploreStory/ExploreStory';
 import HTag from '@/components/ui/HTag/HTag';
 

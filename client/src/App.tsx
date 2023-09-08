@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/components/layouts/Layout/Layout';
 import ForYou from '@/pages/ForYou/ForYou';
 import Following from '@/pages/Following/Following';
@@ -10,7 +10,7 @@ import ValidateUser from '@/components/ValidateUser/ValidateUser';
 import Profile from '@/pages/Profile/Profile';
 import Story from '@/pages/Story/Story';
 
-export const App = () => {
+const App = () => {
 	return (
 		<BrowserRouter>
 			<Layout>
@@ -30,3 +30,5 @@ export const App = () => {
 		</BrowserRouter>
 	);
 };
+
+export default App;
