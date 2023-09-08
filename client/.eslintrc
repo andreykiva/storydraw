@@ -1,0 +1,39 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint"],
+	"globals": {
+		"module": "readonly"
+	},
+	"env": {
+		"node": true
+	},
+	"rules": {
+		"semi": "off",
+		"@typescript-eslint/semi": ["warn"],
+		"indent": [
+			"warn",
+			"tab",
+			{
+				"SwitchCase": 1,
+				"ignoredNodes": ["ConditionalExpression"]
+			}
+		],
+		"no-return-await": "warn",
+		"no-var": "warn",
+		"max-len": ["warn", { "code": 120 }],
+		"quotes": ["warn", "single", { "allowTemplateLiterals": true }],
+		"@typescript-eslint/no-empty-interface": [
+			"error",
+			{
+				"allowSingleExtends": true
+			}
+		]
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react-hooks/recommended"
+	]
+}
