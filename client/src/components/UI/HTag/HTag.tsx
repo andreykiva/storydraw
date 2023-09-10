@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './HTag.module.css';
 
-const Htag = ({ tag, className, children }) => {
+interface HtagProps extends React.HTMLProps<HTMLHeadingElement> {
+	tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+}
+
+const Htag = ({ tag, className, children }: HtagProps) => {
 	switch (tag) {
 		case 'h1':
 			return <h1 className={[styles.H1, className].join(' ')}>{children}</h1>;

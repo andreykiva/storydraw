@@ -6,7 +6,11 @@ import Header from '@/components/layouts/Header/Header';
 import Sidebar from '@/components/layouts/Sidebar/Sidebar';
 import Auth from '@/auth/Auth';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+	children: React.ReactNode
+}
+
+const Layout = ({ children }: LayoutProps) => {
 	const { isAuthOpen } = useSelector((state) => state.auth);
 	const location = useLocation();
 	const hideHeader = location.pathname.includes('/story/');

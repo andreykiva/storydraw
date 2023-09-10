@@ -35,16 +35,16 @@ const SearchBar = ({ light = false }) => {
 	// const { isSearchOpen } = useSelector((state) => state.search);
 	const [searchParams] = useSearchParams();
 	const [value, setValue] = useState('');
-	const [isOpen, setIsOpen] = useState('');
+	const [isOpen, setIsOpen] = useState(false);
 	const searchInputRef = useRef(null);
+	const param = searchParams.get('q');
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
 	
 	useEffect(() => {
-		const param = searchParams.get('q');
-		if (param && value != param) {
-			setValue(param)
+		if (param && value !== param) {
+			setValue(param);
 		}
-	}, [searchParams.get('q')]);
+	}, [param]);
 
 	useEffect(() => {
 		document.body.addEventListener('click', handleBodyClick);
@@ -53,13 +53,13 @@ const SearchBar = ({ light = false }) => {
 		};
 	}, []);
 
-	const handleBodyClick = (e) => {
+	const handleBodyClick = (e: MouseEvent) => {
 		if (!searchInputRef.current.contains(e.target)) {
 			setIsOpen(false);
 		}
 	};
 
-	const handleChange = (e) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue = e.target.value;
 
 		if (newValue.trim()) {

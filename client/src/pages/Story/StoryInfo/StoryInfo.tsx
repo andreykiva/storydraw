@@ -9,7 +9,21 @@ import ShareIcon from '@/components/ui/icons/ShareIcon';
 import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
 import { formatNumber } from '@/utils/numberUtils';
 
-const StoryInfo = (props) => {
+interface StoryInfoProps {
+	description: string;
+	date: string;
+	musicName: string;
+	likes: number;
+	favorites: number;
+	share: number;
+	user: {
+		username: string;
+		title: string;
+		image: string;
+	};
+}
+
+const StoryInfo = (props: StoryInfoProps) => {
 	const {
 		user: { username, title, image },
 		description,

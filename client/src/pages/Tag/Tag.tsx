@@ -5,7 +5,7 @@ import TagStory from './TagStory/TagStory';
 import { formatNumber } from '@/utils/numberUtils';
 
 const testTagInfo = {
-	views: '23123123',
+	views: 23123123,
 	stories: [
 		{
 			id: 1,
@@ -191,7 +191,7 @@ const testTagInfo = {
 };
 
 const Tag = () => {
-	let { tag } = useParams();
+	const { tag } = useParams();
 
 	return (
 		<div className={styles.Tag}>

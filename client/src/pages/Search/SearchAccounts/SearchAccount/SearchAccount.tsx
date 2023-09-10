@@ -4,7 +4,15 @@ import styles from './SearchAccount.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import { formatNumber } from '@/utils/numberUtils';
 
-const SearchAccount = (props) => {
+interface SearchAccountProps {
+	image: string;
+	username: string;
+	title: string;
+	description: string;
+	followers: number;
+}
+
+const SearchAccount = (props: SearchAccountProps) => {
 	const { image, username, title, description, followers } = props;
 
 	return (
@@ -17,7 +25,9 @@ const SearchAccount = (props) => {
 				<div className={styles.InfoBottom}>
 					<span className={styles.Title}>{title}</span>
 					<div className={styles.Dot}></div>
-					<p className={styles.FollowersInfo}><span className={styles.Followers}>{formatNumber(followers)}</span> Followers</p>
+					<p className={styles.FollowersInfo}>
+						<span className={styles.Followers}>{formatNumber(followers)}</span> Followers
+					</p>
 				</div>
 				<p className={styles.Descr}>{description}</p>
 			</div>
