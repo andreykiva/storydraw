@@ -6,7 +6,7 @@ import ProfileStory from './ProfileStory/ProfileStory';
 import { formatNumber } from '@/utils/numberUtils';
 
 const testProfileInfo = {
-	userId: 123,
+	id: '123',
 	username: 'andrey.kiva',
 	title: 'hey man',
 	description: 'today was a good day',
@@ -18,140 +18,140 @@ const testProfileInfo = {
 
 const testProfileStories = [
 	{
-		id: 1,
+		id: '1',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 2,
+		id: '2',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 3,
+		id: '3',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 4,
+		id: '4',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 5,
+		id: '5',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 6,
+		id: '6',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 7,
+		id: '7',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 8,
+		id: '8',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 9,
+		id: '9',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 10,
+		id: '10',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 11,
+		id: '11',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 12,
+		id: '12',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 13,
+		id: '13',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 14,
+		id: '14',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 15,
+		id: '15',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 16,
+		id: '16',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 17,
+		id: '17',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 18,
+		id: '18',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 19,
+		id: '19',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
 		views: 1412,
 	},
 	{
-		id: 20,
+		id: '20',
 		story: '',
 		description: 'yo yo yo',
 		tags: ['music', 'song'],
@@ -160,7 +160,7 @@ const testProfileStories = [
 ];
 
 const Profile = () => {
-	const { userId, username, title, description, image, following, followers, likes } = testProfileInfo;
+	const { username, title, description, image, following, followers, likes } = testProfileInfo;
 
 	return (
 		<div className={styles.Profile}>

@@ -4,13 +4,13 @@ import styles from './SearchAccount.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import { formatNumber } from '@/utils/numberUtils';
 
-interface SearchAccountProps {
+type SearchAccountProps = {
 	image: string;
 	username: string;
 	title: string;
 	description: string;
 	followers: number;
-}
+};
 
 const SearchAccount = (props: SearchAccountProps) => {
 	const { image, username, title, description, followers } = props;

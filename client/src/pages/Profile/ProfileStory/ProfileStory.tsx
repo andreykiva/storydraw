@@ -5,7 +5,15 @@ import previewImg from '@/assets/images/preview.jpg';
 import viewsImg from '@/assets/icons/views.svg';
 import { formatNumber } from '@/utils/numberUtils';
 
-const ProfileStory = (props) => {
+type ProfileStoryProps = {
+	id: string;
+	story: string;
+	description: string;
+	tags: string[];
+	views: number;
+};
+
+const ProfileStory = (props: ProfileStoryProps) => {
 	const { id, story, description, tags, views } = props;
 
 	return (

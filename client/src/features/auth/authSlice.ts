@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+type AuthState = {
+	isAuthOpen: boolean;
+};
+
+const initialState: AuthState = {
 	isAuthOpen: true,
 };
 

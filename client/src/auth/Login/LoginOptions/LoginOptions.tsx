@@ -10,7 +10,12 @@ import instagramImg from '@/assets/icons/instagram.svg';
 import AuthOption from '@/auth/AuthOption/AuthOption';
 import Htag from '@/components/ui/HTag/HTag';
 
-const LoginOptions = ({ openForm, openQRCode }) => {
+type LoginOptionsProps = {
+	openForm: () => void;
+	openQRCode: () => void;
+};
+
+const LoginOptions = ({ openForm, openQRCode }: LoginOptionsProps) => {
 	const loginWith = () => {
 		console.log('Login');
 	};

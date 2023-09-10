@@ -5,7 +5,7 @@ import defaultImg from '@/assets/icons/default.svg';
 import LikeIcon from '@/components/ui/icons/LikeIcon';
 import { formatNumber } from '@/utils/numberUtils';
 
-interface CommentProps {
+type CommentProps = {
 	id: string;
 	text: string;
 	date: string;
@@ -16,10 +16,10 @@ interface CommentProps {
 		title: string;
 		image: string;
 	};
-}
+};
 
 const Comment = (props: CommentProps) => {
-	const { user, text, date, likes, reply = false } = props; // + id
+	const { user, text, date, likes, reply } = props; // + id
 
 	return (
 		<div className={[styles.Comment, reply ? styles.Reply : ''].join(' ')}>

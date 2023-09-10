@@ -12,15 +12,15 @@ import ArrowIcon from '@/components/ui/icons/ArrowIcon';
 
 const testStoryInfo = {
 	user: {
-		userId: 123,
+		id: '123',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		image: '',
 	},
-	id: 123123,
+	id: '123123',
 	description: 'I wanna be a bee',
 	date: '06-23',
-	musicId: 41,
+	musicId: '41',
 	musicName: 'Andre - My life',
 	likes: 723,
 	favorites: 213,
@@ -34,11 +34,11 @@ const Story = () => {
 				<img src={storyImg} alt="Background" className={styles.BackgroundImg} />
 				<div className={styles.StoryHeader}>
 					<div className={styles.Back}>
-						<Link to={-1} className={styles.BackBtn}>
+						<Link to={'/'} className={styles.BackBtn}>
 							<img src={closeImg} alt="Close" className={styles.CloseIcon} />
 						</Link>
 					</div>
-					<SearchBar className={styles.SearchBar} light />
+					<SearchBar light={true} />
 					<Button className={styles.ReportBtn}>
 						<img src={reportImg} alt="Report" className={styles.ReportIcon} />
 						<span>Report</span>

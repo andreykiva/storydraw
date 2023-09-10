@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './LoginWithQR.module.css';
 import Htag from '@/components/ui/HTag/HTag';
 

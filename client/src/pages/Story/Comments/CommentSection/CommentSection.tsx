@@ -5,7 +5,21 @@ import Comment from './Comment/Comment';
 import Replies from './Replies/Replies';
 import { formatNumber } from '@/utils/numberUtils';
 
-const CommentSection = (props) => {
+type CommentSectionProps = {
+	id: string,
+	text: string,
+	date: string,
+	likes: number,
+	replies: number,
+	user: {
+		id: string,
+		username: string,
+		title: string,
+		image: string,
+	},
+};
+
+const CommentSection = (props: CommentSectionProps) => {
 	const [showReplies, setShowReplies] = useState(false);
 	const { replies } = props;
 
@@ -15,7 +29,7 @@ const CommentSection = (props) => {
 
 	return (
 		<div className={styles.CommentSection}>
-			<Comment {...props} />
+			<Comment reply={false} {...props} />
 			{replies && !showReplies ? (
 				<div className={styles.ViewRepliesBtn} onClick={toggleReplies}>
 					View {formatNumber(replies)} Replies

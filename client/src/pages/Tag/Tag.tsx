@@ -8,184 +8,224 @@ const testTagInfo = {
 	views: 23123123,
 	stories: [
 		{
-			id: 1,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '1',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 2,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '2',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 3,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '3',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 4,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '4',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 5,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '5',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 6,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '6',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 7,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '7',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 8,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '8',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 9,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '9',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 10,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '10',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 11,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '11',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 12,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '12',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 13,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '13',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 14,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '14',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 15,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '15',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 16,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '16',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 17,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '17',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 18,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '18',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 19,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '19',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 20,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '20',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 	],
 };

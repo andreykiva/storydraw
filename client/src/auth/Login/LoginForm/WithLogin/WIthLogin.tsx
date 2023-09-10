@@ -3,7 +3,12 @@ import styles from './WithLogin.module.css';
 import formStyles from '@/auth/FormStyles.module.css';
 import Button from '@/components/ui/Button/Button';
 
-const WithLogin = ({ openReset, openWithPhone }) => {
+type WithLoginProps = {
+	openReset: () => void;
+	openWithPhone: () => void;
+};
+
+const WithLogin = ({ openReset, openWithPhone }: WithLoginProps) => {
 	const [formData, setFormData] = useState({
 		login: '',
 		password: '',
@@ -14,13 +19,13 @@ const WithLogin = ({ openReset, openWithPhone }) => {
 		password: '',
 	});
 
-	const [showPassword, setShowPassword] = useState(false);
+	// const [showPassword, setShowPassword] = useState(false);
 
-	const handleTogglePassword = () => {
-		setShowPassword(!showPassword);
-	};
+	// const handleTogglePassword = () => {
+	// 	setShowPassword(!showPassword);
+	// };
 
-	const handleInputChange = (e) => {
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData({
 			...formData,

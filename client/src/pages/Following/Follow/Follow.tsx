@@ -5,12 +5,12 @@ import defaultImg from '@/assets/icons/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
 import Button from '@/components/ui/Button/Button';
 
-interface FollowProps {
+type FollowProps = {
 	username: string;
 	title: string;
 	image: string;
 	preview: string;
-}
+};
 
 const Follow = ({ username, title, image, preview }: FollowProps) => {
 	return (

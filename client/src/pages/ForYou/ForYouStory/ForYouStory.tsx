@@ -11,36 +11,40 @@ import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
 import ShareIcon from '@/components/ui/icons/ShareIcon';
 import { formatNumber } from '@/utils/numberUtils';
 
-const ForYouStory = (props) => {
-	const {
-		id,
-		userId,
-		username,
-		userTitle,
-		userImage,
-		story,
-		description,
-		musicName,
-		musicId,
-		tags,
-		likes,
-		comments,
-		favorites,
-		share,
-	} = props;
+type ForYouStoryProps = {
+	id: string;
+	story: string;
+	description: string;
+	musicName: string;
+	musicId: string;
+	tags: string[];
+	likes: number;
+	comments: number;
+	favorites: number;
+	share: number;
+	user: {
+		id: string;
+		username: string;
+		title: string;
+		image: string;
+	};
+};
+
+const ForYouStory = (props: ForYouStoryProps) => {
+	const { id, user, story, description, musicName, tags, likes, comments, favorites, share } = props; // + musicId
 
 	return (
 		<div className={styles.ForYouStory}>
 			<div className={styles.StoryHeader}>
 				<div className={styles.HeaderImgSection}>
-					<Link to={`/@${username}`} className={styles.ImgUserLink}>
-						<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<Link to={`/@${user.username}`} className={styles.ImgUserLink}>
+						<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					</Link>
 				</div>
 				<div className={styles.HeaderInfo}>
-					<Link to={`/@${username}`} className={styles.HeaderInfoUser}>
-						<span className={styles.InfoUsername}>{username}</span>
-						<span className={styles.InfoTitle}>{userTitle}</span>
+					<Link to={`/@${user.username}`} className={styles.HeaderInfoUser}>
+						<span className={styles.InfoUsername}>{user.username}</span>
+						<span className={styles.InfoTitle}>{user.title}</span>
 					</Link>
 					<p className={styles.InfoDescr}>
 						<span className={styles.DescrText}>{description}</span>
@@ -50,14 +54,14 @@ const ForYouStory = (props) => {
 							</Link>
 						))}
 					</p>
-					<div className={styles.InfoMusic}>
+					<div className={styles.InfoMwdusic}>
 						<img src={musicImg} alt="Music" className={styles.MusicIcon} /> {musicName}
 					</div>
 				</div>
 				<Button className={styles.FollowBtn}>Follow</Button>
 			</div>
 			<div className={styles.StoryWrapper}>
-				<Link to={`/@${username}/story/${id}`} className={styles.StoryLink}>
+				<Link to={`/@${user.username}/story/${id}`} className={styles.StoryLink}>
 					<img src={story || previewImg} alt="Story" className={styles.Story} />
 				</Link>
 				<div className={styles.StoryInfo}>

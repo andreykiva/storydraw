@@ -5,31 +5,31 @@ import Htag from '@/components/ui/HTag/HTag';
 
 const testSuggested = [
 	{
-		id: 1,
+		id: '1',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
-		id: 2,
+		id: '2',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
-		id: 3,
+		id: '3',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
-		id: 4,
+		id: '4',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
-		id: 5,
+		id: '5',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		image: '',

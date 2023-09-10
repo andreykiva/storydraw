@@ -11,7 +11,7 @@ const Auth = () => {
 	const dispatch = useDispatch();
 	const [authMode, setAuthMode] = useState('login');
 
-	const handleModeChange = (newMode) => {
+	const handleModeChange = (newMode: string) => {
 		setAuthMode(newMode);
 	};
 

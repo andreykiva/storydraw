@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './HTag.module.css';
 
-interface HtagProps extends React.HTMLProps<HTMLHeadingElement> {
+type HtagProps = React.HTMLProps<HTMLHeadingElement> & {
 	tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-}
+};
 
 const Htag = ({ tag, className, children }: HtagProps) => {
 	switch (tag) {

@@ -7,7 +7,7 @@ import HTag from '@/components/ui/HTag/HTag';
 const testSearchData = {
 	accounts: [
 		{
-			id: 1,
+			id: '1',
 			username: 'andrey.kiva',
 			title: 'hey man',
 			followers: 412,
@@ -15,7 +15,7 @@ const testSearchData = {
 			image: '',
 		},
 		{
-			id: 2,
+			id: '2',
 			username: 'andrey.kiva',
 			title: 'hey man',
 			followers: 412,
@@ -23,7 +23,7 @@ const testSearchData = {
 			image: '',
 		},
 		{
-			id: 3,
+			id: '3',
 			username: 'andrey.kiva',
 			title: 'hey man',
 			followers: 412,
@@ -33,114 +33,134 @@ const testSearchData = {
 	],
 	stories: [
 		{
-			id: 1,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '1',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 2,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '2',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 3,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '3',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 4,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '4',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 5,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '5',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 6,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '6',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 7,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '7',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 8,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '8',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 9,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '9',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 		{
-			id: 10,
-			userId: '123',
-			username: 'andrey.kiva',
-			userImage: '',
+			id: '10',
 			story: '',
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			likes: 99142,
 			views: 1244,
+			user: {
+				id: '123',
+				username: 'andrey.kiva',
+				image: '',
+			}
 		},
 	],
 };

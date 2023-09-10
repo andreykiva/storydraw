@@ -4,7 +4,11 @@ import HTag from '@/components/ui/HTag/HTag';
 import WithLogin from './WithLogin/WIthLogin';
 import WithPhone from './WithPhone/WithPhone';
 
-const LoginForm = ({ openReset }) => {
+type LoginFormProps = {
+	openReset: () => void;
+};
+
+const LoginForm = ({ openReset }: LoginFormProps) => {
 	const [loginMethod, setLoginMethod] = useState('phone');
 
 	return (

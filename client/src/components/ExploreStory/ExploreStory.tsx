@@ -7,12 +7,27 @@ import LikeIcon from '@/components/ui/icons/LikeIcon';
 import viewsImg from '@/assets/icons/views.svg';
 import { formatNumber } from '@/utils/numberUtils';
 
-const ExploreStory = (props) => {
-	const { id, userId, username, userImage, story, description, tags, likes, views, className } = props;
+type ExploreStoryProps = {
+	id: string;
+	story: string;
+	description: string;
+	tags: string[];
+	likes: number;
+	views: number;
+	className?: string;
+	user: {
+		id: string;
+		username: string;
+		image: string;
+	};
+};
+
+const ExploreStory = (props: ExploreStoryProps) => {
+	const { id, user, story, description, tags, likes, views, className } = props;
 
 	return (
 		<div className={[styles.ExploreStory, className].join(' ')}>
-			<Link className={styles.ExploreStoryContent} to={`/@${username}/story/${id}`}>
+			<Link className={styles.ExploreStoryContent} to={`/@${user.username}/story/${id}`}>
 				<img src={story || previewImg} alt="Story" className={styles.Story} />
 				<div className={styles.ViewsInfo}>
 					<img src={viewsImg} alt="Views" className={styles.ViewsIcon} />
@@ -28,11 +43,11 @@ const ExploreStory = (props) => {
 				))}
 			</p>
 			<div className={styles.UserInfo}>
-				<Link to={`/@${username}`} className={styles.UserLink}>
-					<img src={userImage || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
-					<span className={styles.Username}>{username}</span>
+				<Link to={`/@${user.username}`} className={styles.UserLink}>
+					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<span className={styles.Username}>{user.username}</span>
 				</Link>
-				<Link to={`/@${username}/story/${id}`} className={styles.LikesInfo}>
+				<Link to={`/@${user.username}/story/${id}`} className={styles.LikesInfo}>
 					<LikeIcon className={styles.LikeIcon} />
 					<span className={styles.Likes}>{formatNumber(likes)}</span>
 				</Link>

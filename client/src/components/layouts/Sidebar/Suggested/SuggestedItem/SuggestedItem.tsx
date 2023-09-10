@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import styles from './SuggestedItem.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 
-interface SuggestedItemProps {
+type SuggestedItemProps = {
 	username: string,
 	title: string,
 	image: string
-}
+};
 
 const SuggestedItem = ({ username, title, image }: SuggestedItemProps) => {
 	return (

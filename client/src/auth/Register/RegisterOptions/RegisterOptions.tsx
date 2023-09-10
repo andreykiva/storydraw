@@ -7,7 +7,11 @@ import twitterImg from '@/assets/icons/twitter.svg';
 import AuthOption from '@/auth/AuthOption/AuthOption';
 import Htag from '@/components/ui/HTag/HTag';
 
-const RegisterOptions = ({ openForm }) => {
+type RegisterOptionsProps = {
+	openForm: () => void;
+};
+
+const RegisterOptions = ({ openForm }: RegisterOptionsProps) => {
 	const loginWith = () => {
 		console.log('Login');
 	};

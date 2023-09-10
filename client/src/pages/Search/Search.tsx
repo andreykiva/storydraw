@@ -14,6 +14,7 @@ const Search = () => {
 
 	useEffect(() => {
 		dispatch(search(searchParam));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchParam]);
 
 	const links = [

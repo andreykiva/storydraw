@@ -3,7 +3,12 @@ import styles from './WithPhone.module.css';
 import formStyles from '@/auth/FormStyles.module.css';
 import Button from '@/components/ui/Button/Button';
 
-const WithPhone = ({ openReset, openWithLogin }) => {
+type WithPhoneProps = {
+	openReset: () => void;
+	openWithLogin: () => void;
+};
+
+const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 	const [formData, setFormData] = useState({
 		phone: '',
 		code: '',
@@ -16,13 +21,13 @@ const WithPhone = ({ openReset, openWithLogin }) => {
 		password: '',
 	});
 
-	const [showPassword, setShowPassword] = useState(false);
+	// const [showPassword, setShowPassword] = useState(false);
 
-	const handleTogglePassword = () => {
-		setShowPassword(!showPassword);
-	};
+	// const handleTogglePassword = () => {
+	// 	setShowPassword(!showPassword);
+	// };
 
-	const handleInputChange = (e) => {
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData({
 			...formData,
@@ -48,7 +53,7 @@ const WithPhone = ({ openReset, openWithLogin }) => {
 					onChange={handleInputChange}
 					required
 				/>
-				{formErrors.login && <span className={formStyles.InputError}>Error</span>}
+				{formErrors.phone && <span className={formStyles.InputError}>Error</span>}
 			</div>
 			<div className={formStyles.FormGroup}>
 				<input

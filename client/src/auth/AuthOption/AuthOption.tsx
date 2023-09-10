@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './AuthOption.module.css';
 
-const AuthOption = (props) => {
+type AuthOptionProps = {
+	title: string;
+	alt: string;
+	img: string;
+	handleClick: () => void;
+};
+
+const AuthOption = (props: AuthOptionProps) => {
 	const { img, alt, title, handleClick } = props;
 
 	return (

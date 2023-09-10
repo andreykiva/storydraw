@@ -4,7 +4,7 @@ import styles from './TagStory.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
 
-interface TagStoryProps {
+type TagStoryProps = {
 	id: string;
 	story: string;
 	description: string;
@@ -14,7 +14,7 @@ interface TagStoryProps {
 		username: string;
 		image: string;
 	};
-}
+};
 
 const TagStory = (props: TagStoryProps) => {
 	const { id, user, story, description, tags } = props;

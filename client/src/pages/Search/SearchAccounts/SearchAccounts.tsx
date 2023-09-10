@@ -4,7 +4,7 @@ import SearchAccount from './SearchAccount/SearchAccount';
 
 const testAccoutns = [
 	{
-		id: 1,
+		id: '1',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -12,7 +12,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 2,
+		id: '2',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -20,7 +20,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 3,
+		id: '3',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -28,7 +28,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 4,
+		id: '4',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -36,7 +36,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 5,
+		id: '5',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -44,7 +44,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 6,
+		id: '6',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -52,7 +52,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 7,
+		id: '7',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -60,7 +60,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 8,
+		id: '8',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -68,7 +68,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 9,
+		id: '9',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -76,7 +76,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 10,
+		id: '10',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -84,7 +84,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 11,
+		id: '11',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -92,7 +92,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 12,
+		id: '12',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -100,7 +100,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 13,
+		id: '13',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -108,7 +108,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 14,
+		id: '14',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,
@@ -116,7 +116,7 @@ const testAccoutns = [
 		image: '',
 	},
 	{
-		id: 15,
+		id: '15',
 		username: 'andrey.kiva',
 		title: 'hey man',
 		followers: 412,

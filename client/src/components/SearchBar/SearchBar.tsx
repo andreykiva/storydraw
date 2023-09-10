@@ -9,23 +9,23 @@ import SearchResults from './SearchResults/SearchResults';
 
 const testResults = [
 	{
-		id: 1,
+		id: '1',
 		title: 'result 1',
 	},
 	{
-		id: 2,
+		id: '2',
 		title: 'result 2',
 	},
 	{
-		id: 3,
+		id: '3',
 		title: 'result 3',
 	},
 	{
-		id: 4,
+		id: '4',
 		title: 'result 4',
 	},
 	{
-		id: 5,
+		id: '5',
 		title: 'result 5',
 	},
 ];
@@ -39,11 +39,12 @@ const SearchBar = ({ light = false }) => {
 	const searchInputRef = useRef(null);
 	const param = searchParams.get('q');
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
-	
+
 	useEffect(() => {
 		if (param && value !== param) {
 			setValue(param);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [param]);
 
 	useEffect(() => {
