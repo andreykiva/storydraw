@@ -4,18 +4,12 @@ import styles from './Comment.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import LikeIcon from '@/components/ui/icons/LikeIcon';
 import { formatNumber } from '@/utils/numberUtils';
+import type Comment from '@/types/Comment';
+import type User from '@/types/User';
 
-type CommentProps = {
-	id: string;
-	text: string;
-	date: string;
-	likes: number;
+type CommentProps = Comment & {
+	user: Pick<User, 'username' | 'title' | 'image'>;
 	reply: boolean;
-	user: {
-		username: string;
-		title: string;
-		image: string;
-	};
 };
 
 const Comment = (props: CommentProps) => {

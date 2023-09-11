@@ -4,14 +4,9 @@ import styles from './ProfileStory.module.css';
 import previewImg from '@/assets/images/preview.jpg';
 import viewsImg from '@/assets/icons/views.svg';
 import { formatNumber } from '@/utils/numberUtils';
+import type Story from '@/types/Story';
 
-type ProfileStoryProps = {
-	id: string;
-	story: string;
-	description: string;
-	tags: string[];
-	views: number;
-};
+type ProfileStoryProps = Pick<Story, 'id' | 'story' | 'description' | 'tags' | 'views'>;
 
 const ProfileStory = (props: ProfileStoryProps) => {
 	const { id, story, description, tags, views } = props;

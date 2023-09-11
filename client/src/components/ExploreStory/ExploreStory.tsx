@@ -6,20 +6,12 @@ import previewImg from '@/assets/images/preview.jpg';
 import LikeIcon from '@/components/ui/icons/LikeIcon';
 import viewsImg from '@/assets/icons/views.svg';
 import { formatNumber } from '@/utils/numberUtils';
+import type Story from '@/types/Story';
+import type User from '@/types/User';
 
-type ExploreStoryProps = {
-	id: string;
-	story: string;
-	description: string;
-	tags: string[];
-	likes: number;
-	views: number;
+type ExploreStoryProps = Pick<Story, 'id' | 'story' | 'description' | 'tags' | 'likes' | 'views'> & {
+	user: Pick<User, 'id' | 'username' | 'image'>;
 	className?: string;
-	user: {
-		id: string;
-		username: string;
-		image: string;
-	};
 };
 
 const ExploreStory = (props: ExploreStoryProps) => {

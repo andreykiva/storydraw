@@ -3,17 +3,11 @@ import { Link } from 'react-router-dom';
 import styles from './TagStory.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
+import type Story from '@/types/Story';
+import type User from '@/types/User';
 
-type TagStoryProps = {
-	id: string;
-	story: string;
-	description: string;
-	tags: string[];
-	user: {
-		id: string;
-		username: string;
-		image: string;
-	};
+type TagStoryProps = Pick<Story, 'id' | 'story' | 'description' | 'tags'> & {
+	user: Pick<User, 'id' | 'username' | 'image'>;
 };
 
 const TagStory = (props: TagStoryProps) => {

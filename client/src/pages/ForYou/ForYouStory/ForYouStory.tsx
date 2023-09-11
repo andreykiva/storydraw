@@ -10,24 +10,11 @@ import CommentIcon from '@/components/ui/icons/CommentIcon';
 import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
 import ShareIcon from '@/components/ui/icons/ShareIcon';
 import { formatNumber } from '@/utils/numberUtils';
+import type Story from '@/types/Story';
+import type User from '@/types/User';
 
-type ForYouStoryProps = {
-	id: string;
-	story: string;
-	description: string;
-	musicName: string;
-	musicId: string;
-	tags: string[];
-	likes: number;
-	comments: number;
-	favorites: number;
-	share: number;
-	user: {
-		id: string;
-		username: string;
-		title: string;
-		image: string;
-	};
+type ForYouStoryProps = Omit<Story, 'date' | 'views'> & {
+	user: Omit<User, 'description' | 'followers'>;
 };
 
 const ForYouStory = (props: ForYouStoryProps) => {

@@ -2,12 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SuggestedItem.module.css';
 import defaultImg from '@/assets/icons/default.svg';
+import type User from '@/types/User';
 
-type SuggestedItemProps = {
-	username: string,
-	title: string,
-	image: string
-};
+type SuggestedItemProps = Pick<User, 'username' | 'title' | 'image'>;
 
 const SuggestedItem = ({ username, title, image }: SuggestedItemProps) => {
 	return (

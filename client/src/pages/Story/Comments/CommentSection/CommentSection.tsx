@@ -4,19 +4,11 @@ import ArrowIcon from '@/components/ui/icons/ArrowIcon';
 import Comment from './Comment/Comment';
 import Replies from './Replies/Replies';
 import { formatNumber } from '@/utils/numberUtils';
+import type CommentType from '@/types/Comment';
+import type User from '@/types/User';
 
-type CommentSectionProps = {
-	id: string,
-	text: string,
-	date: string,
-	likes: number,
-	replies: number,
-	user: {
-		id: string,
-		username: string,
-		title: string,
-		image: string,
-	},
+type CommentSectionProps = CommentType & {
+	user: Omit<User, 'description' | 'followers'>;
 };
 
 const CommentSection = (props: CommentSectionProps) => {

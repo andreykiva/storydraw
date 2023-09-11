@@ -8,19 +8,11 @@ import LikeIcon from '@/components/ui/icons/LikeIcon';
 import ShareIcon from '@/components/ui/icons/ShareIcon';
 import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
 import { formatNumber } from '@/utils/numberUtils';
+import type Story from '@/types/Story';
+import type User from '@/types/User';
 
-type StoryInfoProps = {
-	description: string;
-	date: string;
-	musicName: string;
-	likes: number;
-	favorites: number;
-	share: number;
-	user: {
-		username: string;
-		title: string;
-		image: string;
-	};
+type StoryInfoProps = Pick<Story, 'description' | 'date' | 'musicName' | 'likes' | 'favorites' | 'share'> & {
+	user: Pick<User, 'username' | 'title' | 'image'>;
 };
 
 const StoryInfo = (props: StoryInfoProps) => {

@@ -4,11 +4,9 @@ import styles from './Follow.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
 import Button from '@/components/ui/Button/Button';
+import type User from '@/types/User';
 
-type FollowProps = {
-	username: string;
-	title: string;
-	image: string;
+type FollowProps = Pick<User, 'username' | 'title' | 'image'> & {
 	preview: string;
 };
 

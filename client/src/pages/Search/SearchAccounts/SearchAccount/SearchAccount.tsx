@@ -3,14 +3,9 @@ import { Link } from 'react-router-dom';
 import styles from './SearchAccount.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import { formatNumber } from '@/utils/numberUtils';
+import type User from '@/types/User';
 
-type SearchAccountProps = {
-	image: string;
-	username: string;
-	title: string;
-	description: string;
-	followers: number;
-};
+type SearchAccountProps = Omit<User, 'id'>;
 
 const SearchAccount = (props: SearchAccountProps) => {
 	const { image, username, title, description, followers } = props;
