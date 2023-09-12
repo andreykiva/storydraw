@@ -36,7 +36,7 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 	};
 
 	return (
-		<form className={styles.WithPhone}>
+		<form className={formStyles.WithPhone}>
 			<div className={formStyles.FormHeader}>
 				<span className={formStyles.HeaderTitle}>Enter phone number</span>
 				<span className={formStyles.HeaderBtn} onClick={openWithLogin}>

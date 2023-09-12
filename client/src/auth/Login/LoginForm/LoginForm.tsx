@@ -9,7 +9,7 @@ type LoginFormProps = {
 };
 
 const LoginForm = ({ openReset }: LoginFormProps) => {
-	const [loginMethod, setLoginMethod] = useState('phone');
+	const [loginMethod, setLoginMethod] = useState('login');
 
 	return (
 		<div className={styles.LoginForm}>

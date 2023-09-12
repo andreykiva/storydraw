@@ -19,7 +19,8 @@
 }
 
 .FormGroup {
-	margin-bottom: 12px;
+	margin-bottom: 10px;
+	position: relative;
 }
 
 .Input {
@@ -27,11 +28,49 @@
 	height: 46px;
 	padding: 0 12px;
 	background-color: rgb(55, 55, 55);
-	border-radius: 10px;
+	border: 1px solid rgb(55, 55, 55);
+	border-radius: 4px;
 	font-size: 16px;
 	font-weight: 600;
 	color: var(--main-color);
 	caret-color: var(--bright-green-color);
+}
+
+.FormGroup.GroupError .Input{
+	border-color: #FF4C3A;
+}
+
+.InputError {
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	color: #FF4C3A;
+	margin-top: 9px;
+}
+
+.InputIcons {
+	position: absolute;
+	right: 20px;
+	top: 14px;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+}
+ 
+.ShowPasswordIcon {
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+}
+
+.WarningIcon {
+	display: none;
+	width: 16px;
+	height: 16px;
+}
+
+.FormGroup.GroupError .WarningIcon{
+	display: block;
 }
 
 .FooterBtn {
@@ -39,6 +78,6 @@
 }
 
 .LoginBtn {
-	height: 44px;
-	border-radius: 10px;
+	height: 46px;
+	border-radius: 4px;
 }
