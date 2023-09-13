@@ -3,9 +3,9 @@ import styles from './WithLogin.module.css';
 import formStyles from '@/auth/FormStyles.module.css';
 import Button from '@/components/ui/Button/Button';
 import { validateLogin, validatePassword } from '@/utils/validators';
-import warningImg from '@/assets/icons/warning.svg';
-import eyeOpenedImg from '@/assets/icons/eye-opened.svg';
-import eyeClosedImg from '@/assets/icons/eye-closed.svg';
+import warningImg from '@/assets/icons/auth/warning.svg';
+import eyeOpenedImg from '@/assets/icons/auth/eye-opened.svg';
+import eyeClosedImg from '@/assets/icons/auth/eye-closed.svg';
 
 type WithLoginProps = {
 	openReset: () => void;

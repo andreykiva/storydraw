@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './RegisterOptions.module.css';
-import userImg from '@/assets/icons/user.svg';
-import googleImg from '@/assets/icons/google.svg';
-import facebookImg from '@/assets/icons/facebook.svg';
-import twitterImg from '@/assets/icons/twitter.svg';
+import userImg from '@/assets/icons/auth/user.svg';
+import googleImg from '@/assets/icons/auth/google.svg';
+import facebookImg from '@/assets/icons/auth/facebook.svg';
+import twitterImg from '@/assets/icons/auth/twitter.svg';
 import AuthOption from '@/auth/AuthOption/AuthOption';
 import Htag from '@/components/ui/HTag/HTag';
 
