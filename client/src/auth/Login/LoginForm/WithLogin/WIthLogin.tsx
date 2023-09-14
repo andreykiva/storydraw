@@ -33,6 +33,7 @@ const WithLogin = ({ openReset, openWithPhone }: WithLoginProps) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		console.log('Submit');
 	};
 
 	const handleInputFocus = (fieldName: string) => {
