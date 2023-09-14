@@ -1,0 +1,115 @@
+.Title {
+    text-align: center;
+	margin-bottom: 25px;
+}
+
+.BackBtn {
+	width: 38px;
+	height: 38px;
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	background: none;
+}
+
+.BackBtn:hover {
+	background-color: rgb(50, 50, 50);
+}
+
+.BackIcon {
+	width: 18px;
+	height: 18px;
+	transform: rotate(90deg);
+}
+
+.FormHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.HeaderBtn,
+.FooterBtn {
+	display: inline-flex;
+	font-size: 13px;
+	color: var(--main-color);
+	cursor: pointer;
+}
+
+.HeaderBtn:hover,
+.FooterBtn:hover {
+	opacity: .7;
+}
+
+/* ___________________________________*/
+
+.FormGroup {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.Input {
+	width: 100%;
+	height: 46px;
+	padding: 0 12px;
+	background-color: rgb(55, 55, 55);
+	border: 1px solid rgb(55, 55, 55);
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--main-color);
+	caret-color: var(--bright-green-color);
+}
+
+.FormGroup.GroupError .Input {
+	border-color: #FF4C3A;
+}
+
+.InputError {
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	color: #FF4C3A;
+	margin-top: 9px;
+}
+
+.InputIcons {
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	gap: 18px;
+	padding-right: 20px;
+}
+
+.WarningIcon {
+	display: none;
+	width: 16px;
+	height: 16px;
+}
+
+.FormGroup.GroupError .WarningIcon {
+	display: block;
+}
+
+/* ___________________________________*/
+
+.Footer {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.FooterDivider {
+	width: 1px;
+    height: 12px;
+    margin: 0 16px;
+    background: rgb(75, 75, 75);
+}
+
+.LoginBtn {
+	height: 46px;
+	border-radius: 4px;
+}
