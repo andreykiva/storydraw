@@ -5,7 +5,7 @@ import storyImg from '@/assets/images/preview.jpg';
 import closeImg from '@/assets/icons/close.svg';
 import reportImg from '@/assets/icons/report.svg';
 import SearchBar from '@/components/SearchBar/SearchBar';
-import Button from '@/components/ui/Button/Button';
+import Button from '@/components/ui/buttons/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
 import Comments from './Comments/Comments';
 import ArrowIcon from '@/components/ui/icons/ArrowIcon';

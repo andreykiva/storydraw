@@ -4,7 +4,7 @@ import styles from './ForYouStory.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
 import musicImg from '@/assets/icons/music.svg';
-import Button from '@/components/ui/Button/Button';
+import Button from '@/components/ui/buttons/Button/Button';
 import LikeIcon from '@/components/ui/icons/LikeIcon';
 import CommentIcon from '@/components/ui/icons/CommentIcon';
 import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
