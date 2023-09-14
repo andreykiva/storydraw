@@ -39,3 +39,33 @@ export const validatePassword = (password: string): string | null => {
 
 	return null;
 };
+
+export const validatePhone = (phone: string): string | null => {
+	if (!phone) {
+		return 'Phone number is required';
+	}
+
+	const phonePattern = /^[0-9]+$/;
+	if (!phonePattern.test(phone)) {
+		return 'Enter a valid phone number';
+	}
+
+	return null;
+};
+
+export const validateCode = (code: string): string | null => {
+	if (!code) {
+		return 'Code number is required';
+	}
+
+	if (code.length !== 6) {
+		return 'Enter 6-digit code';
+	}
+
+	const codePattern = /^[0-9]+$/;
+	if (!codePattern.test(code)) {
+		return 'Enter 6-digit code';
+	}
+
+	return null;
+};
