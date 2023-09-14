@@ -1,0 +1,62 @@
+.FormGroup {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.Input {
+	width: 100%;
+	height: 46px;
+	padding: 0 12px;
+	background-color: rgb(55, 55, 55);
+	border: 1px solid rgb(55, 55, 55);
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--main-color);
+	caret-color: var(--bright-green-color);
+}
+
+.FormGroup.GroupError .Input {
+	border-color: #FF4C3A;
+}
+
+.InputError {
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	color: #FF4C3A;
+	margin-top: 9px;
+}
+
+.InputIcon {
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	padding-right: 20px;
+}
+
+.WarningIcon {
+	display: none;
+	width: 16px;
+	height: 16px;
+}
+
+.FormGroup.GroupError .WarningIcon {
+	display: block;
+}
+
+/* .Code */
+.FormGroup.Code {
+	flex: 1 0;
+}
+
+.FormGroup.Code .Input {
+	border-radius: 4px 0 0 4px;
+}
+
+/* .Password */
+.FormGroup.Password .InputIcon {
+	padding-right: 56px;
+}

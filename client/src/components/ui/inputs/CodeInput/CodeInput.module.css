@@ -1,0 +1,14 @@
+.CodeInput {
+	display: flex;
+}
+
+.SendCodeBtn {
+	max-width: 112px;
+	height: 46px;
+	background-color: rgb(49, 49, 49);
+	border-radius: 0 4px 4px 0;
+}
+
+.SendCodeBtn:not(:disabled):hover {
+	background-color: rgba(49, 49, 49, 0.8);
+}
