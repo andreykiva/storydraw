@@ -35,7 +35,7 @@ const SearchBar = ({ light = false }) => {
 	// const { isSearchOpen } = useSelector((state) => state.search);
 	const [searchParams] = useSearchParams();
 	const [value, setValue] = useState('');
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setOpen] = useState(false);
 	const searchInputRef = useRef(null);
 	const param = searchParams.get('q');
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
@@ -56,7 +56,7 @@ const SearchBar = ({ light = false }) => {
 
 	const handleBodyClick = (e: MouseEvent) => {
 		if (!searchInputRef.current.contains(e.target)) {
-			setIsOpen(false);
+			setOpen(false);
 		}
 	};
 
@@ -65,10 +65,10 @@ const SearchBar = ({ light = false }) => {
 
 		if (newValue.trim()) {
 			setValue(newValue);
-			setIsOpen(true);
+			setOpen(true);
 		} else {
 			setValue('');
-			setIsOpen(false);
+			setOpen(false);
 		}
 	};
 

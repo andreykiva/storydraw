@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './HeaderBtns.module.css';
 import createIcon from '@/assets/icons/create.svg';
 import MoreBtn from './MoreBtn/MoreBtn';
-import Button from '@/components/ui/Button/Button';
+import Button from '@/components/ui/buttons/Button/Button';
 
 const HeaderBtns = () => {
 	return (
