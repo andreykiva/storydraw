@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './LoginForm.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import HTag from '@/components/ui/HTag/HTag';
 import WithLogin from './WithLogin/WIthLogin';
 import WithPhone from './WithPhone/WithPhone';
@@ -9,11 +9,11 @@ type LoginFormProps = {
 };
 
 const LoginForm = ({ openReset }: LoginFormProps) => {
-	const [loginMethod, setLoginMethod] = useState('login');
+	const [loginMethod, setLoginMethod] = useState('phone');
 
 	return (
-		<div className={styles.LoginForm}>
-			<HTag tag="h2" className={styles.Title}>
+		<div>
+			<HTag tag="h2" className={authSharedStyles.Title}>
 				Log in
 			</HTag>
 			{loginMethod === 'login' && (

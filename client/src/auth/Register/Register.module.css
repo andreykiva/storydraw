@@ -1,22 +1,3 @@
 .Register {
 	padding: 0 50px;
 }
-
-.BackBtn {
-	width: 38px;
-	height: 38px;
-	position: absolute;
-	left: 15px;
-	top: 15px;
-	background: none;
-}
-
-.BackBtn:hover {
-	background-color: rgb(50, 50, 50);
-}
-
-.BackIcon {
-	width: 18px;
-	height: 18px;
-	transform: rotate(90deg);
-}

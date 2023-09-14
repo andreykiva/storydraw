@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import styles from './WithLogin.module.css';
-import formStyles from '@/auth/FormStyles.module.css';
-import Button from '@/components/ui/Button/Button';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import Input from '@/components/ui/inputs/Input/Input';
+import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
+import Button from '@/components/ui/buttons/Button/Button';
 import { validateLogin, validatePassword } from '@/utils/validators';
-import warningImg from '@/assets/icons/auth/warning.svg';
-import eyeOpenedImg from '@/assets/icons/auth/eye-opened.svg';
-import eyeClosedImg from '@/assets/icons/auth/eye-closed.svg';
 
 type WithLoginProps = {
 	openReset: () => void;
@@ -23,13 +21,7 @@ const WithLogin = ({ openReset, openWithPhone }: WithLoginProps) => {
 		password: '',
 	});
 
-	const disabled = Boolean(validateLogin(formData.login) || validatePassword(formData.password));
-
-	const [showPassword, setShowPassword] = useState(false);
-
-	const handleTogglePassword = () => {
-		setShowPassword(!showPassword);
-	};
+	const isFormBtnDisabled = Boolean(validateLogin(formData.login) || validatePassword(formData.password));
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -69,57 +61,40 @@ const WithLogin = ({ openReset, openWithPhone }: WithLoginProps) => {
 	};
 
 	return (
-		<form className={styles.WithLogin} onSubmit={handleSubmit}>
-			<div className={formStyles.FormHeader}>
-				<span className={formStyles.HeaderTitle}>Enter email or username</span>
-				<span className={formStyles.HeaderBtn} onClick={openWithPhone}>
+		<form onSubmit={handleSubmit}>
+			<div className={authSharedStyles.FormHeader}>
+				<span className={authSharedStyles.HeaderTitle}>Email or username</span>
+				<span className={authSharedStyles.HeaderBtn} onClick={openWithPhone}>
 					Log in with phone
 				</span>
 			</div>
-			<div className={[formStyles.FormGroup, formErrors.login && formStyles.GroupError].join(' ')}>
-				<div className={formStyles.InputIcons}>
-					<img src={warningImg} alt="Warning" className={formStyles.WarningIcon} />
-				</div>
-				<input
-					className={formStyles.Input}
-					type="text"
-					name="login"
-					placeholder="Email or username"
-					value={formData.login}
-					onChange={handleInputChange}
-					onFocus={handleInputFocus.bind(this, 'login')}
-					onBlur={handleInputBlur.bind(this, 'login')}
-					required
-				/>
-				{formErrors.login && <p className={formStyles.InputError}>{formErrors.login}</p>}
+			<Input
+				type="text"
+				name="login"
+				placeholder="Email or username"
+				value={formData.login}
+				error={formErrors.login}
+				onChange={handleInputChange}
+				onFocus={handleInputFocus.bind(this, 'login')}
+				onBlur={handleInputBlur.bind(this, 'login')}
+				required
+			/>
+			<PasswordInput
+				name="password"
+				placeholder="Password"
+				value={formData.password}
+				error={formErrors.password}
+				onChange={handleInputChange}
+				onFocus={handleInputFocus.bind(this, 'password')}
+				onBlur={handleInputBlur.bind(this, 'password')}
+				required
+			/>
+			<div className={authSharedStyles.Footer}>
+				<span className={authSharedStyles.FooterBtn} onClick={openReset}>
+					Forgot password?
+				</span>
 			</div>
-			<div className={[formStyles.FormGroup, formErrors.password && formStyles.GroupError].join(' ')}>
-				<div className={formStyles.InputIcons}>
-					<img src={warningImg} alt="Warning" className={formStyles.WarningIcon} />
-					<img
-						src={showPassword ? eyeOpenedImg : eyeClosedImg}
-						alt="Eye"
-						className={formStyles.ShowPasswordIcon}
-						onClick={handleTogglePassword}
-					/>
-				</div>
-				<input
-					className={formStyles.Input}
-					type={showPassword ? 'text' : 'password'}
-					name="password"
-					placeholder="Password"
-					value={formData.password}
-					onChange={handleInputChange}
-					onFocus={handleInputFocus.bind(this, 'password')}
-					onBlur={handleInputBlur.bind(this, 'password')}
-					required
-				/>
-				{formErrors.password && <p className={formStyles.InputError}>{formErrors.password}</p>}
-			</div>
-			<span className={formStyles.FooterBtn} onClick={openReset}>
-				Forgot password?
-			</span>
-			<Button className={formStyles.LoginBtn} type="submit" disabled={disabled}>
+			<Button className={authSharedStyles.LoginBtn} type="submit" disabled={isFormBtnDisabled}>
 				Log in
 			</Button>
 		</form>

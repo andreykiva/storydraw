@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './LoginOptions.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import qrCodeImg from '@/assets/icons/auth/qr-code.svg';
 import userImg from '@/assets/icons/auth/user.svg';
 import googleImg from '@/assets/icons/auth/google.svg';
@@ -67,7 +68,7 @@ const LoginOptions = ({ openForm, openQRCode }: LoginOptionsProps) => {
 
 	return (
 		<div className={styles.LoginOptions}>
-			<Htag tag="h2" className={styles.Title}>
+			<Htag tag="h2" className={authSharedStyles.Title}>
 				Log in to StoryDraw
 			</Htag>
 			<ul className={styles.LoginOptionsList}>

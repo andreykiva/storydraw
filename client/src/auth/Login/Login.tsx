@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import LoginOptions from './LoginOptions/LoginOptions';
 import LoginForm from './LoginForm/LoginForm';
 import ResetPasswordForm from './ResetPasswordForm/ResetPasswordForm';
 import LoginWithQR from './LoginWithQR/LoginWithQR';
 import ArrowIcon from '@/components/ui/icons/ArrowIcon';
-import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 
 const Login = () => {
 	const [loginView, setLoginView] = useState('form');
@@ -14,10 +15,10 @@ const Login = () => {
 		<div className={styles.Login}>
 			{loginView !== 'options' && (
 				<RoundButton
-					className={styles.BackBtn}
+					className={authSharedStyles.BackBtn}
 					onClick={setLoginView.bind(this, loginView === 'reset' ? 'form' : 'options')}
 				>
-					<ArrowIcon className={styles.BackIcon} />
+					<ArrowIcon className={authSharedStyles.BackIcon} />
 				</RoundButton>
 			)}
 

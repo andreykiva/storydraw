@@ -5,7 +5,7 @@ import Login from './Login/Login';
 import Register from './Register/Register';
 import closeImg from '@/assets/icons/close.svg';
 import { closeAuth } from '@/features/auth/authSlice';
-import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 
 const Auth = () => {
 	const dispatch = useDispatch();
