@@ -23,7 +23,7 @@ const PasswordInput = ({ error, ...rest }: PasswordInputProps) => {
 				className={styles.ShowPasswordIcon}
 				onClick={handleTogglePassword}
 			/>
-			<Input type={showPassword ? 'text' : 'password'} error={error} {...rest} />
+			<Input type={showPassword ? 'text' : 'password'} mode="Password" error={error} {...rest} />
 		</div>
 	);
 };

@@ -11,7 +11,7 @@ type CodeInputProps = React.ComponentProps<'input'> & {
 const CodeInput = ({ error, disabled, ...rest }: CodeInputProps) => {
 	return (
 		<div className={styles.CodeInput}>
-			<Input type="text" error={error} {...rest} />
+			<Input type="text" mode="Code" error={error} {...rest} />
 			<Button className={styles.SendCodeBtn} disabled={disabled}>
 				Send code
 			</Button>

@@ -1,5 +1,6 @@
 .FormGroup {
 	position: relative;
+	flex: 1 0;
 	margin-bottom: 10px;
 }
 
@@ -48,10 +49,6 @@
 }
 
 /* .Code */
-.FormGroup.Code {
-	flex: 1 0;
-}
-
 .FormGroup.Code .Input {
 	border-radius: 4px 0 0 4px;
 }
@@ -59,4 +56,9 @@
 /* .Password */
 .FormGroup.Password .InputIcon {
 	padding-right: 56px;
+}
+
+/* .Phone */
+.FormGroup.Phone .Input {
+	border-radius: 0 4px 4px 0;
 }
