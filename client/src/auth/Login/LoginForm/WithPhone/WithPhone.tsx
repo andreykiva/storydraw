@@ -5,6 +5,8 @@ import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
 import { validatePhone, validatePassword, validateCode } from '@/utils/validators';
+import Select from '@/components/ui/Select/Select';
+import countries from '@/data/countries';
 
 type WithPhoneProps = {
 	openReset: () => void;
@@ -24,7 +26,7 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 		password: '',
 	});
 
-	const [isPasswordMode, setPasswordMode] = useState(false);
+	const [isPasswordMode, setIsPasswordMode] = useState(false);
 
 	const isFormBtnDisabled = Boolean(
 		validatePhone(formData.phone) ||
@@ -75,6 +77,10 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 		});
 	};
 
+	// const handleSelectChange = (selectedValue: string) => {
+	// 	console.log('Selected value:', selectedValue);
+	// };
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className={authSharedStyles.FormHeader}>
@@ -83,17 +89,21 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 					Log in with email or username
 				</span>
 			</div>
-			<Input
-				type="text"
-				name="phone"
-				placeholder="Phone number"
-				value={formData.phone}
-				error={formErrors.phone}
-				onChange={handleInputChange}
-				onFocus={handleInputFocus.bind(this, 'phone')}
-				onBlur={handleInputBlur.bind(this, 'phone')}
-				required
-			/>
+			<div className={authSharedStyles.Select}>
+				<Select options={countries} defaultOption={countries[0]} />
+				<Input
+					type="text"
+					name="phone"
+					mode="Phone"
+					placeholder="Phone number"
+					value={formData.phone}
+					error={formErrors.phone}
+					onChange={handleInputChange}
+					onFocus={handleInputFocus.bind(this, 'phone')}
+					onBlur={handleInputBlur.bind(this, 'phone')}
+					required
+				/>
+			</div>
 			{isPasswordMode ? (
 				<PasswordInput
 					name="password"
@@ -125,12 +135,12 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 							Forgot password?
 						</span>
 						<span className={authSharedStyles.FooterDivider}></span>
-						<span className={authSharedStyles.FooterBtn} onClick={setPasswordMode.bind(this, false)}>
+						<span className={authSharedStyles.FooterBtn} onClick={setIsPasswordMode.bind(this, false)}>
 							Log in with code
 						</span>
 					</>
 				) : (
-					<span className={authSharedStyles.FooterBtn} onClick={setPasswordMode.bind(this, true)}>
+					<span className={authSharedStyles.FooterBtn} onClick={setIsPasswordMode.bind(this, true)}>
 						Log in with password
 					</span>
 				)}

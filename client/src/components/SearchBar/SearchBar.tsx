@@ -35,7 +35,7 @@ const SearchBar = ({ light = false }) => {
 	// const { isSearchOpen } = useSelector((state) => state.search);
 	const [searchParams] = useSearchParams();
 	const [value, setValue] = useState('');
-	const [isOpen, setOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 	const searchInputRef = useRef(null);
 	const param = searchParams.get('q');
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
@@ -48,15 +48,16 @@ const SearchBar = ({ light = false }) => {
 	}, [param]);
 
 	useEffect(() => {
-		document.body.addEventListener('click', handleBodyClick);
+		document.addEventListener('click', handleDocumentClick);
 		return () => {
-			document.body.removeEventListener('click', handleBodyClick);
+			document.removeEventListener('click', handleDocumentClick);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const handleBodyClick = (e: MouseEvent) => {
+	const handleDocumentClick = (e: MouseEvent) => {
 		if (!searchInputRef.current.contains(e.target)) {
-			setOpen(false);
+			setIsOpen(false);
 		}
 	};
 
@@ -65,10 +66,10 @@ const SearchBar = ({ light = false }) => {
 
 		if (newValue.trim()) {
 			setValue(newValue);
-			setOpen(true);
+			setIsOpen(true);
 		} else {
 			setValue('');
-			setOpen(false);
+			setIsOpen(false);
 		}
 	};
 

@@ -113,3 +113,7 @@
 	height: 46px;
 	border-radius: 4px;
 }
+
+.Select {
+	display: flex;
+}

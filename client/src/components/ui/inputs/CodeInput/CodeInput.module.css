@@ -1,5 +1,6 @@
 .CodeInput {
 	display: flex;
+	width: 100%;
 }
 
 .SendCodeBtn {
