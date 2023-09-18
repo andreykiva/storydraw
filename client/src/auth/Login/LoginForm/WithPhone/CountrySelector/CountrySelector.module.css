@@ -1,15 +1,16 @@
-.Select {
+.CountrySelector {
 	position: relative;
 	display: flex;
 	align-items: center;
 	height: 46px;
 	padding: 0 14px 0 12px;
 	background-color: rgb(55, 55, 55);
+	border: 1px solid rgb(55, 55, 55);
 	border-radius: 4px 0 0 4px;
 	cursor: pointer;
 }
 
-.Select::after {
+.CountrySelector::after {
 	content: "";
 	position: absolute;
 	right: 0;
@@ -21,27 +22,27 @@
 	background: rgb(75, 75, 75);
 }
 
-.SelectHeader {
+.CountrySelectorHeader {
 	display: flex;
 	align-items: center;
 }
 
-.SelectValue {
+.SelectorValue {
 	font-size: 18px;
 	font-weight: 400;
 	margin-right: 14px;
 }
 
-.SelectArrow {
+.SelectorArrow {
 	width: 10px;
 	transition: transform .25s ease-in-out;
 }
 
-.SelectArrow.ArrowUp {
+.SelectorArrow.ArrowUp {
 	transform: rotate(180deg);
 }
 
-.SelectBody {
+.CountrySelectorBody {
 	position: absolute;
 	top: 56px;
 	left: 0;

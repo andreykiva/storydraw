@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styles from './Select.module.css';
+import styles from './CountrySelector.module.css';
 import arrowDownImg from '@/assets/icons/auth/arrow-down.svg';
 import searchImg from '@/assets/icons/search.svg';
 import checkImg from '@/assets/icons/auth/check.svg';
@@ -11,9 +11,10 @@ type Option = {
 	abbreviation: string;
 };
 
-type SelectProps = {
+type CountrySelectorProps = {
 	options: Option[];
-	defaultOption: Option;
+	selectedOption: Option;
+	selectOption: (option: Option) => void;
 };
 
 const searchAndSortCountries = (searchArr: Option[], searchTerm: string) => {
@@ -55,8 +56,7 @@ const highlightText = (text: string, searchTerm: string) => {
 	);
 };
 
-const Select = ({ options, defaultOption }: SelectProps) => {
-	const [selectedOption, setSelectedOption] = useState(defaultOption);
+const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelectorProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [value, setValue] = useState('');
 	const selectHeaderRef = useRef(null);
@@ -65,7 +65,7 @@ const Select = ({ options, defaultOption }: SelectProps) => {
 	const sortedOptions = searchAndSortCountries(options, value);
 
 	const handleSelectChange = (option: Option) => {
-		setSelectedOption(option);
+		selectOption(option);
 		setIsOpen(false);
 	};
 
@@ -99,19 +99,19 @@ const Select = ({ options, defaultOption }: SelectProps) => {
 	}, []);
 
 	return (
-		<div className={styles.Select}>
-			<div className={styles.SelectHeader} onClick={toggleSelect} ref={selectHeaderRef}>
-				<span className={styles.SelectValue}>
+		<div className={styles.CountrySelector}>
+			<div className={styles.CountrySelectorHeader} onClick={toggleSelect} ref={selectHeaderRef}>
+				<span className={styles.SelectorValue}>
 					{`${selectedOption.abbreviation} ${selectedOption.phonePrefix}`}
 				</span>
 				<img
 					src={arrowDownImg}
 					alt="Arrow down"
-					className={[styles.SelectArrow, isOpen && styles.ArrowUp].join(' ')}
+					className={[styles.SelectorArrow, isOpen && styles.ArrowUp].join(' ')}
 				/>
 			</div>
 			{isOpen && (
-				<div className={styles.SelectBody} ref={selectBodyRef}>
+				<div className={styles.CountrySelectorBody} ref={selectBodyRef}>
 					<div className={styles.SearchBar}>
 						<img src={searchImg} alt="Search" className={styles.SearchIcon} />
 						<input
@@ -147,4 +147,4 @@ const Select = ({ options, defaultOption }: SelectProps) => {
 	);
 };
 
-export default Select;
+export default CountrySelector;

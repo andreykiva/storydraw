@@ -5,8 +5,15 @@ import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
 import { validatePhone, validatePassword, validateCode } from '@/utils/validators';
-import Select from '@/components/ui/Select/Select';
+import CountrySelector from './CountrySelector/CountrySelector';
 import countries from '@/data/countries';
+
+type Option = {
+	id: string;
+	name: string;
+	phonePrefix: string;
+	abbreviation: string;
+};
 
 type WithPhoneProps = {
 	openReset: () => void;
@@ -18,6 +25,7 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 		phone: '',
 		code: '',
 		password: '',
+		country: countries[0],
 	});
 
 	const [formErrors, setFormErrors] = useState({
@@ -77,9 +85,12 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 		});
 	};
 
-	// const handleSelectChange = (selectedValue: string) => {
-	// 	console.log('Selected value:', selectedValue);
-	// };
+	const handleSelectChange = (selectedCountry: Option) => {
+		setFormData({
+			...formData,
+			country: selectedCountry,
+		});
+	};
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -89,8 +100,12 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 					Log in with email or username
 				</span>
 			</div>
-			<div className={authSharedStyles.Select}>
-				<Select options={countries} defaultOption={countries[0]} />
+			<div className={authSharedStyles.PhoneField}>
+				<CountrySelector
+					options={countries}
+					selectedOption={formData.country}
+					selectOption={handleSelectChange}
+				/>
 				<Input
 					type="text"
 					name="phone"
