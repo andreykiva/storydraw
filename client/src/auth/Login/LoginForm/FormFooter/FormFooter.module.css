@@ -1,0 +1,22 @@
+.FormFooter {
+	display: flex;
+	align-items: center;
+}
+
+.FooterDivider {
+	width: 1px;
+	height: 12px;
+	margin: 0 16px;
+	background: rgb(75, 75, 75);
+}
+
+.FooterBtn {
+	display: inline-flex;
+	font-size: 13px;
+	color: var(--main-color);
+	cursor: pointer;
+}
+
+.FooterBtn:hover {
+	opacity: .7;
+}
