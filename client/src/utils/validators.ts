@@ -1,3 +1,15 @@
+import { emailPattern, stringPattern, passwordPattern, phonePattern, codePattern } from './regexpUtils';
+
+export const validateEmail = (email: string): string | null => {
+	if (!email) {
+		return 'Email is required';
+	}
+
+	if (!emailPattern.test(email)) {
+		return 'Enter a valid email address';
+	}
+};
+
 export const validateLogin = (login: string): string | null => {
 	if (!login) {
 		return 'Login is required';
@@ -8,14 +20,8 @@ export const validateLogin = (login: string): string | null => {
 	}
 
 	if (login.includes('@')) {
-		const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-		if (!emailPattern.test(login)) {
-			return 'Enter a valid email address';
-		}
+		validateEmail(login);
 	} else {
-		const stringPattern = /^[A-Za-z0-9]+$/;
-
 		if (!stringPattern.test(login)) {
 			return 'Login must contain only letters and numbers';
 		}
@@ -32,7 +38,6 @@ export const validatePassword = (password: string): string | null => {
 		return 'Password must be between 8 and 20 characters';
 	}
 
-	const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
 	if (!passwordPattern.test(password)) {
 		return 'Password must contain letters, numbers, and special characters';
 	}
@@ -45,7 +50,6 @@ export const validatePhone = (phone: string): string | null => {
 		return 'Phone number is required';
 	}
 
-	const phonePattern = /^[0-9]+$/;
 	if (!phonePattern.test(phone)) {
 		return 'Enter a valid phone number';
 	}
@@ -62,7 +66,6 @@ export const validateCode = (code: string): string | null => {
 		return 'Enter 6-digit code';
 	}
 
-	const codePattern = /^[0-9]+$/;
 	if (!codePattern.test(code)) {
 		return 'Enter 6-digit code';
 	}
