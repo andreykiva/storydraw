@@ -7,11 +7,13 @@ import closeImg from '@/assets/icons/close.svg';
 import { closeAuth } from '@/features/auth/authSlice';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 
+type AuthMode = 'login' | 'register';
+
 const Auth = () => {
 	const dispatch = useDispatch();
-	const [authMode, setAuthMode] = useState('login');
+	const [authMode, setAuthMode] = useState<AuthMode>('login');
 
-	const handleModeChange = (newMode: string) => {
+	const handleModeChange = (newMode: AuthMode) => {
 		setAuthMode(newMode);
 	};
 
