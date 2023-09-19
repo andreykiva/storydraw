@@ -9,7 +9,7 @@ import twitterImg from '@/assets/icons/auth/twitter.svg';
 import appleImg from '@/assets/icons/auth/apple.svg';
 import instagramImg from '@/assets/icons/auth/instagram.svg';
 import AuthOption from '@/auth/AuthOption/AuthOption';
-import Htag from '@/components/ui/HTag/HTag';
+import HTag from '@/components/ui/HTag/HTag';
 
 type LoginOptionsProps = {
 	openForm: () => void;
@@ -68,9 +68,9 @@ const LoginOptions = ({ openForm, openQRCode }: LoginOptionsProps) => {
 
 	return (
 		<div className={styles.LoginOptions}>
-			<Htag tag="h2" className={authSharedStyles.Title}>
+			<HTag tag="h2" className={authSharedStyles.Title}>
 				Log in to StoryDraw
-			</Htag>
+			</HTag>
 			<ul className={styles.LoginOptionsList}>
 				{options.map((option) => (
 					<AuthOption key={option.alt} {...option} />

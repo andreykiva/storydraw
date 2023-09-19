@@ -1,11 +1,5 @@
 import { v4 } from 'uuid';
-
-type Country = {
-	id: string;
-	name: string;
-	phonePrefix: string;
-	abbreviation: string;
-};
+import type Country from '@/types/Country';
 
 const countries: Country[] = [
 	{ id: v4(), name: 'Afghanistan', phonePrefix: '+93', abbreviation: 'AF' },

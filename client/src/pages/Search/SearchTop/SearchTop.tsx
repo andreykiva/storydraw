@@ -43,7 +43,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '2',
@@ -56,7 +56,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '3',
@@ -69,7 +69,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '4',
@@ -82,7 +82,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '5',
@@ -95,7 +95,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '6',
@@ -108,7 +108,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '7',
@@ -121,7 +121,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '8',
@@ -134,7 +134,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '9',
@@ -147,7 +147,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '10',
@@ -160,7 +160,7 @@ const testSearchData = {
 				id: '123',
 				username: 'andrey.kiva',
 				image: '',
-			}
+			},
 		},
 	],
 };

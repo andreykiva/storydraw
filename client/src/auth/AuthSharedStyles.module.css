@@ -49,7 +49,6 @@
 .Footer {
 	display: flex;
 	align-items: center;
-	margin-bottom: 20px;
 }
 
 .FooterDivider {
@@ -62,4 +61,5 @@
 .LoginBtn {
 	height: 46px;
 	border-radius: 4px;
+	margin-top: 30px;
 }

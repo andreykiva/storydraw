@@ -8,8 +8,10 @@ type LoginFormProps = {
 	openReset: () => void;
 };
 
+type LoginMethod = 'login' | 'phone';
+
 const LoginForm = ({ openReset }: LoginFormProps) => {
-	const [loginMethod, setLoginMethod] = useState('phone');
+	const [loginMethod, setLoginMethod] = useState<LoginMethod>('phone');
 
 	return (
 		<div>

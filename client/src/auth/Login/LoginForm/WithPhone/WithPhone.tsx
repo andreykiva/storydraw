@@ -5,15 +5,9 @@ import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
 import { validatePhone, validatePassword, validateCode } from '@/utils/validators';
-import CountrySelector from './CountrySelector/CountrySelector';
+import CountrySelector from '@/components/CountrySelector/CountrySelector';
 import countries from '@/data/countries';
-
-type Option = {
-	id: string;
-	name: string;
-	phonePrefix: string;
-	abbreviation: string;
-};
+import type Country from '@/types/Country';
 
 type WithPhoneProps = {
 	openReset: () => void;
@@ -85,7 +79,7 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 		});
 	};
 
-	const handleSelectChange = (selectedCountry: Option) => {
+	const handleSelectChange = (selectedCountry: Country) => {
 		setFormData({
 			...formData,
 			country: selectedCountry,
@@ -95,7 +89,7 @@ const WithPhone = ({ openReset, openWithLogin }: WithPhoneProps) => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className={authSharedStyles.FormHeader}>
-				<span className={authSharedStyles.HeaderTitle}>Phone number</span>
+				<span className={authSharedStyles.HeaderTitle}>Enter phone number</span>
 				<span className={authSharedStyles.HeaderBtn} onClick={openWithLogin}>
 					Log in with email or username
 				</span>

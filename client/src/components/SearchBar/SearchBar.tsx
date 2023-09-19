@@ -5,6 +5,7 @@ import styles from './SearchBar.module.css';
 // import { openSearch, closeSearch } from '@/features/search/searchSlice';
 import searchImg from '@/assets/icons/search.svg';
 import SearchResults from './SearchResults/SearchResults';
+import useClickOutside from '@/hooks/useClickOutside';
 // import { searchAPI } from '@/services/searchService';
 
 const testResults = [
@@ -47,19 +48,9 @@ const SearchBar = ({ light = false }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [param]);
 
-	useEffect(() => {
-		document.addEventListener('click', handleDocumentClick);
-		return () => {
-			document.removeEventListener('click', handleDocumentClick);
-		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	const handleDocumentClick = (e: MouseEvent) => {
-		if (!searchInputRef.current.contains(e.target)) {
-			setIsOpen(false);
-		}
-	};
+	useClickOutside(searchInputRef, () => {
+		setIsOpen(false);
+	});
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue = e.target.value;

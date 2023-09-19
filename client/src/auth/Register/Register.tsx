@@ -6,8 +6,10 @@ import RegisterForm from './RegisterForm/RegisterForm';
 import ArrowIcon from '@/components/ui/icons/ArrowIcon';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 
+type RegisterView = 'options' | 'form';
+
 const Register = () => {
-	const [registerView, setRegisterView] = useState('options');
+	const [registerView, setRegisterView] = useState<RegisterView>('options');
 
 	return (
 		<div className={styles.Register}>

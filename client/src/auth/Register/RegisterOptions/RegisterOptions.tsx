@@ -6,7 +6,7 @@ import googleImg from '@/assets/icons/auth/google.svg';
 import facebookImg from '@/assets/icons/auth/facebook.svg';
 import twitterImg from '@/assets/icons/auth/twitter.svg';
 import AuthOption from '@/auth/AuthOption/AuthOption';
-import Htag from '@/components/ui/HTag/HTag';
+import HTag from '@/components/ui/HTag/HTag';
 
 type RegisterOptionsProps = {
 	openForm: () => void;
@@ -46,9 +46,9 @@ const RegisterOptions = ({ openForm }: RegisterOptionsProps) => {
 
 	return (
 		<div className={styles.RegisterOptions}>
-			<Htag tag="h2" className={authSharedStyles.Title}>
+			<HTag tag="h2" className={authSharedStyles.Title}>
 				Sign Up for StoryDraw
-			</Htag>
+			</HTag>
 			<ul className={styles.RegisterOptionsList}>
 				{options.map((option) => (
 					<AuthOption key={option.alt} {...option} />

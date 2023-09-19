@@ -8,8 +8,10 @@ import LoginWithQR from './LoginWithQR/LoginWithQR';
 import ArrowIcon from '@/components/ui/icons/ArrowIcon';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 
+type LoginView = 'options' | 'form' | 'reset' | 'qrcode';
+
 const Login = () => {
-	const [loginView, setLoginView] = useState('form');
+	const [loginView, setLoginView] = useState<LoginView>('options');
 
 	return (
 		<div className={styles.Login}>
@@ -21,7 +23,6 @@ const Login = () => {
 					<ArrowIcon className={authSharedStyles.BackIcon} />
 				</RoundButton>
 			)}
-
 			{loginView === 'options' && (
 				<LoginOptions
 					openForm={setLoginView.bind(this, 'form')}
