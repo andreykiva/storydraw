@@ -9,20 +9,19 @@ type FormHeaderProps = {
 };
 
 const FormHeader = ({ loginMethod, setLoginMethod }: FormHeaderProps) => {
+	const isLoginAndPassword = loginMethod === 'loginAndPassword';
+
 	return (
 		<div className={authSharedStyles.FormHeader}>
 			<span className={authSharedStyles.HeaderTitle}>
-				{loginMethod === 'loginAndPassword' ? 'Email or username' : 'Enter phone number'}
+				{isLoginAndPassword ? 'Email or username' : 'Enter phone number'}
 			</span>
-			{loginMethod === 'loginAndPassword' ? (
-				<span className={authSharedStyles.HeaderBtn} onClick={setLoginMethod.bind(this, 'phoneAndCode')}>
-					Log in with phone
-				</span>
-			) : (
-				<span className={authSharedStyles.HeaderBtn} onClick={setLoginMethod.bind(this, 'loginAndPassword')}>
-					Log in with email or username
-				</span>
-			)}
+			<span
+				className={authSharedStyles.HeaderBtn}
+				onClick={setLoginMethod.bind(this, isLoginAndPassword ? 'phoneAndCode' : 'loginAndPassword')}
+			>
+				{isLoginAndPassword ? 'Log in with phone' : 'Log in with email or username'}
+			</span>
 		</div>
 	);
 };

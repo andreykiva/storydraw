@@ -5,19 +5,22 @@ type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
 
 type FormFooterProps = {
 	loginMethod: LoginMethod;
-	openReset: () => void;
+	openResetForm: () => void;
 	setLoginMethod: (loginMethod: LoginMethod) => void;
 };
 
-const FormFooter = ({ loginMethod, openReset, setLoginMethod }: FormFooterProps) => {
+const FormFooter = ({ loginMethod, openResetForm, setLoginMethod }: FormFooterProps) => {
+	const isPhoneAndPassword = loginMethod === 'phoneAndPassword';
+	const isPhoneAndCode = loginMethod === 'phoneAndCode';
+
 	return (
 		<div className={styles.FormFooter}>
 			{loginMethod !== 'phoneAndCode' && (
-				<span className={styles.FooterBtn} onClick={openReset}>
+				<span className={styles.FooterBtn} onClick={openResetForm}>
 					Forgot password?
 				</span>
 			)}
-			{loginMethod === 'phoneAndPassword' && (
+			{isPhoneAndPassword && (
 				<>
 					<span className={styles.FooterDivider}></span>
 					<span className={styles.FooterBtn} onClick={setLoginMethod.bind(this, 'phoneAndCode')}>
@@ -25,7 +28,7 @@ const FormFooter = ({ loginMethod, openReset, setLoginMethod }: FormFooterProps)
 					</span>
 				</>
 			)}
-			{loginMethod === 'phoneAndCode' && (
+			{isPhoneAndCode && (
 				<span className={styles.FooterBtn} onClick={setLoginMethod.bind(this, 'phoneAndPassword')}>
 					Log in with password
 				</span>

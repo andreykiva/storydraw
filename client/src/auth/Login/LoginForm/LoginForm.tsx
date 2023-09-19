@@ -13,12 +13,12 @@ import FormFooter from './FormFooter/FormFooter';
 import FormHeader from './FormHeader/FormHeader';
 
 type WithPhoneProps = {
-	openReset: () => void;
+	openResetForm: () => void;
 };
 
 type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
 
-const LoginForm = ({ openReset }: WithPhoneProps) => {
+const LoginForm = ({ openResetForm }: WithPhoneProps) => {
 	const [formData, setFormData] = useState({
 		phone: '',
 		login: '',
@@ -167,7 +167,7 @@ const LoginForm = ({ openReset }: WithPhoneProps) => {
 						required
 					/>
 				)}
-				<FormFooter loginMethod={loginMethod} openReset={openReset} setLoginMethod={setLoginMethod} />
+				<FormFooter loginMethod={loginMethod} openResetForm={openResetForm} setLoginMethod={setLoginMethod} />
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 					Log in
 				</Button>

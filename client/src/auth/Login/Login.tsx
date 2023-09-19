@@ -29,7 +29,7 @@ const Login = () => {
 					openQRCode={setLoginView.bind(this, 'qrcode')}
 				/>
 			)}
-			{loginView === 'form' && <LoginForm openReset={setLoginView.bind(this, 'reset')} />}
+			{loginView === 'form' && <LoginForm openResetForm={setLoginView.bind(this, 'reset')} />}
 			{loginView === 'reset' && <ResetPasswordForm />}
 			{loginView === 'qrcode' && <LoginWithQR />}
 		</div>
