@@ -166,7 +166,7 @@ const ResetPasswordForm = () => {
 					onBlur={handleInputBlur.bind(this, 'password')}
 					required
 				/>
-				<Button className={authSharedStyles.LoginBtn} type="submit" disabled={isFormBtnDisabled}>
+				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 					Log in
 				</Button>
 			</form>
