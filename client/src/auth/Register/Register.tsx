@@ -9,7 +9,7 @@ import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 type RegisterView = 'options' | 'form';
 
 const Register = () => {
-	const [registerView, setRegisterView] = useState<RegisterView>('options');
+	const [registerView, setRegisterView] = useState<RegisterView>('form');
 
 	return (
 		<div className={styles.Register}>
