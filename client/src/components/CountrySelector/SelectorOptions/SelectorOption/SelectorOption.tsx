@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SelectorOption.module.css';
-import checkImg from '@/assets/icons/auth/check.svg';
+import CheckIcon from '@/components/ui/icons/CheckIcon';
 
 type SelectorOptionProps = {
 	id: string;
@@ -13,7 +13,7 @@ const SelectorOption = ({ id, selectedOptionId, children, onClick }: SelectorOpt
 	return (
 		<li className={styles.SelectorOption} onClick={onClick}>
 			<span>{children}</span>
-			{id === selectedOptionId && <img src={checkImg} alt="Check" className={styles.SelectedIcon} />}
+			{id === selectedOptionId && <CheckIcon className={styles.SelectedIcon} />}
 		</li>
 	);
 };

@@ -16,3 +16,7 @@
 .SelectedIcon {
 	width: 18px;
 }
+
+.SelectedIcon path {
+	stroke: var(--bright-green-color);
+}
