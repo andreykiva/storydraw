@@ -9,6 +9,7 @@ import CountrySelector from '@/components/CountrySelector/CountrySelector';
 import HTag from '@/components/ui/HTag/HTag';
 import countries from '@/data/countries';
 import type Country from '@/types/Country';
+import Checkbox from '@/components/ui/inputs/Checkbox/Checkbox';
 
 const RegisterForm = () => {
 	const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const RegisterForm = () => {
 		code: '',
 		password: '',
 		country: countries[0],
+		sendTrends: false,
 	});
 
 	const [formErrors, setFormErrors] = useState({
@@ -91,6 +93,13 @@ const RegisterForm = () => {
 		});
 	};
 
+	const handleCheckboxChange = () => {
+		setFormData({
+			...formData,
+			sendTrends: !formData.sendTrends,
+		});
+	};
+
 	return (
 		<div>
 			<HTag tag="h2" className={authSharedStyles.Title}>
@@ -98,9 +107,7 @@ const RegisterForm = () => {
 			</HTag>
 			<form onSubmit={handleSubmit}>
 				<div className={authSharedStyles.FormHeader}>
-					<span className={authSharedStyles.HeaderTitle}>
-						{isPhoneMode ? 'Phone' : 'Email'}
-					</span>
+					<span className={authSharedStyles.HeaderTitle}>{isPhoneMode ? 'Phone' : 'Email'}</span>
 					{isPhoneMode ? (
 						<span className={authSharedStyles.HeaderBtn} onClick={setIsPhoneMode.bind(this, false)}>
 							Sign up with email
@@ -168,6 +175,12 @@ const RegisterForm = () => {
 					disabled={isCodeBtnDisabled}
 					required
 				/>
+				{!isPhoneMode && (
+					<Checkbox checked={formData.sendTrends} onChange={handleCheckboxChange}>
+						Get trending content, newsletters, promotions, recommendations, and account updates sent to your
+						email
+					</Checkbox>
+				)}
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 					Next
 				</Button>
