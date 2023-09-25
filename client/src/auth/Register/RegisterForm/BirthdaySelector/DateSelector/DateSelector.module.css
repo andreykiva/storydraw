@@ -1,21 +1,4 @@
 .DateSelector {
-	position: relative;
-	display: flex;
-	align-items: center;
 	width: 120px;
-	height: 46px;
-	padding: 0 14px 0 12px;
-	background-color: rgb(55, 55, 55);
 	border-radius: 4px;
-	cursor: pointer;
-}
-
-.DateSelectorBody {
-	position: absolute;
-	top: 52px;
-	left: 0;
-	width: 100%;
-	border-radius: 4px;
-	background-color: rgb(19, 19, 19);
-	z-index: 1;
 }

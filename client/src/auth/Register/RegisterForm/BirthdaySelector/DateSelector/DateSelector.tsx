@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styles from './DateSelector.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import useClickOutside from '@/hooks/useClickOutside';
 import SelectorHeader from './SelectorHeader/SelectorHeader';
 import SelectorOptions from './SelectorOptions/SelectorOptions';
@@ -30,7 +31,7 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 	};
 
 	return (
-		<div className={styles.DateSelector} ref={dateSelectorRef}>
+		<div className={[authSharedStyles.Selector, styles.DateSelector].join(' ')} ref={dateSelectorRef}>
 			<SelectorHeader
 				value={selectedOption}
 				placeholder={placeholder}
@@ -38,7 +39,7 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 				onClick={toggleSelect}
 			/>
 			{isOpen && (
-				<div className={styles.DateSelectorBody}>
+				<div className={authSharedStyles.SelectorBody}>
 					<SelectorOptions
 						options={options}
 						selectedOption={selectedOption}

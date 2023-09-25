@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SelectorOption.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import CheckIcon from '@/components/ui/icons/CheckIcon';
 
 type SelectorOptionProps = {
@@ -11,9 +11,14 @@ type SelectorOptionProps = {
 
 const SelectorOption = ({ id, selectedOptionId, children, onClick }: SelectorOptionProps) => {
 	return (
-		<li className={styles.SelectorOption} onClick={onClick}>
+		<li
+			className={[authSharedStyles.SelectorOption, id === selectedOptionId && authSharedStyles.Selected].join(
+				' ',
+			)}
+			onClick={onClick}
+		>
 			<span>{children}</span>
-			{id === selectedOptionId && <CheckIcon className={styles.SelectedIcon} />}
+			{id === selectedOptionId && <CheckIcon className={authSharedStyles.SelectedIcon} />}
 		</li>
 	);
 };

@@ -1,11 +1,3 @@
-.SelectorHeader {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 .SelectorValue, .SelectorPlaceholder {
 	font-size: 18px;
 	font-weight: 400;
@@ -14,13 +6,4 @@
 
 .SelectorPlaceholder {
 	color: #a1a1a1;
-}
-
-.SelectorArrow {
-	width: 10px;
-	transition: transform .25s ease-in-out;
-}
-
-.SelectorArrow.ArrowUp {
-	transform: rotate(180deg);
 }

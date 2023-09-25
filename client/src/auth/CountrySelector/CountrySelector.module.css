@@ -1,0 +1,17 @@
+.CountrySelector::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 1px;
+	height: 30px;
+	background-color: #fff;
+	background: rgb(75, 75, 75);
+}
+
+.CountrySelectorBody {
+	max-width: 320px;
+	width: 320px;
+	border-radius: 6px;
+}

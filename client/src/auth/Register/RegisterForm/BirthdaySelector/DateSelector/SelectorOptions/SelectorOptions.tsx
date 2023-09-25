@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SelectorOptions.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import SelectorOption from './SelectorOption/SelectorOption';
 
 type SelectorOptionsProps = {
@@ -10,7 +10,7 @@ type SelectorOptionsProps = {
 
 const SelectorOptions = ({ options, selectedOption, handleSelectChange }: SelectorOptionsProps) => {
 	return (
-		<ul className={styles.SelectorOptions}>
+		<ul className={authSharedStyles.SelectorOptions}>
 			{options.map((option) => (
 				<SelectorOption
 					key={option}

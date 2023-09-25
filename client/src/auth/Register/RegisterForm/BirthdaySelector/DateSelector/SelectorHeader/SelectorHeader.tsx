@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './SelectorHeader.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import arrowDownImg from '@/assets/icons/auth/arrow-down.svg';
 
 type SelectorHeaderProps = {
@@ -11,7 +12,7 @@ type SelectorHeaderProps = {
 
 const SelectorHeader = ({ value, placeholder, isOpen, onClick }: SelectorHeaderProps) => {
 	return (
-		<div className={styles.SelectorHeader} onClick={onClick}>
+		<div className={authSharedStyles.SelectorHeader} onClick={onClick}>
 			{value ? (
 				<span className={styles.SelectorValue}>{value}</span>
 			) : (
@@ -20,7 +21,7 @@ const SelectorHeader = ({ value, placeholder, isOpen, onClick }: SelectorHeaderP
 			<img
 				src={arrowDownImg}
 				alt="Arrow down"
-				className={[styles.SelectorArrow, isOpen && styles.ArrowUp].join(' ')}
+				className={[authSharedStyles.SelectorArrow, isOpen && authSharedStyles.ArrowUp].join(' ')}
 			/>
 		</div>
 	);

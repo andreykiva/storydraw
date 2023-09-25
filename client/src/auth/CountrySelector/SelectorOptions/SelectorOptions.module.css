@@ -1,0 +1,17 @@
+.SelectorOptions {
+	margin-right: 1px;
+}
+
+.NoResultsMessage {
+	height: 34px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 12px;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.Highlight {
+	color: var(--bright-green-color);
+}

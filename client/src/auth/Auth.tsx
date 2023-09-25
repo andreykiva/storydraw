@@ -11,7 +11,7 @@ type AuthMode = 'login' | 'register';
 
 const Auth = () => {
 	const dispatch = useDispatch();
-	const [authMode, setAuthMode] = useState<AuthMode>('register');
+	const [authMode, setAuthMode] = useState<AuthMode>('login');
 
 	const handleModeChange = (newMode: AuthMode) => {
 		setAuthMode(newMode);

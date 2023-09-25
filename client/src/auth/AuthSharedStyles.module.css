@@ -49,3 +49,89 @@
 	border-radius: 4px;
 	margin-top: 30px;
 }
+
+.Selector {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	background-color: rgb(55, 55, 55);
+	border-radius: 4px 0 0 4px;
+	cursor: pointer;
+}
+
+.SelectorBody {
+	position: absolute;
+	top: 52px;
+	left: 0;
+	width: 100%;
+	border-radius: 4px;
+	background-color: rgb(19, 19, 19);
+	z-index: 2;
+}
+
+.SelectorArrow {
+	width: 10px;
+	transition: transform .25s ease-in-out;
+}
+
+.SelectorArrow.ArrowUp {
+	transform: rotate(180deg);
+}
+
+.SelectorHeader {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 14px 0 12px;
+}
+
+.SelectorOptions {
+	list-style: none;
+	overflow-y: scroll;
+	max-height: 270px;
+	color: var(--main-color);
+}
+
+.SelectorOptions::-webkit-scrollbar {
+	width: 8px;
+}
+
+.SelectorOptions::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.SelectorOptions::-webkit-scrollbar-thumb {
+	background: rgb(44, 44, 44);
+	border-radius: 4px;
+}
+
+.SelectorOption {
+	height: 34px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--light-color);
+}
+
+.Selected {
+	background-color: rgb(27, 27, 27);
+}
+
+.SelectorOption:hover {
+	background-color: rgb(27, 27, 27);
+}
+
+.SelectedIcon {
+	max-width: 18px;
+	width: 100%;
+}
+
+.SelectedIcon path {
+	stroke: var(--bright-green-color);
+}

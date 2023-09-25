@@ -5,90 +5,39 @@ import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
 import { validatePhone, validatePassword, validateCode, validateEmail } from '@/utils/validators';
-import CountrySelector from '@/components/CountrySelector/CountrySelector';
+import CountrySelector from '@/auth/CountrySelector/CountrySelector';
 import HTag from '@/components/ui/HTag/HTag';
 import countries from '@/data/countries';
 import type Country from '@/types/Country';
+import type { FormData, FormErrors } from '@/types/Auth';
 
-const ResetPasswordForm = () => {
-	const [formData, setFormData] = useState({
-		phone: '',
-		email: '',
-		code: '',
-		password: '',
-		country: countries[0],
-	});
+type ResetPasswordFormProps = {
+	formData: FormData;
+	formErrors: FormErrors;
+	handleInputFocus: (fieldName: string) => void;
+	handleInputBlur: (fieldName: string) => void;
+	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleSelectChange: (selectedCountry: Country) => void;
+};
 
-	const [formErrors, setFormErrors] = useState({
-		phone: '',
-		email: '',
-		code: '',
-		password: '',
-	});
+const ResetPasswordForm = (props: ResetPasswordFormProps) => {
+	const { formData, formErrors, handleInputFocus, handleInputBlur, handleInputChange, handleSelectChange } = props;
 
 	const [isPhoneMode, setIsPhoneMode] = useState(false);
 
-	const isFormBtnDisabled = Boolean(
-		validatePassword(formData.password) ||
-			validateCode(formData.code) ||
-			(isPhoneMode ? validatePhone(formData.phone) : validateEmail(formData.email)),
-	);
+	//isFormBtnDisabled
+	const isInvalidPassword = validatePassword(formData.password);
+	const isInvalidCode = validateCode(formData.code);
+	const isInvalidPhoneOrEmail = isPhoneMode ? validatePhone(formData.phone) : validateEmail(formData.email);
 
+	const isFormBtnDisabled = Boolean(isInvalidPassword || isInvalidCode || isInvalidPhoneOrEmail);
+
+	//isCodeBtnDisabled
 	const isCodeBtnDisabled = Boolean(isPhoneMode ? validatePhone(formData.phone) : validateEmail(formData.email));
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log('Submit');
-	};
-
-	const handleInputFocus = (fieldName: string) => {
-		setFormErrors({
-			...formErrors,
-			[fieldName]: '',
-		});
-	};
-
-	const handleInputBlur = (fieldName: string) => {
-		if (fieldName === 'phone' && formData.phone) {
-			const phoneError = validatePhone(formData.phone);
-			setFormErrors({
-				...formErrors,
-				phone: phoneError || '',
-			});
-		} else if (fieldName === 'email' && formData.email) {
-			const emailError = validateEmail(formData.email);
-			setFormErrors({
-				...formErrors,
-				email: emailError || '',
-			});
-		} else if (fieldName === 'password' && formData.password) {
-			const passwordError = validatePassword(formData.password);
-			setFormErrors({
-				...formErrors,
-				password: passwordError || '',
-			});
-		} else if (fieldName === 'code' && formData.code) {
-			const codeError = validateCode(formData.code);
-			setFormErrors({
-				...formErrors,
-				code: codeError || '',
-			});
-		}
-	};
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
-
-	const handleSelectChange = (selectedCountry: Country) => {
-		setFormData({
-			...formData,
-			country: selectedCountry,
-		});
 	};
 
 	return (

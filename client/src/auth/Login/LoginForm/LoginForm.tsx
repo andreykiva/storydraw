@@ -6,101 +6,53 @@ import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
 import HTag from '@/components/ui/HTag/HTag';
 import { validatePhone, validatePassword, validateCode, validateLogin } from '@/utils/validators';
-import CountrySelector from '@/components/CountrySelector/CountrySelector';
+import CountrySelector from '@/auth/CountrySelector/CountrySelector';
 import countries from '@/data/countries';
 import type Country from '@/types/Country';
+import type { FormData, FormErrors } from '@/types/Auth';
 import FormFooter from './FormFooter/FormFooter';
 import FormHeader from './FormHeader/FormHeader';
 
-type WithPhoneProps = {
+type LoginFormProps = {
 	openResetForm: () => void;
+	formData: FormData;
+	formErrors: FormErrors;
+	handleInputFocus: (fieldName: string) => void;
+	handleInputBlur: (fieldName: string) => void;
+	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleSelectChange: (selectedCountry: Country) => void;
 };
 
 type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
 
-const LoginForm = ({ openResetForm }: WithPhoneProps) => {
-	const [formData, setFormData] = useState({
-		phone: '',
-		login: '',
-		code: '',
-		password: '',
-		country: countries[0],
-	});
-
-	const [formErrors, setFormErrors] = useState({
-		login: '',
-		phone: '',
-		code: '',
-		password: '',
-	});
+const LoginForm = (props: LoginFormProps) => {
+	const {
+		formData,
+		formErrors,
+		openResetForm,
+		handleInputFocus,
+		handleInputBlur,
+		handleInputChange,
+		handleSelectChange,
+	} = props;
 
 	const [loginMethod, setLoginMethod] = useState<LoginMethod>('phoneAndCode');
 
-	let isFormBtnDisabled = true;
+	// isFormBtnDisabled
+	const validationMethods = {
+		loginAndPassword: () => validateLogin(formData.login) || validatePassword(formData.password),
+		phoneAndCode: () => validatePhone(formData.phone) || validateCode(formData.code),
+		phoneAndPassword: () => validatePhone(formData.phone) || validatePassword(formData.password),
+	};
 
-	if (loginMethod === 'loginAndPassword') {
-		isFormBtnDisabled = Boolean(validateLogin(formData.login) || validatePassword(formData.password));
-	} else if (loginMethod === 'phoneAndCode') {
-		isFormBtnDisabled = Boolean(validatePhone(formData.phone) || validateCode(formData.code));
-	} else if (loginMethod === 'phoneAndPassword') {
-		isFormBtnDisabled = Boolean(validatePhone(formData.phone) || validatePassword(formData.password));
-	}
+	const isFormBtnDisabled = Boolean(validationMethods[loginMethod]());
 
+	//isCodeBtnDisabled
 	const isCodeBtnDisabled = Boolean(validatePhone(formData.phone));
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log('Submit');
-	};
-
-	const handleInputFocus = (fieldName: string) => {
-		setFormErrors({
-			...formErrors,
-			[fieldName]: '',
-		});
-	};
-
-	const handleInputBlur = (fieldName: string) => {
-		if (fieldName === 'phone' && formData.phone) {
-			const phoneError = validatePhone(formData.phone);
-			setFormErrors({
-				...formErrors,
-				phone: phoneError || '',
-			});
-		} else if (fieldName === 'login' && formData.login) {
-			const loginError = validateLogin(formData.login);
-			setFormErrors({
-				...formErrors,
-				login: loginError || '',
-			});
-		} else if (fieldName === 'password' && formData.password) {
-			const passwordError = validatePassword(formData.password);
-			setFormErrors({
-				...formErrors,
-				password: passwordError || '',
-			});
-		} else if (fieldName === 'code' && formData.code) {
-			const codeError = validateCode(formData.code);
-			setFormErrors({
-				...formErrors,
-				code: codeError || '',
-			});
-		}
-	};
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
-
-	const handleSelectChange = (selectedCountry: Country) => {
-		setFormData({
-			...formData,
-			country: selectedCountry,
-		});
 	};
 
 	return (
