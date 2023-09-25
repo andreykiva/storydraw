@@ -10,6 +10,7 @@ import HTag from '@/components/ui/HTag/HTag';
 import countries from '@/data/countries';
 import type Country from '@/types/Country';
 import Checkbox from '@/components/ui/inputs/Checkbox/Checkbox';
+import BirthdaySelector from './BirthdaySelector/BirthdaySelector';
 
 const RegisterForm = () => {
 	const [formData, setFormData] = useState({
@@ -18,6 +19,9 @@ const RegisterForm = () => {
 		code: '',
 		password: '',
 		country: countries[0],
+		birthMonth: '',
+		birthDay: '',
+		birthYear: '',
 		sendTrends: false,
 	});
 
@@ -31,9 +35,13 @@ const RegisterForm = () => {
 	const [isPhoneMode, setIsPhoneMode] = useState(true);
 
 	const isFormBtnDisabled = Boolean(
-		validatePassword(formData.password) ||
+		!formData.birthMonth ||
+			!formData.birthDay ||
+			!formData.birthYear ||
 			validateCode(formData.code) ||
-			(isPhoneMode ? validatePhone(formData.phone) : validateEmail(formData.email)),
+			(isPhoneMode
+				? validatePhone(formData.phone)
+				: validateEmail(formData.email) || validatePassword(formData.password)),
 	);
 
 	const isCodeBtnDisabled = Boolean(isPhoneMode ? validatePhone(formData.phone) : validateEmail(formData.email));
@@ -100,12 +108,25 @@ const RegisterForm = () => {
 		});
 	};
 
+	const handleBirthdayChange = (fieldName: string, selectedDate: string) => {
+		setFormData({
+			...formData,
+			[fieldName]: selectedDate,
+		});
+	};
+
 	return (
 		<div>
 			<HTag tag="h2" className={authSharedStyles.Title}>
 				Sign up
 			</HTag>
 			<form onSubmit={handleSubmit}>
+				<BirthdaySelector
+					selectBirthday={handleBirthdayChange}
+					selectedMonth={formData.birthMonth}
+					selectedDay={formData.birthDay}
+					selectedYear={formData.birthYear}
+				/>
 				<div className={authSharedStyles.FormHeader}>
 					<span className={authSharedStyles.HeaderTitle}>{isPhoneMode ? 'Phone' : 'Email'}</span>
 					{isPhoneMode ? (
