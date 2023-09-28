@@ -10,6 +10,20 @@ export const validateEmail = (email: string): string | null => {
 	}
 };
 
+export const validateUsername = (username: string): string | null => {
+	if (!username) {
+		return 'Username is required';
+	}
+
+	if (username.length < 5) {
+		return 'Username must be longer than 4 characters';
+	}
+
+	if (!stringPattern.test(username)) {
+		return 'Username must contain only letters and numbers';
+	}
+};
+
 export const validateLogin = (login: string): string | null => {
 	if (!login) {
 		return 'Login is required';
