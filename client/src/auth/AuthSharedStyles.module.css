@@ -135,3 +135,27 @@
 .SelectedIcon path {
 	stroke: var(--bright-green-color);
 }
+
+.CreateUsernameTitle {
+	display: inline-flex;
+	margin-bottom: 6px;
+}
+
+
+.CreateUsernameDescr {
+	font-size: 14px;
+	font-weight: 500;
+	color: #a1a1a1;
+}
+
+.SkipBtn {
+	max-width: 120px;
+	border-radius: 0;
+	margin: 10px auto 0;
+	background: transparent;
+}
+
+.SkipBtn:hover {
+	opacity: 0.7;
+	background: transparent;
+}

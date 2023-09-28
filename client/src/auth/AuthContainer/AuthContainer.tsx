@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { validatePhone, validatePassword, validateCode, validateLogin, validateEmail } from '@/utils/validators';
+import {
+	validatePhone,
+	validatePassword,
+	validateCode,
+	validateLogin,
+	validateEmail,
+	validateUsername,
+} from '@/utils/validators';
 import countries from '@/data/countries';
 import type Country from '@/types/Country';
 import LoginForm from '../Login/LoginForm/LoginForm';
@@ -15,6 +22,7 @@ const AuthContainer = ({ authMode, openResetForm }: AuthContainerProps) => {
 	const [formData, setFormData] = useState({
 		phone: '',
 		login: '',
+		username: '',
 		email: '',
 		code: '',
 		password: '',
@@ -27,6 +35,7 @@ const AuthContainer = ({ authMode, openResetForm }: AuthContainerProps) => {
 
 	const [formErrors, setFormErrors] = useState({
 		login: '',
+		username: '',
 		email: '',
 		phone: '',
 		code: '',
@@ -58,6 +67,12 @@ const AuthContainer = ({ authMode, openResetForm }: AuthContainerProps) => {
 			setFormErrors({
 				...formErrors,
 				login: loginError || '',
+			});
+		} else if (fieldName === 'username' && formData.username) {
+			const usernameError = validateUsername(formData.username);
+			setFormErrors({
+				...formErrors,
+				username: usernameError || '',
 			});
 		} else if (fieldName === 'password' && formData.password) {
 			const passwordError = validatePassword(formData.password);
