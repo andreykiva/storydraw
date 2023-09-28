@@ -3,6 +3,7 @@ import Country from './Country';
 export type FormData = {
 	phone: string;
 	login: string;
+	username: string;
 	email: string;
 	code: string;
 	password: string;
@@ -15,6 +16,7 @@ export type FormData = {
 
 export type FormErrors = {
 	login: string;
+	username: string;
 	email: string;
 	phone: string;
 	code: string;
