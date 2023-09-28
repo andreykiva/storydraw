@@ -62,3 +62,8 @@
 .FormGroup.Phone .Input {
 	border-radius: 0 4px 4px 0;
 }
+
+/* .Username */
+.FormGroup.Username {
+	margin-bottom: 6px;
+}
