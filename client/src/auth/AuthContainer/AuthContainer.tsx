@@ -16,9 +16,10 @@ import ResetPasswordForm from '../Login/ResetPasswordForm/ResetPasswordForm';
 type AuthContainerProps = {
 	authMode: 'registerForm' | 'loginForm' | 'resetForm';
 	openResetForm?: () => void;
+	showRegisterOptions?: () => void;
 };
 
-const AuthContainer = ({ authMode, openResetForm }: AuthContainerProps) => {
+const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthContainerProps) => {
 	const [formData, setFormData] = useState({
 		phone: '',
 		login: '',
@@ -132,7 +133,7 @@ const AuthContainer = ({ authMode, openResetForm }: AuthContainerProps) => {
 	return (
 		<>
 			{authMode === 'loginForm' && <LoginForm openResetForm={openResetForm} {...formProps} />}
-			{authMode === 'registerForm' && <RegisterForm {...formProps} />}
+			{authMode === 'registerForm' && <RegisterForm showRegisterOptions={showRegisterOptions} {...formProps} />}
 			{authMode === 'resetForm' && <ResetPasswordForm {...formProps} />}
 		</>
 	);

@@ -56,7 +56,7 @@ const LoginForm = (props: LoginFormProps) => {
 	};
 
 	return (
-		<div>
+		<>
 			<HTag tag="h2" className={authSharedStyles.Title}>
 				Log in
 			</HTag>
@@ -124,7 +124,7 @@ const LoginForm = (props: LoginFormProps) => {
 					Log in
 				</Button>
 			</form>
-		</div>
+		</>
 	);
 };
 

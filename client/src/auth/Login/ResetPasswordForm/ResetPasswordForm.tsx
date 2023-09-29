@@ -10,6 +10,7 @@ import HTag from '@/components/ui/HTag/HTag';
 import countries from '@/data/countries';
 import type Country from '@/types/Country';
 import type { FormData, FormErrors } from '@/types/Auth';
+import FormHeader from './FormHeader/FormHeader';
 
 type ResetPasswordFormProps = {
 	formData: FormData;
@@ -41,25 +42,16 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 	};
 
 	return (
-		<div>
+		<>
 			<HTag tag="h2" className={authSharedStyles.Title}>
 				Reset password
 			</HTag>
 			<form onSubmit={handleSubmit}>
-				<div className={authSharedStyles.FormHeader}>
-					<span className={authSharedStyles.HeaderTitle}>
-						{isPhoneMode ? 'Enter phone number' : 'Enter email address'}
-					</span>
-					{isPhoneMode ? (
-						<span className={authSharedStyles.HeaderBtn} onClick={setIsPhoneMode.bind(this, false)}>
-							Reset with email
-						</span>
-					) : (
-						<span className={authSharedStyles.HeaderBtn} onClick={setIsPhoneMode.bind(this, true)}>
-							Reset with phone number
-						</span>
-					)}
-				</div>
+				<FormHeader
+					isPhoneMode={isPhoneMode}
+					enablePhoneMode={setIsPhoneMode.bind(this, true)}
+					disablePhoneMode={setIsPhoneMode.bind(this, false)}
+				/>
 				{isPhoneMode ? (
 					<div className={authSharedStyles.PhoneField}>
 						<CountrySelector
@@ -119,7 +111,7 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 					Log in
 				</Button>
 			</form>
-		</div>
+		</>
 	);
 };
 

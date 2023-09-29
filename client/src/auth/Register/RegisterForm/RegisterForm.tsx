@@ -12,6 +12,9 @@ import type Country from '@/types/Country';
 import Checkbox from '@/components/ui/inputs/Checkbox/Checkbox';
 import BirthdaySelector from './BirthdaySelector/BirthdaySelector';
 import type { FormData, FormErrors } from '@/types/Auth';
+import FormHeader from './FormHeader/FormHeader';
+import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
+import ArrowIcon from '@/components/ui/icons/ArrowIcon';
 
 type RegisterFormProps = {
 	formData: FormData;
@@ -22,6 +25,7 @@ type RegisterFormProps = {
 	handleSelectChange: (selectedCountry: Country) => void;
 	handleCheckboxChange: () => void;
 	handleBirthdayChange: (fieldName: string, selectedDate: string) => void;
+	showRegisterOptions: () => void;
 };
 
 const RegisterForm = (props: RegisterFormProps) => {
@@ -34,6 +38,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 		handleSelectChange,
 		handleCheckboxChange,
 		handleBirthdayChange,
+		showRegisterOptions,
 	} = props;
 
 	const [isPhoneMode, setIsPhoneMode] = useState(true);
@@ -57,7 +62,13 @@ const RegisterForm = (props: RegisterFormProps) => {
 	};
 
 	return (
-		<div>
+		<>
+			<RoundButton
+				className={authSharedStyles.BackBtn}
+				onClick={showUsernameField ? setShowUsernameField.bind(this, false) : showRegisterOptions}
+			>
+				<ArrowIcon className={authSharedStyles.BackIcon} />
+			</RoundButton>
 			<HTag tag="h2" className={authSharedStyles.Title}>
 				Sign up
 			</HTag>
@@ -70,18 +81,11 @@ const RegisterForm = (props: RegisterFormProps) => {
 							selectedDay={formData.birthDay}
 							selectedYear={formData.birthYear}
 						/>
-						<div className={authSharedStyles.FormHeader}>
-							<span className={authSharedStyles.HeaderTitle}>{isPhoneMode ? 'Phone' : 'Email'}</span>
-							{isPhoneMode ? (
-								<span className={authSharedStyles.HeaderBtn} onClick={setIsPhoneMode.bind(this, false)}>
-									Sign up with email
-								</span>
-							) : (
-								<span className={authSharedStyles.HeaderBtn} onClick={setIsPhoneMode.bind(this, true)}>
-									Sign up with phone
-								</span>
-							)}
-						</div>
+						<FormHeader
+							isPhoneMode={isPhoneMode}
+							enablePhoneMode={setIsPhoneMode.bind(this, true)}
+							disablePhoneMode={setIsPhoneMode.bind(this, false)}
+						/>
 						{isPhoneMode ? (
 							<div className={authSharedStyles.PhoneField}>
 								<CountrySelector
@@ -181,7 +185,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 					</div>
 				)}
 			</form>
-		</div>
+		</>
 	);
 };
 
