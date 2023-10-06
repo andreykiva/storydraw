@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './StoryInfo.module.css';
 import Button from '@/components/ui/buttons/Button/Button';
 import defaultImg from '@/assets/icons/default.svg';
@@ -10,12 +11,16 @@ import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
 import { formatNumber } from '@/utils/numberUtils';
 import type Story from '@/types/Story';
 import type User from '@/types/User';
+import { openAuthModal } from '@/features/auth/authSlice';
+import { selectAuth } from '@/features/auth/authSlice';
 
 type StoryInfoProps = Pick<Story, 'description' | 'date' | 'musicName' | 'likes' | 'favorites' | 'share'> & {
 	user: Pick<User, 'username' | 'title' | 'image'>;
 };
 
 const StoryInfo = (props: StoryInfoProps) => {
+	const dispatch = useDispatch();
+	const isAuth = useSelector(selectAuth);
 	const {
 		user: { username, title, image },
 		description,
@@ -25,6 +30,30 @@ const StoryInfo = (props: StoryInfoProps) => {
 		favorites,
 		share,
 	} = props;
+
+	const handleFollow = () => {
+		if (!isAuth) {
+			dispatch(openAuthModal());
+		} else {
+			// Follow
+		}
+	};
+
+	const handleLike = () => {
+		if (!isAuth) {
+			dispatch(openAuthModal());
+		} else {
+			// Like
+		}
+	};
+
+	const handleFavorite = () => {
+		if (!isAuth) {
+			dispatch(openAuthModal());
+		} else {
+			// Fav
+		}
+	};
 
 	return (
 		<div className={styles.StoryInfo}>
@@ -42,18 +71,20 @@ const StoryInfo = (props: StoryInfoProps) => {
 						<span className={styles.StoryDate}>{date}</span>
 					</div>
 				</div>
-				<Button className={styles.FollowBtn}>Follow</Button>
+				<Button className={styles.FollowBtn} onClick={handleFollow}>
+					Follow
+				</Button>
 			</div>
 			<p className={styles.InfoDescr}>{description}</p>
 			<div className={styles.InfoMusic}>
 				<img src={musicImg} alt="Music" className={styles.MusicIcon} /> {musicName}
 			</div>
 			<div className={styles.StoryInfoBottom}>
-				<div className={styles.StoryInfoItem}>
+				<div className={styles.StoryInfoItem} onClick={handleLike}>
 					<LikeIcon className={styles.ItemIcon} />
 					<div className={styles.ItemNumber}>{formatNumber(likes)}</div>
 				</div>
-				<div className={styles.StoryInfoItem}>
+				<div className={styles.StoryInfoItem} onClick={handleFavorite}>
 					<FavoriteIcon className={styles.ItemIcon} />
 					<div className={styles.ItemNumber}>{formatNumber(favorites)}</div>
 				</div>

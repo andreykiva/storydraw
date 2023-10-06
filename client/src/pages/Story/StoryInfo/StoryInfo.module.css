@@ -71,6 +71,11 @@
 .StoryInfoItem {
 	display: flex;
 	align-items: center;
+	cursor: pointer;
+}
+
+.StoryInfoItem:hover {
+	opacity: .7;
 }
 
 .ItemIcon {

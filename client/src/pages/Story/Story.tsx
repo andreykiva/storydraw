@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Story.module.css';
 import storyImg from '@/assets/images/preview.jpg';
 import closeImg from '@/assets/icons/close.svg';
@@ -9,6 +10,8 @@ import Button from '@/components/ui/buttons/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
 import Comments from './Comments/Comments';
 import ArrowIcon from '@/components/ui/icons/ArrowIcon';
+import { openAuthModal } from '@/features/auth/authSlice';
+import { selectAuth } from '@/features/auth/authSlice';
 
 const testStoryInfo = {
 	user: {
@@ -28,6 +31,17 @@ const testStoryInfo = {
 };
 
 const Story = () => {
+	const dispatch = useDispatch();
+	const isAuth = useSelector(selectAuth);
+
+	const handleLogin = () => {
+		if (!isAuth) {
+			dispatch(openAuthModal());
+		} else {
+			// Login
+		}
+	};
+
 	return (
 		<div className={styles.Story}>
 			<div className={styles.StoryContent}>
@@ -60,7 +74,7 @@ const Story = () => {
 					<div className={styles.Underline}></div>
 					<Comments />
 				</div>
-				<div className={styles.DetailsBottom}>
+				<div className={styles.DetailsBottom} onClick={handleLogin}>
 					<div className={styles.LoginMessage}>Log in to comment</div>
 				</div>
 			</div>

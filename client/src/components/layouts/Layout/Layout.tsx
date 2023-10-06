@@ -5,19 +5,15 @@ import styles from './Layout.module.css';
 import Header from '@/components/layouts/Header/Header';
 import Sidebar from '@/components/layouts/Sidebar/Sidebar';
 import Auth from '@/auth/Auth';
+import { selectAuthModalStatus } from '@/features/auth/authSlice';
 
 type LayoutProps = {
 	children: React.ReactNode;
 };
 
-type AuthState = {
-	auth: {
-		isAuthOpen: boolean;
-	};
-};
 
 const Layout = ({ children }: LayoutProps) => {
-	const { isAuthOpen } = useSelector((state: AuthState) => state.auth);
+	const isAuthOpen = useSelector(selectAuthModalStatus);
 	const location = useLocation();
 	const hideHeader = location.pathname.includes('/story/');
 

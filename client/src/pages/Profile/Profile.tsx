@@ -1,9 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Profile.module.css';
 import defaultImg from '@/assets/icons/default.svg';
 import Button from '@/components/ui/buttons/Button/Button';
 import ProfileStory from './ProfileStory/ProfileStory';
 import { formatNumber } from '@/utils/numberUtils';
+import { openAuthModal } from '@/features/auth/authSlice';
+import { selectAuth } from '@/features/auth/authSlice';
 
 const testProfileInfo = {
 	id: '123',
@@ -160,7 +163,17 @@ const testProfileStories = [
 ];
 
 const Profile = () => {
+	const dispatch = useDispatch();
+	const isAuth = useSelector(selectAuth);
 	const { username, title, description, image, following, followers, likes } = testProfileInfo;
+
+	const handleFollow = () => {
+		if (!isAuth) {
+			dispatch(openAuthModal());
+		} else {
+			// Login
+		}
+	};
 
 	return (
 		<div className={styles.Profile}>
@@ -172,7 +185,9 @@ const Profile = () => {
 					<div className={styles.InfoMain}>
 						<span className={styles.Username}>{username}</span>
 						<span className={styles.UserTitle}>{title}</span>
-						<Button className={styles.FollowBtn}>Follow</Button>
+						<Button className={styles.FollowBtn} onClick={handleFollow}>
+							Follow
+						</Button>
 					</div>
 				</div>
 				<div className={styles.BottomInfo}>

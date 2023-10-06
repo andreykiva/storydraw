@@ -18,7 +18,9 @@ const Follow = ({ username, title, image, preview }: FollowProps) => {
 				<img src={image || defaultImg} alt="Profile picture" className={styles.FollowImg} />
 				<div className={styles.FollowTitle}>{title}</div>
 				<div className={styles.FollowUsername}>{username}</div>
-				<Button className={styles.FollowBtn}>Follow</Button>
+				<Button className={styles.FollowBtn}>
+					Follow
+				</Button>
 			</div>
 		</Link>
 	);

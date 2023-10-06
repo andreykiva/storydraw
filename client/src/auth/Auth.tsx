@@ -4,7 +4,7 @@ import styles from './Auth.module.css';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import closeImg from '@/assets/icons/close.svg';
-import { closeAuth } from '@/features/auth/authSlice';
+import { closeAuthModal } from '@/features/auth/authSlice';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 
 type AuthMode = 'login' | 'register';
@@ -18,7 +18,7 @@ const Auth = () => {
 	};
 
 	const handleModalClose = () => {
-		dispatch(closeAuth());
+		dispatch(closeAuthModal());
 	};
 
 	return (
