@@ -11,7 +11,6 @@ type LayoutProps = {
 	children: React.ReactNode;
 };
 
-
 const Layout = ({ children }: LayoutProps) => {
 	const isAuthOpen = useSelector(selectAuthModalStatus);
 	const location = useLocation();

@@ -1,6 +1,7 @@
 .HeaderBtns {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
+	gap: 12px;
 	align-items: center;
 	max-width: 300px;
 	width: 100%;

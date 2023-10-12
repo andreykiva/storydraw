@@ -19,15 +19,17 @@ const Sidebar = () => {
 			// Login
 		}
 	};
-	
+
 	return (
 		<div className={styles.Sidebar}>
 			<Nav />
-			<div className={styles.LoginBtnWr}>
-				<Button className={styles.LoginBtn} onClick={handleLogin}>
-					Log in
-				</Button>
-			</div>
+			{!isAuth && (
+				<div className={styles.LoginBtnWr}>
+					<Button className={styles.LoginBtn} onClick={handleLogin}>
+						Log in
+					</Button>
+				</div>
+			)}
 			<Suggested />
 			<Footer />
 		</div>
