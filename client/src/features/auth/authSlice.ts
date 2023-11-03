@@ -7,7 +7,7 @@ type AuthState = {
 
 const initialState: AuthState = {
 	isAuthOpen: false,
-	isAuth: true,
+	isAuth: false,
 };
 
 export const authSlice = createSlice({
