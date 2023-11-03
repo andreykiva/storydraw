@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Sidebar.module.css';
 import Footer from '@/components/layouts/Footer/Footer';
 import Nav from './Nav/Nav';
-import Suggested from './Suggested/Suggested';
+import SidebarAccounts from './SidebarAccounts/SidebarAccounts';
 import Button from '@/components/ui/buttons/Button/Button';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
@@ -30,7 +30,7 @@ const Sidebar = () => {
 					</Button>
 				</div>
 			)}
-			<Suggested />
+			<SidebarAccounts isAuth={isAuth} />
 			<Footer />
 		</div>
 	);

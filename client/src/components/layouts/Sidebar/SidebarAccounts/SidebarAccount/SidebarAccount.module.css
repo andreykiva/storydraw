@@ -1,8 +1,8 @@
-.SuggestedItem {
+.SidebarAccount {
 	height: 48px;
 }
 
-.SuggestedLink {
+.AccountLink {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -12,26 +12,26 @@
 	transition: background-color .3s ease-in-out;
 }
 
-.SuggestedLink:hover {
+.AccountLink:hover {
 	background-color: #ffffff0a;
 }
 
-.ItemImg {
+.AccountImg {
 	width: 32px;
 	border-radius: 50%;
 	margin-right: 10px;
 }
 
-.ItemInfo {
+.AccountInfo {
 	display: flex;
 	flex-direction: column;
 }
 
-.ItemUsername {
+.AccountUsername {
 	font-size: 15px;
 }
 
-.ItemTitle {
+.AccountTitle {
 	font-size: 13px;
 	color: #8f8f8f;
 }
