@@ -5,15 +5,19 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	padding: 0;
 	border-radius: 50%;
 	background: transparent;
-	padding: 10px;
 	font-family: 'Karla', sans-serif;
 	cursor: pointer;
 }
 
 .MoreBtn:hover {
-	background: #f5f5f513;
+	background: rgb(20, 20, 20);
+}
+
+.MoreBtn:hover .ProfileImg {
+	opacity: .7;
 }
 
 .MoreBtn:hover .MoreMenu {
@@ -23,6 +27,10 @@
 
 .MoreDots {
 	opacity: 0.6;
+}
+
+.ProfileImg {
+	width: 100%;
 }
 
 .MoreMenu {

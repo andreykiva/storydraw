@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './HeaderBtns.module.css';
+import styles from './HeaderButtons.module.css';
 import createIcon from '@/assets/icons/create.svg';
 import MoreBtn from './MoreBtn/MoreBtn';
 import Button from '@/components/ui/buttons/Button/Button';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
 
-const HeaderBtns = () => {
+const HeaderButtons = () => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
 
@@ -28,7 +28,7 @@ const HeaderBtns = () => {
 	};
 
 	return (
-		<div className={styles.HeaderBtns}>
+		<div className={styles.HeaderButtons}>
 			<Button className={styles.CreateBtn} onClick={handleCreate}>
 				<img src={createIcon} alt="Create" className={styles.CreateIcon} />
 				<span className={styles.CreateText}>Create</span>
@@ -38,9 +38,9 @@ const HeaderBtns = () => {
 					Log in
 				</Button>
 			)}
-			<MoreBtn />
+			<MoreBtn isAuth={isAuth} />
 		</div>
 	);
 };
 
-export default HeaderBtns;
+export default HeaderButtons;

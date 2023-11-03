@@ -1,4 +1,4 @@
-.HeaderBtns {
+.HeaderButtons {
 	display: flex;
 	justify-content: flex-end;
 	gap: 12px;
@@ -7,12 +7,12 @@
 	width: 100%;
 }
 
-.HeaderBtns .CreateBtn {
+.HeaderButtons .CreateBtn {
 	max-width: 130px;
 	background: rgba(255, 255, 255, .08);
 }
 
-.HeaderBtns .CreateBtn:hover {
+.HeaderButtons .CreateBtn:hover {
 	background: rgba(255, 255, 255, 0.11);
 }
 

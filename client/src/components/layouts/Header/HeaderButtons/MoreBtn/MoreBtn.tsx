@@ -4,11 +4,20 @@ import languageIcon from '@/assets/icons/language.svg';
 import helpIcon from '@/assets/icons/help.svg';
 import darkModeIcon from '@/assets/icons/mode-dark.svg';
 import moreIcon from '@/assets/icons/more.svg';
+import defaultImg from '@/assets/icons/default.svg';
 
-const MoreBtn = () => {
+type MoreBtnProps = {
+	isAuth: boolean;
+};
+
+const MoreBtn = ({ isAuth }: MoreBtnProps) => {
 	return (
 		<button className={styles.MoreBtn}>
-			<img src={moreIcon} alt="More" className={styles.MoreDots} />
+			{isAuth ? (
+				<img src={defaultImg} alt="User profile" className={styles.ProfileImg} />
+			) : (
+				<img src={moreIcon} alt="More" className={styles.MoreDots} />
+			)}
 			<div className={styles.MoreMenu}>
 				<div className={styles.MenuTriangle}></div>
 				<div className={styles.MoreMenuItem}>
