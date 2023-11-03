@@ -12,7 +12,7 @@ const CodeInput = ({ error, disabled, ...rest }: CodeInputProps) => {
 	return (
 		<div className={styles.CodeInput}>
 			<Input type="text" mode="Code" error={error} {...rest} />
-			<Button className={styles.SendCodeBtn} disabled={disabled}>
+			<Button className={styles.SendCodeBtn} type="button" disabled={disabled}>
 				Send code
 			</Button>
 		</div>
