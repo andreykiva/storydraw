@@ -6,6 +6,7 @@ import MoreBtn from './MoreBtn/MoreBtn';
 import Button from '@/components/ui/buttons/Button/Button';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
+import ActionButtons from './ActionButtons/ActionButtons';
 
 const HeaderButtons = () => {
 	const dispatch = useDispatch();
@@ -33,7 +34,9 @@ const HeaderButtons = () => {
 				<img src={createIcon} alt="Create" className={styles.CreateIcon} />
 				<span className={styles.CreateText}>Create</span>
 			</Button>
-			{!isAuth && (
+			{isAuth ? (
+				<ActionButtons />
+			) : (
 				<Button className={styles.LoginBtn} onClick={handleLogin}>
 					Log in
 				</Button>
