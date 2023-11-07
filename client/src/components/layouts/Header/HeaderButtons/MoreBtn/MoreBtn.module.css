@@ -54,6 +54,10 @@
 	padding: 10px 16px;
 }
 
+.MoreMenuItem.Logout {
+	border-top: 1px solid #d1d1d11a;
+}
+
 .ItemIcon {
 	margin-right: 10px;
 }
