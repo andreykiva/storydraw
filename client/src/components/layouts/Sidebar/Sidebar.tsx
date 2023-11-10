@@ -23,7 +23,9 @@ const Sidebar = () => {
 	return (
 		<div className={styles.Sidebar}>
 			<Nav />
-			{!isAuth && (
+			{isAuth ? (
+				<div className={styles.SidebarDivider}></div>
+			) : (
 				<div className={styles.LoginBtnWr}>
 					<Button className={styles.LoginBtn} onClick={handleLogin}>
 						Log in

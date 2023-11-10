@@ -86,7 +86,7 @@ const SidebarAccounts = ({ isAuth }: SidebarAccountsProps) => {
 
 	return (
 		<div className={styles.SidebarAccounts}>
-			<HTag tag="h5" className={[styles.AccountsTitle, isAuth && styles.Following].join(' ')}>
+			<HTag tag="h5" className={styles.AccountsTitle}>
 				{isAuth ? 'Following accounts' : 'Suggested accounts'}
 			</HTag>
 			{accounts.length === 0 && isAuth ? (

@@ -4,22 +4,6 @@
 	padding-left: 10px;
 }
 
-.AccountsTitle.Following {
-	margin: 8px 0;
-	position: relative;
-}
-
-.AccountsTitle.Following::before {
-	content: "";
-	position: absolute;
-	display: block;
-	width: calc(100% - 20px);
-	height: 1px;
-	background-color: #d1d1d11a;
-	left: 10px;
-	bottom: 40px;
-}
-
 .EmptyMessage {
 	padding-left: 10px;
 	font-size: 14px;
