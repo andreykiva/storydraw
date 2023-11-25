@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Layout from '@/components/layouts/Layout/Layout';
 import ForYou from '@/pages/ForYou/ForYou';
 import Following from '@/pages/Following/Following';
@@ -9,8 +10,12 @@ import Search from '@/pages/Search/Search';
 import ValidateUser from '@/components/ValidateUser/ValidateUser';
 import Profile from '@/pages/Profile/Profile';
 import Story from '@/pages/Story/Story';
+import { selectAuth } from '@/features/auth/authSlice';
 
 const App = () => {
+	const isAuth = useSelector(selectAuth);
+
+	console.log(isAuth);
 	return (
 		<BrowserRouter>
 			<Layout>
@@ -21,6 +26,15 @@ const App = () => {
 					<Route path="/search" element={<Search />}>
 						<Route path=":type" element={<Search />} />
 					</Route>
+
+					{isAuth && (
+						<>
+							<Route path="/messages" element={<div>Messages</div>} />
+							<Route path="/coins" element={<div>Coins</div>} />
+							<Route path="/settings" element={<div>Settings</div>} />
+						</>
+					)}
+
 					<Route path="/:userId" element={<ValidateUser><Profile /></ValidateUser>} />
 					<Route path="/:userId/story/:storyId" element={<ValidateUser><Story /></ValidateUser>} />
 					<Route path="/" element={<ForYou />} />
