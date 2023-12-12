@@ -1,0 +1,24 @@
+.MessagesBtn {
+	position: relative;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+}
+
+.MessagesBtn:hover .MessagesBtnLink {
+	opacity: 0.7;
+}
+
+.MessagesBtn:hover .Prompt {
+	opacity: 1;
+	visibility: visible;
+}
+
+.MessagesBtnLink {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
