@@ -1,0 +1,28 @@
+.Notifications {
+	position: absolute;
+	right: -10px;
+	top: 46px;
+	width: 380px;
+	height: 640px;
+	padding: 24px 16px;
+	border-radius: 10px;
+	background: rgb(20, 20, 20);
+}
+
+.NotificationsTriangle {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 14px solid transparent;
+	border-right: 14px solid transparent;
+	border-bottom: 10px solid rgb(20, 20, 20);
+	right: 13px;
+	top: -6px;
+}
+
+.Notifications .Title {
+	font-size: 24px;
+	line-height: 30px;
+	letter-spacing: -1.2px;
+	margin-bottom: 20px;
+}
