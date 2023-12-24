@@ -1,0 +1,25 @@
+.NotificationsList {
+	margin: 0;
+}
+
+.NoNotifications {
+	display: flex;
+	flex-direction: column;
+	padding: 80px 12px 20px;
+	text-align: center;
+}
+
+.NoNotificationsImg {
+	height: 90px;
+	margin-bottom: 12px;
+}
+
+.NoNotificationsTitle {
+	margin-bottom: 10px;
+	font-size: 17px;
+	color: var(--light-color)
+}
+
+.NoNotificationsDescr {
+	font-size: 15px;
+}
