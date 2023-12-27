@@ -6,7 +6,7 @@ import Notifications from '@/components/Notifications/Notifications';
 import Prompt from '../Prompt/Prompt';
 
 const InboxBtn = () => {
-	const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+	const [isNotificationsOpen, setIsNotificationsOpen] = useState(true);
 	const inboxBtnRef = useRef(null);
 
 	useClickOutside(inboxBtnRef, () => {
@@ -23,7 +23,7 @@ const InboxBtn = () => {
 				<img src={chatImg} alt="Inbox" />
 			</div>
 			<Prompt text="Inbox" className={styles.Prompt} />
-			{isNotificationsOpen && <Notifications />}
+			{isNotificationsOpen && <Notifications closeNotifTest={setIsNotificationsOpen.bind(this, false)} />}
 		</div>
 	);
 };
