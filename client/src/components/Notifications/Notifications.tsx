@@ -33,34 +33,37 @@ const categories = [
 	},
 ];
 
-const Notifications = () => {
-	const [notificationCategory, setNotificationCategory] = useState<NotificationCategory>('all');
+const Notifications = ({ closeNotifTest }: { closeNotifTest: () => void }) => {
+	const [notificationCategory, setNotificationCategory] = useState<NotificationCategory>('followers');
 
 	return (
 		<div className={styles.Notifications}>
 			<div className={styles.NotifTriangle}></div>
-			<HTag tag="h4" className={styles.NotifTitle}>
-				Notifications
-			</HTag>
-			<div className={styles.NotifCategories}>
-				{categories.map((category) => (
-					<Button
-						key={category.type}
-						className={[styles.NotifCategory, category.type === notificationCategory && styles.Active].join(
-							' ',
-						)}
-						onClick={setNotificationCategory.bind(this, category.type)}
-					>
-						{category.title}
-					</Button>
-				))}
+			<div className={styles.NotifHeader}>
+				<HTag tag="h4" className={styles.NotifTitle}>
+					Notifications
+				</HTag>
+				<div className={styles.NotifCategories}>
+					{categories.map((category) => (
+						<Button
+							key={category.type}
+							className={[
+								styles.NotifCategory,
+								category.type === notificationCategory && styles.Active,
+							].join(' ')}
+							onClick={setNotificationCategory.bind(this, category.type)}
+						>
+							{category.title}
+						</Button>
+					))}
+				</div>
 			</div>
 
 			{notificationCategory === 'all' && <AllNotificationsList />}
 			{notificationCategory === 'likes' && <LikesList />}
 			{notificationCategory === 'comments' && <CommentsList />}
 			{notificationCategory === 'mentionsTags' && <MentionsTagsList />}
-			{notificationCategory === 'followers' && <FollowersList />}
+			{notificationCategory === 'followers' && <FollowersList closeNotifTest={closeNotifTest} />}
 		</div>
 	);
 };
