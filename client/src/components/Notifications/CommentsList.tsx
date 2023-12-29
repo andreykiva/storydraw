@@ -4,7 +4,7 @@ import commentImg from '@/assets/icons/notifications/comment.svg';
 
 const CommentsList = () => {
 	return (
-		<div className={notifSharedStyles.NotificationsList}>
+		<div className={notifSharedStyles.NotificationsListWr}>
 			<div className={notifSharedStyles.NoNotifications}>
 				<img src={commentImg} alt="Comment" className={notifSharedStyles.NoNotificationsImg} />
 				<span className={notifSharedStyles.NoNotificationsTitle}>Comments on your videos</span>

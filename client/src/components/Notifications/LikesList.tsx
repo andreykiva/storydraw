@@ -4,7 +4,7 @@ import heartImg from '@/assets/icons/notifications/heart.svg';
 
 const LikesList = () => {
 	return (
-		<div className={notifSharedStyles.NotificationsList}>
+		<div className={notifSharedStyles.NotificationsListWr}>
 			<div className={notifSharedStyles.NoNotifications}>
 				<img src={heartImg} alt="Heart" className={notifSharedStyles.NoNotificationsImg} />
 				<span className={notifSharedStyles.NoNotificationsTitle}>Likes on your videos</span>

@@ -4,7 +4,7 @@ import tagImg from '@/assets/icons/notifications/tag.svg';
 
 const MentionsTagsList = () => {
 	return (
-		<div className={notifSharedStyles.NotificationsList}>
+		<div className={notifSharedStyles.NotificationsListWr}>
 			<div className={notifSharedStyles.NoNotifications}>
 				<img src={tagImg} alt="Tag" className={notifSharedStyles.NoNotificationsImg} />
 				<span className={notifSharedStyles.NoNotificationsTitle}>Mentions of You</span>

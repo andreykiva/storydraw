@@ -4,7 +4,7 @@ import messageImg from '@/assets/icons/notifications/message.svg';
 
 const AllNotificationsList = () => {
 	return (
-		<div className={notifSharedStyles.NotificationsList}>
+		<div className={notifSharedStyles.NotificationsListWr}>
 			<div className={notifSharedStyles.NoNotifications}>
 				<img src={messageImg} alt="Message" className={notifSharedStyles.NoNotificationsImg} />
 				<span className={notifSharedStyles.NoNotificationsTitle}>All activity</span>
