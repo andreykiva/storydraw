@@ -54,14 +54,14 @@ const testFollows = [
 	},
 ];
 
-const FollowersList = ({closeNotifTest} : {closeNotifTest: () => void}) => {
+const FollowersList = () => {
 	return (
-		<div className={notifSharedStyles.NotificationsList}>
+		<div className={notifSharedStyles.NotificationsListWr}>
 			{testFollows ? (
-				<div>
+				<div className={notifSharedStyles.NotificationsList}>
 					<span className={notifSharedStyles.DateText}>Previous</span>
 					{testFollows.map((follow) => (
-						<Follow key={follow.id} {...follow} closeNotifTest={closeNotifTest} />
+						<Follow key={follow.id} {...follow} />
 					))}
 				</div>
 			) : (
