@@ -1,9 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styles from './Follow.module.css';
 import type User from '@/types/User';
 import defaultImg from '@/assets/icons/default.svg';
 import FriendshipBtn from './FriendshipBtn/FriendshipBtn';
+import { closeNotificationsModal } from '@/features/notifications/notificationsSlice';
 
 type FollowProps = {
 	id: string;
@@ -12,19 +14,18 @@ type FollowProps = {
 		isFollowingYou: boolean;
 		isFollowedByYou: boolean;
 	};
-	closeNotifTest: () => void;
 };
 
 const Follow = (props: FollowProps) => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const {
 		date,
-		closeNotifTest,
 		user: { username, title, image, isFollowingYou, isFollowedByYou },
 	} = props;
 
 	const handleFollowClick = () => {
-		closeNotifTest();
+		dispatch(closeNotificationsModal());
 		navigate(`/@${username}`);
 	};
 

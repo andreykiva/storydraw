@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Notifications.module.css';
 import HTag from '../ui/HTag/HTag';
 import Button from '../ui/buttons/Button/Button';
@@ -7,8 +8,10 @@ import LikesList from './LikesList';
 import CommentsList from './CommentsList';
 import MentionsTagsList from './MentionsTagsList';
 import FollowersList from './FollowersList';
+import { changeNotificationsCategory } from '@/features/notifications/notificationsSlice';
+import { selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
 
-type NotificationCategory = 'all' | 'likes' | 'comments' | 'mentionsTags' | 'followers';
+type NotificationsCategory = 'all' | 'likes' | 'comments' | 'mentionsTags' | 'followers';
 
 const categories = [
 	{
@@ -33,8 +36,13 @@ const categories = [
 	},
 ];
 
-const Notifications = ({ closeNotifTest }: { closeNotifTest: () => void }) => {
-	const [notificationCategory, setNotificationCategory] = useState<NotificationCategory>('followers');
+const Notifications = () => {
+	const dispatch = useDispatch();
+	const notificationsCategory = useSelector(selectNotificationsCategory);
+
+	const hndleCategoryChange = (category: NotificationsCategory) => {
+		dispatch(changeNotificationsCategory(category));
+	};
 
 	return (
 		<div className={styles.Notifications}>
@@ -49,9 +57,9 @@ const Notifications = ({ closeNotifTest }: { closeNotifTest: () => void }) => {
 							key={category.type}
 							className={[
 								styles.NotifCategory,
-								category.type === notificationCategory && styles.Active,
+								category.type === notificationsCategory && styles.Active,
 							].join(' ')}
-							onClick={setNotificationCategory.bind(this, category.type)}
+							onClick={hndleCategoryChange.bind(this, category.type)}
 						>
 							{category.title}
 						</Button>
@@ -59,11 +67,11 @@ const Notifications = ({ closeNotifTest }: { closeNotifTest: () => void }) => {
 				</div>
 			</div>
 
-			{notificationCategory === 'all' && <AllNotificationsList />}
-			{notificationCategory === 'likes' && <LikesList />}
-			{notificationCategory === 'comments' && <CommentsList />}
-			{notificationCategory === 'mentionsTags' && <MentionsTagsList />}
-			{notificationCategory === 'followers' && <FollowersList closeNotifTest={closeNotifTest} />}
+			{notificationsCategory === 'all' && <AllNotificationsList />}
+			{notificationsCategory === 'likes' && <LikesList />}
+			{notificationsCategory === 'comments' && <CommentsList />}
+			{notificationsCategory === 'mentionsTags' && <MentionsTagsList />}
+			{notificationsCategory === 'followers' && <FollowersList />}
 		</div>
 	);
 };

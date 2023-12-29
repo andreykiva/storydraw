@@ -1,20 +1,28 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './InboxBtn.module.css';
 import chatImg from '@/assets/icons/chat.svg';
 import useClickOutside from '@/hooks/useClickOutside';
 import Notifications from '@/components/Notifications/Notifications';
 import Prompt from '../Prompt/Prompt';
+import { openNotificationsModal, closeNotificationsModal } from '@/features/notifications/notificationsSlice';
+import { selectNotificationsModalStatus } from '@/features/notifications/notificationsSlice';
 
 const InboxBtn = () => {
-	const [isNotificationsOpen, setIsNotificationsOpen] = useState(true);
+	const dispatch = useDispatch();
+	const isNotificationsOpen = useSelector(selectNotificationsModalStatus);
 	const inboxBtnRef = useRef(null);
 
 	useClickOutside(inboxBtnRef, () => {
-		setIsNotificationsOpen(false);
+		dispatch(closeNotificationsModal());
 	});
 
 	const toggleNotifications = () => {
-		setIsNotificationsOpen(!isNotificationsOpen);
+		if (isNotificationsOpen) {
+			dispatch(closeNotificationsModal());
+		} else {
+			dispatch(openNotificationsModal());
+		}
 	};
 
 	return (
@@ -23,7 +31,7 @@ const InboxBtn = () => {
 				<img src={chatImg} alt="Inbox" />
 			</div>
 			<Prompt text="Inbox" className={styles.Prompt} />
-			{isNotificationsOpen && <Notifications closeNotifTest={setIsNotificationsOpen.bind(this, false)} />}
+			{isNotificationsOpen && <Notifications />}
 		</div>
 	);
 };
