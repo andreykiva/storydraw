@@ -7,7 +7,7 @@ type NotificationsState = {
 
 const initialState: NotificationsState = {
 	isNotificationsOpen: true,
-	notificationsCategory: 'followers',
+	notificationsCategory: 'comments',
 };
 
 export const notificationsSlice = createSlice({
