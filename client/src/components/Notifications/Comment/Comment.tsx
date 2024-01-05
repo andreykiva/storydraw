@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useRef} from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Comment.module.css';
 import type User from '@/types/User';
@@ -29,25 +29,28 @@ type CommentProps = {
 const Comment = (props: CommentProps) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const searchInputRef = useRef(null);
 	const {
 		date,
 		user: { username, title, image },
 	} = props;
 
-	const handleFollowClick = () => {
+	const handleFollowClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (!searchInputRef.current.contains(e.target as Node)) {
+			navigate(`/@${username}`);
+		}
 		dispatch(closeNotificationsModal());
-		navigate(`/@${username}`);
 	};
 
 	return (
-		<div className={styles.Follow}>
+		<div className={styles.Comment}>
 			<div className={styles.UserLink} onClick={handleFollowClick}>
 				<div className={styles.UserImgWr}>
 					<img src={image || defaultImg} alt="Profile picture" className={styles.UserImg} />
 				</div>
 				<div className={styles.UserInfo}>
 					<span className={styles.UserTitle}>{title}</span>
-					<span className={styles.FollowDate}>{date}</span>
+					<Link ref={searchInputRef} to='/tag/123' className={styles.FollowDate}>{date}</Link>
 				</div>
 			</div>
 		</div>
