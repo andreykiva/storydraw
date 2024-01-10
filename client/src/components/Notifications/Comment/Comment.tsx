@@ -43,8 +43,8 @@ const Comment = (props: CommentProps) => {
 	};
 
 	return (
-		<div className={styles.Comment}>
-			<div className={styles.UserLink} onClick={handleFollowClick}>
+		<li className={styles.Comment}>
+			<div className={styles.CommentLink} onClick={handleFollowClick}>
 				<div className={styles.UserImgWr}>
 					<img src={image || defaultImg} alt="Profile picture" className={styles.UserImg} />
 				</div>
@@ -53,7 +53,7 @@ const Comment = (props: CommentProps) => {
 					<Link ref={searchInputRef} to='/tag/123' className={styles.FollowDate}>{date}</Link>
 				</div>
 			</div>
-		</div>
+		</li>
 	);
 };
 

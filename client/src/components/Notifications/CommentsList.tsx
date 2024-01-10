@@ -70,12 +70,14 @@ const CommentsList = () => {
 	return (
 		<div className={notifSharedStyles.NotificationsListWr}>
 			{testComments ? (
-				<div className={notifSharedStyles.NotificationsList}>
+				<>
 					<span className={notifSharedStyles.DateText}>Previous</span>
-					{testComments.map((comment) => (
-						<Comment key={comment.id} {...comment} />
-					))}
-				</div>
+					<ul className={notifSharedStyles.NotificationsList}>
+						{testComments.map((comment) => (
+							<Comment key={comment.id} {...comment} />
+						))}
+					</ul>
+				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>
 					<img src={commentImg} alt="Comment" className={notifSharedStyles.NoNotificationsImg} />

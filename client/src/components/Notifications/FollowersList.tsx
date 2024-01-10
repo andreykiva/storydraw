@@ -58,12 +58,14 @@ const FollowersList = () => {
 	return (
 		<div className={notifSharedStyles.NotificationsListWr}>
 			{testFollows ? (
-				<div className={notifSharedStyles.NotificationsList}>
+				<>
 					<span className={notifSharedStyles.DateText}>Previous</span>
-					{testFollows.map((follow) => (
-						<Follow key={follow.id} {...follow} />
-					))}
-				</div>
+					<ul className={notifSharedStyles.NotificationsList}>
+						{testFollows.map((follow) => (
+							<Follow key={follow.id} {...follow} />
+						))}
+					</ul>
+				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>
 					<img src={personImg} alt="Person" className={notifSharedStyles.NoNotificationsImg} />

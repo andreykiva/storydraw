@@ -1,25 +1,23 @@
 .NotificationsListWr {
-	margin: 0;
-}
-
-.NotificationsList {
-	max-height: 100%;
 	overflow-y: auto;
-	max-height: 502px;
 	border-radius: 0 10px;
 }
 
-.NotificationsList::-webkit-scrollbar {
+.NotificationsListWr::-webkit-scrollbar {
 	width: 8px;
 }
 
-.NotificationsList::-webkit-scrollbar-track {
+.NotificationsListWr::-webkit-scrollbar-track {
 	background: transparent;
 }
 
-.NotificationsList::-webkit-scrollbar-thumb {
+.NotificationsListWr::-webkit-scrollbar-thumb {
 	background: #09483549;
 	border-radius: 4px;
+}
+
+.NotificationsList {
+	list-style: none;
 }
 
 .NoNotifications {

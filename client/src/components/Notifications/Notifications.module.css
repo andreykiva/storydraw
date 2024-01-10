@@ -2,9 +2,11 @@
 	position: absolute;
 	right: -10px;
 	top: 46px;
+	display: flex;
+	flex-direction: column;
 	width: 380px;
 	height: 640px;
-	padding: 24px 0;
+	padding-top: 24px;
 	border-radius: 10px;
 	background: rgb(20, 20, 20);
 }

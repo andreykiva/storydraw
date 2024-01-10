@@ -30,7 +30,7 @@ const Follow = (props: FollowProps) => {
 	};
 
 	return (
-		<div className={styles.Follow}>
+		<li className={styles.Follow}>
 			<div className={styles.UserLink} onClick={handleFollowClick}>
 				<div className={styles.UserImgWr}>
 					<img src={image || defaultImg} alt="Profile picture" className={styles.UserImg} />
@@ -44,7 +44,7 @@ const Follow = (props: FollowProps) => {
 				</div>
 			</div>
 			<FriendshipBtn isFollowingYou={isFollowingYou} isFollowedByYou={isFollowedByYou} />
-		</div>
+		</li>
 	);
 };
 
