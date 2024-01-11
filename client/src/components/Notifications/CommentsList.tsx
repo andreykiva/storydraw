@@ -7,10 +7,15 @@ const testComments = [
 	{
 		id: '123',
 		type: 'comment',
+		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
 		date: '12-02',
 		parentComment: {
 			id: '12414',
-			text: 'have a nice day',
+			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
+			user: {
+				id: '123',
+				title: 'andrew'
+			},
 		},
 		story: {
 			id: '4991',
@@ -28,6 +33,7 @@ const testComments = [
 	{
 		id: '1233',
 		type: 'comment',
+		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
 		date: '13-06',
 		parentComment: null,
 		story: {
@@ -46,10 +52,15 @@ const testComments = [
 	{
 		id: '12f3',
 		type: 'comment',
+		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
 		date: '01-12',
 		parentComment: {
 			id: '12vrvr414',
 			text: 'have a nice day',
+			user: {
+				id: '123',
+				title: 'andrew'
+			},
 		},
 		story: {
 			id: '49ssd91',
