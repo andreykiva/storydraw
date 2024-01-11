@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Comment.module.css';
 import type User from '@/types/User';
@@ -8,6 +8,7 @@ import { closeNotificationsModal } from '@/features/notifications/notificationsS
 
 type ParentComment = {
 	id: string;
+	user: Pick<User, 'id' | 'title'>;
 	text: string;
 };
 
@@ -17,6 +18,7 @@ type StoryImages = {
 
 type CommentProps = {
 	id: string;
+	text: string;
 	date: string;
 	parentComment: ParentComment | null;
 	story: {
@@ -31,7 +33,9 @@ const Comment = (props: CommentProps) => {
 	const navigate = useNavigate();
 	const searchInputRef = useRef(null);
 	const {
+		text,
 		date,
+		parentComment,
 		user: { username, title, image },
 	} = props;
 
@@ -45,13 +49,26 @@ const Comment = (props: CommentProps) => {
 	return (
 		<li className={styles.Comment}>
 			<div className={styles.CommentLink} onClick={handleFollowClick}>
-				<div className={styles.UserImgWr}>
-					<img src={image || defaultImg} alt="Profile picture" className={styles.UserImg} />
+				<div className={styles.AuthorImgWr}>
+					<img src={image || defaultImg} alt="Profile picture" className={styles.AuthorImg} />
 				</div>
-				<div className={styles.UserInfo}>
-					<span className={styles.UserTitle}>{title}</span>
-					<Link ref={searchInputRef} to='/tag/123' className={styles.FollowDate}>{date}</Link>
+				<div className={styles.CommentInfo}>
+					<span className={styles.AuthorTitle}>{title}</span>
+					<p className={styles.CommentContent}>
+						<span className={styles.CommentNote}>
+							{parentComment ? 'replied to your comment:' : 'commented on your story:'}
+						</span>
+						<span className={styles.CommentNote}></span>
+						{text}
+						<span className={styles.CommentDate}>{date}</span>
+					</p>
+					{parentComment && (
+						<div className={styles.ParentComment}>
+							{parentComment.user.title}: {parentComment.text}
+						</div>
+					)}
 				</div>
+				<div className={styles.Story}></div>
 			</div>
 		</li>
 	);
