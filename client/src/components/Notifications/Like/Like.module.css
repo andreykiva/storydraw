@@ -1,0 +1,82 @@
+.Comment {
+	width: 100%;
+	background-color: rgb(20, 20, 20);
+}
+
+.Comment:hover {
+	background-color: rgb(26, 26, 26);
+}
+
+.CommentLink {
+	height: 100%;
+	display: flex;
+	padding: 8px 16px;
+	cursor: pointer;
+}
+
+.AuthorImgWr {
+	max-width: 48px;
+	width: 100%;
+	height: 48px;
+}
+
+.AuthorImg {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.CommentInfo {
+	padding: 0 12px;
+}
+
+.AuthorTitle {
+	color: var(--light-color);
+}
+
+.AuthorTitle:hover {
+	opacity: .8;
+}
+
+.CommentContent {
+	font-size: 15px;
+	line-height: 1.2;
+	letter-spacing: -0.3px;
+	font-weight: 400;
+	margin-bottom: 4px;
+}
+
+.CommentNote {
+	font-weight: 600;
+	margin-right: 3px;
+}
+
+.CommentDate {
+	font-weight: 600;
+	color: rgb(130, 130, 130);
+	margin-left: 5px;
+}
+
+.ParentComment {
+	height: 15px;
+	display: -webkit-box;
+	overflow: hidden;
+	padding-left: 6px;
+	border-left: 2px solid rgb(100, 100, 100);
+	-webkit-box-orient: vertical;
+	font-size: 15px;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	font-weight: 400;
+	color: rgb(130, 130, 130);
+	text-overflow: ellipsis;
+	word-break: break-word;
+	-webkit-line-clamp: 1;
+}
+
+.Story {
+	max-width: 42px;
+	width: 100%;
+	height: 56px;
+	background-color: blueviolet;
+	border-radius: 2px;
+}
