@@ -90,7 +90,7 @@
 
 .SelectorOptions {
 	list-style: none;
-	overflow-y: scroll;
+	overflow-y: auto;
 	max-height: 270px;
 	color: var(--main-color);
 }
