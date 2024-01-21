@@ -31,29 +31,40 @@ type CommentProps = {
 const Comment = (props: CommentProps) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const searchInputRef = useRef(null);
+	const authorTitleRef = useRef(null);
+	const authorImgRef = useRef(null);
 	const {
 		text,
 		date,
 		parentComment,
+		story,
 		user: { username, title, image },
 	} = props;
 
-	const handleFollowClick = (e: React.MouseEvent<HTMLDivElement>) => {
-		if (!searchInputRef.current.contains(e.target as Node)) {
+	const handleAuthorClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (authorTitleRef.current.contains(e.target as Node) || authorImgRef.current.contains(e.target as Node)) {
 			navigate(`/@${username}`);
+		} else {
+			navigate(`/@${username}/story/${story.id}`);
 		}
 		dispatch(closeNotificationsModal());
 	};
 
 	return (
 		<li className={styles.Comment}>
-			<div className={styles.CommentLink} onClick={handleFollowClick}>
+			<div className={styles.CommentLink} onClick={handleAuthorClick}>
 				<div className={styles.AuthorImgWr}>
-					<img src={image || defaultImg} alt="Profile picture" className={styles.AuthorImg} />
+					<img
+						src={image || defaultImg}
+						alt="Profile picture"
+						className={styles.AuthorImg}
+						ref={authorImgRef}
+					/>
 				</div>
 				<div className={styles.CommentInfo}>
-					<span className={styles.AuthorTitle}>{title}</span>
+					<span className={styles.AuthorTitle} ref={authorTitleRef}>
+						{title}
+					</span>
 					<p className={styles.CommentContent}>
 						<span className={styles.CommentNote}>
 							{parentComment ? 'replied to your comment:' : 'commented on your story:'}
