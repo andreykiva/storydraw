@@ -20,7 +20,7 @@ type CommentProps = {
 	id: string;
 	text: string;
 	date: string;
-	parentComment: ParentComment | null;
+	parentComment?: ParentComment;
 	story: {
 		id: string;
 		preview: StoryImages;
@@ -69,7 +69,6 @@ const Comment = (props: CommentProps) => {
 						<span className={styles.CommentNote}>
 							{parentComment ? 'replied to your comment:' : 'commented on your story:'}
 						</span>
-						<span className={styles.CommentNote}></span>
 						{text}
 						<span className={styles.CommentDate}>{date}</span>
 					</p>
