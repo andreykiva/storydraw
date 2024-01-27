@@ -43,7 +43,7 @@
 .NotifCategory {
 	width: auto;
 	height: auto;
-	padding: 2px 8px;
+	padding: 3px 8px;
 	border-radius: 12px;
 	background-color: rgb(36, 36, 36);
 	color: var(--main-color);
