@@ -16,51 +16,54 @@ type StoryImages = {
 	image: string;
 };
 
-type CommentProps = {
+type LikedUser = Pick<User, 'id' | 'username' | 'title' | 'image'>;
+
+type LikeProps = {
 	id: string;
-	text: string;
 	date: string;
-	parentComment: ParentComment | null;
+	parentComment?: ParentComment;
 	story: {
 		id: string;
 		preview: StoryImages;
 	};
-	user: Pick<User, 'id' | 'username' | 'title' | 'image'>;
+	user?: LikedUser;
+	amount?: number;
+	users?: LikedUser[];
 };
 
-const Like = (props: CommentProps) => {
+const Like = (props: LikeProps) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const searchInputRef = useRef(null);
-	const {
-		text,
-		date,
-		parentComment,
-		user: { username, title, image },
-	} = props;
+	const { date, parentComment, user, users, amount } = props;
 
 	const handleFollowClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (!searchInputRef.current.contains(e.target as Node)) {
-			navigate(`/@${username}`);
+			navigate(`/@${user.username}`);
 		}
 		dispatch(closeNotificationsModal());
 	};
 
 	return (
-		<li className={styles.Comment}>
-			<div className={styles.CommentLink} onClick={handleFollowClick}>
-				<div className={styles.AuthorImgWr}>
-					<img src={image || defaultImg} alt="Profile picture" className={styles.AuthorImg} />
+		<li className={styles.Like}>
+			<div className={styles.StoryLink} onClick={handleFollowClick}>
+				<div className={styles.UserImgWr}>
+					{/* <img src={user.image || defaultImg} alt="Profile picture" className={styles.UserImg} /> */}
 				</div>
-				<div className={styles.CommentInfo}>
-					<span className={styles.AuthorTitle}>{title}</span>
-					<p className={styles.CommentContent}>
-						<span className={styles.CommentNote}>
-							{parentComment ? 'replied to your comment:' : 'commented on your story:'}
-						</span>
-						<span className={styles.CommentNote}></span>
-						{text}
-						<span className={styles.CommentDate}>{date}</span>
+				<div className={styles.LikeInfo}>
+					{amount ? (
+						<p className={styles.Users}>
+							<span className={styles.UserTitle}>{users[0].title}</span>
+							<span>, </span>
+							<span className={styles.UserTitle}>{users[1].title}</span>
+							{amount - 2 > 1 && <span className={styles.Others}> and {amount - 2} others</span>}
+						</p>
+					) : (
+						<span className={styles.UserTitle}>{user.title}</span>
+					)}
+					<p className={styles.LikeNote}>
+						{parentComment ? 'liked your comment.' : 'liked your story.'}
+						<span className={styles.LikeDate}>{date}</span>
 					</p>
 					{parentComment && (
 						<div className={styles.ParentComment}>

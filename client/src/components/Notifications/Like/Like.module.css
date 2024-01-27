@@ -1,58 +1,52 @@
-.Comment {
+.Like {
 	width: 100%;
 	background-color: rgb(20, 20, 20);
 }
 
-.Comment:hover {
+.Like:hover {
 	background-color: rgb(26, 26, 26);
 }
 
-.CommentLink {
+.StoryLink {
 	height: 100%;
 	display: flex;
 	padding: 8px 16px;
 	cursor: pointer;
 }
 
-.AuthorImgWr {
+.UserImgWr {
 	max-width: 48px;
 	width: 100%;
 	height: 48px;
 }
 
-.AuthorImg {
+.UserImg {
 	width: 100%;
 	border-radius: 50%;
 }
 
-.CommentInfo {
+.LikeInfo {
 	padding: 0 12px;
 }
 
-.AuthorTitle {
+.UserTitle {
 	color: var(--light-color);
 }
 
-.AuthorTitle:hover {
+.UserTitle:hover {
 	opacity: .8;
 }
 
-.CommentContent {
+.LikeNote {
+	margin-bottom: 4px;
 	font-size: 15px;
 	line-height: 1.2;
 	letter-spacing: -0.3px;
-	font-weight: 400;
-	margin-bottom: 4px;
-}
-
-.CommentNote {
-	font-weight: 600;
-	margin-right: 3px;
-}
-
-.CommentDate {
 	font-weight: 600;
 	color: rgb(130, 130, 130);
+}
+
+.LikeDate {
 	margin-left: 5px;
 }
 
@@ -77,6 +71,7 @@
 	max-width: 42px;
 	width: 100%;
 	height: 56px;
+	margin-left: auto;
 	background-color: blueviolet;
 	border-radius: 2px;
 }
