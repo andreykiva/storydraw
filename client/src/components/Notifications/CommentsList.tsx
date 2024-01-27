@@ -35,7 +35,6 @@ const testComments = [
 		type: 'comment',
 		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
 		date: '13-06',
-		parentComment: null,
 		story: {
 			id: '4991de',
 			preview: {

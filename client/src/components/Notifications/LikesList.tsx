@@ -6,8 +6,7 @@ import Like from './Like/Like';
 const testLikes = [
 	{
 		id: '123',
-		type: 'comment',
-		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
+		type: 'like',
 		date: '12-02',
 		parentComment: {
 			id: '12414',
@@ -32,10 +31,8 @@ const testLikes = [
 	},
 	{
 		id: '1233',
-		type: 'comment',
-		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
+		type: 'like',
 		date: '13-06',
-		parentComment: null,
 		story: {
 			id: '4991de',
 			preview: {
@@ -51,8 +48,7 @@ const testLikes = [
 	},
 	{
 		id: '12f3',
-		type: 'comment',
-		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
+		type: 'like',
 		date: '01-12',
 		parentComment: {
 			id: '12vrvr414',
@@ -74,6 +70,32 @@ const testLikes = [
 			title: 'Nina',
 			image: '',
 		},
+	},
+	{
+		id: '12f5r43',
+		type: 'like',
+		date: '01-12',
+		story: {
+			id: '49sddsd91',
+			preview: {
+				image: '',
+			},
+		},
+		amount: 193,
+		users: [
+			{
+				id: '112323',
+				username: 'lisa',
+				title: 'Lisa',
+				image: '',
+			},
+			{
+				id: '112334123',
+				username: 'lisa4ka',
+				title: 'Lisa4ka',
+				image: '',
+			},
+		],
 	},
 ];
 
