@@ -15,7 +15,7 @@ type DateSelectorProps = {
 
 const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectOption }: DateSelectorProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const dateSelectorRef = useRef(null);
+	const dateSelectorRef = useRef<HTMLDivElement>(null);
 
 	useClickOutside(dateSelectorRef, () => {
 		setIsOpen(false);

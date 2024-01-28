@@ -17,7 +17,7 @@ type CountrySelectorProps = {
 const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelectorProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [searchValue, setSearchValue] = useState('');
-	const countrySelectorRef = useRef(null);
+	const countrySelectorRef = useRef<HTMLDivElement>(null);
 
 	const sortedOptions = searchAndSortCountries(options, searchValue);
 

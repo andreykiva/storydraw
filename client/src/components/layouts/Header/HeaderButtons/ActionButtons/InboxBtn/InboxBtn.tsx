@@ -11,7 +11,7 @@ import { selectNotificationsModalStatus } from '@/features/notifications/notific
 const InboxBtn = () => {
 	const dispatch = useDispatch();
 	const isNotificationsOpen = useSelector(selectNotificationsModalStatus);
-	const inboxBtnRef = useRef(null);
+	const inboxBtnRef = useRef<HTMLDivElement>(null);
 
 	useClickOutside(inboxBtnRef, () => {
 		dispatch(closeNotificationsModal());

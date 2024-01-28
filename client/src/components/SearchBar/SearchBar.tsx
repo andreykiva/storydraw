@@ -37,7 +37,7 @@ const SearchBar = ({ light = false }) => {
 	const [searchParams] = useSearchParams();
 	const [value, setValue] = useState('');
 	const [isOpen, setIsOpen] = useState(false);
-	const searchInputRef = useRef(null);
+	const searchInputRef = useRef<HTMLInputElement>(null);
 	const param = searchParams.get('q');
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
 
