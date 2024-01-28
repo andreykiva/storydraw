@@ -21,6 +21,10 @@ const testLikes = [
 			preview: {
 				image: '',
 			},
+			author: {
+				id: '123132',
+				username: 'andrew'
+			}
 		},
 		user: {
 			id: '123',
@@ -38,6 +42,10 @@ const testLikes = [
 			preview: {
 				image: '',
 			},
+			author: {
+				id: '123132',
+				username: 'andrew'
+			}
 		},
 		user: {
 			id: '123',
@@ -63,6 +71,10 @@ const testLikes = [
 			preview: {
 				image: '',
 			},
+			author: {
+				id: '123132',
+				username: 'andrew'
+			}
 		},
 		user: {
 			id: '123',
@@ -80,6 +92,10 @@ const testLikes = [
 			preview: {
 				image: '',
 			},
+			author: {
+				id: '123132',
+				username: 'andrew'
+			}
 		},
 		amount: 193,
 		users: [
@@ -91,8 +107,8 @@ const testLikes = [
 			},
 			{
 				id: '112334123',
-				username: 'lisa4ka',
-				title: 'Lisa4ka',
+				username: 'lisa4ka123123',
+				title: 'Lisa4ka123123',
 				image: '',
 			},
 		],
