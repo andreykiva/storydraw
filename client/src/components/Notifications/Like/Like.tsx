@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Like.module.css';
 import type User from '@/types/User';
@@ -25,6 +25,7 @@ type LikeProps = {
 	story: {
 		id: string;
 		preview: StoryImages;
+		author: Pick<User, 'id' | 'username'>;
 	};
 	user?: LikedUser;
 	amount?: number;
@@ -34,32 +35,63 @@ type LikeProps = {
 const Like = (props: LikeProps) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const searchInputRef = useRef(null);
-	const { date, parentComment, user, users, amount } = props;
+	const userTitleRef = useRef<HTMLAnchorElement>(null);
+	const userImgRef = useRef<HTMLImageElement>(null);
+	const otherUsersOneRef = useRef<HTMLAnchorElement>(null);
+	const otherUsersTwoRef = useRef<HTMLAnchorElement>(null);
+	const { date, parentComment, user, users, amount, story } = props;
 
-	const handleFollowClick = (e: React.MouseEvent<HTMLDivElement>) => {
-		if (!searchInputRef.current.contains(e.target as Node)) {
-			navigate(`/@${user.username}`);
+	const handleStoryClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		const isSingleUserClick =
+			!amount &&
+			!userTitleRef.current.contains(e.target as Node) &&
+			!userImgRef.current.contains(e.target as Node);
+
+		const isMultiUserClick =
+			amount &&
+			!otherUsersOneRef.current.contains(e.target as Node) &&
+			!otherUsersTwoRef.current.contains(e.target as Node);
+
+		if (isSingleUserClick || isMultiUserClick) {
+			navigate(`/@${story.author.username}/story/${story.id}`);
+			dispatch(closeNotificationsModal());
 		}
-		dispatch(closeNotificationsModal());
 	};
 
 	return (
 		<li className={styles.Like}>
-			<div className={styles.StoryLink} onClick={handleFollowClick}>
-				<div className={styles.UserImgWr}>
-					{/* <img src={user.image || defaultImg} alt="Profile picture" className={styles.UserImg} /> */}
-				</div>
+			<div className={styles.StoryLink} onClick={handleStoryClick}>
+				{amount ? (
+					<div className={styles.UserImgSmallWr}>
+						<img src={users[0].image || defaultImg} alt="Profile picture" className={styles.UserImgSmall} />
+						<img src={users[1].image || defaultImg} alt="Profile picture" className={styles.UserImgSmall} />
+					</div>
+				) : (
+					<Link to={`/@${user.username}`} className={styles.UserImgWr}>
+						<img
+							src={user.image || defaultImg}
+							alt="Profile picture"
+							className={styles.UserImg}
+							ref={userImgRef}
+						/>
+					</Link>
+				)}
 				<div className={styles.LikeInfo}>
 					{amount ? (
-						<p className={styles.Users}>
-							<span className={styles.UserTitle}>{users[0].title}</span>
+						<p className={styles.UsersAmount}>
+							<Link to={`/@${users[0].username}`} className={styles.UserTitle} ref={otherUsersOneRef}>
+								{users[0].title}
+							</Link>
 							<span>, </span>
-							<span className={styles.UserTitle}>{users[1].title}</span>
+							<Link to={`/@${users[1].username}`} className={styles.UserTitle} ref={otherUsersTwoRef}>
+								{users[1].title}
+							</Link>
 							{amount - 2 > 1 && <span className={styles.Others}> and {amount - 2} others</span>}
 						</p>
 					) : (
-						<span className={styles.UserTitle}>{user.title}</span>
+						<Link to={`/@${user.username}`} className={styles.UserTitle} ref={userTitleRef}>
+							{user.title}
+						</Link>
 					)}
 					<p className={styles.LikeNote}>
 						{parentComment ? 'liked your comment.' : 'liked your story.'}

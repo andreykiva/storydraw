@@ -14,10 +14,17 @@
 	cursor: pointer;
 }
 
-.UserImgWr {
+.UserImgWr,
+.UserImgSmallWr {
+	position: relative;
 	max-width: 48px;
 	width: 100%;
 	height: 48px;
+	border-radius: 50%;
+}
+
+.UserImgSmallWr {
+	border-radius: 0;
 }
 
 .UserImg {
@@ -25,8 +32,37 @@
 	border-radius: 50%;
 }
 
+.UserImgSmall {
+	position: absolute;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid rgb(18, 18, 18);
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.UserImgSmall:last-child {
+	top: 0;
+	right: 0;
+	left: auto;
+	bottom: auto;
+	z-index: 0;
+}
+
 .LikeInfo {
 	padding: 0 12px;
+}
+
+.UsersAmount {
+	display: -webkit-box;
+	overflow: hidden;
+	color: var(--light-color);
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	-webkit-line-clamp: 1;
 }
 
 .UserTitle {
