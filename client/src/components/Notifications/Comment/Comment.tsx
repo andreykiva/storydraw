@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Comment.module.css';
 import type User from '@/types/User';
@@ -31,8 +31,8 @@ type CommentProps = {
 const Comment = (props: CommentProps) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const authorTitleRef = useRef(null);
-	const authorImgRef = useRef(null);
+	const authorTitleRef = useRef<HTMLAnchorElement>(null);
+	const authorImgRef = useRef<HTMLImageElement>(null);
 	const {
 		text,
 		date,
@@ -42,9 +42,7 @@ const Comment = (props: CommentProps) => {
 	} = props;
 
 	const handleAuthorClick = (e: React.MouseEvent<HTMLDivElement>) => {
-		if (authorTitleRef.current.contains(e.target as Node) || authorImgRef.current.contains(e.target as Node)) {
-			navigate(`/@${username}`);
-		} else {
+		if (!authorTitleRef.current.contains(e.target as Node) && !authorImgRef.current.contains(e.target as Node)) {
 			navigate(`/@${username}/story/${story.id}`);
 		}
 		dispatch(closeNotificationsModal());
@@ -53,18 +51,18 @@ const Comment = (props: CommentProps) => {
 	return (
 		<li className={styles.Comment}>
 			<div className={styles.CommentLink} onClick={handleAuthorClick}>
-				<div className={styles.AuthorImgWr}>
+				<Link to={`/@${username}`} className={styles.AuthorImgWr}>
 					<img
 						src={image || defaultImg}
 						alt="Profile picture"
 						className={styles.AuthorImg}
 						ref={authorImgRef}
 					/>
-				</div>
+				</Link>
 				<div className={styles.CommentInfo}>
-					<span className={styles.AuthorTitle} ref={authorTitleRef}>
+					<Link to={`/@${username}`} className={styles.AuthorTitle} ref={authorTitleRef}>
 						{title}
-					</span>
+					</Link>
 					<p className={styles.CommentContent}>
 						<span className={styles.CommentNote}>
 							{parentComment ? 'replied to your comment:' : 'commented on your story:'}
