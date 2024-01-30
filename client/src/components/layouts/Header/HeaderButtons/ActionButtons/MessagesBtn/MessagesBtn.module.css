@@ -5,10 +5,6 @@
 	border-radius: 50%;
 }
 
-.MessagesBtn:hover .MessagesBtnLink {
-	opacity: 0.7;
-}
-
 .MessagesBtn:hover .Prompt {
 	opacity: 1;
 	visibility: visible;
@@ -21,4 +17,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.MessagesBtnLink:hover {
+	opacity: 0.7;
 }
