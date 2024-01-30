@@ -15,7 +15,6 @@ import { selectAuth } from '@/features/auth/authSlice';
 const App = () => {
 	const isAuth = useSelector(selectAuth);
 
-	console.log(isAuth);
 	return (
 		<BrowserRouter>
 			<Layout>
