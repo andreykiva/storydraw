@@ -2,19 +2,21 @@ import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
 import commentImg from '@/assets/icons/notifications/comment.svg';
 import Comment from './Comment/Comment';
+import type { CommentNotification } from '@/types/Notification';
+import { categorizeNotificationsByDate } from '@/utils/dateUtils';
 
-const testComments = [
+const testComments: CommentNotification[] = [
 	{
 		id: '123',
 		type: 'comment',
 		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
-		date: '12-02',
+		date: new Date('2024-01-01'),
 		parentComment: {
 			id: '12414',
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
 				id: '123',
-				title: 'andrew'
+				title: 'andrew',
 			},
 		},
 		story: {
@@ -34,7 +36,7 @@ const testComments = [
 		id: '1233',
 		type: 'comment',
 		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
-		date: '13-06',
+		date: new Date('2023-12-25'),
 		story: {
 			id: '4991de',
 			preview: {
@@ -52,13 +54,13 @@ const testComments = [
 		id: '12f3',
 		type: 'comment',
 		text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur aperiam magni incidunt',
-		date: '01-12',
+		date: new Date('2024-01-15'),
 		parentComment: {
 			id: '12vrvr414',
 			text: 'have a nice day',
 			user: {
 				id: '123',
-				title: 'andrew'
+				title: 'andrew',
 			},
 		},
 		story: {
@@ -77,16 +79,28 @@ const testComments = [
 ];
 
 const CommentsList = () => {
+	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testComments);
+
+	const renderCommentNotifications = (comments: CommentNotification[], title: string) => {
+		return (
+			<>
+				<div className={notifSharedStyles.DateText}>{title}</div>
+				<ul className={notifSharedStyles.NotificationsList}>
+					{comments.map((comment: CommentNotification) => (
+						<Comment key={comment.id} {...comment} />
+					))}
+				</ul>
+			</>
+		);
+	};
+
 	return (
 		<div className={notifSharedStyles.NotificationsListWr}>
-			{testComments ? (
+			{thisWeek.length + thisMonth.length + previous.length > 0 ? (
 				<>
-					<span className={notifSharedStyles.DateText}>Previous</span>
-					<ul className={notifSharedStyles.NotificationsList}>
-						{testComments.map((comment) => (
-							<Comment key={comment.id} {...comment} />
-						))}
-					</ul>
+					{thisWeek.length > 0 && renderCommentNotifications(thisWeek, 'This week')}
+					{thisMonth.length > 0 && renderCommentNotifications(thisMonth, 'This Month')}
+					{previous.length > 0 && renderCommentNotifications(previous, 'Previous')}
 				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>

@@ -2,12 +2,14 @@ import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
 import heartImg from '@/assets/icons/notifications/heart.svg';
 import Like from './Like/Like';
+import type { LikeNotification } from '@/types/Notification';
+import { categorizeNotificationsByDate } from '@/utils/dateUtils';
 
-const testLikes = [
+const testLikes: LikeNotification[] = [
 	{
 		id: '123',
 		type: 'like',
-		date: '12-02',
+		date: new Date('2024-01-28'),
 		parentComment: {
 			id: '12414',
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
@@ -23,8 +25,8 @@ const testLikes = [
 			},
 			author: {
 				id: '123132',
-				username: 'andrew'
-			}
+				username: 'andrew',
+			},
 		},
 		user: {
 			id: '123',
@@ -36,7 +38,7 @@ const testLikes = [
 	{
 		id: '1233',
 		type: 'like',
-		date: '13-06',
+		date: new Date('2023-11-05'),
 		story: {
 			id: '4991de',
 			preview: {
@@ -44,8 +46,8 @@ const testLikes = [
 			},
 			author: {
 				id: '123132',
-				username: 'andrew'
-			}
+				username: 'andrew',
+			},
 		},
 		user: {
 			id: '123',
@@ -57,7 +59,7 @@ const testLikes = [
 	{
 		id: '12f3',
 		type: 'like',
-		date: '01-12',
+		date: new Date('2024-01-01'),
 		parentComment: {
 			id: '12vrvr414',
 			text: 'have a nice day',
@@ -73,8 +75,8 @@ const testLikes = [
 			},
 			author: {
 				id: '123132',
-				username: 'andrew'
-			}
+				username: 'andrew',
+			},
 		},
 		user: {
 			id: '123',
@@ -86,7 +88,7 @@ const testLikes = [
 	{
 		id: '12f5r43',
 		type: 'like',
-		date: '01-12',
+		date: new Date('2022-03-10'),
 		story: {
 			id: '49sddsd91',
 			preview: {
@@ -94,8 +96,8 @@ const testLikes = [
 			},
 			author: {
 				id: '123132',
-				username: 'andrew'
-			}
+				username: 'andrew',
+			},
 		},
 		amount: 193,
 		users: [
@@ -116,16 +118,28 @@ const testLikes = [
 ];
 
 const LikesList = () => {
+	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testLikes);
+	
+	const renderLikeNotifications = (likes: LikeNotification[], title: string) => {
+		return (
+			<>
+				<div className={notifSharedStyles.DateText}>{title}</div>
+				<ul className={notifSharedStyles.NotificationsList}>
+					{likes.map((like: LikeNotification) => (
+						<Like key={like.id} {...like} />
+					))}
+				</ul>
+			</>
+		);
+	};
+
 	return (
 		<div className={notifSharedStyles.NotificationsListWr}>
-			{testLikes ? (
+			{thisWeek.length + thisMonth.length + previous.length > 0 ? (
 				<>
-					<span className={notifSharedStyles.DateText}>Previous</span>
-					<ul className={notifSharedStyles.NotificationsList}>
-						{testLikes.map((like) => (
-							<Like key={like.id} {...like} />
-						))}
-					</ul>
+					{thisWeek.length > 0 && renderLikeNotifications(thisWeek, 'This week')}
+					{thisMonth.length > 0 && renderLikeNotifications(thisMonth, 'This Month')}
+					{previous.length > 0 && renderLikeNotifications(previous, 'Previous')}
 				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>

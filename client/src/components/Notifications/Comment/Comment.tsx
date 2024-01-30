@@ -2,33 +2,12 @@ import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Comment.module.css';
-import type User from '@/types/User';
 import defaultImg from '@/assets/icons/default.svg';
 import { closeNotificationsModal } from '@/features/notifications/notificationsSlice';
+import type { CommentNotification } from '@/types/Notification';
+import { displayDate } from '@/utils/dateUtils';
 
-type ParentComment = {
-	id: string;
-	user: Pick<User, 'id' | 'title'>;
-	text: string;
-};
-
-type StoryImages = {
-	image: string;
-};
-
-type CommentProps = {
-	id: string;
-	text: string;
-	date: string;
-	parentComment?: ParentComment;
-	story: {
-		id: string;
-		preview: StoryImages;
-	};
-	user: Pick<User, 'id' | 'username' | 'title' | 'image'>;
-};
-
-const Comment = (props: CommentProps) => {
+const Comment = (props: CommentNotification) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const authorTitleRef = useRef<HTMLAnchorElement>(null);
@@ -68,7 +47,7 @@ const Comment = (props: CommentProps) => {
 							{parentComment ? 'replied to your comment:' : 'commented on your story:'}
 						</span>
 						{text}
-						<span className={styles.CommentDate}>{date}</span>
+						<span className={styles.CommentDate}>{displayDate(date)}</span>
 					</p>
 					{parentComment && (
 						<div className={styles.ParentComment}>

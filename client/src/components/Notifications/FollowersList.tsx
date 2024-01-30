@@ -2,11 +2,14 @@ import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
 import personImg from '@/assets/icons/notifications/person.svg';
 import Follow from './Follow/Follow';
+import type { FollowNotification } from '@/types/Notification';
+import { categorizeNotificationsByDate } from '@/utils/dateUtils';
 
-const testFollows = [
+const testFollows: FollowNotification[] = [
 	{
 		id: '123',
-		date: '12-02',
+		type: 'follow',
+		date: new Date('2024-01-10'),
 		user: {
 			id: '123',
 			username: 'lisa',
@@ -18,7 +21,8 @@ const testFollows = [
 	},
 	{
 		id: '1233',
-		date: '10-01',
+		type: 'follow',
+		date: new Date('2022-03-10'),
 		user: {
 			id: '1231',
 			username: 'roman',
@@ -30,7 +34,8 @@ const testFollows = [
 	},
 	{
 		id: '1237',
-		date: '06-12',
+		type: 'follow',
+		date: new Date('2023-05-10'),
 		user: {
 			id: '1423',
 			username: 'oleg',
@@ -42,7 +47,8 @@ const testFollows = [
 	},
 	{
 		id: '123714',
-		date: '03-12',
+		type: 'follow',
+		date: new Date('2024-01-13'),
 		user: {
 			id: '1421243',
 			username: 'ivan',
@@ -55,16 +61,28 @@ const testFollows = [
 ];
 
 const FollowersList = () => {
+	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testFollows);
+
+	const renderFollowNotifications = (follows: FollowNotification[], title: string) => {
+		return (
+			<>
+				<div className={notifSharedStyles.DateText}>{title}</div>
+				<ul className={notifSharedStyles.NotificationsList}>
+					{follows.map((follow: FollowNotification) => (
+						<Follow key={follow.id} {...follow} />
+					))}
+				</ul>
+			</>
+		);
+	};
+	
 	return (
 		<div className={notifSharedStyles.NotificationsListWr}>
-			{testFollows ? (
+			{thisWeek.length + thisMonth.length + previous.length > 0 ? (
 				<>
-					<span className={notifSharedStyles.DateText}>Previous</span>
-					<ul className={notifSharedStyles.NotificationsList}>
-						{testFollows.map((follow) => (
-							<Follow key={follow.id} {...follow} />
-						))}
-					</ul>
+					{thisWeek.length > 0 && renderFollowNotifications(thisWeek, 'This week')}
+					{thisMonth.length > 0 && renderFollowNotifications(thisMonth, 'This Month')}
+					{previous.length > 0 && renderFollowNotifications(previous, 'Previous')}
 				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>

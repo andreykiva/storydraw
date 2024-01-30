@@ -2,37 +2,12 @@ import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Like.module.css';
-import type User from '@/types/User';
 import defaultImg from '@/assets/icons/default.svg';
 import { closeNotificationsModal } from '@/features/notifications/notificationsSlice';
+import type { LikeNotification } from '@/types/Notification';
+import { displayDate } from '@/utils/dateUtils';
 
-type ParentComment = {
-	id: string;
-	user: Pick<User, 'id' | 'title'>;
-	text: string;
-};
-
-type StoryImages = {
-	image: string;
-};
-
-type LikedUser = Pick<User, 'id' | 'username' | 'title' | 'image'>;
-
-type LikeProps = {
-	id: string;
-	date: string;
-	parentComment?: ParentComment;
-	story: {
-		id: string;
-		preview: StoryImages;
-		author: Pick<User, 'id' | 'username'>;
-	};
-	user?: LikedUser;
-	amount?: number;
-	users?: LikedUser[];
-};
-
-const Like = (props: LikeProps) => {
+const Like = (props: LikeNotification) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const userTitleRef = useRef<HTMLAnchorElement>(null);
@@ -54,8 +29,9 @@ const Like = (props: LikeProps) => {
 
 		if (isSingleUserClick || isMultiUserClick) {
 			navigate(`/@${story.author.username}/story/${story.id}`);
-			dispatch(closeNotificationsModal());
 		}
+
+		dispatch(closeNotificationsModal());
 	};
 
 	return (
@@ -95,7 +71,7 @@ const Like = (props: LikeProps) => {
 					)}
 					<p className={styles.LikeNote}>
 						{parentComment ? 'liked your comment.' : 'liked your story.'}
-						<span className={styles.LikeDate}>{date}</span>
+						<span className={styles.LikeDate}>{displayDate(date)}</span>
 					</p>
 					{parentComment && (
 						<div className={styles.ParentComment}>

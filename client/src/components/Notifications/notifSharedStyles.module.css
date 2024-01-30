@@ -43,6 +43,7 @@
 }
 
 .DateText {
+	margin-top: 8px;
 	padding: 0 16px;
 	font-size: 15px;
 	color: rgb(130, 130, 130);

@@ -2,21 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Follow.module.css';
-import type User from '@/types/User';
 import defaultImg from '@/assets/icons/default.svg';
 import FriendshipBtn from './FriendshipBtn/FriendshipBtn';
 import { closeNotificationsModal } from '@/features/notifications/notificationsSlice';
+import type { FollowNotification } from '@/types/Notification';
+import { displayDate } from '@/utils/dateUtils';
 
-type FollowProps = {
-	id: string;
-	date: string;
-	user: Pick<User, 'id' | 'username' | 'title' | 'image'> & {
-		isFollowingYou: boolean;
-		isFollowedByYou: boolean;
-	};
-};
-
-const Follow = (props: FollowProps) => {
+const Follow = (props: FollowNotification) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const {
@@ -37,10 +29,7 @@ const Follow = (props: FollowProps) => {
 				</div>
 				<div className={styles.UserInfo}>
 					<span className={styles.UserTitle}>{title}</span>
-					<span className={styles.FollowDate}>
-						{isFollowingYou && 'Follows you. '}
-						{date}
-					</span>
+					<span className={styles.FollowDate}>Follows you. {displayDate(date)}</span>
 				</div>
 			</div>
 			<FriendshipBtn isFollowingYou={isFollowingYou} isFollowedByYou={isFollowedByYou} />
