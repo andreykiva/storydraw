@@ -6,7 +6,7 @@ type NotificationsState = {
 };
 
 const initialState: NotificationsState = {
-	isNotificationsOpen: true,
+	isNotificationsOpen: false,
 	notificationsCategory: 'all',
 };
 
