@@ -20,6 +20,10 @@
 	cursor: pointer;
 }
 
-.InboxBtnContent:hover {
+.InboxBtn:not(.Active) .InboxBtnContent:hover {
 	opacity: 0.7;
 }
+
+/* .InboxBtn.Active .InboxIcon {
+	fill: #D1D1D1;
+} */

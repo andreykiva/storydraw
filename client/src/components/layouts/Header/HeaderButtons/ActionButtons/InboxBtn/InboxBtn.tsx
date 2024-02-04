@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './InboxBtn.module.css';
-import chatImg from '@/assets/icons/chat.svg';
+import InboxIcon from '@/components/ui/icons/InboxIcon';
 import useClickOutside from '@/hooks/useClickOutside';
 import Notifications from '@/components/Notifications/Notifications';
 import Prompt from '../Prompt/Prompt';
@@ -28,7 +28,7 @@ const InboxBtn = () => {
 	return (
 		<div className={[styles.InboxBtn, isNotificationsOpen && styles.Active].join(' ')} ref={inboxBtnRef}>
 			<div className={styles.InboxBtnContent} onClick={toggleNotifications}>
-				<img src={chatImg} alt="Inbox" />
+				<InboxIcon className={styles.InboxIcon} />
 			</div>
 			<Prompt text="Inbox" className={styles.Prompt} />
 			{isNotificationsOpen && <Notifications />}
