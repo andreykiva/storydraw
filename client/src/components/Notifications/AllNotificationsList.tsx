@@ -4,10 +4,8 @@ import messageImg from '@/assets/icons/notifications/message.svg';
 import Follow from './Follow/Follow';
 import Like from './Like/Like';
 import Comment from './Comment/Comment';
-import type { LikeNotification, CommentNotification, FollowNotification } from '@/types/Notification';
+import type { Notification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/dateUtils';
-
-type Notification = LikeNotification | CommentNotification | FollowNotification;
 
 const testAll: Notification[] = [
 	{
@@ -19,7 +17,6 @@ const testAll: Notification[] = [
 			username: 'roman',
 			title: 'Roman',
 			image: '',
-			isFollowingYou: true,
 			isFollowedByYou: true,
 		},
 	},
@@ -58,7 +55,6 @@ const testAll: Notification[] = [
 			username: 'oleg',
 			title: 'oleg',
 			image: '',
-			isFollowingYou: true,
 			isFollowedByYou: false,
 		},
 	},
@@ -194,7 +190,6 @@ const testAll: Notification[] = [
 			username: 'lisa',
 			title: 'Lisa',
 			image: '',
-			isFollowingYou: false,
 			isFollowedByYou: true,
 		},
 	},
@@ -207,7 +202,6 @@ const testAll: Notification[] = [
 			username: 'ivan',
 			title: 'Ivan',
 			image: '',
-			isFollowingYou: false,
 			isFollowedByYou: false,
 		},
 	},
