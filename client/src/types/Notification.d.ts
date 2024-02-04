@@ -28,7 +28,6 @@ export type FollowNotification = {
 	type: 'follow';
 	date: Date;
 	user: Pick<User, 'id' | 'username' | 'title' | 'image'> & {
-		isFollowingYou: boolean;
 		isFollowedByYou: boolean;
 	};
 };
@@ -49,3 +48,5 @@ export type LikeNotification = {
 	amount?: number;
 	users?: LikedUser[];
 };
+
+export type Notification = CommentNotification | FollowNotification | LikeNotification;
