@@ -11,12 +11,12 @@
 	letter-spacing: -0.5px;
 }
 
-.FriendshipBtn.FollowingBtn, .FriendshipBtn.FriendsBtn {
+.FriendshipBtn.FriendsBtn {
 	background: rgba(255, 255, 255, .08);
 	color: var(--main-color);
 }
 
-.FriendshipBtn.FollowingBtn:hover, .FriendshipBtn.FriendsBtn:hover {
+.FriendshipBtn.FriendsBtn:hover {
 	opacity: 0.8;
 }
 

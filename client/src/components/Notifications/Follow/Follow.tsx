@@ -13,7 +13,7 @@ const Follow = (props: FollowNotification) => {
 	const navigate = useNavigate();
 	const {
 		date,
-		user: { username, title, image, isFollowingYou, isFollowedByYou },
+		user: { username, title, image, isFollowedByYou },
 	} = props;
 
 	const handleFollowClick = () => {
@@ -32,7 +32,7 @@ const Follow = (props: FollowNotification) => {
 					<span className={styles.FollowDate}>Follows you. {displayDate(date)}</span>
 				</div>
 			</div>
-			<FriendshipBtn isFollowingYou={isFollowingYou} isFollowedByYou={isFollowedByYou} />
+			<FriendshipBtn isFollowedByYou={isFollowedByYou} />
 		</li>
 	);
 };
