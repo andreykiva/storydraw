@@ -7,7 +7,7 @@ import AllNotificationsList from './AllNotificationsList';
 import LikesList from './LikesList';
 import CommentsList from './CommentsList';
 import MentionsTagsList from './MentionsTagsList';
-import FollowersList from './FollowersList';
+import FollowsList from './FollowsList';
 import { changeNotificationsCategory } from '@/features/notifications/notificationsSlice';
 import { selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
 
@@ -71,7 +71,7 @@ const Notifications = () => {
 			{notificationsCategory === 'likes' && <LikesList />}
 			{notificationsCategory === 'comments' && <CommentsList />}
 			{notificationsCategory === 'mentionsTags' && <MentionsTagsList />}
-			{notificationsCategory === 'followers' && <FollowersList />}
+			{notificationsCategory === 'followers' && <FollowsList />}
 		</div>
 	);
 };
