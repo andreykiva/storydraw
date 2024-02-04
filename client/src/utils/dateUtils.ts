@@ -1,6 +1,4 @@
-import type { FollowNotification, CommentNotification, LikeNotification } from '@/types/Notification';
-
-type Notification = FollowNotification | CommentNotification | LikeNotification;
+import type { Notification } from '@/types/Notification';
 
 type CategorizedNotifications<T> = {
 	thisWeek: T[];
