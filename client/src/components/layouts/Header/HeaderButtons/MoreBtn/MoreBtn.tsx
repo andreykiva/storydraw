@@ -11,11 +11,11 @@ type MoreBtnProps = {
 const MoreBtn = ({ isAuth }: MoreBtnProps) => {
 	return (
 		<button className={styles.MoreBtn}>
-			{isAuth ? (
-				<img src={defaultImg} alt="User profile" className={styles.ProfileImg} />
-			) : (
-				<img src={moreIcon} alt="More" className={styles.MoreDots} />
-			)}
+			<img
+				src={isAuth ? defaultImg : moreIcon}
+				alt={isAuth ? 'User profile' : 'More'}
+				className={styles.MoreBtnImg}
+			/>
 			<MoreMenu className={styles.MoreMenu} isAuth={isAuth} />
 		</button>
 	);

@@ -22,15 +22,7 @@
 	transition: 0.2s ease-in-out;
 }
 
-.MoreDots {
-	opacity: 0.6;
-}
-
-.ProfileImg {
+.MoreBtnImg {
 	width: 100%;
 	border-radius: 50%;
-}
-
-.ProfileImg:hover {
-	opacity: .7;
 }
