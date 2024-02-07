@@ -13,9 +13,9 @@ const SendIcon = (props: React.SVGProps<SVGSVGElement>) => {
 			<path
 				d="M22 2L2 8.66667L11.5833 12.4167M22 2L15.3333 22L11.5833 12.4167M22 2L11.5833 12.4167"
 				stroke="#D1D1D1"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			/>
 		</svg>
 	);
