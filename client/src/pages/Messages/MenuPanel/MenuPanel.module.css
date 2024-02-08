@@ -1,0 +1,8 @@
+.MenuPanel {
+	max-width: 360px;
+	width: 100%;
+	height: 100%;
+	background: rgb(20, 20, 20);
+	margin-right: 16px;
+	border-radius: 10px;
+}
