@@ -15,13 +15,14 @@ const Layout = ({ children }: LayoutProps) => {
 	const isAuthOpen = useSelector(selectAuthModalStatus);
 	const location = useLocation();
 	const hideHeader = location.pathname.includes('/story/');
+	const hideSidebar = location.pathname.includes('/story/') || location.pathname.includes('/messages');
 
 	return (
 		<>
 			{isAuthOpen && <Auth />}
 			{!hideHeader && <Header />}
 			<div className={styles.LayoutContainer}>
-				<Sidebar />
+				{!hideSidebar && <Sidebar />}
 				<main className={styles.Content}>{children}</main>
 			</div>
 		</>
