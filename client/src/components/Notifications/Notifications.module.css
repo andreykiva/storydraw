@@ -9,6 +9,7 @@
 	padding-top: 24px;
 	border-radius: 10px;
 	background: rgb(20, 20, 20);
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .NotifTriangle {
