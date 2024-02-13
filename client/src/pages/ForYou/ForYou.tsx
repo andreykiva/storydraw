@@ -7,7 +7,7 @@ const testStories = [
 		id: '1',
 		story: '',
 		description: 'today was a good day',
-		musicName: 'Andre - My life',
+		musicName: 'Orbital - Halcyon And On And On',
 		musicId: '123',
 		tags: ['song', 'story', 'day'],
 		likes: 99142,
@@ -19,13 +19,13 @@ const testStories = [
 			username: 'andrey.kiva',
 			title: 'hey man',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '2',
 		story: '',
 		description: 'today was a good day',
-		musicName: 'Andre - My life',
+		musicName: 'Orbital - Halcyon And On And On',
 		musicId: '123',
 		tags: ['song', 'story', 'day'],
 		likes: 99142,
@@ -37,13 +37,13 @@ const testStories = [
 			username: 'andrey.kiva',
 			title: 'hey man',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '3',
 		story: '',
 		description: 'today was a good day',
-		musicName: 'Andre - My life',
+		musicName: 'Orbital - Halcyon And On And On',
 		musicId: '123',
 		tags: ['song', 'story', 'day'],
 		likes: 99142,
@@ -55,13 +55,13 @@ const testStories = [
 			username: 'andrey.kiva',
 			title: 'hey man',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '4',
 		story: '',
 		description: 'today was a good day',
-		musicName: 'Andre - My life',
+		musicName: 'Orbital - Halcyon And On And On',
 		musicId: '123',
 		tags: ['song', 'story', 'day'],
 		likes: 99142,
@@ -73,13 +73,13 @@ const testStories = [
 			username: 'andrey.kiva',
 			title: 'hey man',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '5',
 		story: '',
 		description: 'today was a good day',
-		musicName: 'Andre - My life',
+		musicName: 'Orbital - Halcyon And On And On',
 		musicId: '123',
 		tags: ['song', 'story', 'day'],
 		likes: 99142,
@@ -91,7 +91,7 @@ const testStories = [
 			username: 'andrey.kiva',
 			title: 'hey man',
 			image: '',
-		}
+		},
 	},
 ];
 
