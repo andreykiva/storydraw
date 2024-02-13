@@ -24,7 +24,7 @@ const testStoryInfo = {
 	description: 'I wanna be a bee',
 	date: '06-23',
 	musicId: '41',
-	musicName: 'Andre - My life',
+	musicName: 'Orbital - Halcyon And On And On',
 	likes: 723,
 	favorites: 213,
 	share: 412,
