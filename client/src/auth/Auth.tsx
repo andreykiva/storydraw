@@ -6,6 +6,7 @@ import Register from './Register/Register';
 import closeImg from '@/assets/icons/close.svg';
 import { closeAuthModal } from '@/features/auth/authSlice';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
+import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 
 type AuthMode = 'login' | 'register';
 
@@ -22,7 +23,7 @@ const Auth = () => {
 	};
 
 	return (
-		<div className={styles.Auth}>
+		<ModalOverlay>
 			<div className={styles.AuthModal}>
 				<RoundButton className={styles.CloseBtn} onClick={handleModalClose}>
 					<img src={closeImg} alt="CLose" className={styles.CloseIcon} />
@@ -47,7 +48,7 @@ const Auth = () => {
 					</div>
 				)}
 			</div>
-		</div>
+		</ModalOverlay>
 	);
 };
 
