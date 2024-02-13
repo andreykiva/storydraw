@@ -1,0 +1,33 @@
+.Radio {
+	display: flex;
+	align-items: center;
+}
+
+.RadioInput {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	border: 1px solid var(--bright-green-color);
+	border-radius: 50%;
+	margin-right: 8px;
+	background-color: transparent;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.RadioInput:checked::before {
+	content: "";
+	display: block;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--bright-green-color);
+	border-radius: 50%;
+}
+
+.RadioLabel {
+	font-size: 17px;
+}
