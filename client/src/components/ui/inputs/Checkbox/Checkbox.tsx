@@ -5,7 +5,7 @@ import CheckIcon from '@/components/ui/icons/CheckIcon';
 type CheckboxProps = {
 	children: React.ReactNode;
 	checked: boolean;
-	onChange: () => void;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Checkbox = ({ children, checked, onChange }: CheckboxProps) => {
