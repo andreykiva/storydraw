@@ -41,7 +41,7 @@ export const categorizeNotificationsByDate = <T extends Notification>(
 	return { thisWeek, thisMonth, previous };
 };
 
-export const displayDate = (date: Date): string => {
+export const displayDate = (date: Date, divider: string = '-'): string => {
 	const now = new Date();
 	const diff = now.getTime() - date.getTime();
 	const seconds = Math.floor(diff / 1000);
@@ -63,9 +63,9 @@ export const displayDate = (date: Date): string => {
 		const yyyy = date.getFullYear();
 
 		if (yyyy === now.getFullYear()) {
-			return `${mm}-${dd}`;
+			return `${mm}${divider}${dd}`;
 		} else {
-			return `${yyyy}-${mm}-${dd}`;
+			return `${yyyy}${divider}${mm}${divider}${dd}`;
 		}
 	}
 };
