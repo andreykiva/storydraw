@@ -6,10 +6,11 @@ import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import settingsImg from '@/assets/icons/settings.svg';
 import arrowImg from '@/assets/icons/arrow-left.svg';
 import SettingsModal from './SettingsModal/SettingsModal';
+import ChatList from './ChatList/ChatList';
 
 const MenuPanel = () => {
 	const navigate = useNavigate();
-	const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(true);
+	const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
 	const handleSettingsModalOpen = () => {
 		setIsSettingsModalOpen(true);
@@ -36,6 +37,7 @@ const MenuPanel = () => {
 					<img src={settingsImg} alt="Settings" className={styles.SettingsIcon} />
 				</RoundButton>
 			</div>
+			<ChatList />
 			{isSettingsModalOpen && <SettingsModal closeModal={handleSettingsModalClose} />}
 		</div>
 	);
