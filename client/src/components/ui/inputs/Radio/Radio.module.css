@@ -9,10 +9,10 @@
 	height: 24px;
 	border: 1px solid var(--bright-green-color);
 	border-radius: 50%;
-	margin-right: 8px;
 	background-color: transparent;
 	appearance: none;
 	-webkit-appearance: none;
+	cursor: pointer;
 }
 
 .RadioInput:checked::before {
@@ -26,8 +26,11 @@
 	transform: translate(-50%, -50%);
 	background-color: var(--bright-green-color);
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .RadioLabel {
+	padding-left: 8px;
 	font-size: 17px;
+	cursor: pointer;
 }
