@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './PasswordInput.module.css';
-import eyeOpenedImg from '@/assets/icons/auth/eye-opened.svg';
-import eyeClosedImg from '@/assets/icons/auth/eye-closed.svg';
+import eyeOpenedIcon from '@/assets/icons/auth/eye-opened.svg';
+import eyeClosedIcon from '@/assets/icons/auth/eye-closed.svg';
 import Input from '@/components/ui/inputs/Input/Input';
 
 type PasswordInputProps = React.ComponentProps<'input'> & {
@@ -18,7 +18,7 @@ const PasswordInput = ({ error, ...rest }: PasswordInputProps) => {
 	return (
 		<div className={styles.PasswordInput}>
 			<img
-				src={showPassword ? eyeOpenedImg : eyeClosedImg}
+				src={showPassword ? eyeOpenedIcon : eyeClosedIcon}
 				alt="Eye"
 				className={styles.ShowPasswordIcon}
 				onClick={handleTogglePassword}

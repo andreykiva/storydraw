@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Follow.module.css';
-import defaultImg from '@/assets/icons/default.svg';
+import defaultImg from '@/assets/images/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
 import Button from '@/components/ui/buttons/Button/Button';
 import type User from '@/types/User';
@@ -18,9 +18,7 @@ const Follow = ({ username, title, image, preview }: FollowProps) => {
 				<img src={image || defaultImg} alt="Profile picture" className={styles.FollowImg} />
 				<div className={styles.FollowTitle}>{title}</div>
 				<div className={styles.FollowUsername}>{username}</div>
-				<Button className={styles.FollowBtn}>
-					Follow
-				</Button>
+				<Button className={styles.FollowBtn}>Follow</Button>
 			</div>
 		</Link>
 	);

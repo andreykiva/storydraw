@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import personImg from '@/assets/icons/notifications/person.svg';
+import personIcon from '@/assets/icons/notifications/person.svg';
 import Follow from './Follow/Follow';
 import type { FollowNotification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/dateUtils';
@@ -82,7 +82,7 @@ const FollowsList = () => {
 				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>
-					<img src={personImg} alt="Person" className={notifSharedStyles.NoNotificationsImg} />
+					<img src={personIcon} alt="Person" className={notifSharedStyles.NoNotificationsIcon} />
 					<span className={notifSharedStyles.NoNotificationsTitle}>New followers</span>
 					<p className={notifSharedStyles.NoNotificationsDescr}>
 						When someone new follows you, you'll see it here

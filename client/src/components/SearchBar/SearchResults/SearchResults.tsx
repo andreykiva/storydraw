@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SearchResults.module.css';
-import searchImg from '@/assets/icons/search.svg';
+import searchIcon from '@/assets/icons/search.svg';
 
 type SearchResult = {
 	id: string;
@@ -17,7 +17,7 @@ const SearchResults = ({ results }: SearchResultsProps) => {
 		<div className={styles.SearchResults}>
 			{results.map((res) => (
 				<Link to={`/search?q=${res.title}`} className={styles.SearchResult} key={res.id}>
-					<img src={searchImg} alt="Result" className={styles.ResultIcon} />
+					<img src={searchIcon} alt="Result" className={styles.ResultIcon} />
 					<span className={styles.ResultTitle}>{res.title}</span>
 				</Link>
 			))}

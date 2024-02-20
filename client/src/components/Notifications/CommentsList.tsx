@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import commentImg from '@/assets/icons/notifications/comment.svg';
+import commentIcon from '@/assets/icons/notifications/comment.svg';
 import Comment from './Comment/Comment';
 import type { CommentNotification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/dateUtils';
@@ -104,7 +104,7 @@ const CommentsList = () => {
 				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>
-					<img src={commentImg} alt="Comment" className={notifSharedStyles.NoNotificationsImg} />
+					<img src={commentIcon} alt="Comment" className={notifSharedStyles.NoNotificationsIcon} />
 					<span className={notifSharedStyles.NoNotificationsTitle}>Comments on your videos</span>
 					<p className={notifSharedStyles.NoNotificationsDescr}>
 						When someone comments on one of your videos, you'll see it here

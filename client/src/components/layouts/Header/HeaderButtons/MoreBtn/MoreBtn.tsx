@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './MoreBtn.module.css';
 import moreIcon from '@/assets/icons/more.svg';
-import defaultImg from '@/assets/icons/default.svg';
+import defaultImg from '@/assets/images/default.svg';
 import MoreMenu from './MoreMenu/MoreMenu';
 
 type MoreBtnProps = {

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ForYouStory.module.css';
-import defaultImg from '@/assets/icons/default.svg';
+import defaultImg from '@/assets/images/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
-import musicImg from '@/assets/icons/music.svg';
+import musicIcon from '@/assets/icons/music.svg';
 import Button from '@/components/ui/buttons/Button/Button';
 import LikeIcon from '@/components/ui/icons/LikeIcon';
 import CommentIcon from '@/components/ui/icons/CommentIcon';
@@ -79,7 +79,7 @@ const ForYouStory = (props: ForYouStoryProps) => {
 						))}
 					</p>
 					<div className={styles.InfoMwdusic}>
-						<img src={musicImg} alt="Music" className={styles.MusicIcon} /> {musicName}
+						<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {musicName}
 					</div>
 				</div>
 				<Button className={styles.FollowBtn} onClick={handleFollow}>

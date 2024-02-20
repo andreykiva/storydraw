@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Follow.module.css';
-import defaultImg from '@/assets/icons/default.svg';
+import defaultImg from '@/assets/images/default.svg';
 import FriendshipBtn from './FriendshipBtn/FriendshipBtn';
 import { closeNotificationsModal } from '@/features/notifications/notificationsSlice';
 import type { FollowNotification } from '@/types/Notification';

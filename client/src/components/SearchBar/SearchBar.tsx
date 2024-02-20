@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
 // import { openSearch, closeSearch } from '@/features/search/searchSlice';
-import searchImg from '@/assets/icons/search.svg';
+import searchIcon from '@/assets/icons/search.svg';
 import SearchResults from './SearchResults/SearchResults';
 import useClickOutside from '@/hooks/useClickOutside';
 // import { searchAPI } from '@/services/searchService';
@@ -76,7 +76,7 @@ const SearchBar = ({ light = false }) => {
 					ref={searchInputRef}
 				/>
 				<Link to={value ? `/search?q=${value}` : window.location.href} className={styles.SearchBtn}>
-					<img src={searchImg} alt="Search" className={styles.SearchIcon} />
+					<img src={searchIcon} alt="Search" className={styles.SearchIcon} />
 				</Link>
 			</form>
 			{isOpen && <SearchResults results={testResults} />}

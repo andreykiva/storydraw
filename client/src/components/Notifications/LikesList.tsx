@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import heartImg from '@/assets/icons/notifications/heart.svg';
+import heartIcon from '@/assets/icons/notifications/heart.svg';
 import Like from './Like/Like';
 import type { LikeNotification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/dateUtils';
@@ -143,7 +143,7 @@ const LikesList = () => {
 				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>
-					<img src={heartImg} alt="Heart" className={notifSharedStyles.NoNotificationsImg} />
+					<img src={heartIcon} alt="Heart" className={notifSharedStyles.NoNotificationsIcon} />
 					<span className={notifSharedStyles.NoNotificationsTitle}>Likes on your videos</span>
 					<p className={notifSharedStyles.NoNotificationsDescr}>
 						When someone likes one of your videos, you'll see it here

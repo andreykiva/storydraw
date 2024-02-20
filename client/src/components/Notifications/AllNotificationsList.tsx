@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import messageImg from '@/assets/icons/notifications/message.svg';
+import messageIcon from '@/assets/icons/notifications/message.svg';
 import Follow from './Follow/Follow';
 import Like from './Like/Like';
 import Comment from './Comment/Comment';
@@ -268,7 +268,7 @@ const AllNotificationsList = () => {
 				</>
 			) : (
 				<div className={notifSharedStyles.NoNotifications}>
-					<img src={messageImg} alt="Message" className={notifSharedStyles.NoNotificationsImg} />
+					<img src={messageIcon} alt="Message" className={notifSharedStyles.NoNotificationsIcon} />
 					<span className={notifSharedStyles.NoNotificationsTitle}>All activity</span>
 					<p className={notifSharedStyles.NoNotificationsDescr}>
 						Notifications about your account will appear here

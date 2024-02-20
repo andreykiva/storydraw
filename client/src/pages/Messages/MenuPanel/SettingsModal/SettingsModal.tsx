@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SettingsModal.module.css';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import closeImg from '@/assets/icons/close.svg';
+import closeIcon from '@/assets/icons/close.svg';
 import Button from '@/components/ui/buttons/Button/Button';
 import Radio from '@/components/ui/inputs/Radio/Radio';
 
@@ -25,7 +25,7 @@ const SettingsModal = ({ closeModal }: SettingsModalProps) => {
 				<div className={styles.ModalHeader}>
 					<h2 className={styles.HeaderTitle}>Message settings</h2>
 					<RoundButton onClick={closeModal} className={styles.CloseBtn}>
-						<img src={closeImg} alt="CLose" className={styles.CloseIcon} />
+						<img src={closeIcon} alt="CLose" className={styles.CloseIcon} />
 					</RoundButton>
 				</div>
 				<div className={styles.ModalContent}>

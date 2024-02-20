@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './StoryInfo.module.css';
 import Button from '@/components/ui/buttons/Button/Button';
-import defaultImg from '@/assets/icons/default.svg';
-import musicImg from '@/assets/icons/music.svg';
+import defaultImg from '@/assets/images/default.svg';
+import musicIcon from '@/assets/icons/music.svg';
 import LikeIcon from '@/components/ui/icons/LikeIcon';
 import ShareIcon from '@/components/ui/icons/ShareIcon';
 import FavoriteIcon from '@/components/ui/icons/FavoriteIcon';
@@ -77,7 +77,7 @@ const StoryInfo = (props: StoryInfoProps) => {
 			</div>
 			<p className={styles.InfoDescr}>{description}</p>
 			<div className={styles.InfoMusic}>
-				<img src={musicImg} alt="Music" className={styles.MusicIcon} /> {musicName}
+				<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {musicName}
 			</div>
 			<div className={styles.StoryInfoBottom}>
 				<div className={styles.StoryInfoItem} onClick={handleLike}>

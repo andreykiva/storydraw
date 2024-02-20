@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Story.module.css';
 import storyImg from '@/assets/images/preview.jpg';
-import closeImg from '@/assets/icons/close.svg';
-import reportImg from '@/assets/icons/report.svg';
+import closeIcon from '@/assets/icons/close.svg';
+import reportIcon from '@/assets/icons/report.svg';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Button from '@/components/ui/buttons/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
@@ -49,12 +49,12 @@ const Story = () => {
 				<div className={styles.StoryHeader}>
 					<div className={styles.Back}>
 						<Link to={'/'} className={styles.BackBtn}>
-							<img src={closeImg} alt="Close" className={styles.CloseIcon} />
+							<img src={closeIcon} alt="Close" className={styles.CloseIcon} />
 						</Link>
 					</div>
 					<SearchBar light={true} />
 					<Button className={styles.ReportBtn}>
-						<img src={reportImg} alt="Report" className={styles.ReportIcon} />
+						<img src={reportIcon} alt="Report" className={styles.ReportIcon} />
 						<span>Report</span>
 					</Button>
 				</div>

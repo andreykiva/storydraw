@@ -1,27 +1,27 @@
 import React from 'react';
 import styles from './Explore.module.css';
-import drawnImg from '@/assets/icons/brush.svg';
-import pixelImg from '@/assets/icons/pixelated.svg';
-import frameImg from '@/assets/icons/movie-roll.svg';
-import lengthyImg from '@/assets/icons/movie.svg';
+import drawnIcon from '@/assets/icons/brush.svg';
+import pixelIcon from '@/assets/icons/pixelated.svg';
+import frameIcon from '@/assets/icons/movie-roll.svg';
+import lengthyIcon from '@/assets/icons/movie.svg';
 import ExploreStory from '@/components/ExploreStory/ExploreStory';
 
 const exploreCategories = [
 	{
 		name: 'Drawn',
-		icon: drawnImg,
+		icon: drawnIcon,
 	},
 	{
 		name: 'Pixel',
-		icon: pixelImg,
+		icon: pixelIcon,
 	},
 	{
 		name: 'Frame',
-		icon: frameImg,
+		icon: frameIcon,
 	},
 	{
 		name: 'Lengthy',
-		icon: lengthyImg,
+		icon: lengthyIcon,
 	},
 ];
 

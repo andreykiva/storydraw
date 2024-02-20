@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './RegisterOptions.module.css';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
-import userImg from '@/assets/icons/auth/user.svg';
-import googleImg from '@/assets/icons/auth/google.svg';
-import facebookImg from '@/assets/icons/auth/facebook.svg';
-import twitterImg from '@/assets/icons/auth/twitter.svg';
+import userIcon from '@/assets/icons/auth/user.svg';
+import googleIcon from '@/assets/icons/auth/google.svg';
+import facebookIcon from '@/assets/icons/auth/facebook.svg';
+import twitterIcon from '@/assets/icons/auth/twitter.svg';
 import AuthOption from '@/auth/AuthOption/AuthOption';
 import HTag from '@/components/ui/HTag/HTag';
 
@@ -21,25 +21,25 @@ const RegisterOptions = ({ openForm }: RegisterOptionsProps) => {
 		{
 			title: 'Use phone or email',
 			alt: 'Phone/Email',
-			image: userImg,
+			icon: userIcon,
 			handleClick: openForm,
 		},
 		{
 			title: 'Continue with Google',
 			alt: 'Google',
-			image: googleImg,
+			icon: googleIcon,
 			handleClick: loginWith,
 		},
 		{
 			title: 'Continue with Facebook',
 			alt: 'Facebook',
-			image: facebookImg,
+			icon: facebookIcon,
 			handleClick: loginWith,
 		},
 		{
 			title: 'Continue with Twitter',
 			alt: 'Twitter',
-			image: twitterImg,
+			icon: twitterIcon,
 			handleClick: loginWith,
 		},
 	];
