@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Follow.module.css';
-import defaultImg from '@/assets/images/default.svg';
+import defaultImg from '@/assets/images/default.svg?url';
 import previewImg from '@/assets/images/preview.jpg';
 import Button from '@/components/ui/buttons/Button/Button';
 import type User from '@/types/User';

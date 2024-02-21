@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SearchResults.module.css';
-import searchIcon from '@/assets/icons/search.svg';
+import searchIcon from '@/assets/icons/search.svg?url';
 
 type SearchResult = {
 	id: string;

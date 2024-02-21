@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FriendshipBtn.module.css';
 import Button from '@/components/ui/buttons/Button/Button';
-import swapIcon from '@/assets/icons/notifications/swap.svg';
+import swapIcon from '@/assets/icons/notifications/swap.svg?url';
 
 type FriendshipBtnProps = {
 	isFollowedByYou: boolean;

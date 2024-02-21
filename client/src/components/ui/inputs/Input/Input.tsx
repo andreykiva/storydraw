@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Input.module.css';
-import warningIcon from '@/assets/icons/auth/warning.svg';
+import warningIcon from '@/assets/icons/auth/warning.svg?url';
 
 type PasswordInputProps = React.ComponentProps<'input'> & {
 	error: string;

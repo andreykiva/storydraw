@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './RegisterOptions.module.css';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
-import userIcon from '@/assets/icons/auth/user.svg';
-import googleIcon from '@/assets/icons/auth/google.svg';
-import facebookIcon from '@/assets/icons/auth/facebook.svg';
-import twitterIcon from '@/assets/icons/auth/twitter.svg';
+import userIcon from '@/assets/icons/auth/user.svg?url';
+import googleIcon from '@/assets/icons/auth/google.svg?url';
+import facebookIcon from '@/assets/icons/auth/facebook.svg?url';
+import twitterIcon from '@/assets/icons/auth/twitter.svg?url';
 import AuthOption from '@/auth/AuthOption/AuthOption';
 import HTag from '@/components/ui/HTag/HTag';
 

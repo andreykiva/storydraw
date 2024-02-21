@@ -113,7 +113,7 @@
 	margin: 10px 0;
 }
 
-.ItemIcon {
+.StoryInfoItem .ItemIcon {
 	width: 32px;
 	height: 32px;
 	cursor: pointer;

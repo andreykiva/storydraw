@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import personIcon from '@/assets/icons/notifications/person.svg';
+import personIcon from '@/assets/icons/notifications/person.svg?url';
 import Follow from './Follow/Follow';
 import type { FollowNotification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/dateUtils';
@@ -71,7 +71,7 @@ const FollowsList = () => {
 			</>
 		);
 	};
-	
+
 	return (
 		<div className={notifSharedStyles.NotificationsListWr}>
 			{thisWeek.length + thisMonth.length + previous.length > 0 ? (

@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './ChatListItem.module.css';
 import type User from '@/types/User';
-import defaultImg from '@/assets/images/default.svg';
+import defaultImg from '@/assets/images/default.svg?url';
 import { displayDate } from '@/utils/dateUtils';
-import moreIcon from '@/assets/icons/messages/more.svg';
+import moreIcon from '@/assets/icons/messages/more.svg?url';
 
 type ChatListItemProps = Pick<User, 'id' | 'username' | 'image'> & {
 	lastMessage: string;

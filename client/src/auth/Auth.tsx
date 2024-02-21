@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import styles from './Auth.module.css';
 import Login from './Login/Login';
 import Register from './Register/Register';
-import closeIcon from '@/assets/icons/close.svg';
+import closeIcon from '@/assets/icons/close.svg?url';
 import { closeAuthModal } from '@/features/auth/authSlice';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';

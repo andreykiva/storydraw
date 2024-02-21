@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from './Like.module.css';
-import defaultImg from '@/assets/images/default.svg';
+import defaultImg from '@/assets/images/default.svg?url';
 import { closeNotificationsModal } from '@/features/notifications/notificationsSlice';
 import type { LikeNotification } from '@/types/Notification';
 import { displayDate } from '@/utils/dateUtils';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './PasswordInput.module.css';
-import eyeOpenedIcon from '@/assets/icons/auth/eye-opened.svg';
-import eyeClosedIcon from '@/assets/icons/auth/eye-closed.svg';
+import eyeOpenedIcon from '@/assets/icons/auth/eye-opened.svg?url';
+import eyeClosedIcon from '@/assets/icons/auth/eye-closed.svg?url';
 import Input from '@/components/ui/inputs/Input/Input';
 
 type PasswordInputProps = React.ComponentProps<'input'> & {

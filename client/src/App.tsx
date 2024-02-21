@@ -20,6 +20,7 @@ const App = () => {
 		<BrowserRouter>
 			<Layout>
 				<Routes>
+
 					<Route path="/tag/:tag" element={<Tag />} />
 					<Route path="/following" element={<Following />} />
 					<Route path="/explore" element={<Explore />} />

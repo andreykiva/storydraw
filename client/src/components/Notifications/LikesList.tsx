@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import heartIcon from '@/assets/icons/notifications/heart.svg';
+import heartIcon from '@/assets/icons/notifications/heart.svg?url';
 import Like from './Like/Like';
 import type { LikeNotification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/dateUtils';
@@ -119,7 +119,7 @@ const testLikes: LikeNotification[] = [
 
 const LikesList = () => {
 	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testLikes);
-	
+
 	const renderLikeNotifications = (likes: LikeNotification[], title: string) => {
 		return (
 			<>

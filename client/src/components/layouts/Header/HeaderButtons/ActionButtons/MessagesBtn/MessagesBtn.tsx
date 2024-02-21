@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MessagesBtn.module.css';
-import SendIcon from '@/components/ui/icons/SendIcon';
+import SendIcon from '@/assets/icons/send.svg';
 import Prompt from '../Prompt/Prompt';
 
 const MessagesBtn = () => {

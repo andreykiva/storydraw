@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import messageIcon from '@/assets/icons/notifications/message.svg';
+import messageIcon from '@/assets/icons/notifications/message.svg?url';
 import Follow from './Follow/Follow';
 import Like from './Like/Like';
 import Comment from './Comment/Comment';

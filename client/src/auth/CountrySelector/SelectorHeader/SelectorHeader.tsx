@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SelectorHeader.module.css';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
-import arrowDownIcon from '@/assets/icons/auth/arrow-down.svg';
+import arrowDownIcon from '@/assets/icons/auth/arrow-down.svg?url';
 
 type SelectorHeaderProps = {
 	value: string;

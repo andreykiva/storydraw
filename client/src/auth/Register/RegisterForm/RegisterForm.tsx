@@ -14,7 +14,7 @@ import BirthdaySelector from './BirthdaySelector/BirthdaySelector';
 import type { FormData, FormErrors } from '@/types/Auth';
 import FormHeader from './FormHeader/FormHeader';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import ArrowIcon from '@/components/ui/icons/ArrowIcon';
+import ArrowIcon from '@/assets/icons/arrow.svg';
 
 type RegisterFormProps = {
 	formData: FormData;

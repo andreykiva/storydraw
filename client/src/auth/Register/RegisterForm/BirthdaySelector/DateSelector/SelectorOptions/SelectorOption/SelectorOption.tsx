@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SelectorOption.module.css';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
-import CheckIcon from '@/components/ui/icons/CheckIcon';
+import CheckIcon from '@/assets/icons/check.svg';
 
 type SelectorOptionProps = {
 	children: React.ReactNode;

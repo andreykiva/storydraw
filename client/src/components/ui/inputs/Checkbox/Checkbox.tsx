@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Checkbox.module.css';
-import CheckIcon from '@/components/ui/icons/CheckIcon';
+import CheckIcon from '@/assets/icons/check.svg';
 
 type CheckboxProps = {
 	children: React.ReactNode;

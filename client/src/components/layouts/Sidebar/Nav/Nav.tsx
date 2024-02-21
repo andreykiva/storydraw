@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Nav.module.css';
-import LikeIcon from '@/components/ui/icons/LikeIcon';
-import PersonIcon from '@/components/ui/icons/PersonIcon';
-import ExploreIcon from '@/components/ui/icons/ExploreIcon';
+import LikeIcon from '@/assets/icons/like.svg';
+import PersonIcon from '@/assets/icons/person.svg';
+import ExploreIcon from '@/assets/icons/explore.svg';
 import NavItem from './NavItem/NavItem';
 
 const links = [

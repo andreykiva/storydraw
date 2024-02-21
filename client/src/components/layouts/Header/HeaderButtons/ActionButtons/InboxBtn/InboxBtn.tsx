@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './InboxBtn.module.css';
-import InboxIcon from '@/components/ui/icons/InboxIcon';
+import InboxIcon from '@/assets/icons/inbox.svg';
 import useClickOutside from '@/hooks/useClickOutside';
 import Notifications from '@/components/Notifications/Notifications';
 import Prompt from '../Prompt/Prompt';

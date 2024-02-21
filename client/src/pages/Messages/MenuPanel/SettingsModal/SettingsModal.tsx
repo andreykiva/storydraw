@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SettingsModal.module.css';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import closeIcon from '@/assets/icons/close.svg';
+import closeIcon from '@/assets/icons/close.svg?url';
 import Button from '@/components/ui/buttons/Button/Button';
 import Radio from '@/components/ui/inputs/Radio/Radio';
 

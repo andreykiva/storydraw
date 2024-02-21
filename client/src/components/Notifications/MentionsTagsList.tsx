@@ -1,6 +1,6 @@
 import React from 'react';
 import notifSharedStyles from './notifSharedStyles.module.css';
-import tagIcon from '@/assets/icons/notifications/tag.svg';
+import tagIcon from '@/assets/icons/notifications/tag.svg?url';
 
 const MentionsTagsList = () => {
 	return (

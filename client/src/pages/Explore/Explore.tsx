@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Explore.module.css';
-import drawnIcon from '@/assets/icons/brush.svg';
-import pixelIcon from '@/assets/icons/pixelated.svg';
-import frameIcon from '@/assets/icons/movie-roll.svg';
-import lengthyIcon from '@/assets/icons/movie.svg';
+import drawnIcon from '@/assets/icons/brush.svg?url';
+import pixelIcon from '@/assets/icons/pixelated.svg?url';
+import frameIcon from '@/assets/icons/movie-roll.svg?url';
+import lengthyIcon from '@/assets/icons/movie.svg?url';
 import ExploreStory from '@/components/ExploreStory/ExploreStory';
 
 const exploreCategories = [
@@ -37,7 +37,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '2',
@@ -50,7 +50,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '3',
@@ -63,7 +63,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '4',
@@ -76,7 +76,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '5',
@@ -89,7 +89,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '6',
@@ -102,7 +102,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '7',
@@ -115,7 +115,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '8',
@@ -128,7 +128,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '9',
@@ -141,7 +141,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 	{
 		id: '10',
@@ -154,7 +154,7 @@ const testStories = [
 			id: '123',
 			username: 'andrey.kiva',
 			image: '',
-		}
+		},
 	},
 ];
 

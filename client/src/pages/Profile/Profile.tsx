@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Profile.module.css';
-import defaultImg from '@/assets/images/default.svg';
+import defaultImg from '@/assets/images/default.svg?url';
 import Button from '@/components/ui/buttons/Button/Button';
 import ProfileStory from './ProfileStory/ProfileStory';
 import { formatNumber } from '@/utils/numberUtils';

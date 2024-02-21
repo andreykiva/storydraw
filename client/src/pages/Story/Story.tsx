@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Story.module.css';
 import storyImg from '@/assets/images/preview.jpg';
-import closeIcon from '@/assets/icons/close.svg';
-import reportIcon from '@/assets/icons/report.svg';
+import closeIcon from '@/assets/icons/close.svg?url';
+import reportIcon from '@/assets/icons/report.svg?url';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Button from '@/components/ui/buttons/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
 import Comments from './Comments/Comments';
-import ArrowIcon from '@/components/ui/icons/ArrowIcon';
+import ArrowIcon from '@/assets/icons/arrow.svg';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
 

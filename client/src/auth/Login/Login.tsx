@@ -3,7 +3,7 @@ import styles from './Login.module.css';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import LoginOptions from './LoginOptions/LoginOptions';
 import LoginWithQR from './LoginWithQR/LoginWithQR';
-import ArrowIcon from '@/components/ui/icons/ArrowIcon';
+import ArrowIcon from '@/assets/icons/arrow.svg';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import AuthContainer from '@/auth/AuthContainer/AuthContainer';
 
