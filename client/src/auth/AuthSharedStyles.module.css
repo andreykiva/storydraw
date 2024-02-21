@@ -128,17 +128,13 @@
 .SelectedIcon {
 	max-width: 18px;
 	width: 100%;
-}
-
-.SelectedIcon path {
-	stroke: var(--bright-green-color);
+	fill: var(--bright-green-color);
 }
 
 .CreateUsernameTitle {
 	display: inline-flex;
 	margin-bottom: 6px;
 }
-
 
 .CreateUsernameDescr {
 	font-size: 14px;
