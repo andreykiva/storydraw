@@ -87,20 +87,29 @@
 }
 
 .ParentComment {
-	height: 15px;
+	position: relative;
 	display: -webkit-box;
 	overflow: hidden;
-	padding-left: 6px;
-	border-left: 2px solid rgb(100, 100, 100);
+	padding-left: 8px;
 	-webkit-box-orient: vertical;
 	font-size: 15px;
-	line-height: 1;
 	letter-spacing: -0.3px;
 	font-weight: 400;
 	color: rgb(130, 130, 130);
 	text-overflow: ellipsis;
 	word-break: break-word;
 	-webkit-line-clamp: 1;
+}
+
+.ParentComment::before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 2px;
+	height: 17px;
+	left: 0;
+	top: 1px;
+	background-color: rgb(100, 100, 100);
 }
 
 .Story {
