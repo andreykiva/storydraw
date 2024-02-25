@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './InboxBtn.module.css';
+import styles from './InboxSection.module.css';
 import InboxIcon from '@/assets/icons/inbox.svg';
 import useClickOutside from '@/hooks/useClickOutside';
 import Notifications from '@/components/Notifications/Notifications';
@@ -8,12 +8,12 @@ import Prompt from '../Prompt/Prompt';
 import { openNotificationsModal, closeNotificationsModal } from '@/features/notifications/notificationsSlice';
 import { selectNotificationsModalStatus } from '@/features/notifications/notificationsSlice';
 
-const InboxBtn = () => {
+const InboxSection = () => {
 	const dispatch = useDispatch();
 	const isNotificationsOpen = useSelector(selectNotificationsModalStatus);
-	const inboxBtnRef = useRef<HTMLDivElement>(null);
+	const inboxSectionRef = useRef<HTMLDivElement>(null);
 
-	useClickOutside(inboxBtnRef, () => {
+	useClickOutside([inboxSectionRef], () => {
 		dispatch(closeNotificationsModal());
 	});
 
@@ -26,8 +26,8 @@ const InboxBtn = () => {
 	};
 
 	return (
-		<div className={[styles.InboxBtn, isNotificationsOpen && styles.Active].join(' ')} ref={inboxBtnRef}>
-			<div className={styles.InboxBtnContent} onClick={handleNotificationsToggle}>
+		<div className={[styles.InboxSection, isNotificationsOpen && styles.Active].join(' ')} ref={inboxSectionRef}>
+			<div className={styles.InboxBtn} onClick={handleNotificationsToggle}>
 				<InboxIcon className={styles.InboxIcon} />
 			</div>
 			<Prompt text="Inbox" className={styles.Prompt} />
@@ -36,4 +36,4 @@ const InboxBtn = () => {
 	);
 };
 
-export default InboxBtn;
+export default InboxSection;
