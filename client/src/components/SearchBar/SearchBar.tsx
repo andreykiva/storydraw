@@ -48,7 +48,7 @@ const SearchBar = ({ light = false }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [param]);
 
-	useClickOutside(searchInputRef, () => {
+	useClickOutside([searchInputRef], () => {
 		setIsResultsOpen(false);
 	});
 
