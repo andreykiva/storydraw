@@ -36,7 +36,7 @@ const SearchBar = ({ light = false }) => {
 	// const { isSearchOpen } = useSelector((state) => state.search);
 	const [searchParams] = useSearchParams();
 	const [value, setValue] = useState('');
-	const [isOpen, setIsOpen] = useState(false);
+	const [isResultsOpen, setIsResultsOpen] = useState(false);
 	const searchInputRef = useRef<HTMLInputElement>(null);
 	const param = searchParams.get('q');
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
@@ -49,7 +49,7 @@ const SearchBar = ({ light = false }) => {
 	}, [param]);
 
 	useClickOutside(searchInputRef, () => {
-		setIsOpen(false);
+		setIsResultsOpen(false);
 	});
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,10 +57,10 @@ const SearchBar = ({ light = false }) => {
 
 		if (newValue.trim()) {
 			setValue(newValue);
-			setIsOpen(true);
+			setIsResultsOpen(true);
 		} else {
 			setValue('');
-			setIsOpen(false);
+			setIsResultsOpen(false);
 		}
 	};
 
@@ -79,7 +79,7 @@ const SearchBar = ({ light = false }) => {
 					<img src={searchIcon} alt="Search" className={styles.SearchIcon} />
 				</Link>
 			</form>
-			{isOpen && <SearchResults results={testResults} />}
+			{isResultsOpen && <SearchResults results={testResults} />}
 		</div>
 	);
 };

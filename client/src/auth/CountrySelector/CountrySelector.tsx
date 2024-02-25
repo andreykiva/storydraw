@@ -15,23 +15,23 @@ type CountrySelectorProps = {
 };
 
 const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelectorProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 	const [searchValue, setSearchValue] = useState('');
 	const countrySelectorRef = useRef<HTMLDivElement>(null);
 
 	const sortedOptions = searchAndSortCountries(options, searchValue);
 
 	useClickOutside(countrySelectorRef, () => {
-		setIsOpen(false);
+		setIsOptionsOpen(false);
 	});
 
 	const handleSelectChange = (option: Country) => {
 		selectOption(option);
-		setIsOpen(false);
+		setIsOptionsOpen(false);
 	};
 
 	const handleSelectToggle = () => {
-		setIsOpen(!isOpen);
+		setIsOptionsOpen(!isOptionsOpen);
 		setSearchValue('');
 	};
 
@@ -44,10 +44,10 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 		<div className={[authSharedStyles.Selector, styles.CountrySelector].join(' ')} ref={countrySelectorRef}>
 			<SelectorHeader
 				value={`${selectedOption.abbreviation} ${selectedOption.phonePrefix}`}
-				isOpen={isOpen}
+				isOpen={isOptionsOpen}
 				onClick={handleSelectToggle}
 			/>
-			{isOpen && (
+			{isOptionsOpen && (
 				<div className={[authSharedStyles.SelectorBody, styles.CountrySelectorBody].join(' ')}>
 					<SelectorSearchBar
 						type="text"

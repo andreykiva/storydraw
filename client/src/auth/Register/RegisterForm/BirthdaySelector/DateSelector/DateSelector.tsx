@@ -14,20 +14,20 @@ type DateSelectorProps = {
 };
 
 const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectOption }: DateSelectorProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 	const dateSelectorRef = useRef<HTMLDivElement>(null);
 
 	useClickOutside(dateSelectorRef, () => {
-		setIsOpen(false);
+		setIsOptionsOpen(false);
 	});
 
 	const handleSelectChange = (option: string) => {
 		selectOption(fieldName, option);
-		setIsOpen(false);
+		setIsOptionsOpen(false);
 	};
 
 	const handleSelectToggle = () => {
-		setIsOpen(!isOpen);
+		setIsOptionsOpen(!isOptionsOpen);
 	};
 
 	return (
@@ -35,10 +35,10 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 			<SelectorHeader
 				value={selectedOption}
 				placeholder={placeholder}
-				isOpen={isOpen}
+				isOpen={isOptionsOpen}
 				onClick={handleSelectToggle}
 			/>
-			{isOpen && (
+			{isOptionsOpen && (
 				<div className={authSharedStyles.SelectorBody}>
 					<SelectorOptions
 						options={options}
