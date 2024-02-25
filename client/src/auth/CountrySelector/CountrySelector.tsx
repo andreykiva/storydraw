@@ -30,7 +30,7 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 		setIsOpen(false);
 	};
 
-	const toggleSelect = () => {
+	const handleSelectToggle = () => {
 		setIsOpen(!isOpen);
 		setSearchValue('');
 	};
@@ -45,7 +45,7 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 			<SelectorHeader
 				value={`${selectedOption.abbreviation} ${selectedOption.phonePrefix}`}
 				isOpen={isOpen}
-				onClick={toggleSelect}
+				onClick={handleSelectToggle}
 			/>
 			{isOpen && (
 				<div className={[authSharedStyles.SelectorBody, styles.CountrySelectorBody].join(' ')}>

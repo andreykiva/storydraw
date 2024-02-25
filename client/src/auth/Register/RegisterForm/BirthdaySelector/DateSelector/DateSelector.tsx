@@ -26,7 +26,7 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 		setIsOpen(false);
 	};
 
-	const toggleSelect = () => {
+	const handleSelectToggle = () => {
 		setIsOpen(!isOpen);
 	};
 
@@ -36,7 +36,7 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 				value={selectedOption}
 				placeholder={placeholder}
 				isOpen={isOpen}
-				onClick={toggleSelect}
+				onClick={handleSelectToggle}
 			/>
 			{isOpen && (
 				<div className={authSharedStyles.SelectorBody}>
