@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './ChatListItem.module.css';
 import type User from '@/types/User';
 import defaultImg from '@/assets/images/default.svg?url';
 import { displayDate } from '@/utils/dateUtils';
 import moreIcon from '@/assets/icons/messages/more.svg?url';
+import ActionsMenu from './ActionsMenu/ActionsMenu';
+import useClickOutside from '@/hooks/useClickOutside';
 
 type ChatListItemProps = Pick<User, 'id' | 'username' | 'image'> & {
 	lastMessage: string;
@@ -12,6 +14,17 @@ type ChatListItemProps = Pick<User, 'id' | 'username' | 'image'> & {
 
 const ChatListItem = (props: ChatListItemProps) => {
 	const { username, image, lastMessage, date } = props;
+	const [isActionsMenuOpen, setIsActionsMenuOpen] = useState(false);
+	const actionsBtnRef = useRef<HTMLDivElement>(null);
+
+	useClickOutside([actionsBtnRef], () => {
+		setIsActionsMenuOpen(false);
+	});
+
+	const handleActionsMenuToggle = () => {
+		setIsActionsMenuOpen(!isActionsMenuOpen);
+	};
+
 	return (
 		<li className={styles.ChatListItem}>
 			<div className={styles.ChatmateImgWr}>
@@ -24,9 +37,14 @@ const ChatListItem = (props: ChatListItemProps) => {
 					<span className={styles.MessageDate}>{displayDate(date, '/')}</span>
 				</p>
 			</div>
-			<div className={styles.ActionsBtn}>
-				<img src={moreIcon} alt="More" className={styles.MoreIcon} />
+			<div
+				className={[styles.ActionsBtn, isActionsMenuOpen && styles.Active].join(' ')}
+				onClick={handleActionsMenuToggle}
+				ref={actionsBtnRef}
+			>
+				<img src={moreIcon} alt="Actions" className={styles.MoreIcon} />
 			</div>
+			{isActionsMenuOpen && <ActionsMenu />}
 		</li>
 	);
 };
