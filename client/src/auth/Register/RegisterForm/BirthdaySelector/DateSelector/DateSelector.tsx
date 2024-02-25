@@ -17,7 +17,7 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 	const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 	const dateSelectorRef = useRef<HTMLDivElement>(null);
 
-	useClickOutside(dateSelectorRef, () => {
+	useClickOutside([dateSelectorRef], () => {
 		setIsOptionsOpen(false);
 	});
 

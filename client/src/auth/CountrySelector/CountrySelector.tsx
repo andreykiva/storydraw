@@ -21,7 +21,7 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 
 	const sortedOptions = searchAndSortCountries(options, searchValue);
 
-	useClickOutside(countrySelectorRef, () => {
+	useClickOutside([countrySelectorRef], () => {
 		setIsOptionsOpen(false);
 	});
 
