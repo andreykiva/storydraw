@@ -1,6 +1,5 @@
 .ChatList {
 	height: 100%;
-	list-style: none;
 	overflow-y: auto;
 }
 
