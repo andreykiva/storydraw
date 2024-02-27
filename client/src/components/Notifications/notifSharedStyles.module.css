@@ -16,10 +16,6 @@
 	border-radius: 4px;
 }
 
-.NotificationsList {
-	list-style: none;
-}
-
 .NoNotifications {
 	display: flex;
 	flex-direction: column;

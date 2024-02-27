@@ -87,7 +87,6 @@
 }
 
 .SelectorOptions {
-	list-style: none;
 	overflow-y: auto;
 	max-height: 270px;
 	color: var(--main-color);
