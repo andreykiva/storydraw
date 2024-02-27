@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Story.module.css';
 import storyImg from '@/assets/images/preview.jpg';
 import closeIcon from '@/assets/icons/close.svg?url';
-import reportIcon from '@/assets/icons/report.svg?url';
+import ReportIcon from '@/assets/icons/report.svg';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Button from '@/components/ui/buttons/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
@@ -54,7 +54,7 @@ const Story = () => {
 					</div>
 					<SearchBar light={true} />
 					<Button className={styles.ReportBtn}>
-						<img src={reportIcon} alt="Report" className={styles.ReportIcon} />
+						<ReportIcon className={styles.ReportIcon} />
 						<span>Report</span>
 					</Button>
 				</div>
