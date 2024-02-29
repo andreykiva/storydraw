@@ -8,8 +8,7 @@ import LikesList from './LikesList';
 import CommentsList from './CommentsList';
 import MentionsTagsList from './MentionsTagsList';
 import FollowsList from './FollowsList';
-import { changeNotificationsCategory } from '@/features/notifications/notificationsSlice';
-import { selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
+import { changeNotificationsCategory, selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
 
 type NotificationsCategory = 'all' | 'likes' | 'comments' | 'mentionsTags' | 'followers';
 
