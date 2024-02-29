@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 type AuthState = {
 	isAuthOpen: boolean;
@@ -28,7 +28,9 @@ export const authSlice = createSlice({
 
 export const { openAuthModal, closeAuthModal, setAuth } = authSlice.actions;
 
-export const selectAuth = (state: { auth: AuthState }) => state.auth.isAuth;
-export const selectAuthModalStatus = (state: { auth: AuthState }) => state.auth.isAuthOpen;
+export const selectAuthState = (state: { auth: AuthState }) => state.auth;
+
+export const selectAuth = createSelector([selectAuthState], (auth) => auth.isAuth);
+export const selectAuthModalStatus = createSelector([selectAuthState], (auth) => auth.isAuthOpen);
 
 export default authSlice.reducer;

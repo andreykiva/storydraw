@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 type NotificationsState = {
 	isNotificationsOpen: boolean;
@@ -29,9 +29,16 @@ export const notificationsSlice = createSlice({
 export const { openNotificationsModal, closeNotificationsModal, changeNotificationsCategory } =
 	notificationsSlice.actions;
 
-export const selectNotificationsModalStatus = (state: { notifications: NotificationsState }) =>
-	state.notifications.isNotificationsOpen;
-export const selectNotificationsCategory = (state: { notifications: NotificationsState }) =>
-	state.notifications.notificationsCategory;
+export const selectNotificationsState = (state: { notifications: NotificationsState }) => state.notifications;
+
+export const selectNotificationsModalStatus = createSelector(
+	[selectNotificationsState],
+	(notifications) => notifications.isNotificationsOpen,
+);
+
+export const selectNotificationsCategory = createSelector(
+	[selectNotificationsState],
+	(notifications) => notifications.notificationsCategory,
+);
 
 export default notificationsSlice.reducer;
