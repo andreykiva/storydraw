@@ -1,0 +1,15 @@
+.InputWithEmojis {
+	padding: 200px 16px 0;
+}
+
+.ContentEditable {
+	width: 500px;
+	height: 50px;
+	border-radius: 16px;
+	background-color: rgb(44, 44, 44);
+	color: #fff;
+	font-size: 18px;
+	padding-left: 20px;
+	line-height: 2;
+	margin-bottom: 30px;
+}
