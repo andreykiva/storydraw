@@ -10,7 +10,7 @@ const EmojiPicker = ({ onChange }: EmojiPickerProps) => {
 	const handleEmojiPickerMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
 		e.preventDefault();
 	};
-	
+
 	return (
 		<div className={styles.EmojiPicker} onMouseDown={handleEmojiPickerMouseDown}>
 			{emojis.map((emoji) => (
