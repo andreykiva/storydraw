@@ -1,18 +1,32 @@
 import React, { useState, useRef } from 'react';
 import styles from './InputWithEmojis.module.css';
 import EmojiPicker from './EmojiPicker/EmojiPicker';
+import Button from '@/components/ui/buttons/Button/Button';
+import emojiIcon from '@/assets/icons/messages/emoji.svg?url';
+import sendiIcon from '@/assets/icons/messages/send.svg?url';
+import useClickOutside from '@/hooks/useClickOutside';
 
 const InputWithEmojis = () => {
+	const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
 	const [value, setValue] = useState('');
-	const contentEditableRef = useRef(null);
+	const contentEditableRef = useRef<HTMLDivElement>(null);
+	const emojiPickerRef = useRef<HTMLDivElement>(null);
+	const emojiPickerBtnRef = useRef<HTMLButtonElement>(null);
+	const isValueNotEmpty = value.length > 0;
 
-	console.log(value);
+	useClickOutside([emojiPickerBtnRef, emojiPickerRef], () => {
+		setIsEmojiPickerOpen(false);
+	});
 
-	const handleInput = () => {
+	const handleEmojiPickerToggle = () => {
+		setIsEmojiPickerOpen(!isEmojiPickerOpen);
+	};
+
+	const handleInputChange = () => {
 		setValue(contentEditableRef.current.textContent);
 	};
 
-	const handleEmojiPick = (emoji: string) => {
+	const pasteText = (text: string) => {
 		const contentEditable = contentEditableRef.current;
 
 		const range = document.createRange();
@@ -35,7 +49,7 @@ const InputWithEmojis = () => {
 
 		contentEditable.textContent = '';
 
-		const emojiNode = document.createTextNode(emoji);
+		const emojiNode = document.createTextNode(text);
 
 		range.deleteContents();
 		range.insertNode(afterTextNode);
@@ -45,20 +59,45 @@ const InputWithEmojis = () => {
 		range.setStartAfter(emojiNode);
 		range.collapse(true);
 
-		handleInput();
+		handleInputChange();
+	};
+
+	const handleInputPaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
+		e.preventDefault();
+		const text = e.clipboardData.getData('text/plain');
+		pasteText(text);
+		handleInputChange();
 	};
 
 	return (
-		<div className={styles.InputWithEmojis}>
-			<div
-				ref={contentEditableRef}
-				className={styles.ContentEditable}
-				contentEditable="true"
-				onChange={handleInput}
-			>
-				{/* {value} */}
+		<div className={styles.InputWithEmojisForm}>
+			<div className={[styles.InputContainer, isValueNotEmpty && styles.Constrained].join(' ')}>
+				{!isValueNotEmpty && <div className={styles.Placeholder}>Send a message...</div>}
+				<div
+					ref={contentEditableRef}
+					className={styles.EmojisInput}
+					contentEditable="true"
+					onInput={handleInputChange}
+					onPaste={handleInputPaste}
+				></div>
+				<button
+					className={styles.TogglePickerBtn}
+					onClick={handleEmojiPickerToggle}
+					ref={emojiPickerBtnRef}
+				>
+					<img src={emojiIcon} alt="Emoji" className={styles.EmojiIcon} />
+				</button>
+				{isEmojiPickerOpen && (
+					<div ref={emojiPickerRef}>
+						<EmojiPicker onChange={pasteText} />
+					</div>
+				)}
 			</div>
-			<EmojiPicker onChange={handleEmojiPick} />
+			{isValueNotEmpty && (
+				<Button type="submit" className={styles.SendBtn}>
+					<img src={sendiIcon} alt="Send" className={styles.SendIcon} />
+				</Button>
+			)}
 		</div>
 	);
 };
