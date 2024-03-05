@@ -62,10 +62,20 @@ const InputWithEmojis = () => {
 		handleInputChange();
 	};
 
+	const stripHtmlTags = (html: string) => {
+		const doc = new DOMParser().parseFromString(html, 'text/html');
+		return doc.body.textContent || "";
+	};
+
 	const handleInputPaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
-		e.preventDefault();
 		const text = e.clipboardData.getData('text/plain');
-		pasteText(text);
+
+		const cleanText = stripHtmlTags(text);
+
+
+		// e.preventDefault();
+		// const text = e.clipboardData.getData('text/plain');
+		pasteText(cleanText);
 		handleInputChange();
 	};
 
@@ -89,7 +99,7 @@ const InputWithEmojis = () => {
 				</button>
 				{isEmojiPickerOpen && (
 					<div ref={emojiPickerRef}>
-						<EmojiPicker onChange={pasteText} />
+						<EmojiPicker onSelect={pasteText} />
 					</div>
 				)}
 			</div>

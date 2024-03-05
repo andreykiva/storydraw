@@ -70,6 +70,10 @@
 	cursor: pointer;
 }
 
+.TogglePickerBtn:hover {
+	opacity: .7;
+}
+
 .SendBtn {
 	width: 52px;
 	height: 52px;
