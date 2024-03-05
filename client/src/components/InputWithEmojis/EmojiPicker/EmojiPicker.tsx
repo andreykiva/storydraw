@@ -1,23 +1,31 @@
 import React from 'react';
 import styles from './EmojiPicker.module.css';
 import { emojis } from './emojis';
+import Emoji from './Emoji/Emoji';
 
 type EmojiPickerProps = {
-	onChange: (emoji: string) => void;
+	onSelect: (emoji: string) => void;
 };
 
-const EmojiPicker = ({ onChange }: EmojiPickerProps) => {
+const EmojiPicker = ({ onSelect }: EmojiPickerProps) => {
 	const handleEmojiPickerMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
 		e.preventDefault();
 	};
 
 	return (
 		<div className={styles.EmojiPicker} onMouseDown={handleEmojiPickerMouseDown}>
-			{emojis.map((emoji) => (
-				<div className={styles.Emoji} key={emoji} onClick={onChange.bind(this, emoji)}>
-					<span>{emoji}</span>
-				</div>
-			))}
+			<div className={styles.Emojis}>
+				{emojis.map((emojisCategory) => (
+					<div className={styles.EmojisCategory} key={emojisCategory.category}>
+						<span className={styles.CategoryName}>{emojisCategory.category}</span>
+						<ul className={styles.EmojisList}>
+							{emojisCategory.emojis.map((categoryEmoji) => (
+								<Emoji emoji={categoryEmoji} onSelect={onSelect} key={categoryEmoji} />
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };
