@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './InputWithEmojis.module.css';
 import EmojiPicker from './EmojiPicker/EmojiPicker';
 import Button from '@/components/ui/buttons/Button/Button';
@@ -13,76 +13,107 @@ const InputWithEmojis = () => {
 	const emojiPickerRef = useRef<HTMLDivElement>(null);
 	const emojiPickerBtnRef = useRef<HTMLButtonElement>(null);
 	const isValueNotEmpty = value.length > 0;
+	// const undoStack: string[] = [];
+	const [undoStack, setUndoStack] = useState([]);
+	// let redoStack: string[] = [];
 
+	//TODO
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.ctrlKey && event.code === 'KeyZ') {
+				event.preventDefault();
+				handleUndo();
+			}
+			// Проверяем, нажат ли Ctrl+Y
+			// else if (event.ctrlKey && event.code === 'KeyY') {
+			// 	event.preventDefault(); // Предотвращаем стандартное действие браузера (повтор предыдущего действия)
+			// 	handleRedo(); // Вызываем функцию повтора действия
+			// }
+		};
+
+		document.addEventListener('keydown', handleKeyDown);
+
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, [undoStack]);
+
+	//?DONE
 	useClickOutside([emojiPickerBtnRef, emojiPickerRef], () => {
 		setIsEmojiPickerOpen(false);
 	});
 
+	//?DONE
 	const handleEmojiPickerToggle = () => {
 		setIsEmojiPickerOpen(!isEmojiPickerOpen);
 	};
 
+	//?DONE
 	const handleInputChange = () => {
-		setValue(contentEditableRef.current.textContent);
+		const newValue = contentEditableRef.current.textContent;
+		setUndoStack([...undoStack, value]);
+
+		console.log(undoStack);
+
+		setValue(newValue);
 	};
 
-	const pasteText = (text: string) => {
+	//TODO
+	const handleUndo = () => {
+		if (undoStack.length > 0) {
+			const stack = [...undoStack];
+			const prevState = stack.pop();
+			contentEditableRef.current.textContent = '';
+			insertText(prevState);
+			setUndoStack(stack);
+		}
+	};
+
+	//TODO
+	// const handleRedo = () => {
+	// 	if (redoStack.length > 0) {
+	// 		const nextState = redoStack.pop(); // извлекаем состояние, которое мы отменили с помощью handleUndo
+	// 		insertText(nextState); // восстанавливаем его
+	// 	}
+	// };
+
+	//?DONE
+	const insertText = (text: string) => {
 		const contentEditable = contentEditableRef.current;
+		if (!contentEditable) return;
 
-		const range = document.createRange();
+		contentEditable.focus();
+
 		const selection = window.getSelection();
-		selection.modify('extend', 'backward', 'paragraphboundary');
+		if (!selection) return;
 
-		const position = selection.toString().length;
-		if (selection.anchorNode != undefined) selection.collapseToEnd();
+		const range = selection.getRangeAt(0);
+		const textNode = document.createTextNode(text);
 
-		const beforeText = contentEditable.textContent.substring(0, position);
-		const afterText = contentEditable.textContent.substring(position);
+		range.deleteContents();
+		range.insertNode(textNode);
 
-		const beforeTextNode = document.createTextNode(beforeText);
-		const afterTextNode = document.createTextNode(afterText);
-
-		range.setStart(contentEditable, 0);
+		range.setStartAfter(textNode);
 		range.collapse(true);
+
 		selection.removeAllRanges();
 		selection.addRange(range);
 
-		contentEditable.textContent = '';
-
-		const emojiNode = document.createTextNode(text);
-
-		range.deleteContents();
-		range.insertNode(afterTextNode);
-		range.insertNode(emojiNode);
-		range.insertNode(beforeTextNode);
-
-		range.setStartAfter(emojiNode);
-		range.collapse(true);
-
-		handleInputChange();
+		// handleInputChange();
 	};
 
-	const stripHtmlTags = (html: string) => {
-		const doc = new DOMParser().parseFromString(html, 'text/html');
-		return doc.body.textContent || "";
-	};
-
+	//?DONE
 	const handleInputPaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
+		e.preventDefault();
 		const text = e.clipboardData.getData('text/plain');
 
-		const cleanText = stripHtmlTags(text);
-
-
-		// e.preventDefault();
-		// const text = e.clipboardData.getData('text/plain');
-		pasteText(cleanText);
-		handleInputChange();
+		insertText(text);
 	};
 
 	return (
 		<div className={styles.InputWithEmojisForm}>
 			<div className={[styles.InputContainer, isValueNotEmpty && styles.Constrained].join(' ')}>
-				{!isValueNotEmpty && <div className={styles.Placeholder}>Send a message...</div>}
+				{/* {!isValueNotEmpty && <div className={styles.Placeholder}>Send a message...</div>} */}
 				<div
 					ref={contentEditableRef}
 					className={styles.EmojisInput}
@@ -90,16 +121,12 @@ const InputWithEmojis = () => {
 					onInput={handleInputChange}
 					onPaste={handleInputPaste}
 				></div>
-				<button
-					className={styles.TogglePickerBtn}
-					onClick={handleEmojiPickerToggle}
-					ref={emojiPickerBtnRef}
-				>
+				<button className={styles.TogglePickerBtn} onClick={handleEmojiPickerToggle} ref={emojiPickerBtnRef}>
 					<img src={emojiIcon} alt="Emoji" className={styles.EmojiIcon} />
 				</button>
 				{isEmojiPickerOpen && (
 					<div ref={emojiPickerRef}>
-						<EmojiPicker onSelect={pasteText} />
+						<EmojiPicker onSelect={insertText} />
 					</div>
 				)}
 			</div>
