@@ -1,13 +1,14 @@
 .EmojiPicker {
 	position: absolute;
 	right: 0;
-	top: -310px;
+	bottom: calc(100% + 10px);
 	width: 300px;
 	height: 300px;
 	padding: 10px;
 	border-radius: 12px;
 	background-color: rgb(32, 32, 32);
 	overflow: hidden;
+	z-index: 1;
 }
 
 .Emojis {
