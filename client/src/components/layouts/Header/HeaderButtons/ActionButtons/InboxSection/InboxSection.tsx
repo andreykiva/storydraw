@@ -4,7 +4,7 @@ import styles from './InboxSection.module.css';
 import InboxIcon from '@/assets/icons/inbox.svg';
 import useClickOutside from '@/hooks/useClickOutside';
 import Notifications from '@/components/Notifications/Notifications';
-import Prompt from '../Prompt/Prompt';
+import Prompt from '@/components/ui/Prompt/Prompt';
 import { openNotificationsModal, closeNotificationsModal } from '@/features/notifications/notificationsSlice';
 import { selectNotificationsModalStatus } from '@/features/notifications/notificationsSlice';
 
@@ -30,7 +30,7 @@ const InboxSection = () => {
 			<div className={styles.InboxBtn} onClick={handleNotificationsToggle}>
 				<InboxIcon className={styles.InboxIcon} />
 			</div>
-			<Prompt text="Inbox" className={styles.Prompt} />
+			<Prompt className={styles.Prompt}>Inbox</Prompt>
 			{isNotificationsOpen && <Notifications />}
 		</div>
 	);
