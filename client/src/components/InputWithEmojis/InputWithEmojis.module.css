@@ -23,27 +23,31 @@
 	max-width: calc(100% - 62px);
 }
 
-.EmojisInput {
+.InpurWrapper {
 	flex: 1;
 	max-height: 80px;
+	overflow-y: auto;
+}
+
+.EmojisInput {
 	font-size: 15px;
 	font-weight: 500;
 	line-height: 1.2;
 	caret-color: var(--bright-green-color);
-	overflow-y: auto;
 	word-wrap: break-word;
+	white-space: pre-wrap;
 	z-index: 1;
 }
 
-.EmojisInput::-webkit-scrollbar {
+.InpurWrapper::-webkit-scrollbar {
 	width: 8px;
 }
 
-.EmojisInput::-webkit-scrollbar-track {
+.InpurWrapper::-webkit-scrollbar-track {
 	background: transparent;
 }
 
-.EmojisInput::-webkit-scrollbar-thumb {
+.InpurWrapper::-webkit-scrollbar-thumb {
 	background: rgb(70, 70, 70);
 	border-radius: 4px;
 }
@@ -58,13 +62,20 @@
 	overflow: hidden;
 }
 
-.TogglePickerBtn {
+.TogglePickerSection {
+	position: relative;
 	width: 32px;
 	height: 32px;
+	margin: auto 0 0 10px;
+	border-radius: 50%;
+}
+
+.TogglePickerBtn {
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: auto 0 0 10px;
 	border-radius: 50%;
 	background: transparent;
 	cursor: pointer;
@@ -72,6 +83,11 @@
 
 .TogglePickerBtn:hover {
 	opacity: .7;
+}
+
+.TogglePickerSection:not(.Active):hover .Prompt {
+	opacity: 1;
+	visibility: visible;
 }
 
 .SendBtn {
