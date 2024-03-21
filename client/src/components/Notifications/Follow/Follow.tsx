@@ -16,14 +16,14 @@ const Follow = (props: FollowNotification) => {
 		user: { username, title, image, isFollowedByYou },
 	} = props;
 
-	const handleFollowClick = () => {
+	const handleClick = () => {
 		dispatch(closeNotificationsModal());
 		navigate(`/@${username}`);
 	};
 
 	return (
 		<li className={styles.Follow}>
-			<div className={styles.UserLink} onClick={handleFollowClick}>
+			<div className={styles.UserLink} onClick={handleClick}>
 				<div className={styles.UserImgWr}>
 					<img src={image || defaultImg} alt="Profile picture" className={styles.UserImg} />
 				</div>

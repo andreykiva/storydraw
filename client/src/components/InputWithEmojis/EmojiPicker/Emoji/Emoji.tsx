@@ -7,12 +7,12 @@ type EmojiProps = {
 };
 
 const Emoji = ({ emoji, onSelect }: EmojiProps) => {
-	const handleEmojiSelect = () => {
+	const handleClick = () => {
 		onSelect(emoji);
 	};
 
 	return (
-		<li className={styles.Emoji} onClick={handleEmojiSelect}>
+		<li className={styles.Emoji} onClick={handleClick}>
 			{emoji}
 		</li>
 	);

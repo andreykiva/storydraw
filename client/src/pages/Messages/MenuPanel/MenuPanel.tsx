@@ -12,11 +12,11 @@ const MenuPanel = () => {
 	const navigate = useNavigate();
 	const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
-	const handleSettingsModalOpen = () => {
+	const handleOpenSettingsModal = () => {
 		setIsSettingsModalOpen(true);
 	};
 
-	const handleSettingsModalClose = () => {
+	const handleCloseSettingsModal = () => {
 		setIsSettingsModalOpen(false);
 	};
 
@@ -33,12 +33,12 @@ const MenuPanel = () => {
 				<HTag tag="h4" className={styles.HeaderTitle}>
 					Messages
 				</HTag>
-				<RoundButton className={styles.SettingsBtn} onClick={handleSettingsModalOpen}>
+				<RoundButton className={styles.SettingsBtn} onClick={handleOpenSettingsModal}>
 					<img src={settingsIcon} alt="Settings" className={styles.SettingsIcon} />
 				</RoundButton>
 			</div>
 			<ChatList />
-			{isSettingsModalOpen && <SettingsModal closeModal={handleSettingsModalClose} />}
+			{isSettingsModalOpen && <SettingsModal closeModal={handleCloseSettingsModal} />}
 		</div>
 	);
 };

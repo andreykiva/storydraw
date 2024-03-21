@@ -25,17 +25,17 @@ const ChatListItem = (props: ChatListItemProps) => {
 		setIsActionsMenuOpen(false);
 	});
 
-	const handleActionsMenuToggle = () => {
+	const handleToggleActionsMenu = () => {
 		setIsActionsMenuOpen(!isActionsMenuOpen);
 	};
 
-	const handleItemClick = () => {
+	const handleClickItem = () => {
 		dispatch(setActiveChatmateId(id));
 	};
 
 	return (
 		<li className={[styles.ChatListItem, activeChatmateId === id && styles.Active].join(' ')}>
-			<div className={styles.ItemContent} onClick={handleItemClick}>
+			<div className={styles.ItemContent} onClick={handleClickItem}>
 				<div className={styles.ChatmateImgWr}>
 					<img src={image || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
 				</div>
@@ -49,7 +49,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 			</div>
 			<div
 				className={[styles.ActionsBtn, isActionsMenuOpen && styles.Active].join(' ')}
-				onClick={handleActionsMenuToggle}
+				onClick={handleToggleActionsMenu}
 				ref={actionsBtnRef}
 			>
 				<img src={moreIcon} alt="Actions" className={styles.MoreIcon} />

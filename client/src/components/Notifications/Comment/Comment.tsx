@@ -20,7 +20,7 @@ const Comment = (props: CommentNotification) => {
 		user: { username, title, image },
 	} = props;
 
-	const handleAuthorClick = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (!authorTitleRef.current.contains(e.target as Node) && !authorImgRef.current.contains(e.target as Node)) {
 			navigate(`/@${username}/story/${story.id}`);
 		}
@@ -29,7 +29,7 @@ const Comment = (props: CommentNotification) => {
 
 	return (
 		<li className={styles.Comment}>
-			<div className={styles.CommentLink} onClick={handleAuthorClick}>
+			<div className={styles.CommentLink} onClick={handleClick}>
 				<Link to={`/@${username}`} className={styles.AuthorImgWr}>
 					<img
 						src={image || defaultImg}

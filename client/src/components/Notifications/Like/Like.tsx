@@ -16,7 +16,7 @@ const Like = (props: LikeNotification) => {
 	const otherUsersTwoRef = useRef<HTMLAnchorElement>(null);
 	const { date, parentComment, user, users, amount, story } = props;
 
-	const handleStoryClick = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		const isSingleUserClick =
 			!amount &&
 			!userTitleRef.current.contains(e.target as Node) &&
@@ -36,7 +36,7 @@ const Like = (props: LikeNotification) => {
 
 	return (
 		<li className={styles.Like}>
-			<div className={styles.StoryLink} onClick={handleStoryClick}>
+			<div className={styles.StoryLink} onClick={handleClick}>
 				{amount ? (
 					<div className={styles.UserImgSmallWr}>
 						<img src={users[0].image || defaultImg} alt="Profile picture" className={styles.UserImgSmall} />

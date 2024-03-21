@@ -11,7 +11,7 @@ type PasswordInputProps = React.ComponentProps<'input'> & {
 const PasswordInput = ({ error, ...rest }: PasswordInputProps) => {
 	const [showPassword, setShowPassword] = useState(false);
 
-	const handlePasswordToggle = () => {
+	const handleTogglePassword = () => {
 		setShowPassword(!showPassword);
 	};
 
@@ -21,7 +21,7 @@ const PasswordInput = ({ error, ...rest }: PasswordInputProps) => {
 				src={showPassword ? eyeOpenedIcon : eyeClosedIcon}
 				alt="Eye"
 				className={styles.ShowPasswordIcon}
-				onClick={handlePasswordToggle}
+				onClick={handleTogglePassword}
 			/>
 			<Input type={showPassword ? 'text' : 'password'} mode="Password" error={error} {...rest} />
 		</div>

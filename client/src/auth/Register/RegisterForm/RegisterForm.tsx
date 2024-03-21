@@ -19,12 +19,12 @@ import ArrowIcon from '@/assets/icons/arrow.svg';
 type RegisterFormProps = {
 	formData: FormData;
 	formErrors: FormErrors;
-	handleInputFocus: (fieldName: string) => void;
-	handleInputBlur: (fieldName: string) => void;
-	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handleSelectChange: (selectedCountry: Country) => void;
-	handleCheckboxChange: () => void;
-	handleBirthdayChange: (fieldName: string, selectedDate: string) => void;
+	handleFocusInput: (fieldName: string) => void;
+	handleBlurInput: (fieldName: string) => void;
+	handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleChangeSelect: (selectedCountry: Country) => void;
+	handleChangeCheckbox: () => void;
+	handleChangeBirthday: (fieldName: string, selectedDate: string) => void;
 	showRegisterOptions: () => void;
 };
 
@@ -32,12 +32,12 @@ const RegisterForm = (props: RegisterFormProps) => {
 	const {
 		formData,
 		formErrors,
-		handleInputFocus,
-		handleInputBlur,
-		handleInputChange,
-		handleSelectChange,
-		handleCheckboxChange,
-		handleBirthdayChange,
+		handleFocusInput,
+		handleBlurInput,
+		handleChangeInput,
+		handleChangeSelect,
+		handleChangeCheckbox,
+		handleChangeBirthday,
 		showRegisterOptions,
 	} = props;
 
@@ -76,7 +76,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 				{!showUsernameField ? (
 					<>
 						<BirthdaySelector
-							selectBirthday={handleBirthdayChange}
+							selectBirthday={handleChangeBirthday}
 							selectedMonth={formData.birthMonth}
 							selectedDay={formData.birthDay}
 							selectedYear={formData.birthYear}
@@ -91,7 +91,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 								<CountrySelector
 									options={countries}
 									selectedOption={formData.country}
-									selectOption={handleSelectChange}
+									selectOption={handleChangeSelect}
 								/>
 								<Input
 									type="text"
@@ -100,9 +100,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 									placeholder="Phone number"
 									value={formData.phone}
 									error={formErrors.phone}
-									onChange={handleInputChange}
-									onFocus={handleInputFocus.bind(this, 'phone')}
-									onBlur={handleInputBlur.bind(this, 'phone')}
+									onChange={handleChangeInput}
+									onFocus={handleFocusInput.bind(this, 'phone')}
+									onBlur={handleBlurInput.bind(this, 'phone')}
 									required
 								/>
 							</div>
@@ -115,9 +115,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 									placeholder="Email address"
 									value={formData.email}
 									error={formErrors.email}
-									onChange={handleInputChange}
-									onFocus={handleInputFocus.bind(this, 'email')}
-									onBlur={handleInputBlur.bind(this, 'email')}
+									onChange={handleChangeInput}
+									onFocus={handleFocusInput.bind(this, 'email')}
+									onBlur={handleBlurInput.bind(this, 'email')}
 									required
 								/>
 								<PasswordInput
@@ -125,9 +125,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 									placeholder="Password"
 									value={formData.password}
 									error={formErrors.password}
-									onChange={handleInputChange}
-									onFocus={handleInputFocus.bind(this, 'password')}
-									onBlur={handleInputBlur.bind(this, 'password')}
+									onChange={handleChangeInput}
+									onFocus={handleFocusInput.bind(this, 'password')}
+									onBlur={handleBlurInput.bind(this, 'password')}
 									required
 								/>
 							</>
@@ -137,14 +137,14 @@ const RegisterForm = (props: RegisterFormProps) => {
 							placeholder="Enter 6-digit code"
 							value={formData.code}
 							error={formErrors.code}
-							onChange={handleInputChange}
-							onFocus={handleInputFocus.bind(this, 'code')}
-							onBlur={handleInputBlur.bind(this, 'code')}
+							onChange={handleChangeInput}
+							onFocus={handleFocusInput.bind(this, 'code')}
+							onBlur={handleBlurInput.bind(this, 'code')}
 							disabled={isCodeBtnDisabled}
 							required
 						/>
 						{!isPhoneMode && (
-							<Checkbox checked={formData.sendTrends} onChange={handleCheckboxChange}>
+							<Checkbox checked={formData.sendTrends} onChange={handleChangeCheckbox}>
 								Get trending content, newsletters, promotions, recommendations, and account updates sent
 								to your email
 							</Checkbox>
@@ -167,9 +167,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 							placeholder="Username"
 							value={formData.username}
 							error={formErrors.username}
-							onChange={handleInputChange}
-							onFocus={handleInputFocus.bind(this, 'username')}
-							onBlur={handleInputBlur.bind(this, 'username')}
+							onChange={handleChangeInput}
+							onFocus={handleFocusInput.bind(this, 'username')}
+							onBlur={handleBlurInput.bind(this, 'username')}
 						/>
 						<span className={authSharedStyles.CreateUsernameDescr}>You can always change this later.</span>
 						<Button

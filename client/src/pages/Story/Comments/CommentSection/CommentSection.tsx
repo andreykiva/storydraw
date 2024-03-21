@@ -15,7 +15,7 @@ const CommentSection = (props: CommentSectionProps) => {
 	const [showReplies, setShowReplies] = useState(false);
 	const { replies } = props;
 
-	const handleRepliesToggle = () => {
+	const handleToggleReplies = () => {
 		setShowReplies(!showReplies);
 	};
 
@@ -23,7 +23,7 @@ const CommentSection = (props: CommentSectionProps) => {
 		<div className={styles.CommentSection}>
 			<Comment reply={false} {...props} />
 			{replies && !showReplies ? (
-				<div className={styles.ViewRepliesBtn} onClick={handleRepliesToggle}>
+				<div className={styles.ViewRepliesBtn} onClick={handleToggleReplies}>
 					View {formatNumber(replies)} Replies
 					<ArrowIcon className={styles.ArrowIcon} />
 				</div>
@@ -33,7 +33,7 @@ const CommentSection = (props: CommentSectionProps) => {
 
 			{showReplies && (
 				<div className={styles.HideReplies}>
-					<div className={styles.HideRepliesBtn} onClick={handleRepliesToggle}>
+					<div className={styles.HideRepliesBtn} onClick={handleToggleReplies}>
 						Hide
 						<ArrowIcon className={styles.ArrowIcon} />
 					</div>

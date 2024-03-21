@@ -17,7 +17,7 @@ const InboxSection = () => {
 		dispatch(closeNotificationsModal());
 	});
 
-	const handleNotificationsToggle = () => {
+	const handleToggleNotifications = () => {
 		if (isNotificationsOpen) {
 			dispatch(closeNotificationsModal());
 		} else {
@@ -27,7 +27,7 @@ const InboxSection = () => {
 
 	return (
 		<div className={[styles.InboxSection, isNotificationsOpen && styles.Active].join(' ')} ref={inboxSectionRef}>
-			<div className={styles.InboxBtn} onClick={handleNotificationsToggle}>
+			<div className={styles.InboxBtn} onClick={handleToggleNotifications}>
 				<InboxIcon className={styles.InboxIcon} />
 			</div>
 			<Prompt className={styles.Prompt}>Inbox</Prompt>

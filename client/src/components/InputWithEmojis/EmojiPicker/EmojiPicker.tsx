@@ -8,12 +8,12 @@ type EmojiPickerProps = {
 };
 
 const EmojiPicker = ({ onSelect }: EmojiPickerProps) => {
-	const handleEmojiPickerMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseDownEmojiPicker = (e: React.MouseEvent<HTMLDivElement>) => {
 		e.preventDefault();
 	};
 
 	return (
-		<div className={styles.EmojiPicker} onMouseDown={handleEmojiPickerMouseDown}>
+		<div className={styles.EmojiPicker} onMouseDown={handleMouseDownEmojiPicker}>
 			<div className={styles.Emojis}>
 				{emojis.map((emojisCategory) => (
 					<div className={styles.EmojisCategory} key={emojisCategory.category}>

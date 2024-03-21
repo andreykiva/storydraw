@@ -43,14 +43,14 @@ const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthCon
 		password: '',
 	});
 
-	const handleInputFocus = (fieldName: string) => {
+	const handleFocusInput = (fieldName: string) => {
 		setFormErrors({
 			...formErrors,
 			[fieldName]: '',
 		});
 	};
 
-	const handleInputBlur = (fieldName: string) => {
+	const handleBlurInput = (fieldName: string) => {
 		if (fieldName === 'phone' && formData.phone) {
 			const phoneError = validatePhone(formData.phone);
 			setFormErrors({
@@ -90,7 +90,7 @@ const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthCon
 		}
 	};
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData({
 			...formData,
@@ -98,21 +98,21 @@ const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthCon
 		});
 	};
 
-	const handleSelectChange = (selectedCountry: Country) => {
+	const handleChangeSelect = (selectedCountry: Country) => {
 		setFormData({
 			...formData,
 			country: selectedCountry,
 		});
 	};
 
-	const handleCheckboxChange = () => {
+	const handleChangeCheckbox = () => {
 		setFormData({
 			...formData,
 			sendTrends: !formData.sendTrends,
 		});
 	};
 
-	const handleBirthdayChange = (fieldName: string, selectedDate: string) => {
+	const handleChangeBirthday = (fieldName: string, selectedDate: string) => {
 		setFormData({
 			...formData,
 			[fieldName]: selectedDate,
@@ -122,12 +122,12 @@ const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthCon
 	const formProps = {
 		formData,
 		formErrors,
-		handleInputFocus,
-		handleInputBlur,
-		handleInputChange,
-		handleSelectChange,
-		handleCheckboxChange,
-		handleBirthdayChange,
+		handleFocusInput,
+		handleBlurInput,
+		handleChangeInput,
+		handleChangeSelect,
+		handleChangeCheckbox,
+		handleChangeBirthday,
 	};
 
 	return (

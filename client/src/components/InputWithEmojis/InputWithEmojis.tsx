@@ -2,15 +2,10 @@ import React, { useState, useRef } from 'react';
 import styles from './InputWithEmojis.module.css';
 import EmojiPicker from './EmojiPicker/EmojiPicker';
 import Button from '@/components/ui/buttons/Button/Button';
+import Prompt from '@/components/ui/Prompt/Prompt';
 import emojiIcon from '@/assets/icons/messages/emoji.svg?url';
 import sendiIcon from '@/assets/icons/messages/send.svg?url';
 import useClickOutside from '@/hooks/useClickOutside';
-import Prompt from '@/components/ui/Prompt/Prompt';
-
-// type UndoStack = {
-// 	text: string;
-// 	caretPosition: number;
-// };
 
 const InputWithEmojis = () => {
 	const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
@@ -19,14 +14,25 @@ const InputWithEmojis = () => {
 	const emojiPickerRef = useRef<HTMLDivElement>(null);
 	const emojiPickerSectionRef = useRef<HTMLDivElement>(null);
 	const isValueNotEmpty = value.length > 0;
-	// const undoStack: UndoStack[] = [];
-	// const redoStack: string[] = [];
-	const [history, setHistory] = useState(['']);
+	const [history, setHistory] = useState([{ text: '', caretPos: 0 }]);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	const setHistoryValue = (value: string) => {
+	const setValueAndCaretPosition = async (newValue: string, caretPos: number) => {
+		await setValue(newValue);
+		setCaretPosition(contentEditableRef.current, caretPos);
+	};
+
+	const getCaretPosition = (): number => {
+		const sel = window.getSelection();
+		const range = sel.getRangeAt(0);
+
+		return range.startOffset;
+	};
+
+	const setHistoryValue = (value: string, caretPos: number = getCaretPosition()) => {
 		let newHistory = history.slice(0, currentIndex + 1);
-		newHistory.push(value);
+
+		newHistory.push({ text: value, caretPos: caretPos });
 
 		if (newHistory.length > 10) {
 			newHistory = newHistory.slice(newHistory.length - 10);
@@ -36,88 +42,107 @@ const InputWithEmojis = () => {
 		setCurrentIndex(newHistory.length - 1);
 	};
 
-	//?DONE
-	useClickOutside([emojiPickerSectionRef, emojiPickerRef], () => {
-		setIsEmojiPickerOpen(false);
-	});
-
-	//?DONE
-	const handleEmojiPickerToggle = () => {
-		setIsEmojiPickerOpen(!isEmojiPickerOpen);
-	};
-
-	const handleInputChange = () => {
-		const newValue = contentEditableRef.current.textContent;
-		setHistoryValue(newValue);
-		setValue(newValue);
-	};
-
-	const handleUndo = () => {
-		setCurrentIndex((currentIndex) => {
-			const newIndex = Math.max(currentIndex - 1, 0);
-			const newValue = history[newIndex];
-			contentEditableRef.current.textContent = newValue;
-			setValue(newValue);
-			return newIndex;
-		});
-	};
-	const handleRedo = () => {
-		setCurrentIndex((currentIndex) => {
-			const newIndex = Math.min(currentIndex + 1, history.length - 1);
-			const newValue = history[newIndex];
-			contentEditableRef.current.textContent = newValue;
-			setValue(newValue);
-			return newIndex;
-		});
-	};
-
-	//?DONE
-	const insertText = (text: string) => {
-		const contentEditable = contentEditableRef.current;
-		if (!contentEditable) return;
-
-		contentEditable.focus();
-
+	const setCaretPosition = (element: HTMLElement, caretPos: number) => {
+		const range = document.createRange();
 		const selection = window.getSelection();
 		if (!selection) return;
 
-		const range = selection.getRangeAt(0);
+		const textLength = element.textContent.length;
 
-		const existingText = contentEditable.textContent || '';
-		const textNode = document.createTextNode(text);
-
-		range.deleteContents();
-
-		if (!existingText.endsWith('\u200B')) {
-			contentEditable.appendChild(document.createTextNode('\u200B'));
+		if (caretPos <= textLength) {
+			range.setStart(element.childNodes[0] || element, caretPos);
+		} else {
+			range.setStart(element.childNodes[0] || element, textLength - 1);
 		}
 
-		range.insertNode(textNode);
-
-		range.setStartAfter(textNode);
 		range.collapse(true);
 
 		selection.removeAllRanges();
 		selection.addRange(range);
-
-		handleInputChange();
 	};
 
-	//?DONE
-	const handleInputPaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
+	useClickOutside([emojiPickerSectionRef, emojiPickerRef], () => {
+		setIsEmojiPickerOpen(false);
+	});
+
+	const handleToggleEmojiPicker = () => {
+		setIsEmojiPickerOpen(!isEmojiPickerOpen);
+	};
+
+	const handleChangeInput = (e: React.ChangeEvent<HTMLDivElement>) => {
+		const contentEditable = contentEditableRef.current;
+		if (document.activeElement !== contentEditable) return;
+
+		const newValue = e.target.textContent;
+		const caretPos = getCaretPosition();
+
+		setValueAndCaretPosition(newValue, caretPos);
+		setHistoryValue(newValue, caretPos);
+	};
+
+	const handleUndo = () => {
+		const newIndex = Math.max(currentIndex - 1, 0);
+		const { text, caretPos } = history[newIndex];
+
+		setValueAndCaretPosition(text, caretPos);
+		setCurrentIndex(newIndex);
+	};
+
+	const handleRedo = () => {
+		const newIndex = Math.min(currentIndex + 1, history.length - 1);
+		const { text, caretPos } = history[newIndex];
+
+		setValueAndCaretPosition(text, caretPos);
+		setCurrentIndex(newIndex);
+	};
+
+	const updateHistoryCaretPosition = (newCaretPos: number) => {
+		const newHistory = [...history];
+		newHistory[currentIndex].caretPos = newCaretPos;
+		setHistory(newHistory);
+	};
+
+	const modifyText = (text: string) => {
+		let modifiedValue = text.replace(/\u200B/g, '') + '\u200B';
+
+		const selection = window.getSelection();
+		if (selection && selection.rangeCount > 0) {
+			const range = selection.getRangeAt(0);
+			const selectedText = range.toString();
+
+			if (selectedText) {
+				modifiedValue = modifiedValue.replace(selectedText, '');
+				selection.removeAllRanges();
+			}
+		}
+
+		return modifiedValue;
+	};
+
+	const insertText = (text: string) => {
+		const caretPos = getCaretPosition();
+		const modifiedValue = modifyText(value);
+
+		const textBeforeCaret = modifiedValue.slice(0, caretPos);
+		const textAfterCaret = modifiedValue.slice(caretPos);
+		const newValue = textBeforeCaret + text + textAfterCaret;
+
+		setValueAndCaretPosition(newValue, caretPos + text.length);
+		updateHistoryCaretPosition(caretPos);
+		setHistoryValue(newValue, caretPos);
+	};
+
+	const handlePasteInput = (e: React.ClipboardEvent<HTMLDivElement>) => {
 		e.preventDefault();
 		const text = e.clipboardData.getData('text/plain');
 		insertText(text);
 	};
 
-	//?DONE
 	const handleSendMessage = () => {
-		contentEditableRef.current.textContent = '';
 		setValue('');
 	};
 
-	//?DONE
-	const handleInputKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+	const handleKeyDownInput = (e: React.KeyboardEvent<HTMLDivElement>) => {
 		switch (e.code) {
 			case 'KeyZ':
 				if (e.ctrlKey) {
@@ -145,26 +170,26 @@ const InputWithEmojis = () => {
 		}
 	};
 
-	//?DONE
 	return (
 		<div className={styles.InputWithEmojisForm}>
 			<div className={[styles.InputContainer, isValueNotEmpty && styles.Constrained].join(' ')}>
 				{!isValueNotEmpty && <div className={styles.Placeholder}>Send a message...</div>}
 				<div className={styles.InpurWrapper}>
 					<div
-						ref={contentEditableRef}
 						className={styles.EmojisInput}
 						contentEditable="true"
-						onInput={handleInputChange}
-						onPaste={handleInputPaste}
-						onKeyDown={handleInputKeyDown}
+						dangerouslySetInnerHTML={{ __html: value }}
+						ref={contentEditableRef}
+						onInput={handleChangeInput}
+						onPaste={handlePasteInput}
+						onKeyDown={handleKeyDownInput}
 					></div>
 				</div>
 				<div
 					className={[styles.TogglePickerSection, isEmojiPickerOpen && styles.Active].join(' ')}
 					ref={emojiPickerSectionRef}
 				>
-					<button className={styles.TogglePickerBtn} onClick={handleEmojiPickerToggle}>
+					<button className={styles.TogglePickerBtn} onClick={handleToggleEmojiPicker}>
 						<img src={emojiIcon} alt="Emoji" className={styles.EmojiIcon} />
 					</button>
 					<Prompt pos="above" className={styles.Prompt}>

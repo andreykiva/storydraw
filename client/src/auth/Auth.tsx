@@ -14,18 +14,18 @@ const Auth = () => {
 	const dispatch = useDispatch();
 	const [authMode, setAuthMode] = useState<AuthMode>('login');
 
-	const handleModeChange = (newMode: AuthMode) => {
+	const handleChangeMode = (newMode: AuthMode) => {
 		setAuthMode(newMode);
 	};
 
-	const handleModalClose = () => {
+	const handleClose = () => {
 		dispatch(closeAuthModal());
 	};
 
 	return (
 		<ModalOverlay>
 			<div className={styles.AuthModal}>
-				<RoundButton className={styles.CloseBtn} onClick={handleModalClose}>
+				<RoundButton className={styles.CloseBtn} onClick={handleClose}>
 					<img src={closeIcon} alt="CLose" className={styles.CloseIcon} />
 				</RoundButton>
 
@@ -35,14 +35,14 @@ const Auth = () => {
 				{authMode === 'login' ? (
 					<div className={styles.AuthModalFooter}>
 						Don't have an account?
-						<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'register')}>
+						<span className={styles.FooterBtn} onClick={handleChangeMode.bind(this, 'register')}>
 							Sign up
 						</span>
 					</div>
 				) : (
 					<div className={styles.AuthModalFooter}>
 						Already have an account?
-						<span className={styles.FooterBtn} onClick={handleModeChange.bind(this, 'login')}>
+						<span className={styles.FooterBtn} onClick={handleChangeMode.bind(this, 'login')}>
 							Log in
 						</span>
 					</div>

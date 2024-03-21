@@ -21,12 +21,12 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 		setIsOptionsOpen(false);
 	});
 
-	const handleSelectChange = (option: string) => {
+	const handleChangeSelect = (option: string) => {
 		selectOption(fieldName, option);
 		setIsOptionsOpen(false);
 	};
 
-	const handleSelectToggle = () => {
+	const handleToggleSelect = () => {
 		setIsOptionsOpen(!isOptionsOpen);
 	};
 
@@ -36,14 +36,14 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 				value={selectedOption}
 				placeholder={placeholder}
 				isOpen={isOptionsOpen}
-				onClick={handleSelectToggle}
+				onClick={handleToggleSelect}
 			/>
 			{isOptionsOpen && (
 				<div className={authSharedStyles.SelectorBody}>
 					<SelectorOptions
 						options={options}
 						selectedOption={selectedOption}
-						handleSelectChange={handleSelectChange}
+						handleChangeSelect={handleChangeSelect}
 					/>
 				</div>
 			)}

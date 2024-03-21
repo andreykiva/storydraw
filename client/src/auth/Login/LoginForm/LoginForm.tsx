@@ -17,10 +17,10 @@ type LoginFormProps = {
 	openResetForm: () => void;
 	formData: FormData;
 	formErrors: FormErrors;
-	handleInputFocus: (fieldName: string) => void;
-	handleInputBlur: (fieldName: string) => void;
-	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handleSelectChange: (selectedCountry: Country) => void;
+	handleFocusInput: (fieldName: string) => void;
+	handleBlurInput: (fieldName: string) => void;
+	handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleChangeSelect: (selectedCountry: Country) => void;
 };
 
 type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
@@ -30,10 +30,10 @@ const LoginForm = (props: LoginFormProps) => {
 		formData,
 		formErrors,
 		openResetForm,
-		handleInputFocus,
-		handleInputBlur,
-		handleInputChange,
-		handleSelectChange,
+		handleFocusInput,
+		handleBlurInput,
+		handleChangeInput,
+		handleChangeSelect,
 	} = props;
 
 	const [loginMethod, setLoginMethod] = useState<LoginMethod>('phoneAndCode');
@@ -69,9 +69,9 @@ const LoginForm = (props: LoginFormProps) => {
 						placeholder="Email or username"
 						value={formData.login}
 						error={formErrors.login}
-						onChange={handleInputChange}
-						onFocus={handleInputFocus.bind(this, 'login')}
-						onBlur={handleInputBlur.bind(this, 'login')}
+						onChange={handleChangeInput}
+						onFocus={handleFocusInput.bind(this, 'login')}
+						onBlur={handleBlurInput.bind(this, 'login')}
 						required
 					/>
 				) : (
@@ -79,7 +79,7 @@ const LoginForm = (props: LoginFormProps) => {
 						<CountrySelector
 							options={countries}
 							selectedOption={formData.country}
-							selectOption={handleSelectChange}
+							selectOption={handleChangeSelect}
 						/>
 						<Input
 							type="text"
@@ -88,9 +88,9 @@ const LoginForm = (props: LoginFormProps) => {
 							placeholder="Phone number"
 							value={formData.phone}
 							error={formErrors.phone}
-							onChange={handleInputChange}
-							onFocus={handleInputFocus.bind(this, 'phone')}
-							onBlur={handleInputBlur.bind(this, 'phone')}
+							onChange={handleChangeInput}
+							onFocus={handleFocusInput.bind(this, 'phone')}
+							onBlur={handleBlurInput.bind(this, 'phone')}
 							required
 						/>
 					</div>
@@ -101,9 +101,9 @@ const LoginForm = (props: LoginFormProps) => {
 						placeholder="Enter 6-digit code"
 						value={formData.code}
 						error={formErrors.code}
-						onChange={handleInputChange}
-						onFocus={handleInputFocus.bind(this, 'code')}
-						onBlur={handleInputBlur.bind(this, 'code')}
+						onChange={handleChangeInput}
+						onFocus={handleFocusInput.bind(this, 'code')}
+						onBlur={handleBlurInput.bind(this, 'code')}
 						disabled={isCodeBtnDisabled}
 						required
 					/>
@@ -113,9 +113,9 @@ const LoginForm = (props: LoginFormProps) => {
 						placeholder="Password"
 						value={formData.password}
 						error={formErrors.password}
-						onChange={handleInputChange}
-						onFocus={handleInputFocus.bind(this, 'password')}
-						onBlur={handleInputBlur.bind(this, 'password')}
+						onChange={handleChangeInput}
+						onFocus={handleFocusInput.bind(this, 'password')}
+						onBlur={handleBlurInput.bind(this, 'password')}
 						required
 					/>
 				)}

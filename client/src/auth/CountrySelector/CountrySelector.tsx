@@ -25,17 +25,17 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 		setIsOptionsOpen(false);
 	});
 
-	const handleSelectChange = (option: Country) => {
+	const handleChangeSelect = (option: Country) => {
 		selectOption(option);
 		setIsOptionsOpen(false);
 	};
 
-	const handleSelectToggle = () => {
+	const handleToggleSelect = () => {
 		setIsOptionsOpen(!isOptionsOpen);
 		setSearchValue('');
 	};
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = e.target;
 		setSearchValue(value);
 	};
@@ -45,7 +45,7 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 			<SelectorHeader
 				value={`${selectedOption.abbreviation} ${selectedOption.phonePrefix}`}
 				isOpen={isOptionsOpen}
-				onClick={handleSelectToggle}
+				onClick={handleToggleSelect}
 			/>
 			{isOptionsOpen && (
 				<div className={[authSharedStyles.SelectorBody, styles.CountrySelectorBody].join(' ')}>
@@ -53,14 +53,14 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 						type="text"
 						value={searchValue}
 						placeholder="Search"
-						onChange={handleInputChange}
+						onChange={handleChangeInput}
 						autoFocus
 					/>
-					<SelectorOptions 
+					<SelectorOptions
 						options={sortedOptions}
 						selectedOptionId={selectedOption.id}
 						searchValue={searchValue}
-						handleSelectChange={handleSelectChange}
+						handleChangeSelect={handleChangeSelect}
 					/>
 				</div>
 			)}

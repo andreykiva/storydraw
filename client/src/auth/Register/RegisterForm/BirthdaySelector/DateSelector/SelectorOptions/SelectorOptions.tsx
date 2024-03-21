@@ -5,17 +5,17 @@ import SelectorOption from './SelectorOption/SelectorOption';
 type SelectorOptionsProps = {
 	options: string[];
 	selectedOption: string;
-	handleSelectChange: (option: string) => void;
+	handleChangeSelect: (option: string) => void;
 };
 
-const SelectorOptions = ({ options, selectedOption, handleSelectChange }: SelectorOptionsProps) => {
+const SelectorOptions = ({ options, selectedOption, handleChangeSelect }: SelectorOptionsProps) => {
 	return (
 		<ul className={authSharedStyles.SelectorOptions}>
 			{options.map((option) => (
 				<SelectorOption
 					key={option}
 					selectedOption={selectedOption}
-					onClick={handleSelectChange.bind(this, option)}
+					onClick={handleChangeSelect.bind(this, option)}
 				>
 					{option}
 				</SelectorOption>
