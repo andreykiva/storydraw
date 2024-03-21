@@ -24,9 +24,11 @@
 }
 
 .InpurWrapper {
+	position: relative;
 	flex: 1;
 	max-height: 80px;
 	overflow-y: auto;
+	z-index: 1;
 }
 
 .EmojisInput {
@@ -36,7 +38,6 @@
 	caret-color: var(--bright-green-color);
 	word-wrap: break-word;
 	white-space: pre-wrap;
-	z-index: 1;
 }
 
 .InpurWrapper::-webkit-scrollbar {
