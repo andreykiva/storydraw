@@ -16,6 +16,7 @@ const InputWithEmojis = () => {
 	const isValueNotEmpty = value.length > 0;
 	const [history, setHistory] = useState([{ text: '', caretPos: 0 }]);
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const limit = 10;
 
 	const setValueAndCaretPosition = async (newValue: string, caretPos: number) => {
 		await setValue(newValue);
@@ -73,8 +74,14 @@ const InputWithEmojis = () => {
 		const contentEditable = contentEditableRef.current;
 		if (document.activeElement !== contentEditable) return;
 
-		const newValue = e.target.textContent;
-		const caretPos = getCaretPosition();
+		let newValue = e.target.textContent.replace(/\u200B/g, '') + '\u200B' || '';
+		let caretPos = getCaretPosition();
+
+		if (newValue.length - 1 > limit) {
+			newValue = value;
+			contentEditable.textContent = newValue;
+			caretPos--;
+		}
 
 		setValueAndCaretPosition(newValue, caretPos);
 		setHistoryValue(newValue, caretPos);
@@ -207,6 +214,9 @@ const InputWithEmojis = () => {
 					<img src={sendiIcon} alt="Send" className={styles.SendIcon} />
 				</Button>
 			)}
+			<div>
+				{value.length > 0 ? value.length - 1 : 0}/{limit}
+			</div>
 		</div>
 	);
 };
