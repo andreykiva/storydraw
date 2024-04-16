@@ -7,16 +7,20 @@ import emojiIcon from '@/assets/icons/messages/emoji.svg?url';
 import sendiIcon from '@/assets/icons/messages/send.svg?url';
 import useClickOutside from '@/hooks/useClickOutside';
 
+//helpers
+const removeUnseenChars = (text: string) => text.replace(/\u200B/g, '');
+
 const InputWithEmojis = () => {
 	const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
 	const [value, setValue] = useState('');
 	const contentEditableRef = useRef<HTMLDivElement>(null);
 	const emojiPickerRef = useRef<HTMLDivElement>(null);
 	const emojiPickerSectionRef = useRef<HTMLDivElement>(null);
-	const isValueNotEmpty = value.length > 0;
 	const [history, setHistory] = useState([{ text: '', caretPos: 0 }]);
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const limit = 10;
+	const limit = 100;
+	const valueLength = removeUnseenChars(value).length;
+	const isValueNotEmpty = valueLength > 0;
 
 	const setValueAndCaretPosition = async (newValue: string, caretPos: number) => {
 		await setValue(newValue);
@@ -74,17 +78,18 @@ const InputWithEmojis = () => {
 		const contentEditable = contentEditableRef.current;
 		if (document.activeElement !== contentEditable) return;
 
-		let newValue = e.target.textContent.replace(/\u200B/g, '') + '\u200B' || '';
+		let newValue = removeUnseenChars(e.target.textContent) + '\u200B';
 		let caretPos = getCaretPosition();
 
 		if (newValue.length - 1 > limit) {
 			newValue = value;
 			contentEditable.textContent = newValue;
 			caretPos--;
+		} else {
+			setHistoryValue(newValue, caretPos);
 		}
 
 		setValueAndCaretPosition(newValue, caretPos);
-		setHistoryValue(newValue, caretPos);
 	};
 
 	const handleUndo = () => {
@@ -110,7 +115,7 @@ const InputWithEmojis = () => {
 	};
 
 	const modifyText = (text: string) => {
-		let modifiedValue = text.replace(/\u200B/g, '') + '\u200B';
+		let modifiedValue = removeUnseenChars(text) + '\u200B';
 
 		const selection = window.getSelection();
 		if (selection && selection.rangeCount > 0) {
@@ -132,9 +137,22 @@ const InputWithEmojis = () => {
 
 		const textBeforeCaret = modifiedValue.slice(0, caretPos);
 		const textAfterCaret = modifiedValue.slice(caretPos);
-		const newValue = textBeforeCaret + text + textAfterCaret;
 
-		setValueAndCaretPosition(newValue, caretPos + text.length);
+		const remainingLength = limit - valueLength;
+		const isLimit = remainingLength <= 0;
+		if (isLimit) return;
+
+		let newValue = '';
+		let newText = text;
+
+		if (text.length <= remainingLength) {
+			newValue = textBeforeCaret + text + textAfterCaret;
+		} else {
+			newText = text.substring(0, remainingLength);
+			newValue = textBeforeCaret + newText + textAfterCaret;
+		}
+
+		setValueAndCaretPosition(newValue, caretPos + newText.length);
 		updateHistoryCaretPosition(caretPos);
 		setHistoryValue(newValue, caretPos);
 	};
@@ -181,16 +199,23 @@ const InputWithEmojis = () => {
 		<div className={styles.InputWithEmojisForm}>
 			<div className={[styles.InputContainer, isValueNotEmpty && styles.Constrained].join(' ')}>
 				{!isValueNotEmpty && <div className={styles.Placeholder}>Send a message...</div>}
-				<div className={styles.InpurWrapper}>
-					<div
-						className={styles.EmojisInput}
-						contentEditable="true"
-						dangerouslySetInnerHTML={{ __html: value }}
-						ref={contentEditableRef}
-						onInput={handleChangeInput}
-						onPaste={handlePasteInput}
-						onKeyDown={handleKeyDownInput}
-					></div>
+				<div className={styles.InputSection}>
+					<div className={styles.InpurWrapper}>
+						<div
+							className={styles.EmojisInput}
+							contentEditable="true"
+							dangerouslySetInnerHTML={{ __html: value }}
+							ref={contentEditableRef}
+							onInput={handleChangeInput}
+							onPaste={handlePasteInput}
+							onKeyDown={handleKeyDownInput}
+						></div>
+					</div>
+					{valueLength >= Math.floor(limit / 10) && (
+						<div className={styles.ValueLength}>
+							{valueLength}/{limit}
+						</div>
+					)}
 				</div>
 				<div
 					className={[styles.TogglePickerSection, isEmojiPickerOpen && styles.Active].join(' ')}
@@ -214,9 +239,6 @@ const InputWithEmojis = () => {
 					<img src={sendiIcon} alt="Send" className={styles.SendIcon} />
 				</Button>
 			)}
-			<div>
-				{value.length > 0 ? value.length - 1 : 0}/{limit}
-			</div>
 		</div>
 	);
 };
