@@ -165,6 +165,8 @@ const InputWithEmojis = () => {
 
 	const handleSendMessage = () => {
 		setValue('');
+		setHistory([{ text: '', caretPos: 0 }]);
+		setCurrentIndex(0);
 	};
 
 	const handleKeyDownInput = (e: React.KeyboardEvent<HTMLDivElement>) => {
