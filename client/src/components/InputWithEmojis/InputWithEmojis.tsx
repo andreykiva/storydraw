@@ -6,32 +6,31 @@ import Prompt from '@/components/ui/Prompt/Prompt';
 import emojiIcon from '@/assets/icons/messages/emoji.svg?url';
 import sendiIcon from '@/assets/icons/messages/send.svg?url';
 import useClickOutside from '@/hooks/useClickOutside';
+import { getCaretPosition, setCaretPosition } from '@/utils/caretUtils';
 
-//helpers
-const removeUnseenChars = (text: string) => text.replace(/\u200B/g, '');
+type InputWithEmojisProps = {
+	value: string;
+	onChange: React.Dispatch<React.SetStateAction<string>>;
+	onEnter: () => void;
+	maxValueLength: number;
+	historyLimit: number;
+	placeholder: string;
+};
 
-const InputWithEmojis = () => {
+const InputWithEmojis = (props: InputWithEmojisProps) => {
 	const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
-	const [value, setValue] = useState('');
 	const contentEditableRef = useRef<HTMLDivElement>(null);
 	const emojiPickerRef = useRef<HTMLDivElement>(null);
 	const emojiPickerSectionRef = useRef<HTMLDivElement>(null);
 	const [history, setHistory] = useState([{ text: '', caretPos: 0 }]);
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const limit = 100;
-	const valueLength = removeUnseenChars(value).length;
+	const { value, onChange, onEnter, maxValueLength, historyLimit, placeholder } = props;
+	const valueLength = value.length;
 	const isValueNotEmpty = valueLength > 0;
 
 	const setValueAndCaretPosition = async (newValue: string, caretPos: number) => {
-		await setValue(newValue);
+		await onChange(newValue);
 		setCaretPosition(contentEditableRef.current, caretPos);
-	};
-
-	const getCaretPosition = (): number => {
-		const sel = window.getSelection();
-		const range = sel.getRangeAt(0);
-
-		return range.startOffset;
 	};
 
 	const setHistoryValue = (value: string, caretPos: number = getCaretPosition()) => {
@@ -39,31 +38,12 @@ const InputWithEmojis = () => {
 
 		newHistory.push({ text: value, caretPos: caretPos });
 
-		if (newHistory.length > 10) {
-			newHistory = newHistory.slice(newHistory.length - 10);
+		if (newHistory.length > historyLimit) {
+			newHistory = newHistory.slice(newHistory.length - historyLimit);
 		}
 
 		setHistory(newHistory);
 		setCurrentIndex(newHistory.length - 1);
-	};
-
-	const setCaretPosition = (element: HTMLElement, caretPos: number) => {
-		const range = document.createRange();
-		const selection = window.getSelection();
-		if (!selection) return;
-
-		const textLength = element.textContent.length;
-
-		if (caretPos <= textLength) {
-			range.setStart(element.childNodes[0] || element, caretPos);
-		} else {
-			range.setStart(element.childNodes[0] || element, textLength - 1);
-		}
-
-		range.collapse(true);
-
-		selection.removeAllRanges();
-		selection.addRange(range);
 	};
 
 	useClickOutside([emojiPickerSectionRef, emojiPickerRef], () => {
@@ -78,10 +58,10 @@ const InputWithEmojis = () => {
 		const contentEditable = contentEditableRef.current;
 		if (document.activeElement !== contentEditable) return;
 
-		let newValue = removeUnseenChars(e.target.textContent) + '\u200B';
+		let newValue = e.target.textContent;
 		let caretPos = getCaretPosition();
 
-		if (newValue.length - 1 > limit) {
+		if (newValue.length > maxValueLength) {
 			newValue = value;
 			contentEditable.textContent = newValue;
 			caretPos--;
@@ -115,7 +95,7 @@ const InputWithEmojis = () => {
 	};
 
 	const modifyText = (text: string) => {
-		let modifiedValue = removeUnseenChars(text) + '\u200B';
+		let modifiedValue = text;
 
 		const selection = window.getSelection();
 		if (selection && selection.rangeCount > 0) {
@@ -132,13 +112,15 @@ const InputWithEmojis = () => {
 	};
 
 	const insertText = (text: string) => {
+		contentEditableRef.current.focus();
+
 		const caretPos = getCaretPosition();
 		const modifiedValue = modifyText(value);
 
 		const textBeforeCaret = modifiedValue.slice(0, caretPos);
 		const textAfterCaret = modifiedValue.slice(caretPos);
 
-		const remainingLength = limit - valueLength;
+		const remainingLength = maxValueLength - valueLength;
 		const isLimit = remainingLength <= 0;
 		if (isLimit) return;
 
@@ -154,7 +136,7 @@ const InputWithEmojis = () => {
 
 		setValueAndCaretPosition(newValue, caretPos + newText.length);
 		updateHistoryCaretPosition(caretPos);
-		setHistoryValue(newValue, caretPos);
+		setHistoryValue(newValue, caretPos + newText.length);
 	};
 
 	const handlePasteInput = (e: React.ClipboardEvent<HTMLDivElement>) => {
@@ -164,7 +146,7 @@ const InputWithEmojis = () => {
 	};
 
 	const handleSendMessage = () => {
-		setValue('');
+		onEnter();
 		setHistory([{ text: '', caretPos: 0 }]);
 		setCurrentIndex(0);
 	};
@@ -184,13 +166,8 @@ const InputWithEmojis = () => {
 				}
 				break;
 			case 'Enter':
-				if (e.shiftKey) {
-					e.preventDefault();
-					insertText('\n');
-				} else {
-					e.preventDefault();
-					handleSendMessage();
-				}
+				e.preventDefault();
+				handleSendMessage();
 				break;
 			default:
 				break;
@@ -200,7 +177,7 @@ const InputWithEmojis = () => {
 	return (
 		<div className={styles.InputWithEmojisForm}>
 			<div className={[styles.InputContainer, isValueNotEmpty && styles.Constrained].join(' ')}>
-				{!isValueNotEmpty && <div className={styles.Placeholder}>Send a message...</div>}
+				{!isValueNotEmpty && <div className={styles.Placeholder}>{placeholder}</div>}
 				<div className={styles.InputSection}>
 					<div className={styles.InpurWrapper}>
 						<div
@@ -213,9 +190,9 @@ const InputWithEmojis = () => {
 							onKeyDown={handleKeyDownInput}
 						></div>
 					</div>
-					{valueLength >= Math.floor(limit / 10) && (
+					{valueLength >= Math.floor(maxValueLength / 10) && (
 						<div className={styles.ValueLength}>
-							{valueLength}/{limit}
+							{valueLength}/{maxValueLength}
 						</div>
 					)}
 				</div>
