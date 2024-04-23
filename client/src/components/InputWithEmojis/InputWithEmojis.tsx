@@ -183,12 +183,12 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 						<div
 							className={styles.EmojisInput}
 							contentEditable="true"
-							dangerouslySetInnerHTML={{ __html: value }}
 							ref={contentEditableRef}
 							onInput={handleChangeInput}
 							onPaste={handlePasteInput}
 							onKeyDown={handleKeyDownInput}
-						></div>
+							suppressContentEditableWarning={true}
+						>{value}</div>
 					</div>
 					{valueLength >= Math.floor(maxValueLength / 10) && (
 						<div className={styles.ValueLength}>
