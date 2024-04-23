@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Prompt.module.css';
 
 type PromptProps = {
-	children: string;
+	children: React.ReactNode;
 	className: string;
 	pos?: 'above' | 'below';
 };
