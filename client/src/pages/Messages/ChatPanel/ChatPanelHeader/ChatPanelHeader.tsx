@@ -7,7 +7,7 @@ const testChatmate = {
 	id: '91492',
 	username: 'andrii12941295',
 	title: 'andrew172',
-	img: '',
+	image: '',
 };
 
 const ChatPanelHeader = () => {
@@ -15,7 +15,7 @@ const ChatPanelHeader = () => {
 		<div className={styles.ChatPanelHeader}>
 			<Link to={`/@${testChatmate.username}`} className={styles.ChatmateLink}>
 				<div className={styles.ChatmateImgWr}>
-					<img src={testChatmate.img || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
+					<img src={testChatmate.image || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
 				</div>
 				<div className={styles.ChatmateInfo}>
 					<span className={styles.ChatmateTitle}>{testChatmate.title}</span>
