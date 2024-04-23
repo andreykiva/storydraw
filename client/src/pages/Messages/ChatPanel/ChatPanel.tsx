@@ -22,7 +22,7 @@ const ChatPanel = () => {
 				value={value}
 				onChange={setValue}
 				onEnter={handleSendMessage}
-				maxValueLength={200}
+				maxValueLength={220}
 				historyLimit={11}
 				placeholder="Send a message..."
 			/>
