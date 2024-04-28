@@ -1,0 +1,70 @@
+.ChatMessage {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	padding: 8px 0;
+}
+
+.ChatMessage.My {
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.MessageContent {
+	display: flex;
+}
+
+.MessageAuthor {
+	width: 32px;
+	height: 32px;
+}
+
+.AuthorImg {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.MessageText {
+	max-width: 360px;
+	padding: 7px 12px;
+	border-radius: 8px;
+	background: rgb(50, 50, 50);
+	word-break: break-word;
+	margin-left: 8px;
+	font-size: 17px;
+	font-weight: 500;
+	line-height: 21px;
+	letter-spacing: -0.5px;
+}
+
+.ChatMessage.My .MessageAuthor {
+	order: 3;
+}
+
+.ChatMessage.My .MessageText {
+	order: 2;
+	margin: 0 8px 0 0;
+	background: #069167;
+}
+
+.ChatMessage.My .ActionsBtn {
+	order: 1;
+}
+
+.ActionsBtn {
+	position: relative;
+	display: none;
+	width: 20px;
+	height: 20px;
+	align-items: center;
+	margin: 10px 16px 0;
+	cursor: pointer;
+}
+
+.MessageContent:hover .ActionsBtn {
+	display: block;
+}
+
+.MoreIcon {
+	width: 100%;
+}
