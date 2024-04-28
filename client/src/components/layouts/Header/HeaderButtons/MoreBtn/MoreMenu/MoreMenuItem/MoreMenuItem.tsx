@@ -8,15 +8,15 @@ type MoreMenuItemProps = {
 	icon: string;
 	to?: string;
 	target?: string;
-	addBorder?: boolean;
+	withBorder?: boolean;
 };
 
 const MoreMenuItem = (props: MoreMenuItemProps) => {
-	const { type, title, icon, to, target, addBorder } = props;
+	const { type, title, icon, to, target, withBorder } = props;
 
 	if (type === 'item') {
 		return (
-			<div key={title} className={[styles.MoreMenuItem, addBorder && styles.WithBorder].join(' ')}>
+			<div key={title} className={[styles.MoreMenuItem, withBorder && styles.WithBorder].join(' ')}>
 				<img src={icon} alt={title} className={styles.ItemIcon} />
 				<span className={styles.ItemText}>{title}</span>
 			</div>
