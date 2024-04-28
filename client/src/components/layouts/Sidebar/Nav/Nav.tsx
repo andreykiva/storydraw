@@ -9,17 +9,17 @@ const links = [
 	{
 		title: 'For You',
 		to: '/',
-		iconComponemt: <LikeIcon />,
+		iconComponent: <LikeIcon />,
 	},
 	{
 		title: 'Following',
 		to: '/following',
-		iconComponemt: <PersonIcon />,
+		iconComponent: <PersonIcon />,
 	},
 	{
 		title: 'Explore',
 		to: '/explore',
-		iconComponemt: <ExploreIcon />,
+		iconComponent: <ExploreIcon />,
 	},
 ];
 
@@ -29,7 +29,7 @@ const Nav = () => {
 			<ul>
 				{links.map((link) => (
 					<NavItem key={link.title} title={link.title} to={link.to}>
-						{link.iconComponemt}
+						{link.iconComponent}
 					</NavItem>
 				))}
 			</ul>
