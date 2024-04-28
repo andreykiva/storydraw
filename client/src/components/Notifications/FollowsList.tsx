@@ -3,7 +3,7 @@ import notifSharedStyles from './notifSharedStyles.module.css';
 import personIcon from '@/assets/icons/notifications/person.svg?url';
 import Follow from './Follow/Follow';
 import type { FollowNotification } from '@/types/Notification';
-import { categorizeNotificationsByDate } from '@/utils/dateUtils';
+import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
 
 const testFollows: FollowNotification[] = [
 	{

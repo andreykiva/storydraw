@@ -5,7 +5,7 @@ import Follow from './Follow/Follow';
 import Like from './Like/Like';
 import Comment from './Comment/Comment';
 import type { Notification } from '@/types/Notification';
-import { categorizeNotificationsByDate } from '@/utils/dateUtils';
+import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
 
 const testAll: Notification[] = [
 	{

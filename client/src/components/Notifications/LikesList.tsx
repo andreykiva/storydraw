@@ -3,7 +3,7 @@ import notifSharedStyles from './notifSharedStyles.module.css';
 import heartIcon from '@/assets/icons/notifications/heart.svg?url';
 import Like from './Like/Like';
 import type { LikeNotification } from '@/types/Notification';
-import { categorizeNotificationsByDate } from '@/utils/dateUtils';
+import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
 
 const testLikes: LikeNotification[] = [
 	{
