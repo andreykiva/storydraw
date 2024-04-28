@@ -11,6 +11,7 @@ import ValidateUser from '@/components/ValidateUser/ValidateUser';
 import Profile from '@/pages/Profile/Profile';
 import Story from '@/pages/Story/Story';
 import Messages from '@/pages/Messages/Messages';
+import Settings from '@/pages/Settings/Settings';
 import { selectAuth } from '@/features/auth/authSlice';
 
 const App = () => {
@@ -32,7 +33,7 @@ const App = () => {
 						<>
 							<Route path="/messages" element={<Messages />} />
 							<Route path="/coins" element={<div>Coins</div>} />
-							<Route path="/settings" element={<div>Settings</div>} />
+							<Route path="/settings" element={<Settings />} />
 						</>
 					)}
 
