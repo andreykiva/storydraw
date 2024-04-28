@@ -69,7 +69,7 @@ const loggedInUserItems: MenuItem[] = [
 		type: 'link',
 		title: 'Settings',
 		icon: settingsIcon,
-		to: '/',
+		to: '/settings',
 		target: '_self',
 	},
 ];
@@ -82,7 +82,7 @@ const MoreMenu = ({ isAuth, className }: MoreMenuProps) => {
 			{generalItems.map((item) => (
 				<MoreMenuItem key={item.title} {...item} />
 			))}
-			{isAuth && <MoreMenuItem type="item" title="Log out" icon={logoutIcon} addBorder={true} />}
+			{isAuth && <MoreMenuItem type="item" title="Log out" icon={logoutIcon} withBorder={true} />}
 		</div>
 	);
 };
