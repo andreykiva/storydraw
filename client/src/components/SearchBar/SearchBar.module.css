@@ -17,12 +17,12 @@
 .SearchInput {
 	max-width: 380px;
 	width: 100%;
-	font-weight: 600;
 	padding: 10px 16px;
 	background-color: transparent;
 	font-family: 'Karla', sans-serif;
 	color: rgb(197, 197, 197);
-	font-size: 16px;
+	font-size: 17px;
+	font-weight: 500;
 	caret-color: var(--bright-green-color);
 }
 
