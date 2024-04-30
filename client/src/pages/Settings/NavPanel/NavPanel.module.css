@@ -1,0 +1,23 @@
+.NavPanel {
+	position: relative;
+	max-width: 360px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 14px;
+	margin-right: 16px;
+	border-radius: 10px;
+	background: rgb(20, 20, 20);
+}
+
+.BackBtn {
+	position: absolute;
+	top: 8px;
+	left: -54px;
+	background-color: rgb(20, 20, 20);
+}
+
+.BackIcon {
+	width: 24px;
+}
