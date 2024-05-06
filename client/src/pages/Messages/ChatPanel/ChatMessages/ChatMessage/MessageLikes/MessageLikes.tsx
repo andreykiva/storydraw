@@ -12,7 +12,7 @@ type MessageLikesProps = {
 const MessageLikes = ({ likes, isItMyMessage }: MessageLikesProps) => {
 	return (
 		<div className={[styles.MessageLikes, isItMyMessage && styles.My].join(' ')}>
-			<LikeIcon className={styles.LikeIcon} />
+			<LikeIcon className={styles.LikeIcon} alt="Like" />
 			<div className={styles.Likers}>
 				{likes.users.map((liker) => (
 					<div className={styles.Liker} key={liker.id}>
