@@ -9,10 +9,3 @@
 	letter-spacing: -1px;
 	margin-bottom: 12px;
 } 
-
-.SettingsSubsection div {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 17px;
-}
