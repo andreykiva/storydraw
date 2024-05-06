@@ -29,13 +29,13 @@ const ChatListItem = (props: ChatListItemProps) => {
 		setIsActionsMenuOpen(!isActionsMenuOpen);
 	};
 
-	const handleClickItem = () => {
+	const handleChooseChatmate = () => {
 		dispatch(setActiveChatmateId(id));
 	};
 
 	return (
 		<li className={[styles.ChatListItem, activeChatmateId === id && styles.Active].join(' ')}>
-			<div className={styles.ItemContent} onClick={handleClickItem}>
+			<div className={styles.ItemContent} onClick={handleChooseChatmate}>
 				<div className={styles.ChatmateImgWr}>
 					<img src={image || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
 				</div>
