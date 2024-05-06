@@ -7,26 +7,32 @@ import PersonIcon from '@/assets/icons/settings/person.svg';
 import LockIcon from '@/assets/icons/settings/lock.svg';
 import BellIcon from '@/assets/icons/settings/bell.svg';
 import NavItem from './NavItem/NavItem';
+import type { SettingsSection } from '@/types/Settings';
+
+type NavPanelProps = {
+	activeSection: SettingsSection;
+	changeActiveSection: (section: SettingsSection) => void;
+};
 
 const links = [
 	{
 		title: 'Manage account',
-		to: '/',
+		to: 'manageAccounts',
 		iconComponent: <PersonIcon />,
 	},
 	{
 		title: 'Privacy',
-		to: '/following',
+		to: 'privacy',
 		iconComponent: <LockIcon />,
 	},
 	{
 		title: 'Push notifications',
-		to: '/explore',
+		to: 'pushNotifications',
 		iconComponent: <BellIcon />,
 	},
 ];
 
-const NavPanel = () => {
+const NavPanel = ({ activeSection, changeActiveSection }: NavPanelProps) => {
 	const navigate = useNavigate();
 
 	const handleBack = () => {
@@ -40,7 +46,12 @@ const NavPanel = () => {
 			</RoundButton>
 			<ul>
 				{links.map((link) => (
-					<NavItem key={link.title} title={link.title}>
+					<NavItem
+						key={link.title}
+						title={link.title}
+						active={activeSection === link.to}
+						onClick={changeActiveSection.bind(this, link.to)}
+					>
 						{link.iconComponent}
 					</NavItem>
 				))}
