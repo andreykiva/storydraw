@@ -1,0 +1,24 @@
+.SettingsItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.SettingsItemTitle {
+	font-size: 17px;
+	line-height: 1;
+	margin: 0 60px 2px 0;
+}
+
+.SettingsItemDescr {
+	font-size: 13px;
+	line-height: 1.1;
+    color: #8f8f8f;
+	margin-right: 60px;
+}
+
+.SettingsItemInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
