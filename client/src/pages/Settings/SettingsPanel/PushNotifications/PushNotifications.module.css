@@ -1,0 +1,14 @@
+.ToggleInteractionsBtn {
+	background: transparent;
+}
+
+.ToggleInteractionsBtn.Active .ArrowDownIcon {
+	transform: rotate(180deg);	
+}
+
+.ArrowDownIcon {
+	width: 10px;
+	height: 10px;
+	opacity: .6;
+	transition: transform .25s ease-in-out;
+}
