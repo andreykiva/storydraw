@@ -4,12 +4,13 @@ import HTag from '@/components/ui/HTag/HTag';
 
 type SettingsSectionProps = {
 	title: string;
+	id?: string;
 	children: React.ReactNode;
 };
 
-const SettingsSection = ({ title, children }: SettingsSectionProps) => {
+const SettingsSection = ({ title, id, children }: SettingsSectionProps) => {
 	return (
-		<section className={styles.SettingsSection}>
+		<section className={styles.SettingsSection} id={id}>
 			<HTag tag="h4" className={styles.SectionTitle}>
 				{title}
 			</HTag>
