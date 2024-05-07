@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './SettingsModal.module.css';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
-import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import closeIcon from '@/assets/icons/close.svg?url';
 import Button from '@/components/ui/buttons/Button/Button';
 import Radio from '@/components/ui/inputs/Radio/Radio';
+import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
+import HTag from '@/components/ui/HTag/HTag';
 
 type SettingsModalProps = {
 	onClose: () => void;
@@ -23,10 +23,8 @@ const SettingsModal = ({ onClose }: SettingsModalProps) => {
 		<ModalOverlay>
 			<div className={styles.SettingsModal}>
 				<div className={styles.ModalHeader}>
-					<h2 className={styles.HeaderTitle}>Message settings</h2>
-					<RoundButton onClick={onClose} className={styles.CloseBtn}>
-						<img src={closeIcon} alt="CLose" className={styles.CloseIcon} />
-					</RoundButton>
+					<HTag tag='h3' className={styles.HeaderTitle}>Message settings</HTag>
+					<CloseButton className={styles.CloseBtn} onClick={onClose} />
 				</div>
 				<div className={styles.ModalContent}>
 					<fieldset className={styles.AllowedSendersFieldset}>

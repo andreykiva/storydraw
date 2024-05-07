@@ -17,15 +17,11 @@
 
 .HeaderTitle {
 	font-size: 24px;
+	font-weight: 700;
 }
 
 .CloseBtn {
 	background-color: rgb(50, 50, 50);
-}
-
-.CloseIcon {
-	width: 22px;
-	height: 22px;
 }
 
 .ModalContent {
