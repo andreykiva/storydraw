@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux';
 import styles from './Auth.module.css';
 import Login from './Login/Login';
 import Register from './Register/Register';
-import closeIcon from '@/assets/icons/close.svg?url';
 import { closeAuthModal } from '@/features/auth/authSlice';
-import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
+import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 
 type AuthMode = 'login' | 'register';
 
@@ -25,10 +24,8 @@ const Auth = () => {
 	return (
 		<ModalOverlay>
 			<div className={styles.AuthModal}>
-				<RoundButton className={styles.CloseBtn} onClick={handleClose}>
-					<img src={closeIcon} alt="CLose" className={styles.CloseIcon} />
-				</RoundButton>
-
+				<CloseButton className={styles.CloseBtn} onClick={handleClose} />
+				
 				{authMode === 'login' && <Login />}
 				{authMode === 'register' && <Register />}
 
