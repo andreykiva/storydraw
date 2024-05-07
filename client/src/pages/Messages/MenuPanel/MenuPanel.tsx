@@ -38,7 +38,7 @@ const MenuPanel = () => {
 				</RoundButton>
 			</div>
 			<ChatList />
-			{isSettingsModalOpen && <SettingsModal closeModal={handleCloseSettingsModal} />}
+			{isSettingsModalOpen && <SettingsModal onClose={handleCloseSettingsModal} />}
 		</div>
 	);
 };
