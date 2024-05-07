@@ -7,12 +7,12 @@ import Button from '@/components/ui/buttons/Button/Button';
 import Radio from '@/components/ui/inputs/Radio/Radio';
 
 type SettingsModalProps = {
-	closeModal: () => void;
+	onClose: () => void;
 };
 
 const testAllowedMessageSenders = 'friends';
 
-const SettingsModal = ({ closeModal }: SettingsModalProps) => {
+const SettingsModal = ({ onClose }: SettingsModalProps) => {
 	const [allowedMessageSenders, setAllowedMessageSenders] = useState('friends');
 
 	useEffect(() => {
@@ -24,7 +24,7 @@ const SettingsModal = ({ closeModal }: SettingsModalProps) => {
 			<div className={styles.SettingsModal}>
 				<div className={styles.ModalHeader}>
 					<h2 className={styles.HeaderTitle}>Message settings</h2>
-					<RoundButton onClick={closeModal} className={styles.CloseBtn}>
+					<RoundButton onClick={onClose} className={styles.CloseBtn}>
 						<img src={closeIcon} alt="CLose" className={styles.CloseIcon} />
 					</RoundButton>
 				</div>
@@ -55,7 +55,7 @@ const SettingsModal = ({ closeModal }: SettingsModalProps) => {
 						</div>
 					</fieldset>
 					<div className={styles.ModalActionButtons}>
-						<Button className={styles.CancelBtn} onClick={closeModal}>
+						<Button className={styles.CancelBtn} onClick={onClose}>
 							Cancel
 						</Button>
 						<Button
