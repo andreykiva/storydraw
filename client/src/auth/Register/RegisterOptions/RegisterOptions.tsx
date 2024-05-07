@@ -22,25 +22,25 @@ const RegisterOptions = ({ openForm }: RegisterOptionsProps) => {
 			title: 'Use phone or email',
 			alt: 'Phone/Email',
 			icon: userIcon,
-			handleClick: openForm,
+			onClick: openForm,
 		},
 		{
 			title: 'Continue with Google',
 			alt: 'Google',
 			icon: googleIcon,
-			handleClick: loginWith,
+			onClick: loginWith,
 		},
 		{
 			title: 'Continue with Facebook',
 			alt: 'Facebook',
 			icon: facebookIcon,
-			handleClick: loginWith,
+			onClick: loginWith,
 		},
 		{
 			title: 'Continue with Twitter',
 			alt: 'Twitter',
 			icon: twitterIcon,
-			handleClick: loginWith,
+			onClick: loginWith,
 		},
 	];
 

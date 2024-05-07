@@ -11,7 +11,7 @@ import type { SettingsSection } from '@/types/Settings';
 
 type NavPanelProps = {
 	activeSection: SettingsSection;
-	changeActiveSection: (section: SettingsSection) => void;
+	onChangeActiveSection: (section: SettingsSection) => void;
 };
 
 const links = [
@@ -32,7 +32,7 @@ const links = [
 	},
 ];
 
-const NavPanel = ({ activeSection, changeActiveSection }: NavPanelProps) => {
+const NavPanel = ({ activeSection, onChangeActiveSection }: NavPanelProps) => {
 	const navigate = useNavigate();
 
 	const handleBack = () => {
@@ -50,7 +50,7 @@ const NavPanel = ({ activeSection, changeActiveSection }: NavPanelProps) => {
 						key={link.title}
 						title={link.title}
 						active={activeSection === link.to}
-						onClick={changeActiveSection.bind(this, link.to)}
+						onClick={onChangeActiveSection.bind(this, link.to)}
 					>
 						{link.iconComponent}
 					</NavItem>

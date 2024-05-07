@@ -9,10 +9,10 @@ type SelectorOptionsProps = {
 	options: Country[];
 	selectedOptionId: string;
 	searchValue: string;
-	handleChangeSelect: (option: Country) => void;
+	onChangeSelect: (option: Country) => void;
 };
 
-const SelectorOptions = ({ options, selectedOptionId, searchValue, handleChangeSelect }: SelectorOptionsProps) => {
+const SelectorOptions = ({ options, selectedOptionId, searchValue, onChangeSelect }: SelectorOptionsProps) => {
 	return (
 		<ul className={[authSharedStyles.SelectorOptions, styles.SelectorOptions].join(' ')}>
 			{options.length > 0 ? (
@@ -21,7 +21,7 @@ const SelectorOptions = ({ options, selectedOptionId, searchValue, handleChangeS
 						key={option.id}
 						id={option.id}
 						selectedOptionId={selectedOptionId}
-						onClick={handleChangeSelect.bind(this, option)}
+						onClick={onChangeSelect.bind(this, option)}
 					>
 						{highlightText(`${option.name} ${option.phonePrefix}`, searchValue, styles.Highlight)}
 					</SelectorOption>

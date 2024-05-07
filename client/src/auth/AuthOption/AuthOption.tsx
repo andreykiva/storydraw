@@ -5,14 +5,14 @@ type AuthOptionProps = {
 	title: string;
 	alt: string;
 	icon: string;
-	handleClick: () => void;
+	onClick: () => void;
 };
 
 const AuthOption = (props: AuthOptionProps) => {
-	const { icon, alt, title, handleClick } = props;
+	const { icon, alt, title, onClick } = props;
 
 	return (
-		<li className={styles.AuthOption} onClick={handleClick}>
+		<li className={styles.AuthOption} onClick={onClick}>
 			<img src={icon} alt={alt} className={styles.OptionIcon} />
 			<span className={styles.OptionTitle}>{title}</span>
 		</li>

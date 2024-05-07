@@ -13,7 +13,7 @@ const Settings = () => {
 
 	return (
 		<div className={styles.Settings}>
-			<NavPanel activeSection={activeSection} changeActiveSection={handleChangeSection} />
+			<NavPanel activeSection={activeSection} onChangeActiveSection={handleChangeSection} />
 			<SettingsPanel activeSection={activeSection} />
 		</div>
 	);

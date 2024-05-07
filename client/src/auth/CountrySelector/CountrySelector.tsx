@@ -60,7 +60,7 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 						options={sortedOptions}
 						selectedOptionId={selectedOption.id}
 						searchValue={searchValue}
-						handleChangeSelect={handleChangeSelect}
+						onChangeSelect={handleChangeSelect}
 					/>
 				</div>
 			)}

@@ -10,10 +10,10 @@ type DateSelectorProps = {
 	selectedOption: string;
 	fieldName: string;
 	placeholder: string;
-	selectOption: (fieldName: string, option: string) => void;
+	onSelectOption: (fieldName: string, option: string) => void;
 };
 
-const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectOption }: DateSelectorProps) => {
+const DateSelector = ({ options, selectedOption, fieldName, placeholder, onSelectOption }: DateSelectorProps) => {
 	const [isOptionsOpen, setIsOptionsOpen] = useState(false);
 	const dateSelectorRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +22,7 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 	});
 
 	const handleChangeSelect = (option: string) => {
-		selectOption(fieldName, option);
+		onSelectOption(fieldName, option);
 		setIsOptionsOpen(false);
 	};
 
@@ -43,7 +43,7 @@ const DateSelector = ({ options, selectedOption, fieldName, placeholder, selectO
 					<SelectorOptions
 						options={options}
 						selectedOption={selectedOption}
-						handleChangeSelect={handleChangeSelect}
+						onChangeSelect={handleChangeSelect}
 					/>
 				</div>
 			)}

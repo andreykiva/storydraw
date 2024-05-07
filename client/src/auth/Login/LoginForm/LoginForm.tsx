@@ -17,24 +17,16 @@ type LoginFormProps = {
 	openResetForm: () => void;
 	formData: FormData;
 	formErrors: FormErrors;
-	handleFocusInput: (fieldName: string) => void;
-	handleBlurInput: (fieldName: string) => void;
-	handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handleChangeSelect: (selectedCountry: Country) => void;
+	onFocusInput: (fieldName: string) => void;
+	onBlurInput: (fieldName: string) => void;
+	onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onChangeSelect: (selectedCountry: Country) => void;
 };
 
 type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
 
 const LoginForm = (props: LoginFormProps) => {
-	const {
-		formData,
-		formErrors,
-		openResetForm,
-		handleFocusInput,
-		handleBlurInput,
-		handleChangeInput,
-		handleChangeSelect,
-	} = props;
+	const { formData, formErrors, openResetForm, onFocusInput, onBlurInput, onChangeInput, onChangeSelect } = props;
 
 	const [loginMethod, setLoginMethod] = useState<LoginMethod>('phoneAndCode');
 
@@ -61,7 +53,7 @@ const LoginForm = (props: LoginFormProps) => {
 				Log in
 			</HTag>
 			<form onSubmit={handleSubmit}>
-				<FormHeader loginMethod={loginMethod} setLoginMethod={setLoginMethod} />
+				<FormHeader loginMethod={loginMethod} onChangeLoginMethod={setLoginMethod} />
 				{loginMethod === 'loginAndPassword' ? (
 					<Input
 						type="text"
@@ -69,9 +61,9 @@ const LoginForm = (props: LoginFormProps) => {
 						placeholder="Email or username"
 						value={formData.login}
 						error={formErrors.login}
-						onChange={handleChangeInput}
-						onFocus={handleFocusInput.bind(this, 'login')}
-						onBlur={handleBlurInput.bind(this, 'login')}
+						onChange={onChangeInput}
+						onFocus={onFocusInput.bind(this, 'login')}
+						onBlur={onBlurInput.bind(this, 'login')}
 						required
 					/>
 				) : (
@@ -79,7 +71,7 @@ const LoginForm = (props: LoginFormProps) => {
 						<CountrySelector
 							options={countries}
 							selectedOption={formData.country}
-							selectOption={handleChangeSelect}
+							selectOption={onChangeSelect}
 						/>
 						<Input
 							type="text"
@@ -88,9 +80,9 @@ const LoginForm = (props: LoginFormProps) => {
 							placeholder="Phone number"
 							value={formData.phone}
 							error={formErrors.phone}
-							onChange={handleChangeInput}
-							onFocus={handleFocusInput.bind(this, 'phone')}
-							onBlur={handleBlurInput.bind(this, 'phone')}
+							onChange={onChangeInput}
+							onFocus={onFocusInput.bind(this, 'phone')}
+							onBlur={onBlurInput.bind(this, 'phone')}
 							required
 						/>
 					</div>
@@ -101,9 +93,9 @@ const LoginForm = (props: LoginFormProps) => {
 						placeholder="Enter 6-digit code"
 						value={formData.code}
 						error={formErrors.code}
-						onChange={handleChangeInput}
-						onFocus={handleFocusInput.bind(this, 'code')}
-						onBlur={handleBlurInput.bind(this, 'code')}
+						onChange={onChangeInput}
+						onFocus={onFocusInput.bind(this, 'code')}
+						onBlur={onBlurInput.bind(this, 'code')}
 						disabled={isCodeBtnDisabled}
 						required
 					/>
@@ -113,13 +105,17 @@ const LoginForm = (props: LoginFormProps) => {
 						placeholder="Password"
 						value={formData.password}
 						error={formErrors.password}
-						onChange={handleChangeInput}
-						onFocus={handleFocusInput.bind(this, 'password')}
-						onBlur={handleBlurInput.bind(this, 'password')}
+						onChange={onChangeInput}
+						onFocus={onFocusInput.bind(this, 'password')}
+						onBlur={onBlurInput.bind(this, 'password')}
 						required
 					/>
 				)}
-				<FormFooter loginMethod={loginMethod} openResetForm={openResetForm} setLoginMethod={setLoginMethod} />
+				<FormFooter
+					loginMethod={loginMethod}
+					onOpenResetForm={openResetForm}
+					onChangeLoginMethod={setLoginMethod}
+				/>
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 					Log in
 				</Button>

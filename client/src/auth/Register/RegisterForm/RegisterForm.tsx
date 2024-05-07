@@ -19,26 +19,26 @@ import ArrowIcon from '@/assets/icons/arrow.svg';
 type RegisterFormProps = {
 	formData: FormData;
 	formErrors: FormErrors;
-	handleFocusInput: (fieldName: string) => void;
-	handleBlurInput: (fieldName: string) => void;
-	handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handleChangeSelect: (selectedCountry: Country) => void;
-	handleChangeCheckbox: () => void;
-	handleChangeBirthday: (fieldName: string, selectedDate: string) => void;
-	showRegisterOptions: () => void;
+	onFocusInput: (fieldName: string) => void;
+	onBlurInput: (fieldName: string) => void;
+	onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onChangeSelect: (selectedCountry: Country) => void;
+	onChangeCheckbox: () => void;
+	onChangeBirthday: (fieldName: string, selectedDate: string) => void;
+	onShowRegisterOptions: () => void;
 };
 
 const RegisterForm = (props: RegisterFormProps) => {
 	const {
 		formData,
 		formErrors,
-		handleFocusInput,
-		handleBlurInput,
-		handleChangeInput,
-		handleChangeSelect,
-		handleChangeCheckbox,
-		handleChangeBirthday,
-		showRegisterOptions,
+		onFocusInput,
+		onBlurInput,
+		onChangeInput,
+		onChangeSelect,
+		onChangeCheckbox,
+		onChangeBirthday,
+		onShowRegisterOptions,
 	} = props;
 
 	const [isPhoneMode, setIsPhoneMode] = useState(true);
@@ -65,7 +65,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 		<>
 			<RoundButton
 				className={authSharedStyles.BackBtn}
-				onClick={showUsernameField ? setShowUsernameField.bind(this, false) : showRegisterOptions}
+				onClick={showUsernameField ? setShowUsernameField.bind(this, false) : onShowRegisterOptions}
 			>
 				<ArrowIcon className={authSharedStyles.BackIcon} />
 			</RoundButton>
@@ -76,22 +76,22 @@ const RegisterForm = (props: RegisterFormProps) => {
 				{!showUsernameField ? (
 					<>
 						<BirthdaySelector
-							selectBirthday={handleChangeBirthday}
+							selectBirthday={onChangeBirthday}
 							selectedMonth={formData.birthMonth}
 							selectedDay={formData.birthDay}
 							selectedYear={formData.birthYear}
 						/>
 						<FormHeader
 							isPhoneMode={isPhoneMode}
-							enablePhoneMode={setIsPhoneMode.bind(this, true)}
-							disablePhoneMode={setIsPhoneMode.bind(this, false)}
+							onEnablePhoneMode={setIsPhoneMode.bind(this, true)}
+							onDisablePhoneMode={setIsPhoneMode.bind(this, false)}
 						/>
 						{isPhoneMode ? (
 							<div className={authSharedStyles.PhoneField}>
 								<CountrySelector
 									options={countries}
 									selectedOption={formData.country}
-									selectOption={handleChangeSelect}
+									selectOption={onChangeSelect}
 								/>
 								<Input
 									type="text"
@@ -100,9 +100,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 									placeholder="Phone number"
 									value={formData.phone}
 									error={formErrors.phone}
-									onChange={handleChangeInput}
-									onFocus={handleFocusInput.bind(this, 'phone')}
-									onBlur={handleBlurInput.bind(this, 'phone')}
+									onChange={onChangeInput}
+									onFocus={onFocusInput.bind(this, 'phone')}
+									onBlur={onBlurInput.bind(this, 'phone')}
 									required
 								/>
 							</div>
@@ -115,9 +115,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 									placeholder="Email address"
 									value={formData.email}
 									error={formErrors.email}
-									onChange={handleChangeInput}
-									onFocus={handleFocusInput.bind(this, 'email')}
-									onBlur={handleBlurInput.bind(this, 'email')}
+									onChange={onChangeInput}
+									onFocus={onFocusInput.bind(this, 'email')}
+									onBlur={onBlurInput.bind(this, 'email')}
 									required
 								/>
 								<PasswordInput
@@ -125,9 +125,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 									placeholder="Password"
 									value={formData.password}
 									error={formErrors.password}
-									onChange={handleChangeInput}
-									onFocus={handleFocusInput.bind(this, 'password')}
-									onBlur={handleBlurInput.bind(this, 'password')}
+									onChange={onChangeInput}
+									onFocus={onFocusInput.bind(this, 'password')}
+									onBlur={onBlurInput.bind(this, 'password')}
 									required
 								/>
 							</>
@@ -137,14 +137,14 @@ const RegisterForm = (props: RegisterFormProps) => {
 							placeholder="Enter 6-digit code"
 							value={formData.code}
 							error={formErrors.code}
-							onChange={handleChangeInput}
-							onFocus={handleFocusInput.bind(this, 'code')}
-							onBlur={handleBlurInput.bind(this, 'code')}
+							onChange={onChangeInput}
+							onFocus={onFocusInput.bind(this, 'code')}
+							onBlur={onBlurInput.bind(this, 'code')}
 							disabled={isCodeBtnDisabled}
 							required
 						/>
 						{!isPhoneMode && (
-							<Checkbox checked={formData.sendTrends} onChange={handleChangeCheckbox}>
+							<Checkbox checked={formData.sendTrends} onChange={onChangeCheckbox}>
 								Get trending content, newsletters, promotions, recommendations, and account updates sent
 								to your email
 							</Checkbox>
@@ -167,9 +167,9 @@ const RegisterForm = (props: RegisterFormProps) => {
 							placeholder="Username"
 							value={formData.username}
 							error={formErrors.username}
-							onChange={handleChangeInput}
-							onFocus={handleFocusInput.bind(this, 'username')}
-							onBlur={handleBlurInput.bind(this, 'username')}
+							onChange={onChangeInput}
+							onFocus={onFocusInput.bind(this, 'username')}
+							onBlur={onBlurInput.bind(this, 'username')}
 						/>
 						<span className={authSharedStyles.CreateUsernameDescr}>You can always change this later.</span>
 						<Button

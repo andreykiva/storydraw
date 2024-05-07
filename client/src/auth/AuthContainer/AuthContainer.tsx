@@ -122,18 +122,18 @@ const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthCon
 	const formProps = {
 		formData,
 		formErrors,
-		handleFocusInput,
-		handleBlurInput,
-		handleChangeInput,
-		handleChangeSelect,
-		handleChangeCheckbox,
-		handleChangeBirthday,
+		onFocusInput: handleFocusInput,
+		onBlurInput: handleBlurInput,
+		onChangeInput: handleChangeInput,
+		onChangeSelect: handleChangeSelect,
+		onChangeCheckbox: handleChangeCheckbox,
+		onChangeBirthday: handleChangeBirthday,
 	};
 
 	return (
 		<>
 			{authMode === 'loginForm' && <LoginForm openResetForm={openResetForm} {...formProps} />}
-			{authMode === 'registerForm' && <RegisterForm showRegisterOptions={showRegisterOptions} {...formProps} />}
+			{authMode === 'registerForm' && <RegisterForm onShowRegisterOptions={showRegisterOptions} {...formProps} />}
 			{authMode === 'resetForm' && <ResetPasswordForm {...formProps} />}
 		</>
 	);

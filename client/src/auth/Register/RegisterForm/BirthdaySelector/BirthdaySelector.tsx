@@ -30,21 +30,21 @@ const BirthdaySelector = ({ selectedMonth, selectedDay, selectedYear, selectBirt
 			<div className={styles.Selectors}>
 				<DateSelector
 					options={monthNames}
-					selectOption={selectBirthday}
+					onSelectOption={selectBirthday}
 					fieldName="birthMonth"
 					placeholder="Month"
 					selectedOption={selectedMonth}
 				/>
 				<DateSelector
 					options={days}
-					selectOption={selectBirthday}
+					onSelectOption={selectBirthday}
 					fieldName="birthDay"
 					placeholder="Day"
 					selectedOption={selectedDay}
 				/>
 				<DateSelector
 					options={years}
-					selectOption={selectBirthday}
+					onSelectOption={selectBirthday}
 					fieldName="birthYear"
 					placeholder="Year"
 					selectedOption={selectedYear}

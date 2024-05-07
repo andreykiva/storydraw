@@ -3,20 +3,20 @@ import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 
 type FormHeaderProps = {
 	isPhoneMode: boolean;
-	enablePhoneMode: () => void;
-	disablePhoneMode: () => void;
+	onEnablePhoneMode: () => void;
+    onDisablePhoneMode: () => void;
 };
 
-const FormHeader = ({ isPhoneMode, enablePhoneMode, disablePhoneMode }: FormHeaderProps) => {
+const FormHeader = ({ isPhoneMode, onEnablePhoneMode, onDisablePhoneMode }: FormHeaderProps) => {
 	return (
 		<div className={authSharedStyles.FormHeader}>
 			<span className={authSharedStyles.HeaderTitle}>{isPhoneMode ? 'Phone' : 'Email'}</span>
 			{isPhoneMode ? (
-				<span className={authSharedStyles.HeaderBtn} onClick={disablePhoneMode}>
+				<span className={authSharedStyles.HeaderBtn} onClick={onDisablePhoneMode}>
 					Sign up with email
 				</span>
 			) : (
-				<span className={authSharedStyles.HeaderBtn} onClick={enablePhoneMode}>
+				<span className={authSharedStyles.HeaderBtn} onClick={onEnablePhoneMode}>
 					Sign up with phone
 				</span>
 			)}
