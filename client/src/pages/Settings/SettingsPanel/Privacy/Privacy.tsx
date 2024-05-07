@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 // import styles from './Privacy.module.css';
 import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.css';
 import SettingsSection from '@/pages/Settings/SettingsPanel/SettingsSection/SettingsSection';
-import SettingsSubsection from '../SettingsSubsection/SettingsSubsection';
+import SettingsSubsection from '@/pages/Settings/SettingsPanel/SettingsSubsection/SettingsSubsection';
 import ToggleSwitch from '@/components/ui/inputs/ToggleSwitch/ToggleSwitch';
-import SwitchToPublicModal from './SwitchToPublicModal/SwitchToPublicModal';
+import ConfirmationModal from '@/components/ui/ConfirmationModal/ConfirmationModal';
 
 const Privacy = () => {
 	const [isAccountPrivate, setIsAccountPrivate] = useState(false);
@@ -36,10 +36,17 @@ const Privacy = () => {
 					</div>
 					<ToggleSwitch checked={isAccountPrivate} onChange={handleToggleSwitch} />
 					{isSwitchModalOpen && (
-						<SwitchToPublicModal
+						<ConfirmationModal
+							title="Switch to public account?"
+							confirmAction="Confirm"
 							onClose={setIsSwitchModalOpen.bind(this, false)}
 							onConfirm={handleCancelPrivateAccount}
-						/>
+						>
+							If you switch to a public account, anyone can watch your stories. Users may be able to Duet,
+							Stitch, or download your stories depending on what you choose in Settings and privacy. You
+							won't need to approve followers and all pending follow requests will be automatically
+							approved.
+						</ConfirmationModal>
 					)}
 				</div>
 			</SettingsSubsection>
