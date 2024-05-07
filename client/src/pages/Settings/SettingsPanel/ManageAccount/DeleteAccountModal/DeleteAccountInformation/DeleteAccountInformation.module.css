@@ -1,0 +1,33 @@
+.DeleteAccountInformation {
+	padding: 0 8px;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.Title {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 40px;
+}
+
+.InfoText:not(:last-child) {
+	margin-bottom: 16px;
+}
+
+.InfoList {
+	padding-left: 16px;
+	list-style: disc;
+	margin-bottom: 16px;
+}
+
+.InfoList li {
+	margin-bottom: 8px;
+}
+
+.ContinueBtn {
+	width: 100px;
+	height: 36px;
+	border-radius: 6px;
+	font-size: 15px;
+	margin: auto 0 0 auto;
+}
