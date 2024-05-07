@@ -92,6 +92,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	gap: 14px;
 	padding-right: 20px;
 	z-index: 1;
 }
@@ -114,10 +115,6 @@
 .NavLinkIcon {
 	width: 18px;
 	height: 18px;
-}
-
-.StoryNavLink:first-child {
-	margin-bottom: 14px;
 }
 
 .StoryNavLink:first-child {
