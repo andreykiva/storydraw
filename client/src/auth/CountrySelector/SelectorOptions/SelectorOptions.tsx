@@ -19,8 +19,7 @@ const SelectorOptions = ({ options, selectedOptionId, searchValue, onChangeSelec
 				options.map((option) => (
 					<SelectorOption
 						key={option.id}
-						id={option.id}
-						selectedOptionId={selectedOptionId}
+						selected={option.id === selectedOptionId}
 						onClick={onChangeSelect.bind(this, option)}
 					>
 						{highlightText(`${option.name} ${option.phonePrefix}`, searchValue, styles.Highlight)}

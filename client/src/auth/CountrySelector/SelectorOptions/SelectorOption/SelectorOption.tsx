@@ -3,22 +3,19 @@ import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
 import CheckIcon from '@/assets/icons/check.svg';
 
 type SelectorOptionProps = {
-	id: string;
-	selectedOptionId: string;
+	selected: boolean;
 	children: React.ReactNode;
 	onClick: () => void;
 };
 
-const SelectorOption = ({ id, selectedOptionId, children, onClick }: SelectorOptionProps) => {
+const SelectorOption = ({ selected, children, onClick }: SelectorOptionProps) => {
 	return (
 		<li
-			className={[authSharedStyles.SelectorOption, id === selectedOptionId && authSharedStyles.Selected].join(
-				' ',
-			)}
+			className={[authSharedStyles.SelectorOption, selected && authSharedStyles.Selected].join(' ')}
 			onClick={onClick}
 		>
 			<span>{children}</span>
-			{id === selectedOptionId && <CheckIcon className={authSharedStyles.SelectedIcon} />}
+			{selected && <CheckIcon className={authSharedStyles.SelectedIcon} />}
 		</li>
 	);
 };

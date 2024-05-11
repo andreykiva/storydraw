@@ -15,7 +15,7 @@ type ConfirmationModalProps = {
 
 const ConfirmationModal = (props: ConfirmationModalProps) => {
 	const { title, children, confirmAction, onClose, onConfirm } = props;
-	
+
 	return (
 		<ModalOverlay>
 			<div className={styles.ConfirmationModal}>

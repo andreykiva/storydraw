@@ -5,22 +5,22 @@ import CheckIcon from '@/assets/icons/check.svg';
 
 type SelectorOptionProps = {
 	children: React.ReactNode;
-	selectedOption: string;
+	selected: boolean;
 	onClick: () => void;
 };
 
-const SelectorOption = ({ children, selectedOption, onClick }: SelectorOptionProps) => {
+const SelectorOption = ({ children, selected, onClick }: SelectorOptionProps) => {
 	return (
 		<li
 			className={[
 				styles.SelectorOption,
 				authSharedStyles.SelectorOption,
-				children === selectedOption && authSharedStyles.Selected,
+				selected && authSharedStyles.Selected,
 			].join(' ')}
 			onClick={onClick}
 		>
 			<span>{children}</span>
-			{children === selectedOption && <CheckIcon className={authSharedStyles.SelectedIcon} />}
+			{selected && <CheckIcon className={authSharedStyles.SelectedIcon} />}
 		</li>
 	);
 };

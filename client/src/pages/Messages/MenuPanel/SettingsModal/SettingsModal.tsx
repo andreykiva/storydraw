@@ -23,7 +23,9 @@ const SettingsModal = ({ onClose }: SettingsModalProps) => {
 		<ModalOverlay>
 			<div className={styles.SettingsModal}>
 				<div className={styles.ModalHeader}>
-					<HTag tag='h3' className={styles.HeaderTitle}>Message settings</HTag>
+					<HTag tag="h3" className={styles.HeaderTitle}>
+						Message settings
+					</HTag>
 					<CloseButton className={styles.CloseBtn} onClick={onClose} />
 				</div>
 				<div className={styles.ModalContent}>

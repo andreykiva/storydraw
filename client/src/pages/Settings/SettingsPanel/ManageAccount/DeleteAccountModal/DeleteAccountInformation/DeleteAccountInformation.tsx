@@ -12,7 +12,9 @@ const DeleteAccountInformation = ({ onContinue }: DeleteAccountInformationProps)
 
 	return (
 		<>
-			<HTag tag='h3' className={styles.Title}>{myTestUsername}: delete this account?</HTag>
+			<HTag tag="h3" className={styles.Title}>
+				{myTestUsername}: delete this account?
+			</HTag>
 			<div className={styles.DeleteAccountInformation}>
 				<p className={styles.InfoText}>
 					Your account will be deactivated for <strong>30 days</strong> and won't be visible to the public.

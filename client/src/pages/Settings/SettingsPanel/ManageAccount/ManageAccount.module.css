@@ -8,24 +8,3 @@
 .DeleteBtn:hover {
 	opacity: .9;
 }
-
-.ChangeRegionBtn {
-	display: flex;
-	align-items: center;
-	font-size: 17px;
-	font-weight: 500;
-	color: #b1b1b1;
-	cursor: pointer;
-}
-
-.ChangeRegionBtn:hover {
-	opacity: .8;
-}
-
-.ArrowIcon {
-	width: 12px;
-	height: 12px;
-	transform: rotate(-90deg);
-	margin-left: 4px;
-	fill: #b1b1b1;
-}

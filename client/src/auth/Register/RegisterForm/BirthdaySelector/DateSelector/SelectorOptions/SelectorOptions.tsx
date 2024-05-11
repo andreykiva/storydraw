@@ -14,7 +14,7 @@ const SelectorOptions = ({ options, selectedOption, onChangeSelect }: SelectorOp
 			{options.map((option) => (
 				<SelectorOption
 					key={option}
-					selectedOption={selectedOption}
+					selected={option === selectedOption}
 					onClick={onChangeSelect.bind(this, option)}
 				>
 					{option}
