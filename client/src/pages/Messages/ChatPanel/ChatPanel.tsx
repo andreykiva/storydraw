@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styles from './ChatPanel.module.css';
 import ChatPanelHeader from './ChatPanelHeader/ChatPanelHeader';
 import ChatMessages from './ChatMessages/ChatMessages';
-import { selectActiveChatmateId } from '@/features/messages/messagesSlice';
+import { selectActiveChatmateId } from '@/features/chat/chatSlice';
 import InputWithEmojis from '@/components/InputWithEmojis/InputWithEmojis';
 
 const ChatPanel = () => {
