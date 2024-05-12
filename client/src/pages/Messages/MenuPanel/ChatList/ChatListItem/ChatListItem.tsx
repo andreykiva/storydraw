@@ -7,7 +7,7 @@ import { displayDate } from '@/utils/dateUtils';
 import moreIcon from '@/assets/icons/messages/more.svg?url';
 import ActionsMenu from './ActionsMenu/ActionsMenu';
 import useClickOutside from '@/hooks/useClickOutside';
-import { setActiveChatmateId, selectActiveChatmateId } from '@/features/messages/messagesSlice';
+import { setActiveChatmateId, selectActiveChatmateId } from '@/features/chat/chatSlice';
 
 type ChatListItemProps = Pick<User, 'id' | 'username' | 'image'> & {
 	lastMessage: string;
@@ -54,7 +54,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 			>
 				<img src={moreIcon} alt="Actions" className={styles.MoreIcon} />
 			</div>
-			{isActionsMenuOpen && <ActionsMenu />}
+			{isActionsMenuOpen && <ActionsMenu chatmateId={id} />}
 		</li>
 	);
 };
