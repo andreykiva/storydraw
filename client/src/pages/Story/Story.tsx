@@ -12,11 +12,12 @@ import Comments from './Comments/Comments';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
+import { openReport } from '@/features/report/reportSlice';
 
 const testStoryInfo = {
 	user: {
 		id: '123',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
@@ -42,6 +43,10 @@ const Story = () => {
 		}
 	};
 
+	const handleOpenReport = () => {
+		dispatch(openReport({ type: 'story', targetId: testStoryInfo.id }));
+	};
+
 	return (
 		<div className={styles.Story}>
 			<div className={styles.StoryContent}>
@@ -53,8 +58,8 @@ const Story = () => {
 						</Link>
 					</div>
 					<SearchBar light={true} />
-					<Button className={styles.ReportBtn}>
-						<ReportIcon className={styles.ReportIcon} />
+					<Button className={styles.ReportBtn} onClick={handleOpenReport}>
+						<ReportIcon className={styles.ActionsItemIcon} />
 						<span>Report</span>
 					</Button>
 				</div>

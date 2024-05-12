@@ -9,6 +9,9 @@ import type Comment from '@/types/Comment';
 import type User from '@/types/User';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
+import moreIcon from '@/assets/icons/more-horizontal.svg?url';
+import ReportIcon from '@/assets/icons/report.svg';
+import { openReport } from '@/features/report/reportSlice';
 
 type CommentProps = Comment & {
 	user: Pick<User, 'username' | 'title' | 'image'>;
@@ -18,7 +21,7 @@ type CommentProps = Comment & {
 const Comment = (props: CommentProps) => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
-	const { user, text, date, likes, reply } = props; // + id
+	const { id, user, text, date, likes, reply } = props; // + id
 
 	const handleReply = () => {
 		if (!isAuth) {
@@ -36,6 +39,10 @@ const Comment = (props: CommentProps) => {
 		}
 	};
 
+	const handleOpenReport = () => {
+		dispatch(openReport({ type: 'comment', targetId: id }));
+	};
+
 	return (
 		<div className={[styles.Comment, reply ? styles.Reply : ''].join(' ')}>
 			<div className={styles.ProfileImgSection}>
@@ -43,7 +50,7 @@ const Comment = (props: CommentProps) => {
 					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 				</Link>
 			</div>
-			<div className={styles.CommentInfo}>
+			<div className={styles.CommentContent}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
 					<span className={styles.UserTitle}>{user.title}</span>
 				</Link>
@@ -55,7 +62,17 @@ const Comment = (props: CommentProps) => {
 					</span>
 				</div>
 			</div>
-			<div className={styles.CommentLikes}>
+			<div className={styles.CommentPanel}>
+				<div className={styles.ActionsBtn}>
+					<img src={moreIcon} alt="More" className={styles.MoreIcon} />
+					<ul className={styles.ActionsMenu}>
+						<div className={styles.MenuTriangle}></div>
+						<li className={styles.ActionsMenuItem} onClick={handleOpenReport}>
+							<ReportIcon className={styles.ActionsItemIcon} />
+							<span>Report</span>
+						</li>
+					</ul>
+				</div>
 				<div className={styles.LikeBtn} onClick={handleLike}>
 					<LikeIcon className={styles.LikeIcon} />
 					<span className={styles.LikesAmount}>{formatNumber(likes)}</span>
