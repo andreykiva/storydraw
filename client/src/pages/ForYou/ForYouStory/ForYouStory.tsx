@@ -15,6 +15,9 @@ import type Story from '@/types/Story';
 import type User from '@/types/User';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
+import moreIcon from '@/assets/icons/more-horizontal.svg?url';
+import ReportIcon from '@/assets/icons/report.svg';
+import { openReport } from '@/features/report/reportSlice';
 
 type ForYouStoryProps = Omit<Story, 'date' | 'views'> & {
 	user: Omit<User, 'description' | 'followers'>;
@@ -57,14 +60,16 @@ const ForYouStory = (props: ForYouStoryProps) => {
 		}
 	};
 
+	const handleOpenReport = () => {
+		dispatch(openReport({ type: 'story', targetId: id }));
+	};
+
 	return (
 		<div className={styles.ForYouStory}>
 			<div className={styles.StoryHeader}>
-				<div className={styles.HeaderImgSection}>
-					<Link to={`/@${user.username}`} className={styles.ImgUserLink}>
-						<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
-					</Link>
-				</div>
+				<Link to={`/@${user.username}`} className={styles.UserLink}>
+					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+				</Link>
 				<div className={styles.HeaderInfo}>
 					<Link to={`/@${user.username}`} className={styles.HeaderInfoUser}>
 						<span className={styles.InfoUsername}>{user.username}</span>
@@ -90,22 +95,32 @@ const ForYouStory = (props: ForYouStoryProps) => {
 				<Link to={`/@${user.username}/story/${id}`} className={styles.StoryLink}>
 					<img src={story || previewImg} alt="Story" className={styles.Story} />
 				</Link>
-				<div className={styles.StoryInfo}>
-					<div className={styles.StoryInfoItem} onClick={handleLike}>
+				<div className={styles.StoryPanel}>
+					<div className={styles.PanelItem} onClick={handleLike}>
 						<LikeIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{formatNumber(likes)}</div>
 					</div>
-					<div className={styles.StoryInfoItem} onClick={handleComment}>
+					<div className={styles.PanelItem} onClick={handleComment}>
 						<CommentIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{formatNumber(comments)}</div>
 					</div>
-					<div className={styles.StoryInfoItem} onClick={handleFavorite}>
+					<div className={styles.PanelItem} onClick={handleFavorite}>
 						<FavoriteIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{formatNumber(favorites)}</div>
 					</div>
-					<div className={styles.StoryInfoItem}>
+					<div className={styles.PanelItem}>
 						<ShareIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{formatNumber(share)}</div>
+					</div>
+					<div className={styles.ActionsBtn}>
+						<img src={moreIcon} alt="More" className={styles.MoreIcon} />
+						<ul className={styles.ActionsMenu}>
+							<div className={styles.MenuTriangle}></div>
+							<li className={styles.ActionsMenuItem} onClick={handleOpenReport}>
+								<ReportIcon className={styles.ActionsItemIcon} />
+								<span>Report</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
