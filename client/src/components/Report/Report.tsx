@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './Report.module.css';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
@@ -8,6 +9,7 @@ import Button from '@/components/ui/buttons/Button/Button';
 import ReportCategory from './ReportCategory/ReportCategory';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import ArrowIcon from '@/assets/icons/arrow.svg';
+import { selectReportType, selectReportTargetId, closeReport } from '@/features/report/reportSlice';
 
 type ReportCategory = {
 	id: string;
@@ -15,14 +17,11 @@ type ReportCategory = {
 	subcategories?: ReportCategory[];
 };
 
-type ReportProps = {
-	type: 'video' | 'account' | 'comment';
-	targetId: string;
-	onClose?: () => void;
-};
+const Report = () => {
+	const dispatch = useDispatch();
+	const type = useSelector(selectReportType);
+	const targetId = useSelector(selectReportTargetId);
 
-const Report = (props: ReportProps) => {
-	const { type, targetId, onClose } = props;
 	const [activeCategoryId, setActiveCategoryId] = useState(null);
 	const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
@@ -32,6 +31,7 @@ const Report = (props: ReportProps) => {
 	const activeCategories = !activeCategoryId ? reportCategories : activeSubcategories;
 
 	const handleSubmitReport = () => {
+		handleCloseReport();
 		console.log(`Type: ${type}, ID: ${targetId}, CategoryId: ${selectedCategoryId}`);
 	};
 
@@ -48,6 +48,10 @@ const Report = (props: ReportProps) => {
 		setActiveCategoryId(null);
 	};
 
+	const handleCloseReport = () => {
+		dispatch(closeReport());
+	};
+
 	return (
 		<ModalOverlay>
 			<div className={styles.Report}>
@@ -60,7 +64,7 @@ const Report = (props: ReportProps) => {
 					<HTag tag="h3" className={styles.ReportTitle}>
 						Report
 					</HTag>
-					<CloseButton className={styles.CloseBtn} onClick={onClose} />
+					<CloseButton className={styles.CloseBtn} onClick={handleCloseReport} />
 				</div>
 				<div className={styles.ReportBody}>
 					<span className={styles.ReportNote}>Please select a scenario</span>
