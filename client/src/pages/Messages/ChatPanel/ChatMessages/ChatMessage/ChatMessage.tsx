@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './ChatMessage.module.css';
 import defaultImg from '@/assets/images/default.svg?url';
 import moreIcon from '@/assets/icons/messages/more.svg?url';
 import ActionsMenu from './ActionsMenu/ActionsMenu';
 import MessageLikes from './MessageLikes/MessageLikes';
 import type { Message } from '@/types/Message';
+import { openReport } from '@/features/report/reportSlice';
 
 const ChatMessage = (props: Message) => {
+	const dispatch = useDispatch();
 	const [isActionsMenuOpen, setIsActionsMenuOpen] = useState(false);
-	const { author, text, likes } = props;
+	const { id, author, text, likes } = props;
 	const myTestId = 'user123';
 	const isItMe = author.id === myTestId;
-	const likedByMe = likes.users.some(user => user.id === myTestId);
+	const likedByMe = likes.users.some((user) => user.id === myTestId);
 
 	const handleLikeMessage = () => {
 		console.log('like');
@@ -21,8 +24,8 @@ const ChatMessage = (props: Message) => {
 		console.log('delete');
 	};
 
-	const handleReportMessage = () => {
-		console.log('report');
+	const handleOpenReport = () => {
+		dispatch(openReport({ type: 'message', targetId: id }));
 	};
 
 	return (
@@ -41,7 +44,7 @@ const ChatMessage = (props: Message) => {
 						<ActionsMenu
 							onLike={handleLikeMessage}
 							onDelete={handleDeleteMessage}
-							onReport={!isItMe && handleReportMessage}
+							onReport={!isItMe && handleOpenReport}
 							likedByMe={likedByMe}
 						/>
 					)}
