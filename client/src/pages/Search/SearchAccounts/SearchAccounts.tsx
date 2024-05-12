@@ -5,7 +5,7 @@ import SearchAccount from './SearchAccount/SearchAccount';
 const testAccoutns = [
 	{
 		id: '1',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -13,7 +13,7 @@ const testAccoutns = [
 	},
 	{
 		id: '2',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -21,7 +21,7 @@ const testAccoutns = [
 	},
 	{
 		id: '3',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -29,7 +29,7 @@ const testAccoutns = [
 	},
 	{
 		id: '4',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -37,7 +37,7 @@ const testAccoutns = [
 	},
 	{
 		id: '5',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -45,7 +45,7 @@ const testAccoutns = [
 	},
 	{
 		id: '6',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -53,7 +53,7 @@ const testAccoutns = [
 	},
 	{
 		id: '7',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -61,7 +61,7 @@ const testAccoutns = [
 	},
 	{
 		id: '8',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -69,7 +69,7 @@ const testAccoutns = [
 	},
 	{
 		id: '9',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -77,7 +77,7 @@ const testAccoutns = [
 	},
 	{
 		id: '10',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -85,7 +85,7 @@ const testAccoutns = [
 	},
 	{
 		id: '11',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -93,7 +93,7 @@ const testAccoutns = [
 	},
 	{
 		id: '12',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -101,7 +101,7 @@ const testAccoutns = [
 	},
 	{
 		id: '13',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -109,7 +109,7 @@ const testAccoutns = [
 	},
 	{
 		id: '14',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',
@@ -117,7 +117,7 @@ const testAccoutns = [
 	},
 	{
 		id: '15',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		followers: 412,
 		description: 'my name is andrew',

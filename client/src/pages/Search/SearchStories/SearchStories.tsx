@@ -12,7 +12,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -25,7 +25,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -38,7 +38,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -51,7 +51,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -64,7 +64,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -77,7 +77,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -90,7 +90,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -103,7 +103,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -116,7 +116,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},
@@ -129,7 +129,7 @@ const testStories = [
 		views: 1244,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			image: '',
 		},
 	},

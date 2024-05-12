@@ -14,9 +14,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '2',
@@ -25,9 +25,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '3',
@@ -36,9 +36,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '4',
@@ -47,9 +47,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '5',
@@ -58,9 +58,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '6',
@@ -69,9 +69,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '7',
@@ -80,9 +80,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '8',
@@ -91,9 +91,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '9',
@@ -102,9 +102,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '10',
@@ -113,9 +113,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '11',
@@ -124,9 +124,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '12',
@@ -135,9 +135,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '13',
@@ -146,9 +146,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '14',
@@ -157,9 +157,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '15',
@@ -168,9 +168,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '16',
@@ -179,9 +179,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '17',
@@ -190,9 +190,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '18',
@@ -201,9 +201,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '19',
@@ -212,9 +212,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 		{
 			id: '20',
@@ -223,9 +223,9 @@ const testTagInfo = {
 			tags: ['song', 'story', 'day'],
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
-			}
+			},
 		},
 	],
 };

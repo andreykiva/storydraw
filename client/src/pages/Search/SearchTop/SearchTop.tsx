@@ -8,7 +8,7 @@ const testSearchData = {
 	accounts: [
 		{
 			id: '1',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			followers: 412,
 			description: 'my name is andrew',
@@ -16,7 +16,7 @@ const testSearchData = {
 		},
 		{
 			id: '2',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			followers: 412,
 			description: 'my name is andrew',
@@ -24,7 +24,7 @@ const testSearchData = {
 		},
 		{
 			id: '3',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			followers: 412,
 			description: 'my name is andrew',
@@ -41,7 +41,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -54,7 +54,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -67,7 +67,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -80,7 +80,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -93,7 +93,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -106,7 +106,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -119,7 +119,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -132,7 +132,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -145,7 +145,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
@@ -158,7 +158,7 @@ const testSearchData = {
 			views: 1244,
 			user: {
 				id: '123',
-				username: 'andrey.kiva',
+				username: 'andriikiva',
 				image: '',
 			},
 		},
