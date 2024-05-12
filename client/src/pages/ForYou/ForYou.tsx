@@ -16,7 +16,7 @@ const testStories = [
 		share: 10,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			image: '',
 		},
@@ -34,7 +34,7 @@ const testStories = [
 		share: 10,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			image: '',
 		},
@@ -52,7 +52,7 @@ const testStories = [
 		share: 10,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			image: '',
 		},
@@ -70,7 +70,7 @@ const testStories = [
 		share: 10,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			image: '',
 		},
@@ -88,7 +88,7 @@ const testStories = [
 		share: 10,
 		user: {
 			id: '123',
-			username: 'andrey.kiva',
+			username: 'andriikiva',
 			title: 'hey man',
 			image: '',
 		},
