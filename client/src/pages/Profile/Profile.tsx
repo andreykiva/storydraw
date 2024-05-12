@@ -7,10 +7,14 @@ import ProfileStory from './ProfileStory/ProfileStory';
 import { formatNumber } from '@/utils/numberUtils';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
+import { openReport } from '@/features/report/reportSlice';
+import moreIcon from '@/assets/icons/more-horizontal.svg?url';
+import ReportIcon from '@/assets/icons/report.svg';
+import BlockIcon from '@/assets/icons/block.svg';
 
 const testProfileInfo = {
 	id: '123',
-	username: 'andrey.kiva',
+	username: 'andriikiva',
 	title: 'hey man',
 	description: 'today was a good day',
 	image: '',
@@ -165,7 +169,7 @@ const testProfileStories = [
 const Profile = () => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
-	const { username, title, description, image, following, followers, likes } = testProfileInfo;
+	const { id, username, title, description, image, following, followers, likes } = testProfileInfo;
 
 	const handleFollow = () => {
 		if (!isAuth) {
@@ -173,6 +177,10 @@ const Profile = () => {
 		} else {
 			// Login
 		}
+	};
+
+	const handleOpenReport = () => {
+		dispatch(openReport({ type: 'account', targetId: id }));
 	};
 
 	return (
@@ -188,6 +196,20 @@ const Profile = () => {
 						<Button className={styles.FollowBtn} onClick={handleFollow}>
 							Follow
 						</Button>
+					</div>
+					<div className={styles.ActionsBtn}>
+						<img src={moreIcon} alt="More" className={styles.MoreIcon} />
+						<ul className={styles.ActionsMenu}>
+							<div className={styles.MenuTriangle}></div>
+							<li className={styles.ActionsMenuItem} onClick={handleOpenReport}>
+								<ReportIcon className={styles.ActionsItemIcon} />
+								<span>Report</span>
+							</li>
+							<li className={styles.ActionsMenuItem} onClick={handleOpenReport}>
+								<BlockIcon className={styles.ActionsItemIcon} />
+								<span>Block</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<div className={styles.BottomInfo}>
