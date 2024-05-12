@@ -6,31 +6,31 @@ import HTag from '@/components/ui/HTag/HTag';
 const testSuggestedAccounts = [
 	{
 		id: '1',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
 		id: '2',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
 		id: '3',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
 		id: '4',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
 		id: '5',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
@@ -39,31 +39,31 @@ const testSuggestedAccounts = [
 const testFollowingAccoutns = [
 	{
 		id: '1',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'meow',
 		image: '',
 	},
 	{
 		id: '2',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
 		id: '3',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
 		id: '4',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
 	{
 		id: '5',
-		username: 'andrey.kiva',
+		username: 'andriikiva',
 		title: 'hey man',
 		image: '',
 	},
