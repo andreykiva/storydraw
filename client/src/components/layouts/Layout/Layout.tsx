@@ -6,6 +6,8 @@ import Header from '@/components/layouts/Header/Header';
 import Sidebar from '@/components/layouts/Sidebar/Sidebar';
 import Auth from '@/auth/Auth';
 import { selectAuthModalStatus } from '@/features/auth/authSlice';
+import Report from '@/components/Report/Report';
+import { selectReportStatus } from '@/features/report/reportSlice';
 
 type LayoutProps = {
 	children: React.ReactNode;
@@ -13,6 +15,7 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
 	const isAuthOpen = useSelector(selectAuthModalStatus);
+	const isReportOpen = useSelector(selectReportStatus);
 	const location = useLocation();
 	const excludedSidebarPaths = ['/story/', '/messages', '/settings'];
 	const excludedHeaderPaths = ['/story/'];
@@ -23,6 +26,7 @@ const Layout = ({ children }: LayoutProps) => {
 		<>
 			{isAuthOpen && <Auth />}
 			{!hideHeader && <Header />}
+			{isReportOpen && <Report />}
 			<div className={styles.LayoutContainer}>
 				{!hideSidebar && <Sidebar />}
 				<main className={styles.Content}>{children}</main>
