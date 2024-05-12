@@ -15,7 +15,7 @@ const MoreBtn = ({ isAuth }: MoreBtnProps) => {
 				<img
 					src={isAuth ? defaultImg : moreIcon}
 					alt={isAuth ? 'User profile' : 'More'}
-					className={styles.MoreBtnImg}
+					className={styles.MoreIcon}
 				/>
 			</div>
 			<MoreMenu className={styles.MoreMenu} isAuth={isAuth} />

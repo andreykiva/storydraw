@@ -48,7 +48,7 @@ const loggedInUserItems: MenuItem[] = [
 		type: 'link',
 		title: 'View profile',
 		icon: profileIcon,
-		to: '/',
+		to: '/@andrii',
 		target: '_self',
 	},
 	{
