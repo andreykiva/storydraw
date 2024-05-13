@@ -1,17 +1,17 @@
 import React from 'react';
-import styles from './MoreBtn.module.css';
+import styles from './ButtonWithMoreMenu.module.css';
 import moreIcon from '@/assets/icons/more.svg?url';
 import defaultImg from '@/assets/images/default.svg?url';
 import MoreMenu from './MoreMenu/MoreMenu';
 
-type MoreBtnProps = {
+type ButtonWithMoreMenuProps = {
 	isAuth: boolean;
 };
 
-const MoreBtn = ({ isAuth }: MoreBtnProps) => {
+const ButtonWithMoreMenu = ({ isAuth }: ButtonWithMoreMenuProps) => {
 	return (
-		<div className={styles.MoreBtn}>
-			<div className={styles.MoreBtnInner}>
+		<div className={styles.ButtonWithMoreMenu}>
+			<div className={styles.ButtonInner}>
 				<img
 					src={isAuth ? defaultImg : moreIcon}
 					alt={isAuth ? 'User profile' : 'More'}
@@ -23,4 +23,4 @@ const MoreBtn = ({ isAuth }: MoreBtnProps) => {
 	);
 };
 
-export default MoreBtn;
+export default ButtonWithMoreMenu;

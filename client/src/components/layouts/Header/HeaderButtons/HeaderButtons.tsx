@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './HeaderButtons.module.css';
 import createIcon from '@/assets/icons/create.svg?url';
-import MoreBtn from './MoreBtn/MoreBtn';
+import ButtonWithMoreMenu from './ButtonWithMoreMenu/ButtonWithMoreMenu';
 import Button from '@/components/ui/buttons/Button/Button';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
@@ -27,7 +27,7 @@ const HeaderButtons = () => {
 			// create
 		}
 	};
-	
+
 	return (
 		<div className={styles.HeaderButtons}>
 			<Button className={styles.CreateBtn} onClick={handleCreate}>
@@ -41,7 +41,7 @@ const HeaderButtons = () => {
 					Log in
 				</Button>
 			)}
-			<MoreBtn isAuth={isAuth} />
+			<ButtonWithMoreMenu isAuth={isAuth} />
 		</div>
 	);
 };

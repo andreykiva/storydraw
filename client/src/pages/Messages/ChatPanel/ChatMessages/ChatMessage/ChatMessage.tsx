@@ -36,7 +36,7 @@ const ChatMessage = (props: Message) => {
 				</div>
 				<p className={styles.MessageText}>{text}</p>
 				<div
-					className={[styles.ActionsBtn, isActionsMenuOpen && styles.Active].join(' ')}
+					className={[styles.ButtonWithActionsMenu, isActionsMenuOpen && styles.Active].join(' ')}
 					onClick={setIsActionsMenuOpen.bind(this, true)}
 				>
 					<img src={moreIcon} alt="Actions" className={styles.MoreIcon} />

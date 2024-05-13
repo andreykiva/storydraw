@@ -47,11 +47,11 @@
 	background: #069167;
 }
 
-.ChatMessage.My .ActionsBtn {
+.ChatMessage.My .ButtonWithActionsMenu {
 	order: 1;
 }
 
-.ActionsBtn {
+.ButtonWithActionsMenu {
 	position: relative;
 	display: none;
 	width: 20px;
@@ -61,7 +61,7 @@
 	cursor: pointer;
 }
 
-.MessageContent:hover .ActionsBtn {
+.MessageContent:hover .ButtonWithActionsMenu {
 	display: block;
 }
 

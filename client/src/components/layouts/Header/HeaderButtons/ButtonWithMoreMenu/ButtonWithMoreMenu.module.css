@@ -1,4 +1,4 @@
-.MoreBtn {
+.ButtonWithMoreMenu {
 	position: relative;
 	width: 36px;
 	height: 36px;
@@ -6,20 +6,20 @@
 	font-family: 'Karla', sans-serif;
 }
 
-.MoreBtn:hover .MoreMenu {
+.ButtonWithMoreMenu:hover .MoreMenu {
 	visibility: visible;
 	opacity: 1;
 	transition: 0.2s ease-in-out;
 }
 
-.MoreBtnInner {
+.ButtonInner {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
 	cursor: pointer;
 }
 
-.MoreBtnInner:hover {
+.ButtonInner:hover {
 	background: rgb(20, 20, 20);
 }
 
