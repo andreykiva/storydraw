@@ -7,7 +7,7 @@ import Button from '@/components/ui/buttons/Button/Button';
 
 type ConfirmationModalProps = {
 	title: string;
-	children: string;
+	children?: string;
 	confirmAction: string;
 	onClose: () => void;
 	onConfirm: () => void;
@@ -23,7 +23,7 @@ const ConfirmationModal = (props: ConfirmationModalProps) => {
 				<HTag tag="h3" className={styles.HeaderTitle}>
 					{title}
 				</HTag>
-				<p className={styles.ModalDescr}>{children}</p>
+				{children && children.length && <p className={styles.ModalDescr}>{children}</p>}
 				<div className={styles.ModalActionButtons}>
 					<Button className={styles.CancelBtn} onClick={onClose}>
 						Cancel
