@@ -70,7 +70,7 @@ const Comment = (props: CommentProps) => {
 					</span>
 				</div>
 			</div>
-			<div className={styles.CommentPanel}>
+			<div className={styles.CommentInteraction}>
 				<ButtonWithActionsMenu actions={actions} className={styles.ButtonWithActionsMenu} />
 				<div className={styles.LikeBtn} onClick={handleLike}>
 					<LikeIcon className={styles.LikeIcon} />
