@@ -31,12 +31,12 @@
 	white-space: nowrap;
 }
 
-.Prompt.Above {
+.Prompt.Bottom {
 	top: auto;
 	bottom: calc(100% + 10px);
 }
 
-.Prompt.Above .PromptTriangle {
+.Prompt.Bottom .PromptTriangle {
 	border-bottom: none;
 	border-top: 10px solid rgb(36, 36, 36);
 	top: auto;
