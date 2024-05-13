@@ -50,10 +50,9 @@ const NavPanel = ({ activeSection, onChangeActiveSection }: NavPanelProps) => {
 						key={link.title}
 						title={link.title}
 						active={activeSection === link.to}
+						iconComponent={link.iconComponent}
 						onClick={onChangeActiveSection.bind(this, link.to)}
-					>
-						{link.iconComponent}
-					</NavItem>
+					/>
 				))}
 			</ul>
 		</nav>

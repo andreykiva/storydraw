@@ -15,9 +15,9 @@ import type Story from '@/types/Story';
 import type User from '@/types/User';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
-import moreIcon from '@/assets/icons/more-horizontal.svg?url';
 import ReportIcon from '@/assets/icons/report.svg';
 import { openReport } from '@/features/report/reportSlice';
+import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
 
 type ForYouStoryProps = Omit<Story, 'date' | 'views'> & {
 	user: Omit<User, 'description' | 'followers'>;
@@ -63,6 +63,14 @@ const ForYouStory = (props: ForYouStoryProps) => {
 	const handleOpenReport = () => {
 		dispatch(openReport({ type: 'story', targetId: id }));
 	};
+
+	const actions = [
+		{
+			name: 'Report',
+			iconComponent: <ReportIcon />,
+			onClick: handleOpenReport,
+		},
+	];
 
 	return (
 		<div className={styles.ForYouStory}>
@@ -112,16 +120,7 @@ const ForYouStory = (props: ForYouStoryProps) => {
 						<ShareIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{formatNumber(share)}</div>
 					</div>
-					<div className={styles.ActionsBtn}>
-						<img src={moreIcon} alt="More" className={styles.MoreIcon} />
-						<ul className={styles.ActionsMenu}>
-							<div className={styles.MenuTriangle}></div>
-							<li className={styles.ActionsMenuItem} onClick={handleOpenReport}>
-								<ReportIcon className={styles.ActionsItemIcon} />
-								<span>Report</span>
-							</li>
-						</ul>
-					</div>
+					<ButtonWithActionsMenu actions={actions} />
 				</div>
 			</div>
 		</div>

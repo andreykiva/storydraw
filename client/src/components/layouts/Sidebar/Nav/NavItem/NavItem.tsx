@@ -5,17 +5,17 @@ import { NavLink } from 'react-router-dom';
 type NavItemProps = {
 	title: string;
 	to: string;
-	children: React.ReactNode;
+	iconComponent: React.ReactNode;
 };
 
-const NavItem = ({ title, to, children }: NavItemProps) => {
+const NavItem = ({ title, to, iconComponent }: NavItemProps) => {
 	return (
 		<li className={styles.NavItem}>
 			<NavLink
 				to={to}
 				className={(isActive) => styles.NavLink + (isActive.isActive ? ` ${styles.ActiveLink}` : '')}
 			>
-				{children}
+				{iconComponent}
 				<span>{title}</span>
 			</NavLink>
 		</li>

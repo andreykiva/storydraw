@@ -1,7 +1,7 @@
 .ActionsMenu {
 	position: absolute;
-	top: 48px;
-	right: 8px;
+	top: calc(50% + 16px);
+	right: 7px;
 	width: 200px;
 	padding: 8px 0px;
 	background-color: rgb(34, 34, 34);
@@ -18,6 +18,6 @@
 	border-left: 14px solid transparent;
 	border-right: 14px solid transparent;
 	border-bottom: 10px solid rgb(34, 34, 34);
-	right: 12px;
+	right: 13px;
 	top: -6px;
 }

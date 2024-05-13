@@ -9,9 +9,9 @@ import type Comment from '@/types/Comment';
 import type User from '@/types/User';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
-import moreIcon from '@/assets/icons/more-horizontal.svg?url';
 import ReportIcon from '@/assets/icons/report.svg';
 import { openReport } from '@/features/report/reportSlice';
+import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
 
 type CommentProps = Comment & {
 	user: Pick<User, 'username' | 'title' | 'image'>;
@@ -43,6 +43,14 @@ const Comment = (props: CommentProps) => {
 		dispatch(openReport({ type: 'comment', targetId: id }));
 	};
 
+	const actions = [
+		{
+			name: 'Report',
+			iconComponent: <ReportIcon />,
+			onClick: handleOpenReport,
+		},
+	];
+
 	return (
 		<div className={[styles.Comment, reply ? styles.Reply : ''].join(' ')}>
 			<div className={styles.ProfileImgSection}>
@@ -63,16 +71,7 @@ const Comment = (props: CommentProps) => {
 				</div>
 			</div>
 			<div className={styles.CommentPanel}>
-				<div className={styles.ActionsBtn}>
-					<img src={moreIcon} alt="More" className={styles.MoreIcon} />
-					<ul className={styles.ActionsMenu}>
-						<div className={styles.MenuTriangle}></div>
-						<li className={styles.ActionsMenuItem} onClick={handleOpenReport}>
-							<ReportIcon className={styles.ActionsItemIcon} />
-							<span>Report</span>
-						</li>
-					</ul>
-				</div>
+				<ButtonWithActionsMenu actions={actions} className={styles.ButtonWithActionsMenu} />
 				<div className={styles.LikeBtn} onClick={handleLike}>
 					<LikeIcon className={styles.LikeIcon} />
 					<span className={styles.LikesAmount}>{formatNumber(likes)}</span>

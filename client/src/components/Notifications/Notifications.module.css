@@ -1,7 +1,7 @@
 .Notifications {
 	position: absolute;
-	right: -10px;
-	top: 46px;
+	right: calc(50% - 27px);
+	top: calc(100% + 10px);
 	display: flex;
 	flex-direction: column;
 	width: 380px;

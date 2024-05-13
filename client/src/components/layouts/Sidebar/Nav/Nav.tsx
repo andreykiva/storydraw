@@ -28,9 +28,7 @@ const Nav = () => {
 		<nav className={styles.Nav}>
 			<ul>
 				{links.map((link) => (
-					<NavItem key={link.title} title={link.title} to={link.to}>
-						{link.iconComponent}
-					</NavItem>
+					<NavItem key={link.title} title={link.title} to={link.to} iconComponent={link.iconComponent} />
 				))}
 			</ul>
 		</nav>
