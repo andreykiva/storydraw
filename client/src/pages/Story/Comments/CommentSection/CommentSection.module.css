@@ -1,11 +1,11 @@
 .CommentSection {
-	margin-bottom: 22px;
+	margin-bottom: 20px;
 }
 
 .ViewRepliesBtn {
 	display: inline-flex;
 	align-items: center;
-	margin: 8px 0 0 50px;
+	margin: 4px 0 0 50px;
 	font-size: 14px;
 	font-weight: 700;
 	color: rgb(114, 114, 114);
