@@ -12,6 +12,7 @@ import Profile from '@/pages/Profile/Profile';
 import Story from '@/pages/Story/Story';
 import Messages from '@/pages/Messages/Messages';
 import Settings from '@/pages/Settings/Settings';
+import Subscribe from '@/pages/Subscribe/Subscribe';
 import { selectAuth } from '@/features/auth/authSlice';
 
 const App = () => {
@@ -32,7 +33,7 @@ const App = () => {
 					{isAuth && (
 						<>
 							<Route path="/messages" element={<Messages />} />
-							<Route path="/coins" element={<div>Coins</div>} />
+							<Route path="/subscribe" element={<Subscribe />} />
 							<Route path="/settings" element={<Settings />} />
 						</>
 					)}
