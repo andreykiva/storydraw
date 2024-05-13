@@ -9,7 +9,7 @@ type PromptProps = {
 
 const Prompt = ({ children, pos = 'bottom', className }: PromptProps) => {
 	return (
-		<div className={[styles.Prompt, className, pos === 'bottom' && styles.Bottom].join(' ')}>
+		<div className={[styles.Prompt, className, pos === 'top' && styles.Top].join(' ')}>
 			<div className={styles.PromptTriangle}></div>
 			<span className={styles.PromptText}>{children}</span>
 		</div>
