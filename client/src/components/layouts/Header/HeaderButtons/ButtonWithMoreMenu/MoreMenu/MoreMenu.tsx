@@ -5,7 +5,7 @@ import helpIcon from '@/assets/icons/help.svg?url';
 import darkModeIcon from '@/assets/icons/mode-dark.svg?url';
 import profileIcon from '@/assets/icons/profile.svg?url';
 import favoritesIcon from '@/assets/icons/favorites.svg?url';
-import coinIcon from '@/assets/icons/coin.svg?url';
+import diamondIcon from '@/assets/icons/diamond.svg?url';
 import settingsIcon from '@/assets/icons/settings.svg?url';
 import logoutIcon from '@/assets/icons/logout.svg?url';
 import MoreMenuItem from './MoreMenuItem/MoreMenuItem';
@@ -55,14 +55,14 @@ const loggedInUserItems: MenuItem[] = [
 		type: 'link',
 		title: 'Favorites',
 		icon: favoritesIcon,
-		to: '/',
+		to: '/@andrii',
 		target: '_self',
 	},
 	{
 		type: 'link',
-		title: 'Get Coins',
-		icon: coinIcon,
-		to: '/',
+		title: 'Get Premium',
+		icon: diamondIcon,
+		to: '/subscribe',
 		target: '_self',
 	},
 	{
