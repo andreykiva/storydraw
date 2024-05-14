@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './ChatMessage.module.css';
 import defaultImg from '@/assets/images/default.svg?url';
-import moreIcon from '@/assets/icons/messages/more.svg?url';
+import MoreIcon from '@/assets/icons/more-horizontal.svg';
 import ActionsMenu from './ActionsMenu/ActionsMenu';
 import MessageLikes from './MessageLikes/MessageLikes';
 import type { Message } from '@/types/Message';
@@ -39,7 +39,7 @@ const ChatMessage = (props: Message) => {
 					className={[styles.ButtonWithActionsMenu, isActionsMenuOpen && styles.Active].join(' ')}
 					onClick={setIsActionsMenuOpen.bind(this, true)}
 				>
-					<img src={moreIcon} alt="Actions" className={styles.MoreIcon} />
+					<MoreIcon alt="Actions" className={styles.MoreIcon} />
 					{isActionsMenuOpen && (
 						<ActionsMenu
 							onLike={handleLikeMessage}

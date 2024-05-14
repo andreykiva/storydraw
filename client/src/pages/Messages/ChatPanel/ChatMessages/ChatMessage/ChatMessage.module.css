@@ -68,3 +68,7 @@
 .MoreIcon {
 	width: 100%;
 }
+
+.MoreIcon path {
+	fill: var(--main-color);
+}

@@ -4,7 +4,7 @@ import styles from './ChatListItem.module.css';
 import type User from '@/types/User';
 import defaultImg from '@/assets/images/default.svg?url';
 import { displayDate } from '@/utils/dateUtils';
-import moreIcon from '@/assets/icons/messages/more.svg?url';
+import MoreIcon from '@/assets/icons/more-horizontal.svg';
 import ActionsMenu from './ActionsMenu/ActionsMenu';
 import useClickOutside from '@/hooks/useClickOutside';
 import { setActiveChatmateId, selectActiveChatmateId } from '@/features/chat/chatSlice';
@@ -52,7 +52,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 				onClick={handleToggleActionsMenu}
 				ref={actionsBtnRef}
 			>
-				<img src={moreIcon} alt="Actions" className={styles.MoreIcon} />
+				<MoreIcon alt="Actions" className={styles.MoreIcon} />
 			</div>
 			{isActionsMenuOpen && <ActionsMenu chatmateId={id} />}
 		</li>
