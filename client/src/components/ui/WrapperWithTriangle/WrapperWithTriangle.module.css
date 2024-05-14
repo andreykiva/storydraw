@@ -1,0 +1,152 @@
+.WrapperWithTriangle {
+	position: absolute;
+}
+
+.WrapperWithTriangle::after {
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	content: "";
+	border-width: 8px;
+	border-style: solid;
+}
+
+/* TopLeft */
+.WrapperWithTriangle.TopLeft {
+	bottom: calc(100% + 12px);
+	right: calc(50% - 30px);
+}
+
+.WrapperWithTriangle.TopLeft::after {
+	right: 22px;
+	bottom: -15px;
+}
+
+/* TopCenter */
+.WrapperWithTriangle.TopCenter {
+	bottom: calc(100% + 12px);
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.WrapperWithTriangle.TopCenter::after {
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: -15px;
+}
+
+/* TopRight */
+.WrapperWithTriangle.TopRight {
+	bottom: calc(100% + 12px);
+	left: calc(50% - 30px);
+}
+
+.WrapperWithTriangle.TopRight::after {
+	left: 22px;
+	bottom: -15px;
+}
+
+/* BottomLeft */
+.WrapperWithTriangle.BottomLeft {
+	top: calc(100% + 12px);
+	right: calc(50% - 30px);
+}
+
+.WrapperWithTriangle.BottomLeft::after {
+	right: 22px;
+	top: -15px;
+}
+
+/* BottomCenter */
+.WrapperWithTriangle.BottomCenter {
+	top: calc(100% + 12px);
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.WrapperWithTriangle.BottomCenter::after {
+	left: 50%;
+	transform: translateX(-50%);
+	top: -15px;
+}
+
+/* BottomRight */
+.WrapperWithTriangle.BottomRight {
+	top: calc(100% + 12px);
+	left: calc(50% - 30px);
+}
+
+.WrapperWithTriangle.BottomRight::after {
+	left: 22px;
+	top: -15px;
+}
+
+/* LeftTop */
+.WrapperWithTriangle.LeftTop {
+	bottom: calc(50% - 30px);
+	right: calc(100% + 12px);
+}
+
+.WrapperWithTriangle.LeftTop::after {
+	bottom: 22px;
+	right: -15px;
+}
+
+/* LeftCenter */
+.WrapperWithTriangle.LeftCenter {
+	top: 50%;
+	transform: translateY(-50%);
+	right: calc(100% + 12px);
+}
+
+.WrapperWithTriangle.LeftCenter::after {
+	top: 50%;
+	transform: translateY(-50%);
+	right: -15px;
+}
+
+/* LeftBottom */
+.WrapperWithTriangle.LeftBottom {
+	top: calc(50% - 30px);
+	right: calc(100% + 12px);
+}
+
+.WrapperWithTriangle.LeftBottom::after {
+	top: 22px;
+	right: -15px;
+}
+
+/* RightTop */
+.WrapperWithTriangle.RightTop {
+	bottom: calc(50% - 30px);
+	left: calc(100% + 12px);
+}
+
+.WrapperWithTriangle.RightTop::after {
+	bottom: 22px;
+	left: -15px;
+}
+
+/* RightCenter */
+.WrapperWithTriangle.RightCenter {
+	top: 50%;
+	transform: translateY(-50%);
+	left: calc(100% + 12px);
+}
+
+.WrapperWithTriangle.RightCenter::after {
+	top: 50%;
+	transform: translateY(-50%);
+	left: -15px;
+}
+
+/* RightBottom */
+.WrapperWithTriangle.RightBottom {
+	top: calc(50% - 30px);
+	left: calc(100% + 12px);
+}
+
+.WrapperWithTriangle.RightBottom::after {
+	top: 22px;
+	left: -15px;
+}
