@@ -203,7 +203,7 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 					<button className={styles.TogglePickerBtn} onClick={handleToggleEmojiPicker}>
 						<img src={emojiIcon} alt="Emoji" className={styles.EmojiIcon} />
 					</button>
-					<Prompt pos="top" className={styles.Prompt}>
+					<Prompt position="topCenter" className={styles.Prompt}>
 						Click to add emojis
 					</Prompt>
 				</div>

@@ -101,6 +101,10 @@
 	visibility: visible;
 }
 
+.Prompt::after {
+	border-color: rgb(36, 36, 36) transparent transparent;
+}
+
 .SendBtn {
 	width: 52px;
 	height: 52px;

@@ -13,7 +13,7 @@ const MessagesBtn = () => {
 			>
 				<SendIcon className={styles.SendIcon} />
 			</NavLink>
-			<Prompt className={styles.Prompt}>Messages</Prompt>
+			<Prompt position='bottomCenter' className={styles.Prompt}>Messages</Prompt>
 		</div>
 	);
 };

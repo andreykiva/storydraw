@@ -14,18 +14,23 @@ type MoreMenuItemProps = {
 const MoreMenuItem = (props: MoreMenuItemProps) => {
 	const { type, title, icon, to, target, withBorder } = props;
 
+	const itemContent = (
+		<>
+			<img src={icon} alt={title} className={styles.ItemIcon} />
+			<span className={styles.ItemText}>{title}</span>
+		</>
+	);
+
 	if (type === 'item') {
 		return (
 			<div key={title} className={[styles.MoreMenuItem, withBorder && styles.WithBorder].join(' ')}>
-				<img src={icon} alt={title} className={styles.ItemIcon} />
-				<span className={styles.ItemText}>{title}</span>
+				{itemContent}
 			</div>
 		);
 	} else if (type === 'link') {
 		return (
 			<Link key={title} to={to} target={target} className={styles.MoreMenuItem}>
-				<img src={icon} alt={title} className={styles.ItemIcon} />
-				<span className={styles.ItemText}>{title}</span>
+				{itemContent}
 			</Link>
 		);
 	}

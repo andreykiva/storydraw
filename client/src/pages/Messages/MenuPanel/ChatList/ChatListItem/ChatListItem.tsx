@@ -53,8 +53,8 @@ const ChatListItem = (props: ChatListItemProps) => {
 				ref={actionsBtnRef}
 			>
 				<MoreIcon alt="Actions" className={styles.MoreIcon} />
+				{isActionsMenuOpen && <ActionsMenu chatmateId={id} />}
 			</div>
-			{isActionsMenuOpen && <ActionsMenu chatmateId={id} />}
 		</li>
 	);
 };

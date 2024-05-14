@@ -1,10 +1,6 @@
 .Prompt {
 	visibility: hidden;
-	position: absolute;
 	height: 42px;
-	left: 50%;
-	transform: translateX(-50%);
-	top: calc(100% + 10px);
 	padding: 10px 12px;
 	background: rgb(36, 36, 36);
 	border-radius: 10px;
@@ -14,31 +10,7 @@
 	transition: 0.2s ease-in-out;
 }
 
-.PromptTriangle {
-	position: absolute;
-	width: 0;
-	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-bottom: 10px solid rgb(36, 36, 36);
-	left: 50%;
-	transform: translateX(-50%);
-	top: -6px;
-}
-
 .PromptText {
 	font-size: 16px;
 	white-space: nowrap;
-}
-
-.Prompt.Top {
-	top: auto;
-	bottom: calc(100% + 10px);
-}
-
-.Prompt.Top .PromptTriangle {
-	border-bottom: none;
-	border-top: 10px solid rgb(36, 36, 36);
-	top: auto;
-	bottom: -6px;
 }

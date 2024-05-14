@@ -10,10 +10,7 @@
 	height: 100%;
 }
 
-.ActionsMenu {
-	position: absolute;
-	top: calc(100% + 10px);
-	right: calc(50% - 27px);
+.ActionsMenuWrapper {
 	width: 180px;
 	padding: 8px 0;
 	border-radius: 8px;
@@ -23,28 +20,7 @@
 	transition: all .3s ease;
 }
 
-.ActionsBtn:hover .ActionsMenu {
+.ActionsBtn:hover .ActionsMenuWrapper {
 	visibility: visible;
 	opacity: 1;
-}
-
-.MenuTriangle {
-	position: absolute;
-	width: 0;
-	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-bottom: 10px solid rgb(34, 34, 34);
-	right: 13px;
-	top: -6px;
-}
-
-.ActionsMenu.Right {
-	right: auto;
-	left: calc(50% - 27px);
-}
-
-.ActionsMenu.Right .MenuTriangle {
-	right: auto;
-	left: 13px;
 }

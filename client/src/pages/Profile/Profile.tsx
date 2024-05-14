@@ -210,7 +210,12 @@ const Profile = () => {
 							Follow
 						</Button>
 					</div>
-					<ButtonWithActionsMenu actions={actions} menuPos="right" className={styles.ButtonWithActionsMenu} />
+					<ButtonWithActionsMenu
+						actions={actions}
+						menuPosition="bottomRight"
+						buttonClassName={styles.ActionsBtn}
+						menuClassName={styles.ActionsMenu}
+					/>
 				</div>
 				<div className={styles.BottomInfo}>
 					<div className={styles.UserStatistics}>

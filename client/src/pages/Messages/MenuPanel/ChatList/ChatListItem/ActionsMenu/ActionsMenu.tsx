@@ -8,6 +8,7 @@ import pinIcon from '@/assets/icons/messages/pin.svg?url';
 import reportIcon from '@/assets/icons/report.svg?url';
 import blockIcon from '@/assets/icons/block.svg?url';
 import { openReport } from '@/features/report/reportSlice';
+import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
 
 type ActionsMenuProps = {
 	chatmateId: string;
@@ -21,8 +22,7 @@ const ActionsMenu = ({ chatmateId }: ActionsMenuProps) => {
 	};
 
 	return (
-		<div className={styles.ActionsMenu}>
-			<div className={styles.MenuTriangle}></div>
+		<WrapperWithTriangle position='bottomLeft' className={styles.ActionsMenu}>
 			<ul className={styles.ActionsList}>
 				<ActionItem actionTitle="Mute" icon={muteIcon} />
 				<ActionItem actionTitle="Delete" icon={deleteIcon} />
@@ -30,7 +30,7 @@ const ActionsMenu = ({ chatmateId }: ActionsMenuProps) => {
 				<ActionItem actionTitle="Report" icon={reportIcon} onClick={handleOpenReport} />
 				<ActionItem actionTitle="Block" icon={blockIcon} />
 			</ul>
-		</div>
+		</WrapperWithTriangle>
 	);
 };
 

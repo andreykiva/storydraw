@@ -1,14 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Notifications.module.css';
-import HTag from '../ui/HTag/HTag';
-import Button from '../ui/buttons/Button/Button';
+import HTag from '@/components/ui/HTag/HTag';
+import Button from '@/components/ui/buttons/Button/Button';
 import AllNotificationsList from './AllNotificationsList';
 import LikesList from './LikesList';
 import CommentsList from './CommentsList';
 import MentionsTagsList from './MentionsTagsList';
 import FollowsList from './FollowsList';
 import { changeNotificationsCategory, selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
+import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
 
 type NotificationsCategory = 'all' | 'likes' | 'comments' | 'mentionsTags' | 'followers';
 
@@ -44,8 +45,7 @@ const Notifications = () => {
 	};
 
 	return (
-		<div className={styles.Notifications}>
-			<div className={styles.NotifTriangle}></div>
+		<WrapperWithTriangle position="bottomLeft" className={styles.Notifications}>
 			<div className={styles.NotifHeader}>
 				<HTag tag="h4" className={styles.NotifTitle}>
 					Notifications
@@ -71,7 +71,7 @@ const Notifications = () => {
 			{notificationsCategory === 'comments' && <CommentsList />}
 			{notificationsCategory === 'mentionsTags' && <MentionsTagsList />}
 			{notificationsCategory === 'followers' && <FollowsList />}
-		</div>
+		</WrapperWithTriangle>
 	);
 };
 

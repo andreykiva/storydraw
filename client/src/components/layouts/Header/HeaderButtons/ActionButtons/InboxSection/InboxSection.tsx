@@ -30,7 +30,7 @@ const InboxSection = () => {
 			<div className={styles.InboxBtn} onClick={handleToggleNotifications}>
 				<InboxIcon className={styles.InboxIcon} />
 			</div>
-			<Prompt className={styles.Prompt}>Inbox</Prompt>
+			<Prompt position='bottomCenter' className={styles.Prompt}>Inbox</Prompt>
 			{isNotificationsOpen && <Notifications />}
 		</div>
 	);

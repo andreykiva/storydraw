@@ -71,7 +71,12 @@ const Comment = (props: CommentProps) => {
 				</div>
 			</div>
 			<div className={styles.CommentInteraction}>
-				<ButtonWithActionsMenu actions={actions} className={styles.ButtonWithActionsMenu} />
+				<ButtonWithActionsMenu
+					actions={actions}
+					menuPosition="bottomLeft"
+					buttonClassName={styles.ActionsBtn}
+					menuClassName={styles.ActionsMenu}
+				/>
 				<div className={styles.LikeBtn} onClick={handleLike}>
 					<LikeIcon className={styles.LikeIcon} />
 					<span className={styles.LikesAmount}>{formatNumber(likes)}</span>

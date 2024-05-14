@@ -1,18 +1,31 @@
 import React from 'react';
 import styles from './Prompt.module.css';
+import WrapperWithTriangle from '../WrapperWithTriangle/WrapperWithTriangle';
 
 type PromptProps = {
 	children: React.ReactNode;
 	className: string;
-	pos?: 'top' | 'bottom';
+	position:
+		| 'topLeft'
+		| 'topCenter'
+		| 'topRight'
+		| 'bottomLeft'
+		| 'bottomCenter'
+		| 'bottomRight'
+		| 'leftTop'
+		| 'leftCenter'
+		| 'leftBottom'
+		| 'rightTop'
+		| 'rightCenter'
+		| 'rightBottom';
 };
 
-const Prompt = ({ children, pos = 'bottom', className }: PromptProps) => {
+const Prompt = ({ children, position, className }: PromptProps) => {
 	return (
-		<div className={[styles.Prompt, className, pos === 'top' && styles.Top].join(' ')}>
+		<WrapperWithTriangle position={position} className={[styles.Prompt, className].join(' ')}>
 			<div className={styles.PromptTriangle}></div>
 			<span className={styles.PromptText}>{children}</span>
-		</div>
+		</WrapperWithTriangle>
 	);
 };
 

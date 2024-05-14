@@ -1,7 +1,4 @@
 .Notifications {
-	position: absolute;
-	right: calc(50% - 27px);
-	top: calc(100% + 10px);
 	display: flex;
 	flex-direction: column;
 	width: 380px;
@@ -12,15 +9,8 @@
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.NotifTriangle {
-	position: absolute;
-	width: 0;
-	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-bottom: 10px solid rgb(20, 20, 20);
-	right: 13px;
-	top: -6px;
+.Notifications::after {
+	border-color: transparent transparent rgb(20, 20, 20) transparent;
 }
 
 .NotifHeader {

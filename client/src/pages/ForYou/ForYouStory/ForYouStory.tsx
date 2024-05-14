@@ -120,7 +120,11 @@ const ForYouStory = (props: ForYouStoryProps) => {
 						<ShareIcon className={styles.ItemIcon} />
 						<div className={styles.ItemNumber}>{formatNumber(share)}</div>
 					</div>
-					<ButtonWithActionsMenu actions={actions} />
+					<ButtonWithActionsMenu
+						actions={actions}
+						menuPosition="bottomLeft"
+						menuClassName={styles.ActionsMenu}
+					/>
 				</div>
 			</div>
 		</div>

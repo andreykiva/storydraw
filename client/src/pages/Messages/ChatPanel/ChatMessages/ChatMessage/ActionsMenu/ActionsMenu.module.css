@@ -1,8 +1,4 @@
 .ActionsMenu {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: calc(100% + 10px);
 	display: flex;
 	gap: 12px;
 	background: rgb(62, 62, 62);
@@ -12,23 +8,15 @@
 	z-index: 2;
 }
 
-.PromptTriangle {
-	position: absolute;
-	width: 0;
-	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-top: 10px solid rgb(62, 62, 62);
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: -6px;
+.ActionsMenu::after {
+	border-color: rgb(62, 62, 62) transparent transparent transparent;
 }
 
 .Action {
 	font-size: 14px;
 	font-weight: 400;
 	letter-spacing: -0.5px;
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .Action:hover {

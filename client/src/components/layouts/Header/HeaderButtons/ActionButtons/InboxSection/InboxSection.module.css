@@ -10,6 +10,10 @@
 	visibility: visible;
 }
 
+.Prompt::after {
+	border-color: transparent transparent rgb(36, 36, 36);
+}
+
 .InboxBtn {
 	width: 100%;
 	height: 100%;

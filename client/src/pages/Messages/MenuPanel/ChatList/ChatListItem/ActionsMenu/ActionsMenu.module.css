@@ -1,23 +1,12 @@
 .ActionsMenu {
-	position: absolute;
-	top: calc(50% + 16px);
-	right: 7px;
 	width: 200px;
 	padding: 8px 0px;
 	background-color: rgb(34, 34, 34);
 	border-radius: 8px;
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
-	z-index: 2;
 	cursor: pointer;
 }
 
-.MenuTriangle {
-	position: absolute;
-	width: 0;
-	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-bottom: 10px solid rgb(34, 34, 34);
-	right: 13px;
-	top: -6px;
+.ActionsMenu::after {
+	border-color: transparent transparent rgb(34, 34, 34);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ButtonWithActionsMenu.module.css';
 import moreIcon from '@/assets/icons/more-horizontal.svg?url';
 import ActionItem from './ActionItem/ActionItem';
+import WrapperWithTriangle from '../ui/WrapperWithTriangle/WrapperWithTriangle';
 
 type Action = {
 	name: string;
@@ -9,27 +10,51 @@ type Action = {
 	onClick: () => void;
 };
 
+type MenuPosition =
+	| 'topLeft'
+	| 'topCenter'
+	| 'topRight'
+	| 'bottomLeft'
+	| 'bottomCenter'
+	| 'bottomRight'
+	| 'leftTop'
+	| 'leftCenter'
+	| 'leftBottom'
+	| 'rightTop'
+	| 'rightCenter'
+	| 'rightBottom';
+
 type ButtonWithActionsMenuProps = {
-	menuPos?: 'left' | 'right';
+	menuPosition: MenuPosition;
 	actions: Action[];
-	className?: string;
+	buttonClassName?: string;
+	menuClassName?: string;
 };
 
-const ButtonWithActionsMenu = ({ actions, menuPos = 'left', className }: ButtonWithActionsMenuProps) => {
+const ButtonWithActionsMenu = ({
+	actions,
+	menuPosition,
+	buttonClassName,
+	menuClassName,
+}: ButtonWithActionsMenuProps) => {
 	return (
-		<div className={[styles.ActionsBtn, className].join(' ')}>
+		<div className={[styles.ActionsBtn, buttonClassName].join(' ')}>
 			<img src={moreIcon} alt="More" className={styles.MoreIcon} />
-			<ul className={[styles.ActionsMenu, menuPos === 'right' && styles.Right].join(' ')}>
-				<div className={styles.MenuTriangle}></div>
-				{actions.map((action) => (
-					<ActionItem
-						key={action.name}
-						name={action.name}
-						iconComponent={action.iconComponent}
-						onClick={action.onClick}
-					/>
-				))}
-			</ul>
+			<WrapperWithTriangle
+				position={menuPosition}
+				className={[styles.ActionsMenuWrapper, menuClassName].join(' ')}
+			>
+				<ul className={styles.ActionsMenu}>
+					{actions.map((action) => (
+						<ActionItem
+							key={action.name}
+							name={action.name}
+							iconComponent={action.iconComponent}
+							onClick={action.onClick}
+						/>
+					))}
+				</ul>
+			</WrapperWithTriangle>
 		</div>
 	);
 };
