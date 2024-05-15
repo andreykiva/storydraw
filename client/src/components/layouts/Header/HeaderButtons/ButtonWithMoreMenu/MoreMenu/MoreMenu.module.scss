@@ -13,5 +13,5 @@
 }
 
 .MoreMenu::after {
-	@include addTriangleColor('top', rgb(20, 20, 20));
+	@include addTriangleBorder('top', rgb(20, 20, 20));
 }

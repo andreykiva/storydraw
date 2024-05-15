@@ -1,4 +1,4 @@
-@mixin addTriangleColor($position, $color) {
+@mixin addTriangleBorder($position, $color) {
 	@if ($position=='top') {
 		border-color: transparent transparent #{$color} transparent;
 	}

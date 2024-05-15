@@ -11,7 +11,7 @@
 }
 
 .ActionsMenu::after {
-	@include addTriangleColor('bottom', rgb(62, 62, 62));
+	@include addTriangleBorder('bottom', rgb(62, 62, 62));
 }
 
 .Action {
