@@ -1,0 +1,17 @@
+@mixin addBorderStyles($position, $borderColor) {
+	@if ($position=='topLeft'or $position=='topCenter'or $position=='topRight') {
+		border-color: #{$borderColor} transparent transparent transparent;
+	}
+
+	@else if ($position=='bottomLeft'or $position=='bottomCenter'or $position=='bottomRight') {
+		border-color: transparent transparent #{$borderColor} transparent;
+	}
+
+	@else if ($position=='leftTop'or $position=='leftCenter'or $position=='leftBottom') {
+		border-color: transparent transparent transparent #{$borderColor};
+	}
+
+	@else if ($position=='rightTop'or $position=='rightCenter'or $position=='rightBottom') {
+		border-color: transparent #{$borderColor} transparent transparent;
+	}
+}
