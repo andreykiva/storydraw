@@ -13,6 +13,7 @@ import Story from '@/pages/Story/Story';
 import Messages from '@/pages/Messages/Messages';
 import Settings from '@/pages/Settings/Settings';
 import Subscribe from '@/pages/Subscribe/Subscribe';
+import Logout from '@/pages/Logout/Logout';
 import { selectAuth } from '@/features/auth/authSlice';
 
 const App = () => {
@@ -22,7 +23,6 @@ const App = () => {
 		<BrowserRouter>
 			<Layout>
 				<Routes>
-
 					<Route path="/tag/:tag" element={<Tag />} />
 					<Route path="/following" element={<Following />} />
 					<Route path="/explore" element={<Explore />} />
@@ -35,6 +35,7 @@ const App = () => {
 							<Route path="/messages" element={<Messages />} />
 							<Route path="/subscribe" element={<Subscribe />} />
 							<Route path="/settings" element={<Settings />} />
+							<Route path="/logout" element={<Logout />} />
 						</>
 					)}
 
