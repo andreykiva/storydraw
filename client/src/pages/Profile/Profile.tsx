@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Profile.module.css';
+import styles from './Profile.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import Button from '@/components/ui/buttons/Button/Button';
 import ProfileStory from './ProfileStory/ProfileStory';

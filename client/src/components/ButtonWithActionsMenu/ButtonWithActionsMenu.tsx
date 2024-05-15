@@ -3,26 +3,13 @@ import styles from './ButtonWithActionsMenu.module.css';
 import moreIcon from '@/assets/icons/more-horizontal.svg?url';
 import ActionItem from './ActionItem/ActionItem';
 import WrapperWithTriangle from '../ui/WrapperWithTriangle/WrapperWithTriangle';
+import type { MenuPosition } from '@/types/Positions';
 
 type Action = {
 	name: string;
 	iconComponent: React.ReactNode;
 	onClick: () => void;
 };
-
-type MenuPosition =
-	| 'topLeft'
-	| 'topCenter'
-	| 'topRight'
-	| 'bottomLeft'
-	| 'bottomCenter'
-	| 'bottomRight'
-	| 'leftTop'
-	| 'leftCenter'
-	| 'leftBottom'
-	| 'rightTop'
-	| 'rightCenter'
-	| 'rightBottom';
 
 type ButtonWithActionsMenuProps = {
 	menuPosition: MenuPosition;

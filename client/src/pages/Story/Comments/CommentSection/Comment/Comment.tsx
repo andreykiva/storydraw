@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Comment.module.css';
+import styles from './Comment.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import LikeIcon from '@/assets/icons/like.svg';
 import { formatNumber } from '@/utils/numberUtils';

@@ -20,13 +20,18 @@ export const authSlice = createSlice({
 		closeAuthModal: (state) => {
 			state.isAuthOpen = false;
 		},
-		setAuth: (state, action) => {
-			state.isAuth = action.payload;
+		login: (state) => {
+			state.isAuth = true;
+			state.isAuthOpen = false;
+		},
+		logout: (state) => {
+			state.isAuth = false;
+			state.isAuthOpen = true;
 		},
 	},
 });
 
-export const { openAuthModal, closeAuthModal, setAuth } = authSlice.actions;
+export const { openAuthModal, closeAuthModal, login, logout } = authSlice.actions;
 
 export const selectAuthState = (state: { auth: AuthState }) => state.auth;
 

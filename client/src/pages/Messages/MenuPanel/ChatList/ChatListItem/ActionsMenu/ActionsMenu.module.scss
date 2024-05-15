@@ -1,3 +1,5 @@
+@import '@/utils/_mixins';
+
 .ActionsMenu {
 	width: 200px;
 	padding: 8px 0px;
@@ -8,5 +10,5 @@
 }
 
 .ActionsMenu::after {
-	border-color: transparent transparent rgb(34, 34, 34);
+	@include addBorderStyles('bottomLeft', rgb(34, 34, 34));
 }

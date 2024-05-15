@@ -1,22 +1,11 @@
 import React from 'react';
-import styles from './WrapperWithTriangle.module.css';
+import styles from './WrapperWithTriangle.module.scss';
+import type { MenuPosition } from '@/types/Positions';
 
 type WrapperWithTriangleProps = {
 	className?: string;
 	children: React.ReactNode;
-	position:
-		| 'topLeft'
-		| 'topCenter'
-		| 'topRight'
-		| 'bottomLeft'
-		| 'bottomCenter'
-		| 'bottomRight'
-		| 'leftTop'
-		| 'leftCenter'
-		| 'leftBottom'
-		| 'rightTop'
-		| 'rightCenter'
-		| 'rightBottom';
+	position: MenuPosition;
 };
 
 const WrapperWithTriangle = ({ className, position, children }: WrapperWithTriangleProps) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import styles from './ActionsMenu.module.css';
+import styles from './ActionsMenu.module.scss';
 import ActionItem from './ActionItem/ActionItem';
 import muteIcon from '@/assets/icons/messages/mute.svg?url';
 import deleteIcon from '@/assets/icons/messages/delete.svg?url';

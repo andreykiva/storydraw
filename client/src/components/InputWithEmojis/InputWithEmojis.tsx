@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import styles from './InputWithEmojis.module.css';
+import styles from './InputWithEmojis.module.scss';
 import EmojiPicker from './EmojiPicker/EmojiPicker';
 import Button from '@/components/ui/buttons/Button/Button';
 import Prompt from '@/components/ui/Prompt/Prompt';

@@ -1,3 +1,5 @@
+@import '@/utils/_mixins';
+
 .ActionsMenu {
 	display: flex;
 	gap: 12px;
@@ -9,7 +11,7 @@
 }
 
 .ActionsMenu::after {
-	border-color: rgb(62, 62, 62) transparent transparent transparent;
+	@include addBorderStyles('topCenter', rgb(62, 62, 62));
 }
 
 .Action {

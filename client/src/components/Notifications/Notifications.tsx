@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Notifications.module.css';
+import styles from './Notifications.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 import Button from '@/components/ui/buttons/Button/Button';
 import AllNotificationsList from './AllNotificationsList';

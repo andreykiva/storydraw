@@ -5,7 +5,7 @@ import SearchBar from '@/components/SearchBar/SearchBar';
 import HeaderButtons from './HeaderButtons/HeaderButtons';
 
 //Test
-import { setAuth } from '@/features/auth/authSlice';
+import { login, logout } from '@/features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth } from '@/features/auth/authSlice';
 
@@ -21,7 +21,11 @@ const Header = () => {
 			<div
 				className={styles.AuthBtnTest}
 				onClick={() => {
-					dispatch(setAuth(!isAuth));
+					if (isAuth) {
+						dispatch(logout());
+					} else {
+						dispatch(login());
+					}
 				}}
 			>
 				auth: {isAuth.toString()}

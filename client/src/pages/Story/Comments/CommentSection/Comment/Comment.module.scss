@@ -1,3 +1,5 @@
+@import '@/utils/_mixins';
+
 .Comment {
 	display: flex;
 }
@@ -91,5 +93,5 @@
 }
 
 .ActionsMenu::after {
-	border-color: transparent transparent rgb(36, 36, 36);
+	@include addBorderStyles('bottomLeft', rgb(36, 36, 36));
 }

@@ -12,6 +12,11 @@
 	transition: 0.2s ease-in-out;
 }
 
+.ButtonWithMoreMenu .MoreMenu.Open {
+	visibility: visible;
+	opacity: 1;
+}
+
 .ButtonInner {
 	width: 100%;
 	height: 100%;

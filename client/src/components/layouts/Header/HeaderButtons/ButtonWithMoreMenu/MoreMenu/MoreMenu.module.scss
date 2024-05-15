@@ -1,3 +1,5 @@
+@import '@/utils/_mixins';
+
 .MoreMenu {
 	visibility: hidden;
 	width: 200px;
@@ -11,5 +13,5 @@
 }
 
 .MoreMenu::after {
-	border-color: transparent transparent rgb(20, 20, 20);
+	@include addBorderStyles('bottomLeft', rgb(20, 20, 20));
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './ForYouStory.module.css';
+import styles from './ForYouStory.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import previewImg from '@/assets/images/preview.jpg';
 import musicIcon from '@/assets/icons/music.svg?url';

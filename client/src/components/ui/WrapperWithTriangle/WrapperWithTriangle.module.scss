@@ -150,3 +150,34 @@
 	top: 22px;
 	left: -15px;
 }
+
+/* @mixin triangleBorder($color) {
+	.TopLeft::after,
+	.TopCenter::after,
+	.TopRight::after {
+		border-color: $color transparent transparent transparent;
+	}
+
+	.BottomLeft::after,
+	.BottomCenter::after,
+	.BottomRight::after {
+		border-color: transparent transparent $color transparent;
+	}
+
+	.LeftTop::after,
+	.LeftCenter::after,
+	.LeftBottom::after {
+		border-color: transparent transparent transparent $color;
+	}
+
+	.RightTop::after,
+	.RightCenter::after,
+	.RightBottom::after {
+		border-color: transparent $color transparent transparent;
+	}
+}
+  
+.myTriangle {
+	@include triangleBorder(#ff0000); // Красный цвет
+} */
+

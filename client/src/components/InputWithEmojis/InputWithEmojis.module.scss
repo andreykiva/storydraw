@@ -1,3 +1,5 @@
+@import '@/utils/_mixins';
+
 .InputWithEmojisForm {
 	position: relative;
 	max-width: calc(100%);
@@ -102,7 +104,7 @@
 }
 
 .Prompt::after {
-	border-color: rgb(36, 36, 36) transparent transparent;
+	@include addBorderStyles('topCenter', rgb(36, 36, 36));
 }
 
 .SendBtn {

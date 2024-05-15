@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './InboxSection.module.css';
+import styles from './InboxSection.module.scss';
 import InboxIcon from '@/assets/icons/inbox.svg';
 import useClickOutside from '@/hooks/useClickOutside';
 import Notifications from '@/components/Notifications/Notifications';

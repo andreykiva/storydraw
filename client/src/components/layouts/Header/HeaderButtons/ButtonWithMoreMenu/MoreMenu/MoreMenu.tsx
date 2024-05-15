@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './MoreMenu.module.css';
+import { useNavigate } from 'react-router-dom';
+import styles from './MoreMenu.module.scss';
 import languageIcon from '@/assets/icons/language.svg?url';
 import helpIcon from '@/assets/icons/help.svg?url';
 import darkModeIcon from '@/assets/icons/mode-dark.svg?url';
@@ -14,75 +15,77 @@ import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWith
 type MoreMenuProps = {
 	isAuth: boolean;
 	className: string;
+	onOpenLogoutModal: () => void;
 };
 
 type MenuItem = {
-	type: 'item' | 'link';
 	title: string;
 	icon: string;
-	to?: string;
-	target?: string;
+	onClick: () => void;
 };
 
-const generalItems: MenuItem[] = [
-	{
-		type: 'item',
-		title: 'English',
-		icon: languageIcon,
-	},
-	{
-		type: 'link',
-		title: 'Help',
-		icon: helpIcon,
-		to: '/',
-		target: '_blank',
-	},
-	{
-		type: 'item',
-		title: 'Dark Mode',
-		icon: darkModeIcon,
-	},
-];
+const MoreMenu = ({ isAuth, className, onOpenLogoutModal }: MoreMenuProps) => {
+	const navigate = useNavigate();
 
-const loggedInUserItems: MenuItem[] = [
-	{
-		type: 'link',
-		title: 'View profile',
-		icon: profileIcon,
-		to: '/@andrii',
-		target: '_self',
-	},
-	{
-		type: 'link',
-		title: 'Favorites',
-		icon: favoritesIcon,
-		to: '/@andrii',
-		target: '_self',
-	},
-	{
-		type: 'link',
-		title: 'Get Premium',
-		icon: diamondIcon,
-		to: '/subscribe',
-		target: '_self',
-	},
-	{
-		type: 'link',
-		title: 'Settings',
-		icon: settingsIcon,
-		to: '/settings',
-		target: '_self',
-	},
-];
+	const generalItems: MenuItem[] = [
+		{
+			title: 'English',
+			icon: languageIcon,
+			onClick: () => {},
+		},
+		{
+			title: 'Help',
+			icon: helpIcon,
+			onClick: navigate.bind(this, '/'),
+		},
+		{
+			title: 'Dark Mode',
+			icon: darkModeIcon,
+			onClick: () => {},
+		},
+	];
 
-const MoreMenu = ({ isAuth, className }: MoreMenuProps) => {
+	const loggedInUserItems: MenuItem[] = [
+		{
+			title: 'View profile',
+			icon: profileIcon,
+			onClick: navigate.bind(this, '/@andrii'),
+		},
+		{
+			title: 'Favorites',
+			icon: favoritesIcon,
+			onClick: navigate.bind(this, '/@andrii'),
+		},
+		{
+			title: 'Get Premium',
+			icon: diamondIcon,
+			onClick: navigate.bind(this, '/subscribe'),
+		},
+		{
+			title: 'Settings',
+			icon: settingsIcon,
+			onClick: navigate.bind(this, '/settings'),
+		},
+	];
+
 	return (
-		<WrapperWithTriangle position="bottomLeft" className={[styles.MoreMenu, className].join(' ')}>
+		<WrapperWithTriangle
+			position="bottomLeft"
+			className={[styles.MoreMenu, className].join(' ')}
+		>
 			{isAuth && loggedInUserItems.map((item) => <MoreMenuItem key={item.title} {...item} />)}
 			{generalItems.map((item) => (
 				<MoreMenuItem key={item.title} {...item} />
 			))}
-			{isAuth && <MoreMenuItem type="item" title="Log out" icon={logoutIcon} withBorder={true} />}
+			{isAuth && (
+				<MoreMenuItem
+					title="Log out"
+					icon={logoutIcon}
+					withBorder={true}
+					onClick={onOpenLogoutModal}
+				/>
+			)}
+			
 		</WrapperWithTriangle>
 	);
 };

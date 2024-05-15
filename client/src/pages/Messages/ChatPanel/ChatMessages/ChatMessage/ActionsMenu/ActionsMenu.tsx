@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ActionsMenu.module.css';
+import styles from './ActionsMenu.module.scss';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
 
 type ActionsMenuProps = {

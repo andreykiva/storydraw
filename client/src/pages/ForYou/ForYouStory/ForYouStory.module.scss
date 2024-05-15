@@ -1,3 +1,5 @@
+@import '@/utils/_mixins';
+
 .ForYouStory {
 	max-width: 1000px;
 	width: 100%;
@@ -122,5 +124,5 @@
 }
 
 .ActionsMenu::after {
-	border-color: transparent transparent rgb(36, 36, 36);
+	@include addBorderStyles('bottomLeft', rgb(36, 36, 36));
 }

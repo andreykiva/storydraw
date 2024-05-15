@@ -1,3 +1,5 @@
+@import '@/utils/_mixins';
+
 .InboxSection {
 	position: relative;
 	width: 36px;
@@ -11,7 +13,7 @@
 }
 
 .Prompt::after {
-	border-color: transparent transparent rgb(36, 36, 36);
+	@include addBorderStyles('bottomCenter', rgb(36, 36, 36));
 }
 
 .InboxBtn {
