@@ -1,17 +1,17 @@
-@mixin addBorderStyles($position, $borderColor) {
-	@if ($position=='topLeft'or $position=='topCenter'or $position=='topRight') {
-		border-color: #{$borderColor} transparent transparent transparent;
+@mixin addTriangleColor($position, $color) {
+	@if ($position=='top') {
+		border-color: transparent transparent #{$color} transparent;
 	}
 
-	@else if ($position=='bottomLeft'or $position=='bottomCenter'or $position=='bottomRight') {
-		border-color: transparent transparent #{$borderColor} transparent;
+	@else if ($position=='bottom') {
+		border-color: #{$color} transparent transparent transparent;
 	}
 
-	@else if ($position=='leftTop'or $position=='leftCenter'or $position=='leftBottom') {
-		border-color: transparent transparent transparent #{$borderColor};
+	@else if ($position=='left') {
+		border-color: transparent #{$color} transparent transparent;
 	}
 
-	@else if ($position=='rightTop'or $position=='rightCenter'or $position=='rightBottom') {
-		border-color: transparent #{$borderColor} transparent transparent;
+	@else if ($position=='right') {
+		border-color: transparent transparent transparent #{$color};
 	}
 }
