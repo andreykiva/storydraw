@@ -93,5 +93,5 @@
 }
 
 .ActionsMenu::after {
-	@include addTriangleBorder('top', rgb(36, 36, 36));
+	@include addTriangleStyles('top', rgb(36, 36, 36));
 }

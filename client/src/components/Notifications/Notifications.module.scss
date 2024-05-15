@@ -12,7 +12,7 @@
 }
 
 .Notifications::after {
-	@include addTriangleBorder('top', rgb(20, 20, 20));
+	@include addTriangleStyles('top', rgb(20, 20, 20));
 }
 
 .NotifHeader {

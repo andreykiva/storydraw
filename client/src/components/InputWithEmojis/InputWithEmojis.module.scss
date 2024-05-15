@@ -104,7 +104,7 @@
 }
 
 .Prompt::after {
-	@include addTriangleBorder('bottom', rgb(36, 36, 36));
+	@include addTriangleStyles('bottom', rgb(36, 36, 36));
 }
 
 .SendBtn {
