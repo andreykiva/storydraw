@@ -124,5 +124,5 @@
 }
 
 .ActionsMenu::after {
-	@include addBorderStyles('bottomLeft', rgb(36, 36, 36));
+	@include addTriangleColor('top', rgb(36, 36, 36));
 }
