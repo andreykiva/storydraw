@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './MenuPanel.module.css';
+import styles from './MenuPanel.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import settingsIcon from '@/assets/icons/settings.svg?url';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './AuthOption.module.css';
+import styles from './AuthOption.module.scss';
 
 type AuthOptionProps = {
 	title: string;

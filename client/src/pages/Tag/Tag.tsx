@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import styles from './Tag.module.css';
+import styles from './Tag.module.scss';
 import TagStory from './TagStory/TagStory';
 import { formatNumber } from '@/utils/numberUtils';
 

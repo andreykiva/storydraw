@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './TagStory.module.css';
+import styles from './TagStory.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import previewImg from '@/assets/images/preview.jpg';
 import type Story from '@/types/Story';

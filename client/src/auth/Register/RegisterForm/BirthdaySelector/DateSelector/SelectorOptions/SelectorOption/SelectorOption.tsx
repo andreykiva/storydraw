@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './SelectorOption.module.css';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import styles from './SelectorOption.module.scss';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import CheckIcon from '@/assets/icons/check.svg';
 
 type SelectorOptionProps = {

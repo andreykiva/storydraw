@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './InteractionsMenu.module.css';
+import styles from './InteractionsMenu.module.scss';
 import InteractionsItem from './InteractionsItem/InteractionsItem';
 
 const InteractionsMenu = () => {

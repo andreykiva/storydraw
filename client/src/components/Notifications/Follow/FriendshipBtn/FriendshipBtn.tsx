@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FriendshipBtn.module.css';
+import styles from './FriendshipBtn.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
 import swapIcon from '@/assets/icons/notifications/swap.svg?url';
 

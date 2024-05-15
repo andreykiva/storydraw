@@ -1,5 +1,5 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.css';
+import notifSharedStyles from './notifSharedStyles.module.scss';
 import personIcon from '@/assets/icons/notifications/person.svg?url';
 import Follow from './Follow/Follow';
 import type { FollowNotification } from '@/types/Notification';

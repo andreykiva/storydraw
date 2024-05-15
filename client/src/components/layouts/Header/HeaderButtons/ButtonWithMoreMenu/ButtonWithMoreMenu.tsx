@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './ButtonWithMoreMenu.module.css';
+import styles from './ButtonWithMoreMenu.module.scss';
 import moreIcon from '@/assets/icons/more.svg?url';
 import defaultImg from '@/assets/images/default.svg?url';
 import MoreMenu from './MoreMenu/MoreMenu';

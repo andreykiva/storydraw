@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ChatPanelHeader.module.css';
+import styles from './ChatPanelHeader.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import { Link } from 'react-router-dom';
 

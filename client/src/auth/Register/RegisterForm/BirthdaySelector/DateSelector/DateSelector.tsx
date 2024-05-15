@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import styles from './DateSelector.module.css';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import styles from './DateSelector.module.scss';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import useClickOutside from '@/hooks/useClickOutside';
 import SelectorHeader from './SelectorHeader/SelectorHeader';
 import SelectorOptions from './SelectorOptions/SelectorOptions';

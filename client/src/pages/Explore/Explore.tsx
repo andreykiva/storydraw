@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Explore.module.css';
+import styles from './Explore.module.scss';
 import drawnIcon from '@/assets/icons/brush.svg?url';
 import pixelIcon from '@/assets/icons/pixelated.svg?url';
 import frameIcon from '@/assets/icons/movie-roll.svg?url';

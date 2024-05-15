@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SelectorSearchBar.module.css';
+import styles from './SelectorSearchBar.module.scss';
 import searchIcon from '@/assets/icons/search.svg?url';
 
 const SelectorSearchBar = (props: React.ComponentProps<'input'>) => {

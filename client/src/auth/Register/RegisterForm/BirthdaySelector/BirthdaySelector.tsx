@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './BirthdaySelector.module.css';
+import styles from './BirthdaySelector.module.scss';
 import DateSelector from './DateSelector/DateSelector';
 import months from '@/data/months';
 

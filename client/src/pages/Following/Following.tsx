@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Following.module.css';
+import styles from './Following.module.scss';
 import Follow from './Follow/Follow';
 
 const testFollowing = [

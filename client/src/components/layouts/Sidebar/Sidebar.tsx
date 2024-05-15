@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Sidebar.module.css';
+import styles from './Sidebar.module.scss';
 import Footer from '@/components/layouts/Footer/Footer';
 import Nav from './Nav/Nav';
 import SidebarAccounts from './SidebarAccounts/SidebarAccounts';

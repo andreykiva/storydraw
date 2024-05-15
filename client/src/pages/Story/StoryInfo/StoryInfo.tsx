@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './StoryInfo.module.css';
+import styles from './StoryInfo.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
 import defaultImg from '@/assets/images/default.svg?url';
 import musicIcon from '@/assets/icons/music.svg?url';

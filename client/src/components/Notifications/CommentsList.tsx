@@ -1,5 +1,5 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.css';
+import notifSharedStyles from './notifSharedStyles.module.scss';
 import commentIcon from '@/assets/icons/notifications/comment.svg?url';
 import Comment from './Comment/Comment';
 import type { CommentNotification } from '@/types/Notification';

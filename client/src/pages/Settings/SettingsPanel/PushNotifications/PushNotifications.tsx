@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from './PushNotifications.module.css';
-import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.css';
+import styles from './PushNotifications.module.scss';
+import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.scss';
 import SettingsSection from '@/pages/Settings/SettingsPanel/SettingsSection/SettingsSection';
 import SettingsSubsection from '../SettingsSubsection/SettingsSubsection';
 import arrowDownIcon from '@/assets/icons/arrow-down.svg?url';

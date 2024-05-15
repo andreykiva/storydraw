@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from './Login.module.css';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import styles from './Login.module.scss';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import LoginOptions from './LoginOptions/LoginOptions';
 import LoginWithQR from './LoginWithQR/LoginWithQR';
 import ArrowIcon from '@/assets/icons/arrow.svg';

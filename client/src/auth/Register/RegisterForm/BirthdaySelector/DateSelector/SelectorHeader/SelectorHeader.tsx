@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './SelectorHeader.module.css';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import styles from './SelectorHeader.module.scss';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import arrowDownIcon from '@/assets/icons/arrow-down.svg?url';
 
 type SelectorHeaderProps = {

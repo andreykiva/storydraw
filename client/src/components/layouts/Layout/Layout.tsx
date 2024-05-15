@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import styles from './Layout.module.css';
+import styles from './Layout.module.scss';
 import Header from '@/components/layouts/Header/Header';
 import Sidebar from '@/components/layouts/Sidebar/Sidebar';
 import Auth from '@/auth/Auth';

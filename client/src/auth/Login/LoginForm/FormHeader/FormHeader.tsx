@@ -1,5 +1,5 @@
 import React from 'react';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 
 type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
 

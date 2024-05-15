@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './DeleteAccountInformation.module.css';
+import styles from './DeleteAccountInformation.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
 import HTag from '@/components/ui/HTag/HTag';
 

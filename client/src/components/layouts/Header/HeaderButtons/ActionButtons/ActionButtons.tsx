@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ActionButtons.module.css';
+import styles from './ActionButtons.module.scss';
 import MessagesBtn from './MessagesBtn/MessagesBtn';
 import InboxSection from './InboxSection/InboxSection';
 

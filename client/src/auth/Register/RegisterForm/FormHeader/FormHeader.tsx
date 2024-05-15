@@ -1,10 +1,10 @@
 import React from 'react';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 
 type FormHeaderProps = {
 	isPhoneMode: boolean;
 	onEnablePhoneMode: () => void;
-    onDisablePhoneMode: () => void;
+	onDisablePhoneMode: () => void;
 };
 
 const FormHeader = ({ isPhoneMode, onEnablePhoneMode, onDisablePhoneMode }: FormHeaderProps) => {

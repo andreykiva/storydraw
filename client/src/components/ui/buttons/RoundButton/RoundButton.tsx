@@ -1,8 +1,12 @@
 import React from 'react';
-import styles from './RoundButton.module.css';
+import styles from './RoundButton.module.scss';
 
 const RoundButton = ({ className, children, ...rest }: React.ComponentProps<'button'>) => {
-	return <button className={[styles.RoundButton, className].join(' ')} {...rest}>{children}</button>;
+	return (
+		<button className={[styles.RoundButton, className].join(' ')} {...rest}>
+			{children}
+		</button>
+	);
 };
 
 export default RoundButton;

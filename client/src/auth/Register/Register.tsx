@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Register.module.css';
+import styles from './Register.module.scss';
 import RegisterOptions from './RegisterOptions/RegisterOptions';
 import AuthContainer from '@/auth/AuthContainer/AuthContainer';
 

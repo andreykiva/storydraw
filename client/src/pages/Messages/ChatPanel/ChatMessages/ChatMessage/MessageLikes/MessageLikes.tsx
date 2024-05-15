@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MessageLikes.module.css';
+import styles from './MessageLikes.module.scss';
 import LikeIcon from '@/assets/icons/like.svg';
 import defaultImg from '@/assets/images/default.svg?url';
 import type { MessageLikes } from '@/types/Message';

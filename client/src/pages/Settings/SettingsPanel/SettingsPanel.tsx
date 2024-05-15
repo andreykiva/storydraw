@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import styles from './SettingsPanel.module.css';
+import styles from './SettingsPanel.module.scss';
 import ManageAccount from './ManageAccount/ManageAccount';
 import Privacy from './Privacy/Privacy';
 import PushNotifications from './PushNotifications/PushNotifications';

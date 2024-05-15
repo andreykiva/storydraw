@@ -1,5 +1,5 @@
 import React from 'react';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import CheckIcon from '@/assets/icons/check.svg';
 
 type SelectorOptionProps = {

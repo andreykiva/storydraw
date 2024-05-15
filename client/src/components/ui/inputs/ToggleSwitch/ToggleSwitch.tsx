@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ToggleSwitch.module.css';
+import styles from './ToggleSwitch.module.scss';
 
 type ToggleSwitchProps = {
 	checked: boolean;

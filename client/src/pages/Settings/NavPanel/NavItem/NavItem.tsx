@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './NavItem.module.css';
+import styles from './NavItem.module.scss';
 
 type NavItemProps = {
 	title: string;

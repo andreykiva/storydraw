@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ConfirmationModal.module.css';
+import styles from './ConfirmationModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 import HTag from '@/components/ui/HTag/HTag';

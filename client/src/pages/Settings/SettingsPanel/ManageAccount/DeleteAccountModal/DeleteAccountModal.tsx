@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './DeleteAccountModal.module.css';
+import styles from './DeleteAccountModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 import DeleteAccountInformation from './DeleteAccountInformation/DeleteAccountInformation';

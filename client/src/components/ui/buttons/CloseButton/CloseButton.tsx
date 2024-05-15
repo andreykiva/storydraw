@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CloseButton.module.css';
+import styles from './CloseButton.module.scss';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import closeIcon from '@/assets/icons/close.svg?url';
 

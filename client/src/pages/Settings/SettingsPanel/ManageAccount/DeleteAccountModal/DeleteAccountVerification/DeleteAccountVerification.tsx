@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './DeleteAccountVerification.module.css';
+import styles from './DeleteAccountVerification.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';

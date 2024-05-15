@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Nav.module.css';
+import styles from './Nav.module.scss';
 import LikeIcon from '@/assets/icons/like.svg';
 import PersonIcon from '@/assets/icons/person.svg';
 import ExploreIcon from '@/assets/icons/explore.svg';

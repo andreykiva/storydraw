@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from './ManageAccount.module.css';
-import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.css';
+import styles from './ManageAccount.module.scss';
+import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.scss';
 import SettingsSection from '@/pages/Settings/SettingsPanel/SettingsSection/SettingsSection';
 import SettingsSubsection from '@/pages/Settings/SettingsPanel/SettingsSubsection/SettingsSubsection';
 import DeleteAccountModal from './DeleteAccountModal/DeleteAccountModal';

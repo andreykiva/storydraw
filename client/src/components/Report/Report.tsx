@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styles from './Report.module.css';
+import styles from './Report.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 import { reportCategories } from '@/data/reportCategories';

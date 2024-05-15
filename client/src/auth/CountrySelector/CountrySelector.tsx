@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import styles from './CountrySelector.module.css';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import styles from './CountrySelector.module.scss';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import { searchAndSortCountries } from '@/utils/countriesUtils';
 import useClickOutside from '@/hooks/useClickOutside';
 import SelectorHeader from './SelectorHeader/SelectorHeader';

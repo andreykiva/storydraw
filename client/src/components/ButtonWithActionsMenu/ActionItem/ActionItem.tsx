@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ActionItem.module.css';
+import styles from './ActionItem.module.scss';
 
 type ActionItemProps = {
 	name: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Replies.module.css';
+import styles from './Replies.module.scss';
 import Comment from '@/pages/Story/Comments/CommentSection/Comment/Comment';
 
 const testReplies = [

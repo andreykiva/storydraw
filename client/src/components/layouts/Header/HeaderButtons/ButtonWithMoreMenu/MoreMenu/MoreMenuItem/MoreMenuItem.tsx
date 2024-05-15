@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MoreMenuItem.module.css';
+import styles from './MoreMenuItem.module.scss';
 
 type MoreMenuItemProps = {
 	title: string;

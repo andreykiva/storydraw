@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './NavPanel.module.css';
+import styles from './NavPanel.module.scss';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import arrowIcon from '@/assets/icons/arrow-left.svg?url';
 import PersonIcon from '@/assets/icons/settings/person.svg';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FormFooter.module.css';
+import styles from './FormFooter.module.scss';
 
 type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
 

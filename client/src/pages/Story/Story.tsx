@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Story.module.css';
+import styles from './Story.module.scss';
 import storyImg from '@/assets/images/preview.jpg';
 import closeIcon from '@/assets/icons/close.svg?url';
 import ReportIcon from '@/assets/icons/report.svg';

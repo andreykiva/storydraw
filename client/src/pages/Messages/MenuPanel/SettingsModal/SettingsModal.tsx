@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './SettingsModal.module.css';
+import styles from './SettingsModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import Button from '@/components/ui/buttons/Button/Button';
 import Radio from '@/components/ui/inputs/Radio/Radio';

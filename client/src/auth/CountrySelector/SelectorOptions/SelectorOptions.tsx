@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './SelectorOptions.module.css';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import styles from './SelectorOptions.module.scss';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import SelectorOption from './SelectorOption/SelectorOption';
 import { highlightText } from '@/utils/textUtils';
 import type Country from '@/types/Country';

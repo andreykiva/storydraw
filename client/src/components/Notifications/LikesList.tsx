@@ -1,5 +1,5 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.css';
+import notifSharedStyles from './notifSharedStyles.module.scss';
 import heartIcon from '@/assets/icons/notifications/heart.svg?url';
 import Like from './Like/Like';
 import type { LikeNotification } from '@/types/Notification';

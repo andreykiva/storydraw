@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CodeInput.module.css';
+import styles from './CodeInput.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
 import Input from '@/components/ui/inputs/Input/Input';
 

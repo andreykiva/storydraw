@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
-import styles from './SearchBar.module.css';
+import styles from './SearchBar.module.scss';
 // import { openSearch, closeSearch } from '@/features/search/searchSlice';
 import searchIcon from '@/assets/icons/search.svg?url';
 import SearchResults from './SearchResults/SearchResults';

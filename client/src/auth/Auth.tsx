@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import styles from './Auth.module.css';
+import styles from './Auth.module.scss';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import { closeAuthModal } from '@/features/auth/authSlice';
@@ -25,7 +25,7 @@ const Auth = () => {
 		<ModalOverlay>
 			<div className={styles.AuthModal}>
 				<CloseButton className={styles.CloseBtn} onClick={handleClose} />
-				
+
 				{authMode === 'login' && <Login />}
 				{authMode === 'register' && <Register />}
 

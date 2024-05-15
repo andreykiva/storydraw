@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import styles from './Comment.module.css';
+import styles from './Comment.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import { closeNotificationsModal } from '@/features/notifications/notificationsSlice';
 import type { CommentNotification } from '@/types/Notification';

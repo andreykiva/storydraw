@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ForYou.module.css';
+import styles from './ForYou.module.scss';
 import ForYouStory from './ForYouStory/ForYouStory';
 
 const testStories = [

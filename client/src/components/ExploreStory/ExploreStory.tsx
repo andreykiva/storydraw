@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ExploreStory.module.css';
+import styles from './ExploreStory.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import previewImg from '@/assets/images/preview.jpg';
 import LikeIcon from '@/assets/icons/like.svg';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SearchAccounts.module.css';
+import styles from './SearchAccounts.module.scss';
 import SearchAccount from './SearchAccount/SearchAccount';
 
 const testAccoutns = [

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './ChatListItem.module.css';
+import styles from './ChatListItem.module.scss';
 import type User from '@/types/User';
 import defaultImg from '@/assets/images/default.svg?url';
 import { displayDate } from '@/utils/dateUtils';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Comments.module.css';
+import styles from './Comments.module.scss';
 import CommentSection from './CommentSection/CommentSection';
 
 const testComments = [

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import styles from './ChatMessage.module.css';
+import styles from './ChatMessage.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import MoreIcon from '@/assets/icons/more-horizontal.svg';
 import ActionsMenu from './ActionsMenu/ActionsMenu';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ProfileStory.module.css';
+import styles from './ProfileStory.module.scss';
 import previewImg from '@/assets/images/preview.jpg';
 import viewsIcon from '@/assets/icons/views.svg?url';
 import { formatNumber } from '@/utils/numberUtils';

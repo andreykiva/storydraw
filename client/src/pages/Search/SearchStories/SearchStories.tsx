@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SearchStories.module.css';
+import styles from './SearchStories.module.scss';
 import ExploreStory from '@/components/ExploreStory/ExploreStory';
 
 const testStories = [

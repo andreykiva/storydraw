@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import authSharedStyles from '@/auth/AuthSharedStyles.module.css';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';
 import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';

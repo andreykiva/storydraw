@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Prompt.module.css';
+import styles from './Prompt.module.scss';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
 import type { MenuPosition } from '@/types/Positions';
 

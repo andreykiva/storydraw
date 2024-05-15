@@ -1,5 +1,5 @@
 import React from 'react';
-import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.css';
+import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.scss';
 import ToggleSwitch from '@/components/ui/inputs/ToggleSwitch/ToggleSwitch';
 
 type InteractionsItemProps = {

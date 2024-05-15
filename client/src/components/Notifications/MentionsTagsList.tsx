@@ -1,5 +1,5 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.css';
+import notifSharedStyles from './notifSharedStyles.module.scss';
 import tagIcon from '@/assets/icons/notifications/tag.svg?url';
 
 const MentionsTagsList = () => {

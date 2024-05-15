@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import styles from './ChatPanel.module.css';
+import styles from './ChatPanel.module.scss';
 import ChatPanelHeader from './ChatPanelHeader/ChatPanelHeader';
 import ChatMessages from './ChatMessages/ChatMessages';
 import { selectActiveChatmateId } from '@/features/chat/chatSlice';
