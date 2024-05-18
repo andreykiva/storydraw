@@ -1,10 +1,10 @@
 .Comment {
 	width: 100%;
 	background-color: rgb(20, 20, 20);
-}
 
-.Comment:hover {
-	background-color: rgb(26, 26, 26);
+	&:hover {
+		background-color: rgb(26, 26, 26);
+	}
 }
 
 .CommentLink {
@@ -19,11 +19,11 @@
 	max-width: 48px;
 	width: 100%;
 	height: 48px;
-}
 
-.AuthorImg {
-	width: 100%;
-	border-radius: 50%;
+	.AuthorImg {
+		width: 100%;
+		border-radius: 50%;
+	}
 }
 
 .CommentInfo {
@@ -33,10 +33,10 @@
 
 .AuthorTitle {
 	color: var(--light-color);
-}
 
-.AuthorTitle:hover {
-	opacity: .8;
+	&:hover {
+		opacity: .8;
+	}
 }
 
 .CommentContent {
@@ -45,17 +45,17 @@
 	letter-spacing: -0.3px;
 	font-weight: 400;
 	margin-bottom: 2px;
-}
 
-.CommentNote {
-	font-weight: 600;
-	margin-right: 3px;
-}
+	.CommentNote {
+		font-weight: 600;
+		margin-right: 3px;
+	}
 
-.CommentDate {
-	font-weight: 600;
-	color: rgb(130, 130, 130);
-	margin-left: 5px;
+	.CommentDate {
+		font-weight: 600;
+		color: rgb(130, 130, 130);
+		margin-left: 5px;
+	}
 }
 
 .ParentComment {
@@ -71,17 +71,17 @@
 	text-overflow: ellipsis;
 	word-break: break-word;
 	-webkit-line-clamp: 1;
-}
 
-.ParentComment::before {
-	content: "";
-	display: block;
-	position: absolute;
-	width: 2px;
-	height: 17px;
-	left: 0;
-	top: 1px;
-	background-color: rgb(100, 100, 100);
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 2px;
+		height: 17px;
+		left: 0;
+		top: 1px;
+		background-color: rgb(100, 100, 100);
+	}
 }
 
 .Story {

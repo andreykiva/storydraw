@@ -6,11 +6,11 @@
 .AccountImgWr {
 	width: 60px;
 	margin-right: 20px;
-}
 
-.AccountImg {
-	width: 100%;
-	border-radius: 50%;
+	.AccountImg {
+		width: 100%;
+		border-radius: 50%;
+	}
 }
 
 .AccountInfo {
@@ -39,11 +39,11 @@
 
 .FollowersInfo {
 	font-weight: 400;
-}
 
-.Followers {
-	font-weight: 700;
-	color: var(--white-dark-color);
+	.Followers {
+		font-weight: 700;
+		color: var(--white-dark-color);
+	}
 }
 
 .Descr {
@@ -51,4 +51,3 @@
 	font-weight: 500;
 	color: var(--white-dark-color);
 }
-

@@ -20,40 +20,40 @@
 	left: 14px;
 	display: flex;
 	align-items: center;
+
+	.ViewsIcon {
+		width: 24px;
+		margin-right: 2px;
+	}
+
+	.Views {
+		line-height: 1;
+		font-weight: 700;
+		color: var(--light-color);
+	}
 }
 
-.ViewsIcon {
-	width: 24px;
-	margin-right: 2px;
-}
-
-.Views {
-	line-height: 1;
-	font-weight: 700;
-	color: var(--light-color);
-}
-
-.InfoDescr {
+.StoryDescr {
 	margin-bottom: 4px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+
+	.DescrText {
+		margin-right: 2px;
+	}
+
+	.Tag {
+		color: var(--main-color);
+		margin: 0 2px;
+
+		&:hover {
+			opacity: .7;
+		}
+	}
 }
 
-.DescrText {
-	margin-right: 2px;
-}
-
-.Tag {
-	color: var(--main-color);
-	margin: 0 2px;
-}
-
-.Tag:hover {
-	opacity: .7;
-}
-
-.UserInfo {
+.BottomInfo {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -63,28 +63,28 @@
 .UserLink {
 	display: flex;
 	align-items: center;
-}
 
-.ProfileImg {
-	width: 26px;
-	margin-right: 6px;
-	border-radius: 50%;
-}
+	.ProfileImg {
+		width: 26px;
+		margin-right: 6px;
+		border-radius: 50%;
+	}
 
-.Username {
-	font-weight: 500;
-}
+	.Username {
+		font-weight: 500;
 
-.Username:hover {
-	opacity: 0.7;
+		&:hover {
+			opacity: 0.7;
+		}
+	}
 }
 
 .LikesInfo {
 	display: flex;
 	align-items: center;
-}
 
-.LikeIcon {
-	width: 20px;
-	margin-right: 6px;
+	.LikeIcon {
+		width: 20px;
+		margin-right: 6px;
+	}
 }

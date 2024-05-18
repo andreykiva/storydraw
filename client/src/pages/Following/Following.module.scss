@@ -3,19 +3,19 @@
 	max-height: 100%;
 	padding: 20px 0;
 	overflow-y: scroll;
-}
 
-.Following::-webkit-scrollbar {
-	width: 8px;
-}
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 
-.Following::-webkit-scrollbar-track {
-	background: transparent;
-}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 
-.Following::-webkit-scrollbar-thumb {
-	background: #09483549;
-	border-radius: 4px;
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
 }
 
 .FollowingList {
@@ -27,8 +27,8 @@
 	flex-wrap: wrap;
 	gap: 20px;
 	margin: 0 auto;
-}
 
-.FollowingList >* {
-	flex: 1 1 50px;
+	>* {
+		flex: 1 1 50px;
+	}
 }

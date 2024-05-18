@@ -15,8 +15,8 @@
 	font-size: 13px;
 	color: var(--main-color);
 	cursor: pointer;
-}
 
-.FooterBtn:hover {
-	opacity: .7;
+	&:hover {
+		opacity: .7;
+	}
 }

@@ -2,6 +2,30 @@
 	max-width: 430px;
 	width: 100%;
 	height: 46px;
+
+	/* Light */
+	&.Light {
+		.SearchForm {
+			border: 1px solid rgba(255, 255, 255, 0.5);
+			background-color: transparent;
+		}
+
+		.SearchInput {
+			color: var(--light-color);
+		}
+
+		.SearchInput::placeholder {
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.SearchIcon {
+			opacity: .8;
+		}
+
+		.SearchBtn:hover {
+			background-color: rgba(255, 255, 255, 0.144);
+		}
+	}
 }
 
 .SearchForm {
@@ -24,10 +48,10 @@
 	font-size: 17px;
 	font-weight: 500;
 	caret-color: var(--bright-green-color);
-}
 
-.SearchInput::placeholder {
-	color: rgba(255, 255, 255, 0.3);
+	&::placeholder {
+		color: rgba(255, 255, 255, 0.3);
+	}
 }
 
 .SearchBtn {
@@ -38,36 +62,13 @@
 	padding-right: 10px;
 	background-color: transparent;
 	cursor: pointer;
-}
 
-.SearchBtn:hover {
-	background-color: rgb(48, 48, 48);
-}
+	&:hover {
+		background-color: rgb(48, 48, 48);
+	}
 
-.SearchIcon {
-	opacity: 0.3;
-	width: 24px;
-}
-
-/* Light */
-
-.SearchBar.Light .SearchForm {
-	border: 1px solid rgba(255, 255, 255, 0.5);
-	background-color: transparent;
-}
-
-.SearchBar.Light .SearchInput {
-	color: var(--light-color);
-}
-
-.SearchBar.Light .SearchInput::placeholder {
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.SearchBar.Light .SearchIcon {
-	opacity: .8;
-}
-
-.SearchBar.Light .SearchBtn:hover {
-	background-color: rgba(255, 255, 255, 0.144);
+	.SearchIcon {
+		opacity: 0.3;
+		width: 24px;
+	}
 }

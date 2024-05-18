@@ -5,15 +5,11 @@
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
-}
 
-.MessagesBtn:hover .Prompt {
-	opacity: 1;
-	visibility: visible;
-}
-
-.Prompt::after {
-	@include addTriangleStyles('top', rgb(36, 36, 36));
+	&:hover .Prompt {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 
 .MessagesLink {
@@ -23,12 +19,18 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	&:not(.Active):hover {
+		opacity: 0.7;
+	}
+
+	/* 
+	&.Active .SendIcon {
+		fill: #D1D1D1;
+	}	
+	*/
 }
 
-.MessagesLink:not(.Active):hover {
-	opacity: 0.7;
+.Prompt::after {
+	@include addTriangleStyles('top', rgb(36, 36, 36));
 }
-
-/* .MessagesLink.Active .SendIcon {
-	fill: #D1D1D1;
-} */

@@ -5,19 +5,19 @@
 	max-height: 100%;
 	padding: 35px 25px;
 	overflow-y: scroll;
-}
 
-.Profile::-webkit-scrollbar {
-	width: 8px;
-}
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 
-.Profile::-webkit-scrollbar-track {
-	background: transparent;
-}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 
-.Profile::-webkit-scrollbar-thumb {
-	background: #09483549;
-	border-radius: 4px;
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
 }
 
 .ProfileInfo {
@@ -33,31 +33,41 @@
 	max-width: 115px;
 	width: 100%;
 	margin-right: 20px;
-}
 
-.ProfileImg {
-	width: 100%;
-	border-radius: 50%;
+	.ProfileImg {
+		width: 100%;
+		border-radius: 50%;
+	}
 }
 
 .InfoMain {
 	margin-right: 50px;
+
+	.Username {
+		font-weight: 800;
+		font-size: 30px;
+		margin-bottom: 2px;
+	}
+
+	.UserTitle {
+		display: block;
+		font-size: 18px;
+		margin-bottom: 14px;
+	}
+
+	.FollowBtn {
+		max-width: 160px;
+	}
 }
 
-.Username {
-	font-weight: 800;
-	font-size: 30px;
-	margin-bottom: 2px;
+.ActionsBtn {
+	width: 24px;
+	height: 24px;
+	margin-top: 8px;
 }
 
-.UserTitle {
-	display: block;
-	font-size: 18px;
-	margin-bottom: 14px;
-}
-
-.FollowBtn {
-	max-width: 160px;
+.ActionsMenu::after {
+	@include addTriangleStyles('top', rgb(36, 36, 36));
 }
 
 .UserStatistics {
@@ -69,11 +79,11 @@
 	margin-right: 20px;
 	font-size: 18px;
 	font-weight: 400;
-}
 
-.ItemValue {
-	font-weight: 700;
-	margin-right: 2px;
+	.ItemValue {
+		font-weight: 700;
+		margin-right: 2px;
+	}
 }
 
 .UserDescr {
@@ -87,18 +97,8 @@
 	gap: 20px;
 	padding-top: 10px;
 	border-top: 1px solid #d1d1d11a;
-}
 
-.ProfileStories>* {
-	flex: 1 1 50px;
-}
-
-.ActionsBtn {
-	width: 24px;
-	height: 24px;
-	margin-top: 8px;
-}
-
-.ActionsMenu::after {
-	@include addTriangleStyles('top', rgb(36, 36, 36));
+	>* {
+		flex: 1 1 50px;
+	}
 }

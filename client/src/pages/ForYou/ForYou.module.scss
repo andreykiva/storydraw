@@ -4,17 +4,17 @@
 	align-items: center;
 	max-height: 100%;
 	overflow-y: scroll;
-}
 
-.ForYou::-webkit-scrollbar {
-	width: 8px;
-}
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 
-.ForYou::-webkit-scrollbar-track {
-	background: transparent;
-}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 
-.ForYou::-webkit-scrollbar-thumb {
-	background: #09483549;
-	border-radius: 4px;
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
 }

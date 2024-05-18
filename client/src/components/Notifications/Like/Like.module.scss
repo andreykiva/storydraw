@@ -1,10 +1,10 @@
 .Like {
 	width: 100%;
 	background-color: rgb(20, 20, 20);
-}
 
-.Like:hover {
-	background-color: rgb(26, 26, 26);
+	&:hover {
+		background-color: rgb(26, 26, 26);
+	}
 }
 
 .StoryLink {
@@ -27,11 +27,6 @@
 	border-radius: 0;
 }
 
-.UserImg {
-	width: 100%;
-	border-radius: 50%;
-}
-
 .UserImgSmall {
 	position: absolute;
 	width: 36px;
@@ -41,14 +36,19 @@
 	bottom: 0;
 	left: 0;
 	z-index: 1;
+
+	&:last-child {
+		top: 0;
+		right: 0;
+		left: auto;
+		bottom: auto;
+		z-index: 0;
+	}
 }
 
-.UserImgSmall:last-child {
-	top: 0;
-	right: 0;
-	left: auto;
-	bottom: auto;
-	z-index: 0;
+.UserImg {
+	width: 100%;
+	border-radius: 50%;
 }
 
 .LikeInfo {
@@ -67,10 +67,10 @@
 
 .UserTitle {
 	color: var(--light-color);
-}
 
-.UserTitle:hover {
-	opacity: .8;
+	&:hover {
+		opacity: .8;
+	}
 }
 
 .LikeNote {
@@ -80,10 +80,10 @@
 	letter-spacing: -0.3px;
 	font-weight: 600;
 	color: rgb(130, 130, 130);
-}
 
-.LikeDate {
-	margin-left: 5px;
+	.LikeDate {
+		margin-left: 5px;
+	}
 }
 
 .ParentComment {
@@ -99,17 +99,17 @@
 	text-overflow: ellipsis;
 	word-break: break-word;
 	-webkit-line-clamp: 1;
-}
 
-.ParentComment::before {
-	content: "";
-	display: block;
-	position: absolute;
-	width: 2px;
-	height: 17px;
-	left: 0;
-	top: 1px;
-	background-color: rgb(100, 100, 100);
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 2px;
+		height: 17px;
+		left: 0;
+		top: 1px;
+		background-color: rgb(100, 100, 100);
+	}
 }
 
 .Story {

@@ -2,19 +2,19 @@
 	max-height: 100%;
 	overflow-y: scroll;
 	padding: 30px 10px;
-}
 
-.Tag::-webkit-scrollbar {
-	width: 8px;
-}
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 
-.Tag::-webkit-scrollbar-track {
-	background: transparent;
-}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 
-.Tag::-webkit-scrollbar-thumb {
-	background: #09483549;
-	border-radius: 4px;
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
 }
 
 .TagHeader {
@@ -36,25 +36,25 @@
 
 .TagInfo {
 	padding-top: 10px;
-}
 
-.TagTitle {
-	font-size: 30px;
-	margin-bottom: 4px;
-	font-weight: 800;
-}
+	.TagTitle {
+		font-size: 30px;
+		margin-bottom: 4px;
+		font-weight: 800;
+	}
 
-.TagViews {
-	font-size: 18px;
-	font-weight: 500;
+	.TagViews {
+		font-size: 18px;
+		font-weight: 500;
+	}
 }
 
 .TagStories {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
-}
 
-.TagStories >* {
-	flex: 1 1 50px;
+	>* {
+		flex: 1 1 50px;
+	}
 }

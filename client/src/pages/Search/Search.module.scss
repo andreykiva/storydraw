@@ -25,21 +25,21 @@
 	position: relative;
 	margin: 0 30px;
 	color: #d1d1d18e;
-}
 
-.SearchType.ActiveType {
-	color: var(--main-color);
-}
+	&.ActiveType {
+		color: var(--main-color);
 
-.SearchType.ActiveType::after {
-	content: "";
-	display: block;
-	position: absolute;
-	bottom: -12px;
-	left: 0;
-	width: 100%;
-	height: 2px;
-	background-color: #d1d1d1be;
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: -12px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: #d1d1d1be;
+		}
+	}
 }
 
 .SearchContent {
@@ -48,17 +48,17 @@
 	max-height: 100%;
 	overflow-y: scroll;
 	padding-top: 70px;
-}
 
-.SearchContent::-webkit-scrollbar-track {
-	background: transparent;
-}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 
-.SearchContent::-webkit-scrollbar-thumb {
-	background: #09483549;
-	border-radius: 4px;
-}
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
 
-.SearchContent::-webkit-scrollbar {
-	width: 8px;
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 }

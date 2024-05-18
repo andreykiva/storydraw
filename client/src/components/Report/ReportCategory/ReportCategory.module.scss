@@ -6,10 +6,10 @@
 	padding: 0 8px;
 	border-radius: 8px;
 	cursor: pointer;
-}
 
-.ReportCategory:hover {
-	background-color: #ffffff11;
+	&:hover {
+		background-color: #ffffff11;
+	}
 }
 
 .CategoryName {

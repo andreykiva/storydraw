@@ -3,14 +3,14 @@
 	align-items: center;
 	padding: 10px 16px;
 	cursor: pointer;
-}
 
-.MoreMenuItem.WithBorder {
-	border-top: 1px solid #d1d1d11a;
-}
+	&.WithBorder {
+		border-top: 1px solid #d1d1d11a;
+	}
 
-.MoreMenuItem:hover {
-	background-color: #ffffff07;
+	&:hover {
+		background-color: #ffffff07;
+	}
 }
 
 .ItemIcon {

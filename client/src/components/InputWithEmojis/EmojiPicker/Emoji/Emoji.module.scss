@@ -7,8 +7,8 @@
 	border-radius: 50%;
 	font-size: 26px;
 	cursor: pointer;
-}
 
-.Emoji:hover {
-	opacity: .7;
+	&:hover {
+		opacity: .7;
+	}
 }

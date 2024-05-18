@@ -10,6 +10,17 @@
 	border-radius: 10px;
 }
 
+.BackBtn {
+	position: absolute;
+	top: 8px;
+	left: -54px;
+	background-color: rgb(20, 20, 20);
+
+	.BackIcon {
+		width: 24px;
+	}
+}
+
 .PanelHeader {
 	height: 60px;
 	display: flex;
@@ -28,19 +39,8 @@
 	height: 28px;
 	padding: 0;
 	background-color: transparent;
-}
 
-.SettingsIcon {
-	width: 100%;
-}
-
-.BackBtn {
-	position: absolute;
-	top: 8px;
-	left: -54px;
-	background-color: rgb(20, 20, 20);
-}
-
-.BackIcon {
-	width: 24px;
+	.SettingsIcon {
+		width: 100%;
+	}
 }

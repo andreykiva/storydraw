@@ -5,18 +5,18 @@
 	align-items: center;
 	padding: 0 20px;
 	color: var(--white-color);
-}
 
-.ActionItem:hover {
-	background-color: #ffffff17;
-}
+	&:hover {
+		background-color: #ffffff17;
+	}
 
-.ActionItem svg {
-	width: 22px;
-	height: 22px;
-	margin-right: 8px;
-}
+	svg {
+		width: 22px;
+		height: 22px;
+		margin-right: 8px;
 
-.ActionItem svg path {
-	stroke: var(--white-color);
+		path {
+			stroke: var(--white-color);
+		}
+	}
 }

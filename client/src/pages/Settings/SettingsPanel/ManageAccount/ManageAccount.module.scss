@@ -3,8 +3,8 @@
 	font-size: 17px;
 	font-weight: 500;
 	cursor: pointer;
-}
 
-.DeleteBtn:hover {
-	opacity: .9;
+	&:hover {
+		opacity: .9;
+	}
 }

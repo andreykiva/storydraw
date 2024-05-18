@@ -2,20 +2,24 @@
 
 .Comment {
 	display: flex;
+
+	&:hover .ActionsBtn {
+		opacity: 1;
+	}
+
+	&.Reply .ProfileImg {
+		width: 24px;
+	}
 }
 
 .ImgUserLink {
 	display: flex;
 	margin-right: 10px;
-}
 
-.ProfileImg {
-	width: 40px;
-	border-radius: 50%;
-}
-
-.Comment.Reply .ProfileImg {
-	width: 24px;
+	.ProfileImg {
+		width: 40px;
+		border-radius: 50%;
+	}
 }
 
 .CommentContent {
@@ -24,15 +28,15 @@
 
 .UserLink {
 	display: inline-block;
-}
 
-.UserTitle {
-	font-size: 15px;
-	font-weight: 700;
-}
+	&:hover {
+		opacity: .7;
+	}
 
-.UserLink:hover {
-	opacity: .7;
+	.UserTitle {
+		font-size: 15px;
+		font-weight: 700;
+	}
 }
 
 .CommentText {
@@ -44,25 +48,35 @@
 	display: flex;
 	font-size: 14px;
 	color: rgb(114, 114, 114);
-}
 
-.CommentDate {
-	margin-right: 35px;
-}
+	.CommentDate {
+		margin-right: 35px;
+	}
 
-.ReplyBtn {
-	cursor: pointer;
-	font-weight: 700;
-}
+	.ReplyBtn {
+		cursor: pointer;
+		font-weight: 700;
 
-.ReplyBtn:hover {
-	opacity: .8;
+		&:hover {
+			opacity: .8;
+		}
+	}
 }
 
 .CommentInteraction {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.ActionsBtn {
+	width: 22px;
+	height: 22px;
+	opacity: 0;
+}
+
+.ActionsMenu::after {
+	@include addTriangleStyles('top', rgb(36, 36, 36));
 }
 
 .LikeBtn {
@@ -73,25 +87,11 @@
 	color: rgb(114, 114, 114);
 	font-weight: 700;
 	cursor: pointer;
-}
 
-.LikeIcon {
-	width: 20px;
-	height: 20px;
-	margin-bottom: 4px;
-	fill: rgb(114, 114, 114);
-}
-
-.ActionsBtn {
-	width: 22px;
-	height: 22px;
-	opacity: 0;
-}
-
-.Comment:hover .ActionsBtn {
-	opacity: 1;
-}
-
-.ActionsMenu::after {
-	@include addTriangleStyles('top', rgb(36, 36, 36));
+	.LikeIcon {
+		width: 20px;
+		height: 20px;
+		margin-bottom: 4px;
+		fill: rgb(114, 114, 114);
+	}
 }

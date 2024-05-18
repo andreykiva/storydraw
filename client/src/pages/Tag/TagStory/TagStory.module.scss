@@ -5,39 +5,39 @@
 	min-width: 260px;
 }
 
-.TagStoryContent {
-	display: inline-block;
-	width: 100%;
-}
-
-.Story {
-	width: 100%;
-	border-radius: 8px;
-}
-
 .UserInfoLink {
 	position: absolute;
 	left: 12px;
 	bottom: 37px;
 	display: flex;
 	align-items: center;
+
+	.ProfileImg {
+		width: 28px;
+		margin-right: 6px;
+		border-radius: 50%;
+	}
+
+	.Username {
+		font-weight: 700;
+		color: var(--light-color);
+	}
 }
 
-.ProfileImg {
-	width: 28px;
-	margin-right: 6px;
-	border-radius: 50%;
-}
+.TagStoryContent {
+	display: inline-block;
+	width: 100%;
 
-.Username {
-	font-weight: 700;
-	color: var(--light-color);
-}
+	.Story {
+		width: 100%;
+		border-radius: 8px;
+	}
 
-.TagStoryDescr {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-weight: 500;
-	padding: 0 4px;
+	.TagStoryDescr {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-weight: 500;
+		padding: 0 4px;
+	}
 }

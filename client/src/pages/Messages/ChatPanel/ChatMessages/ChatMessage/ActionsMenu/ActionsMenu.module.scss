@@ -8,10 +8,10 @@
 	padding: 10px 14px;
 	color: var(--light-color);
 	z-index: 2;
-}
 
-.ActionsMenu::after {
-	@include addTriangleStyles('bottom', rgb(62, 62, 62));
+	&::after {
+		@include addTriangleStyles('bottom', rgb(62, 62, 62));
+	}
 }
 
 .Action {
@@ -19,8 +19,8 @@
 	font-weight: 400;
 	letter-spacing: -0.5px;
 	cursor: pointer;
-}
 
-.Action:hover {
-	opacity: .7;
+	&:hover {
+		opacity: .7;
+	}
 }

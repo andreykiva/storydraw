@@ -3,16 +3,15 @@
 	width: 36px;
 	height: 36px;
 	padding: 0;
-	font-family: 'Karla', sans-serif;
+
+	&:hover .MoreMenu {
+		visibility: visible;
+		opacity: 1;
+		transition: 0.2s ease-in-out;
+	}
 }
 
-.ButtonWithMoreMenu:hover .MoreMenu {
-	visibility: visible;
-	opacity: 1;
-	transition: 0.2s ease-in-out;
-}
-
-.ButtonWithMoreMenu .MoreMenu.Open {
+.MoreMenu.Open {
 	visibility: visible;
 	opacity: 1;
 }
@@ -22,13 +21,13 @@
 	height: 100%;
 	border-radius: 50%;
 	cursor: pointer;
-}
 
-.ButtonInner:hover {
-	background: rgb(20, 20, 20);
-}
+	&:hover {
+		background: rgb(20, 20, 20);
+	}
 
-.MoreIcon {
-	width: 100%;
-	border-radius: 50%;
+	.MoreIcon {
+		width: 100%;
+		border-radius: 50%;
+	}
 }

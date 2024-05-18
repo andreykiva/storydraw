@@ -19,10 +19,20 @@
 	padding: 10px 16px;
 	background-color: rgb(44, 44, 44);
 	border-radius: 12px;
+
+	&.Constrained {
+		max-width: calc(100% - 62px);
+	}
 }
 
-.Constrained {
-	max-width: calc(100% - 62px);
+.Placeholder {
+	position: absolute;
+	left: 16px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #b1afaf;
+	font-weight: 500;
+	overflow: hidden;
 }
 
 .InputSection {
@@ -44,19 +54,19 @@
 	caret-color: var(--bright-green-color);
 	word-wrap: break-word;
 	white-space: pre-wrap;
-}
 
-.InpurWrapper::-webkit-scrollbar {
-	width: 8px;
-}
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 
-.InpurWrapper::-webkit-scrollbar-track {
-	background: transparent;
-}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 
-.InpurWrapper::-webkit-scrollbar-thumb {
-	background: rgb(70, 70, 70);
-	border-radius: 4px;
+	&::-webkit-scrollbar-thumb {
+		background: rgb(70, 70, 70);
+		border-radius: 4px;
+	}
 }
 
 .ValueLength {
@@ -65,22 +75,17 @@
 	color: #8f8f8f;
 }
 
-.Placeholder {
-	position: absolute;
-	left: 16px;
-	top: 50%;
-	transform: translateY(-50%);
-	color: #b1afaf;
-	font-weight: 500;
-	overflow: hidden;
-}
-
 .TogglePickerSection {
 	position: relative;
 	width: 32px;
 	height: 32px;
 	margin: auto 0 0 10px;
 	border-radius: 50%;
+
+	&:not(.Active):hover .Prompt {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 
 .TogglePickerBtn {
@@ -92,15 +97,10 @@
 	border-radius: 50%;
 	background: transparent;
 	cursor: pointer;
-}
 
-.TogglePickerBtn:hover {
-	opacity: .7;
-}
-
-.TogglePickerSection:not(.Active):hover .Prompt {
-	opacity: 1;
-	visibility: visible;
+	&:hover {
+		opacity: .7;
+	}
 }
 
 .Prompt::after {
@@ -113,13 +113,13 @@
 	margin: auto 0 0 10px;
 	padding: 0;
 	background: transparent;
-}
 
-.SendBtn:hover {
-	background: transparent;
-	opacity: .8;
-}
+	&:hover {
+		background: transparent;
+		opacity: .8;
+	}
 
-.SendIcon {
-	width: 34px;
+	.SendIcon {
+		width: 34px;
+	}
 }

@@ -3,25 +3,43 @@
 	flex-direction: column;
 	align-items: start;
 	padding: 8px 0;
-}
 
-.ChatMessage.My {
-	align-items: flex-end;
-	justify-content: flex-end;
+	&.My {
+		align-items: flex-end;
+		justify-content: flex-end;
+
+		.MessageAuthor {
+			order: 3;
+		}
+
+		.MessageText {
+			order: 2;
+			margin: 0 8px 0 0;
+			background: #069167;
+		}
+
+		.ButtonWithActionsMenu {
+			order: 1;
+		}
+	}
 }
 
 .MessageContent {
 	display: flex;
+
+	&:hover .ButtonWithActionsMenu {
+		display: block;
+	}
 }
 
 .MessageAuthor {
 	width: 32px;
 	height: 32px;
-}
 
-.AuthorImg {
-	width: 100%;
-	border-radius: 50%;
+	.AuthorImg {
+		width: 100%;
+		border-radius: 50%;
+	}
 }
 
 .MessageText {
@@ -37,20 +55,6 @@
 	letter-spacing: -0.5px;
 }
 
-.ChatMessage.My .MessageAuthor {
-	order: 3;
-}
-
-.ChatMessage.My .MessageText {
-	order: 2;
-	margin: 0 8px 0 0;
-	background: #069167;
-}
-
-.ChatMessage.My .ButtonWithActionsMenu {
-	order: 1;
-}
-
 .ButtonWithActionsMenu {
 	position: relative;
 	display: none;
@@ -59,16 +63,12 @@
 	align-items: center;
 	margin: 10px 16px 0;
 	cursor: pointer;
-}
 
-.MessageContent:hover .ButtonWithActionsMenu {
-	display: block;
-}
+	.MoreIcon {
+		width: 100%;
 
-.MoreIcon {
-	width: 100%;
-}
-
-.MoreIcon path {
-	fill: var(--main-color);
+		path {
+			fill: var(--main-color);
+		}
+	}
 }

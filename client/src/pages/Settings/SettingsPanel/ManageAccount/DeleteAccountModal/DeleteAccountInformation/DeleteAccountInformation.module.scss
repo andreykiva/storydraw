@@ -1,12 +1,12 @@
+.Title {
+	font-size: 24px;
+	margin-bottom: 40px;
+}
+
 .DeleteAccountInformation {
 	padding: 0 8px;
 	font-size: 15px;
 	font-weight: 300;
-}
-
-.Title {
-	font-size: 24px;
-	margin-bottom: 40px;
 }
 
 .InfoText:not(:last-child) {
@@ -17,10 +17,10 @@
 	padding-left: 16px;
 	list-style: disc;
 	margin-bottom: 16px;
-}
 
-.InfoList li {
-	margin-bottom: 8px;
+	li {
+		margin-bottom: 8px;
+	}
 }
 
 .ContinueBtn {

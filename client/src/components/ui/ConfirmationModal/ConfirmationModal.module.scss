@@ -13,26 +13,26 @@
 		margin-bottom: 16px;
 		font-size: 24px;
 	}
+}
 
-	.CloseBtn {
-		position: absolute;
-		top: 16px;
-		right: 16px;
-	}
+.CloseBtn {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+}
 
-	.ModalDescr {
-		margin: 0 20px 24px;
-		font-size: 17px;
-		font-weight: 500;
-		text-align: center;
-		color: #b1b1b1;
-	}
+.ModalDescr {
+	margin: 0 20px 24px;
+	font-size: 17px;
+	font-weight: 500;
+	text-align: center;
+	color: #b1b1b1;
+}
 
-	.ModalActionButtons {
-		display: flex;
-		justify-content: center;
-		gap: 10px;
-	}
+.ModalActionButtons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
 
 	.CancelBtn,
 	.ConfirmBtn {
@@ -46,20 +46,20 @@
 	.CancelBtn {
 		border: 1px solid rgb(54, 54, 54);
 		background-color: rgb(54, 54, 54);
-	}
 
-	.CancelBtn:hover {
-		border-color: var(--white-dark-color);
-		background-color: rgb(26, 26, 26);
+		&:hover {
+			border-color: var(--white-dark-color);
+			background-color: rgb(26, 26, 26);
+		}
 	}
 
 	.ConfirmBtn {
 		border: 1px solid var(--bright-green-color);
 		background-color: rgb(54, 54, 54);
 		color: var(--bright-green-color);
-	}
 
-	.ConfirmBtn:hover {
-		background-color: rgb(27, 31, 27);
+		&:hover {
+			background-color: rgb(27, 31, 27);
+		}
 	}
 }

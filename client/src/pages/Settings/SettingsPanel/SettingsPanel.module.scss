@@ -8,8 +8,8 @@
 	background: rgb(20, 20, 20);
 	border-radius: 10px;
 	overflow-y: auto;
-}
 
-.SettingsPanel::-webkit-scrollbar {
-	width: 0px;
+	&::-webkit-scrollbar {
+		width: 0px;
+	}
 }

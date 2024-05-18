@@ -6,8 +6,8 @@
 	align-items: center;
 	border-radius: 50%;
 	cursor: pointer;
-}
 
-.RoundButton:hover {
-	opacity: .7;
+	&:hover {
+		opacity: .7;
+	}
 }

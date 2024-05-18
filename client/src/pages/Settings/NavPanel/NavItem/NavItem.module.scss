@@ -6,22 +6,22 @@
 	font-size: 19px;
 	font-weight: 500;
 	cursor: pointer;
-}
 
-.NavItem:hover {
-	background-color: #ffffff0a;
-}
+	&:hover {
+		background-color: #ffffff0a;
+	}
 
-.NavItem.Active {
-	color: var(--bright-green-color);
-}
+	&.Active {
+		color: var(--bright-green-color);
 
-.NavItem.Active svg path {
-	stroke: var(--bright-green-color);
-}
+		svg path {
+			stroke: var(--bright-green-color);
+		}
+	}
 
-.NavItem svg {
-	width: 24px;
-	height: 24px;
-	margin-right: 12px;
+	svg {
+		width: 24px;
+		height: 24px;
+		margin-right: 12px;
+	}
 }

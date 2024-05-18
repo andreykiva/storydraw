@@ -20,18 +20,18 @@
 	left: 12px;
 	display: flex;
 	align-items: center;
-}
 
-.ViewsIcon {
-	width: 24px;
-	margin-right: 2px;
-}
+	.ViewsIcon {
+		width: 24px;
+		margin-right: 2px;
+	}
 
-.Views {
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 1;
-	color: var(--light-color);
+	.Views {
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 1;
+		color: var(--light-color);
+	}
 }
 
 .InfoDescr {

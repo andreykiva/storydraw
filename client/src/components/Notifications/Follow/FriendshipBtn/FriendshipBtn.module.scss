@@ -9,18 +9,18 @@
 	border-radius: 10px;
 	font-size: 15px;
 	letter-spacing: -0.5px;
-}
 
-.FriendshipBtn.FriendsBtn {
-	background: rgba(255, 255, 255, .08);
-	color: var(--main-color);
-}
+	&.FriendsBtn {
+		background: rgba(255, 255, 255, .08);
+		color: var(--main-color);
 
-.FriendshipBtn.FriendsBtn:hover {
-	opacity: 0.8;
-}
+		&:hover {
+			background: rgba(255, 255, 255, 0.062);
+		}
 
-.FriendsIcon {
-	width: 14px;
-	margin-right: 6px;
+		.FriendsIcon {
+			width: 14px;
+			margin-right: 6px;
+		}
+	}
 }

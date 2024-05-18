@@ -11,33 +11,33 @@
 .ImgUserLink {
 	display: flex;
 	margin-right: 12px;
-}
 
-.ProfileImg {
-	width: 40px;
-	border-radius: 50%;
-}
-
-.Username {
-	font-weight: 800;
+	.ProfileImg {
+		width: 40px;
+		border-radius: 50%;
+	}
 }
 
 .UserLink:hover {
 	opacity: .7;
 }
 
+.Username {
+	font-weight: 800;
+}
+
 .UserInfoBottom {
 	display: flex;
 	align-items: center;
 	font-weight: 500;
-}
 
-.Dot {
-	width: 2px;
-	height: 2px;
-	border-radius: 50%;
-	background-color: var(--main-color);
-	margin: 0 6px;
+	.Dot {
+		width: 2px;
+		height: 2px;
+		border-radius: 50%;
+		background-color: var(--main-color);
+		margin: 0 6px;
+	}
 }
 
 .FollowBtn {
@@ -54,12 +54,12 @@
 	align-items: center;
 	margin-bottom: 20px;
 	font-weight: 500;
-}
 
-.MusicIcon {
-	width: 12px;
-	height: 12px;
-	margin-right: 10px;
+	.MusicIcon {
+		width: 12px;
+		height: 12px;
+		margin-right: 10px;
+	}
 }
 
 .StoryInfoBottom {
@@ -72,19 +72,19 @@
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-}
 
-.StoryInfoItem:hover {
-	opacity: .7;
-}
+	&:hover {
+		opacity: .7;
+	}
 
-.ItemIcon {
-	width: 26px;
-	height: 26px;
-	margin-right: 8px;
-}
+	.ItemIcon {
+		width: 26px;
+		height: 26px;
+		margin-right: 8px;
+	}
 
-.ItemNumber {
-	font-size: 14px;
-	font-weight: 700;
+	.ItemNumber {
+		font-size: 14px;
+		font-weight: 700;
+	}
 }

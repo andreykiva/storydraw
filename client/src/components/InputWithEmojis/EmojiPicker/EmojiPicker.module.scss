@@ -14,24 +14,30 @@
 .Emojis {
 	height: 100%;
 	overflow-y: auto;
-}
 
-.Emojis::-webkit-scrollbar {
-	width: 8px;
-}
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 
-.Emojis::-webkit-scrollbar-track {
-	background: rgb(40, 40, 40);
-	border-radius: 4px;
-}
+	&::-webkit-scrollbar-track {
+		background: rgb(40, 40, 40);
+		border-radius: 4px;
+	}
 
-.Emojis::-webkit-scrollbar-thumb {
-	background: rgb(70, 70, 70);
-	border-radius: 4px;
+	&::-webkit-scrollbar-thumb {
+		background: rgb(70, 70, 70);
+		border-radius: 4px;
+	}
 }
 
 .EmojisCategory:not(:last-child) {
 	margin-bottom: 8px;
+}
+
+.CategoryName {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 17px;
 }
 
 .EmojisList {
@@ -39,10 +45,4 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 8px;
-}
-
-.CategoryName {
-	display: block;
-	margin-bottom: 8px;
-	font-size: 17px;
 }

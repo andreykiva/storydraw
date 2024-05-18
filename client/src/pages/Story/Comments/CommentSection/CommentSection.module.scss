@@ -10,10 +10,10 @@
 	font-weight: 700;
 	color: rgb(114, 114, 114);
 	cursor: pointer;
-}
 
-.ViewRepliesBtn:hover {
-	opacity: .7;
+	&:hover {
+		opacity: .7;
+	}
 }
 
 .ArrowIcon {
@@ -36,8 +36,8 @@
 	font-size: 14px;
 	color: rgb(114, 114, 114);
 	cursor: pointer;
-}
 
-.HideRepliesBtn .ArrowIcon {
-	transform: rotate(-180deg);
+	.ArrowIcon {
+		transform: rotate(-180deg);
+	}
 }

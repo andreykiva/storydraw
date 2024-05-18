@@ -8,18 +8,18 @@
 	color: var(--main-color);
 }
 
-.LoginBtnWr {
-	padding: 20px 10px 0;
-}
-
-.LoginBtn {
-	margin-bottom: 30px;
-	height: 45px;
-	border-radius: 30px;
-}
-
 .SidebarDivider {
 	margin: 10px 10px 20px;
 	height: 1px;
 	background-color: #d1d1d11a;
+}
+
+.LoginBtnWr {
+	padding: 20px 10px 0;
+
+	.LoginBtn {
+		margin-bottom: 30px;
+		height: 45px;
+		border-radius: 30px;
+	}
 }

@@ -2,6 +2,36 @@
 	position: relative;
 	flex: 1 0;
 	margin-bottom: 10px;
+
+	&.GroupError {
+		.Input {
+			border-color: #FF4C3A;
+		}
+
+		.WarningIcon {
+			display: block;
+		}
+	}
+
+	/* .Code */
+	&.Code .Input {
+		border-radius: 4px 0 0 4px;
+	}
+
+	/* .Password */
+	&.Password .InputIcon {
+		padding-right: 56px;
+	}
+
+	/* .Phone */
+	&.Phone .Input {
+		border-radius: 0 4px 4px 0;
+	}
+
+	/* .Username */
+	&.Username {
+		margin-bottom: 6px;
+	}
 }
 
 .Input {
@@ -17,8 +47,19 @@
 	caret-color: var(--bright-green-color);
 }
 
-.FormGroup.GroupError .Input {
-	border-color: #FF4C3A;
+.InputIcon {
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	padding-right: 20px;
+
+	.WarningIcon {
+		display: none;
+		width: 16px;
+		height: 16px;
+	}
 }
 
 .InputError {
@@ -27,43 +68,4 @@
 	letter-spacing: -0.3px;
 	color: #FF4C3A;
 	margin-top: 9px;
-}
-
-.InputIcon {
-	position: absolute;
-	right: 0;
-	display: flex;
-	align-items: center;
-	height: 46px;
-	padding-right: 20px;
-}
-
-.WarningIcon {
-	display: none;
-	width: 16px;
-	height: 16px;
-}
-
-.FormGroup.GroupError .WarningIcon {
-	display: block;
-}
-
-/* .Code */
-.FormGroup.Code .Input {
-	border-radius: 4px 0 0 4px;
-}
-
-/* .Password */
-.FormGroup.Password .InputIcon {
-	padding-right: 56px;
-}
-
-/* .Phone */
-.FormGroup.Phone .Input {
-	border-radius: 0 4px 4px 0;
-}
-
-/* .Username */
-.FormGroup.Username {
-	margin-bottom: 6px;
 }

@@ -16,11 +16,11 @@
 	width: 56px;
 	height: 56px;
 	margin-right: 14px;
-}
 
-.ProfileImg {
-	width: 100%;
-	border-radius: 50%;
+	.ProfileImg {
+		width: 100%;
+		border-radius: 50%;
+	}
 }
 
 .HeaderInfo {
@@ -33,49 +33,49 @@
 	display: inline-flex;
 	align-items: center;
 	margin-bottom: 2px;
-}
 
-.HeaderInfoUser:hover .InfoUsername {
-	opacity: .7;
-}
+	&:hover .InfoUsername {
+		opacity: .7;
+	}
 
-.InfoUsername {
-	margin-right: 10px;
-	font-size: 18px;
-	font-weight: 700;
-}
+	.InfoUsername {
+		margin-right: 10px;
+		font-size: 18px;
+		font-weight: 700;
+	}
 
-.InfoTitle {
-	padding-top: 2px;
-	font-weight: 400;
+	.InfoTitle {
+		padding-top: 2px;
+		font-weight: 400;
+	}
 }
 
 .InfoDescr {
 	margin-bottom: 4px;
 	font-weight: 500;
-}
 
-.DescrText {
-	margin-right: 2px;
-}
+	.DescrText {
+		margin-right: 2px;
+	}
 
-.Tag {
-	color: var(--main-color);
-	margin: 0 2px;
-}
+	.Tag {
+		color: var(--main-color);
+		margin: 0 2px;
 
-.Tag:hover {
-	opacity: .7;
+		&:hover {
+			opacity: .7;
+		}
+	}
 }
 
 .InfoMusic {
 	font-weight: 500;
-}
 
-.MusicIcon {
-	width: 12px;
-	height: 12px;
-	margin-right: 4px;
+	.MusicIcon {
+		width: 12px;
+		height: 12px;
+		margin-right: 4px;
+	}
 }
 
 .FollowBtn {
@@ -91,11 +91,11 @@
 
 .StoryLink {
 	display: flex;
-}
 
-.Story {
-	width: 100%;
-	border-radius: 12px;
+	.Story {
+		width: 100%;
+		border-radius: 12px;
+	}
 }
 
 .StoryPanel {
@@ -115,12 +115,12 @@
 
 .PanelItem {
 	text-align: center;
-}
 
-.PanelItem .ItemIcon {
-	width: 32px;
-	height: 32px;
-	cursor: pointer;
+	.ItemIcon {
+		width: 32px;
+		height: 32px;
+		cursor: pointer;
+	}
 }
 
 .ActionsMenu::after {

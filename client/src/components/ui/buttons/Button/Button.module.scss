@@ -13,14 +13,14 @@
 	font-size: 17px;
 	color: var(--light-color);
 	cursor: pointer;
-}
 
-.Button:hover {
-	background: #0a523c;
-}
+	&:hover {
+		background: #0a523c;
+	}
 
-.Button:disabled {
-	background-color: rgb(49, 49, 49);
-	color: rgb(126, 126, 126);
-	cursor: auto;
+	&:disabled {
+		background-color: rgb(49, 49, 49);
+		color: rgb(126, 126, 126);
+		cursor: auto;
+	}
 }

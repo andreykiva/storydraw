@@ -2,15 +2,18 @@
 	position: relative;
 	height: 72px;
 	cursor: pointer;
-}
 
-.ChatListItem.Active,
-.ChatListItem:hover {
-	background-color: #ffffff09;
-}
+	&:hover {
+		background-color: #ffffff09;
 
-.ChatListItem:hover .ActionsBtn {
-	opacity: 1;
+		.ActionsBtn {
+			opacity: 1;
+		}
+	}
+
+	&.Active {
+		background-color: #ffffff09;
+	}
 }
 
 .ItemContent {
@@ -26,11 +29,11 @@
 	width: 100%;
 	height: 56px;
 	margin-right: 10px;
-}
 
-.ChatmateImg {
-	width: 100%;
-	border-radius: 50%;
+	.ChatmateImg {
+		width: 100%;
+		border-radius: 50%;
+	}
 }
 
 .MessageInfo {
@@ -48,18 +51,18 @@
 	display: flex;
 	max-width: 200px;
 	font-size: 15px;
-}
 
-.MessageText {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	color: #b3b3b3;
-}
+	.MessageText {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		color: #b3b3b3;
+	}
 
-.MessageDate {
-	padding-left: 4px;
-	color: #8f8f8f;
+	.MessageDate {
+		padding-left: 4px;
+		color: #8f8f8f;
+	}
 }
 
 .ActionsBtn {
@@ -72,16 +75,16 @@
 	margin-left: auto;
 	opacity: 0;
 	z-index: 1;
-}
 
-.ActionsBtn.Active {
-	opacity: 1;
-}
+	&.Active {
+		opacity: 1;
+	}
 
-.MoreIcon {
-	width: 100%;
-}
+	.MoreIcon {
+		width: 100%;
 
-.MoreIcon path {
-	fill: var(--main-color);
+		path {
+			fill: var(--main-color);
+		}
+	}
 }

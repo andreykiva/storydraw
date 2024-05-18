@@ -12,27 +12,26 @@
 	color: var(--light-color);
 }
 
-.AuthModalFooter {
-	margin-top: auto;
-	padding: 20px;
-	text-align: center;
-	border-top: 1px solid #d1d1d136;
-	color: var(--main-color);
-}
-
-.FooterBtn {
-	display: inline-block;
-	margin-left: 5px;
-	color: var(--bright-green-color);
-	cursor: pointer;
-}
-
-.FooterBtn:hover {
-	opacity: .7;
-}
-
 .CloseBtn {
 	position: absolute;
 	right: 15px;
 	top: 15px;
+}
+
+.AuthModalFooter {
+	padding: 20px;
+	text-align: center;
+	border-top: 1px solid #d1d1d136;
+	color: var(--main-color);
+
+	.FooterBtn {
+		display: inline-block;
+		margin-left: 5px;
+		color: var(--bright-green-color);
+		cursor: pointer;
+
+		&:hover {
+			opacity: .7;
+		}
+	}
 }

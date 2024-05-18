@@ -6,13 +6,13 @@
 
 .BackBtn {
 	background: transparent;
-}
 
-.ArrowIcon {
-	width: 18px;
-	height: 18px;
-	transform: rotate(90deg);
-	fill: var(--white-dark-color);
+	.ArrowIcon {
+		width: 18px;
+		height: 18px;
+		transform: rotate(90deg);
+		fill: var(--white-dark-color);
+	}
 }
 
 .Title {
@@ -25,14 +25,6 @@
 	font-weight: 300;
 }
 
-.DeleteBtn {
-	width: 140px;
-	height: 36px;
-	border-radius: 6px;
-	font-size: 15px;
-	margin: auto 0 0 auto;
-}
-
 .VerifyWithSocialMedia {
 	width: 300px;
 	height: 80px;
@@ -43,4 +35,12 @@
 .VerifyWithCode {
 	width: 300px;
 	margin: 100px auto;
+}
+
+.DeleteBtn {
+	width: 140px;
+	height: 36px;
+	border-radius: 6px;
+	font-size: 15px;
+	margin: auto 0 0 auto;
 }

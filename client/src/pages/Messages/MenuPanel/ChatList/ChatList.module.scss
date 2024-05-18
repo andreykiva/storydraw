@@ -1,17 +1,17 @@
 .ChatList {
 	height: 100%;
 	overflow-y: auto;
-}
 
-.ChatList::-webkit-scrollbar-track {
-	background: transparent;
-}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 
-.ChatList::-webkit-scrollbar-thumb {
-	background: #09483549;
-	border-radius: 4px;
-}
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
 
-.ChatList::-webkit-scrollbar {
-	width: 8px;
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 }
