@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from './Login.module.scss';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import LoginOptions from './LoginOptions/LoginOptions';
 import LoginWithQR from './LoginWithQR/LoginWithQR';
@@ -13,7 +12,7 @@ const Login = () => {
 	const [loginView, setLoginView] = useState<LoginView>('loginOptions');
 
 	return (
-		<div className={styles.Login}>
+		<div className={authSharedStyles.AuthInner}>
 			{loginView !== 'loginOptions' && (
 				<RoundButton
 					className={authSharedStyles.BackBtn}

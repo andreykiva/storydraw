@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Nav.module.scss';
 import LikeIcon from '@/assets/icons/like.svg';
 import PersonIcon from '@/assets/icons/person.svg';
 import ExploreIcon from '@/assets/icons/explore.svg';
@@ -25,7 +24,7 @@ const links = [
 
 const Nav = () => {
 	return (
-		<nav className={styles.Nav}>
+		<nav>
 			<ul>
 				{links.map((link) => (
 					<NavItem key={link.title} title={link.title} to={link.to} iconComponent={link.iconComponent} />

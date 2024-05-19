@@ -59,7 +59,7 @@ const Story = () => {
 					</div>
 					<SearchBar light={true} />
 					<Button className={styles.ReportBtn} onClick={handleOpenReport}>
-						<ReportIcon className={styles.ActionsItemIcon} />
+						<ReportIcon className={styles.ReportIcon} />
 						<span>Report</span>
 					</Button>
 				</div>
@@ -71,15 +71,15 @@ const Story = () => {
 						<ArrowIcon className={styles.NavLinkIcon} />
 					</Link>
 				</div>
-				<img src={storyImg} alt="Story" className={styles.ActiveStory} />
+				<img src={storyImg} alt="Story" className={styles.StoryBlock} />
 			</div>
-			<div className={styles.StoryDetails}>
-				<div className={styles.DetailsTop}>
+			<div className={styles.StoryPanel}>
+				<div className={styles.StoryPanelTop}>
 					<StoryInfo {...testStoryInfo} />
 					<div className={styles.Underline}></div>
 					<Comments />
 				</div>
-				<div className={styles.DetailsBottom} onClick={handleLogin}>
+				<div className={styles.StoryPanelBottom} onClick={handleLogin}>
 					<div className={styles.LoginMessage}>Log in to comment</div>
 				</div>
 			</div>

@@ -1,9 +1,7 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.scss';
 import commentIcon from '@/assets/icons/notifications/comment.svg?url';
-import Comment from './Comment/Comment';
 import type { CommentNotification } from '@/types/Notification';
-import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
+import NotificationsList from './NotificationsList/NotificationsList';
 
 const testComments: CommentNotification[] = [
 	{
@@ -79,39 +77,13 @@ const testComments: CommentNotification[] = [
 ];
 
 const CommentsList = () => {
-	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testComments);
-
-	const renderCommentNotifications = (comments: CommentNotification[], title: string) => {
-		return (
-			<>
-				<div className={notifSharedStyles.DateText}>{title}</div>
-				<ul className={notifSharedStyles.NotificationsList}>
-					{comments.map((comment: CommentNotification) => (
-						<Comment key={comment.id} {...comment} />
-					))}
-				</ul>
-			</>
-		);
-	};
-
 	return (
-		<div className={notifSharedStyles.NotificationsListWr}>
-			{thisWeek.length + thisMonth.length + previous.length > 0 ? (
-				<>
-					{thisWeek.length > 0 && renderCommentNotifications(thisWeek, 'This week')}
-					{thisMonth.length > 0 && renderCommentNotifications(thisMonth, 'This Month')}
-					{previous.length > 0 && renderCommentNotifications(previous, 'Previous')}
-				</>
-			) : (
-				<div className={notifSharedStyles.NoNotifications}>
-					<img src={commentIcon} alt="Comment" className={notifSharedStyles.NoNotificationsIcon} />
-					<span className={notifSharedStyles.NoNotificationsTitle}>Comments on your videos</span>
-					<p className={notifSharedStyles.NoNotificationsDescr}>
-						When someone comments on one of your videos, you'll see it here
-					</p>
-				</div>
-			)}
-		</div>
+		<NotificationsList
+			notifications={testComments}
+			noNotificationsTitle="Comments on your videos"
+			noNotificationsIcon={commentIcon}
+			noNotificationsDescr="When someone comments on one of your videos, you'll see it here"
+		/>
 	);
 };
 

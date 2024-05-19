@@ -65,12 +65,13 @@ const Notifications = () => {
 					))}
 				</div>
 			</div>
-
-			{notificationsCategory === 'all' && <AllNotificationsList />}
-			{notificationsCategory === 'likes' && <LikesList />}
-			{notificationsCategory === 'comments' && <CommentsList />}
-			{notificationsCategory === 'mentionsTags' && <MentionsTagsList />}
-			{notificationsCategory === 'followers' && <FollowsList />}
+			<div className={styles.NotificationsListWr}>
+				{notificationsCategory === 'all' && <AllNotificationsList />}
+				{notificationsCategory === 'likes' && <LikesList />}
+				{notificationsCategory === 'comments' && <CommentsList />}
+				{notificationsCategory === 'mentionsTags' && <MentionsTagsList />}
+				{notificationsCategory === 'followers' && <FollowsList />}
+			</div>
 		</WrapperWithTriangle>
 	);
 };

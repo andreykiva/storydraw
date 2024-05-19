@@ -26,7 +26,7 @@ const ExploreStory = (props: ExploreStoryProps) => {
 					<span className={styles.Views}>{formatNumber(views)}</span>
 				</div>
 			</Link>
-			<p className={styles.InfoDescr}>
+			<p className={styles.StoryDescr}>
 				<span className={styles.DescrText}>{description}</span>
 				{tags.map((tag) => (
 					<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
@@ -34,7 +34,7 @@ const ExploreStory = (props: ExploreStoryProps) => {
 					</Link>
 				))}
 			</p>
-			<div className={styles.UserInfo}>
+			<div className={styles.BottomInfo}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
 					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					<span className={styles.Username}>{user.username}</span>

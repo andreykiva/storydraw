@@ -42,13 +42,12 @@ const SearchBar = ({ light = false }) => {
 	// const [trigger, { data, error, isLoading }] = searchAPI.useLazyFetchSearchResultQuery();
 
 	useEffect(() => {
-		if (param && value !== param) {
+		if (param) {
 			setValue(param);
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [param]);
 
-	useClickOutside([searchInputRef], () => {
+	useClickOutside([searchInputRef], isResultsOpen, () => {
 		setIsResultsOpen(false);
 	});
 
@@ -72,6 +71,7 @@ const SearchBar = ({ light = false }) => {
 					className={styles.SearchInput}
 					value={value}
 					onChange={handleChange}
+					onFocus={setIsResultsOpen.bind(this, true)}
 					placeholder="Search"
 					ref={searchInputRef}
 				/>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Register.module.scss';
+import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import RegisterOptions from './RegisterOptions/RegisterOptions';
 import AuthContainer from '@/auth/AuthContainer/AuthContainer';
 
@@ -9,7 +9,7 @@ const Register = () => {
 	const [registerView, setRegisterView] = useState<RegisterView>('registerOptions');
 
 	return (
-		<div className={styles.Register}>
+		<div className={authSharedStyles.AuthInner}>
 			{registerView === 'registerOptions' && (
 				<RegisterOptions openForm={setRegisterView.bind(this, 'registerForm')} />
 			)}

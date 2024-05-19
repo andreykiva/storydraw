@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './RegisterOptions.module.scss';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import userIcon from '@/assets/icons/auth/user.svg?url';
 import googleIcon from '@/assets/icons/auth/google.svg?url';
@@ -45,11 +44,11 @@ const RegisterOptions = ({ openForm }: RegisterOptionsProps) => {
 	];
 
 	return (
-		<div className={styles.RegisterOptions}>
+		<div>
 			<HTag tag="h2" className={authSharedStyles.Title}>
 				Sign Up for StoryDraw
 			</HTag>
-			<ul className={styles.RegisterOptionsList}>
+			<ul className={authSharedStyles.AuthOptionsList}>
 				{options.map((option) => (
 					<AuthOption key={option.alt} {...option} />
 				))}

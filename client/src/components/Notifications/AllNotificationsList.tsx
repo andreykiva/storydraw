@@ -1,11 +1,7 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.scss';
 import messageIcon from '@/assets/icons/notifications/message.svg?url';
-import Follow from './Follow/Follow';
-import Like from './Like/Like';
-import Comment from './Comment/Comment';
 import type { Notification } from '@/types/Notification';
-import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
+import NotificationsList from './NotificationsList/NotificationsList';
 
 const testAll: Notification[] = [
 	{
@@ -238,44 +234,13 @@ const testAll: Notification[] = [
 ];
 
 const AllNotificationsList = () => {
-	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testAll);
-
-	const renderAllNotifications = (notifications: Notification[], title: string) => {
-		return (
-			<>
-				<div className={notifSharedStyles.DateText}>{title}</div>
-				<ul className={notifSharedStyles.NotificationsList}>
-					{notifications.map((notification: Notification) => {
-						if (notification.type === 'follow') {
-							return <Follow key={notification.id} {...notification} />;
-						} else if (notification.type === 'like') {
-							return <Like key={notification.id} {...notification} />;
-						}
-
-						return <Comment key={notification.id} {...notification} />;
-					})}
-				</ul>
-			</>
-		);
-	};
 	return (
-		<div className={notifSharedStyles.NotificationsListWr}>
-			{thisWeek.length + thisMonth.length + previous.length > 0 ? (
-				<>
-					{thisWeek.length > 0 && renderAllNotifications(thisWeek, 'This week')}
-					{thisMonth.length > 0 && renderAllNotifications(thisMonth, 'This Month')}
-					{previous.length > 0 && renderAllNotifications(previous, 'Previous')}
-				</>
-			) : (
-				<div className={notifSharedStyles.NoNotifications}>
-					<img src={messageIcon} alt="Message" className={notifSharedStyles.NoNotificationsIcon} />
-					<span className={notifSharedStyles.NoNotificationsTitle}>All activity</span>
-					<p className={notifSharedStyles.NoNotificationsDescr}>
-						Notifications about your account will appear here
-					</p>
-				</div>
-			)}
-		</div>
+		<NotificationsList
+			notifications={testAll}
+			noNotificationsTitle="All activity"
+			noNotificationsIcon={messageIcon}
+			noNotificationsDescr="Notifications about your account will appear here"
+		/>
 	);
 };
 

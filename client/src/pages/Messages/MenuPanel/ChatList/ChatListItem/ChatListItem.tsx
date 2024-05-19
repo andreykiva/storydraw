@@ -21,7 +21,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 	const actionsBtnRef = useRef<HTMLDivElement>(null);
 	const activeChatmateId = useSelector(selectActiveChatmateId);
 
-	useClickOutside([actionsBtnRef], () => {
+	useClickOutside([actionsBtnRef], isActionsMenuOpen, () => {
 		setIsActionsMenuOpen(false);
 	});
 

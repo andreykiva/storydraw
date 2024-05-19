@@ -91,7 +91,7 @@ const ForYouStory = (props: ForYouStoryProps) => {
 							</Link>
 						))}
 					</p>
-					<div className={styles.InfoMwdusic}>
+					<div className={styles.InfoMusic}>
 						<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {musicName}
 					</div>
 				</div>

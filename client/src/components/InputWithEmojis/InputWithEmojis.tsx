@@ -46,7 +46,7 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 		setCurrentIndex(newHistory.length - 1);
 	};
 
-	useClickOutside([emojiPickerSectionRef, emojiPickerRef], () => {
+	useClickOutside([emojiPickerSectionRef, emojiPickerRef], isEmojiPickerOpen, () => {
 		setIsEmojiPickerOpen(false);
 	});
 

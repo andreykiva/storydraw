@@ -1,9 +1,7 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.scss';
 import heartIcon from '@/assets/icons/notifications/heart.svg?url';
-import Like from './Like/Like';
 import type { LikeNotification } from '@/types/Notification';
-import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
+import NotificationsList from './NotificationsList/NotificationsList';
 
 const testLikes: LikeNotification[] = [
 	{
@@ -118,39 +116,13 @@ const testLikes: LikeNotification[] = [
 ];
 
 const LikesList = () => {
-	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testLikes);
-
-	const renderLikeNotifications = (likes: LikeNotification[], title: string) => {
-		return (
-			<>
-				<div className={notifSharedStyles.DateText}>{title}</div>
-				<ul className={notifSharedStyles.NotificationsList}>
-					{likes.map((like: LikeNotification) => (
-						<Like key={like.id} {...like} />
-					))}
-				</ul>
-			</>
-		);
-	};
-
 	return (
-		<div className={notifSharedStyles.NotificationsListWr}>
-			{thisWeek.length + thisMonth.length + previous.length > 0 ? (
-				<>
-					{thisWeek.length > 0 && renderLikeNotifications(thisWeek, 'This week')}
-					{thisMonth.length > 0 && renderLikeNotifications(thisMonth, 'This Month')}
-					{previous.length > 0 && renderLikeNotifications(previous, 'Previous')}
-				</>
-			) : (
-				<div className={notifSharedStyles.NoNotifications}>
-					<img src={heartIcon} alt="Heart" className={notifSharedStyles.NoNotificationsIcon} />
-					<span className={notifSharedStyles.NoNotificationsTitle}>Likes on your videos</span>
-					<p className={notifSharedStyles.NoNotificationsDescr}>
-						When someone likes one of your videos, you'll see it here
-					</p>
-				</div>
-			)}
-		</div>
+		<NotificationsList
+			notifications={testLikes}
+			noNotificationsTitle="Likes on your stories"
+			noNotificationsIcon={heartIcon}
+			noNotificationsDescr="When someone likes one of your videos, you`ll see it here"
+		/>
 	);
 };
 

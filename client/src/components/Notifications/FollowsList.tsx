@@ -1,9 +1,7 @@
 import React from 'react';
-import notifSharedStyles from './notifSharedStyles.module.scss';
 import personIcon from '@/assets/icons/notifications/person.svg?url';
-import Follow from './Follow/Follow';
 import type { FollowNotification } from '@/types/Notification';
-import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
+import NotificationsList from './NotificationsList/NotificationsList';
 
 const testFollows: FollowNotification[] = [
 	{
@@ -57,39 +55,13 @@ const testFollows: FollowNotification[] = [
 ];
 
 const FollowsList = () => {
-	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(testFollows);
-
-	const renderFollowNotifications = (follows: FollowNotification[], title: string) => {
-		return (
-			<>
-				<div className={notifSharedStyles.DateText}>{title}</div>
-				<ul className={notifSharedStyles.NotificationsList}>
-					{follows.map((follow: FollowNotification) => (
-						<Follow key={follow.id} {...follow} />
-					))}
-				</ul>
-			</>
-		);
-	};
-
 	return (
-		<div className={notifSharedStyles.NotificationsListWr}>
-			{thisWeek.length + thisMonth.length + previous.length > 0 ? (
-				<>
-					{thisWeek.length > 0 && renderFollowNotifications(thisWeek, 'This week')}
-					{thisMonth.length > 0 && renderFollowNotifications(thisMonth, 'This Month')}
-					{previous.length > 0 && renderFollowNotifications(previous, 'Previous')}
-				</>
-			) : (
-				<div className={notifSharedStyles.NoNotifications}>
-					<img src={personIcon} alt="Person" className={notifSharedStyles.NoNotificationsIcon} />
-					<span className={notifSharedStyles.NoNotificationsTitle}>New followers</span>
-					<p className={notifSharedStyles.NoNotificationsDescr}>
-						When someone new follows you, you'll see it here
-					</p>
-				</div>
-			)}
-		</div>
+		<NotificationsList
+			notifications={testFollows}
+			noNotificationsTitle="New followers"
+			noNotificationsIcon={personIcon}
+			noNotificationsDescr="When someone new follows you, you'll see it here"
+		/>
 	);
 };
 

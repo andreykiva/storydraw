@@ -12,10 +12,10 @@ const LoginWithQR = () => {
 			<div className={styles.QRcodeWrapper}>
 				<div className={styles.QRcode}></div>
 			</div>
-			<div className={styles.QRcodeInfo}>
-				<p className={styles.InfoStep}>1. Scan with your mobile device's camera</p>
-				<p className={styles.InfoStep}>2. Confirm login or sign up</p>
-			</div>
+			<ul className={styles.QRcodeInfo}>
+				<li className={styles.InfoStep}>1. Scan with your mobile device's camera</li>
+				<li className={styles.InfoStep}>2. Confirm login or sign up</li>
+			</ul>
 		</div>
 	);
 };

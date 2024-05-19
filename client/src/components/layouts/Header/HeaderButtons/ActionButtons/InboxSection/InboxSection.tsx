@@ -13,7 +13,7 @@ const InboxSection = () => {
 	const isNotificationsOpen = useSelector(selectNotificationsModalStatus);
 	const inboxSectionRef = useRef<HTMLDivElement>(null);
 
-	useClickOutside([inboxSectionRef], () => {
+	useClickOutside([inboxSectionRef], isNotificationsOpen, () => {
 		dispatch(closeNotificationsModal());
 	});
 
