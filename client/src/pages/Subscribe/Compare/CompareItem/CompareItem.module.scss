@@ -1,0 +1,27 @@
+.CompareItem {
+	display: flex;
+	align-items: center;
+	padding: 12px 0;
+
+	&:not(:last-child) {
+		border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+	}
+}
+
+.ItemTitle {
+	width: 100%;
+	flex: 1 1 50%;
+	padding-left: 10px;
+	font-weight: 400;
+}
+
+.ItemValue {
+	flex: 1 1 25%;
+	display: flex;
+	justify-content: center;
+
+	.ItemIcon {
+		width: 18px;
+	}
+
+}

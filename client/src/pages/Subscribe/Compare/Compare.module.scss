@@ -1,0 +1,44 @@
+.Compare {
+	max-width: 620px;
+}
+
+.CompareTitle {
+	text-align: center;
+	font-size: 44px;
+	font-weight: 700;
+	margin-bottom: 50px;
+}
+
+.CompareMenu {
+	position: relative;
+	width: 100%;
+	padding: 40px 40px 24px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	margin-bottom: 50px;
+	font-size: 19px;
+}
+
+.MenuHeader {
+	height: 46px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+
+	.HeaderSpacer {
+		flex: 1 1 50%;
+	}
+
+	.HeaderItem {
+		flex: 1 1 25%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-transform: uppercase;
+		font-weight: 700;
+
+		.SuperIcon {
+			width: 70%;
+		}
+	}
+}
