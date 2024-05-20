@@ -6,7 +6,7 @@ import closeIcon from '@/assets/icons/close.svg?url';
 const CloseButton = ({ className, ...rest }: React.ComponentProps<'button'>) => {
 	return (
 		<RoundButton className={[styles.CloseButton, className].join(' ')} {...rest}>
-			<img src={closeIcon} alt="CLose" />
+			<img src={closeIcon} alt="CLose" className={styles.CloseIcon} />
 		</RoundButton>
 	);
 };
