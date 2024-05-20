@@ -9,12 +9,12 @@ import {
 } from '@/utils/validators';
 import countries from '@/data/countries';
 import type Country from '@/types/Country';
-import LoginForm from '../Login/LoginForm/LoginForm';
-import RegisterForm from '../Register/RegisterForm/RegisterForm';
-import ResetPasswordForm from '../Login/ResetPasswordForm/ResetPasswordForm';
+import LoginForm from '@/auth/Login/LoginForm/LoginForm';
+import RegisterForm from '@/auth/Register/RegisterForm/RegisterForm';
+import ResetPasswordForm from '@/auth/Login/ResetPasswordForm/ResetPasswordForm';
 
 type AuthContainerProps = {
-	authMode: 'registerForm' | 'loginForm' | 'resetForm';
+	authMode: 'register' | 'login' | 'reset';
 	openResetForm?: () => void;
 	showRegisterOptions?: () => void;
 };
@@ -132,9 +132,9 @@ const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthCon
 
 	return (
 		<>
-			{authMode === 'loginForm' && <LoginForm openResetForm={openResetForm} {...formProps} />}
-			{authMode === 'registerForm' && <RegisterForm onShowRegisterOptions={showRegisterOptions} {...formProps} />}
-			{authMode === 'resetForm' && <ResetPasswordForm {...formProps} />}
+			{authMode === 'login' && <LoginForm openResetForm={openResetForm} {...formProps} />}
+			{authMode === 'register' && <RegisterForm onShowRegisterOptions={showRegisterOptions} {...formProps} />}
+			{authMode === 'reset' && <ResetPasswordForm {...formProps} />}
 		</>
 	);
 };

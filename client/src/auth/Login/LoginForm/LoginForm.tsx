@@ -23,12 +23,18 @@ type LoginFormProps = {
 	onChangeSelect: (selectedCountry: Country) => void;
 };
 
-type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
+const enum LOGIN_METHOD {
+	LOGIN_AND_PASSWORD = 'loginAndPassword',
+	PHONE_AND_CODE = 'phoneAndCode',
+	PHONE_AND_PASSWORD = 'phoneAndPassword',
+}
+
+type LoginMethod = (typeof LOGIN_METHOD)[keyof typeof LOGIN_METHOD];
 
 const LoginForm = (props: LoginFormProps) => {
 	const { formData, formErrors, openResetForm, onFocusInput, onBlurInput, onChangeInput, onChangeSelect } = props;
 
-	const [loginMethod, setLoginMethod] = useState<LoginMethod>('phoneAndCode');
+	const [loginMethod, setLoginMethod] = useState<LoginMethod>(LOGIN_METHOD.PHONE_AND_CODE);
 
 	// isFormBtnDisabled
 	const validationMethods = {
@@ -53,8 +59,12 @@ const LoginForm = (props: LoginFormProps) => {
 				Log in
 			</HTag>
 			<form onSubmit={handleSubmit}>
-				<FormHeader loginMethod={loginMethod} onChangeLoginMethod={setLoginMethod} />
-				{loginMethod === 'loginAndPassword' ? (
+				<FormHeader
+					isLoginAndPassword={loginMethod === LOGIN_METHOD.LOGIN_AND_PASSWORD}
+					onSwitchToPhoneAndCode={setLoginMethod.bind(this, LOGIN_METHOD.PHONE_AND_CODE)}
+					onSwitchToLoginAndPassword={setLoginMethod.bind(this, LOGIN_METHOD.LOGIN_AND_PASSWORD)}
+				/>
+				{loginMethod === LOGIN_METHOD.LOGIN_AND_PASSWORD ? (
 					<Input
 						type="text"
 						name="login"
@@ -87,7 +97,7 @@ const LoginForm = (props: LoginFormProps) => {
 						/>
 					</div>
 				)}
-				{loginMethod === 'phoneAndCode' ? (
+				{loginMethod === LOGIN_METHOD.PHONE_AND_CODE ? (
 					<CodeInput
 						name="code"
 						placeholder="Enter 6-digit code"
@@ -112,9 +122,11 @@ const LoginForm = (props: LoginFormProps) => {
 					/>
 				)}
 				<FormFooter
-					loginMethod={loginMethod}
+					isPhoneAndPassword={loginMethod === LOGIN_METHOD.PHONE_AND_PASSWORD}
+					isPhoneAndCode={loginMethod === LOGIN_METHOD.PHONE_AND_CODE}
 					onOpenResetForm={openResetForm}
-					onChangeLoginMethod={setLoginMethod}
+					onSwitchToPhoneAndPassword={setLoginMethod.bind(this, LOGIN_METHOD.PHONE_AND_PASSWORD)}
+					onSwitchToPhoneAndCode={setLoginMethod.bind(this, LOGIN_METHOD.PHONE_AND_CODE)}
 				/>
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 					Log in

@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
 	const isAuthOpen = useSelector(selectAuthModalStatus);
 	const isReportOpen = useSelector(selectReportStatus);
 	const location = useLocation();
-	const excludedSidebarPaths = ['/story/', '/messages', '/settings'];
+	const excludedSidebarPaths = ['/story/', '/messages', '/settings', '/subscribe'];
 	const excludedHeaderPaths = ['/story/'];
 	const hideHeader = excludedHeaderPaths.some((path) => location.pathname.includes(path));
 	const hideSidebar = excludedSidebarPaths.some((path) => location.pathname.includes(path));

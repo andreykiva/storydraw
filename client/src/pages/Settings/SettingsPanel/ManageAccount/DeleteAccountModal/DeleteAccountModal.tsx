@@ -9,20 +9,45 @@ type DeleteAccountModalProps = {
 	onClose: () => void;
 };
 
-type DeleteAccountView = 'information' | 'verification';
+const enum DELETE_ACCOUNT_STEP {
+	INFORMATION = 'information',
+	VERIFICATION = 'verification',
+}
+
+type DeleteAccountStep = (typeof DELETE_ACCOUNT_STEP)[keyof typeof DELETE_ACCOUNT_STEP];
 
 const DeleteAccountModal = ({ onClose }: DeleteAccountModalProps) => {
-	const [deleteAccountView, setDeleteAccountView] = useState<DeleteAccountView>('information');
+	const [deleteAccountStep, setDeleteAccountStep] = useState<DeleteAccountStep>(DELETE_ACCOUNT_STEP.INFORMATION);
+
+	const handleNextStep = () => {
+		switch (deleteAccountStep) {
+			case DELETE_ACCOUNT_STEP.INFORMATION:
+				setDeleteAccountStep(DELETE_ACCOUNT_STEP.VERIFICATION);
+				break;
+			default:
+				break;
+		}
+	};
+
+	const handlePrevStep = () => {
+		switch (deleteAccountStep) {
+			case DELETE_ACCOUNT_STEP.VERIFICATION:
+				setDeleteAccountStep(DELETE_ACCOUNT_STEP.INFORMATION);
+				break;
+			default:
+				break;
+		}
+	};
 
 	return (
 		<ModalOverlay>
 			<div className={styles.DeleteAccountModal}>
 				<CloseButton className={styles.CloseBtn} onClick={onClose} />
-				{deleteAccountView === 'information' && (
-					<DeleteAccountInformation onContinue={setDeleteAccountView.bind(this, 'verification')} />
+				{deleteAccountStep === DELETE_ACCOUNT_STEP.INFORMATION && (
+					<DeleteAccountInformation onContinue={handleNextStep} />
 				)}
-				{deleteAccountView === 'verification' && (
-					<DeleteAccountVerification onBack={setDeleteAccountView.bind(this, 'information')} />
+				{deleteAccountStep === DELETE_ACCOUNT_STEP.VERIFICATION && (
+					<DeleteAccountVerification onBack={handlePrevStep} />
 				)}
 			</div>
 		</ModalOverlay>

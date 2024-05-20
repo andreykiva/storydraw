@@ -1,21 +1,21 @@
 import React from 'react';
 import styles from './FormFooter.module.scss';
 
-type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
-
 type FormFooterProps = {
-	loginMethod: LoginMethod;
+	isPhoneAndPassword: boolean;
+	isPhoneAndCode: boolean;
 	onOpenResetForm: () => void;
-	onChangeLoginMethod: (loginMethod: LoginMethod) => void;
+	onSwitchToPhoneAndPassword: () => void;
+	onSwitchToPhoneAndCode: () => void;
 };
 
-const FormFooter = ({ loginMethod, onOpenResetForm, onChangeLoginMethod }: FormFooterProps) => {
-	const isPhoneAndPassword = loginMethod === 'phoneAndPassword';
-	const isPhoneAndCode = loginMethod === 'phoneAndCode';
+const FormFooter = (props: FormFooterProps) => {
+	const { isPhoneAndPassword, isPhoneAndCode, onOpenResetForm, onSwitchToPhoneAndPassword, onSwitchToPhoneAndCode } =
+		props;
 
 	return (
 		<div className={styles.FormFooter}>
-			{loginMethod !== 'phoneAndCode' && (
+			{!isPhoneAndCode && (
 				<span className={styles.FooterBtn} onClick={onOpenResetForm}>
 					Forgot password?
 				</span>
@@ -23,13 +23,13 @@ const FormFooter = ({ loginMethod, onOpenResetForm, onChangeLoginMethod }: FormF
 			{isPhoneAndPassword && (
 				<>
 					<span className={styles.FooterDivider}></span>
-					<span className={styles.FooterBtn} onClick={onChangeLoginMethod.bind(this, 'phoneAndCode')}>
+					<span className={styles.FooterBtn} onClick={onSwitchToPhoneAndCode}>
 						Log in with code
 					</span>
 				</>
 			)}
 			{isPhoneAndCode && (
-				<span className={styles.FooterBtn} onClick={onChangeLoginMethod.bind(this, 'phoneAndPassword')}>
+				<span className={styles.FooterBtn} onClick={onSwitchToPhoneAndPassword}>
 					Log in with password
 				</span>
 			)}

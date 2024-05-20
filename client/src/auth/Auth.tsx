@@ -7,15 +7,16 @@ import { closeAuthModal } from '@/features/auth/authSlice';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 
-type AuthMode = 'login' | 'register';
+const enum AUTH_MODE {
+	LOGIN = 'login',
+	REGISTER = 'register',
+}
+
+type AuthMode = (typeof AUTH_MODE)[keyof typeof AUTH_MODE];
 
 const Auth = () => {
 	const dispatch = useDispatch();
-	const [authMode, setAuthMode] = useState<AuthMode>('login');
-
-	const handleChangeMode = (newMode: AuthMode) => {
-		setAuthMode(newMode);
-	};
+	const [authMode, setAuthMode] = useState<AuthMode>(AUTH_MODE.LOGIN);
 
 	const handleClose = () => {
 		dispatch(closeAuthModal());
@@ -26,20 +27,20 @@ const Auth = () => {
 			<div className={styles.AuthModal}>
 				<CloseButton className={styles.CloseBtn} onClick={handleClose} />
 
-				{authMode === 'login' && <Login />}
-				{authMode === 'register' && <Register />}
+				{authMode === AUTH_MODE.LOGIN && <Login />}
+				{authMode === AUTH_MODE.REGISTER && <Register />}
 
-				{authMode === 'login' ? (
+				{authMode === AUTH_MODE.LOGIN ? (
 					<div className={styles.AuthModalFooter}>
 						Don't have an account?
-						<span className={styles.FooterBtn} onClick={handleChangeMode.bind(this, 'register')}>
+						<span className={styles.FooterBtn} onClick={setAuthMode.bind(this, AUTH_MODE.REGISTER)}>
 							Sign up
 						</span>
 					</div>
 				) : (
 					<div className={styles.AuthModalFooter}>
 						Already have an account?
-						<span className={styles.FooterBtn} onClick={handleChangeMode.bind(this, 'login')}>
+						<span className={styles.FooterBtn} onClick={setAuthMode.bind(this, AUTH_MODE.LOGIN)}>
 							Log in
 						</span>
 					</div>

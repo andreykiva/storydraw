@@ -1,16 +1,13 @@
 import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 
-type LoginMethod = 'loginAndPassword' | 'phoneAndCode' | 'phoneAndPassword';
-
 type FormHeaderProps = {
-	loginMethod: LoginMethod;
-	onChangeLoginMethod: (loginMethod: LoginMethod) => void;
+	isLoginAndPassword: boolean;
+	onSwitchToPhoneAndCode: () => void;
+	onSwitchToLoginAndPassword: () => void;
 };
 
-const FormHeader = ({ loginMethod, onChangeLoginMethod }: FormHeaderProps) => {
-	const isLoginAndPassword = loginMethod === 'loginAndPassword';
-
+const FormHeader = ({ isLoginAndPassword, onSwitchToPhoneAndCode, onSwitchToLoginAndPassword }: FormHeaderProps) => {
 	return (
 		<div className={authSharedStyles.FormHeader}>
 			<span className={authSharedStyles.HeaderTitle}>
@@ -18,7 +15,7 @@ const FormHeader = ({ loginMethod, onChangeLoginMethod }: FormHeaderProps) => {
 			</span>
 			<span
 				className={authSharedStyles.HeaderBtn}
-				onClick={onChangeLoginMethod.bind(this, isLoginAndPassword ? 'phoneAndCode' : 'loginAndPassword')}
+				onClick={isLoginAndPassword ? onSwitchToPhoneAndCode : onSwitchToLoginAndPassword}
 			>
 				{isLoginAndPassword ? 'Log in with phone' : 'Log in with email or username'}
 			</span>
