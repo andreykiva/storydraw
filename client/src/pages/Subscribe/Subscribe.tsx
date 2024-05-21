@@ -60,9 +60,11 @@ const Subscribe = () => {
 			{subscribeStep === SUBSCRIBE_STEP.PAYMENT && <Payment />}
 			{subscribeStep === SUBSCRIBE_STEP.SUCCESS && <Success />}
 
-			<Button className={styles.TryBtn} onClick={handleNextStep}>
-				Try 14 days for free
-			</Button>
+			{subscribeStep !== SUBSCRIBE_STEP.PAYMENT && (
+				<Button className={styles.TryBtn} onClick={handleNextStep}>
+					Try 14 days for free
+				</Button>
+			)}
 		</div>
 	);
 };
