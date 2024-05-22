@@ -5,6 +5,7 @@ import LoginWithQR from './LoginWithQR/LoginWithQR';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import AuthContainer from '@/auth/AuthContainer/AuthContainer';
+import { AUTH_CONTAINER_MODE } from '@/constants/auth';
 
 const enum LOGIN_VIEW {
 	LOGIN_OPTIONS = 'loginOptions',
@@ -36,9 +37,12 @@ const Login = () => {
 				/>
 			)}
 			{loginView === LOGIN_VIEW.LOGIN_FORM && (
-				<AuthContainer authMode='login' openResetForm={() => setLoginView(LOGIN_VIEW.RESET_FORM)} />
+				<AuthContainer
+					authMode={AUTH_CONTAINER_MODE.LOGIN}
+					openResetForm={() => setLoginView(LOGIN_VIEW.RESET_FORM)}
+				/>
 			)}
-			{loginView === LOGIN_VIEW.RESET_FORM && <AuthContainer authMode='reset' />}
+			{loginView === LOGIN_VIEW.RESET_FORM && <AuthContainer authMode={AUTH_CONTAINER_MODE.RESET} />}
 			{loginView === LOGIN_VIEW.QRCODE && <LoginWithQR />}
 		</div>
 	);

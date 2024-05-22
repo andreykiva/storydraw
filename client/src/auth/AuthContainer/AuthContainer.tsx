@@ -12,9 +12,10 @@ import type Country from '@/types/Country';
 import LoginForm from '@/auth/Login/LoginForm/LoginForm';
 import RegisterForm from '@/auth/Register/RegisterForm/RegisterForm';
 import ResetPasswordForm from '@/auth/Login/ResetPasswordForm/ResetPasswordForm';
+import { AUTH_CONTAINER_MODE } from '@/constants/auth';
 
 type AuthContainerProps = {
-	authMode: 'register' | 'login' | 'reset';
+	authMode: AUTH_CONTAINER_MODE;
 	openResetForm?: () => void;
 	showRegisterOptions?: () => void;
 };
@@ -132,9 +133,11 @@ const AuthContainer = ({ authMode, openResetForm, showRegisterOptions }: AuthCon
 
 	return (
 		<>
-			{authMode === 'login' && <LoginForm openResetForm={openResetForm} {...formProps} />}
-			{authMode === 'register' && <RegisterForm onShowRegisterOptions={showRegisterOptions} {...formProps} />}
-			{authMode === 'reset' && <ResetPasswordForm {...formProps} />}
+			{authMode === AUTH_CONTAINER_MODE.LOGIN && <LoginForm openResetForm={openResetForm} {...formProps} />}
+			{authMode === AUTH_CONTAINER_MODE.REGISTER && (
+				<RegisterForm onShowRegisterOptions={showRegisterOptions} {...formProps} />
+			)}
+			{authMode === AUTH_CONTAINER_MODE.RESET && <ResetPasswordForm {...formProps} />}
 		</>
 	);
 };

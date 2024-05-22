@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import RegisterOptions from './RegisterOptions/RegisterOptions';
 import AuthContainer from '@/auth/AuthContainer/AuthContainer';
+import { AUTH_CONTAINER_MODE } from '@/constants/auth';
 
 const enum REGISTER_VIEW {
 	REGISTER_OPTIONS = 'registerOptions',
@@ -19,7 +20,7 @@ const Register = () => {
 			{registerView === REGISTER_VIEW.REGISTER_FORM && (
 				<AuthContainer
 					showRegisterOptions={() => setRegisterView(REGISTER_VIEW.REGISTER_OPTIONS)}
-					authMode='register'
+					authMode={AUTH_CONTAINER_MODE.REGISTER}
 				/>
 			)}
 		</div>
