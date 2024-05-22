@@ -47,6 +47,12 @@ const Subscribe = () => {
 		}
 	};
 
+	let trialDays = 14;
+
+	if (subscriptionPlan === SUBSCRIPTION_PLAN.MONTHLY) {
+		trialDays = 7;
+	}
+
 	return (
 		<div className={styles.Subscribe}>
 			<div className={styles.SubscribeHeader}>
@@ -64,7 +70,7 @@ const Subscribe = () => {
 
 			{subscribeStep !== SUBSCRIBE_STEP.PAYMENT && (
 				<Button className={styles.TryBtn} onClick={handleNextStep}>
-					Try 14 days for free
+					Try {trialDays} days for free
 				</Button>
 			)}
 		</div>
