@@ -1,0 +1,37 @@
+.TrialInfoItem {
+	display: flex;
+	gap: 32px;
+
+	&:last-child .ItemConnection {
+		display: none;
+	}
+}
+
+.ItemLeft {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.ItemIcon {
+		width: 29px;
+		margin-bottom: 12px;
+	}
+
+	.ItemConnection {
+		height: 44px;
+		border-left: 3px dotted var(--white-color);
+	}
+}
+
+.ItemTitle {
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1;
+	margin-bottom: 12px;
+}
+
+.ItemDescr {
+	font-size: 17px;
+	font-weight: 500;
+	color: #ffffffc7;
+}
