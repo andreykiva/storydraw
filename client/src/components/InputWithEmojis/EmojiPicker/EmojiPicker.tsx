@@ -20,7 +20,11 @@ const EmojiPicker = ({ onSelect }: EmojiPickerProps) => {
 						<span className={styles.CategoryName}>{emojisCategory.category}</span>
 						<ul className={styles.EmojisList}>
 							{emojisCategory.emojis.map((categoryEmoji) => (
-								<Emoji emoji={categoryEmoji} onSelect={onSelect} key={categoryEmoji} />
+								<Emoji
+									emoji={categoryEmoji}
+									onSelect={() => onSelect(categoryEmoji)}
+									key={categoryEmoji}
+								/>
 							))}
 						</ul>
 					</div>
