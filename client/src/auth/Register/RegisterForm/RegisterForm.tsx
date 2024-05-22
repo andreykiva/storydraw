@@ -65,7 +65,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 		<>
 			<RoundButton
 				className={authSharedStyles.BackBtn}
-				onClick={showUsernameField ? setShowUsernameField.bind(this, false) : onShowRegisterOptions}
+				onClick={showUsernameField ? () => setShowUsernameField(false) : onShowRegisterOptions}
 			>
 				<ArrowIcon className={authSharedStyles.BackIcon} />
 			</RoundButton>
@@ -83,8 +83,8 @@ const RegisterForm = (props: RegisterFormProps) => {
 						/>
 						<FormHeader
 							isPhoneMode={isPhoneMode}
-							onEnablePhoneMode={setIsPhoneMode.bind(this, true)}
-							onDisablePhoneMode={setIsPhoneMode.bind(this, false)}
+							onEnablePhoneMode={() => setIsPhoneMode(true)}
+							onDisablePhoneMode={() => setIsPhoneMode(false)}
 						/>
 						{isPhoneMode ? (
 							<div className={authSharedStyles.PhoneField}>
@@ -101,8 +101,8 @@ const RegisterForm = (props: RegisterFormProps) => {
 									value={formData.phone}
 									error={formErrors.phone}
 									onChange={onChangeInput}
-									onFocus={onFocusInput.bind(this, 'phone')}
-									onBlur={onBlurInput.bind(this, 'phone')}
+									onFocus={() => onFocusInput('phone')}
+									onBlur={() => onBlurInput('phone')}
 									required
 								/>
 							</div>
@@ -116,8 +116,8 @@ const RegisterForm = (props: RegisterFormProps) => {
 									value={formData.email}
 									error={formErrors.email}
 									onChange={onChangeInput}
-									onFocus={onFocusInput.bind(this, 'email')}
-									onBlur={onBlurInput.bind(this, 'email')}
+									onFocus={() => onFocusInput('email')}
+									onBlur={() => onBlurInput('email')}
 									required
 								/>
 								<PasswordInput
@@ -126,8 +126,8 @@ const RegisterForm = (props: RegisterFormProps) => {
 									value={formData.password}
 									error={formErrors.password}
 									onChange={onChangeInput}
-									onFocus={onFocusInput.bind(this, 'password')}
-									onBlur={onBlurInput.bind(this, 'password')}
+									onFocus={() => onFocusInput('password')}
+									onBlur={() => onBlurInput('password')}
 									required
 								/>
 							</>
@@ -138,8 +138,8 @@ const RegisterForm = (props: RegisterFormProps) => {
 							value={formData.code}
 							error={formErrors.code}
 							onChange={onChangeInput}
-							onFocus={onFocusInput.bind(this, 'code')}
-							onBlur={onBlurInput.bind(this, 'code')}
+							onFocus={() => onFocusInput('code')}
+							onBlur={() => onBlurInput('code')}
 							disabled={isCodeBtnDisabled}
 							required
 						/>
@@ -152,7 +152,7 @@ const RegisterForm = (props: RegisterFormProps) => {
 						<Button
 							className={authSharedStyles.SubmitBtn}
 							disabled={isFormBtnDisabled}
-							onClick={setShowUsernameField.bind(this, true)}
+							onClick={() => setShowUsernameField(true)}
 						>
 							Next
 						</Button>
@@ -168,8 +168,8 @@ const RegisterForm = (props: RegisterFormProps) => {
 							value={formData.username}
 							error={formErrors.username}
 							onChange={onChangeInput}
-							onFocus={onFocusInput.bind(this, 'username')}
-							onBlur={onBlurInput.bind(this, 'username')}
+							onFocus={() => onFocusInput('username')}
+							onBlur={() => onBlurInput('username')}
 						/>
 						<span className={authSharedStyles.CreateUsernameDescr}>You can always change this later.</span>
 						<Button

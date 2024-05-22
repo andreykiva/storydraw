@@ -1,5 +1,6 @@
 .Compare {
 	max-width: 620px;
+	width: 100%;
 }
 
 .CompareTitle {
@@ -9,21 +10,33 @@
 	margin-bottom: 50px;
 }
 
-.CompareMenu {
-	position: relative;
+.CompareInfoBox {
 	width: 100%;
-	padding: 40px 40px 24px;
+	padding: 24px 40px;
 	background-color: rgba(255, 255, 255, 0.1);
 	border-radius: 16px;
 	margin-bottom: 50px;
 	font-size: 19px;
 }
 
-.MenuHeader {
-	height: 46px;
+.InfoBoxInner {
+	position: relative;
+}
+
+.PremiumHighlightBox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 25%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 16px;
+}
+
+.InfoBoxHeader {
+	height: 86px;
 	display: flex;
 	align-items: center;
-	margin-bottom: 24px;
 
 	.HeaderSpacer {
 		flex: 1 1 50%;
@@ -37,7 +50,7 @@
 		text-transform: uppercase;
 		font-weight: 700;
 
-		.SuperIcon {
+		.PremiumIcon {
 			width: 70%;
 		}
 	}

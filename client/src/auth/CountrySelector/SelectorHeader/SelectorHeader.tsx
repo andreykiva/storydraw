@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './SelectorHeader.module.scss';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import arrowDownIcon from '@/assets/icons/arrow-down.svg?url';
@@ -16,7 +17,7 @@ const SelectorHeader = ({ value, isOpen, onClick }: SelectorHeaderProps) => {
 			<img
 				src={arrowDownIcon}
 				alt="Arrow down"
-				className={[authSharedStyles.SelectorArrow, isOpen && authSharedStyles.ArrowUp].join(' ')}
+				className={cn(authSharedStyles.SelectorArrow, isOpen && authSharedStyles.ArrowUp)}
 			/>
 		</div>
 	);

@@ -13,11 +13,11 @@ const ManageAccount = () => {
 			<SettingsSubsection title="Account control">
 				<div className={settingsSharedStyles.SettingsItem}>
 					<span className={styles.SettingsItemTitle}>Delete account</span>
-					<div className={styles.DeleteBtn} onClick={setIsDeleteAccountModalOpen.bind(this, true)}>
+					<div className={styles.DeleteBtn} onClick={() => setIsDeleteAccountModalOpen(true)}>
 						Delete
 					</div>
 					{isDeleteAccountModalOpen && (
-						<DeleteAccountModal onClose={setIsDeleteAccountModalOpen.bind(this, false)} />
+						<DeleteAccountModal onClose={() => setIsDeleteAccountModalOpen(false)} />
 					)}
 				</div>
 			</SettingsSubsection>

@@ -1,9 +1,10 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './ButtonWithActionsMenu.module.scss';
 import moreIcon from '@/assets/icons/more-horizontal.svg?url';
 import ActionItem from './ActionItem/ActionItem';
 import WrapperWithTriangle from '../ui/WrapperWithTriangle/WrapperWithTriangle';
-import type { MenuPosition } from '@/types/Positions';
+import { MENU_POSITION } from '@/constants/position';
 
 type Action = {
 	name: string;
@@ -12,7 +13,7 @@ type Action = {
 };
 
 type ButtonWithActionsMenuProps = {
-	menuPosition: MenuPosition;
+	menuPosition: MENU_POSITION;
 	actions: Action[];
 	buttonClassName?: string;
 	menuClassName?: string;
@@ -25,12 +26,9 @@ const ButtonWithActionsMenu = ({
 	menuClassName,
 }: ButtonWithActionsMenuProps) => {
 	return (
-		<div className={[styles.ActionsBtn, buttonClassName].join(' ')}>
+		<div className={cn(styles.ActionsBtn, buttonClassName)}>
 			<img src={moreIcon} alt="More" className={styles.MoreIcon} />
-			<WrapperWithTriangle
-				position={menuPosition}
-				className={[styles.ActionsMenuWrapper, menuClassName].join(' ')}
-			>
+			<WrapperWithTriangle position={menuPosition} className={cn(styles.ActionsMenuWrapper, menuClassName)}>
 				<ul className={styles.ActionsMenu}>
 					{actions.map((action) => (
 						<ActionItem

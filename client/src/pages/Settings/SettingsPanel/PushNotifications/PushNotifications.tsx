@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import styles from './PushNotifications.module.scss';
 import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.scss';
 import SettingsSection from '@/pages/Settings/SettingsPanel/SettingsSection/SettingsSection';
@@ -25,7 +26,7 @@ const PushNotifications = () => {
 						</p>
 					</div>
 					<RoundButton
-						className={[styles.ToggleInteractionsBtn, isInteractionsMenuOpen && styles.Active].join(' ')}
+						className={cn(styles.ToggleInteractionsBtn, isInteractionsMenuOpen && styles.Active)}
 						onClick={handleToggleInteractions}
 					>
 						<img src={arrowDownIcon} alt="Arrow down" className={styles.ArrowDownIcon} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './Input.module.scss';
 import warningIcon from '@/assets/icons/auth/warning.svg?url';
 
@@ -9,7 +10,7 @@ type PasswordInputProps = React.ComponentProps<'input'> & {
 
 const Input = ({ error, mode, ...rest }: PasswordInputProps) => {
 	return (
-		<div className={[styles.FormGroup, styles[mode], error && styles.GroupError].join(' ')}>
+		<div className={cn(styles.FormGroup, styles[mode], error && styles.GroupError)}>
 			<div className={styles.InputIcon}>
 				<img src={warningIcon} alt="Warning" className={styles.WarningIcon} />
 			</div>

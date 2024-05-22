@@ -49,8 +49,8 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 			<form onSubmit={handleSubmit}>
 				<FormHeader
 					isPhoneMode={isPhoneMode}
-					onEnablePhoneMode={setIsPhoneMode.bind(this, true)}
-					onDisablePhoneMode={setIsPhoneMode.bind(this, false)}
+					onEnablePhoneMode={() => setIsPhoneMode(true)}
+					onDisablePhoneMode={() => setIsPhoneMode(false)}
 				/>
 				{isPhoneMode ? (
 					<div className={authSharedStyles.PhoneField}>
@@ -67,8 +67,8 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 							value={formData.phone}
 							error={formErrors.phone}
 							onChange={onChangeInput}
-							onFocus={onFocusInput.bind(this, 'phone')}
-							onBlur={onBlurInput.bind(this, 'phone')}
+							onFocus={() => onFocusInput('phone')}
+							onBlur={() => onBlurInput('phone')}
 							required
 						/>
 					</div>
@@ -81,8 +81,8 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 						value={formData.email}
 						error={formErrors.email}
 						onChange={onChangeInput}
-						onFocus={onFocusInput.bind(this, 'email')}
-						onBlur={onBlurInput.bind(this, 'email')}
+						onFocus={() => onFocusInput('email')}
+						onBlur={() => onBlurInput('email')}
 						required
 					/>
 				)}
@@ -92,8 +92,8 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 					value={formData.code}
 					error={formErrors.code}
 					onChange={onChangeInput}
-					onFocus={onFocusInput.bind(this, 'code')}
-					onBlur={onBlurInput.bind(this, 'code')}
+					onFocus={() => onFocusInput('code')}
+					onBlur={() => onBlurInput('code')}
 					disabled={isCodeBtnDisabled}
 					required
 				/>
@@ -103,8 +103,8 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 					value={formData.password}
 					error={formErrors.password}
 					onChange={onChangeInput}
-					onFocus={onFocusInput.bind(this, 'password')}
-					onBlur={onBlurInput.bind(this, 'password')}
+					onFocus={() => onFocusInput('password')}
+					onBlur={() => onBlurInput('password')}
 					required
 				/>
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>

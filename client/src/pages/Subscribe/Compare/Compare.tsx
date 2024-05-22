@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Compare.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 import CompareItem from './CompareItem/CompareItem';
-import superIcon from '@/assets/icons/super.svg?url';
+import premiumIcon from '@/assets/icons/premium.svg?url';
 
 const compareItems = [
 	{
@@ -31,19 +31,22 @@ const Compare = () => {
 	return (
 		<div className={styles.Compare}>
 			<HTag tag="h2" className={styles.CompareTitle}>
-				Accelerate your drawing progress with Super!
+				Accelerate your drawing progress with Premium!
 			</HTag>
-			<div className={styles.CompareMenu}>
-				<div className={styles.MenuHeader}>
-					<div className={styles.HeaderSpacer}></div>
-					<div className={styles.HeaderItem}>Free</div>
-					<div className={styles.HeaderItem}>
-						<img src={superIcon} alt="Super" className={styles.SuperIcon} />
+			<div className={styles.CompareInfoBox}>
+				<div className={styles.InfoBoxInner}>
+					<div className={styles.PremiumHighlightBox}></div>
+					<div className={styles.InfoBoxHeader}>
+						<div className={styles.HeaderSpacer}></div>
+						<div className={styles.HeaderItem}>Free</div>
+						<div className={styles.HeaderItem}>
+							<img src={premiumIcon} alt="Premium" className={styles.PremiumIcon} />
+						</div>
 					</div>
+					{compareItems.map((compareItem) => (
+						<CompareItem key={compareItem.title} title={compareItem.title} isFree={compareItem.isFree} />
+					))}
 				</div>
-				{compareItems.map((compareItem) => (
-					<CompareItem key={compareItem.title} title={compareItem.title} isFree={compareItem.isFree} />
-				))}
 			</div>
 		</div>
 	);

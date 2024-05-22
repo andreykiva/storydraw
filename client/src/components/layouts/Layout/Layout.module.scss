@@ -1,6 +1,10 @@
 .LayoutContainer {
 	display: flex;
-	height: calc(100vh - 60px);
+	height:100vh;
+
+	&.WithHeader {
+		height: calc(100vh - 60px);
+	}
 }
 
 .Content {

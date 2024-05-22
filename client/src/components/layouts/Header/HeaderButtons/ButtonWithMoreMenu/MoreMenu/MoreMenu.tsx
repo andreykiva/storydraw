@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import cn from 'classnames';
 import styles from './MoreMenu.module.scss';
 import languageIcon from '@/assets/icons/language.svg?url';
 import helpIcon from '@/assets/icons/help.svg?url';
@@ -11,6 +12,7 @@ import settingsIcon from '@/assets/icons/settings.svg?url';
 import logoutIcon from '@/assets/icons/logout.svg?url';
 import MoreMenuItem from './MoreMenuItem/MoreMenuItem';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
+import { MENU_POSITION } from '@/constants/position';
 
 type MoreMenuProps = {
 	isAuth: boolean;
@@ -36,7 +38,7 @@ const MoreMenu = ({ isAuth, className, onOpenLogoutModal }: MoreMenuProps) => {
 		{
 			title: 'Help',
 			icon: helpIcon,
-			onClick: navigate.bind(this, '/'),
+			onClick: () => navigate('/'),
 		},
 		{
 			title: 'Dark Mode',
@@ -49,29 +51,29 @@ const MoreMenu = ({ isAuth, className, onOpenLogoutModal }: MoreMenuProps) => {
 		{
 			title: 'View profile',
 			icon: profileIcon,
-			onClick: navigate.bind(this, '/@andrii'),
+			onClick: () => navigate('/@andrii'),
 		},
 		{
 			title: 'Favorites',
 			icon: favoritesIcon,
-			onClick: navigate.bind(this, '/@andrii'),
+			onClick: () => navigate('/@andrii'),
 		},
 		{
 			title: 'Get Premium',
 			icon: diamondIcon,
-			onClick: navigate.bind(this, '/subscribe'),
+			onClick: () => navigate('/subscribe'),
 		},
 		{
 			title: 'Settings',
 			icon: settingsIcon,
-			onClick: navigate.bind(this, '/settings'),
+			onClick: () => navigate('/settings'),
 		},
 	];
 
 	return (
 		<WrapperWithTriangle
-			position="bottomLeft"
-			className={[styles.MoreMenu, className].join(' ')}
+			position={MENU_POSITION.BOTTOM_LEFT}
+			className={cn(styles.MoreMenu, className)}
 		>
 			{isAuth && loggedInUserItems.map((item) => <MoreMenuItem key={item.title} {...item} />)}
 			{generalItems.map((item) => (

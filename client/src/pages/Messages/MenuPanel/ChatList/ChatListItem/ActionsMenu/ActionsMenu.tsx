@@ -9,6 +9,7 @@ import reportIcon from '@/assets/icons/report.svg?url';
 import blockIcon from '@/assets/icons/block.svg?url';
 import { openReport } from '@/features/report/reportSlice';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
+import { MENU_POSITION } from '@/constants/position';
 
 type ActionsMenuProps = {
 	chatmateId: string;
@@ -22,7 +23,7 @@ const ActionsMenu = ({ chatmateId }: ActionsMenuProps) => {
 	};
 
 	return (
-		<WrapperWithTriangle position='bottomLeft' className={styles.ActionsMenu}>
+		<WrapperWithTriangle position={MENU_POSITION.BOTTOM_LEFT} className={styles.ActionsMenu}>
 			<ul className={styles.ActionsList}>
 				<ActionItem actionTitle="Mute" icon={muteIcon} />
 				<ActionItem actionTitle="Delete" icon={deleteIcon} />

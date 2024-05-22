@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import cn from 'classnames';
 import styles from './InputWithEmojis.module.scss';
 import EmojiPicker from './EmojiPicker/EmojiPicker';
 import Button from '@/components/ui/buttons/Button/Button';
@@ -7,6 +8,7 @@ import emojiIcon from '@/assets/icons/messages/emoji.svg?url';
 import sendiIcon from '@/assets/icons/messages/send.svg?url';
 import useClickOutside from '@/hooks/useClickOutside';
 import { getCaretPosition, setCaretPosition } from '@/utils/caretUtils';
+import { MENU_POSITION } from '@/constants/position';
 
 type InputWithEmojisProps = {
 	value: string;
@@ -176,7 +178,7 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 
 	return (
 		<div className={styles.InputWithEmojisForm}>
-			<div className={[styles.InputContainer, isValueNotEmpty && styles.Constrained].join(' ')}>
+			<div className={cn(styles.InputContainer, isValueNotEmpty && styles.Constrained)}>
 				{!isValueNotEmpty && <div className={styles.Placeholder}>{placeholder}</div>}
 				<div className={styles.InputSection}>
 					<div className={styles.InpurWrapper}>
@@ -197,13 +199,13 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 					)}
 				</div>
 				<div
-					className={[styles.TogglePickerSection, isEmojiPickerOpen && styles.Active].join(' ')}
+					className={cn(styles.TogglePickerSection, isEmojiPickerOpen && styles.Active)}
 					ref={emojiPickerSectionRef}
 				>
 					<button className={styles.TogglePickerBtn} onClick={handleToggleEmojiPicker}>
 						<img src={emojiIcon} alt="Emoji" className={styles.EmojiIcon} />
 					</button>
-					<Prompt position="topCenter" className={styles.Prompt}>
+					<Prompt position={MENU_POSITION.TOP_CENTER} className={styles.Prompt}>
 						Click to add emojis
 					</Prompt>
 				</div>

@@ -18,6 +18,7 @@ import { selectAuth } from '@/features/auth/authSlice';
 import ReportIcon from '@/assets/icons/report.svg';
 import { openReport } from '@/features/report/reportSlice';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
+import { MENU_POSITION } from '@/constants/position';
 
 type ForYouStoryProps = Omit<Story, 'date' | 'views'> & {
 	user: Omit<User, 'description' | 'followers'>;
@@ -122,7 +123,7 @@ const ForYouStory = (props: ForYouStoryProps) => {
 					</div>
 					<ButtonWithActionsMenu
 						actions={actions}
-						menuPosition="bottomLeft"
+						menuPosition={MENU_POSITION.BOTTOM_LEFT}
 						menuClassName={styles.ActionsMenu}
 					/>
 				</div>

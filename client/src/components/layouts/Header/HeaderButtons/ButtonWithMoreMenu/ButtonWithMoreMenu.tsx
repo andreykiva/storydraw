@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import styles from './ButtonWithMoreMenu.module.scss';
 import moreIcon from '@/assets/icons/more.svg?url';
@@ -29,15 +30,15 @@ const ButtonWithMoreMenu = ({ isAuth }: ButtonWithMoreMenuProps) => {
 				/>
 			</div>
 			<MoreMenu
-				className={[styles.MoreMenu, isConfirmationModalOpen && styles.Open].join(' ')}
+				className={cn(styles.MoreMenu, isConfirmationModalOpen && styles.Open)}
 				isAuth={isAuth}
-				onOpenLogoutModal={setIsConfirmationModalOpen.bind(this, true)}
+				onOpenLogoutModal={() => setIsConfirmationModalOpen(true)}
 			/>
 			{isConfirmationModalOpen && (
 				<ConfirmationModal
 					title="Are you sure you want to log out?"
 					confirmAction="Log out"
-					onClose={setIsConfirmationModalOpen.bind(this, false)}
+					onClose={() => setIsConfirmationModalOpen(false)}
 					onConfirm={handleLogout}
 				/>
 			)}

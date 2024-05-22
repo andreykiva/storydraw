@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import cn from 'classnames';
 import styles from './Comment.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import LikeIcon from '@/assets/icons/like.svg';
@@ -12,6 +13,7 @@ import { selectAuth } from '@/features/auth/authSlice';
 import ReportIcon from '@/assets/icons/report.svg';
 import { openReport } from '@/features/report/reportSlice';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
+import { MENU_POSITION } from '@/constants/position';
 
 type CommentProps = Comment & {
 	user: Pick<User, 'username' | 'title' | 'image'>;
@@ -52,7 +54,7 @@ const Comment = (props: CommentProps) => {
 	];
 
 	return (
-		<div className={[styles.Comment, reply ? styles.Reply : ''].join(' ')}>
+		<div className={cn(styles.Comment, reply && styles.Reply)}>
 			<div className={styles.ProfileImgSection}>
 				<Link to={`/@${user.username}`} className={styles.ImgUserLink}>
 					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
@@ -73,7 +75,7 @@ const Comment = (props: CommentProps) => {
 			<div className={styles.CommentInteraction}>
 				<ButtonWithActionsMenu
 					actions={actions}
-					menuPosition="bottomLeft"
+					menuPosition={MENU_POSITION.BOTTOM_LEFT}
 					buttonClassName={styles.ActionsBtn}
 					menuClassName={styles.ActionsMenu}
 				/>

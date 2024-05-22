@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import cn from 'classnames';
 // import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.scss';
 // import { openSearch, closeSearch } from '@/features/search/searchSlice';
@@ -64,14 +65,14 @@ const SearchBar = ({ light = false }) => {
 	};
 
 	return (
-		<div className={[styles.SearchBar, light ? styles.Light : ''].join(' ')}>
+		<div className={cn(styles.SearchBar, light && styles.Light)}>
 			<form className={styles.SearchForm}>
 				<input
 					type="text"
 					className={styles.SearchInput}
 					value={value}
 					onChange={handleChange}
-					onFocus={setIsResultsOpen.bind(this, true)}
+					onFocus={() => setIsResultsOpen(true)}
 					placeholder="Search"
 					ref={searchInputRef}
 				/>

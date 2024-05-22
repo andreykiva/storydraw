@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import cn from 'classnames';
 import styles from './Layout.module.scss';
 import Header from '@/components/layouts/Header/Header';
 import Sidebar from '@/components/layouts/Sidebar/Sidebar';
@@ -18,7 +19,7 @@ const Layout = ({ children }: LayoutProps) => {
 	const isReportOpen = useSelector(selectReportStatus);
 	const location = useLocation();
 	const excludedSidebarPaths = ['/story/', '/messages', '/settings', '/subscribe'];
-	const excludedHeaderPaths = ['/story/'];
+	const excludedHeaderPaths = ['/story/', '/subscribe'];
 	const hideHeader = excludedHeaderPaths.some((path) => location.pathname.includes(path));
 	const hideSidebar = excludedSidebarPaths.some((path) => location.pathname.includes(path));
 
@@ -27,7 +28,7 @@ const Layout = ({ children }: LayoutProps) => {
 			{isAuthOpen && <Auth />}
 			{!hideHeader && <Header />}
 			{isReportOpen && <Report />}
-			<div className={styles.LayoutContainer}>
+			<div className={cn(styles.LayoutContainer, !hideHeader && styles.WithHeader)}>
 				{!hideSidebar && <Sidebar />}
 				<main className={styles.Content}>{children}</main>
 			</div>

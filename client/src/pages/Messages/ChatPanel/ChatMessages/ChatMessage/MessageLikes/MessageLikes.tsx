@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './MessageLikes.module.scss';
 import LikeIcon from '@/assets/icons/like.svg';
 import defaultImg from '@/assets/images/default.svg?url';
@@ -11,7 +12,7 @@ type MessageLikesProps = {
 
 const MessageLikes = ({ likes, isItMyMessage }: MessageLikesProps) => {
 	return (
-		<div className={[styles.MessageLikes, isItMyMessage && styles.My].join(' ')}>
+		<div className={cn(styles.MessageLikes, isItMyMessage && styles.My)}>
 			<LikeIcon className={styles.LikeIcon} alt="Like" />
 			<div className={styles.Likers}>
 				{likes.users.map((liker) => (

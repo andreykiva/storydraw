@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './SelectorOptions.module.scss';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import SelectorOption from './SelectorOption/SelectorOption';
@@ -14,13 +15,13 @@ type SelectorOptionsProps = {
 
 const SelectorOptions = ({ options, selectedOptionId, searchValue, onChangeSelect }: SelectorOptionsProps) => {
 	return (
-		<ul className={[authSharedStyles.SelectorOptions, styles.SelectorOptions].join(' ')}>
+		<ul className={cn(authSharedStyles.SelectorOptions, styles.SelectorOptions)}>
 			{options.length > 0 ? (
 				options.map((option) => (
 					<SelectorOption
 						key={option.id}
 						selected={option.id === selectedOptionId}
-						onClick={onChangeSelect.bind(this, option)}
+						onClick={() => onChangeSelect(option)}
 					>
 						{highlightText(`${option.name} ${option.phonePrefix}`, searchValue, styles.Highlight)}
 					</SelectorOption>

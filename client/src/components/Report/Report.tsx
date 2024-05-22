@@ -75,7 +75,7 @@ const Report = () => {
 								name={category.name}
 								selected={category.id === selectedCategoryId}
 								hasSubcategories={category.subcategories && category.subcategories.length > 0}
-								onClick={handleSelectCategory.bind(this, category.id)}
+								onClick={() => handleSelectCategory(category.id)}
 							/>
 						))}
 					</ul>

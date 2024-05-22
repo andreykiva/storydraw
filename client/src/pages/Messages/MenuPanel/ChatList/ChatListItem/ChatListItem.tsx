@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import cn from 'classnames';
 import styles from './ChatListItem.module.scss';
 import type User from '@/types/User';
 import defaultImg from '@/assets/images/default.svg?url';
@@ -34,7 +35,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 	};
 
 	return (
-		<li className={[styles.ChatListItem, activeChatmateId === id && styles.Active].join(' ')}>
+		<li className={cn(styles.ChatListItem, activeChatmateId === id && styles.Active)}>
 			<div className={styles.ItemContent} onClick={handleChooseChatmate}>
 				<div className={styles.ChatmateImgWr}>
 					<img src={image || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
@@ -48,7 +49,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 				</div>
 			</div>
 			<div
-				className={[styles.ActionsBtn, isActionsMenuOpen && styles.Active].join(' ')}
+				className={cn(styles.ActionsBtn, isActionsMenuOpen && styles.Active)}
 				onClick={handleToggleActionsMenu}
 				ref={actionsBtnRef}
 			>

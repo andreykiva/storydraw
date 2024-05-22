@@ -1,38 +1,39 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import cn from 'classnames';
 import styles from './Notifications.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 import Button from '@/components/ui/buttons/Button/Button';
 import AllNotificationsList from './AllNotificationsList';
 import LikesList from './LikesList';
 import CommentsList from './CommentsList';
-import MentionsTagsList from './MentionsTagsList';
+import MentionsAndTagsList from './MentionsAndTagsList';
 import FollowsList from './FollowsList';
 import { changeNotificationsCategory, selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
-
-type NotificationsCategory = 'all' | 'likes' | 'comments' | 'mentionsTags' | 'followers';
+import { NOTIFICATIONS_CATEGORY } from '@/constants/notification';
+import { MENU_POSITION } from '@/constants/position';
 
 const categories = [
 	{
 		title: 'All activity',
-		type: 'all',
+		type: NOTIFICATIONS_CATEGORY.ALL,
 	},
 	{
 		title: 'Likes',
-		type: 'likes',
+		type: NOTIFICATIONS_CATEGORY.LIKES,
 	},
 	{
 		title: 'Comments',
-		type: 'comments',
+		type: NOTIFICATIONS_CATEGORY.COMMENTS,
 	},
 	{
 		title: 'Mentions and tags',
-		type: 'mentionsTags',
+		type: NOTIFICATIONS_CATEGORY.MENTIONS_AND_TAGS,
 	},
 	{
 		title: 'Followers',
-		type: 'followers',
+		type: NOTIFICATIONS_CATEGORY.FOLLOWERS,
 	},
 ];
 
@@ -40,12 +41,12 @@ const Notifications = () => {
 	const dispatch = useDispatch();
 	const notificationsCategory = useSelector(selectNotificationsCategory);
 
-	const hndleCategoryChange = (category: NotificationsCategory) => {
+	const handleCategoryChange = (category: NOTIFICATIONS_CATEGORY) => {
 		dispatch(changeNotificationsCategory(category));
 	};
 
 	return (
-		<WrapperWithTriangle position="bottomLeft" className={styles.Notifications}>
+		<WrapperWithTriangle position={MENU_POSITION.BOTTOM_LEFT} className={styles.Notifications}>
 			<div className={styles.NotifHeader}>
 				<HTag tag="h4" className={styles.NotifTitle}>
 					Notifications
@@ -54,11 +55,11 @@ const Notifications = () => {
 					{categories.map((category) => (
 						<Button
 							key={category.type}
-							className={[
+							className={cn(
 								styles.NotifCategory,
 								category.type === notificationsCategory && styles.Active,
-							].join(' ')}
-							onClick={hndleCategoryChange.bind(this, category.type)}
+							)}
+							onClick={() => handleCategoryChange(category.type)}
 						>
 							{category.title}
 						</Button>
@@ -66,11 +67,11 @@ const Notifications = () => {
 				</div>
 			</div>
 			<div className={styles.NotificationsListWr}>
-				{notificationsCategory === 'all' && <AllNotificationsList />}
-				{notificationsCategory === 'likes' && <LikesList />}
-				{notificationsCategory === 'comments' && <CommentsList />}
-				{notificationsCategory === 'mentionsTags' && <MentionsTagsList />}
-				{notificationsCategory === 'followers' && <FollowsList />}
+				{notificationsCategory === NOTIFICATIONS_CATEGORY.ALL && <AllNotificationsList />}
+				{notificationsCategory === NOTIFICATIONS_CATEGORY.LIKES && <LikesList />}
+				{notificationsCategory === NOTIFICATIONS_CATEGORY.COMMENTS && <CommentsList />}
+				{notificationsCategory === NOTIFICATIONS_CATEGORY.MENTIONS_AND_TAGS && <MentionsAndTagsList />}
+				{notificationsCategory === NOTIFICATIONS_CATEGORY.FOLLOWERS && <FollowsList />}
 			</div>
 		</WrapperWithTriangle>
 	);

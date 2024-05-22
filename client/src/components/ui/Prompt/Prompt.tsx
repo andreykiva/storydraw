@@ -1,17 +1,18 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './Prompt.module.scss';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
-import type { MenuPosition } from '@/types/Positions';
+import { MENU_POSITION } from '@/constants/position';
 
 type PromptProps = {
 	children: React.ReactNode;
 	className: string;
-	position: MenuPosition;
+	position: MENU_POSITION;
 };
 
 const Prompt = ({ children, position, className }: PromptProps) => {
 	return (
-		<WrapperWithTriangle position={position} className={[styles.Prompt, className].join(' ')}>
+		<WrapperWithTriangle position={position} className={cn(styles.Prompt, className)}>
 			<div className={styles.PromptTriangle}></div>
 			<span className={styles.PromptText}>{children}</span>
 		</WrapperWithTriangle>

@@ -7,27 +7,27 @@ import PersonIcon from '@/assets/icons/settings/person.svg';
 import LockIcon from '@/assets/icons/settings/lock.svg';
 import BellIcon from '@/assets/icons/settings/bell.svg';
 import NavItem from './NavItem/NavItem';
-import type { SettingsSection } from '@/types/Settings';
+import { SETTINGS_SECTION } from '@/constants/settings';
 
 type NavPanelProps = {
-	activeSection: SettingsSection;
-	onChangeActiveSection: (section: SettingsSection) => void;
+	activeSection: SETTINGS_SECTION;
+	onChangeActiveSection: (section: SETTINGS_SECTION) => void;
 };
 
 const links = [
 	{
 		title: 'Manage account',
-		to: 'manageAccounts',
+		to: SETTINGS_SECTION.MANAGE_ACCOUNT,
 		iconComponent: <PersonIcon />,
 	},
 	{
 		title: 'Privacy',
-		to: 'privacy',
+		to: SETTINGS_SECTION.PRIVACY,
 		iconComponent: <LockIcon />,
 	},
 	{
 		title: 'Push notifications',
-		to: 'pushNotifications',
+		to: SETTINGS_SECTION.PUSH_NOTIFICATIONS,
 		iconComponent: <BellIcon />,
 	},
 ];
@@ -51,7 +51,7 @@ const NavPanel = ({ activeSection, onChangeActiveSection }: NavPanelProps) => {
 						title={link.title}
 						active={activeSection === link.to}
 						iconComponent={link.iconComponent}
-						onClick={onChangeActiveSection.bind(this, link.to)}
+						onClick={() => onChangeActiveSection(link.to)}
 					/>
 				))}
 			</ul>

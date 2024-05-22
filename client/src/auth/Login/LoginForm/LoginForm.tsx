@@ -29,12 +29,10 @@ const enum LOGIN_METHOD {
 	PHONE_AND_PASSWORD = 'phoneAndPassword',
 }
 
-type LoginMethod = (typeof LOGIN_METHOD)[keyof typeof LOGIN_METHOD];
-
 const LoginForm = (props: LoginFormProps) => {
 	const { formData, formErrors, openResetForm, onFocusInput, onBlurInput, onChangeInput, onChangeSelect } = props;
 
-	const [loginMethod, setLoginMethod] = useState<LoginMethod>(LOGIN_METHOD.PHONE_AND_CODE);
+	const [loginMethod, setLoginMethod] = useState<LOGIN_METHOD>(LOGIN_METHOD.PHONE_AND_CODE);
 
 	// isFormBtnDisabled
 	const validationMethods = {
@@ -61,8 +59,8 @@ const LoginForm = (props: LoginFormProps) => {
 			<form onSubmit={handleSubmit}>
 				<FormHeader
 					isLoginAndPassword={loginMethod === LOGIN_METHOD.LOGIN_AND_PASSWORD}
-					onSwitchToPhoneAndCode={setLoginMethod.bind(this, LOGIN_METHOD.PHONE_AND_CODE)}
-					onSwitchToLoginAndPassword={setLoginMethod.bind(this, LOGIN_METHOD.LOGIN_AND_PASSWORD)}
+					onSwitchToPhoneAndCode={() => setLoginMethod(LOGIN_METHOD.PHONE_AND_CODE)}
+					onSwitchToLoginAndPassword={() => setLoginMethod(LOGIN_METHOD.LOGIN_AND_PASSWORD)}
 				/>
 				{loginMethod === LOGIN_METHOD.LOGIN_AND_PASSWORD ? (
 					<Input
@@ -72,8 +70,8 @@ const LoginForm = (props: LoginFormProps) => {
 						value={formData.login}
 						error={formErrors.login}
 						onChange={onChangeInput}
-						onFocus={onFocusInput.bind(this, 'login')}
-						onBlur={onBlurInput.bind(this, 'login')}
+						onFocus={() => onFocusInput('login')}
+						onBlur={() => onBlurInput('login')}
 						required
 					/>
 				) : (
@@ -91,8 +89,8 @@ const LoginForm = (props: LoginFormProps) => {
 							value={formData.phone}
 							error={formErrors.phone}
 							onChange={onChangeInput}
-							onFocus={onFocusInput.bind(this, 'phone')}
-							onBlur={onBlurInput.bind(this, 'phone')}
+							onFocus={() => onFocusInput('phone')}
+							onBlur={() => onBlurInput('phone')}
 							required
 						/>
 					</div>
@@ -104,8 +102,8 @@ const LoginForm = (props: LoginFormProps) => {
 						value={formData.code}
 						error={formErrors.code}
 						onChange={onChangeInput}
-						onFocus={onFocusInput.bind(this, 'code')}
-						onBlur={onBlurInput.bind(this, 'code')}
+						onFocus={() => onFocusInput('code')}
+						onBlur={() => onBlurInput('code')}
 						disabled={isCodeBtnDisabled}
 						required
 					/>
@@ -116,8 +114,8 @@ const LoginForm = (props: LoginFormProps) => {
 						value={formData.password}
 						error={formErrors.password}
 						onChange={onChangeInput}
-						onFocus={onFocusInput.bind(this, 'password')}
-						onBlur={onBlurInput.bind(this, 'password')}
+						onFocus={() => onFocusInput('password')}
+						onBlur={() => onBlurInput('password')}
 						required
 					/>
 				)}
@@ -125,8 +123,8 @@ const LoginForm = (props: LoginFormProps) => {
 					isPhoneAndPassword={loginMethod === LOGIN_METHOD.PHONE_AND_PASSWORD}
 					isPhoneAndCode={loginMethod === LOGIN_METHOD.PHONE_AND_CODE}
 					onOpenResetForm={openResetForm}
-					onSwitchToPhoneAndPassword={setLoginMethod.bind(this, LOGIN_METHOD.PHONE_AND_PASSWORD)}
-					onSwitchToPhoneAndCode={setLoginMethod.bind(this, LOGIN_METHOD.PHONE_AND_CODE)}
+					onSwitchToPhoneAndPassword={() => setLoginMethod(LOGIN_METHOD.PHONE_AND_PASSWORD)}
+					onSwitchToPhoneAndCode={() => setLoginMethod(LOGIN_METHOD.PHONE_AND_CODE)}
 				/>
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 					Log in

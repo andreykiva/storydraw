@@ -39,7 +39,7 @@ const Privacy = () => {
 						<ConfirmationModal
 							title="Switch to public account?"
 							confirmAction="Confirm"
-							onClose={setIsSwitchModalOpen.bind(this, false)}
+							onClose={() => setIsSwitchModalOpen(false)}
 							onConfirm={handleCancelPrivateAccount}
 						>
 							If you switch to a public account, anyone can watch your stories. Users may be able to Duet,

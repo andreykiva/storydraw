@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ActionsMenu.module.scss';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
+import { MENU_POSITION } from '@/constants/position';
 
 type ActionsMenuProps = {
 	onLike: () => void;
@@ -11,7 +12,7 @@ type ActionsMenuProps = {
 
 const ActionsMenu = ({ onLike, onDelete, onReport, likedByMe }: ActionsMenuProps) => {
 	return (
-		<WrapperWithTriangle position="topCenter" className={styles.ActionsMenu}>
+		<WrapperWithTriangle position={MENU_POSITION.TOP_CENTER} className={styles.ActionsMenu}>
 			<span className={styles.Action} onClick={onLike}>
 				{likedByMe ? 'Unlike' : 'Like'}
 			</span>

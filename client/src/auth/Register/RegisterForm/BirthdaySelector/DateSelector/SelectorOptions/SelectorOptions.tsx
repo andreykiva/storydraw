@@ -15,7 +15,7 @@ const SelectorOptions = ({ options, selectedOption, onChangeSelect }: SelectorOp
 				<SelectorOption
 					key={option}
 					selected={option === selectedOption}
-					onClick={onChangeSelect.bind(this, option)}
+					onClick={() => onChangeSelect(option)}
 				>
 					{option}
 				</SelectorOption>

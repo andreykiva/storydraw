@@ -13,17 +13,29 @@ type DeleteAccountVerificationProps = {
 	onBack: () => void;
 };
 
-type RegisterMethod = 'phone' | 'email' | 'google' | 'facebook' | 'twitter';
+const enum REGISTRATION_METHOD {
+	PHONE = 'phone',
+	EMAIL = 'email',
+	GOOGLE = 'google',
+	FACEBOOK = 'facebook',
+	TWITTER = 'twitter',
+}
 
 const DeleteAccountVerification = ({ onBack }: DeleteAccountVerificationProps) => {
 	const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 	//test
-	const registerMethods: RegisterMethod[] = ['phone', 'email', 'google', 'facebook', 'twitter'];
-	const testRegisterMethod: RegisterMethod = registerMethods[Math.floor(Math.random() * registerMethods.length)];
+	const registerMethods: REGISTRATION_METHOD[] = [
+		REGISTRATION_METHOD.PHONE,
+		REGISTRATION_METHOD.EMAIL,
+		REGISTRATION_METHOD.GOOGLE,
+		REGISTRATION_METHOD.FACEBOOK,
+		REGISTRATION_METHOD.TWITTER,
+	];
+	const testRegisterMethod: REGISTRATION_METHOD = registerMethods[Math.floor(Math.random() * registerMethods.length)];
 	let verificationMessage = '';
 
-	if (testRegisterMethod === 'email' || testRegisterMethod === 'phone') {
-		const codeType = testRegisterMethod === 'email' ? 'Email' : 'SMS';
+	if (testRegisterMethod === REGISTRATION_METHOD.EMAIL || testRegisterMethod === REGISTRATION_METHOD.PHONE) {
+		const codeType = testRegisterMethod === REGISTRATION_METHOD.EMAIL ? 'Email' : 'SMS';
 
 		verificationMessage = `complete ${codeType} verification first. 
 		You will receive an ${codeType} code after tapping "Send code".`;
@@ -51,21 +63,23 @@ const DeleteAccountVerification = ({ onBack }: DeleteAccountVerificationProps) =
 				andrewtest1237
 			</p>
 
-			{testRegisterMethod === 'google' && <div className={styles.VerifyWithSocialMedia}></div>}
-			{testRegisterMethod === 'facebook' && <div className={styles.VerifyWithSocialMedia}></div>}
-			{testRegisterMethod === 'twitter' && <div className={styles.VerifyWithSocialMedia}></div>}
-			{testRegisterMethod === 'phone' && (
+			{testRegisterMethod === REGISTRATION_METHOD.GOOGLE && <div className={styles.VerifyWithSocialMedia}></div>}
+			{testRegisterMethod === REGISTRATION_METHOD.FACEBOOK && (
+				<div className={styles.VerifyWithSocialMedia}></div>
+			)}
+			{testRegisterMethod === REGISTRATION_METHOD.TWITTER && <div className={styles.VerifyWithSocialMedia}></div>}
+			{testRegisterMethod === REGISTRATION_METHOD.PHONE && (
 				<div className={styles.VerifyWithCode}>
 					<CodeInput error="" disabled={false} placeholder="Enter 4-digit code" />
 				</div>
 			)}
-			{testRegisterMethod === 'email' && (
+			{testRegisterMethod === REGISTRATION_METHOD.EMAIL && (
 				<div className={styles.VerifyWithCode}>
 					<CodeInput error="" disabled={false} placeholder="Enter 4-digit code" />
 				</div>
 			)}
 
-			<Button className={styles.DeleteBtn} onClick={setIsConfirmationModalOpen.bind(this, true)}>
+			<Button className={styles.DeleteBtn} onClick={() => setIsConfirmationModalOpen(true)}>
 				Delete account
 			</Button>
 
@@ -73,7 +87,7 @@ const DeleteAccountVerification = ({ onBack }: DeleteAccountVerificationProps) =
 				<ConfirmationModal
 					title="Delete account"
 					confirmAction="Delete"
-					onClose={setIsConfirmationModalOpen.bind(this, false)}
+					onClose={() => setIsConfirmationModalOpen(false)}
 					onConfirm={handleDeleteAccount}
 				>
 					Are you sure you want to delete account andrewtest1237?

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import cn from 'classnames';
 import styles from './CountrySelector.module.scss';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import { searchAndSortCountries } from '@/utils/countriesUtils';
@@ -41,14 +42,14 @@ const CountrySelector = ({ options, selectedOption, selectOption }: CountrySelec
 	};
 
 	return (
-		<div className={[authSharedStyles.Selector, styles.CountrySelector].join(' ')} ref={countrySelectorRef}>
+		<div className={cn(authSharedStyles.Selector, styles.CountrySelector)} ref={countrySelectorRef}>
 			<SelectorHeader
 				value={`${selectedOption.abbreviation} ${selectedOption.phonePrefix}`}
 				isOpen={isOptionsOpen}
 				onClick={handleToggleSelect}
 			/>
 			{isOptionsOpen && (
-				<div className={[authSharedStyles.SelectorBody, styles.CountrySelectorBody].join(' ')}>
+				<div className={cn(authSharedStyles.SelectorBody, styles.CountrySelectorBody)}>
 					<SelectorSearchBar
 						type="text"
 						value={searchValue}

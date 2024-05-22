@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import styles from './ExploreStory.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
@@ -18,7 +19,7 @@ const ExploreStory = (props: ExploreStoryProps) => {
 	const { id, user, story, description, tags, likes, views, className } = props;
 
 	return (
-		<div className={[styles.ExploreStory, className].join(' ')}>
+		<div className={cn(styles.ExploreStory, className)}>
 			<Link className={styles.ExploreStoryContent} to={`/@${user.username}/story/${id}`}>
 				<img src={story || previewImg} alt="Story" className={styles.Story} />
 				<div className={styles.ViewsInfo}>

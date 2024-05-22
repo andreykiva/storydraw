@@ -1,13 +1,14 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { NOTIFICATIONS_CATEGORY } from '@/constants/notification';
 
 type NotificationsState = {
 	isNotificationsOpen: boolean;
-	notificationsCategory: 'all' | 'likes' | 'comments' | 'mentionsTags' | 'followers';
+	notificationsCategory: NOTIFICATIONS_CATEGORY;
 };
 
 const initialState: NotificationsState = {
 	isNotificationsOpen: false,
-	notificationsCategory: 'all',
+	notificationsCategory: NOTIFICATIONS_CATEGORY.ALL,
 };
 
 export const notificationsSlice = createSlice({

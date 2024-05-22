@@ -8,7 +8,8 @@ import ChoosePlan from './ChoosePlan/ChoosePlan';
 import Payment from './Payment/Payment';
 import Success from './Success/Success';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
-import superIcon from '@/assets/icons/super.svg?url';
+import premiumIcon from '@/assets/icons/premium.svg?url';
+import { SUBSCRIPTION_PLAN } from '@/constants/subscription';
 
 const enum SUBSCRIBE_STEP {
 	COMPARE = 'compare',
@@ -18,11 +19,10 @@ const enum SUBSCRIBE_STEP {
 	SUCCESS = 'success',
 }
 
-type SubscribeStep = (typeof SUBSCRIBE_STEP)[keyof typeof SUBSCRIBE_STEP];
-
 const Subscribe = () => {
 	const navigate = useNavigate();
-	const [subscribeStep, setSubscribeStep] = useState<SubscribeStep>(SUBSCRIBE_STEP.COMPARE);
+	const [subscribeStep, setSubscribeStep] = useState<SUBSCRIBE_STEP>(SUBSCRIBE_STEP.COMPARE);
+	const [subscriptionPlan, setSubscriptionPlan] = useState<SUBSCRIPTION_PLAN>(SUBSCRIPTION_PLAN.YEARLY);
 
 	const handleBack = () => {
 		navigate(-1);
@@ -51,12 +51,14 @@ const Subscribe = () => {
 		<div className={styles.Subscribe}>
 			<div className={styles.SubscribeHeader}>
 				<CloseButton className={styles.CloseBtn} onClick={handleBack} />
-				<img src={superIcon} alt="Super" className={styles.SuperIcon} />
+				<img src={premiumIcon} alt="Premium" className={styles.PremiumIcon} />
 			</div>
 
 			{subscribeStep === SUBSCRIBE_STEP.COMPARE && <Compare />}
 			{subscribeStep === SUBSCRIBE_STEP.TRIAL && <Trial />}
-			{subscribeStep === SUBSCRIBE_STEP.CHOOSE_PLAN && <ChoosePlan />}
+			{subscribeStep === SUBSCRIBE_STEP.CHOOSE_PLAN && (
+				<ChoosePlan currentPlan={subscriptionPlan} onChangePlan={setSubscriptionPlan} />
+			)}
 			{subscribeStep === SUBSCRIBE_STEP.PAYMENT && <Payment />}
 			{subscribeStep === SUBSCRIBE_STEP.SUCCESS && <Success />}
 

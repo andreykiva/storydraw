@@ -14,10 +14,8 @@ const enum DELETE_ACCOUNT_STEP {
 	VERIFICATION = 'verification',
 }
 
-type DeleteAccountStep = (typeof DELETE_ACCOUNT_STEP)[keyof typeof DELETE_ACCOUNT_STEP];
-
 const DeleteAccountModal = ({ onClose }: DeleteAccountModalProps) => {
-	const [deleteAccountStep, setDeleteAccountStep] = useState<DeleteAccountStep>(DELETE_ACCOUNT_STEP.INFORMATION);
+	const [deleteAccountStep, setDeleteAccountStep] = useState<DELETE_ACCOUNT_STEP>(DELETE_ACCOUNT_STEP.INFORMATION);
 
 	const handleNextStep = () => {
 		switch (deleteAccountStep) {

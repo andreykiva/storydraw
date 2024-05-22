@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import cn from 'classnames';
 import styles from './ChatMessage.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import MoreIcon from '@/assets/icons/more-horizontal.svg';
@@ -29,15 +30,15 @@ const ChatMessage = (props: Message) => {
 	};
 
 	return (
-		<div className={[styles.ChatMessage, isItMe && styles.My].join(' ')}>
-			<div className={styles.MessageContent} onMouseLeave={setIsActionsMenuOpen.bind(this, false)}>
+		<div className={cn(styles.ChatMessage, isItMe && styles.My)}>
+			<div className={styles.MessageContent} onMouseLeave={() => setIsActionsMenuOpen(false)}>
 				<div className={styles.MessageAuthor}>
 					<img src={author.image || defaultImg} alt="Profile picture" className={styles.AuthorImg} />
 				</div>
 				<p className={styles.MessageText}>{text}</p>
 				<div
-					className={[styles.ButtonWithActionsMenu, isActionsMenuOpen && styles.Active].join(' ')}
-					onClick={setIsActionsMenuOpen.bind(this, true)}
+					className={cn(styles.ButtonWithActionsMenu, isActionsMenuOpen && styles.Active)}
+					onClick={() => setIsActionsMenuOpen(true)}
 				>
 					<MoreIcon alt="Actions" className={styles.MoreIcon} />
 					{isActionsMenuOpen && (

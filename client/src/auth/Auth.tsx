@@ -12,11 +12,9 @@ const enum AUTH_MODE {
 	REGISTER = 'register',
 }
 
-type AuthMode = (typeof AUTH_MODE)[keyof typeof AUTH_MODE];
-
 const Auth = () => {
 	const dispatch = useDispatch();
-	const [authMode, setAuthMode] = useState<AuthMode>(AUTH_MODE.LOGIN);
+	const [authMode, setAuthMode] = useState<AUTH_MODE>(AUTH_MODE.LOGIN);
 
 	const handleClose = () => {
 		dispatch(closeAuthModal());
@@ -33,14 +31,14 @@ const Auth = () => {
 				{authMode === AUTH_MODE.LOGIN ? (
 					<div className={styles.AuthModalFooter}>
 						Don't have an account?
-						<span className={styles.FooterBtn} onClick={setAuthMode.bind(this, AUTH_MODE.REGISTER)}>
+						<span className={styles.FooterBtn} onClick={() => setAuthMode(AUTH_MODE.REGISTER)}>
 							Sign up
 						</span>
 					</div>
 				) : (
 					<div className={styles.AuthModalFooter}>
 						Already have an account?
-						<span className={styles.FooterBtn} onClick={setAuthMode.bind(this, AUTH_MODE.LOGIN)}>
+						<span className={styles.FooterBtn} onClick={() => setAuthMode(AUTH_MODE.LOGIN)}>
 							Log in
 						</span>
 					</div>

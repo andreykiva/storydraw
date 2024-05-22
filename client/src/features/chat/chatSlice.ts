@@ -1,7 +1,7 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 type ChatState = {
-	activeChatmateId: string | null;
+	activeChatmateId: string;
 };
 
 const initialState: ChatState = {

@@ -1,9 +1,10 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { REPORT_TYPE } from '@/constants/report';
 
 type ReportState = {
 	isReportOpen: boolean;
-	type: 'story' | 'account' | 'comment' | null;
-	targetId: string | null;
+	type: REPORT_TYPE;
+	targetId: string;
 };
 
 const initialState: ReportState = {

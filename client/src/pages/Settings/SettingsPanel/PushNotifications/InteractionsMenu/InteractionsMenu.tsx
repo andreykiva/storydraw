@@ -13,22 +13,22 @@ const InteractionsMenu = () => {
 			<InteractionsItem
 				title="Likes"
 				checked={isLikesActive}
-				onChange={setIsLikesActive.bind(this, !isLikesActive)}
+				onChange={() => setIsLikesActive(!isLikesActive)}
 			/>
 			<InteractionsItem
 				title="Comments"
 				checked={isCommentsActive}
-				onChange={setIsCommentsActive.bind(this, !isCommentsActive)}
+				onChange={() => setIsCommentsActive(!isCommentsActive)}
 			/>
 			<InteractionsItem
 				title="New followers"
 				checked={isNewFollowersActive}
-				onChange={setIsNewFollowersActive.bind(this, !isNewFollowersActive)}
+				onChange={() => setIsNewFollowersActive(!isNewFollowersActive)}
 			/>
 			<InteractionsItem
 				title="Mentions and tags"
 				checked={isMentionsAndTagsActive}
-				onChange={setIsMentionsAndTagsActive.bind(this, !isMentionsAndTagsActive)}
+				onChange={() => setIsMentionsAndTagsActive(!isMentionsAndTagsActive)}
 			/>
 		</div>
 	);

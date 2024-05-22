@@ -1,11 +1,12 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './CloseButton.module.scss';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import closeIcon from '@/assets/icons/close.svg?url';
 
 const CloseButton = ({ className, ...rest }: React.ComponentProps<'button'>) => {
 	return (
-		<RoundButton className={[styles.CloseButton, className].join(' ')} {...rest}>
+		<RoundButton className={cn(styles.CloseButton, className)} {...rest}>
 			<img src={closeIcon} alt="CLose" className={styles.CloseIcon} />
 		</RoundButton>
 	);

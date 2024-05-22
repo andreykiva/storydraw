@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './NavItem.module.scss';
 
 type NavItemProps = {
@@ -10,7 +11,7 @@ type NavItemProps = {
 
 const NavItem = ({ title, active, iconComponent, onClick }: NavItemProps) => {
 	return (
-		<li className={[styles.NavItem, active && styles.Active].join(' ')} onClick={onClick}>
+		<li className={cn(styles.NavItem, active && styles.Active)} onClick={onClick}>
 			{iconComponent}
 			<span>{title}</span>
 		</li>

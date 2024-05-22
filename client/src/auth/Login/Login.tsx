@@ -13,10 +13,8 @@ const enum LOGIN_VIEW {
 	QRCODE = 'qrcode',
 }
 
-type LoginView = (typeof LOGIN_VIEW)[keyof typeof LOGIN_VIEW];
-
 const Login = () => {
-	const [loginView, setLoginView] = useState<LoginView>(LOGIN_VIEW.LOGIN_OPTIONS);
+	const [loginView, setLoginView] = useState<LOGIN_VIEW>(LOGIN_VIEW.LOGIN_OPTIONS);
 
 	return (
 		<div className={authSharedStyles.AuthInner}>
@@ -33,12 +31,12 @@ const Login = () => {
 			)}
 			{loginView === LOGIN_VIEW.LOGIN_OPTIONS && (
 				<LoginOptions
-					openForm={setLoginView.bind(this, LOGIN_VIEW.LOGIN_FORM)}
-					openQRCode={setLoginView.bind(this, LOGIN_VIEW.QRCODE)}
+					openForm={() => setLoginView(LOGIN_VIEW.LOGIN_FORM)}
+					openQRCode={() => setLoginView(LOGIN_VIEW.QRCODE)}
 				/>
 			)}
 			{loginView === LOGIN_VIEW.LOGIN_FORM && (
-				<AuthContainer authMode='login' openResetForm={setLoginView.bind(this, LOGIN_VIEW.RESET_FORM)} />
+				<AuthContainer authMode='login' openResetForm={() => setLoginView(LOGIN_VIEW.RESET_FORM)} />
 			)}
 			{loginView === LOGIN_VIEW.RESET_FORM && <AuthContainer authMode='reset' />}
 			{loginView === LOGIN_VIEW.QRCODE && <LoginWithQR />}

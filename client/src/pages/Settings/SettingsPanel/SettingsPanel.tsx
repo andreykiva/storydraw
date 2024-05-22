@@ -3,10 +3,10 @@ import styles from './SettingsPanel.module.scss';
 import ManageAccount from './ManageAccount/ManageAccount';
 import Privacy from './Privacy/Privacy';
 import PushNotifications from './PushNotifications/PushNotifications';
-import type { SettingsSection } from '@/types/Settings';
+import { SETTINGS_SECTION } from '@/constants/settings';
 
 type SettingsPanelProps = {
-	activeSection: SettingsSection;
+	activeSection: SETTINGS_SECTION;
 };
 
 const SettingsPanel = ({ activeSection }: SettingsPanelProps) => {
@@ -16,13 +16,13 @@ const SettingsPanel = ({ activeSection }: SettingsPanelProps) => {
 
 	useEffect(() => {
 		switch (activeSection) {
-			case 'manageAccounts':
+			case SETTINGS_SECTION.MANAGE_ACCOUNT:
 				manageAccountRef.current.scrollIntoView({ behavior: 'smooth' });
 				break;
-			case 'privacy':
+			case SETTINGS_SECTION.PRIVACY:
 				privacyRef.current.scrollIntoView({ behavior: 'smooth' });
 				break;
-			case 'pushNotifications':
+			case SETTINGS_SECTION.PUSH_NOTIFICATIONS:
 				pushNotificationsRef.current.scrollIntoView({ behavior: 'smooth' });
 				break;
 			default:

@@ -10,10 +10,15 @@ type SettingsModalProps = {
 	onClose: () => void;
 };
 
-const testAllowedMessageSenders = 'friends';
+const enum ALLOWED_SENDERS {
+	FRIENDS = 'friends',
+	NONE = 'none',
+}
+
+const testAllowedMessageSenders = ALLOWED_SENDERS.FRIENDS;
 
 const SettingsModal = ({ onClose }: SettingsModalProps) => {
-	const [allowedMessageSenders, setAllowedMessageSenders] = useState('friends');
+	const [allowedMessageSenders, setAllowedMessageSenders] = useState<ALLOWED_SENDERS>(ALLOWED_SENDERS.FRIENDS);
 
 	useEffect(() => {
 		setAllowedMessageSenders(testAllowedMessageSenders);
@@ -39,16 +44,16 @@ const SettingsModal = ({ onClose }: SettingsModalProps) => {
 							<Radio
 								id="allowed-senders-friends"
 								name="messages"
-								checked={allowedMessageSenders === 'friends'}
-								onChange={setAllowedMessageSenders.bind(this, 'friends')}
+								checked={allowedMessageSenders === ALLOWED_SENDERS.FRIENDS}
+								onChange={() => setAllowedMessageSenders(ALLOWED_SENDERS.FRIENDS)}
 							>
 								Friends
 							</Radio>
 							<Radio
 								id="allowed-senders-no-one"
 								name="messages"
-								checked={allowedMessageSenders === 'noOne'}
-								onChange={setAllowedMessageSenders.bind(this, 'noOne')}
+								checked={allowedMessageSenders === ALLOWED_SENDERS.NONE}
+								onChange={() => setAllowedMessageSenders(ALLOWED_SENDERS.NONE)}
 							>
 								No one
 							</Radio>

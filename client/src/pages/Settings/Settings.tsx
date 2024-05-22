@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import styles from './Settings.module.scss';
 import NavPanel from './NavPanel/NavPanel';
 import SettingsPanel from './SettingsPanel/SettingsPanel';
-import type { SettingsSection } from '@/types/Settings';
+import { SETTINGS_SECTION } from '@/constants/settings';
 
 const Settings = () => {
-	const [activeSection, setActiveSection] = useState<SettingsSection>('manageAccounts');
+	const [activeSection, setActiveSection] = useState<SETTINGS_SECTION>(SETTINGS_SECTION.MANAGE_ACCOUNT);
 
-	const handleChangeSection = (section: SettingsSection) => {
+	const handleChangeSection = (section: SETTINGS_SECTION) => {
 		setActiveSection(section);
 	};
 

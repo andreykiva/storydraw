@@ -11,6 +11,7 @@ import { openReport } from '@/features/report/reportSlice';
 import ReportIcon from '@/assets/icons/report.svg';
 import BlockIcon from '@/assets/icons/block.svg';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
+import { MENU_POSITION } from '@/constants/position';
 
 const testProfileInfo = {
 	id: '123',
@@ -212,7 +213,7 @@ const Profile = () => {
 					</div>
 					<ButtonWithActionsMenu
 						actions={actions}
-						menuPosition="bottomRight"
+						menuPosition={MENU_POSITION.BOTTOM_RIGHT}
 						buttonClassName={styles.ActionsBtn}
 						menuClassName={styles.ActionsMenu}
 					/>
