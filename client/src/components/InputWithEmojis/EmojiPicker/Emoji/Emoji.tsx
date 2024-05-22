@@ -3,16 +3,12 @@ import styles from './Emoji.module.scss';
 
 type EmojiProps = {
 	emoji: string;
-	onSelect: (emoji: string) => void;
+	onSelect: () => void;
 };
 
 const Emoji = ({ emoji, onSelect }: EmojiProps) => {
-	const handleClick = () => {
-		onSelect(emoji);
-	};
-
 	return (
-		<li className={styles.Emoji} onClick={handleClick}>
+		<li className={styles.Emoji} onClick={onSelect}>
 			{emoji}
 		</li>
 	);
