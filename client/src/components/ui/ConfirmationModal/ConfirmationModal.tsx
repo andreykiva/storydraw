@@ -20,7 +20,7 @@ const ConfirmationModal = (props: ConfirmationModalProps) => {
 		<ModalOverlay>
 			<div className={styles.ConfirmationModal}>
 				<CloseButton className={styles.CloseBtn} onClick={onClose} />
-				<HTag tag="h3" className={styles.HeaderTitle}>
+				<HTag tag="h3" className={styles.ModalTitle}>
 					{title}
 				</HTag>
 				{children && children.length && <p className={styles.ModalDescr}>{children}</p>}
