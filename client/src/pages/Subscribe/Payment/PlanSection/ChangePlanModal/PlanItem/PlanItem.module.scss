@@ -1,0 +1,79 @@
+.PlanItem {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 30px;
+	cursor: pointer;
+
+	&.Selected {
+		background-color: #00ffb311;
+
+		.PlanRadio {
+			border-color: var(--bright-green-color);
+
+			&::after {
+				display: block;
+			}
+		}
+	}
+
+	&:hover {
+		background-color: #00ffb311;
+	}
+
+	&.WithCategory {
+		padding-top: 32px;
+	}
+}
+
+.PlanCategory {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: var(--bright-green-color);
+	padding: 4px 10px;
+	border-radius: 0 0 14px;
+	color: rgb(34, 34, 34);
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.PlanInfo {
+	display: flex;
+	flex-direction: column;
+
+	.PlanName {
+		font-size: 22px;
+		font-weight: 700;
+		color: var(--bright-green-color);
+		margin-bottom: 2px;
+	}
+
+	.PlanPrice {
+		font-size: 18px;
+		font-weight: 700;
+	}
+}
+
+.PlanRadio {
+	position: relative;
+	height: 28px;
+	width: 28px;
+	border: 2.5px solid rgb(55, 70, 79);
+	border-radius: 50%;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: none;
+		width: 16px;
+		height: 16px;
+		background-color: var(--bright-green-color);
+		border-radius: 50%;
+	}
+}
