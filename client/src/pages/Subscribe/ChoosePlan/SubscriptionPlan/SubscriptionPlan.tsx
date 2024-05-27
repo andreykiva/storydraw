@@ -5,20 +5,20 @@ import checkIcon from '@/assets/icons/subscribe/check.svg?url';
 
 type SubscriptionPlanProps = {
 	name: string;
-	descr?: string;
+	category?: string;
 	pricePerMonth: number;
 	selected: boolean;
 	onClick: () => void;
 };
 
 const SubscriptionPlan = (props: SubscriptionPlanProps) => {
-	const { name, descr, pricePerMonth, selected, onClick } = props;
+	const { name, category, pricePerMonth, selected, onClick } = props;
 	return (
 		<div
-			className={cn(styles.SubscriptionPlan, selected && styles.Selected, descr && styles.WithDescr)}
+			className={cn(styles.SubscriptionPlan, selected && styles.Selected, category && styles.WithCategory)}
 			onClick={onClick}
 		>
-			{descr && <div className={styles.PlanDescr}>{descr}</div>}
+			{category && <div className={styles.PlanCategory}>{category}</div>}
 			<div className={styles.Check}>
 				<img src={checkIcon} alt="Selected" className={styles.CheckIcon} />
 			</div>

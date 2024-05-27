@@ -1,56 +1,43 @@
 import React from 'react';
 import styles from './ChoosePlan.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
-import { SUBSCRIPTION_PLAN } from '@/constants/subscription';
 import SubscriptionPlan from './SubscriptionPlan/SubscriptionPlan';
+import type { Plan } from '@/types/Subscription';
 
 type ChoosePlanProps = {
-	currentPlan: SUBSCRIPTION_PLAN;
-	onChangePlan: (plan: SUBSCRIPTION_PLAN) => void;
+	currentPlan: Plan;
+	plans: Plan[];
+	onChangePlan: (plan: Plan) => void;
 };
 
-const plans = [
-	{
-		name: '12 months',
-		pricePerMonth: 3.33,
-		type: SUBSCRIPTION_PLAN.YEARLY,
-		descr: 'Most popular',
-	},
-	{
-		name: '1 month',
-		pricePerMonth: 6.49,
-		type: SUBSCRIPTION_PLAN.MONTHLY,
-	},
-];
+const ChoosePlan = ({ currentPlan, plans, onChangePlan }: ChoosePlanProps) => {
+	let planDescription = `$${currentPlan.pricePerMonth} per month`;
 
-const ChoosePlan = ({ currentPlan, onChangePlan }: ChoosePlanProps) => {
+	if (currentPlan.pricePerYear) {
+		planDescription = `$${currentPlan.pricePerYear} per year
+		 ($${currentPlan.pricePerMonth}/month, one-time payment)`;
+	}
+
 	return (
 		<div className={styles.ChoosePlan}>
 			<HTag tag="h2" className={styles.ChoosePlanTitle}>
 				Choose the plan you use after the 14-day trial
 			</HTag>
-
 			<div className={styles.SubscriptionPlansList}>
 				{plans.map((plan) => (
 					<SubscriptionPlan
-						key={plan.name}
+						key={plan.type}
 						name={plan.name}
-						descr={plan.descr}
+						category={plan.category}
 						pricePerMonth={plan.pricePerMonth}
-						selected={plan.type === currentPlan}
-						onClick={() => onChangePlan(plan.type)}
+						selected={plan.type === currentPlan.type}
+						onClick={() => onChangePlan(plan)}
 					/>
 				))}
 			</div>
-
-			{currentPlan === SUBSCRIPTION_PLAN.YEARLY && (
-				<p className={styles.PlanDescription}>
-					14-day free trial, then $39,99 per year ($3,33/month, one-time payment) plus applicable taxes
-				</p>
-			)}
-			{currentPlan === SUBSCRIPTION_PLAN.MONTHLY && (
-				<p className={styles.PlanDescription}>7-day free trial, then $6,49 per month plus applicable taxes</p>
-			)}
+			<p className={styles.PlanDescription}>
+				{currentPlan.trialDays}-day free trial, then {planDescription} plus applicable taxes
+			</p>
 		</div>
 	);
 };
