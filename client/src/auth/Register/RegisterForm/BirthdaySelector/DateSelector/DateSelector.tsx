@@ -5,13 +5,14 @@ import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import useClickOutside from '@/hooks/useClickOutside';
 import SelectorHeader from './SelectorHeader/SelectorHeader';
 import SelectorOptions from './SelectorOptions/SelectorOptions';
+import { BIRTH_FIELD } from '@/constants/auth';
 
 type DateSelectorProps = {
 	options: string[];
 	selectedOption: string;
-	fieldName: string;
+	fieldName: BIRTH_FIELD;
 	placeholder: string;
-	onSelectOption: (fieldName: string, option: string) => void;
+	onSelectOption: (fieldName: BIRTH_FIELD, option: string) => void;
 };
 
 const DateSelector = ({ options, selectedOption, fieldName, placeholder, onSelectOption }: DateSelectorProps) => {

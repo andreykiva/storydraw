@@ -2,12 +2,13 @@ import React from 'react';
 import styles from './BirthdaySelector.module.scss';
 import DateSelector from './DateSelector/DateSelector';
 import months from '@/data/months';
+import { BIRTH_FIELD } from '@/constants/auth';
 
 type BirthdaySelector = {
 	selectedMonth: string;
 	selectedDay: string;
 	selectedYear: string;
-	selectBirthday: (fieldName: string, selectedDate: string) => void;
+	selectBirthday: (fieldName: BIRTH_FIELD, selectedDate: string) => void;
 };
 
 const BirthdaySelector = ({ selectedMonth, selectedDay, selectedYear, selectBirthday }: BirthdaySelector) => {
@@ -31,21 +32,21 @@ const BirthdaySelector = ({ selectedMonth, selectedDay, selectedYear, selectBirt
 				<DateSelector
 					options={monthNames}
 					onSelectOption={selectBirthday}
-					fieldName="birthMonth"
+					fieldName={BIRTH_FIELD.BIRTH_MONTH}
 					placeholder="Month"
 					selectedOption={selectedMonth}
 				/>
 				<DateSelector
 					options={days}
 					onSelectOption={selectBirthday}
-					fieldName="birthDay"
+					fieldName={BIRTH_FIELD.BIRHT_DAY}
 					placeholder="Day"
 					selectedOption={selectedDay}
 				/>
 				<DateSelector
 					options={years}
 					onSelectOption={selectBirthday}
-					fieldName="birthYear"
+					fieldName={BIRTH_FIELD.BIRTH_YEAR}
 					placeholder="Year"
 					selectedOption={selectedYear}
 				/>
