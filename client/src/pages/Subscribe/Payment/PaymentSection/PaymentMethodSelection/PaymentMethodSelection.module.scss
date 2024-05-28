@@ -1,0 +1,22 @@
+.PaymentMethodSelection {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.AnotherCard {
+	display: flex;
+	align-items: center;
+}
+
+.CardsIcons {
+	display: flex;
+	gap: 5px;
+	margin-left: 10px;
+
+	img {
+		width: 24px;
+	}
+}
