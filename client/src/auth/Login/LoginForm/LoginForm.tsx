@@ -1,50 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';
 import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
 import HTag from '@/components/ui/HTag/HTag';
-import { validatePhone, validatePassword, validateCode, validateLogin } from '@/utils/validators';
 import CountrySelector from '@/auth/CountrySelector/CountrySelector';
 import countries from '@/data/countries';
-import type Country from '@/types/Country';
-import type { FormData, FormErrors } from '@/types/Auth';
 import FormFooter from './FormFooter/FormFooter';
 import FormHeader from './FormHeader/FormHeader';
+import { LOGIN_FIELD, LOGIN_METHOD } from '@/constants/auth';
+import useLoginForm from '@/hooks/forms/useLoginForm';
 
 type LoginFormProps = {
-	openResetForm: () => void;
-	formData: FormData;
-	formErrors: FormErrors;
-	onFocusInput: (fieldName: string) => void;
-	onBlurInput: (fieldName: string) => void;
-	onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onChangeSelect: (selectedCountry: Country) => void;
+	onOpenResetForm: () => void;
 };
 
-const enum LOGIN_METHOD {
-	LOGIN_AND_PASSWORD = 'loginAndPassword',
-	PHONE_AND_CODE = 'phoneAndCode',
-	PHONE_AND_PASSWORD = 'phoneAndPassword',
-}
-
-const LoginForm = (props: LoginFormProps) => {
-	const { formData, formErrors, openResetForm, onFocusInput, onBlurInput, onChangeInput, onChangeSelect } = props;
-
-	const [loginMethod, setLoginMethod] = useState<LOGIN_METHOD>(LOGIN_METHOD.PHONE_AND_CODE);
-
-	// isFormBtnDisabled
-	const validationMethods = {
-		loginAndPassword: () => validateLogin(formData.login) || validatePassword(formData.password),
-		phoneAndCode: () => validatePhone(formData.phone) || validateCode(formData.code),
-		phoneAndPassword: () => validatePhone(formData.phone) || validatePassword(formData.password),
-	};
-
-	const isFormBtnDisabled = Boolean(validationMethods[loginMethod]());
-
-	//isCodeBtnDisabled
-	const isCodeBtnDisabled = Boolean(validatePhone(formData.phone));
+const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
+	const {
+		formData,
+		formErrors,
+		country,
+		loginMethod,
+		isFormBtnDisabled,
+		isCodeBtnDisabled,
+		handleChangeInput,
+		handleFocusInput,
+		handleBlurInput,
+		handleChangeCountry,
+		handleChangeLoginMethod,
+	} = useLoginForm();
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -59,72 +44,72 @@ const LoginForm = (props: LoginFormProps) => {
 			<form onSubmit={handleSubmit}>
 				<FormHeader
 					isLoginAndPassword={loginMethod === LOGIN_METHOD.LOGIN_AND_PASSWORD}
-					onSwitchToPhoneAndCode={() => setLoginMethod(LOGIN_METHOD.PHONE_AND_CODE)}
-					onSwitchToLoginAndPassword={() => setLoginMethod(LOGIN_METHOD.LOGIN_AND_PASSWORD)}
+					onSwitchToPhoneAndCode={() => handleChangeLoginMethod(LOGIN_METHOD.PHONE_AND_CODE)}
+					onSwitchToLoginAndPassword={() => handleChangeLoginMethod(LOGIN_METHOD.LOGIN_AND_PASSWORD)}
 				/>
 				{loginMethod === LOGIN_METHOD.LOGIN_AND_PASSWORD ? (
 					<Input
 						type="text"
-						name="login"
+						name={LOGIN_FIELD.LOGIN}
 						placeholder="Email or username"
-						value={formData.login}
-						error={formErrors.login}
-						onChange={onChangeInput}
-						onFocus={() => onFocusInput('login')}
-						onBlur={() => onBlurInput('login')}
+						value={formData[LOGIN_FIELD.LOGIN]}
+						error={formErrors[LOGIN_FIELD.LOGIN]}
+						onChange={handleChangeInput}
+						onFocus={() => handleFocusInput(LOGIN_FIELD.LOGIN)}
+						onBlur={() => handleBlurInput(LOGIN_FIELD.LOGIN)}
 						required
 					/>
 				) : (
 					<div className={authSharedStyles.PhoneField}>
 						<CountrySelector
 							options={countries}
-							selectedOption={formData.country}
-							selectOption={onChangeSelect}
+							selectedOption={country}
+							selectOption={handleChangeCountry}
 						/>
 						<Input
 							type="text"
-							name="phone"
+							name={LOGIN_FIELD.PHONE}
 							mode="Phone"
 							placeholder="Phone number"
-							value={formData.phone}
-							error={formErrors.phone}
-							onChange={onChangeInput}
-							onFocus={() => onFocusInput('phone')}
-							onBlur={() => onBlurInput('phone')}
+							value={formData[LOGIN_FIELD.PHONE]}
+							error={formErrors[LOGIN_FIELD.PHONE]}
+							onChange={handleChangeInput}
+							onFocus={() => handleFocusInput(LOGIN_FIELD.PHONE)}
+							onBlur={() => handleBlurInput(LOGIN_FIELD.PHONE)}
 							required
 						/>
 					</div>
 				)}
 				{loginMethod === LOGIN_METHOD.PHONE_AND_CODE ? (
 					<CodeInput
-						name="code"
+						name={LOGIN_FIELD.CODE}
 						placeholder="Enter 6-digit code"
-						value={formData.code}
-						error={formErrors.code}
-						onChange={onChangeInput}
-						onFocus={() => onFocusInput('code')}
-						onBlur={() => onBlurInput('code')}
+						value={formData[LOGIN_FIELD.CODE]}
+						error={formErrors[LOGIN_FIELD.CODE]}
+						onChange={handleChangeInput}
+						onFocus={() => handleFocusInput(LOGIN_FIELD.CODE)}
+						onBlur={() => handleBlurInput(LOGIN_FIELD.CODE)}
 						disabled={isCodeBtnDisabled}
 						required
 					/>
 				) : (
 					<PasswordInput
-						name="password"
+						name={LOGIN_FIELD.PASSWORD}
 						placeholder="Password"
-						value={formData.password}
-						error={formErrors.password}
-						onChange={onChangeInput}
-						onFocus={() => onFocusInput('password')}
-						onBlur={() => onBlurInput('password')}
+						value={formData[LOGIN_FIELD.PASSWORD]}
+						error={formErrors[LOGIN_FIELD.PASSWORD]}
+						onChange={handleChangeInput}
+						onFocus={() => handleFocusInput(LOGIN_FIELD.PASSWORD)}
+						onBlur={() => handleBlurInput(LOGIN_FIELD.PASSWORD)}
 						required
 					/>
 				)}
 				<FormFooter
 					isPhoneAndPassword={loginMethod === LOGIN_METHOD.PHONE_AND_PASSWORD}
 					isPhoneAndCode={loginMethod === LOGIN_METHOD.PHONE_AND_CODE}
-					onOpenResetForm={openResetForm}
-					onSwitchToPhoneAndPassword={() => setLoginMethod(LOGIN_METHOD.PHONE_AND_PASSWORD)}
-					onSwitchToPhoneAndCode={() => setLoginMethod(LOGIN_METHOD.PHONE_AND_CODE)}
+					onOpenResetForm={onOpenResetForm}
+					onSwitchToPhoneAndPassword={() => handleChangeLoginMethod(LOGIN_METHOD.PHONE_AND_PASSWORD)}
+					onSwitchToPhoneAndCode={() => handleChangeLoginMethod(LOGIN_METHOD.PHONE_AND_CODE)}
 				/>
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 					Log in
