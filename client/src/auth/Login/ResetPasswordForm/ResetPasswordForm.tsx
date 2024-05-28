@@ -1,40 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';
 import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
-import { validatePhone, validatePassword, validateCode, validateEmail } from '@/utils/validators';
 import CountrySelector from '@/auth/CountrySelector/CountrySelector';
 import HTag from '@/components/ui/HTag/HTag';
 import countries from '@/data/countries';
-import type Country from '@/types/Country';
-import type { FormData, FormErrors } from '@/types/Auth';
 import FormHeader from './FormHeader/FormHeader';
+import { RESET_PASSWORD_FIELD } from '@/constants/auth';
+import useResetPasswordForm from '@/hooks/forms/useResetPasswordForm';
 
-type ResetPasswordFormProps = {
-	formData: FormData;
-	formErrors: FormErrors;
-	onFocusInput: (fieldName: string) => void;
-	onBlurInput: (fieldName: string) => void;
-	onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onChangeSelect: (selectedCountry: Country) => void;
-};
-
-const ResetPasswordForm = (props: ResetPasswordFormProps) => {
-	const { formData, formErrors, onFocusInput, onBlurInput, onChangeInput, onChangeSelect } = props;
-
-	const [isPhoneMode, setIsPhoneMode] = useState(false);
-
-	//isFormBtnDisabled
-	const isInvalidPassword = validatePassword(formData.password);
-	const isInvalidCode = validateCode(formData.code);
-	const isInvalidPhoneOrEmail = isPhoneMode ? validatePhone(formData.phone) : validateEmail(formData.email);
-
-	const isFormBtnDisabled = Boolean(isInvalidPassword || isInvalidCode || isInvalidPhoneOrEmail);
-
-	//isCodeBtnDisabled
-	const isCodeBtnDisabled = Boolean(isPhoneMode ? validatePhone(formData.phone) : validateEmail(formData.email));
+const ResetPasswordForm = () => {
+	const {
+		formData,
+		formErrors,
+		country,
+		isPhoneMode,
+		isFormBtnDisabled,
+		isCodeBtnDisabled,
+		handleChangeInput,
+		handleFocusInput,
+		handleBlurInput,
+		handleChangeCountry,
+		handleChangeIsPhoneMode,
+	} = useResetPasswordForm();
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -49,62 +39,62 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 			<form onSubmit={handleSubmit}>
 				<FormHeader
 					isPhoneMode={isPhoneMode}
-					onEnablePhoneMode={() => setIsPhoneMode(true)}
-					onDisablePhoneMode={() => setIsPhoneMode(false)}
+					onEnablePhoneMode={() => handleChangeIsPhoneMode(true)}
+					onDisablePhoneMode={() => handleChangeIsPhoneMode(false)}
 				/>
 				{isPhoneMode ? (
 					<div className={authSharedStyles.PhoneField}>
 						<CountrySelector
 							options={countries}
-							selectedOption={formData.country}
-							selectOption={onChangeSelect}
+							selectedOption={country}
+							selectOption={handleChangeCountry}
 						/>
 						<Input
 							type="text"
-							name="phone"
+							name={RESET_PASSWORD_FIELD.PHONE}
 							mode="Phone"
 							placeholder="Phone number"
-							value={formData.phone}
-							error={formErrors.phone}
-							onChange={onChangeInput}
-							onFocus={() => onFocusInput('phone')}
-							onBlur={() => onBlurInput('phone')}
+							value={formData[RESET_PASSWORD_FIELD.PHONE]}
+							error={formErrors[RESET_PASSWORD_FIELD.PHONE]}
+							onChange={handleChangeInput}
+							onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.PHONE)}
+							onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.PHONE)}
 							required
 						/>
 					</div>
 				) : (
 					<Input
 						type="text"
-						name="email"
+						name={RESET_PASSWORD_FIELD.EMAIL}
 						mode="Email"
 						placeholder="Email address"
-						value={formData.email}
-						error={formErrors.email}
-						onChange={onChangeInput}
-						onFocus={() => onFocusInput('email')}
-						onBlur={() => onBlurInput('email')}
+						value={formData[RESET_PASSWORD_FIELD.EMAIL]}
+						error={formErrors[RESET_PASSWORD_FIELD.EMAIL]}
+						onChange={handleChangeInput}
+						onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.EMAIL)}
+						onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.EMAIL)}
 						required
 					/>
 				)}
 				<CodeInput
-					name="code"
+					name={RESET_PASSWORD_FIELD.CODE}
 					placeholder="Enter 6-digit code"
-					value={formData.code}
-					error={formErrors.code}
-					onChange={onChangeInput}
-					onFocus={() => onFocusInput('code')}
-					onBlur={() => onBlurInput('code')}
+					value={formData[RESET_PASSWORD_FIELD.CODE]}
+					error={formErrors[RESET_PASSWORD_FIELD.CODE]}
+					onChange={handleChangeInput}
+					onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.CODE)}
+					onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.CODE)}
 					disabled={isCodeBtnDisabled}
 					required
 				/>
 				<PasswordInput
-					name="password"
+					name={RESET_PASSWORD_FIELD.PASSWORD}
 					placeholder="Password"
-					value={formData.password}
-					error={formErrors.password}
-					onChange={onChangeInput}
-					onFocus={() => onFocusInput('password')}
-					onBlur={() => onBlurInput('password')}
+					value={formData[RESET_PASSWORD_FIELD.PASSWORD]}
+					error={formErrors[RESET_PASSWORD_FIELD.PASSWORD]}
+					onChange={handleChangeInput}
+					onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.PASSWORD)}
+					onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.PASSWORD)}
 					required
 				/>
 				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
