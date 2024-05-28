@@ -32,6 +32,11 @@
 	&.Username {
 		margin-bottom: 6px;
 	}
+
+	/* .CardNumber */
+	&.CardNumber .InputIcon {
+		padding-right: 170px;
+	}
 }
 
 .Input {
