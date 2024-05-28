@@ -13,7 +13,7 @@ type PlanSectionProps = {
 };
 
 const PlanSection = ({ currentPlan, plans, onChangePlan }: PlanSectionProps) => {
-	const [isChangePlanModalOpen, setIsChangePlanModalOpen] = useState(true);
+	const [isChangePlanModalOpen, setIsChangePlanModalOpen] = useState(false);
 
 	let planDescription = `${currentPlan.pricePerMonth} USD per month`;
 
