@@ -5,7 +5,9 @@ import {
 	phonePattern,
 	codePattern,
 	cardNumberPattern,
-} from '../regexpUtils';
+	expirationDatePattern,
+	CVCCodePattern,
+} from '@/utils/regexpUtils';
 
 export type ValidatorFunction = (value: string) => string | null;
 
@@ -70,44 +72,52 @@ export const validateCode: ValidatorFunction = (code) => {
 
 export const validateCardNumber: ValidatorFunction = (cardNumber) => {
 	if (!cardNumber) return 'Card number is required';
-	if (cardNumber.length !== 19) return 'The card number is incomplete';
+	if (cardNumber.length !== 19) return 'Card number is incomplete';
 
 	if (!cardNumberPattern.test(cardNumber.replace(/\s+/g, ''))) {
-		return 'The card number is invalid';
+		return 'Enter a valid card number';
 	}
 
 	return null;
 };
 
-//test
 export const validateExpirationDate: ValidatorFunction = (expirationDate) => {
 	if (!expirationDate) {
-		return 'Validity is required';
+		return 'Expiration date is required';
 	}
 
-	if (expirationDate.length !== 19) {
-		return 'Validity is incomplete';
+	if (expirationDate.length !== 5) {
+		return 'Expiration date is incomplete';
 	}
 
-	if (!cardNumberPattern.test(expirationDate.replace(/\s+/g, ''))) {
-		return 'The card number is invalid';
+	if (!expirationDatePattern.test(expirationDate)) {
+		return 'Enter a valid expiration date';
+	}
+
+	const [month, year] = expirationDate.split('/').map((part) => parseInt(part));
+
+	const today = new Date();
+	const currentMonth = today.getMonth() + 1;
+	const currentYear = today.getFullYear() % 100;
+
+	if (year < currentYear || (year === currentYear && month < currentMonth)) {
+		return 'Expiration date has passed';
 	}
 
 	return null;
 };
 
-//test
 export const validateCvcCode: ValidatorFunction = (cvcCode) => {
 	if (!cvcCode) {
-		return 'Validity is required';
+		return 'CVC code is required';
 	}
 
-	if (cvcCode.length !== 4) {
-		return 'Validity is incomplete';
+	if (cvcCode.length < 3 || cvcCode.length > 4) {
+		return 'CVC code is incomplete';
 	}
 
-	if (!cardNumberPattern.test(cvcCode.replace(/\s+/g, ''))) {
-		return 'The card number is invalid';
+	if (!CVCCodePattern.test(cvcCode)) {
+		return 'Enter a valid CVC code';
 	}
 
 	return null;
