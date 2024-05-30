@@ -6,7 +6,6 @@ import Compare from './Compare/Compare';
 import Trial from './Trial/Trial';
 import ChoosePlan from './ChoosePlan/ChoosePlan';
 import Payment from './Payment/Payment';
-import Success from './Success/Success';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 import premiumIcon from '@/assets/icons/premium.svg?url';
 import type { Plan } from '@/types/Subscription';
@@ -17,7 +16,6 @@ const enum SUBSCRIBE_STEP {
 	TRIAL = 'trial',
 	CHOOSE_PLAN = 'choosePlan',
 	PAYMENT = 'payment',
-	SUCCESS = 'success',
 }
 
 const testPlans: Plan[] = [
@@ -39,7 +37,7 @@ const testPlans: Plan[] = [
 
 const Subscribe = () => {
 	const navigate = useNavigate();
-	const [subscribeStep, setSubscribeStep] = useState<SUBSCRIBE_STEP>(SUBSCRIBE_STEP.PAYMENT);
+	const [subscribeStep, setSubscribeStep] = useState<SUBSCRIBE_STEP>(SUBSCRIBE_STEP.COMPARE);
 	const [subscriptionPlan, setSubscriptionPlan] = useState<Plan>(testPlans[0]);
 
 	const handleBack = () => {
@@ -56,9 +54,6 @@ const Subscribe = () => {
 				break;
 			case SUBSCRIBE_STEP.CHOOSE_PLAN:
 				setSubscribeStep(SUBSCRIBE_STEP.PAYMENT);
-				break;
-			case SUBSCRIBE_STEP.PAYMENT:
-				setSubscribeStep(SUBSCRIBE_STEP.SUCCESS);
 				break;
 			default:
 				break;
@@ -80,8 +75,6 @@ const Subscribe = () => {
 			{subscribeStep === SUBSCRIBE_STEP.PAYMENT && (
 				<Payment currentPlan={subscriptionPlan} onChangePlan={setSubscriptionPlan} plans={testPlans} />
 			)}
-			{subscribeStep === SUBSCRIBE_STEP.SUCCESS && <Success />}
-
 			{subscribeStep !== SUBSCRIBE_STEP.PAYMENT && (
 				<Button className={styles.TryBtn} onClick={handleNextStep}>
 					Try {subscriptionPlan.trialDays} days for free
