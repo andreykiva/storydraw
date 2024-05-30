@@ -4,6 +4,10 @@
 	input {
 		padding-right: 155px;
 	}
+
+	&.WithError .CardsIcons {
+		right: 50px;
+	}
 }
 
 .CardsIcons {

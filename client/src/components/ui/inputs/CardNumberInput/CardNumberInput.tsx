@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './CardNumberInput.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';
 import visaIcon from '@/assets/icons/subscribe/visa.png';
@@ -12,14 +13,13 @@ type CardNumberInputProps = React.ComponentProps<'input'> & {
 
 const CardNumberInput = ({ error, ...rest }: CardNumberInputProps) => {
 	return (
-		<div className={styles.CardNumberInput}>
+		<div className={cn(styles.CardNumberInput, error && styles.WithError)}>
 			<Input
 				autoComplete="billing cc-number"
 				inputMode="numeric"
 				error={error}
 				maxLength={19}
 				placeholder="1234 1234 1234 1234"
-				mode='CardNumber'
 				{...rest}
 			/>
 			<div className={styles.CardsIcons}>
