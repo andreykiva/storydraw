@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { validatePayment } from '@/utils/validators/paymentValidators';
 import { PAYMENT_FIELD } from '@/constants/subscription';
-import { formatCardNumber } from '@/utils/regexpUtils';
+import { formatCardNumber, formatExpirationDate, formatCVCCode } from '@/utils/formatUtils';
+import countries from '@/data/countries';
+import type Country from '@/types/Country';
+import { validateCardNumber, validateCvcCode, validateExpirationDate } from '@/utils/validators/commonValidators';
 
 type FormData = Record<PAYMENT_FIELD, string>;
 type FormErrors = Record<PAYMENT_FIELD, string>;
@@ -19,22 +22,39 @@ const usePaymentForm = () => {
 		[PAYMENT_FIELD.CVC_CODE]: '',
 	});
 
+	const [country, setCountry] = useState(countries[0]);
+
+	const isCardNumberInvalid = validateCardNumber(formData[PAYMENT_FIELD.CARD_NUMBER]);
+	const isExpirationDateInvalid = validateExpirationDate(formData[PAYMENT_FIELD.EXPIRATION_DATE]);
+	const isCVCCodeInvalid = validateCvcCode(formData[PAYMENT_FIELD.CVC_CODE]);
+
+	const isFormBtnDisabled = Boolean(isCardNumberInvalid || isExpirationDateInvalid || isCVCCodeInvalid);
+
 	const handleChangeCardNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = event.target;
-		const numericValue = value.replace(/[^\d]/g, '');
 
 		setFormData({
 			...formData,
-			[PAYMENT_FIELD.CARD_NUMBER]: formatCardNumber(numericValue),
+			[PAYMENT_FIELD.CARD_NUMBER]: formatCardNumber(value),
 		});
 	};
 
-	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+	const handleChangeExpirationDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { value } = event.target;
 
-		if (!/^\d$/.test(event.key) && !allowedKeys.includes(event.key)) {
-			event.preventDefault();
-		}
+		setFormData({
+			...formData,
+			[PAYMENT_FIELD.EXPIRATION_DATE]: formatExpirationDate(value),
+		});
+	};
+
+	const handleChangeCVCCode = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { value } = event.target;
+
+		setFormData({
+			...formData,
+			[PAYMENT_FIELD.CVC_CODE]: formatCVCCode(value),
+		});
 	};
 
 	const handleFocusInput = (fieldName: PAYMENT_FIELD) => {
@@ -55,13 +75,38 @@ const usePaymentForm = () => {
 		}
 	};
 
+	const handleChangeCountry = (selectedCountry: Country) => {
+		setCountry(selectedCountry);
+	};
+
+	const resetForm = useCallback(() => {
+		setFormData({
+			[PAYMENT_FIELD.CARD_NUMBER]: '',
+			[PAYMENT_FIELD.EXPIRATION_DATE]: '',
+			[PAYMENT_FIELD.CVC_CODE]: '',
+		});
+
+		setFormErrors({
+			[PAYMENT_FIELD.CARD_NUMBER]: '',
+			[PAYMENT_FIELD.EXPIRATION_DATE]: '',
+			[PAYMENT_FIELD.CVC_CODE]: '',
+		});
+
+		setCountry(countries[0]);
+	}, [setFormData, setFormErrors, setCountry]);
+
 	return {
 		formData,
 		formErrors,
+		country,
+		isFormBtnDisabled,
 		handleChangeCardNumber,
-		handleKeyDown,
+		handleChangeExpirationDate,
+		handleChangeCVCCode,
+		handleChangeCountry,
 		handleFocusInput,
 		handleBlurInput,
+		resetForm,
 	};
 };
 

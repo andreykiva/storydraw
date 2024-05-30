@@ -28,12 +28,11 @@ const useResetPasswordForm = () => {
 
 	const isPasswordInvalid = validatePassword(formData[RESET_PASSWORD_FIELD.PASSWORD]);
 	const isCodeInvalid = validateCode(formData[RESET_PASSWORD_FIELD.CODE]);
-	const isPhoneOrEmailInvalid = isPhoneMode
-		? validatePhone(formData[RESET_PASSWORD_FIELD.PHONE])
-		: validateEmail(formData[RESET_PASSWORD_FIELD.EMAIL]);
+	const isPhoneInvalid = validatePhone(formData[RESET_PASSWORD_FIELD.PHONE]);
+	const isEmailInvalid = validateEmail(formData[RESET_PASSWORD_FIELD.EMAIL]);
 
-	const isFormBtnDisabled = Boolean(isPasswordInvalid || isCodeInvalid || isPhoneOrEmailInvalid);
-	const isCodeBtnDisabled = Boolean(isPhoneOrEmailInvalid);
+	const isFormBtnDisabled = Boolean(isPasswordInvalid || isCodeInvalid || isPhoneInvalid || isEmailInvalid);
+	const isCodeBtnDisabled = Boolean(isPhoneInvalid || isEmailInvalid);
 
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;

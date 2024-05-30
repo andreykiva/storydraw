@@ -26,16 +26,19 @@ const useLoginForm = () => {
 	const [country, setCountry] = useState(countries[0]);
 	const [loginMethod, setLoginMethod] = useState<LOGIN_METHOD>(LOGIN_METHOD.PHONE_AND_CODE);
 
-	const validationMethods = {
-		loginAndPassword: () =>
-			validateLogin(formData[LOGIN_FIELD.LOGIN]) || validatePassword(formData[LOGIN_FIELD.PASSWORD]),
-		phoneAndCode: () => validatePhone(formData[LOGIN_FIELD.PHONE]) || validateCode(formData[LOGIN_FIELD.CODE]),
-		phoneAndPassword: () =>
-			validatePhone(formData[LOGIN_FIELD.PHONE]) || validatePassword(formData[LOGIN_FIELD.PASSWORD]),
+	const isLoginInvalid = validateLogin(formData[LOGIN_FIELD.LOGIN]);
+	const isCodeInvalid = validateCode(formData[LOGIN_FIELD.CODE]);
+	const isPhoneInvalid = validatePhone(formData[LOGIN_FIELD.PHONE]);
+	const isPasswordInvalid = validatePassword(formData[LOGIN_FIELD.PASSWORD]);
+
+	const validationResults = {
+		loginAndPassword: isLoginInvalid || isPasswordInvalid,
+		phoneAndCode: isPhoneInvalid || isCodeInvalid,
+		phoneAndPassword: isPhoneInvalid || isPasswordInvalid,
 	};
 
-	const isFormBtnDisabled = Boolean(validationMethods[loginMethod]());
-	const isCodeBtnDisabled = Boolean(validatePhone(formData[LOGIN_FIELD.PHONE]));
+	const isFormBtnDisabled = Boolean(validationResults[loginMethod]);
+	const isCodeBtnDisabled = Boolean(isPhoneInvalid);
 
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;

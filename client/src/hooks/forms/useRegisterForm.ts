@@ -46,15 +46,16 @@ const useRegisterForm = () => {
 	const isBirthDateIncomplete =
 		!birthData[BIRTH_FIELD.BIRTH_MONTH] || !birthData[BIRTH_FIELD.BIRHT_DAY] || !birthData[BIRTH_FIELD.BIRTH_YEAR];
 	const isCodeInvalid = validateCode(formData[REGISTER_FIELD.CODE]);
-	const isPhoneOrEmailOrPasswordInvalid = isPhoneMode
-		? validatePhone(formData[REGISTER_FIELD.PHONE])
-		: validateEmail(formData[REGISTER_FIELD.EMAIL]) || validatePassword(formData[REGISTER_FIELD.PASSWORD]);
+	const isPhoneInvalid = validatePhone(formData[REGISTER_FIELD.PHONE]);
+	const isEmailInvalid = validateEmail(formData[REGISTER_FIELD.EMAIL]);
+	const isPasswordInvalid = validatePassword(formData[REGISTER_FIELD.PASSWORD]);
+	const isUsernameInvalid = validateUsername(formData[REGISTER_FIELD.USERNAME]);
 
-	const isNextBtnDisabled = Boolean(isBirthDateIncomplete || isCodeInvalid || isPhoneOrEmailOrPasswordInvalid);
-	const isCodeBtnDisabled = Boolean(
-		isPhoneMode ? validatePhone(formData[REGISTER_FIELD.PHONE]) : validateEmail(formData[REGISTER_FIELD.EMAIL]),
+	const isNextBtnDisabled = Boolean(
+		isBirthDateIncomplete || isCodeInvalid || isPhoneInvalid || isEmailInvalid || isPasswordInvalid,
 	);
-	const isFormBtnDisabled = Boolean(validateUsername(formData[REGISTER_FIELD.USERNAME]));
+	const isCodeBtnDisabled = Boolean(isPhoneMode ? isPhoneInvalid : isEmailInvalid);
+	const isFormBtnDisabled = Boolean(isUsernameInvalid);
 
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
