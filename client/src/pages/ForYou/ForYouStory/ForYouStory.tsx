@@ -10,7 +10,7 @@ import LikeIcon from '@/assets/icons/like.svg';
 import CommentIcon from '@/assets/icons/comment.svg';
 import FavoriteIcon from '@/assets/icons/favorites-filled.svg';
 import ShareIcon from '@/assets/icons/share.svg';
-import { formatNumber } from '@/utils/numberUtils';
+import { formatNumber } from '@/utils/formatUtils';
 import type Story from '@/types/Story';
 import type User from '@/types/User';
 import { openAuthModal } from '@/features/auth/authSlice';
