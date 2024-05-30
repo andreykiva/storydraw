@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './CVCCodeInput.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';
-import cvcIcon from '@/assets/icons/subscribe/cvv.svg?url';
+import cvcIcon from '@/assets/icons/subscribe/cvc.svg?url';
 
 type CVCCodeInputProps = React.ComponentProps<'input'> & {
 	error: string;
