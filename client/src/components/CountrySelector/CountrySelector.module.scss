@@ -1,0 +1,25 @@
+.CountrySelector {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	background-color: rgb(55, 55, 55);
+	border-radius: 4px;
+	cursor: pointer;
+
+	&.WithPhone {
+		border-radius: 4px 0 0 4px;
+
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 1px;
+			height: 30px;
+			background-color: #fff;
+			background: rgb(75, 75, 75);
+		}
+	}
+}
