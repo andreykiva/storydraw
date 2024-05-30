@@ -3,7 +3,7 @@ import styles from './CommentSection.module.scss';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import Comment from './Comment/Comment';
 import Replies from './Replies/Replies';
-import { formatNumber } from '@/utils/numberUtils';
+import { formatNumber } from '@/utils/formatUtils';
 import type CommentType from '@/types/Comment';
 import type User from '@/types/User';
 

@@ -4,7 +4,7 @@ import styles from './Profile.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import Button from '@/components/ui/buttons/Button/Button';
 import ProfileStory from './ProfileStory/ProfileStory';
-import { formatNumber } from '@/utils/numberUtils';
+import { formatNumber } from '@/utils/formatUtils';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
 import { openReport } from '@/features/report/reportSlice';

@@ -5,7 +5,7 @@ import cn from 'classnames';
 import styles from './Comment.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import LikeIcon from '@/assets/icons/like.svg';
-import { formatNumber } from '@/utils/numberUtils';
+import { formatNumber } from '@/utils/formatUtils';
 import type Comment from '@/types/Comment';
 import type User from '@/types/User';
 import { openAuthModal } from '@/features/auth/authSlice';

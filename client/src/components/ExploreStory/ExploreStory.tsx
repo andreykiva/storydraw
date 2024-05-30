@@ -6,7 +6,7 @@ import defaultImg from '@/assets/images/default.svg?url';
 import previewImg from '@/assets/images/preview.jpg';
 import LikeIcon from '@/assets/icons/like.svg';
 import viewsIcon from '@/assets/icons/views.svg?url';
-import { formatNumber } from '@/utils/numberUtils';
+import { formatNumber } from '@/utils/formatUtils';
 import type Story from '@/types/Story';
 import type User from '@/types/User';
 

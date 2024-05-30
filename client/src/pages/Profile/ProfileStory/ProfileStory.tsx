@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './ProfileStory.module.scss';
 import previewImg from '@/assets/images/preview.jpg';
 import viewsIcon from '@/assets/icons/views.svg?url';
-import { formatNumber } from '@/utils/numberUtils';
+import { formatNumber } from '@/utils/formatUtils';
 import type Story from '@/types/Story';
 
 type ProfileStoryProps = Pick<Story, 'id' | 'story' | 'description' | 'tags' | 'views'>;
