@@ -15,7 +15,7 @@ const PaymentSection = ({ currentPlan }: PaymentSectionProps) => {
 
 	useEffect(() => {
 		if (testSavedCard) {
-			// setPaymentMethod(PAYMENT_METHOD.SAVED_CARD);
+			setPaymentMethod(PAYMENT_METHOD.SAVED_CARD);
 		}
 	}, []);
 
