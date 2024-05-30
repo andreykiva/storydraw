@@ -2,10 +2,21 @@
 	padding: 30px 30px 40px;
 }
 
+.FormFieldsBottom {
+	display: flex;
+	gap: 20px;
+}
+
+.FieldLabel {
+	display: block;
+	font-size: 17px;
+	margin-bottom: 4px;
+}
+
 .PaymentDescr {
 	font-size: 13px;
 	color: #ffffffb4;
-	margin-bottom: 24px;
+	margin: 24px 0;
 }
 
 .TryBtn {
@@ -17,7 +28,7 @@
 	font-size: 18px;
 	font-weight: 700;
 
-	&:hover {
+	&:not(:disabled):hover {
 		background-color: var(--bright-green-color);
 		opacity: .8;
 	}
