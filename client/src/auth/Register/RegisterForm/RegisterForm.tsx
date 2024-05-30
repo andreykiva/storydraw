@@ -4,9 +4,8 @@ import Input from '@/components/ui/inputs/Input/Input';
 import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
-import CountrySelector from '@/auth/CountrySelector/CountrySelector';
+import CountrySelector from '@/components/CountrySelector/CountrySelector';
 import HTag from '@/components/ui/HTag/HTag';
-import countries from '@/data/countries';
 import Checkbox from '@/components/ui/inputs/Checkbox/Checkbox';
 import BirthdaySelector from './BirthdaySelector/BirthdaySelector';
 import FormHeader from './FormHeader/FormHeader';
@@ -74,9 +73,9 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 						{isPhoneMode ? (
 							<div className={authSharedStyles.PhoneField}>
 								<CountrySelector
-									options={countries}
 									selectedOption={country}
 									selectOption={handleChangeCountry}
+									showPhonePrefix={true}
 								/>
 								<Input
 									type="text"
@@ -157,11 +156,7 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 							onBlur={() => handleBlurInput(REGISTER_FIELD.USERNAME)}
 						/>
 						<span className={authSharedStyles.CreateUsernameDescr}>You can always change this later.</span>
-						<Button
-							className={authSharedStyles.SubmitBtn}
-							type="submit"
-							disabled={isFormBtnDisabled}
-						>
+						<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
 							Sign up
 						</Button>
 						<Button className={authSharedStyles.SkipBtn} type="submit">

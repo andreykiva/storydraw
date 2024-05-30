@@ -4,9 +4,8 @@ import Input from '@/components/ui/inputs/Input/Input';
 import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
-import CountrySelector from '@/auth/CountrySelector/CountrySelector';
+import CountrySelector from '@/components/CountrySelector/CountrySelector';
 import HTag from '@/components/ui/HTag/HTag';
-import countries from '@/data/countries';
 import FormHeader from './FormHeader/FormHeader';
 import { RESET_PASSWORD_FIELD } from '@/constants/auth';
 import useResetPasswordForm from '@/hooks/forms/useResetPasswordForm';
@@ -45,9 +44,9 @@ const ResetPasswordForm = () => {
 				{isPhoneMode ? (
 					<div className={authSharedStyles.PhoneField}>
 						<CountrySelector
-							options={countries}
 							selectedOption={country}
 							selectOption={handleChangeCountry}
+							showPhonePrefix={true}
 						/>
 						<Input
 							type="text"

@@ -5,8 +5,7 @@ import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';
 import CodeInput from '@/components/ui/inputs/CodeInput/CodeInput';
 import Button from '@/components/ui/buttons/Button/Button';
 import HTag from '@/components/ui/HTag/HTag';
-import CountrySelector from '@/auth/CountrySelector/CountrySelector';
-import countries from '@/data/countries';
+import CountrySelector from '@/components/CountrySelector/CountrySelector';
 import FormFooter from './FormFooter/FormFooter';
 import FormHeader from './FormHeader/FormHeader';
 import { LOGIN_FIELD, LOGIN_METHOD } from '@/constants/auth';
@@ -62,9 +61,9 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 				) : (
 					<div className={authSharedStyles.PhoneField}>
 						<CountrySelector
-							options={countries}
 							selectedOption={country}
 							selectOption={handleChangeCountry}
+							showPhonePrefix={true}
 						/>
 						<Input
 							type="text"
