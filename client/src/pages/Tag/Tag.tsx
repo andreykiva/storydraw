@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './Tag.module.scss';
 import TagStory from './TagStory/TagStory';
-import { formatNumber } from '@/utils/numberUtils';
+import { formatNumber } from '@/utils/formatUtils';
 
 const testTagInfo = {
 	views: 23123123,
