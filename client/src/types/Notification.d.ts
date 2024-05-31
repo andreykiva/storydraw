@@ -2,7 +2,7 @@ import type User from './User';
 
 type ParentComment = {
 	id: string;
-	user: Pick<User, 'id' | 'title'>;
+	user: Pick<User, 'id' | 'name'>;
 	text: string;
 };
 
@@ -20,19 +20,19 @@ export type CommentNotification = {
 		id: string;
 		preview: StoryImages;
 	};
-	user: Pick<User, 'id' | 'username' | 'title' | 'image'>;
+	user: Pick<User, 'id' | 'username' | 'name' | 'image'>;
 };
 
 export type FollowNotification = {
 	id: string;
 	type: 'follow';
 	date: Date;
-	user: Pick<User, 'id' | 'username' | 'title' | 'image'> & {
+	user: Pick<User, 'id' | 'username' | 'name' | 'image'> & {
 		isFollowedByYou: boolean;
 	};
 };
 
-type LikedUser = Pick<User, 'id' | 'username' | 'title' | 'image'>;
+type LikedUser = Pick<User, 'id' | 'username' | 'name' | 'image'>;
 
 export type LikeNotification = {
 	id: string;
