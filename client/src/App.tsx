@@ -39,8 +39,8 @@ const App = () => {
 						</>
 					)}
 
-					<Route path="/:userId" element={<ValidateUser><Profile /></ValidateUser>} />
-					<Route path="/:userId/story/:storyId" element={<ValidateUser><Story /></ValidateUser>} />
+					<Route path="/:username" element={<ValidateUser><Profile /></ValidateUser>} />
+					<Route path="/:username/story/:storyId" element={<ValidateUser><Story /></ValidateUser>} />
 					<Route path="/" element={<ForYou />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>

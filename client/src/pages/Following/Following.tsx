@@ -6,84 +6,84 @@ const testFollowing = [
 	{
 		id: '1',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '2',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '3',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '4',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '5',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '6',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '7',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '8',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '9',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '10',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '11',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
 	{
 		id: '12',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 		preview: '',
 	},
@@ -97,7 +97,7 @@ const Following = () => {
 					<Follow
 						key={item.id}
 						username={item.username}
-						title={item.title}
+						name={item.name}
 						image={item.image}
 						preview={item.preview}
 					/>

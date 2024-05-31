@@ -11,7 +11,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '1231',
 			username: 'roman',
-			title: 'Roman',
+			name: 'Roman',
 			image: '',
 			isFollowedByYou: true,
 		},
@@ -26,7 +26,7 @@ const testAll: Notification[] = [
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -38,7 +38,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '123',
 			username: 'lisa',
-			title: 'Lisa',
+			name: 'Lisa',
 			image: '',
 		},
 	},
@@ -49,7 +49,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '1423',
 			username: 'oleg',
-			title: 'oleg',
+			name: 'oleg',
 			image: '',
 			isFollowedByYou: false,
 		},
@@ -63,7 +63,7 @@ const testAll: Notification[] = [
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -79,7 +79,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '123',
 			username: 'lisa',
-			title: 'Lisa',
+			name: 'Lisa',
 			image: '',
 		},
 	},
@@ -97,7 +97,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '123',
 			username: 'artem',
-			title: 'artem',
+			name: 'artem',
 			image: '',
 		},
 	},
@@ -111,7 +111,7 @@ const testAll: Notification[] = [
 			text: 'have a nice day',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -123,7 +123,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '123',
 			username: 'nina',
-			title: 'Nina',
+			name: 'Nina',
 			image: '',
 		},
 	},
@@ -144,7 +144,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '123',
 			username: 'artem',
-			title: 'artem',
+			name: 'artem',
 			image: '',
 		},
 	},
@@ -157,7 +157,7 @@ const testAll: Notification[] = [
 			text: 'have a nice day',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -173,7 +173,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '12v3',
 			username: 'nina',
-			title: 'Nina',
+			name: 'Nina',
 			image: '',
 		},
 	},
@@ -184,7 +184,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '123',
 			username: 'lisa',
-			title: 'Lisa',
+			name: 'Lisa',
 			image: '',
 			isFollowedByYou: true,
 		},
@@ -196,7 +196,7 @@ const testAll: Notification[] = [
 		user: {
 			id: '1421243',
 			username: 'ivan',
-			title: 'Ivan',
+			name: 'Ivan',
 			image: '',
 			isFollowedByYou: false,
 		},
@@ -220,13 +220,13 @@ const testAll: Notification[] = [
 			{
 				id: '11fr2323',
 				username: 'lisa',
-				title: 'Lisa',
+				name: 'Lisa',
 				image: '',
 			},
 			{
 				id: '11233cc4123',
 				username: 'lisa4ka123123',
-				title: 'Lisa4ka123123',
+				name: 'Lisa4ka123123',
 				image: '',
 			},
 		],

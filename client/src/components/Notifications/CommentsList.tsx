@@ -14,7 +14,7 @@ const testComments: CommentNotification[] = [
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -26,7 +26,7 @@ const testComments: CommentNotification[] = [
 		user: {
 			id: '123',
 			username: 'lisa',
-			title: 'Lisa',
+			name: 'Lisa',
 			image: '',
 		},
 	},
@@ -44,7 +44,7 @@ const testComments: CommentNotification[] = [
 		user: {
 			id: '123',
 			username: 'artem',
-			title: 'artem',
+			name: 'artem',
 			image: '',
 		},
 	},
@@ -58,7 +58,7 @@ const testComments: CommentNotification[] = [
 			text: 'have a nice day',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -70,7 +70,7 @@ const testComments: CommentNotification[] = [
 		user: {
 			id: '123',
 			username: 'nina',
-			title: 'Nina',
+			name: 'Nina',
 			image: '',
 		},
 	},

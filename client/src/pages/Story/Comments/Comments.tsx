@@ -11,7 +11,7 @@ const testComments = [
 		user: {
 			id: '123',
 			username: 'andrey777',
-			title: 'andrey',
+			name: 'andrey',
 			image: '',
 		},
 		replies: 13,
@@ -24,7 +24,7 @@ const testComments = [
 		user: {
 			id: '123123123',
 			username: 'andrey888',
-			title: 'andrey',
+			name: 'andrey',
 			image: '',
 		},
 		replies: 0,
@@ -37,7 +37,7 @@ const testComments = [
 		user: {
 			id: '1212312312312',
 			username: 'andrey999',
-			title: 'wow',
+			name: 'wow',
 			image: '',
 		},
 		replies: 38,

@@ -10,7 +10,7 @@ import { displayDate } from '@/utils/dateUtils';
 const Like = (props: LikeNotification) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const userTitleRef = useRef<HTMLAnchorElement>(null);
+	const userNameRef = useRef<HTMLAnchorElement>(null);
 	const userImgRef = useRef<HTMLImageElement>(null);
 	const otherUsersOneRef = useRef<HTMLAnchorElement>(null);
 	const otherUsersTwoRef = useRef<HTMLAnchorElement>(null);
@@ -19,7 +19,7 @@ const Like = (props: LikeNotification) => {
 	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		const isSingleUserClick =
 			!amount &&
-			!userTitleRef.current.contains(e.target as Node) &&
+			!userNameRef.current.contains(e.target as Node) &&
 			!userImgRef.current.contains(e.target as Node);
 
 		const isMultiUserClick =
@@ -55,18 +55,18 @@ const Like = (props: LikeNotification) => {
 				<div className={styles.LikeInfo}>
 					{amount ? (
 						<p className={styles.UsersAmount}>
-							<Link to={`/@${users[0].username}`} className={styles.UserTitle} ref={otherUsersOneRef}>
-								{users[0].title}
+							<Link to={`/@${users[0].username}`} className={styles.Name} ref={otherUsersOneRef}>
+								{users[0].name}
 							</Link>
 							<span>, </span>
-							<Link to={`/@${users[1].username}`} className={styles.UserTitle} ref={otherUsersTwoRef}>
-								{users[1].title}
+							<Link to={`/@${users[1].username}`} className={styles.Name} ref={otherUsersTwoRef}>
+								{users[1].name}
 							</Link>
 							{amount - 2 > 1 && <span className={styles.Others}> and {amount - 2} others</span>}
 						</p>
 					) : (
-						<Link to={`/@${user.username}`} className={styles.UserTitle} ref={userTitleRef}>
-							{user.title}
+						<Link to={`/@${user.username}`} className={styles.Name} ref={userNameRef}>
+							{user.name}
 						</Link>
 					)}
 					<p className={styles.LikeNote}>
@@ -75,7 +75,7 @@ const Like = (props: LikeNotification) => {
 					</p>
 					{parentComment && (
 						<div className={styles.ParentComment}>
-							{parentComment.user.title}: {parentComment.text}
+							{parentComment.user.name}: {parentComment.text}
 						</div>
 					)}
 				</div>

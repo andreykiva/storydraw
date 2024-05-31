@@ -9,6 +9,7 @@ import HTag from '@/components/ui/HTag/HTag';
 import FormHeader from './FormHeader/FormHeader';
 import { RESET_PASSWORD_FIELD } from '@/constants/auth';
 import useResetPasswordForm from '@/hooks/forms/useResetPasswordForm';
+import { INPUT_MODE } from '@/constants/ui';
 
 const ResetPasswordForm = () => {
 	const {
@@ -51,7 +52,7 @@ const ResetPasswordForm = () => {
 						<Input
 							type="text"
 							name={RESET_PASSWORD_FIELD.PHONE}
-							mode="Phone"
+							mode={INPUT_MODE.PHONE}
 							placeholder="Phone number"
 							value={formData[RESET_PASSWORD_FIELD.PHONE]}
 							error={formErrors[RESET_PASSWORD_FIELD.PHONE]}
@@ -65,7 +66,6 @@ const ResetPasswordForm = () => {
 					<Input
 						type="text"
 						name={RESET_PASSWORD_FIELD.EMAIL}
-						mode="Email"
 						placeholder="Email address"
 						value={formData[RESET_PASSWORD_FIELD.EMAIL]}
 						error={formErrors[RESET_PASSWORD_FIELD.EMAIL]}

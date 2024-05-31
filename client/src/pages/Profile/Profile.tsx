@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Profile.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
@@ -11,18 +12,10 @@ import { openReport } from '@/features/report/reportSlice';
 import ReportIcon from '@/assets/icons/report.svg';
 import BlockIcon from '@/assets/icons/block.svg';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
-import { MENU_POSITION } from '@/constants/position';
-
-const testProfileInfo = {
-	id: '123',
-	username: 'andriikiva',
-	title: 'hey man',
-	description: 'today was a good day',
-	image: '',
-	following: 123,
-	followers: 421,
-	likes: 131,
-};
+import { MENU_POSITION } from '@/constants/ui';
+import { selectUser } from '@/features/user/userSlice';
+import User from '@/types/User';
+import editIcon from '@/assets/icons/profile/edit.svg?url';
 
 const testProfileStories = [
 	{
@@ -167,10 +160,36 @@ const testProfileStories = [
 	},
 ];
 
+const testUser = {
+	id: '1231u240',
+	username: 'somestranger',
+	name: 'Hm',
+	description: 'yes. I am.',
+	image: `https://lastfm.freetls.fastly.net/i/u/ar0/930705c179074033ef99a50e9456b786.jpg`,
+	following: 422,
+	followers: 9981,
+	likes: 4912,
+};
+
 const Profile = () => {
 	const dispatch = useDispatch();
+	const params = useParams();
 	const isAuth = useSelector(selectAuth);
-	const { id, username, title, description, image, following, followers, likes } = testProfileInfo;
+	const currentUser = useSelector(selectUser);
+	const username = params.username.slice(1);
+	const [user, setUser] = useState<User>(null);
+	const [isCurrentUser, setIsCurrentUser] = useState(false);
+
+	useEffect(() => {
+		if (isAuth && username === currentUser.username) {
+			setUser(currentUser);
+			setIsCurrentUser(true);
+		} else {
+			//fetch user
+			setUser(testUser);
+			setIsCurrentUser(false);
+		}
+	}, [username, currentUser, isAuth]);
 
 	const handleFollow = () => {
 		if (!isAuth) {
@@ -181,7 +200,7 @@ const Profile = () => {
 	};
 
 	const handleOpenReport = () => {
-		dispatch(openReport({ type: 'account', targetId: id }));
+		dispatch(openReport({ type: 'account', targetId: currentUser.id }));
 	};
 
 	const actions = [
@@ -190,47 +209,59 @@ const Profile = () => {
 			iconComponent: <ReportIcon />,
 			onClick: handleOpenReport,
 		},
-		{
+	];
+
+	if (isAuth && !isCurrentUser) {
+		actions.push({
 			name: 'Block',
 			iconComponent: <BlockIcon />,
 			onClick: () => {},
-		},
-	];
+		});
+	}
 
 	return (
 		<div className={styles.Profile}>
 			<div className={styles.ProfileInfo}>
 				<div className={styles.TopInfo}>
 					<div className={styles.ProfileImgWr}>
-						<img src={image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+						<img src={user?.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					</div>
 					<div className={styles.InfoMain}>
-						<span className={styles.Username}>{username}</span>
-						<span className={styles.UserTitle}>{title}</span>
-						<Button className={styles.FollowBtn} onClick={handleFollow}>
-							Follow
-						</Button>
+						<span className={styles.Username}>{user?.username}</span>
+						<span className={styles.Name}>{user?.name}</span>
+						{isCurrentUser ? (
+							<Button className={styles.EditProfileBtn} onClick={handleFollow}>
+								<img src={editIcon} alt="Edit" className={styles.EditIcon} />
+								Edit profile
+							</Button>
+						) : (
+							<Button className={styles.FollowBtn} onClick={handleFollow}>
+								Follow
+							</Button>
+						)}
 					</div>
-					<ButtonWithActionsMenu
-						actions={actions}
-						menuPosition={MENU_POSITION.BOTTOM_RIGHT}
-						buttonClassName={styles.ActionsBtn}
-						menuClassName={styles.ActionsMenu}
-					/>
+					{!isCurrentUser && (
+						<ButtonWithActionsMenu
+							actions={actions}
+							menuPosition={MENU_POSITION.BOTTOM_RIGHT}
+							buttonClassName={styles.ActionsBtn}
+							menuClassName={styles.ActionsMenu}
+						/>
+					)}
 				</div>
 				<div className={styles.BottomInfo}>
 					<div className={styles.UserStatistics}>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{formatNumber(following)}</span> Following
+							<span className={styles.ItemValue}>{formatNumber(user?.following)}</span> Following
 						</div>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{formatNumber(followers)}</span> Followers
+							<span className={styles.ItemValue}>{formatNumber(user?.followers)}</span> Followers
 						</div>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{formatNumber(likes)}</span> Likes
+							<span className={styles.ItemValue}>{formatNumber(user?.likes)}</span> Likes
 						</div>
 					</div>
-					<p className={styles.UserDescr}>{description || 'No bio yet.'}</p>
+					<p className={styles.UserDescr}>{user?.description || 'No bio yet.'}</p>
 				</div>
 			</div>
 			<div className={styles.ProfileStories}>

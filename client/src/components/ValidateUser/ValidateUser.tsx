@@ -7,9 +7,9 @@ type ValidateUserProps = {
 
 const ValidateUser = ({ children }: ValidateUserProps) => {
 	const params = useParams();
-	const userId = params.userId.match(/@[a-zA-Z0-9_-]+/);
+	const username = params.username.match(/@[a-zA-Z0-9_-]+/);
 
-	if (!userId) {
+	if (!username) {
 		return <Navigate to="/" />;
 	}
 

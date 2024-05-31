@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const testChatmate = {
 	id: '91492',
 	username: 'andrii12941295',
-	title: 'andrew172',
+	name: 'andrew172',
 	image: '',
 };
 
@@ -18,7 +18,7 @@ const ChatPanelHeader = () => {
 					<img src={testChatmate.image || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
 				</div>
 				<div className={styles.ChatmateInfo}>
-					<span className={styles.ChatmateTitle}>{testChatmate.title}</span>
+					<span className={styles.ChatmateName}>{testChatmate.name}</span>
 					<span className={styles.ChatmateUsername}>@{testChatmate.username}</span>
 				</div>
 			</Link>

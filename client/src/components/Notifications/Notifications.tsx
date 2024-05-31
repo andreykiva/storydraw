@@ -12,7 +12,7 @@ import FollowsList from './FollowsList';
 import { changeNotificationsCategory, selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
 import { NOTIFICATIONS_CATEGORY } from '@/constants/notification';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 const categories = [
 	{

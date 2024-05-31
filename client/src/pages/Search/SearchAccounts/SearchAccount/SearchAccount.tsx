@@ -5,10 +5,10 @@ import defaultImg from '@/assets/images/default.svg?url';
 import { formatNumber } from '@/utils/formatUtils';
 import type User from '@/types/User';
 
-type SearchAccountProps = Omit<User, 'id'>;
+type SearchAccountProps = Omit<User, 'id' | 'following' | 'likes'>;
 
 const SearchAccount = (props: SearchAccountProps) => {
-	const { image, username, title, description, followers } = props;
+	const { image, username, name, description, followers } = props;
 
 	return (
 		<Link to={`/@${username}`} className={styles.SearchAccount}>
@@ -18,7 +18,7 @@ const SearchAccount = (props: SearchAccountProps) => {
 			<div className={styles.AccountInfo}>
 				<span className={styles.Username}>{username}</span>
 				<div className={styles.InfoBottom}>
-					<span className={styles.Title}>{title}</span>
+					<span className={styles.Name}>{name}</span>
 					<div className={styles.Dot}></div>
 					<p className={styles.FollowersInfo}>
 						<span className={styles.Followers}>{formatNumber(followers)}</span> Followers

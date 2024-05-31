@@ -10,18 +10,18 @@ import { displayDate } from '@/utils/dateUtils';
 const Comment = (props: CommentNotification) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const authorTitleRef = useRef<HTMLAnchorElement>(null);
+	const authorNameRef = useRef<HTMLAnchorElement>(null);
 	const authorImgRef = useRef<HTMLImageElement>(null);
 	const {
 		text,
 		date,
 		parentComment,
 		story,
-		user: { username, title, image },
+		user: { username, name, image },
 	} = props;
 
 	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-		if (!authorTitleRef.current.contains(e.target as Node) && !authorImgRef.current.contains(e.target as Node)) {
+		if (!authorNameRef.current.contains(e.target as Node) && !authorImgRef.current.contains(e.target as Node)) {
 			navigate(`/@${username}/story/${story.id}`);
 		}
 		dispatch(closeNotificationsModal());
@@ -39,8 +39,8 @@ const Comment = (props: CommentNotification) => {
 					/>
 				</Link>
 				<div className={styles.CommentInfo}>
-					<Link to={`/@${username}`} className={styles.AuthorTitle} ref={authorTitleRef}>
-						{title}
+					<Link to={`/@${username}`} className={styles.AuthorName} ref={authorNameRef}>
+						{name}
 					</Link>
 					<p className={styles.CommentContent}>
 						<span className={styles.CommentNote}>
@@ -51,7 +51,7 @@ const Comment = (props: CommentNotification) => {
 					</p>
 					{parentComment && (
 						<div className={styles.ParentComment}>
-							{parentComment.user.title}: {parentComment.text}
+							{parentComment.user.name}: {parentComment.text}
 						</div>
 					)}
 				</div>

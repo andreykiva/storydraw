@@ -4,7 +4,7 @@ import styles from './ButtonWithActionsMenu.module.scss';
 import moreIcon from '@/assets/icons/more-horizontal.svg?url';
 import ActionItem from './ActionItem/ActionItem';
 import WrapperWithTriangle from '../ui/WrapperWithTriangle/WrapperWithTriangle';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 type Action = {
 	name: string;

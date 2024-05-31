@@ -11,7 +11,7 @@ const testFollows: FollowNotification[] = [
 		user: {
 			id: '123',
 			username: 'lisa',
-			title: 'Lisa',
+			name: 'Lisa',
 			image: '',
 			isFollowedByYou: true,
 		},
@@ -23,7 +23,7 @@ const testFollows: FollowNotification[] = [
 		user: {
 			id: '1231',
 			username: 'roman',
-			title: 'Roman',
+			name: 'Roman',
 			image: '',
 			isFollowedByYou: true,
 		},
@@ -35,7 +35,7 @@ const testFollows: FollowNotification[] = [
 		user: {
 			id: '1423',
 			username: 'oleg',
-			title: 'oleg',
+			name: 'oleg',
 			image: '',
 			isFollowedByYou: false,
 		},
@@ -47,7 +47,7 @@ const testFollows: FollowNotification[] = [
 		user: {
 			id: '1421243',
 			username: 'ivan',
-			title: 'Ivan',
+			name: 'Ivan',
 			image: '',
 			isFollowedByYou: false,
 		},

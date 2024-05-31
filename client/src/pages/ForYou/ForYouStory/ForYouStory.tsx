@@ -18,10 +18,10 @@ import { selectAuth } from '@/features/auth/authSlice';
 import ReportIcon from '@/assets/icons/report.svg';
 import { openReport } from '@/features/report/reportSlice';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 type ForYouStoryProps = Omit<Story, 'date' | 'views'> & {
-	user: Omit<User, 'description' | 'followers'>;
+	user: Omit<User, 'description' | 'followers' | 'following' | 'likes'>;
 };
 
 const ForYouStory = (props: ForYouStoryProps) => {
@@ -82,7 +82,7 @@ const ForYouStory = (props: ForYouStoryProps) => {
 				<div className={styles.HeaderInfo}>
 					<Link to={`/@${user.username}`} className={styles.HeaderInfoUser}>
 						<span className={styles.InfoUsername}>{user.username}</span>
-						<span className={styles.InfoTitle}>{user.title}</span>
+						<span className={styles.InfoName}>{user.name}</span>
 					</Link>
 					<p className={styles.InfoDescr}>
 						<span className={styles.DescrText}>{description}</span>

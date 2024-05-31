@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './Prompt.module.scss';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 type PromptProps = {
 	children: React.ReactNode;

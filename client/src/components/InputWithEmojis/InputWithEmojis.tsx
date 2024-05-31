@@ -8,7 +8,7 @@ import emojiIcon from '@/assets/icons/messages/emoji.svg?url';
 import sendiIcon from '@/assets/icons/messages/send.svg?url';
 import useClickOutside from '@/hooks/useClickOutside';
 import { getCaretPosition, setCaretPosition } from '@/utils/caretUtils';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 type InputWithEmojisProps = {
 	value: string;
@@ -190,7 +190,9 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 							onPaste={handlePasteInput}
 							onKeyDown={handleKeyDownInput}
 							suppressContentEditableWarning={true}
-						>{value}</div>
+						>
+							{value}
+						</div>
 					</div>
 					{valueLength >= Math.floor(maxValueLength / 10) && (
 						<div className={styles.ValueLength}>

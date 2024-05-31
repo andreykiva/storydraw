@@ -8,7 +8,7 @@ import Notifications from '@/components/Notifications/Notifications';
 import Prompt from '@/components/ui/Prompt/Prompt';
 import { openNotificationsModal, closeNotificationsModal } from '@/features/notifications/notificationsSlice';
 import { selectNotificationsModalStatus } from '@/features/notifications/notificationsSlice';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 const InboxSection = () => {
 	const dispatch = useDispatch();

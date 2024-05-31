@@ -6,32 +6,33 @@ import HTag from '@/components/ui/HTag/HTag';
 const testSuggestedAccounts = [
 	{
 		id: '1',
-		username: 'andriikiva',
-		title: 'hey man',
-		image: '',
+		username: 'andrii747',
+		name: 'Real',
+		image: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
+		the_Discomfort%E2%80%94We%27re_Alright.webp`,
 	},
 	{
 		id: '2',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 	{
 		id: '3',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 	{
 		id: '4',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 	{
 		id: '5',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 ];
@@ -39,32 +40,33 @@ const testSuggestedAccounts = [
 const testFollowingAccoutns = [
 	{
 		id: '1',
-		username: 'andriikiva',
-		title: 'meow',
-		image: '',
+		username: 'andrii747',
+		name: 'Real',
+		image: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
+		the_Discomfort%E2%80%94We%27re_Alright.webp`,
 	},
 	{
 		id: '2',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 	{
 		id: '3',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 	{
 		id: '4',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 	{
 		id: '5',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 ];
@@ -94,7 +96,7 @@ const SidebarAccounts = ({ isAuth }: SidebarAccountsProps) => {
 			) : (
 				<ul className={styles.AccountsList}>
 					{accounts.map((item) => (
-						<SidebarAccount key={item.id} image={item.image} username={item.username} title={item.title} />
+						<SidebarAccount key={item.id} image={item.image} username={item.username} name={item.name} />
 					))}
 				</ul>
 			)}

@@ -13,6 +13,7 @@ import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import { REGISTER_FIELD, BIRTH_FIELD } from '@/constants/auth';
 import useRegisterForm from '@/hooks/forms/useRegisterForm';
+import { INPUT_MODE } from '@/constants/ui';
 
 type RegisterFormProps = {
 	onShowRegisterOptions: () => void;
@@ -80,7 +81,7 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 								<Input
 									type="text"
 									name={REGISTER_FIELD.PHONE}
-									mode="Phone"
+									mode={INPUT_MODE.PHONE}
 									placeholder="Phone number"
 									value={formData[REGISTER_FIELD.PHONE]}
 									error={formErrors[REGISTER_FIELD.PHONE]}
@@ -95,7 +96,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 								<Input
 									type="text"
 									name={REGISTER_FIELD.EMAIL}
-									mode="Email"
 									placeholder="Email address"
 									value={formData[REGISTER_FIELD.EMAIL]}
 									error={formErrors[REGISTER_FIELD.EMAIL]}
@@ -147,7 +147,7 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 						<Input
 							type="text"
 							name={REGISTER_FIELD.USERNAME}
-							mode="Username"
+							mode={INPUT_MODE.USERNAME}
 							placeholder="Username"
 							value={formData[REGISTER_FIELD.USERNAME]}
 							error={formErrors[REGISTER_FIELD.USERNAME]}

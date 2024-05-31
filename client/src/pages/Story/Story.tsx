@@ -18,7 +18,7 @@ const testStoryInfo = {
 	user: {
 		id: '123',
 		username: 'andriikiva',
-		title: 'hey man',
+		name: 'hey man',
 		image: '',
 	},
 	id: '123123',

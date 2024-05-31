@@ -10,6 +10,7 @@ import FormFooter from './FormFooter/FormFooter';
 import FormHeader from './FormHeader/FormHeader';
 import { LOGIN_FIELD, LOGIN_METHOD } from '@/constants/auth';
 import useLoginForm from '@/hooks/forms/useLoginForm';
+import { INPUT_MODE } from '@/constants/ui';
 
 type LoginFormProps = {
 	onOpenResetForm: () => void;
@@ -68,7 +69,7 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 						<Input
 							type="text"
 							name={LOGIN_FIELD.PHONE}
-							mode="Phone"
+							mode={INPUT_MODE.PHONE}
 							placeholder="Phone number"
 							value={formData[LOGIN_FIELD.PHONE]}
 							error={formErrors[LOGIN_FIELD.PHONE]}

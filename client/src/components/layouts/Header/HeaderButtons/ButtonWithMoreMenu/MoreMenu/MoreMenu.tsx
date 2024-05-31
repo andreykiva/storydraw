@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import styles from './MoreMenu.module.scss';
 import languageIcon from '@/assets/icons/language.svg?url';
@@ -12,7 +13,8 @@ import settingsIcon from '@/assets/icons/settings.svg?url';
 import logoutIcon from '@/assets/icons/logout.svg?url';
 import MoreMenuItem from './MoreMenuItem/MoreMenuItem';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
+import { selectUser } from '@/features/user/userSlice';
 
 type MoreMenuProps = {
 	isAuth: boolean;
@@ -28,6 +30,7 @@ type MenuItem = {
 
 const MoreMenu = ({ isAuth, className, onOpenLogoutModal }: MoreMenuProps) => {
 	const navigate = useNavigate();
+	const currentUser = useSelector(selectUser);
 
 	const generalItems: MenuItem[] = [
 		{
@@ -51,12 +54,12 @@ const MoreMenu = ({ isAuth, className, onOpenLogoutModal }: MoreMenuProps) => {
 		{
 			title: 'View profile',
 			icon: profileIcon,
-			onClick: () => navigate('/@andrii'),
+			onClick: () => navigate(`/@${currentUser.username}`),
 		},
 		{
 			title: 'Favorites',
 			icon: favoritesIcon,
-			onClick: () => navigate('/@andrii'),
+			onClick: () => navigate(`/@${currentUser.username}`),
 		},
 		{
 			title: 'Get Premium',
@@ -71,23 +74,12 @@ const MoreMenu = ({ isAuth, className, onOpenLogoutModal }: MoreMenuProps) => {
 	];
 
 	return (
-		<WrapperWithTriangle
-			position={MENU_POSITION.BOTTOM_LEFT}
-			className={cn(styles.MoreMenu, className)}
-		>
+		<WrapperWithTriangle position={MENU_POSITION.BOTTOM_LEFT} className={cn(styles.MoreMenu, className)}>
 			{isAuth && loggedInUserItems.map((item) => <MoreMenuItem key={item.title} {...item} />)}
 			{generalItems.map((item) => (
 				<MoreMenuItem key={item.title} {...item} />
 			))}
-			{isAuth && (
-				<MoreMenuItem
-					title="Log out"
-					icon={logoutIcon}
-					withBorder={true}
-					onClick={onOpenLogoutModal}
-				/>
-			)}
-			
+			{isAuth && <MoreMenuItem title="Log out" icon={logoutIcon} withBorder={true} onClick={onOpenLogoutModal} />}
 		</WrapperWithTriangle>
 	);
 };

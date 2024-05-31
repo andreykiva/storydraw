@@ -9,7 +9,7 @@ import reportIcon from '@/assets/icons/report.svg?url';
 import blockIcon from '@/assets/icons/block.svg?url';
 import { openReport } from '@/features/report/reportSlice';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 type ActionsMenuProps = {
 	chatmateId: string;

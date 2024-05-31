@@ -15,14 +15,14 @@ import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
 
 type StoryInfoProps = Pick<Story, 'description' | 'date' | 'musicName' | 'likes' | 'favorites' | 'share'> & {
-	user: Pick<User, 'username' | 'title' | 'image'>;
+	user: Pick<User, 'username' | 'name' | 'image'>;
 };
 
 const StoryInfo = (props: StoryInfoProps) => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
 	const {
-		user: { username, title, image },
+		user: { username, name, image },
 		description,
 		date,
 		musicName,
@@ -66,7 +66,7 @@ const StoryInfo = (props: StoryInfoProps) => {
 						<span className={styles.Username}>{username}</span>
 					</Link>
 					<div className={styles.UserInfoBottom}>
-						<span className={styles.UserTitle}>{title}</span>
+						<span className={styles.Name}>{name}</span>
 						<div className={styles.Dot}></div>
 						<span className={styles.StoryDate}>{date}</span>
 					</div>

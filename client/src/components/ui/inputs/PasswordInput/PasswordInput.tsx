@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import styles from './PasswordInput.module.scss';
 import eyeOpenedIcon from '@/assets/icons/auth/eye-opened.svg?url';
 import eyeClosedIcon from '@/assets/icons/auth/eye-closed.svg?url';
@@ -16,14 +17,14 @@ const PasswordInput = ({ error, ...rest }: PasswordInputProps) => {
 	};
 
 	return (
-		<div className={styles.PasswordInput}>
+		<div className={cn(styles.PasswordInput, error && styles.WithError)}>
 			<img
 				src={showPassword ? eyeOpenedIcon : eyeClosedIcon}
 				alt="Eye"
 				className={styles.ShowPasswordIcon}
 				onClick={handleTogglePassword}
 			/>
-			<Input type={showPassword ? 'text' : 'password'} mode="Password" error={error} {...rest} />
+			<Input type={showPassword ? 'text' : 'password'} error={error} {...rest} />
 		</div>
 	);
 };

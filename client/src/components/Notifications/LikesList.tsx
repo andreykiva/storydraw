@@ -13,7 +13,7 @@ const testLikes: LikeNotification[] = [
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -29,7 +29,7 @@ const testLikes: LikeNotification[] = [
 		user: {
 			id: '123',
 			username: 'lisa',
-			title: 'Lisa',
+			name: 'Lisa',
 			image: '',
 		},
 	},
@@ -50,7 +50,7 @@ const testLikes: LikeNotification[] = [
 		user: {
 			id: '123',
 			username: 'artem',
-			title: 'artem',
+			name: 'artem',
 			image: '',
 		},
 	},
@@ -63,7 +63,7 @@ const testLikes: LikeNotification[] = [
 			text: 'have a nice day',
 			user: {
 				id: '123',
-				title: 'andrew',
+				name: 'andrew',
 			},
 		},
 		story: {
@@ -79,7 +79,7 @@ const testLikes: LikeNotification[] = [
 		user: {
 			id: '123',
 			username: 'nina',
-			title: 'Nina',
+			name: 'Nina',
 			image: '',
 		},
 	},
@@ -102,13 +102,13 @@ const testLikes: LikeNotification[] = [
 			{
 				id: '112323',
 				username: 'lisa',
-				title: 'Lisa',
+				name: 'Lisa',
 				image: '',
 			},
 			{
 				id: '112334123',
 				username: 'lisa4ka123123',
-				title: 'Lisa4ka123123',
+				name: 'Lisa4ka123123',
 				image: '',
 			},
 		],

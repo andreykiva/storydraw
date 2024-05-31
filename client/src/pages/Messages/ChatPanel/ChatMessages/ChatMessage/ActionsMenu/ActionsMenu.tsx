@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ActionsMenu.module.scss';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 type ActionsMenuProps = {
 	onLike: () => void;

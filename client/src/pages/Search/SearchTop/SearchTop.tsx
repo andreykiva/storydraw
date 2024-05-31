@@ -9,7 +9,7 @@ const testSearchData = {
 		{
 			id: '1',
 			username: 'andriikiva',
-			title: 'hey man',
+			name: 'hey man',
 			followers: 412,
 			description: 'my name is andrew',
 			image: '',
@@ -17,7 +17,7 @@ const testSearchData = {
 		{
 			id: '2',
 			username: 'andriikiva',
-			title: 'hey man',
+			name: 'hey man',
 			followers: 412,
 			description: 'my name is andrew',
 			image: '',
@@ -25,7 +25,7 @@ const testSearchData = {
 		{
 			id: '3',
 			username: 'andriikiva',
-			title: 'hey man',
+			name: 'hey man',
 			followers: 412,
 			description: 'my name is andrew',
 			image: '',

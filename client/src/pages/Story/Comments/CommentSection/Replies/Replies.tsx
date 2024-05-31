@@ -11,7 +11,7 @@ const testReplies = [
 		user: {
 			id: '123',
 			username: 'andrey777',
-			title: 'Aandrey',
+			name: 'Aandrey',
 			image: '',
 		},
 	},
@@ -23,7 +23,7 @@ const testReplies = [
 		user: {
 			id: '123',
 			username: 'andrey777',
-			title: 'Aandrey',
+			name: 'Aandrey',
 			image: '',
 		},
 	},
@@ -35,7 +35,7 @@ const testReplies = [
 		user: {
 			id: '123',
 			username: 'andrey777',
-			title: 'Aandrey',
+			name: 'Aandrey',
 			image: '',
 		},
 	},
@@ -47,7 +47,7 @@ const testReplies = [
 		user: {
 			id: '123123123',
 			username: 'andrey888',
-			title: 'andrey',
+			name: 'andrey',
 			image: '',
 		},
 	},
@@ -59,7 +59,7 @@ const testReplies = [
 		user: {
 			id: '1212312312312',
 			username: 'andrey999',
-			title: 'wow',
+			name: 'wow',
 			image: '',
 		},
 	},

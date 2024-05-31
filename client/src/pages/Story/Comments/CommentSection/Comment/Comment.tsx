@@ -13,10 +13,10 @@ import { selectAuth } from '@/features/auth/authSlice';
 import ReportIcon from '@/assets/icons/report.svg';
 import { openReport } from '@/features/report/reportSlice';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
-import { MENU_POSITION } from '@/constants/position';
+import { MENU_POSITION } from '@/constants/ui';
 
 type CommentProps = Comment & {
-	user: Pick<User, 'username' | 'title' | 'image'>;
+	user: Pick<User, 'username' | 'name' | 'image'>;
 	reply: boolean;
 };
 
@@ -62,7 +62,7 @@ const Comment = (props: CommentProps) => {
 			</div>
 			<div className={styles.CommentContent}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
-					<span className={styles.UserTitle}>{user.title}</span>
+					<span className={styles.Name}>{user.name}</span>
 				</Link>
 				<p className={styles.CommentText}>{text}</p>
 				<div className={styles.BottomInfo}>
