@@ -4,6 +4,7 @@ import authReducer from '@/features/auth/authSlice';
 import notificationsReducer from '@/features/notifications/notificationsSlice';
 import chatReducer from '@/features/chat/chatSlice';
 import reportReducer from '@/features/report/reportSlice';
+import userReducer from '@/features/user/userSlice';
 import { searchAPI } from '@/services/search/searchService';
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
 	notifications: notificationsReducer,
 	chat: chatReducer,
 	report: reportReducer,
+	user: userReducer,
 	[searchAPI.reducerPath]: searchAPI.reducer,
 });
 
