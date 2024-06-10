@@ -16,7 +16,7 @@ const Input = ({ error, mode, ...rest }: PasswordInputProps) => {
 				<img src={warningIcon} alt="Warning" className={styles.WarningIcon} />
 			</div>
 			<input className={styles.Input} {...rest} />
-			{error && <p className={styles.InputError}>{error}</p>}
+			<p className={styles.InputError}>{error}</p>
 		</div>
 	);
 };

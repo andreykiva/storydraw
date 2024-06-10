@@ -49,13 +49,6 @@ const useLoginForm = () => {
 		});
 	};
 
-	const handleFocusInput = (fieldName: LOGIN_FIELD) => {
-		setFormErrors({
-			...formErrors,
-			[fieldName]: '',
-		});
-	};
-
 	const handleBlurInput = (fieldName: LOGIN_FIELD) => {
 		if (formData[fieldName]) {
 			const fieldError = validateLoginForm(fieldName, formData[fieldName]);
@@ -63,6 +56,11 @@ const useLoginForm = () => {
 			setFormErrors({
 				...formErrors,
 				[fieldName]: fieldError || '',
+			});
+		} else {
+			setFormErrors({
+				...formErrors,
+				[fieldName]: '',
 			});
 		}
 	};
@@ -83,7 +81,6 @@ const useLoginForm = () => {
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
 		handleChangeInput,
-		handleFocusInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleChangeLoginMethod,

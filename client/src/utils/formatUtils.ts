@@ -34,3 +34,13 @@ export const formatCVCCode = (value: string) => {
 	return numericValue.slice(0, 4);
 };
 
+export const formatBio = (value: string) => {
+	const maxRows = 5;
+	const lines = value.split('\n');
+
+	if (lines.length > maxRows) {
+		return lines.slice(0, maxRows).join('\n');
+	}
+
+	return value;
+};

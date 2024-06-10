@@ -32,7 +32,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
 		handleChangeInput,
-		handleFocusInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleToggleSendTrends,
@@ -86,7 +85,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 									value={formData[REGISTER_FIELD.PHONE]}
 									error={formErrors[REGISTER_FIELD.PHONE]}
 									onChange={handleChangeInput}
-									onFocus={() => handleFocusInput(REGISTER_FIELD.PHONE)}
 									onBlur={() => handleBlurInput(REGISTER_FIELD.PHONE)}
 									required
 								/>
@@ -100,7 +98,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 									value={formData[REGISTER_FIELD.EMAIL]}
 									error={formErrors[REGISTER_FIELD.EMAIL]}
 									onChange={handleChangeInput}
-									onFocus={() => handleFocusInput(REGISTER_FIELD.EMAIL)}
 									onBlur={() => handleBlurInput(REGISTER_FIELD.EMAIL)}
 									required
 								/>
@@ -110,7 +107,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 									value={formData[REGISTER_FIELD.PASSWORD]}
 									error={formErrors[REGISTER_FIELD.PASSWORD]}
 									onChange={handleChangeInput}
-									onFocus={() => handleFocusInput(REGISTER_FIELD.PASSWORD)}
 									onBlur={() => handleBlurInput(REGISTER_FIELD.PASSWORD)}
 									required
 								/>
@@ -122,7 +118,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 							value={formData[REGISTER_FIELD.CODE]}
 							error={formErrors[REGISTER_FIELD.CODE]}
 							onChange={handleChangeInput}
-							onFocus={() => handleFocusInput(REGISTER_FIELD.CODE)}
 							onBlur={() => handleBlurInput(REGISTER_FIELD.CODE)}
 							disabled={isCodeBtnDisabled}
 							required
@@ -152,7 +147,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 							value={formData[REGISTER_FIELD.USERNAME]}
 							error={formErrors[REGISTER_FIELD.USERNAME]}
 							onChange={handleChangeInput}
-							onFocus={() => handleFocusInput(REGISTER_FIELD.USERNAME)}
 							onBlur={() => handleBlurInput(REGISTER_FIELD.USERNAME)}
 						/>
 						<span className={authSharedStyles.CreateUsernameDescr}>You can always change this later.</span>

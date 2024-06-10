@@ -2,7 +2,7 @@ type User = {
 	id: string;
 	username: string;
 	name: string;
-	description: string;
+	bio: string;
 	image: string;
 	followers: number;
 	following: number;

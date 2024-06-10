@@ -57,13 +57,6 @@ const usePaymentForm = () => {
 		});
 	};
 
-	const handleFocusInput = (fieldName: PAYMENT_FIELD) => {
-		setFormErrors({
-			...formErrors,
-			[fieldName]: '',
-		});
-	};
-
 	const handleBlurInput = (fieldName: PAYMENT_FIELD) => {
 		if (formData[fieldName]) {
 			const fieldError = validatePayment(fieldName, formData[fieldName]);
@@ -71,6 +64,11 @@ const usePaymentForm = () => {
 			setFormErrors({
 				...formErrors,
 				[fieldName]: fieldError || '',
+			});
+		} else {
+			setFormErrors({
+				...formErrors,
+				[fieldName]: '',
 			});
 		}
 	};
@@ -104,7 +102,6 @@ const usePaymentForm = () => {
 		handleChangeExpirationDate,
 		handleChangeCVCCode,
 		handleChangeCountry,
-		handleFocusInput,
 		handleBlurInput,
 		resetForm,
 	};

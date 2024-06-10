@@ -5,7 +5,7 @@
 		padding-right: 155px;
 	}
 
-	&.WithError .CardsIcons {
+	&.WithError:not(:focus-within) .CardsIcons {
 		right: 50px;
 	}
 }

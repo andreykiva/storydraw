@@ -73,13 +73,6 @@ const useRegisterForm = () => {
 		});
 	};
 
-	const handleFocusInput = (fieldName: REGISTER_FIELD) => {
-		setFormErrors({
-			...formErrors,
-			[fieldName]: '',
-		});
-	};
-
 	const handleBlurInput = (fieldName: REGISTER_FIELD) => {
 		if (formData[fieldName]) {
 			const fieldError = validateRegisterForm(fieldName, formData[fieldName]);
@@ -87,6 +80,11 @@ const useRegisterForm = () => {
 			setFormErrors({
 				...formErrors,
 				[fieldName]: fieldError || '',
+			});
+		} else {
+			setFormErrors({
+				...formErrors,
+				[fieldName]: '',
 			});
 		}
 	};
@@ -111,7 +109,6 @@ const useRegisterForm = () => {
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
 		handleChangeInput,
-		handleFocusInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleToggleSendTrends,

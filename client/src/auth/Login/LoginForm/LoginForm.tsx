@@ -25,7 +25,6 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
 		handleChangeInput,
-		handleFocusInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleChangeLoginMethod,
@@ -55,7 +54,6 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 						value={formData[LOGIN_FIELD.LOGIN]}
 						error={formErrors[LOGIN_FIELD.LOGIN]}
 						onChange={handleChangeInput}
-						onFocus={() => handleFocusInput(LOGIN_FIELD.LOGIN)}
 						onBlur={() => handleBlurInput(LOGIN_FIELD.LOGIN)}
 						required
 					/>
@@ -74,7 +72,6 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 							value={formData[LOGIN_FIELD.PHONE]}
 							error={formErrors[LOGIN_FIELD.PHONE]}
 							onChange={handleChangeInput}
-							onFocus={() => handleFocusInput(LOGIN_FIELD.PHONE)}
 							onBlur={() => handleBlurInput(LOGIN_FIELD.PHONE)}
 							required
 						/>
@@ -87,7 +84,6 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 						value={formData[LOGIN_FIELD.CODE]}
 						error={formErrors[LOGIN_FIELD.CODE]}
 						onChange={handleChangeInput}
-						onFocus={() => handleFocusInput(LOGIN_FIELD.CODE)}
 						onBlur={() => handleBlurInput(LOGIN_FIELD.CODE)}
 						disabled={isCodeBtnDisabled}
 						required
@@ -99,7 +95,6 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 						value={formData[LOGIN_FIELD.PASSWORD]}
 						error={formErrors[LOGIN_FIELD.PASSWORD]}
 						onChange={handleChangeInput}
-						onFocus={() => handleFocusInput(LOGIN_FIELD.PASSWORD)}
 						onBlur={() => handleBlurInput(LOGIN_FIELD.PASSWORD)}
 						required
 					/>

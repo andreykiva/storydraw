@@ -3,12 +3,16 @@
 	flex: 1 0;
 	margin-bottom: 10px;
 
-	&.GroupError {
+	&.GroupError:not(:focus-within) {
 		.Input {
 			border-color: #FF4C3A;
 		}
 
 		.WarningIcon {
+			display: block;
+		}
+
+		.InputError {
 			display: block;
 		}
 	}
@@ -36,8 +40,9 @@
 	background-color: rgb(55, 55, 55);
 	border: 1px solid rgb(55, 55, 55);
 	border-radius: 4px;
-	font-size: 16px;
-	font-weight: 600;
+	font-family: 'Karla', sans-serif;
+	font-size: 17px;
+	font-weight: 700;
 	color: var(--main-color);
 	caret-color: var(--bright-green-color);
 }
@@ -58,6 +63,7 @@
 }
 
 .InputError {
+	display: none;
 	font-size: 12px;
 	line-height: 1;
 	letter-spacing: -0.3px;

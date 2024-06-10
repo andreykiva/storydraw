@@ -16,6 +16,9 @@ import { MENU_POSITION } from '@/constants/ui';
 import { selectUser } from '@/features/user/userSlice';
 import User from '@/types/User';
 import editIcon from '@/assets/icons/profile/edit.svg?url';
+import EditProfileModal from './EditProfileModal/EditProfileModal';
+import RelationsModal from './RelationsModal/RelationsModal';
+import { RELATIONS_TYPE } from '@/constants/profile';
 
 const testProfileStories = [
 	{
@@ -164,7 +167,7 @@ const testUser = {
 	id: '1231u240',
 	username: 'somestranger',
 	name: 'Hm',
-	description: 'yes. I am.',
+	bio: 'yes. I am.',
 	image: `https://lastfm.freetls.fastly.net/i/u/ar0/930705c179074033ef99a50e9456b786.jpg`,
 	following: 422,
 	followers: 9981,
@@ -179,6 +182,9 @@ const Profile = () => {
 	const username = params.username.slice(1);
 	const [user, setUser] = useState<User>(null);
 	const [isCurrentUser, setIsCurrentUser] = useState(false);
+	const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+	const [isRelationsModalOpen, setIsRelationsModalOpen] = useState(false);
+	const [relationsModalView, setRelationsModalView] = useState<RELATIONS_TYPE>(RELATIONS_TYPE.FOLLOWING);
 
 	useEffect(() => {
 		if (isAuth && username === currentUser.username) {
@@ -191,6 +197,10 @@ const Profile = () => {
 		}
 	}, [username, currentUser, isAuth]);
 
+	useEffect(() => {
+		setIsRelationsModalOpen(false);
+	}, [username]);
+
 	const handleFollow = () => {
 		if (!isAuth) {
 			dispatch(openAuthModal());
@@ -201,6 +211,11 @@ const Profile = () => {
 
 	const handleOpenReport = () => {
 		dispatch(openReport({ type: 'account', targetId: currentUser.id }));
+	};
+
+	const handleOpenRelationsModal = (view: RELATIONS_TYPE) => {
+		setRelationsModalView(view);
+		setIsRelationsModalOpen(true);
 	};
 
 	const actions = [
@@ -219,18 +234,20 @@ const Profile = () => {
 		});
 	}
 
+	if (!user) return null;
+
 	return (
 		<div className={styles.Profile}>
 			<div className={styles.ProfileInfo}>
 				<div className={styles.TopInfo}>
 					<div className={styles.ProfileImgWr}>
-						<img src={user?.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+						<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					</div>
 					<div className={styles.InfoMain}>
-						<span className={styles.Username}>{user?.username}</span>
-						<span className={styles.Name}>{user?.name}</span>
+						<span className={styles.Username}>{user.username}</span>
+						<span className={styles.Name}>{user.name}</span>
 						{isCurrentUser ? (
-							<Button className={styles.EditProfileBtn} onClick={handleFollow}>
+							<Button className={styles.EditProfileBtn} onClick={() => setIsEditProfileModalOpen(true)}>
 								<img src={editIcon} alt="Edit" className={styles.EditIcon} />
 								Edit profile
 							</Button>
@@ -251,17 +268,23 @@ const Profile = () => {
 				</div>
 				<div className={styles.BottomInfo}>
 					<div className={styles.UserStatistics}>
-						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{formatNumber(user?.following)}</span> Following
+						<div
+							className={styles.StatisticsItem}
+							onClick={() => handleOpenRelationsModal(RELATIONS_TYPE.FOLLOWING)}
+						>
+							<span className={styles.ItemValue}>{formatNumber(user.following)}</span> Following
+						</div>
+						<div
+							className={styles.StatisticsItem}
+							onClick={() => handleOpenRelationsModal(RELATIONS_TYPE.FOLLOWERS)}
+						>
+							<span className={styles.ItemValue}>{formatNumber(user.followers)}</span> Followers
 						</div>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{formatNumber(user?.followers)}</span> Followers
-						</div>
-						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{formatNumber(user?.likes)}</span> Likes
+							<span className={styles.ItemValue}>{formatNumber(user.likes)}</span> Likes
 						</div>
 					</div>
-					<p className={styles.UserDescr}>{user?.description || 'No bio yet.'}</p>
+					<p className={styles.UserBio}>{user.bio || 'No bio yet.'}</p>
 				</div>
 			</div>
 			<div className={styles.ProfileStories}>
@@ -269,6 +292,20 @@ const Profile = () => {
 					<ProfileStory key={story.id} {...story} />
 				))}
 			</div>
+
+			{isEditProfileModalOpen && (
+				<EditProfileModal user={user} onClose={() => setIsEditProfileModalOpen(false)} />
+			)}
+
+			{isRelationsModalOpen && (
+				<RelationsModal
+					user={user}
+					view={relationsModalView}
+					isCurrentUser={isCurrentUser}
+					onClose={() => setIsRelationsModalOpen(false)}
+					onChangeView={setRelationsModalView}
+				/>
+			)}
 		</div>
 	);
 };

@@ -8,7 +8,7 @@ import type User from '@/types/User';
 type SearchAccountProps = Omit<User, 'id' | 'following' | 'likes'>;
 
 const SearchAccount = (props: SearchAccountProps) => {
-	const { image, username, name, description, followers } = props;
+	const { image, username, name, bio, followers } = props;
 
 	return (
 		<Link to={`/@${username}`} className={styles.SearchAccount}>
@@ -24,7 +24,7 @@ const SearchAccount = (props: SearchAccountProps) => {
 						<span className={styles.Followers}>{formatNumber(followers)}</span> Followers
 					</p>
 				</div>
-				<p className={styles.Descr}>{description}</p>
+				<p className={styles.Bio}>{bio}</p>
 			</div>
 		</Link>
 	);

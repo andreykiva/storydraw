@@ -25,7 +25,6 @@ const PaymentForm = ({ paymentMethod, currentPlan }: PaymentFormProps) => {
 		handleChangeExpirationDate,
 		handleChangeCVCCode,
 		handleChangeCountry,
-		handleFocusInput,
 		handleBlurInput,
 		resetForm,
 	} = usePaymentForm();
@@ -53,7 +52,6 @@ const PaymentForm = ({ paymentMethod, currentPlan }: PaymentFormProps) => {
 							value={formData[PAYMENT_FIELD.CARD_NUMBER]}
 							error={formErrors[PAYMENT_FIELD.CARD_NUMBER]}
 							onChange={handleChangeCardNumber}
-							onFocus={() => handleFocusInput(PAYMENT_FIELD.CARD_NUMBER)}
 							onBlur={() => handleBlurInput(PAYMENT_FIELD.CARD_NUMBER)}
 							required
 						/>
@@ -69,7 +67,6 @@ const PaymentForm = ({ paymentMethod, currentPlan }: PaymentFormProps) => {
 								value={formData[PAYMENT_FIELD.EXPIRATION_DATE]}
 								error={formErrors[PAYMENT_FIELD.EXPIRATION_DATE]}
 								onChange={handleChangeExpirationDate}
-								onFocus={() => handleFocusInput(PAYMENT_FIELD.EXPIRATION_DATE)}
 								onBlur={() => handleBlurInput(PAYMENT_FIELD.EXPIRATION_DATE)}
 								required
 							/>
@@ -84,7 +81,6 @@ const PaymentForm = ({ paymentMethod, currentPlan }: PaymentFormProps) => {
 								value={formData[PAYMENT_FIELD.CVC_CODE]}
 								error={formErrors[PAYMENT_FIELD.CVC_CODE]}
 								onChange={handleChangeCVCCode}
-								onFocus={() => handleFocusInput(PAYMENT_FIELD.CVC_CODE)}
 								onBlur={() => handleBlurInput(PAYMENT_FIELD.CVC_CODE)}
 								required
 							/>

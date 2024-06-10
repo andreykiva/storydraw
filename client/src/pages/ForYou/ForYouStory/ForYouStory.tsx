@@ -21,7 +21,7 @@ import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWith
 import { MENU_POSITION } from '@/constants/ui';
 
 type ForYouStoryProps = Omit<Story, 'date' | 'views'> & {
-	user: Omit<User, 'description' | 'followers' | 'following' | 'likes'>;
+	user: Omit<User, 'bio' | 'followers' | 'following' | 'likes'>;
 };
 
 const ForYouStory = (props: ForYouStoryProps) => {

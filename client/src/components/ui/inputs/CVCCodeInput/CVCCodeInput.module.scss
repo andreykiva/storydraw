@@ -1,7 +1,7 @@
 .CVCCodeInput {
 	position: relative;
 
-	&.WithError .CVCIconWr {
+	&.WithError:not(:focus-within) .CVCIconWr {
 		right: 50px;
 	}
 }

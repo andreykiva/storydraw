@@ -8,7 +8,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -16,7 +16,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -24,7 +24,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -32,7 +32,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -40,7 +40,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -48,7 +48,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -56,7 +56,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -64,7 +64,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -72,7 +72,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -80,7 +80,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -88,7 +88,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -96,7 +96,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -104,7 +104,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -112,7 +112,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 	{
@@ -120,7 +120,7 @@ const testAccoutns = [
 		username: 'andriikiva',
 		name: 'hey man',
 		followers: 412,
-		description: 'my name is andrew',
+		bio: 'my name is andrew',
 		image: '',
 	},
 ];

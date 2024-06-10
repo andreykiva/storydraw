@@ -43,13 +43,6 @@ const useResetPasswordForm = () => {
 		});
 	};
 
-	const handleFocusInput = (fieldName: RESET_PASSWORD_FIELD) => {
-		setFormErrors({
-			...formErrors,
-			[fieldName]: '',
-		});
-	};
-
 	const handleBlurInput = (fieldName: RESET_PASSWORD_FIELD) => {
 		if (formData[fieldName]) {
 			const fieldError = validateResetPasswordForm(fieldName, formData[fieldName]);
@@ -57,6 +50,11 @@ const useResetPasswordForm = () => {
 			setFormErrors({
 				...formErrors,
 				[fieldName]: fieldError || '',
+			});
+		} else {
+			setFormErrors({
+				...formErrors,
+				[fieldName]: '',
 			});
 		}
 	};
@@ -73,7 +71,6 @@ const useResetPasswordForm = () => {
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
 		handleChangeInput,
-		handleFocusInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleChangeIsPhoneMode: setIsPhoneMode,

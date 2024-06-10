@@ -95,13 +95,18 @@
 	font-size: 18px;
 	font-weight: 400;
 
+	&:not(:last-child):hover {
+		opacity: .7;
+		cursor: pointer;
+	}
+
 	.ItemValue {
 		font-weight: 700;
 		margin-right: 2px;
 	}
 }
 
-.UserDescr {
+.UserBio {
 	max-width: 400px;
 	font-weight: 500;
 }

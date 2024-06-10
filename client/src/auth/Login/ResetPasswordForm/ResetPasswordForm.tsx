@@ -20,7 +20,6 @@ const ResetPasswordForm = () => {
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
 		handleChangeInput,
-		handleFocusInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleChangeIsPhoneMode,
@@ -57,7 +56,6 @@ const ResetPasswordForm = () => {
 							value={formData[RESET_PASSWORD_FIELD.PHONE]}
 							error={formErrors[RESET_PASSWORD_FIELD.PHONE]}
 							onChange={handleChangeInput}
-							onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.PHONE)}
 							onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.PHONE)}
 							required
 						/>
@@ -70,7 +68,6 @@ const ResetPasswordForm = () => {
 						value={formData[RESET_PASSWORD_FIELD.EMAIL]}
 						error={formErrors[RESET_PASSWORD_FIELD.EMAIL]}
 						onChange={handleChangeInput}
-						onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.EMAIL)}
 						onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.EMAIL)}
 						required
 					/>
@@ -81,7 +78,6 @@ const ResetPasswordForm = () => {
 					value={formData[RESET_PASSWORD_FIELD.CODE]}
 					error={formErrors[RESET_PASSWORD_FIELD.CODE]}
 					onChange={handleChangeInput}
-					onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.CODE)}
 					onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.CODE)}
 					disabled={isCodeBtnDisabled}
 					required
@@ -92,7 +88,6 @@ const ResetPasswordForm = () => {
 					value={formData[RESET_PASSWORD_FIELD.PASSWORD]}
 					error={formErrors[RESET_PASSWORD_FIELD.PASSWORD]}
 					onChange={handleChangeInput}
-					onFocus={() => handleFocusInput(RESET_PASSWORD_FIELD.PASSWORD)}
 					onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.PASSWORD)}
 					required
 				/>

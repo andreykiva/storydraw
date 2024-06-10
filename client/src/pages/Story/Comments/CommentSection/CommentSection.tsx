@@ -8,7 +8,7 @@ import type CommentType from '@/types/Comment';
 import type User from '@/types/User';
 
 type CommentSectionProps = CommentType & {
-	user: Omit<User, 'description' | 'followers' | 'following' | 'likes'>;
+	user: Omit<User, 'bio' | 'followers' | 'following' | 'likes'>;
 };
 
 const CommentSection = (props: CommentSectionProps) => {

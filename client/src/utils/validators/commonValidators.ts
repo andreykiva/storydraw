@@ -20,7 +20,7 @@ export const validateEmail: ValidatorFunction = (email) => {
 
 export const validateUsername: ValidatorFunction = (username) => {
 	if (!username) return 'Username is required';
-	if (username.length < 5) return 'Username must be longer than 4 characters';
+	if (username.length < 5 || username.length > 24) return 'Username must be between 5 and 32 characters';
 	if (!stringPattern.test(username)) return 'Username must contain only letters and numbers';
 
 	return null;
@@ -118,6 +118,21 @@ export const validateCvcCode: ValidatorFunction = (cvcCode) => {
 
 	if (!CVCCodePattern.test(cvcCode)) {
 		return 'Enter a valid CVC code';
+	}
+
+	return null;
+};
+
+export const validateName: ValidatorFunction = (name) => {
+	if (!name) return 'Name is required';
+	if (name.length > 30) return 'Maximum 30 characters';
+
+	return null;
+};
+
+export const validateBio: ValidatorFunction = (bio) => {
+	if (bio.length > 80) {
+		return 'Maximum 80 characters';
 	}
 
 	return null;
