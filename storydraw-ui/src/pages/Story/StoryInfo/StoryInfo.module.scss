@@ -1,0 +1,90 @@
+.StoryInfo {
+	padding: 30px;
+}
+
+.StoryInfoTop {
+	display: flex;
+	align-items: center;
+	margin-bottom: 17px;
+}
+
+.ImgUserLink {
+	display: flex;
+	margin-right: 12px;
+
+	.ProfileImg {
+		width: 40px;
+		border-radius: 50%;
+	}
+}
+
+.UserLink:hover {
+	opacity: .7;
+}
+
+.Username {
+	font-weight: 800;
+}
+
+.UserInfoBottom {
+	display: flex;
+	align-items: center;
+	font-weight: 500;
+
+	.Dot {
+		width: 2px;
+		height: 2px;
+		border-radius: 50%;
+		background-color: var(--main-color);
+		margin: 0 6px;
+	}
+}
+
+.FollowBtn {
+	max-width: 100px;
+	margin-left: auto;
+}
+
+.InfoDescr {
+	margin-bottom: 10px;
+}
+
+.InfoMusic {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	font-weight: 500;
+
+	.MusicIcon {
+		width: 12px;
+		height: 12px;
+		margin-right: 10px;
+	}
+}
+
+.StoryInfoBottom {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+
+.StoryInfoItem {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	&:hover {
+		opacity: .7;
+	}
+
+	.ItemIcon {
+		width: 26px;
+		height: 26px;
+		margin-right: 8px;
+	}
+
+	.ItemNumber {
+		font-size: 14px;
+		font-weight: 700;
+	}
+}

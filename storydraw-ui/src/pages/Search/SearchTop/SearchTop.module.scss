@@ -1,0 +1,32 @@
+.SearchTop {
+	max-width: 720px;
+	width: 100%;
+	height: 100%;
+	padding: 0 10px;
+}
+
+.Title {
+	margin-bottom: 18px;
+}
+
+.SearchAccounts {
+	padding-bottom: 20px;
+}
+
+.SearchStories {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding-bottom: 20px;
+
+	>* {
+		flex: 1 1 50px;
+	}
+}
+
+.SearchStory {
+	max-width: 340px;
+	min-width: 280px;
+}

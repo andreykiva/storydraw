@@ -1,0 +1,152 @@
+.WrapperWithTriangle {
+	position: absolute;
+
+	&::after {
+		position: absolute;
+		width: 0;
+		height: 0;
+		content: "";
+		border-width: 8px;
+		border-style: solid;
+	}
+
+	/* TopLeft */
+	&.TopLeft {
+		bottom: calc(100% + 12px);
+		right: calc(50% - 30px);
+
+		&::after {
+			right: 22px;
+			bottom: -15px;
+		}
+	}
+
+	/* TopCenter */
+	&.TopCenter {
+		bottom: calc(100% + 12px);
+		left: 50%;
+		transform: translateX(-50%);
+
+		&::after {
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: -15px;
+		}
+	}
+
+	/* TopRight */
+	&.TopRight {
+		bottom: calc(100% + 12px);
+		left: calc(50% - 30px);
+
+		&::after {
+			left: 22px;
+			bottom: -15px;
+		}
+	}
+
+	/* BottomLeft */
+	&.BottomLeft {
+		top: calc(100% + 12px);
+		right: calc(50% - 30px);
+
+		&::after {
+			right: 22px;
+			top: -15px;
+		}
+	}
+
+	/* BottomCenter */
+	&.BottomCenter {
+		top: calc(100% + 12px);
+		left: 50%;
+		transform: translateX(-50%);
+
+		&::after {
+			left: 50%;
+			transform: translateX(-50%);
+			top: -15px;
+		}
+	}
+
+	/* BottomRight */
+	&.BottomRight {
+		top: calc(100% + 12px);
+		left: calc(50% - 30px);
+
+		&::after {
+			left: 22px;
+			top: -15px;
+		}
+	}
+
+	/* LeftTop */
+	&.LeftTop {
+		bottom: calc(50% - 30px);
+		right: calc(100% + 12px);
+
+		&::after {
+			bottom: 22px;
+			right: -15px;
+		}
+	}
+
+	/* LeftCenter */
+	&.LeftCenter {
+		top: 50%;
+		transform: translateY(-50%);
+		right: calc(100% + 12px);
+
+		&::after {
+			top: 50%;
+			transform: translateY(-50%);
+			right: -15px;
+		}
+	}
+
+	/* LeftBottom */
+	&.LeftBottom {
+		top: calc(50% - 30px);
+		right: calc(100% + 12px);
+
+		&::after {
+			top: 22px;
+			right: -15px;
+		}
+	}
+
+	/* RightTop */
+	&.RightTop {
+		bottom: calc(50% - 30px);
+		left: calc(100% + 12px);
+
+		&::after {
+			bottom: 22px;
+			left: -15px;
+		}
+	}
+
+	/* RightCenter */
+	&.RightCenter {
+		top: 50%;
+		transform: translateY(-50%);
+		left: calc(100% + 12px);
+
+		&::after {
+			top: 50%;
+			transform: translateY(-50%);
+			left: -15px;
+		}
+	}
+
+	/* RightBottom */
+	&.RightBottom {
+		top: calc(50% - 30px);
+		left: calc(100% + 12px);
+
+		&::after {
+			top: 22px;
+			left: -15px;
+		}
+	}
+}

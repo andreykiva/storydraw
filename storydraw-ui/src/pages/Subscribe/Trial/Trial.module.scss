@@ -1,0 +1,22 @@
+.Trial {
+	max-width: 680px;
+	width: 100%;
+}
+
+.TrialTitle {
+	text-align: center;
+	font-size: 44px;
+	font-weight: 700;
+	margin-bottom: 50px;
+
+	span {
+		color: var(--bright-green-color);
+	}
+}
+
+.TrialInfo {
+	padding: 40px 50px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	margin-bottom: 50px;
+}

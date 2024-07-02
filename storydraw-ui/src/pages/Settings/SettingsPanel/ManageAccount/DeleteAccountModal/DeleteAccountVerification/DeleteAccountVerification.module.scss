@@ -1,0 +1,46 @@
+.VerificationHeader {
+	display: flex;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.BackBtn {
+	background: transparent;
+
+	.ArrowIcon {
+		width: 18px;
+		height: 18px;
+		transform: rotate(90deg);
+		fill: var(--white-dark-color);
+	}
+}
+
+.Title {
+	font-size: 24px;
+}
+
+.VerificationMessage {
+	padding: 0 36px;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.VerifyWithSocialMedia {
+	width: 300px;
+	height: 80px;
+	background-color: #fff;
+	margin: 100px auto;
+}
+
+.VerifyWithCode {
+	width: 300px;
+	margin: 100px auto;
+}
+
+.DeleteBtn {
+	width: 140px;
+	height: 36px;
+	border-radius: 6px;
+	font-size: 15px;
+	margin: auto 0 0 auto;
+}

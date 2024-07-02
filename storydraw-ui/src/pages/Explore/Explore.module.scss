@@ -1,0 +1,68 @@
+.Explore {
+	position: relative;
+	max-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.ExploreCategories {
+	position: absolute;
+	top: 0;
+	left: 30px;
+	display: flex;
+	max-width: calc(100% - 38px);
+	width: 100%;
+	margin-right: 8px;
+	padding: 26px 0;
+	background-color: rgb(0, 3, 1);
+	font-weight: 700;
+	z-index: 1;
+}
+
+.ExploreCategory {
+	height: 38px;
+	padding: 0 14px;
+	margin-right: 12px;
+	border: 1px solid rgb(34, 34, 34);
+	border-radius: 10px;
+	background-color: aqua;
+	display: flex;
+	align-items: center;
+	background-color: rgb(34, 34, 34);
+	cursor: pointer;
+
+	&.Active {
+		border-color: var(--main-color);
+	}
+
+	.CategoryIcon {
+		width: 18px;
+		margin-right: 8px;
+	}
+}
+
+.ExploreStories {
+	display: flex;
+	flex-wrap: wrap;
+	max-height: 100%;
+	overflow-y: scroll;
+	padding: 90px 30px 20px;
+	gap: 20px;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
+
+	>* {
+		flex: 1 1 50px;
+	}
+}

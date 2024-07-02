@@ -1,0 +1,28 @@
+.ActionItem {
+	height: 48px;
+	padding: 0px 16px;
+
+	&:hover {
+		background-color: rgb(41, 41, 41);
+	}
+
+	&:not(:last-child) .ItemContent {
+		border-bottom: 1px solid rgb(41, 41, 41);
+	}
+}
+
+.ItemContent {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.ActionIcon {
+	width: 18px;
+	height: 18px;
+	margin-right: 8px;
+}
+
+.ActionTitle {
+	font-size: 17px;
+}

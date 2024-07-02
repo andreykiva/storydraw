@@ -1,0 +1,74 @@
+.Report {
+	max-width: 700px;
+	width: 100%;
+	max-height: 530px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background: rgb(20, 20, 20);
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	color: var(--white-dark-color);
+}
+
+.ReportHeader {
+	display: flex;
+	align-items: center;
+	padding: 24px 24px 16px;
+	border-bottom: 1px solid #222222;
+}
+
+.BackBtn {
+	background: transparent;
+	
+	.ArrowIcon {
+		width: 18px;
+		height: 18px;
+		transform: rotate(90deg);
+		fill: var(--white-dark-color);
+	}
+}
+
+.ReportTitle {
+	font-size: 23px;
+}
+
+.CloseBtn {
+	margin-left: auto;
+	background: transparent;
+}
+
+.ReportBody {
+	flex: 1;
+	padding: 16px 16px 0;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgb(40, 40, 40);
+		border-radius: 4px;
+	}
+}
+
+.ReportNote {
+	padding: 0 0 8px 8px;
+	color: #c0c0c0;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.ReportFooter {
+	display: flex;
+	justify-content: flex-end;
+	padding: 24px;
+	border-top: 1px solid #222222;
+
+	.SubmitBtn {
+		width: 86px;
+		height: 36px;
+		border-radius: 6px;
+	}
+}

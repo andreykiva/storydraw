@@ -1,0 +1,48 @@
+.Follow {
+	max-width: 360px;
+	min-width: 270px;
+	position: relative;
+	display: flex;
+	overflow: hidden;
+	border-radius: 12px;
+	color: var(--light-color);
+	cursor: pointer;
+}
+
+.FollowPreview {
+	width: 100%;
+}
+
+.FollowContent {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.FollowImg {
+	width: 48px;
+	margin-bottom: 8px;
+	border-radius: 50%;
+}
+
+.FollowName {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 2px;
+}
+
+.FollowUsername {
+	font-size: 14px;
+	margin-bottom: 12px;
+}
+
+.FollowBtn {
+	width: 70%;
+	height: 35px;
+	border-radius: 30px;
+}

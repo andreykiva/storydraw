@@ -1,0 +1,74 @@
+.SettingsModal {
+	max-width: 700px;
+	width: 100%;
+	background-color: rgb(34, 34, 34);
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	color: var(--white-dark-color);
+}
+
+.ModalHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 16px 0 24px;
+	margin-bottom: 34px;
+
+	.HeaderTitle {
+		font-size: 24px;
+	}
+	
+	.CloseBtn {
+		background-color: rgb(50, 50, 50);
+	}
+}
+
+.ModalContent {
+	padding: 0 24px 24px 24px;
+}
+
+.AllowedSendersFieldset {
+	margin-bottom: 64px;
+}
+
+.AllowedMessageSenders {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.AllowedSendersTitle {
+	font-size: 17px;
+	margin-bottom: 4px;
+}
+
+.AllowedSendersDescr {
+	font-size: 13px;
+	line-height: 1.2;
+	color: rgb(170, 170, 170);
+	margin-bottom: 26px;
+}
+
+.ModalActionButtons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 16px;
+}
+
+.CancelBtn,
+.SaveBtn {
+	width: 164px;
+	height: 40px;
+	border-radius: 4px;
+	font-size: 18px;
+}
+
+.CancelBtn {
+	border: 1px solid rgb(54, 54, 54);
+	background-color: rgb(54, 54, 54);
+
+	&:hover {
+		border-color: var(--white-dark-color);
+		background-color: rgb(26, 26, 26);
+	}
+}

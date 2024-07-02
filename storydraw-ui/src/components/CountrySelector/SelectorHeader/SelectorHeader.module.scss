@@ -1,0 +1,23 @@
+.SelectorHeader {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 14px 0 12px;
+
+	.SelectorArrow {
+		width: 10px;
+		transition: transform .25s ease-in-out;
+
+		&.ArrowUp {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+.SelectorValue {
+	font-size: 18px;
+	font-weight: 400;
+	margin-right: 14px;
+}

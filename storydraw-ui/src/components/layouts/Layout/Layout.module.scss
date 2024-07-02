@@ -1,0 +1,13 @@
+.LayoutContainer {
+	display: flex;
+	height:100vh;
+
+	&.WithHeader {
+		height: calc(100vh - 60px);
+	}
+}
+
+.Content {
+	flex: 1;
+	height: 100%;
+}

@@ -1,0 +1,28 @@
+.ChatMessages {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	padding: 36px 16px 16px;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgb(30, 30, 30);
+		border-radius: 4px;
+	}
+}
+
+.MessagesDate {
+	display: flex;
+	justify-content: center;
+	margin: 8px 0;
+	font-size: 13px;
+	font-weight: 500;
+	color: #8f8f8f;
+}

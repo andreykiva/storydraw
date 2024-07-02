@@ -1,0 +1,26 @@
+.FriendshipBtn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 16px;
+	width: 96px;
+	height: 32px;
+	padding: 6px 8px;
+	border-radius: 10px;
+	font-size: 15px;
+	letter-spacing: -0.5px;
+
+	&.FriendsBtn {
+		background: rgba(255, 255, 255, .08);
+		color: var(--main-color);
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.062);
+		}
+
+		.FriendsIcon {
+			width: 14px;
+			margin-right: 6px;
+		}
+	}
+}

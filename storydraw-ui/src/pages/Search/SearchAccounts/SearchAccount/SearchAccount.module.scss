@@ -1,0 +1,53 @@
+.SearchAccount {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.AccountImgWr {
+	width: 60px;
+	margin-right: 20px;
+
+	.AccountImg {
+		width: 100%;
+		border-radius: 50%;
+	}
+}
+
+.AccountInfo {
+	padding-top: 4px;
+}
+
+.Username {
+	font-weight: 800;
+	color: var(--white-dark-color);
+}
+
+.InfoBottom {
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.Dot {
+	width: 2px;
+	height: 2px;
+	border-radius: 50%;
+	background-color: var(--main-color);
+	margin: 0 6px;
+}
+
+.FollowersInfo {
+	font-weight: 400;
+
+	.Followers {
+		font-weight: 700;
+		color: var(--white-dark-color);
+	}
+}
+
+.Bio {
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--white-dark-color);
+}

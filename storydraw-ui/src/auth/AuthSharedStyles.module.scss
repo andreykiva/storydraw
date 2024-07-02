@@ -1,0 +1,180 @@
+.AuthInner {
+	flex: 1;
+	padding: 0 50px;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgb(50, 50, 50);
+		border-radius: 4px;
+	}
+}
+
+.Title {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.BackBtn {
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	background: none;
+
+	&:hover {
+		background-color: rgb(50, 50, 50);
+	}
+
+	.BackIcon {
+		width: 18px;
+		height: 18px;
+		transform: rotate(90deg);
+	}
+}
+
+.FormHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+
+	.HeaderBtn {
+		display: inline-flex;
+		font-size: 13px;
+		color: var(--main-color);
+		cursor: pointer;
+
+		&:hover {
+			opacity: .7;
+		}
+	}
+}
+
+.PhoneField {
+	display: flex;
+}
+
+.SubmitBtn {
+	height: 46px;
+	border-radius: 4px;
+	margin-top: 30px;
+}
+
+.Selector {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	background-color: rgb(55, 55, 55);
+	border-radius: 4px 0 0 4px;
+	cursor: pointer;
+}
+
+.SelectorBody {
+	position: absolute;
+	top: 52px;
+	left: 0;
+	width: 100%;
+	border-radius: 4px;
+	background-color: rgb(19, 19, 19);
+	z-index: 2;
+}
+
+.SelectorHeader {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 14px 0 12px;
+
+	.SelectorArrow {
+		width: 10px;
+		transition: transform .25s ease-in-out;
+
+		&.ArrowUp {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+.SelectorOptions {
+	overflow-y: auto;
+	max-height: 270px;
+	color: var(--main-color);
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgb(44, 44, 44);
+		border-radius: 4px;
+	}
+
+}
+
+.SelectorOption {
+	height: 34px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--light-color);
+
+	&.Selected {
+		background-color: rgb(27, 27, 27);
+	}
+
+	&:hover {
+		background-color: rgb(27, 27, 27);
+	}
+
+	.SelectedIcon {
+		max-width: 18px;
+		width: 100%;
+		fill: var(--bright-green-color);
+	}
+}
+
+.CreateUsernameTitle {
+	display: inline-flex;
+	margin-bottom: 6px;
+}
+
+.CreateUsernameDescr {
+	font-size: 14px;
+	font-weight: 500;
+	color: #a1a1a1;
+}
+
+.SkipBtn {
+	max-width: 120px;
+	border-radius: 0;
+	margin: 10px auto 0;
+	background: transparent;
+
+	&:hover {
+		opacity: 0.7;
+		background: transparent;
+	}
+}
+
+.AuthOptionsList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}

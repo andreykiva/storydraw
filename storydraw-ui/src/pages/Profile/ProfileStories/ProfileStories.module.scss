@@ -1,0 +1,18 @@
+.StoriesViewsMenu {
+	height: 44px;
+	display: flex;
+	border-bottom: 1px solid #d1d1d11a;
+	background-color: rgb(18, 18, 18);
+	margin-bottom: 20px;
+}
+
+.StoriesList {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 20px;
+
+	>* {
+		flex: 1 1 50px;
+	}
+}

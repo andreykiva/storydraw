@@ -1,0 +1,13 @@
+.TrialInfoBox {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&.Large {
+		gap: 12px;
+	}
+
+	&.Small {
+		gap: 10px;
+	}
+}

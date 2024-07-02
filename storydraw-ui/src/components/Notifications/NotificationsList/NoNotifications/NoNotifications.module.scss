@@ -1,0 +1,21 @@
+.NoNotifications {
+	display: flex;
+	flex-direction: column;
+	padding: 80px 20px 20px;
+	text-align: center;
+
+	&Icon {
+		height: 90px;
+		margin-bottom: 12px;
+	}
+
+	&Title {
+		margin-bottom: 10px;
+		font-size: 17px;
+		color: var(--light-color)
+	}
+
+	&Descr {
+		font-size: 15px;
+	}
+}

@@ -1,0 +1,72 @@
+@import '@/utils/_mixins';
+
+.Notifications {
+	display: flex;
+	flex-direction: column;
+	width: 380px;
+	height: 640px;
+	padding-top: 24px;
+	border-radius: 10px;
+	background: rgb(20, 20, 20);
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+
+	&::after {
+		@include addTriangleStyles('top', rgb(20, 20, 20));
+	}
+}
+
+.NotifHeader {
+	padding: 0 16px;
+	margin-bottom: 12px;
+}
+
+.NotifTitle {
+	font-size: 24px;
+	line-height: 30px;
+	letter-spacing: -1.2px;
+	margin-bottom: 16px;
+}
+
+.NotifCategories {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 8px;
+}
+
+.NotifCategory {
+	width: auto;
+	height: auto;
+	padding: 3px 8px;
+	border-radius: 12px;
+	background-color: rgb(36, 36, 36);
+	color: var(--main-color);
+	font-size: 14px;
+	transition: background-color .2s ease-in-out;
+
+	&.Active {
+		background-color: var(--main-color);
+		color: rgb(36, 36, 36);
+	}
+
+	&:not(.Active):hover {
+		background-color: rgb(46, 46, 46);
+	}
+}
+
+.NotificationsListWr {
+	overflow-y: auto;
+	border-radius: 0 10px;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
+}

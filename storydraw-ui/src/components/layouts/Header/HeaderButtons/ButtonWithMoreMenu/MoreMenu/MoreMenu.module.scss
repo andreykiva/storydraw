@@ -1,0 +1,17 @@
+@import '@/utils/_mixins';
+
+.MoreMenu {
+	visibility: hidden;
+	width: 200px;
+	background: rgb(20, 20, 20);
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	padding: 10px 0;
+	opacity: 0;
+	z-index: 2;
+	transition: 1s ease-in-out;
+
+	&::after {
+		@include addTriangleStyles('top', rgb(20, 20, 20));
+	}
+}

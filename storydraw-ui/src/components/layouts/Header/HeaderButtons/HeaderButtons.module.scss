@@ -1,0 +1,34 @@
+.HeaderButtons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	align-items: center;
+	max-width: 300px;
+	width: 100%;
+
+	.CreateBtn {
+		max-width: 130px;
+		background: rgba(255, 255, 255, .08);
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.11);
+		}
+
+		.CreateIcon {
+			width: 20px;
+			height: 20px;
+			margin-right: 10px;
+		}
+
+		.CreateText {
+			font-size: 16px;
+			line-height: 1;
+			color: var(--main-color);
+			margin-right: 6px;
+		}
+	}
+}
+
+.LoginBtn {
+	max-width: 110px;
+}

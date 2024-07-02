@@ -1,0 +1,45 @@
+.ProfileStory {
+	max-width: 326px;
+	min-width: 270px;
+}
+
+.ProfileStoryContent {
+	display: flex;
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.Story {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.ViewsInfo {
+	position: absolute;
+	bottom: 8px;
+	left: 12px;
+	display: flex;
+	align-items: center;
+
+	.ViewsIcon {
+		width: 24px;
+		margin-right: 2px;
+	}
+
+	.Views {
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 1;
+		color: var(--light-color);
+	}
+}
+
+.InfoDescr {
+	margin-bottom: 4px;
+	font-size: 16px;
+	padding: 0 4px;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

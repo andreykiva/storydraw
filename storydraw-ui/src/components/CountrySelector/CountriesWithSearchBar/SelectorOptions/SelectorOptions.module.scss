@@ -1,0 +1,33 @@
+.SelectorOptions {
+	max-height: 240px;
+	padding-bottom: 6px;
+	color: var(--main-color);
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgb(44, 44, 44);
+		border-radius: 4px;
+	}
+}
+
+.NoResultsMessage {
+	height: 34px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 12px;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.Highlight {
+	color: var(--bright-green-color);
+}

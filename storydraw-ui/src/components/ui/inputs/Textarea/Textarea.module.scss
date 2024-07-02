@@ -1,0 +1,74 @@
+.FormGroup {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex: 1 0;
+	margin-bottom: 4px;
+
+	&.GroupError:not(:focus-within) {
+		.Textarea {
+			border-color: #FF4C3A;
+		}
+
+		.WarningIcon {
+			display: block;
+		}
+
+		.TextareaError {
+			display: block;
+		}
+	}
+}
+
+.Textarea {
+	width: 100%;
+	height: 100px;
+	padding: 12px;
+	background-color: rgb(55, 55, 55);
+	border: 1px solid rgb(55, 55, 55);
+	border-radius: 4px;
+	font-family: 'Karla', sans-serif;
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--main-color);
+	caret-color: var(--bright-green-color);
+	resize: none;
+	outline: none;
+	
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgb(100, 100, 100);
+		border-radius: 4px;
+	}
+}
+
+.TextareaIcon {
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	padding-right: 20px;
+
+	.WarningIcon {
+		display: none;
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.TextareaError {
+	display: none;
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	color: #FF4C3A;
+	margin-top: 9px;
+}
