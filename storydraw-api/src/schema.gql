@@ -1,0 +1,85 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  username: String!
+  displayName: String!
+  bio: String!
+  image: String
+}
+
+type GenerateCodeResponse {
+  success: Boolean!
+  message: String!
+}
+
+type SigninResponse {
+  access_token: String!
+  user: User!
+}
+
+type Query {
+  users: [User!]!
+  user(username: String!): User!
+}
+
+type Mutation {
+  generatePhoneCodeForSignup(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
+  generateEmailCodeForSignup(generateCodeInput: GenerateEmailCodeInput!): GenerateCodeResponse!
+  signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput!): User!
+  signupWithEmailAndPassAndCode(signupInput: SignupWithEmailAndPassAndCodeInput!): User!
+  generatePhoneCodeForSignin(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
+  signinWithPhoneAndCode(signinInput: SigninWithPhoneAndCodeInput!): SigninResponse!
+  signinWithPhoneAndPass(signinInput: SigninWithPhoneAndPassInput!): SigninResponse!
+  signinWithEmailAndPass(signinInput: SigninWithEmailAndPassInput!): SigninResponse!
+  signinWithUsernameAndPass(signinInput: SigninWithUsernameAndPassInput!): SigninResponse!
+}
+
+input GeneratePhoneCodeInput {
+  phoneNumber: String!
+}
+
+input GenerateEmailCodeInput {
+  email: String!
+}
+
+input SignupWithPhoneAndCodeInput {
+  phoneNumber: String!
+  code: String!
+  dateOfBirth: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input SignupWithEmailAndPassAndCodeInput {
+  email: String!
+  password: String!
+  code: String!
+  dateOfBirth: DateTime!
+  receiveEmailUpdates: Boolean
+}
+
+input SigninWithPhoneAndCodeInput {
+  phoneNumber: String!
+  code: String!
+}
+
+input SigninWithPhoneAndPassInput {
+  phoneNumber: String!
+  password: String!
+}
+
+input SigninWithEmailAndPassInput {
+  email: String!
+  password: String!
+}
+
+input SigninWithUsernameAndPassInput {
+  username: String!
+  password: String!
+}
