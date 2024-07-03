@@ -18,7 +18,7 @@ export class SignupWithPhoneAndCodeInput {
 	@IsString()
 	@IsNotEmpty()
 	@IsPhoneNumber()
-	phoneNumber: string;
+	phone: string;
 
 	@Field()
 	@IsNotEmpty()

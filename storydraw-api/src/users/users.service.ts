@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { hash } from 'bcryptjs';
 import { CreateUserInput } from './dto/create-user.input';
+import { generateRandomNumber } from 'src/common/utils/numberUtils';
 
 @Injectable()
 export class UsersService {
@@ -11,14 +12,21 @@ export class UsersService {
 
 	async create(createUserInput: CreateUserInput) {
 		let hashedPassword = null;
+		let username = null;
 
 		if (createUserInput.password) {
 			hashedPassword = await hash(createUserInput.password, 10);
 		}
 
+		if (!createUserInput.username) {
+			username = 'user' + generateRandomNumber(12, 18);
+		}
+
 		const newUser = this.usersRepository.create({
 			...createUserInput,
 			password: hashedPassword,
+			username,
+			displayName: username,
 		});
 
 		return this.usersRepository.save(newUser);
@@ -36,7 +44,7 @@ export class UsersService {
 		return this.usersRepository.findOneBy({ email });
 	}
 
-	findUserByPhoneNumber(phoneNumber: string) {
-		return this.usersRepository.findOneBy({ phoneNumber });
+	findUserByPhone(phone: string) {
+		return this.usersRepository.findOneBy({ phone });
 	}
 }

@@ -7,7 +7,7 @@ export class GeneratePhoneCodeInput {
 	@IsString()
 	@IsNotEmpty()
 	@IsPhoneNumber()
-	phoneNumber: string;
+	phone: string;
 }
 
 @InputType()

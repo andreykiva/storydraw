@@ -13,12 +13,7 @@ import {
 } from './dto/signin-user.input';
 import { UsersService } from 'src/users/users.service';
 import { BadRequestException } from '@nestjs/common';
-import {
-	EMAIL_EXISTS_ERROR,
-	EMAIL_NOT_FOUND_ERROR,
-	PHONE_EXISTS_ERROR,
-	PHONE_NOT_FOUND_ERROR,
-} from './constants/auth.constants';
+import { EMAIL_EXISTS_ERROR, PHONE_EXISTS_ERROR, PHONE_NOT_FOUND_ERROR } from './constants/auth.constants';
 
 @Resolver()
 export class AuthResolver {
@@ -29,13 +24,13 @@ export class AuthResolver {
 
 	@Mutation(() => GenerateCodeResponse)
 	async generatePhoneCodeForSignup(@Args('generateCodeInput') generateCodeInput: GeneratePhoneCodeInput) {
-		const user = await this.usersService.findUserByPhoneNumber(generateCodeInput.phoneNumber);
+		const user = await this.usersService.findUserByPhone(generateCodeInput.phone);
 
 		if (user) {
 			throw new BadRequestException(PHONE_EXISTS_ERROR);
 		}
 
-		return this.authService.generatePhoneNumberCode(generateCodeInput.phoneNumber);
+		return this.authService.generatePhoneCode(generateCodeInput.phone);
 	}
 
 	@Mutation(() => GenerateCodeResponse)
@@ -61,13 +56,13 @@ export class AuthResolver {
 
 	@Mutation(() => GenerateCodeResponse)
 	async generatePhoneCodeForSignin(@Args('generateCodeInput') generateCodeInput: GeneratePhoneCodeInput) {
-		const user = await this.usersService.findUserByPhoneNumber(generateCodeInput.phoneNumber);
+		const user = await this.usersService.findUserByPhone(generateCodeInput.phone);
 
 		if (!user) {
 			throw new BadRequestException(PHONE_NOT_FOUND_ERROR);
 		}
 
-		return this.authService.generatePhoneNumberCode(generateCodeInput.phoneNumber);
+		return this.authService.generatePhoneCode(generateCodeInput.phone);
 	}
 
 	@Mutation(() => SigninResponse)
@@ -77,16 +72,19 @@ export class AuthResolver {
 
 	@Mutation(() => SigninResponse)
 	async signinWithPhoneAndPass(@Args('signinInput') signinInput: SigninWithPhoneAndPassInput) {
-		return this.authService.signinWithPhoneAndPass(signinInput);
+		const user = await this.authService.validateUserByPhoneAndPass(signinInput.phone, signinInput.password);
+		return this.authService.signin(user);
 	}
 
 	@Mutation(() => SigninResponse)
 	async signinWithEmailAndPass(@Args('signinInput') signinInput: SigninWithEmailAndPassInput) {
-		return this.authService.signinWithEmailAndPass(signinInput);
+		const user = await this.authService.validateUserByEmailAndPass(signinInput.email, signinInput.password);
+		return this.authService.signin(user);
 	}
 
 	@Mutation(() => SigninResponse)
 	async signinWithUsernameAndPass(@Args('signinInput') signinInput: SigninWithUsernameAndPassInput) {
-		return this.authService.signinWithUsernameAndPass(signinInput);
+		const user = await this.authService.validateUserByUsernameAndPass(signinInput.username, signinInput.password);
+		return this.authService.signin(user);
 	}
 }

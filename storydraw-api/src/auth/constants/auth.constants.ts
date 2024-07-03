@@ -11,3 +11,7 @@ export const INVALID_PASSWORD_ERROR = 'Invalid password.';
 export const EMAIL_NOT_FOUND_ERROR = 'User with this email was not found!';
 export const PHONE_NOT_FOUND_ERROR = 'User with this phone was not found!';
 export const USERNAME_NOT_FOUND_ERROR = 'User with this username was not found!';
+
+export const TRY_LATER_ERROR = 'Please try later.';
+
+export const CODE_EXPIRED_ERROR = 'The confirmation code has expired.';

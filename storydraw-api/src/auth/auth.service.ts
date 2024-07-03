@@ -3,13 +3,8 @@ import { UsersService } from 'src/users/users.service';
 import { compare } from 'bcryptjs';
 import { User } from 'src/users/entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
-import {
-	SigninWithEmailAndPassInput,
-	SigninWithPhoneAndCodeInput,
-	SigninWithPhoneAndPassInput,
-	SigninWithUsernameAndPassInput,
-} from './dto/signin-user.input';
-import { VerificationsService } from 'src/verifications/verifications.service';
+import { SigninWithPhoneAndCodeInput } from './dto/signin-user.input';
+import { VerificationsService } from 'src/verifications/services/verifications.service';
 import { SmsService } from 'src/sms/sms.service';
 import {
 	PHONE_EXISTS_ERROR,
@@ -21,6 +16,8 @@ import {
 	GENERATE_CODE_PHONE_MESSAGE,
 	INVALID_CODE_ERROR,
 	INVALID_PASSWORD_ERROR,
+	TRY_LATER_ERROR,
+	CODE_EXPIRED_ERROR,
 } from './constants/auth.constants';
 import { SignupWithEmailAndPassAndCodeInput, SignupWithPhoneAndCodeInput } from './dto/signup-user.input';
 import { EmailService } from 'src/email/email.service';
@@ -56,8 +53,8 @@ export class AuthService {
 		return this.validatePassword(user, password);
 	}
 
-	async validateUserByPhoneAndPass(phoneNumber: string, password: string) {
-		const user = await this.usersService.findUserByPhoneNumber(phoneNumber);
+	async validateUserByPhoneAndPass(phone: string, password: string) {
+		const user = await this.usersService.findUserByPhone(phone);
 
 		if (!user) {
 			throw new UnauthorizedException(PHONE_NOT_FOUND_ERROR);
@@ -85,10 +82,16 @@ export class AuthService {
 		};
 	}
 
-	async generatePhoneNumberCode(phoneNumber: string) {
-		const verification = await this.verificationsService.createVerification(phoneNumber);
-		// await this.smsService.sendSms(phoneNumber, `Your verification code: ${verification.code}`);
-		console.log(verification.code);
+	async generatePhoneCode(phone: string) {
+		const verification = await this.verificationsService.findVerification(phone);
+
+		if (verification) {
+			throw new BadRequestException(TRY_LATER_ERROR);
+		}
+
+		const newVerification = await this.verificationsService.createVerification(phone);
+		// await this.smsService.sendSms(phone, `Your verification code: ${newVerification.code}`);
+		console.log(newVerification.code);
 		return {
 			success: true,
 			message: GENERATE_CODE_PHONE_MESSAGE,
@@ -96,9 +99,15 @@ export class AuthService {
 	}
 
 	async generateEmailCode(email: string) {
-		const verification = await this.verificationsService.createVerification(email);
-		// await this.emailService.sendVerificationCode(email, verification.code);
-		console.log(verification.code);
+		const verification = await this.verificationsService.findVerification(email);
+
+		if (verification) {
+			throw new BadRequestException(TRY_LATER_ERROR);
+		}
+
+		const newVerification = await this.verificationsService.createVerification(email);
+		// await this.emailService.sendVerificationCode(email, newVerification.code);
+		console.log(newVerification.code);
 		return {
 			success: true,
 			message: GENERATE_CODE_EMAIL_MESSAGE,
@@ -106,19 +115,23 @@ export class AuthService {
 	}
 
 	async confirmVerificationCode(identifier: string, code: string) {
-		const verification = await this.verificationsService.findVerification(identifier, code);
+		const verification = await this.verificationsService.findVerification(identifier);
 
 		if (!verification) {
-			throw new BadRequestException(INVALID_CODE_ERROR);
+			throw new BadRequestException(CODE_EXPIRED_ERROR);
 		}
 
 		await this.verificationsService.deleteVerification(verification);
+
+		if (verification.code !== code) {
+			throw new BadRequestException(INVALID_CODE_ERROR);
+		}
 	}
 
 	async signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput) {
-		await this.confirmVerificationCode(signupInput.phoneNumber, signupInput.code);
+		await this.confirmVerificationCode(signupInput.phone, signupInput.code);
 
-		const user = await this.usersService.findUserByPhoneNumber(signupInput.phoneNumber);
+		const user = await this.usersService.findUserByPhone(signupInput.phone);
 
 		if (user) {
 			throw new BadRequestException(PHONE_EXISTS_ERROR);
@@ -144,31 +157,13 @@ export class AuthService {
 	}
 
 	async signinWithPhoneAndCode(signinInput: SigninWithPhoneAndCodeInput) {
-		await this.confirmVerificationCode(signinInput.phoneNumber, signinInput.code);
+		await this.confirmVerificationCode(signinInput.phone, signinInput.code);
 
-		const user = await this.usersService.findUserByPhoneNumber(signinInput.phoneNumber);
+		const user = await this.usersService.findUserByPhone(signinInput.phone);
 
 		if (!user) {
 			throw new UnauthorizedException(PHONE_NOT_FOUND_ERROR);
 		}
-
-		return this.signin(user);
-	}
-
-	async signinWithEmailAndPass(signinInput: SigninWithEmailAndPassInput) {
-		const user = await this.validateUserByEmailAndPass(signinInput.email, signinInput.password);
-
-		return this.signin(user);
-	}
-
-	async signinWithPhoneAndPass(signinInput: SigninWithPhoneAndPassInput) {
-		const user = await this.validateUserByPhoneAndPass(signinInput.phoneNumber, signinInput.password);
-
-		return this.signin(user);
-	}
-
-	async signinWithUsernameAndPass(signinInput: SigninWithUsernameAndPassInput) {
-		const user = await this.validateUserByUsernameAndPass(signinInput.username, signinInput.password);
 
 		return this.signin(user);
 	}

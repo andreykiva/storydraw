@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LessThan, Repository } from 'typeorm';
-import { Verification } from './entities/verification.entity';
+import { Verification } from '../entities/verification.entity';
 
 @Injectable()
 export class VerificationsService {
@@ -21,8 +21,8 @@ export class VerificationsService {
 		return this.verificationsRepository.save(verificationCode);
 	}
 
-	async findVerification(identifier: string, code: string) {
-		return this.verificationsRepository.findOne({ where: { identifier, code } });
+	async findVerification(identifier: string) {
+		return this.verificationsRepository.findOne({ where: { identifier } });
 	}
 
 	async deleteVerification(verificationCode: Verification): Promise<void> {
@@ -31,7 +31,7 @@ export class VerificationsService {
 
 	async deleteOldVerifications(): Promise<void> {
 		const date = new Date();
-		date.setMinutes(date.getMinutes() - 10);
+		date.setMinutes(date.getMinutes() - 1);
 		await this.verificationsRepository.delete({ createdAt: LessThan(date) });
 	}
 }

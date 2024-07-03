@@ -8,11 +8,11 @@ export class User {
 	@Field(() => Int)
 	id: number;
 
-	@Column({ default: 'testuser' })
+	@Column({ unique: true })
 	@Field()
 	username: string;
 
-	@Column({ default: 'test bio' })
+	@Column({ name: 'display_name' })
 	@Field()
 	displayName: string;
 
@@ -20,22 +20,22 @@ export class User {
 	@Field()
 	bio: string;
 
-	@Column({ nullable: true })
+	@Column({ name: 'image_url', nullable: true })
 	@Field({ nullable: true })
-	image?: string;
+	imageUrl?: string;
 
 	@Column({ nullable: true, unique: true })
 	email?: string;
 
 	@Column({ nullable: true, unique: true })
-	phoneNumber?: string;
+	phone?: string;
 
 	@Column({ nullable: true })
 	password?: string;
 
-	@Column({ type: 'date' })
+	@Column({ name: 'date_of_birth', type: 'date' })
 	dateOfBirth: Date;
 
-	@Column({ default: false })
+	@Column({ name: 'receive_email_updates', default: false })
 	receiveEmailUpdates: boolean;
 }

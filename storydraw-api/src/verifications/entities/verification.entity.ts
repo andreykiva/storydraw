@@ -13,6 +13,6 @@ export class Verification {
 	@Column()
 	code: string;
 
-	@CreateDateColumn()
+	@CreateDateColumn({ name: 'created_at' })
 	createdAt: Date;
 }

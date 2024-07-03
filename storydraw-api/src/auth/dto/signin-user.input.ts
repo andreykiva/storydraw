@@ -8,7 +8,7 @@ export class SigninWithPhoneAndCodeInput {
 	@IsString()
 	@IsNotEmpty()
 	@IsPhoneNumber()
-	phoneNumber: string;
+	phone: string;
 
 	@Field()
 	@IsNotEmpty()
@@ -23,7 +23,7 @@ export class SigninWithPhoneAndPassInput {
 	@IsString()
 	@IsNotEmpty()
 	@IsPhoneNumber()
-	phoneNumber: string;
+	phone: string;
 
 	@Field()
 	@IsString()

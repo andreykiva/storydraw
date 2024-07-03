@@ -9,7 +9,7 @@ export class CreateUserInput {
 	email?: string;
 
 	@Field({ nullable: true })
-	phoneNumber?: string;
+	phone?: string;
 
 	@Field({ nullable: true })
 	password?: string;
