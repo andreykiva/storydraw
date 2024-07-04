@@ -3,7 +3,7 @@ import { IsNotEmpty, IsEmail, IsPhoneNumber, IsString, Length, Matches } from 'c
 import { passwordPattern } from '../constants/regexp.constants';
 
 @InputType()
-export class SigninWithPhoneAndCodeInput {
+export class LoginWithPhoneAndCodeInput {
 	@Field()
 	@IsString()
 	@IsNotEmpty()
@@ -18,7 +18,7 @@ export class SigninWithPhoneAndCodeInput {
 }
 
 @InputType()
-export class SigninWithPhoneAndPassInput {
+export class LoginWithPhoneAndPassInput {
 	@Field()
 	@IsString()
 	@IsNotEmpty()
@@ -34,7 +34,7 @@ export class SigninWithPhoneAndPassInput {
 }
 
 @InputType()
-export class SigninWithEmailAndPassInput {
+export class LoginWithEmailAndPassInput {
 	@Field()
 	@IsString()
 	@IsNotEmpty()
@@ -50,7 +50,7 @@ export class SigninWithEmailAndPassInput {
 }
 
 @InputType()
-export class SigninWithUsernameAndPassInput {
+export class LoginWithUsernameAndPassInput {
 	@Field()
 	@IsString()
 	@IsNotEmpty()

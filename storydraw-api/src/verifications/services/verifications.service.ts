@@ -1,35 +1,54 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LessThan, Repository } from 'typeorm';
 import { Verification } from '../entities/verification.entity';
+import { generateRandomNumber } from 'src/common/utils/numberUtils';
+import { IVerificationsService } from '../verifications.interface';
+import { INVALID_CODE_ERROR, TRY_LATER_ERROR } from '../constants/verifications.constants';
 
 @Injectable()
-export class VerificationsService {
+export class VerificationsService implements IVerificationsService {
 	constructor(
 		@InjectRepository(Verification)
 		private verificationsRepository: Repository<Verification>,
 	) {}
 
-	generateVerificationCode() {
-		return Math.floor(100000 + Math.random() * 900000).toString();
+	async create(identifier: string): Promise<Verification> {
+		const verification = await this.findOne(identifier);
+
+		if (verification) {
+			throw new BadRequestException(TRY_LATER_ERROR);
+		}
+
+		const code = generateRandomNumber(6, 6);
+		const newVerification = this.verificationsRepository.create({ identifier, code });
+
+		return this.verificationsRepository.save(newVerification);
 	}
 
-	async createVerification(identifier: string) {
-		const code = this.generateVerificationCode();
-		const verificationCode = this.verificationsRepository.create({ identifier, code });
+	async confirmCode(identifier: string, code: string): Promise<void> {
+		const verification = await this.findOne(identifier);
 
-		return this.verificationsRepository.save(verificationCode);
+		if (!verification) {
+			throw new BadRequestException('Verification record not found');
+		}
+
+		await this.delete(verification);
+
+		if (verification.code !== code) {
+			throw new BadRequestException(INVALID_CODE_ERROR);
+		}
 	}
 
-	async findVerification(identifier: string) {
+	async findOne(identifier: string): Promise<Verification> {
 		return this.verificationsRepository.findOne({ where: { identifier } });
 	}
 
-	async deleteVerification(verificationCode: Verification): Promise<void> {
+	async delete(verificationCode: Verification): Promise<void> {
 		await this.verificationsRepository.remove(verificationCode);
 	}
 
-	async deleteOldVerifications(): Promise<void> {
+	async deleteOld(): Promise<void> {
 		const date = new Date();
 		date.setMinutes(date.getMinutes() - 1);
 		await this.verificationsRepository.delete({ createdAt: LessThan(date) });

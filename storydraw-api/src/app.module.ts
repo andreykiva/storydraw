@@ -7,9 +7,7 @@ import { getOrmConfig } from './configs/orm.config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { VerificationsModule } from './verifications/verifications.module';
-import { SmsModule } from './sms/sms.module';
 import { ScheduleModule } from '@nestjs/schedule';
-import { EmailModule } from './email/email.module';
 
 @Module({
 	imports: [
@@ -26,8 +24,6 @@ import { EmailModule } from './email/email.module';
 		UsersModule,
 		AuthModule,
 		VerificationsModule,
-		SmsModule,
-		EmailModule,
 		ScheduleModule.forRoot(),
 	],
 	controllers: [],

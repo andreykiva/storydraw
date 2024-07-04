@@ -7,7 +7,7 @@ export class Verification {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column()
+	@Column({ unique: true })
 	identifier: string;
 
 	@Column()

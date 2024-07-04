@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { AuthResolver } from './auth.resolver';
 import { PassportModule } from '@nestjs/passport';
 import { UsersModule } from 'src/users/users.module';
@@ -8,16 +8,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getJwtConfig } from 'src/configs/jwt.config';
 import { JwtStrategy } from './strategy/jwt.strategy';
 import { VerificationsModule } from 'src/verifications/verifications.module';
-import { SmsModule } from 'src/sms/sms.module';
-import { EmailModule } from 'src/email/email.module';
+import { SmsService } from './services/sms.service';
+import { EmailService } from './services/email.service';
 
 @Module({
 	imports: [
 		PassportModule,
 		UsersModule,
 		VerificationsModule,
-		SmsModule,
-		EmailModule,
 		ConfigModule,
 		JwtModule.registerAsync({
 			imports: [ConfigModule],
@@ -25,6 +23,6 @@ import { EmailModule } from 'src/email/email.module';
 			useFactory: getJwtConfig,
 		}),
 	],
-	providers: [AuthService, AuthResolver, JwtStrategy],
+	providers: [AuthService, AuthResolver, JwtStrategy, SmsService, EmailService],
 })
 export class AuthModule {}

@@ -7,7 +7,7 @@ type User {
   username: String!
   displayName: String!
   bio: String!
-  image: String
+  imageUrl: String
 }
 
 type GenerateCodeResponse {
@@ -15,7 +15,7 @@ type GenerateCodeResponse {
   message: String!
 }
 
-type SigninResponse {
+type LoginResponse {
   access_token: String!
   user: User!
 }
@@ -30,15 +30,15 @@ type Mutation {
   generateEmailCodeForSignup(generateCodeInput: GenerateEmailCodeInput!): GenerateCodeResponse!
   signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput!): User!
   signupWithEmailAndPassAndCode(signupInput: SignupWithEmailAndPassAndCodeInput!): User!
-  generatePhoneCodeForSignin(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
-  signinWithPhoneAndCode(signinInput: SigninWithPhoneAndCodeInput!): SigninResponse!
-  signinWithPhoneAndPass(signinInput: SigninWithPhoneAndPassInput!): SigninResponse!
-  signinWithEmailAndPass(signinInput: SigninWithEmailAndPassInput!): SigninResponse!
-  signinWithUsernameAndPass(signinInput: SigninWithUsernameAndPassInput!): SigninResponse!
+  generatePhoneCodeForLogin(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
+  loginWithPhoneAndCode(loginInput: LoginWithPhoneAndCodeInput!): LoginResponse!
+  loginWithPhoneAndPass(loginInput: LoginWithPhoneAndPassInput!): LoginResponse!
+  loginWithEmailAndPass(loginInput: LoginWithEmailAndPassInput!): LoginResponse!
+  loginWithUsernameAndPass(loginInput: LoginWithUsernameAndPassInput!): LoginResponse!
 }
 
 input GeneratePhoneCodeInput {
-  phoneNumber: String!
+  phone: String!
 }
 
 input GenerateEmailCodeInput {
@@ -46,7 +46,7 @@ input GenerateEmailCodeInput {
 }
 
 input SignupWithPhoneAndCodeInput {
-  phoneNumber: String!
+  phone: String!
   code: String!
   dateOfBirth: DateTime!
 }
@@ -64,22 +64,22 @@ input SignupWithEmailAndPassAndCodeInput {
   receiveEmailUpdates: Boolean
 }
 
-input SigninWithPhoneAndCodeInput {
-  phoneNumber: String!
+input LoginWithPhoneAndCodeInput {
+  phone: String!
   code: String!
 }
 
-input SigninWithPhoneAndPassInput {
-  phoneNumber: String!
+input LoginWithPhoneAndPassInput {
+  phone: String!
   password: String!
 }
 
-input SigninWithEmailAndPassInput {
+input LoginWithEmailAndPassInput {
   email: String!
   password: String!
 }
 
-input SigninWithUsernameAndPassInput {
+input LoginWithUsernameAndPassInput {
   username: String!
   password: String!
 }
