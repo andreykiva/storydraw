@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Layout from '@/components/layouts/Layout/Layout';
 import ForYou from '@/pages/ForYou/ForYou';
 import Following from '@/pages/Following/Following';
@@ -15,9 +15,21 @@ import Settings from '@/pages/Settings/Settings';
 import Subscribe from '@/pages/Subscribe/Subscribe';
 import Logout from '@/pages/Logout/Logout';
 import { selectAuth } from '@/features/auth/authSlice';
+import { useQuery } from '@apollo/client';
+import { GET_ME } from './graphql/users/queries';
+import { login } from '@/features/auth/authSlice';
+import { setUser } from '@/features/user/userSlice';
 
 const App = () => {
+	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
+
+	const { data } = useQuery(GET_ME, {
+		onCompleted: () => {
+			dispatch(setUser(data.getMe));
+			dispatch(login());
+		},
+	});
 
 	return (
 		<BrowserRouter>
@@ -39,8 +51,22 @@ const App = () => {
 						</>
 					)}
 
-					<Route path="/:username" element={<ValidateUser><Profile /></ValidateUser>} />
-					<Route path="/:username/story/:storyId" element={<ValidateUser><Story /></ValidateUser>} />
+					<Route
+						path="/:username"
+						element={
+							<ValidateUser>
+								<Profile />
+							</ValidateUser>
+						}
+					/>
+					<Route
+						path="/:username/story/:storyId"
+						element={
+							<ValidateUser>
+								<Story />
+							</ValidateUser>
+						}
+					/>
 					<Route path="/" element={<ForYou />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>

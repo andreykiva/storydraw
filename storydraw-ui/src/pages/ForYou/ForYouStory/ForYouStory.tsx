@@ -77,12 +77,12 @@ const ForYouStory = (props: ForYouStoryProps) => {
 		<div className={styles.ForYouStory}>
 			<div className={styles.StoryHeader}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
-					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<img src={user.imageUrl || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 				</Link>
 				<div className={styles.HeaderInfo}>
 					<Link to={`/@${user.username}`} className={styles.HeaderInfoUser}>
 						<span className={styles.InfoUsername}>{user.username}</span>
-						<span className={styles.InfoName}>{user.name}</span>
+						<span className={styles.InfoDisplayName}>{user.displayName}</span>
 					</Link>
 					<p className={styles.InfoDescr}>
 						<span className={styles.DescrText}>{description}</span>

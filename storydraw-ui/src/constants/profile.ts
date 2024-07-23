@@ -1,6 +1,6 @@
 export const enum EDIT_PROFILE_FIELD {
 	USERNAME = 'username',
-	NAME = 'name',
+	DISPLAYNAME = 'displayName',
 	BIO = 'bio',
 }
 

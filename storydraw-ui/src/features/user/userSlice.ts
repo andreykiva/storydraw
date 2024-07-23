@@ -1,21 +1,13 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import User from '@/types/User';
 
-type UserState = Pick<User, 'id' | 'username' | 'name' | 'image'>;
-
-// const initialState: UserState = {
-// 	id: '',
-// 	username: '',
-// 	name: '',
-// 	image: '',
-// };
+export type UserState = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'>;
 
 const initialState: UserState = {
-	id: '123',
-	username: 'andrii747',
-	name: 'Real',
-	image: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
-		the_Discomfort%E2%80%94We%27re_Alright.webp`,
+	id: '',
+	username: '',
+	displayName: '',
+	imageUrl: '',
 };
 
 export const userSlice = createSlice({
@@ -25,10 +17,16 @@ export const userSlice = createSlice({
 		clearUser: () => {
 			return { ...initialState };
 		},
+		setUser: (state, action) => {
+			state.id = action.payload.id;
+			state.username = action.payload.username;
+			state.displayName = action.payload.displayName;
+			state.imageUrl = action.payload.imageUrl;
+		},
 	},
 });
 
-export const { clearUser } = userSlice.actions;
+export const { clearUser, setUser } = userSlice.actions;
 
 export const selectUserState = (state: { user: UserState }) => state.user;
 

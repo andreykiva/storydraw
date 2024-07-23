@@ -13,9 +13,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -24,9 +24,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -35,9 +35,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -46,9 +46,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -57,9 +57,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -68,9 +68,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -79,9 +79,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -90,9 +90,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -101,9 +101,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -112,9 +112,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -123,9 +123,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -134,9 +134,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -145,9 +145,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -156,9 +156,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -167,9 +167,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -178,9 +178,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -189,9 +189,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -200,9 +200,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -211,9 +211,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -222,9 +222,9 @@ const testTagInfo = {
 			description: 'today was a good day',
 			tags: ['song', 'story', 'day'],
 			user: {
-				id: '123',
+				id: '1',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 	],

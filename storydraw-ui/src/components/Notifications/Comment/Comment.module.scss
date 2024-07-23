@@ -31,7 +31,7 @@
 	padding: 0 12px;
 }
 
-.AuthorName {
+.AuthorDisplayName {
 	color: var(--light-color);
 
 	&:hover {
@@ -70,6 +70,7 @@
 	color: rgb(130, 130, 130);
 	text-overflow: ellipsis;
 	word-break: break-word;
+	line-clamp: 1;
 	-webkit-line-clamp: 1;
 
 	&::before {

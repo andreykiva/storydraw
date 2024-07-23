@@ -4,7 +4,8 @@
 }
 
 .SendCodeBtn {
-	max-width: 112px;
+	max-width: none;
+	width: auto; 
 	height: 46px;
 	background-color: rgb(49, 49, 49);
 	border-radius: 0 4px 4px 0;

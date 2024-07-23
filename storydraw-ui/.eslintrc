@@ -21,7 +21,7 @@
 		],
 		"no-return-await": "warn",
 		"no-var": "warn",
-		"max-len": ["warn", { "code": 120 }],
+		"max-len": ["warn", { "code": 140 }],
 		"quotes": ["warn", "single", { "allowTemplateLiterals": true }],
 		"@typescript-eslint/no-empty-interface": [
 			"error",

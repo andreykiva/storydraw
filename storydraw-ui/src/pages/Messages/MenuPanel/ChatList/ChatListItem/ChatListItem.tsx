@@ -10,13 +10,13 @@ import ActionsMenu from './ActionsMenu/ActionsMenu';
 import useClickOutside from '@/hooks/useClickOutside';
 import { setActiveChatmateId, selectActiveChatmateId } from '@/features/chat/chatSlice';
 
-type ChatListItemProps = Pick<User, 'id' | 'username' | 'image'> & {
+type ChatListItemProps = Pick<User, 'id' | 'username' | 'imageUrl'> & {
 	lastMessage: string;
 	date: Date;
 };
 
 const ChatListItem = (props: ChatListItemProps) => {
-	const { id, username, image, lastMessage, date } = props;
+	const { id, username, imageUrl, lastMessage, date } = props;
 	const dispatch = useDispatch();
 	const [isActionsMenuOpen, setIsActionsMenuOpen] = useState(false);
 	const actionsBtnRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 		<li className={cn(styles.ChatListItem, activeChatmateId === id && styles.Active)}>
 			<div className={styles.ItemContent} onClick={handleChooseChatmate}>
 				<div className={styles.ChatmateImgWr}>
-					<img src={image || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
+					<img src={imageUrl || defaultImg} alt="Profile picture" className={styles.ChatmateImg} />
 				</div>
 				<div className={styles.MessageInfo}>
 					<span className={styles.ChatmateUsername}>{username}</span>

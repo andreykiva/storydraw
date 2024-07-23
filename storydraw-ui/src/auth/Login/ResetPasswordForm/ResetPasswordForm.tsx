@@ -19,16 +19,15 @@ const ResetPasswordForm = () => {
 		isPhoneMode,
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
+		isFormBtnLoading,
+		isCodeBtnLoading,
 		handleChangeInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleChangeIsPhoneMode,
+		handleSubmit,
+		handleSendCode,
 	} = useResetPasswordForm();
-
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		console.log('Submit');
-	};
 
 	return (
 		<>
@@ -43,11 +42,7 @@ const ResetPasswordForm = () => {
 				/>
 				{isPhoneMode ? (
 					<div className={authSharedStyles.PhoneField}>
-						<CountrySelector
-							selectedOption={country}
-							selectOption={handleChangeCountry}
-							showPhonePrefix={true}
-						/>
+						<CountrySelector selectedOption={country} selectOption={handleChangeCountry} showPhonePrefix={true} />
 						<Input
 							type="text"
 							name={RESET_PASSWORD_FIELD.PHONE}
@@ -77,9 +72,12 @@ const ResetPasswordForm = () => {
 					placeholder="Enter 6-digit code"
 					value={formData[RESET_PASSWORD_FIELD.CODE]}
 					error={formErrors[RESET_PASSWORD_FIELD.CODE]}
+					isOtherErrors={isPhoneMode ? !!formErrors[RESET_PASSWORD_FIELD.PHONE] : !!formErrors[RESET_PASSWORD_FIELD.EMAIL]}
 					onChange={handleChangeInput}
 					onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.CODE)}
+					onSendCode={handleSendCode}
 					disabled={isCodeBtnDisabled}
+					loading={isCodeBtnLoading}
 					required
 				/>
 				<PasswordInput
@@ -91,7 +89,7 @@ const ResetPasswordForm = () => {
 					onBlur={() => handleBlurInput(RESET_PASSWORD_FIELD.PASSWORD)}
 					required
 				/>
-				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
+				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled} loading={isFormBtnLoading}>
 					Log in
 				</Button>
 			</form>

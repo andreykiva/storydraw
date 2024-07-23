@@ -17,4 +17,5 @@ export const enum INPUT_MODE {
 	CODE = 'Code',
 	PHONE = 'Phone',
 	USERNAME = 'Username',
+	PASSWORD = 'Password'
 }

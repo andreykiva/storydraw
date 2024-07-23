@@ -2,12 +2,33 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Drawing {
+  id: String!
+  imageUrl: String!
+  user: User!
+}
+
+type Collab {
+  id: String!
+  musicId: String
+  title: String!
+  description: String!
+  user: User!
+  drawings: [Drawing!]!
+}
+
 type User {
-  id: Int!
+  id: String!
   username: String!
   displayName: String!
   bio: String!
   imageUrl: String
+  collabs: [Collab!]!
+  drawings: [Drawing!]!
+}
+
+type CheckUserExistsResponse {
+  exists: Boolean!
 }
 
 type GenerateCodeResponse {
@@ -15,26 +36,48 @@ type GenerateCodeResponse {
   message: String!
 }
 
-type LoginResponse {
+type AuthResponse {
   access_token: String!
+  refresh_token: String!
   user: User!
+}
+
+type RefreshTokenResponse {
+  access_token: String!
 }
 
 type Query {
   users: [User!]!
-  user(username: String!): User!
+  findOneByUsername(usernameInput: FindOneByUsernameInput!): User!
+  getMe: User!
+  ensureUsernameNotExists(usernameInput: FindOneByUsernameInput!): CheckUserExistsResponse!
+}
+
+input FindOneByUsernameInput {
+  username: String!
 }
 
 type Mutation {
+  updateUsername(usernameInput: UpdateUsernameInput!): User!
   generatePhoneCodeForSignup(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
   generateEmailCodeForSignup(generateCodeInput: GenerateEmailCodeInput!): GenerateCodeResponse!
-  signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput!): User!
-  signupWithEmailAndPassAndCode(signupInput: SignupWithEmailAndPassAndCodeInput!): User!
+  signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput!): AuthResponse!
+  signupWithEmailAndPassAndCode(signupInput: SignupWithEmailAndPassAndCodeInput!): AuthResponse!
   generatePhoneCodeForLogin(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
-  loginWithPhoneAndCode(loginInput: LoginWithPhoneAndCodeInput!): LoginResponse!
-  loginWithPhoneAndPass(loginInput: LoginWithPhoneAndPassInput!): LoginResponse!
-  loginWithEmailAndPass(loginInput: LoginWithEmailAndPassInput!): LoginResponse!
-  loginWithUsernameAndPass(loginInput: LoginWithUsernameAndPassInput!): LoginResponse!
+  loginWithPhoneAndCode(loginInput: LoginWithPhoneAndCodeInput!): AuthResponse!
+  loginWithPhoneAndPass(loginInput: LoginWithPhoneAndPassInput!): AuthResponse!
+  loginWithEmailAndPass(loginInput: LoginWithEmailAndPassInput!): AuthResponse!
+  loginWithUsernameAndPass(loginInput: LoginWithUsernameAndPassInput!): AuthResponse!
+  refreshToken(token: String!): RefreshTokenResponse!
+  generatePhoneCodeForReset(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
+  generateEmailCodeForReset(generateCodeInput: GenerateEmailCodeInput!): GenerateCodeResponse!
+  resetPasswordWithPhone(resetPasswordInput: ResetWithPhoneInput!): AuthResponse!
+  resetPasswordWithEmail(resetPasswordInput: ResetWithEmailInput!): AuthResponse!
+  createCollab(createCollabInput: CreateCollabInput!): Collab!
+}
+
+input UpdateUsernameInput {
+  username: String!
 }
 
 input GeneratePhoneCodeInput {
@@ -48,7 +91,7 @@ input GenerateEmailCodeInput {
 input SignupWithPhoneAndCodeInput {
   phone: String!
   code: String!
-  dateOfBirth: DateTime!
+  dateOfBirth: DateTime
 }
 
 """
@@ -60,7 +103,7 @@ input SignupWithEmailAndPassAndCodeInput {
   email: String!
   password: String!
   code: String!
-  dateOfBirth: DateTime!
+  dateOfBirth: DateTime
   receiveEmailUpdates: Boolean
 }
 
@@ -82,4 +125,27 @@ input LoginWithEmailAndPassInput {
 input LoginWithUsernameAndPassInput {
   username: String!
   password: String!
+}
+
+input ResetWithPhoneInput {
+  phone: String!
+  code: String!
+  password: String!
+}
+
+input ResetWithEmailInput {
+  email: String!
+  code: String!
+  password: String!
+}
+
+input CreateCollabInput {
+  musicId: String
+  title: String
+  description: String
+  drawing: FirstDrawingInput!
+}
+
+input FirstDrawingInput {
+  imageUrl: String!
 }

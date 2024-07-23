@@ -5,69 +5,69 @@ import HTag from '@/components/ui/HTag/HTag';
 
 const testSuggestedAccounts = [
 	{
-		id: '1',
+		id: 1,
 		username: 'andrii747',
-		name: 'Real',
-		image: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
+		displayName: 'Real',
+		imageUrl: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
 		the_Discomfort%E2%80%94We%27re_Alright.webp`,
 	},
 	{
-		id: '2',
+		id: 2,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 	{
-		id: '3',
+		id: 3,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 	{
-		id: '4',
+		id: 4,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 	{
-		id: '5',
+		id: 5,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 ];
 
 const testFollowingAccoutns = [
 	{
-		id: '1',
+		id: 1,
 		username: 'andrii747',
-		name: 'Real',
-		image: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
+		displayName: 'Real',
+		imageUrl: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
 		the_Discomfort%E2%80%94We%27re_Alright.webp`,
 	},
 	{
-		id: '2',
+		id: 2,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 	{
-		id: '3',
+		id: 3,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 	{
-		id: '4',
+		id: 4,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 	{
-		id: '5',
+		id: 5,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 ];
 
@@ -96,7 +96,7 @@ const SidebarAccounts = ({ isAuth }: SidebarAccountsProps) => {
 			) : (
 				<ul className={styles.AccountsList}>
 					{accounts.map((item) => (
-						<SidebarAccount key={item.id} image={item.image} username={item.username} name={item.name} />
+						<SidebarAccount key={item.id} imageUrl={item.imageUrl} username={item.username} displayName={item.displayName} />
 					))}
 				</ul>
 			)}

@@ -17,7 +17,7 @@ const Comment = (props: CommentNotification) => {
 		date,
 		parentComment,
 		story,
-		user: { username, name, image },
+		user: { username, displayName, imageUrl },
 	} = props;
 
 	const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -32,15 +32,15 @@ const Comment = (props: CommentNotification) => {
 			<div className={styles.CommentLink} onClick={handleClick}>
 				<Link to={`/@${username}`} className={styles.AuthorImgWr}>
 					<img
-						src={image || defaultImg}
+						src={imageUrl || defaultImg}
 						alt="Profile picture"
 						className={styles.AuthorImg}
 						ref={authorImgRef}
 					/>
 				</Link>
 				<div className={styles.CommentInfo}>
-					<Link to={`/@${username}`} className={styles.AuthorName} ref={authorNameRef}>
-						{name}
+					<Link to={`/@${username}`} className={styles.AuthorDisplayName} ref={authorNameRef}>
+						{displayName}
 					</Link>
 					<p className={styles.CommentContent}>
 						<span className={styles.CommentNote}>
@@ -51,7 +51,7 @@ const Comment = (props: CommentNotification) => {
 					</p>
 					{parentComment && (
 						<div className={styles.ParentComment}>
-							{parentComment.user.name}: {parentComment.text}
+							{parentComment.user.displayName}: {parentComment.text}
 						</div>
 					)}
 				</div>

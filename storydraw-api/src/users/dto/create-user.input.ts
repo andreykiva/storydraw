@@ -14,8 +14,8 @@ export class CreateUserInput {
 	@Field({ nullable: true })
 	password?: string;
 
-	@Field()
-	dateOfBirth: Date;
+	@Field({ nullable: true })
+	dateOfBirth?: Date;
 
 	@Field({ nullable: true })
 	receiveEmailUpdates?: boolean;

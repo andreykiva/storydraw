@@ -5,7 +5,7 @@ type ChatState = {
 };
 
 const initialState: ChatState = {
-	activeChatmateId: '123',
+	activeChatmateId: '111',
 };
 
 export const chatSlice = createSlice({

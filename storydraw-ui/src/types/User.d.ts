@@ -1,9 +1,9 @@
 type User = {
 	id: string;
 	username: string;
-	name: string;
+	displayName: string;
 	bio: string;
-	image: string;
+	imageUrl: string;
 	followers: number;
 	following: number;
 	likes: number;

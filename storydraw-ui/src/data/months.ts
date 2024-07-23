@@ -5,7 +5,7 @@ type Month = {
 
 const months: Month[] = [
 	{ name: 'January', days: 31 },
-	{ name: 'February', days: 29 }, // Високосный год: 29
+	{ name: 'February', days: 29 },
 	{ name: 'March', days: 31 },
 	{ name: 'April', days: 30 },
 	{ name: 'May', days: 31 },

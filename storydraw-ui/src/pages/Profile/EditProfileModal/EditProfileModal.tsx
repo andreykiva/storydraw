@@ -42,7 +42,7 @@ const EditProfileModal = ({ user, onClose }: EditProfileModalProps) => {
 					<div className={styles.EditProfileItem}>
 						<span className={styles.ItemTitle}>Profile picture</span>
 						<div className={styles.EditProfilePicture}>
-							<img src={user.image || defaultImg} alt="Profile" className={styles.ProfileImg} />
+							<img src={user.imageUrl || defaultImg} alt="Profile" className={styles.ProfileImg} />
 							<div className={styles.EditIcon}>
 								<img src={editPfpIcon} alt="Edit PFP" />
 							</div>
@@ -76,13 +76,13 @@ const EditProfileModal = ({ user, onClose }: EditProfileModalProps) => {
 						<div className={styles.ItemContent}>
 							<Input
 								type="text"
-								name={EDIT_PROFILE_FIELD.NAME}
+								name={EDIT_PROFILE_FIELD.DISPLAYNAME}
 								placeholder="Name"
-								value={formData[EDIT_PROFILE_FIELD.NAME]}
-								error={formErrors[EDIT_PROFILE_FIELD.NAME]}
+								value={formData[EDIT_PROFILE_FIELD.DISPLAYNAME]}
+								error={formErrors[EDIT_PROFILE_FIELD.DISPLAYNAME]}
 								maxLength={30}
 								onChange={handleChangeInput}
-								onBlur={() => handleBlurInput(EDIT_PROFILE_FIELD.NAME)}
+								onBlur={() => handleBlurInput(EDIT_PROFILE_FIELD.DISPLAYNAME)}
 								required
 							/>
 							<p className={styles.ContentDescr}>Your nickname can only be changed once every 7 days.</p>

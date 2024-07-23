@@ -8,8 +8,8 @@ const testMessages: Message[] = [
 	{
 		id: '1',
 		author: {
-			id: 'user123',
-			image: '',
+			id: '1',
+			imageUrl: '',
 			username: 'andrew',
 		},
 		text: 'Hey! What`s up?',
@@ -18,8 +18,8 @@ const testMessages: Message[] = [
 			amount: 1,
 			users: [
 				{
-					id: 'user123',
-					image: '',
+					id: '1',
+					imageUrl: '',
 				},
 			],
 		},
@@ -27,8 +27,8 @@ const testMessages: Message[] = [
 	{
 		id: '2',
 		author: {
-			id: 'user234',
-			image: '',
+			id: '2',
+			imageUrl: '',
 			username: 'kate',
 		},
 		text: 'Yo, I`m fine! What about you?',
@@ -41,8 +41,8 @@ const testMessages: Message[] = [
 	{
 		id: '3',
 		author: {
-			id: 'user123',
-			image: '',
+			id: '1',
+			imageUrl: '',
 			username: 'andrew',
 		},
 		text: 'I`m good too. Have a nice day!',
@@ -51,12 +51,12 @@ const testMessages: Message[] = [
 			amount: 2,
 			users: [
 				{
-					id: 'user123',
-					image: '',
+					id: '1',
+					imageUrl: '',
 				},
 				{
-					id: 'user234',
-					image: '',
+					id: '2',
+					imageUrl: '',
 				},
 			],
 		},
@@ -64,8 +64,8 @@ const testMessages: Message[] = [
 	{
 		id: '4',
 		author: {
-			id: 'user234',
-			image: '',
+			id: '2',
+			imageUrl: '',
 			username: 'kate',
 		},
 		text: 'Thanks! You too.',
@@ -74,8 +74,8 @@ const testMessages: Message[] = [
 			amount: 1,
 			users: [
 				{
-					id: 'user123',
-					image: '',
+					id: '1',
+					imageUrl: '',
 				},
 			],
 		},
@@ -83,8 +83,8 @@ const testMessages: Message[] = [
 	{
 		id: '5',
 		author: {
-			id: 'user123',
-			image: '',
+			id: '1',
+			imageUrl: '',
 			username: 'andrew',
 		},
 		text: 'How`s the weather there?',
@@ -97,8 +97,8 @@ const testMessages: Message[] = [
 	{
 		id: '12',
 		author: {
-			id: 'user234',
-			image: '',
+			id: '2',
+			imageUrl: '',
 			username: 'kate',
 		},
 		text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -110,8 +110,8 @@ const testMessages: Message[] = [
 			amount: 1,
 			users: [
 				{
-					id: 'user234',
-					image: '',
+					id: '2',
+					imageUrl: '',
 				},
 			],
 		},
@@ -119,8 +119,8 @@ const testMessages: Message[] = [
 	{
 		id: '6',
 		author: {
-			id: 'user234',
-			image: '',
+			id: '2',
+			imageUrl: '',
 			username: 'kate',
 		},
 		text: 'It`s sunny and warm. Perfect day!',
@@ -129,12 +129,12 @@ const testMessages: Message[] = [
 			amount: 2,
 			users: [
 				{
-					id: 'user123',
-					image: '',
+					id: '1',
+					imageUrl: '',
 				},
 				{
-					id: 'user234',
-					image: '',
+					id: '2',
+					imageUrl: '',
 				},
 			],
 		},
@@ -142,8 +142,8 @@ const testMessages: Message[] = [
 	{
 		id: '7',
 		author: {
-			id: 'user123',
-			image: '',
+			id: '1',
+			imageUrl: '',
 			username: 'andrew',
 		},
 		text: 'Lucky you! Here it`s cloudy.',
@@ -152,8 +152,8 @@ const testMessages: Message[] = [
 			amount: 1,
 			users: [
 				{
-					id: 'user234',
-					image: '',
+					id: '2',
+					imageUrl: '',
 				},
 			],
 		},
@@ -161,8 +161,8 @@ const testMessages: Message[] = [
 	{
 		id: '8',
 		author: {
-			id: 'user234',
-			image: '',
+			id: '2',
+			imageUrl: '',
 			username: 'kate',
 		},
 		text: 'I hope it clears up for you soon.',
@@ -175,8 +175,8 @@ const testMessages: Message[] = [
 	{
 		id: '9',
 		author: {
-			id: 'user123',
-			image: '',
+			id: '1',
+			imageUrl: '',
 			username: 'andrew',
 		},
 		text: 'Thank you!',
@@ -185,8 +185,8 @@ const testMessages: Message[] = [
 			amount: 1,
 			users: [
 				{
-					id: 'user123',
-					image: '',
+					id: '1',
+					imageUrl: '',
 				},
 			],
 		},
@@ -194,8 +194,8 @@ const testMessages: Message[] = [
 	{
 		id: '10',
 		author: {
-			id: 'user234',
-			image: '',
+			id: '2',
+			imageUrl: '',
 			username: 'kate',
 		},
 		text: 'You`re welcome.',
@@ -204,12 +204,12 @@ const testMessages: Message[] = [
 			amount: 2,
 			users: [
 				{
-					id: 'user123',
-					image: '',
+					id: '1',
+					imageUrl: '',
 				},
 				{
-					id: 'user234',
-					image: '',
+					id: '2',
+					imageUrl: '',
 				},
 			],
 		},
@@ -217,8 +217,8 @@ const testMessages: Message[] = [
 	{
 		id: '11',
 		author: {
-			id: 'user234',
-			image: '',
+			id: '2',
+			imageUrl: '',
 			username: 'kate',
 		},
 		text: 'sooooo....',

@@ -12,8 +12,8 @@ const testLikes: LikeNotification[] = [
 			id: '12414',
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '1',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -22,15 +22,15 @@ const testLikes: LikeNotification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '2',
 				username: 'andrew',
 			},
 		},
 		user: {
-			id: '123',
+			id: '3',
 			username: 'lisa',
-			name: 'Lisa',
-			image: '',
+			displayName: 'Lisa',
+			imageUrl: '',
 		},
 	},
 	{
@@ -43,15 +43,15 @@ const testLikes: LikeNotification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '12',
 				username: 'andrew',
 			},
 		},
 		user: {
-			id: '123',
+			id: '4',
 			username: 'artem',
-			name: 'artem',
-			image: '',
+			displayName: 'artem',
+			imageUrl: '',
 		},
 	},
 	{
@@ -62,8 +62,8 @@ const testLikes: LikeNotification[] = [
 			id: '12vrvr414',
 			text: 'have a nice day',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '1',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -72,15 +72,15 @@ const testLikes: LikeNotification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '18',
 				username: 'andrew',
 			},
 		},
 		user: {
-			id: '123',
+			id: '2',
 			username: 'nina',
-			name: 'Nina',
-			image: '',
+			displayName: 'Nina',
+			imageUrl: '',
 		},
 	},
 	{
@@ -93,23 +93,23 @@ const testLikes: LikeNotification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '5',
 				username: 'andrew',
 			},
 		},
 		amount: 193,
 		users: [
 			{
-				id: '112323',
+				id: '6',
 				username: 'lisa',
-				name: 'Lisa',
-				image: '',
+				displayName: 'Lisa',
+				imageUrl: '',
 			},
 			{
-				id: '112334123',
+				id: '7',
 				username: 'lisa4ka123123',
-				name: 'Lisa4ka123123',
-				image: '',
+				displayName: 'Lisa4ka123123',
+				imageUrl: '',
 			},
 		],
 	},

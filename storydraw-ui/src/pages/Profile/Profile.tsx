@@ -38,11 +38,11 @@ type UserProfileResponse = {
 
 const testUserProfileResponse: UserProfileResponse = {
 	user: {
-		id: '1231u240',
+		id: '1234',
 		username: 'somestranger',
-		name: 'Hm',
+		displayName: 'Hm',
 		bio: 'yes. I am.',
-		image: `https://lastfm.freetls.fastly.net/i/u/ar0/930705c179074033ef99a50e9456b786.jpg`,
+		imageUrl: `https://lastfm.freetls.fastly.net/i/u/ar0/930705c179074033ef99a50e9456b786.jpg`,
 		following: 422,
 		followers: 9981,
 		likes: 4912,
@@ -63,8 +63,8 @@ const testMyProfileResponse: UserProfileResponse = {
 	user: {
 		id: '123',
 		username: 'andrii747',
-		name: 'Real',
-		image: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
+		displayName: 'Real',
+		imageUrl: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
 		the_Discomfort%E2%80%94We%27re_Alright.webp`,
 		bio: 'no. I`m not.',
 		following: 422,
@@ -168,13 +168,13 @@ const Profile = () => {
 			<div className={styles.ProfileInfo}>
 				<div className={styles.TopInfo}>
 					<div className={styles.ProfileImgWr}>
-						<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+						<img src={user.imageUrl || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					</div>
 					<div className={styles.InfoMain}>
 						<span className={styles.Username}>
 							{user.username} {user.isPrivate && <img src={lockIcon} alt="Private" />}
 						</span>
-						<span className={styles.Name}>{user.name}</span>
+						<span className={styles.DisplayName}>{user.displayName}</span>
 						{isCurrentUser ? (
 							<Button className={styles.EditProfileBtn} onClick={() => setIsEditProfileModalOpen(true)}>
 								<img src={editIcon} alt="Edit" className={styles.EditIcon} />

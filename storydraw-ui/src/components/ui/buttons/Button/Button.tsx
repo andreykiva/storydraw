@@ -1,11 +1,16 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './Button.module.scss';
+import Loader from '../../Loader/Loader';
 
-const Button = ({ className, children, ...rest }: React.ComponentProps<'button'>) => {
+type ButtonProps = React.ComponentProps<'button'> & {
+	loading?: boolean;
+};
+
+const Button = ({ className, children, disabled, loading, ...rest }: ButtonProps) => {
 	return (
-		<button className={cn(styles.Button, className)} {...rest}>
-			{children}
+		<button className={cn(styles.Button, className)} {...rest} disabled={disabled || loading}>
+			{loading ? <Loader className={styles.ButtonLoader} /> : children}
 		</button>
 	);
 };

@@ -13,8 +13,8 @@ const testComments: CommentNotification[] = [
 			id: '12414',
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '1',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -24,10 +24,10 @@ const testComments: CommentNotification[] = [
 			},
 		},
 		user: {
-			id: '123',
+			id: '2',
 			username: 'lisa',
-			name: 'Lisa',
-			image: '',
+			displayName: 'Lisa',
+			imageUrl: '',
 		},
 	},
 	{
@@ -42,10 +42,10 @@ const testComments: CommentNotification[] = [
 			},
 		},
 		user: {
-			id: '123',
+			id: '3',
 			username: 'artem',
-			name: 'artem',
-			image: '',
+			displayName: 'artem',
+			imageUrl: '',
 		},
 	},
 	{
@@ -57,8 +57,8 @@ const testComments: CommentNotification[] = [
 			id: '12vrvr414',
 			text: 'have a nice day',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '4',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -68,10 +68,10 @@ const testComments: CommentNotification[] = [
 			},
 		},
 		user: {
-			id: '123',
+			id: '5',
 			username: 'nina',
-			name: 'Nina',
-			image: '',
+			displayName: 'Nina',
+			imageUrl: '',
 		},
 	},
 ];

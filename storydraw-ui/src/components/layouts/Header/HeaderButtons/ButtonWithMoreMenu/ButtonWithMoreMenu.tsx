@@ -6,6 +6,8 @@ import moreIcon from '@/assets/icons/more.svg?url';
 import defaultImg from '@/assets/images/default.svg?url';
 import MoreMenu from './MoreMenu/MoreMenu';
 import ConfirmationModal from '@/components/ui/ConfirmationModal/ConfirmationModal';
+import { useSelector } from 'react-redux';
+import { selectUser } from '@/features/user/userSlice';
 
 type ButtonWithMoreMenuProps = {
 	isAuth: boolean;
@@ -13,6 +15,7 @@ type ButtonWithMoreMenuProps = {
 
 const ButtonWithMoreMenu = ({ isAuth }: ButtonWithMoreMenuProps) => {
 	const navigate = useNavigate();
+	const user = useSelector(selectUser);
 	const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
 	const handleLogout = () => {
@@ -24,7 +27,7 @@ const ButtonWithMoreMenu = ({ isAuth }: ButtonWithMoreMenuProps) => {
 		<div className={styles.ButtonWithMoreMenu}>
 			<div className={styles.ButtonInner}>
 				<img
-					src={isAuth ? defaultImg : moreIcon}
+					src={isAuth ? user.imageUrl || defaultImg : moreIcon}
 					alt={isAuth ? 'User profile' : 'More'}
 					className={styles.MoreIcon}
 				/>

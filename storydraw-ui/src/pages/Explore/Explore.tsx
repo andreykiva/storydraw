@@ -34,9 +34,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -47,9 +47,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -60,9 +60,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -73,9 +73,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -86,9 +86,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -99,9 +99,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -112,9 +112,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -125,9 +125,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -138,9 +138,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 	{
@@ -151,9 +151,9 @@ const testStories = [
 		likes: 99142,
 		views: 1244,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			image: '',
+			imageUrl: '',
 		},
 	},
 ];

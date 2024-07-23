@@ -31,7 +31,7 @@ export const validateLogin: ValidatorFunction = (login) => {
 	if (login.length < 5) return 'Login must be longer than 4 characters';
 
 	if (login.includes('@')) {
-		validateEmail(login);
+		return validateEmail(login);
 	} else {
 		if (!stringPattern.test(login)) {
 			return 'Login must contain only letters and numbers';

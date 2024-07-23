@@ -9,10 +9,10 @@ const testAll: Notification[] = [
 		type: 'follow',
 		date: new Date('2024-01-01'),
 		user: {
-			id: '1231',
+			id: '1',
 			username: 'roman',
-			name: 'Roman',
-			image: '',
+			displayName: 'Roman',
+			imageUrl: '',
 			isFollowedByYou: true,
 		},
 	},
@@ -25,8 +25,8 @@ const testAll: Notification[] = [
 			id: '12414',
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '2',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -36,10 +36,10 @@ const testAll: Notification[] = [
 			},
 		},
 		user: {
-			id: '123',
+			id: '3',
 			username: 'lisa',
-			name: 'Lisa',
-			image: '',
+			displayName: 'Lisa',
+			imageUrl: '',
 		},
 	},
 	{
@@ -47,10 +47,10 @@ const testAll: Notification[] = [
 		type: 'follow',
 		date: new Date('2023-11-11'),
 		user: {
-			id: '1423',
+			id: '4',
 			username: 'oleg',
-			name: 'oleg',
-			image: '',
+			displayName: 'oleg',
+			imageUrl: '',
 			isFollowedByYou: false,
 		},
 	},
@@ -62,8 +62,8 @@ const testAll: Notification[] = [
 			id: '12414',
 			text: 'have a nice day duuude djej aakwdkawd akwdkawkd',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '2',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -72,15 +72,15 @@ const testAll: Notification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '2',
 				username: 'andrew',
 			},
 		},
 		user: {
-			id: '123',
+			id: '754',
 			username: 'lisa',
-			name: 'Lisa',
-			image: '',
+			displayName: 'Lisa',
+			imageUrl: '',
 		},
 	},
 	{
@@ -95,10 +95,10 @@ const testAll: Notification[] = [
 			},
 		},
 		user: {
-			id: '123',
+			id: '5555',
 			username: 'artem',
-			name: 'artem',
-			image: '',
+			displayName: 'artem',
+			imageUrl: '',
 		},
 	},
 	{
@@ -110,8 +110,8 @@ const testAll: Notification[] = [
 			id: '12vrvr414',
 			text: 'have a nice day',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '2',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -121,10 +121,10 @@ const testAll: Notification[] = [
 			},
 		},
 		user: {
-			id: '123',
+			id: '12331',
 			username: 'nina',
-			name: 'Nina',
-			image: '',
+			displayName: 'Nina',
+			imageUrl: '',
 		},
 	},
 	{
@@ -137,15 +137,15 @@ const testAll: Notification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '2',
 				username: 'andrew',
 			},
 		},
 		user: {
-			id: '123',
+			id: '5151',
 			username: 'artem',
-			name: 'artem',
-			image: '',
+			displayName: 'artem',
+			imageUrl: '',
 		},
 	},
 	{
@@ -156,8 +156,8 @@ const testAll: Notification[] = [
 			id: '12vrvr414',
 			text: 'have a nice day',
 			user: {
-				id: '123',
-				name: 'andrew',
+				id: '2',
+				displayName: 'andrew',
 			},
 		},
 		story: {
@@ -166,15 +166,15 @@ const testAll: Notification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '2',
 				username: 'andrew',
 			},
 		},
 		user: {
-			id: '12v3',
+			id: '515',
 			username: 'nina',
-			name: 'Nina',
-			image: '',
+			displayName: 'Nina',
+			imageUrl: '',
 		},
 	},
 	{
@@ -182,10 +182,10 @@ const testAll: Notification[] = [
 		type: 'follow',
 		date: new Date('2024-01-21'),
 		user: {
-			id: '123',
+			id: '56',
 			username: 'lisa',
-			name: 'Lisa',
-			image: '',
+			displayName: 'Lisa',
+			imageUrl: '',
 			isFollowedByYou: true,
 		},
 	},
@@ -194,10 +194,10 @@ const testAll: Notification[] = [
 		type: 'follow',
 		date: new Date('2022-02-11'),
 		user: {
-			id: '1421243',
+			id: '44',
 			username: 'ivan',
-			name: 'Ivan',
-			image: '',
+			displayName: 'Ivan',
+			imageUrl: '',
 			isFollowedByYou: false,
 		},
 	},
@@ -211,23 +211,23 @@ const testAll: Notification[] = [
 				image: '',
 			},
 			author: {
-				id: '123132',
+				id: '2',
 				username: 'andrew',
 			},
 		},
 		amount: 193,
 		users: [
 			{
-				id: '11fr2323',
+				id: '1234',
 				username: 'lisa',
-				name: 'Lisa',
-				image: '',
+				displayName: 'Lisa',
+				imageUrl: '',
 			},
 			{
-				id: '11233cc4123',
+				id: '123',
 				username: 'lisa4ka123123',
-				name: 'Lisa4ka123123',
-				image: '',
+				displayName: 'Lisa4ka123123',
+				imageUrl: '',
 			},
 		],
 	},

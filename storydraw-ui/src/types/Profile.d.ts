@@ -1,7 +1,7 @@
 import type User from '@/types/User';
 import type Story from '@/types/Story';
 
-export type RelationsUser = Pick<User, 'id' | 'username' | 'name' | 'image'> & {
+export type RelationsUser = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'> & {
 	isFollowedByYou: boolean;
 	isFollowedYou: boolean;
 };

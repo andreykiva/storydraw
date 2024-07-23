@@ -6,8 +6,8 @@ import { VerificationsService } from './verifications.service';
 export class CronService {
 	constructor(private readonly verificationsService: VerificationsService) {}
 
-	// @Cron(CronExpression.EVERY_MINUTE)
-	// async handleCron() {
-	// 	await this.verificationsService.deleteOldVerifications();
-	// }
+	@Cron(CronExpression.EVERY_MINUTE)
+	async handleCron() {
+		await this.verificationsService.deleteOld();
+	}
 }

@@ -1,0 +1,81 @@
+.FormGroup {
+	position: relative;
+	flex: 1 0;
+	margin-bottom: 6px;
+
+	&.GroupError:not(.Loading) {
+		.ValidatedInput {
+			border-color: #ff4c3a;
+		}
+
+		.WarningIcon {
+			display: block;
+		}
+
+		.InputError {
+			display: block;
+		}
+	}
+
+	&.Valid:not(.Loading) {
+		.ValidatedInput {
+			border-color: var(--bright-green-color);
+		}
+
+		.CheckIcon {
+			display: block;
+		}
+	}
+
+	&.Loading .Loader {
+		display: block;
+	}
+}
+
+.ValidatedInput {
+	width: 100%;
+	height: 46px;
+	padding: 0 12px;
+	background-color: rgb(55, 55, 55);
+	border: 1px solid rgb(55, 55, 55);
+	border-radius: 4px;
+	font-family: 'Karla', sans-serif;
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--main-color);
+	caret-color: var(--bright-green-color);
+}
+
+.InputIcon {
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	height: 46px;
+	padding-right: 20px;
+
+	.WarningIcon,
+	.CheckIcon,
+	.Loader {
+		display: none;
+		width: 16px;
+		height: 16px;
+	}
+
+	.CheckIcon {
+		fill: var(--bright-green-color);
+	}
+
+	.Loader {
+		opacity: 0.5;
+	}
+}
+
+.InputError {
+	display: none;
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	color: #ff4c3a;
+	margin-top: 9px;
+}

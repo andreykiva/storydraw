@@ -6,7 +6,7 @@ type ProfileValidators = Record<EDIT_PROFILE_FIELD, ValidatorFunction>;
 
 const profileValidators: ProfileValidators = {
 	[EDIT_PROFILE_FIELD.USERNAME]: validateUsername,
-	[EDIT_PROFILE_FIELD.NAME]: validateName,
+	[EDIT_PROFILE_FIELD.DISPLAYNAME]: validateName,
 	[EDIT_PROFILE_FIELD.BIO]: validateBio,
 };
 

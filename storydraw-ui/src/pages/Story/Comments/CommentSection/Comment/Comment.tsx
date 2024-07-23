@@ -16,7 +16,7 @@ import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWith
 import { MENU_POSITION } from '@/constants/ui';
 
 type CommentProps = Comment & {
-	user: Pick<User, 'username' | 'name' | 'image'>;
+	user: Pick<User, 'username' | 'displayName' | 'imageUrl'>;
 	reply: boolean;
 };
 
@@ -57,12 +57,12 @@ const Comment = (props: CommentProps) => {
 		<div className={cn(styles.Comment, reply && styles.Reply)}>
 			<div className={styles.ProfileImgSection}>
 				<Link to={`/@${user.username}`} className={styles.ImgUserLink}>
-					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<img src={user.imageUrl || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 				</Link>
 			</div>
 			<div className={styles.CommentContent}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
-					<span className={styles.Name}>{user.name}</span>
+					<span className={styles.DisplayName}>{user.displayName}</span>
 				</Link>
 				<p className={styles.CommentText}>{text}</p>
 				<div className={styles.BottomInfo}>

@@ -9,10 +9,10 @@ const testReplies = [
 		date: '13-23',
 		likes: 32,
 		user: {
-			id: '123',
+			id: 1,
 			username: 'andrey777',
-			name: 'Aandrey',
-			image: '',
+			displayName: 'Aandrey',
+			imageUrl: '',
 		},
 	},
 	{
@@ -21,10 +21,10 @@ const testReplies = [
 		date: '13-23',
 		likes: 32,
 		user: {
-			id: '123',
+			id: 1,
 			username: 'andrey777',
-			name: 'Aandrey',
-			image: '',
+			displayName: 'Aandrey',
+			imageUrl: '',
 		},
 	},
 	{
@@ -33,10 +33,10 @@ const testReplies = [
 		date: '13-23',
 		likes: 32,
 		user: {
-			id: '123',
+			id: 1,
 			username: 'andrey777',
-			name: 'Aandrey',
-			image: '',
+			displayName: 'Aandrey',
+			imageUrl: '',
 		},
 	},
 	{
@@ -45,10 +45,10 @@ const testReplies = [
 		date: '13-9-2022',
 		likes: 11,
 		user: {
-			id: '123123123',
+			id: 2,
 			username: 'andrey888',
-			name: 'andrey',
-			image: '',
+			displayName: 'andrey',
+			imageUrl: '',
 		},
 	},
 	{
@@ -57,10 +57,10 @@ const testReplies = [
 		date: '3-11',
 		likes: 23,
 		user: {
-			id: '1212312312312',
+			id: 3,
 			username: 'andrey999',
-			name: 'wow',
-			image: '',
+			displayName: 'wow',
+			imageUrl: '',
 		},
 	},
 ];

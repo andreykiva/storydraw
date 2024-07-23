@@ -11,26 +11,26 @@ type FormErrors = Record<EDIT_PROFILE_FIELD, string>;
 const useEditProfileForm = (user: User) => {
 	const [formData, setFormData] = useState<FormData>({
 		[EDIT_PROFILE_FIELD.USERNAME]: '',
-		[EDIT_PROFILE_FIELD.NAME]: '',
+		[EDIT_PROFILE_FIELD.DISPLAYNAME]: '',
 		[EDIT_PROFILE_FIELD.BIO]: '',
 	});
 
 	const [formErrors, setFormErrors] = useState<FormErrors>({
 		[EDIT_PROFILE_FIELD.USERNAME]: '',
-		[EDIT_PROFILE_FIELD.NAME]: '',
+		[EDIT_PROFILE_FIELD.DISPLAYNAME]: '',
 		[EDIT_PROFILE_FIELD.BIO]: '',
 	});
 
 	useEffect(() => {
 		setFormData({
 			[EDIT_PROFILE_FIELD.USERNAME]: user?.username || '',
-			[EDIT_PROFILE_FIELD.NAME]: user?.name || '',
+			[EDIT_PROFILE_FIELD.DISPLAYNAME]: user?.displayName || '',
 			[EDIT_PROFILE_FIELD.BIO]: user?.bio || '',
 		});
 	}, [user]);
 
 	const isUsernameInvalid = validateUsername(formData[EDIT_PROFILE_FIELD.USERNAME]);
-	const isNameInvalid = validateName(formData[EDIT_PROFILE_FIELD.NAME]);
+	const isNameInvalid = validateName(formData[EDIT_PROFILE_FIELD.DISPLAYNAME]);
 	const isBioInvalid = validateBio(formData[EDIT_PROFILE_FIELD.BIO]);
 
 	let isFormBtnDisabled = Boolean(isUsernameInvalid || isNameInvalid || isBioInvalid);
@@ -38,7 +38,7 @@ const useEditProfileForm = (user: User) => {
 	if (user && !isFormBtnDisabled) {
 		isFormBtnDisabled =
 			formData[EDIT_PROFILE_FIELD.USERNAME] === user.username &&
-			formData[EDIT_PROFILE_FIELD.NAME] === user.name &&
+			formData[EDIT_PROFILE_FIELD.DISPLAYNAME] === user.displayName &&
 			formData[EDIT_PROFILE_FIELD.BIO] === user.bio;
 	}
 

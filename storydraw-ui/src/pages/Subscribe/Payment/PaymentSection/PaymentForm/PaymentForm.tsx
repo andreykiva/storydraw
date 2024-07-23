@@ -93,8 +93,8 @@ const PaymentForm = ({ paymentMethod, currentPlan }: PaymentFormProps) => {
 						<CountrySelector selectedOption={country} selectOption={handleChangeCountry} />
 					</div>
 					<p className={styles.PaymentDescr}>
-						By providing your card information, you authorize StoryDraw to charge your card for this and
-						future payments according to StoryDraw's terms and conditions.
+						By providing your card information, you authorize StoryDraw to charge your card for this and future payments
+						according to StoryDraw's terms and conditions.
 					</p>
 				</>
 			)}

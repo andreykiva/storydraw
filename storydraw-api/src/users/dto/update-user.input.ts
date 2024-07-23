@@ -1,9 +1,13 @@
-// import { CreateUserInput } from './create-user.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
+import { IsNotEmpty, IsString, Length, Matches } from 'class-validator';
+import { usernamePattern } from 'src/auth/constants/regexp.constants';
 
 @InputType()
-export class UpdateUserInput {
-	// export class UpdateUserInput extends PartialType(CreateUserInput) {
-	@Field(() => Int)
-	id: number;
+export class UpdateUsernameInput {
+	@Field()
+	@IsString()
+	@IsNotEmpty()
+	@Length(5, 24)
+	@Matches(usernamePattern, { message: 'Invalid username format' })
+	username: string;
 }

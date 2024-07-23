@@ -13,7 +13,7 @@ const Follow = (props: FollowNotification) => {
 	const navigate = useNavigate();
 	const {
 		date,
-		user: { username, name, image, isFollowedByYou },
+		user: { username, displayName, imageUrl, isFollowedByYou },
 	} = props;
 
 	const handleClick = () => {
@@ -25,10 +25,10 @@ const Follow = (props: FollowNotification) => {
 		<li className={styles.Follow}>
 			<div className={styles.UserLink} onClick={handleClick}>
 				<div className={styles.UserImgWr}>
-					<img src={image || defaultImg} alt="Profile picture" className={styles.UserImg} />
+					<img src={imageUrl || defaultImg} alt="Profile picture" className={styles.UserImg} />
 				</div>
 				<div className={styles.UserInfo}>
-					<span className={styles.Name}>{name}</span>
+					<span className={styles.DisplayName}>{displayName}</span>
 					<span className={styles.FollowDate}>Follows you. {displayDate(date)}</span>
 				</div>
 			</div>

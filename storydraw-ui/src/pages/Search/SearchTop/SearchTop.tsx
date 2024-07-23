@@ -9,26 +9,26 @@ const testSearchData = {
 		{
 			id: '1',
 			username: 'andriikiva',
-			name: 'hey man',
+			displayName: 'hey man',
 			followers: 412,
 			bio: 'my name is andrew',
-			image: '',
+			imageUrl: '',
 		},
 		{
 			id: '2',
 			username: 'andriikiva',
-			name: 'hey man',
+			displayName: 'hey man',
 			followers: 412,
 			bio: 'my name is andrew',
-			image: '',
+			imageUrl: '',
 		},
 		{
 			id: '3',
 			username: 'andriikiva',
-			name: 'hey man',
+			displayName: 'hey man',
 			followers: 412,
 			bio: 'my name is andrew',
-			image: '',
+			imageUrl: '',
 		},
 	],
 	stories: [
@@ -40,9 +40,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -53,9 +53,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -66,9 +66,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -79,9 +79,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -92,9 +92,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -105,9 +105,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -118,9 +118,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -131,9 +131,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -144,9 +144,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 		{
@@ -157,9 +157,9 @@ const testSearchData = {
 			likes: 99142,
 			views: 1244,
 			user: {
-				id: '123',
+				id: '4',
 				username: 'andriikiva',
-				image: '',
+				imageUrl: '',
 			},
 		},
 	],

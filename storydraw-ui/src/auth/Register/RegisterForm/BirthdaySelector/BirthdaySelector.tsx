@@ -17,11 +17,11 @@ const BirthdaySelector = ({ selectedMonth, selectedDay, selectedYear, selectBirt
 	const daysLength = selectedMonth ? months.find((month) => month.name === selectedMonth).days : 31;
 	const days = Array.from({ length: daysLength }, (_, index) => (index + 1).toString());
 
-	const previousYear = new Date().getFullYear() - 1;
+	const twelveYearsAgo = new Date().getFullYear() - 12;
 	const startYear = 1900;
 	const years = [];
 
-	for (let year = previousYear; year >= startYear; year--) {
+	for (let year = twelveYearsAgo; year >= startYear; year--) {
 		years.push(year.toString());
 	}
 
@@ -32,21 +32,21 @@ const BirthdaySelector = ({ selectedMonth, selectedDay, selectedYear, selectBirt
 				<DateSelector
 					options={monthNames}
 					onSelectOption={selectBirthday}
-					fieldName={BIRTH_FIELD.BIRTH_MONTH}
+					fieldName={BIRTH_FIELD.MONTH}
 					placeholder="Month"
 					selectedOption={selectedMonth}
 				/>
 				<DateSelector
 					options={days}
 					onSelectOption={selectBirthday}
-					fieldName={BIRTH_FIELD.BIRHT_DAY}
+					fieldName={BIRTH_FIELD.DAY}
 					placeholder="Day"
 					selectedOption={selectedDay}
 				/>
 				<DateSelector
 					options={years}
 					onSelectOption={selectBirthday}
-					fieldName={BIRTH_FIELD.BIRTH_YEAR}
+					fieldName={BIRTH_FIELD.YEAR}
 					placeholder="Year"
 					selectedOption={selectedYear}
 				/>

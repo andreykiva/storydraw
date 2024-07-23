@@ -15,14 +15,14 @@ import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
 
 type StoryInfoProps = Pick<Story, 'description' | 'date' | 'musicName' | 'likes' | 'favorites' | 'share'> & {
-	user: Pick<User, 'username' | 'name' | 'image'>;
+	user: Pick<User, 'username' | 'displayName' | 'imageUrl'>;
 };
 
 const StoryInfo = (props: StoryInfoProps) => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
 	const {
-		user: { username, name, image },
+		user: { username, displayName, imageUrl },
 		description,
 		date,
 		musicName,
@@ -59,14 +59,14 @@ const StoryInfo = (props: StoryInfoProps) => {
 		<div className={styles.StoryInfo}>
 			<div className={styles.StoryInfoTop}>
 				<Link to={`/@${username}`} className={styles.ImgUserLink}>
-					<img src={image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<img src={imageUrl || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 				</Link>
 				<div className={styles.UserInfo}>
 					<Link to={`/@${username}`} className={styles.UserLink}>
 						<span className={styles.Username}>{username}</span>
 					</Link>
 					<div className={styles.UserInfoBottom}>
-						<span className={styles.Name}>{name}</span>
+						<span className={styles.DisplayName}>{displayName}</span>
 						<div className={styles.Dot}></div>
 						<span className={styles.StoryDate}>{date}</span>
 					</div>

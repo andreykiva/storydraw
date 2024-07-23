@@ -4,87 +4,87 @@ import Follow from './Follow/Follow';
 
 const testFollowing = [
 	{
-		id: '1',
+		id: 1,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '2',
+		id: 2,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '3',
+		id: 3,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '4',
+		id: 4,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '5',
+		id: 5,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '6',
+		id: 6,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '7',
+		id: 7,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '8',
+		id: 8,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '9',
+		id: 9,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '10',
+		id: 10,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '11',
+		id: 11,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 	{
-		id: '12',
+		id: 12,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 		preview: '',
 	},
 ];
@@ -97,8 +97,8 @@ const Following = () => {
 					<Follow
 						key={item.id}
 						username={item.username}
-						name={item.name}
-						image={item.image}
+						displayName={item.displayName}
+						imageUrl={item.imageUrl}
 						preview={item.preview}
 					/>
 				))}

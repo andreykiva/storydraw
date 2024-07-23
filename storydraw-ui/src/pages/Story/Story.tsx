@@ -16,10 +16,10 @@ import { openReport } from '@/features/report/reportSlice';
 
 const testStoryInfo = {
 	user: {
-		id: '123',
+		id: 123,
 		username: 'andriikiva',
-		name: 'hey man',
-		image: '',
+		displayName: 'hey man',
+		imageUrl: '',
 	},
 	id: '123123',
 	description: 'I wanna be a bee',

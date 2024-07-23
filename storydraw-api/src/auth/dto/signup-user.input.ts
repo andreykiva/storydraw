@@ -26,10 +26,10 @@ export class SignupWithPhoneAndCodeInput {
 	@Length(6)
 	code: string;
 
-	@Field()
-	@IsNotEmpty()
+	@Field({ nullable: true })
+	@IsOptional()
 	@IsDate()
-	dateOfBirth: Date;
+	dateOfBirth?: Date;
 }
 
 @InputType()
@@ -44,7 +44,7 @@ export class SignupWithEmailAndPassAndCodeInput {
 	@IsString()
 	@IsNotEmpty()
 	@Length(8, 24)
-	@Matches(passwordPattern)
+	@Matches(passwordPattern, { message: 'Invalid password format' })
 	password: string;
 
 	@Field()
@@ -53,13 +53,13 @@ export class SignupWithEmailAndPassAndCodeInput {
 	@Length(6)
 	code: string;
 
-	@Field()
-	@IsNotEmpty()
+	@Field({ nullable: true })
+	@IsOptional()
 	@IsDate()
-	dateOfBirth: Date;
+	dateOfBirth?: Date;
 
 	@Field({ nullable: true })
 	@IsOptional()
 	@IsBoolean()
-	receiveEmailUpdates: boolean;
+	receiveEmailUpdates?: boolean;
 }

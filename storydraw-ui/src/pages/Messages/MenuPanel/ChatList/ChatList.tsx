@@ -4,30 +4,30 @@ import ChatListItem from './ChatListItem/ChatListItem';
 
 const testChatmates = [
 	{
-		id: '123',
+		id: '1',
 		username: 'andrew',
-		image: '',
+		imageUrl: '',
 		lastMessage: 'yo',
 		date: new Date('2024-02-09T12:00:00.000Z'),
 	},
 	{
-		id: '12efe3',
+		id: '2',
 		username: 'John',
-		image: '',
+		imageUrl: '',
 		lastMessage: 'Last message text. Last message text',
 		date: new Date('2024-02-01T12:00:00.000Z'),
 	},
 	{
-		id: '1wefw23',
+		id: '3',
 		username: 'Kate',
-		image: '',
+		imageUrl: '',
 		lastMessage: 'Hey how are you doing?',
 		date: new Date('2024-01-09T12:00:00.000Z'),
 	},
 	{
-		id: '12yge3',
+		id: '4',
 		username: 'Half foot',
-		image: '',
+		imageUrl: '',
 		lastMessage: ':)',
 		date: new Date('2023-02-09T12:00:00.000Z'),
 	},

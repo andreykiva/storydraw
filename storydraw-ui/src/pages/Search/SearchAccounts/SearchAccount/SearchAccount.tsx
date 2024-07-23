@@ -8,17 +8,17 @@ import type User from '@/types/User';
 type SearchAccountProps = Omit<User, 'id' | 'following' | 'likes' | 'isPrivate'>;
 
 const SearchAccount = (props: SearchAccountProps) => {
-	const { image, username, name, bio, followers } = props;
+	const { imageUrl, username, displayName, bio, followers } = props;
 
 	return (
 		<Link to={`/@${username}`} className={styles.SearchAccount}>
 			<div className={styles.AccountImgWr}>
-				<img src={image || defaultImg} alt="Profile picture" className={styles.AccountImg} />
+				<img src={imageUrl || defaultImg} alt="Profile picture" className={styles.AccountImg} />
 			</div>
 			<div className={styles.AccountInfo}>
 				<span className={styles.Username}>{username}</span>
 				<div className={styles.InfoBottom}>
-					<span className={styles.Name}>{name}</span>
+					<span className={styles.DisplayName}>{displayName}</span>
 					<div className={styles.Dot}></div>
 					<p className={styles.FollowersInfo}>
 						<span className={styles.Followers}>{formatNumber(followers)}</span> Followers

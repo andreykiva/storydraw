@@ -15,10 +15,14 @@ import {
 	GENERATE_CODE_EMAIL_MESSAGE,
 	GENERATE_CODE_PHONE_MESSAGE,
 	INVALID_PASSWORD_ERROR,
+	NO_PASSWORD_FOR_PHONE_ERROR,
 } from '../constants/auth.constants';
 import { IAuthService } from '../auth.interface';
-import { LoginResponse } from '../dto/login-response';
+import { AuthResponse, RefreshTokenResponse } from '../dto/auth-response';
 import { GenerateCodeResponse } from '../dto/generate-code-response';
+import { ConfigService } from '@nestjs/config';
+import { TokenService } from './token.service';
+import { ResetWithEmailInput, ResetWithPhoneInput } from '../dto/reset-password.input';
 
 @Injectable()
 export class AuthService implements IAuthService {
@@ -28,6 +32,8 @@ export class AuthService implements IAuthService {
 		private smsService: SmsService,
 		private emailService: EmailService,
 		private verificationsService: VerificationsService,
+		private configService: ConfigService,
+		private tokenService: TokenService,
 	) {}
 
 	//?DONE LOGIN validate password
@@ -35,7 +41,7 @@ export class AuthService implements IAuthService {
 		const passwordHasMatch = await this.usersService.comparePasswords(enteredPassword, user.password);
 
 		if (!passwordHasMatch) {
-			throw new UnauthorizedException(INVALID_PASSWORD_ERROR);
+			throw new UnauthorizedException({ password: INVALID_PASSWORD_ERROR });
 		}
 
 		const { password, ...result } = user;
@@ -44,7 +50,7 @@ export class AuthService implements IAuthService {
 
 	//?DONE GENERATE code for phone
 	async generatePhoneCode(phone: string): Promise<GenerateCodeResponse> {
-		const newVerification = await this.verificationsService.create(phone);
+		const newVerification = await this.verificationsService.create(phone, 'phone');
 		// await this.smsService.sendSms(phone, `Your verification code: ${newVerification.code}`);
 		console.log(newVerification.code);
 		return {
@@ -55,7 +61,7 @@ export class AuthService implements IAuthService {
 
 	//?DONE GENERATE code for email
 	async generateEmailCode(email: string): Promise<GenerateCodeResponse> {
-		const newVerification = await this.verificationsService.create(email);
+		const newVerification = await this.verificationsService.create(email, 'email');
 		// await this.emailService.sendVerificationCode(email, newVerification.code);
 		console.log(newVerification.code);
 		return {
@@ -69,7 +75,7 @@ export class AuthService implements IAuthService {
 		const user = await this.usersService.findOneByPhone(phone);
 
 		if (user) {
-			throw new BadRequestException(PHONE_EXISTS_ERROR);
+			throw new BadRequestException({ phone: PHONE_EXISTS_ERROR });
 		}
 
 		return this.generatePhoneCode(phone);
@@ -80,7 +86,7 @@ export class AuthService implements IAuthService {
 		const user = await this.usersService.findOneByEmail(email);
 
 		if (user) {
-			throw new BadRequestException(EMAIL_EXISTS_ERROR);
+			throw new BadRequestException({ email: EMAIL_EXISTS_ERROR });
 		}
 
 		return this.generateEmailCode(email);
@@ -88,13 +94,13 @@ export class AuthService implements IAuthService {
 
 	//?DONE SIGNUP phone and code
 	async signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput): Promise<User> {
-		await this.verificationsService.confirmCode(signupInput.phone, signupInput.code);
-
 		const user = await this.usersService.findOneByPhone(signupInput.phone);
 
 		if (user) {
-			throw new BadRequestException(PHONE_EXISTS_ERROR);
+			throw new BadRequestException({ phone: PHONE_EXISTS_ERROR });
 		}
+
+		await this.verificationsService.confirmCode(signupInput.phone, signupInput.code);
 
 		const { code, ...userDetails } = signupInput;
 
@@ -103,13 +109,13 @@ export class AuthService implements IAuthService {
 
 	//?DONE SIGNUP email and password and code
 	async signupWithEmailAndPassAndCode(signupInput: SignupWithEmailAndPassAndCodeInput): Promise<User> {
-		await this.verificationsService.confirmCode(signupInput.email, signupInput.code);
-
 		const user = await this.usersService.findOneByEmail(signupInput.email);
 
 		if (user) {
-			throw new BadRequestException(EMAIL_EXISTS_ERROR);
+			throw new BadRequestException({ email: EMAIL_EXISTS_ERROR });
 		}
+
+		await this.verificationsService.confirmCode(signupInput.email, signupInput.code);
 
 		const { code, ...userDetails } = signupInput;
 
@@ -117,13 +123,16 @@ export class AuthService implements IAuthService {
 	}
 
 	//?DONE LOGIN login
-	async login(user: User): Promise<LoginResponse> {
-		const payload = { username: user.username, sub: user.id };
+	async login(user: User): Promise<AuthResponse> {
+		const payload = { sub: user.id };
 
-		return {
-			access_token: this.jwtService.sign(payload),
+		const response = {
+			access_token: this.tokenService.generateAccessToken(payload),
+			refresh_token: this.tokenService.generateRefreshToken(payload),
 			user,
 		};
+
+		return response;
 	}
 
 	//?DONE LOGIN generate code for phone
@@ -131,31 +140,31 @@ export class AuthService implements IAuthService {
 		const user = await this.usersService.findOneByPhone(phone);
 
 		if (!user) {
-			throw new BadRequestException(PHONE_NOT_FOUND_ERROR);
+			throw new BadRequestException({ phone: PHONE_NOT_FOUND_ERROR });
 		}
 
 		return this.generatePhoneCode(phone);
 	}
 
 	//?DONE LOGIN phone and code
-	async loginWithPhoneAndCode(phone: string, code: string): Promise<LoginResponse> {
-		await this.verificationsService.confirmCode(phone, code);
-
+	async loginWithPhoneAndCode(phone: string, code: string): Promise<AuthResponse> {
 		const user = await this.usersService.findOneByPhone(phone);
 
 		if (!user) {
-			throw new UnauthorizedException(PHONE_NOT_FOUND_ERROR);
+			throw new UnauthorizedException({ phone: PHONE_NOT_FOUND_ERROR });
 		}
+
+		await this.verificationsService.confirmCode(phone, code);
 
 		return this.login(user);
 	}
 
 	//?DONE LOGIN phone and password
-	async loginWithPhoneAndPass(phone: string, password: string): Promise<LoginResponse> {
+	async loginWithPhoneAndPass(phone: string, password: string): Promise<AuthResponse> {
 		const existingUser = await this.usersService.findOneByPhone(phone);
 
 		if (!existingUser) {
-			throw new UnauthorizedException(PHONE_NOT_FOUND_ERROR);
+			throw new UnauthorizedException({ phone: PHONE_NOT_FOUND_ERROR });
 		}
 
 		const validatedUser = await this.validatePassword(existingUser, password);
@@ -164,11 +173,11 @@ export class AuthService implements IAuthService {
 	}
 
 	//?DONE LOGIN email and password
-	async loginWithEmailAndPass(email: string, password: string): Promise<LoginResponse> {
+	async loginWithEmailAndPass(email: string, password: string): Promise<AuthResponse> {
 		const existingUser = await this.usersService.findOneByEmail(email);
 
 		if (!existingUser) {
-			throw new UnauthorizedException(EMAIL_NOT_FOUND_ERROR);
+			throw new UnauthorizedException({ email: EMAIL_NOT_FOUND_ERROR });
 		}
 
 		const validatedUser = await this.validatePassword(existingUser, password);
@@ -177,15 +186,75 @@ export class AuthService implements IAuthService {
 	}
 
 	//?DONE LOGIN username and password
-	async loginWithUsernameAndPass(username: string, password: string): Promise<LoginResponse> {
+	async loginWithUsernameAndPass(username: string, password: string): Promise<AuthResponse> {
 		const existingUser = await this.usersService.findOneByUsername(username);
 
 		if (!existingUser) {
-			throw new UnauthorizedException(USERNAME_NOT_FOUND_ERROR);
+			throw new UnauthorizedException({ username: USERNAME_NOT_FOUND_ERROR });
 		}
 
 		const validatedUser = await this.validatePassword(existingUser, password);
 
 		return this.login(validatedUser);
+	}
+
+	async refreshToken(token: string): Promise<RefreshTokenResponse> {
+		const payload = await this.tokenService.verifyRefreshToken(token);
+
+		return {
+			access_token: this.tokenService.generateAccessToken(payload),
+		};
+	}
+
+	async generatePhoneCodeForReset(phone: string): Promise<GenerateCodeResponse> {
+		const user = await this.usersService.findOneByPhone(phone);
+
+		if (!user) {
+			throw new BadRequestException({ phone: PHONE_NOT_FOUND_ERROR });
+		}
+
+		if (!user.password) {
+			throw new BadRequestException({ phone: NO_PASSWORD_FOR_PHONE_ERROR });
+		}
+
+		return this.generatePhoneCode(phone);
+	}
+
+	async generateEmailCodeForReset(email: string): Promise<GenerateCodeResponse> {
+		const user = await this.usersService.findOneByEmail(email);
+
+		if (!user) {
+			throw new BadRequestException({ email: EMAIL_NOT_FOUND_ERROR });
+		}
+
+		return this.generateEmailCode(email);
+	}
+
+	async resetPasswordWithPhone(resetPasswordInput: ResetWithPhoneInput): Promise<User> {
+		const user = await this.usersService.findOneByPhone(resetPasswordInput.phone);
+
+		if (!user) {
+			throw new BadRequestException({ phone: PHONE_NOT_FOUND_ERROR });
+		}
+
+		if (!user.password) {
+			throw new BadRequestException({ phone: NO_PASSWORD_FOR_PHONE_ERROR });
+		}
+
+		await this.verificationsService.confirmCode(resetPasswordInput.phone, resetPasswordInput.code);
+
+		return this.usersService.updatePassword(user, resetPasswordInput.password);
+	}
+
+	async resetPasswordWithEmail(resetPasswordInput: ResetWithEmailInput): Promise<User> {
+		const user = await this.usersService.findOneByEmail(resetPasswordInput.email);
+
+		if (!user) {
+			throw new BadRequestException({ email: EMAIL_NOT_FOUND_ERROR });
+		}
+
+		await this.verificationsService.confirmCode(resetPasswordInput.email, resetPasswordInput.code);
+
+		return this.usersService.updatePassword(user, resetPasswordInput.password);
 	}
 }

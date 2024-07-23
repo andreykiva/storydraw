@@ -10,6 +10,7 @@ import { JwtStrategy } from './strategy/jwt.strategy';
 import { VerificationsModule } from 'src/verifications/verifications.module';
 import { SmsService } from './services/sms.service';
 import { EmailService } from './services/email.service';
+import { TokenService } from './services/token.service';
 
 @Module({
 	imports: [
@@ -23,6 +24,6 @@ import { EmailService } from './services/email.service';
 			useFactory: getJwtConfig,
 		}),
 	],
-	providers: [AuthService, AuthResolver, JwtStrategy, SmsService, EmailService],
+	providers: [AuthService, AuthResolver, JwtStrategy, SmsService, EmailService, ConfigService, TokenService],
 })
 export class AuthModule {}

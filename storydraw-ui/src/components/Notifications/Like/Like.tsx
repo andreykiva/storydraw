@@ -39,13 +39,13 @@ const Like = (props: LikeNotification) => {
 			<div className={styles.StoryLink} onClick={handleClick}>
 				{amount ? (
 					<div className={styles.UserImgSmallWr}>
-						<img src={users[0].image || defaultImg} alt="Profile picture" className={styles.UserImgSmall} />
-						<img src={users[1].image || defaultImg} alt="Profile picture" className={styles.UserImgSmall} />
+						<img src={users[0].imageUrl || defaultImg} alt="Profile picture" className={styles.UserImgSmall} />
+						<img src={users[1].imageUrl || defaultImg} alt="Profile picture" className={styles.UserImgSmall} />
 					</div>
 				) : (
 					<Link to={`/@${user.username}`} className={styles.UserImgWr}>
 						<img
-							src={user.image || defaultImg}
+							src={user.imageUrl || defaultImg}
 							alt="Profile picture"
 							className={styles.UserImg}
 							ref={userImgRef}
@@ -55,18 +55,18 @@ const Like = (props: LikeNotification) => {
 				<div className={styles.LikeInfo}>
 					{amount ? (
 						<p className={styles.UsersAmount}>
-							<Link to={`/@${users[0].username}`} className={styles.Name} ref={otherUsersOneRef}>
-								{users[0].name}
+							<Link to={`/@${users[0].username}`} className={styles.DisplayName} ref={otherUsersOneRef}>
+								{users[0].displayName}
 							</Link>
 							<span>, </span>
-							<Link to={`/@${users[1].username}`} className={styles.Name} ref={otherUsersTwoRef}>
-								{users[1].name}
+							<Link to={`/@${users[1].username}`} className={styles.DisplayName} ref={otherUsersTwoRef}>
+								{users[1].displayName}
 							</Link>
 							{amount - 2 > 1 && <span className={styles.Others}> and {amount - 2} others</span>}
 						</p>
 					) : (
-						<Link to={`/@${user.username}`} className={styles.Name} ref={userNameRef}>
-							{user.name}
+						<Link to={`/@${user.username}`} className={styles.DisplayName} ref={userNameRef}>
+							{user.displayName}
 						</Link>
 					)}
 					<p className={styles.LikeNote}>
@@ -75,7 +75,7 @@ const Like = (props: LikeNotification) => {
 					</p>
 					{parentComment && (
 						<div className={styles.ParentComment}>
-							{parentComment.user.name}: {parentComment.text}
+							{parentComment.user.displayName}: {parentComment.text}
 						</div>
 					)}
 				</div>

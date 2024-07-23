@@ -59,23 +59,20 @@ const DeleteAccountVerification = ({ onBack }: DeleteAccountVerificationProps) =
 				</HTag>
 			</div>
 			<p className={styles.VerificationMessage}>
-				To continue, you need to {verificationMessage} Tapping "Delete account" will delete StoryDraw account
-				andrewtest1237
+				To continue, you need to {verificationMessage} Tapping "Delete account" will delete StoryDraw account andrewtest1237
 			</p>
 
 			{testRegisterMethod === REGISTRATION_METHOD.GOOGLE && <div className={styles.VerifyWithSocialMedia}></div>}
-			{testRegisterMethod === REGISTRATION_METHOD.FACEBOOK && (
-				<div className={styles.VerifyWithSocialMedia}></div>
-			)}
+			{testRegisterMethod === REGISTRATION_METHOD.FACEBOOK && <div className={styles.VerifyWithSocialMedia}></div>}
 			{testRegisterMethod === REGISTRATION_METHOD.TWITTER && <div className={styles.VerifyWithSocialMedia}></div>}
 			{testRegisterMethod === REGISTRATION_METHOD.PHONE && (
 				<div className={styles.VerifyWithCode}>
-					<CodeInput error="" disabled={false} placeholder="Enter 4-digit code" />
+					<CodeInput error="" disabled={false} placeholder="Enter 4-digit code" loading={false} onSendCode={() => {}} />
 				</div>
 			)}
 			{testRegisterMethod === REGISTRATION_METHOD.EMAIL && (
 				<div className={styles.VerifyWithCode}>
-					<CodeInput error="" disabled={false} placeholder="Enter 4-digit code" />
+					<CodeInput error="" disabled={false} placeholder="Enter 4-digit code" loading={false} onSendCode={() => {}} />
 				</div>
 			)}
 

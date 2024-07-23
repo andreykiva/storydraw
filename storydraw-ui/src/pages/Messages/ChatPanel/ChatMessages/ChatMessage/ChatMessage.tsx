@@ -13,7 +13,7 @@ const ChatMessage = (props: Message) => {
 	const dispatch = useDispatch();
 	const [isActionsMenuOpen, setIsActionsMenuOpen] = useState(false);
 	const { id, author, text, likes } = props;
-	const myTestId = 'user123';
+	const myTestId = '22';
 	const isItMe = author.id === myTestId;
 	const likedByMe = likes.users.some((user) => user.id === myTestId);
 
@@ -33,7 +33,7 @@ const ChatMessage = (props: Message) => {
 		<div className={cn(styles.ChatMessage, isItMe && styles.My)}>
 			<div className={styles.MessageContent} onMouseLeave={() => setIsActionsMenuOpen(false)}>
 				<div className={styles.MessageAuthor}>
-					<img src={author.image || defaultImg} alt="Profile picture" className={styles.AuthorImg} />
+					<img src={author.imageUrl || defaultImg} alt="Profile picture" className={styles.AuthorImg} />
 				</div>
 				<p className={styles.MessageText}>{text}</p>
 				<div

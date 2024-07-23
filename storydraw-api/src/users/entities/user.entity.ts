@@ -1,12 +1,14 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Story } from 'src/stories/entities/story.entity';
+import { Drawing } from 'src/drawings/entities/drawing.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'users' })
 @ObjectType()
 export class User {
-	@PrimaryGeneratedColumn()
-	@Field(() => Int)
-	id: number;
+	@PrimaryGeneratedColumn('uuid')
+	@Field()
+	id: string;
 
 	@Column({ unique: true })
 	@Field()
@@ -33,9 +35,17 @@ export class User {
 	@Column({ nullable: true })
 	password?: string;
 
-	@Column({ name: 'date_of_birth', type: 'date' })
-	dateOfBirth: Date;
+	@Column({ name: 'date_of_birth', type: 'date', nullable: true })
+	dateOfBirth?: Date;
 
 	@Column({ name: 'receive_email_updates', default: false })
 	receiveEmailUpdates: boolean;
+
+	@OneToMany(() => Story, (story) => story.user)
+	@Field(() => [Story])
+	stories: Story[];
+
+	@OneToMany(() => Drawing, (drawing) => drawing.user)
+	@Field(() => [Drawing])
+	drawings: Drawing[];
 }

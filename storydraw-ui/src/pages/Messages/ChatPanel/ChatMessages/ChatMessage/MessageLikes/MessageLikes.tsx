@@ -17,7 +17,7 @@ const MessageLikes = ({ likes, isItMyMessage }: MessageLikesProps) => {
 			<div className={styles.Likers}>
 				{likes.users.map((liker) => (
 					<div className={styles.Liker} key={liker.id}>
-						<img src={liker.image || defaultImg} alt="Profile picture" className={styles.LikerImg} />
+						<img src={liker.imageUrl || defaultImg} alt="Profile picture" className={styles.LikerImg} />
 					</div>
 				))}
 			</div>

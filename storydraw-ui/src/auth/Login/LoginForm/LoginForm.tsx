@@ -24,16 +24,15 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 		loginMethod,
 		isFormBtnDisabled,
 		isCodeBtnDisabled,
+		isFormBtnLoading,
+		isCodeBtnLoading,
 		handleChangeInput,
 		handleBlurInput,
 		handleChangeCountry,
 		handleChangeLoginMethod,
+		handleSubmit,
+		handleSendCode,
 	} = useLoginForm();
-
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		console.log('Submit');
-	};
 
 	return (
 		<>
@@ -59,11 +58,7 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 					/>
 				) : (
 					<div className={authSharedStyles.PhoneField}>
-						<CountrySelector
-							selectedOption={country}
-							selectOption={handleChangeCountry}
-							showPhonePrefix={true}
-						/>
+						<CountrySelector selectedOption={country} selectOption={handleChangeCountry} showPhonePrefix={true} />
 						<Input
 							type="text"
 							name={LOGIN_FIELD.PHONE}
@@ -83,8 +78,11 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 						placeholder="Enter 6-digit code"
 						value={formData[LOGIN_FIELD.CODE]}
 						error={formErrors[LOGIN_FIELD.CODE]}
+						isOtherErrors={!!formErrors[LOGIN_FIELD.PHONE]}
 						onChange={handleChangeInput}
 						onBlur={() => handleBlurInput(LOGIN_FIELD.CODE)}
+						onSendCode={handleSendCode}
+						loading={isCodeBtnLoading}
 						disabled={isCodeBtnDisabled}
 						required
 					/>
@@ -106,7 +104,7 @@ const LoginForm = ({ onOpenResetForm }: LoginFormProps) => {
 					onSwitchToPhoneAndPassword={() => handleChangeLoginMethod(LOGIN_METHOD.PHONE_AND_PASSWORD)}
 					onSwitchToPhoneAndCode={() => handleChangeLoginMethod(LOGIN_METHOD.PHONE_AND_CODE)}
 				/>
-				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled}>
+				<Button className={authSharedStyles.SubmitBtn} type="submit" disabled={isFormBtnDisabled} loading={isFormBtnLoading}>
 					Log in
 				</Button>
 			</form>

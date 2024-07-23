@@ -6,7 +6,7 @@ import defaultImg from '@/assets/images/default.svg?url';
 import FriendshipBtn from './FriendshipBtn/FriendshipBtn';
 
 type RelationsItemProps = {
-	user: Pick<User, 'id' | 'username' | 'name' | 'image'> & {
+	user: Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'> & {
 		isFollowedByYou: boolean;
 		isFollowedYou: boolean;
 	};
@@ -23,10 +23,10 @@ const RelationsItem = ({ user }: RelationsItemProps) => {
 		<li className={styles.RelationsItem}>
 			<div className={styles.UserLink} onClick={handleClick}>
 				<div className={styles.UserImgWr}>
-					<img src={user.image || defaultImg} alt="Profile picture" className={styles.UserImg} />
+					<img src={user.imageUrl || defaultImg} alt="Profile picture" className={styles.UserImg} />
 				</div>
 				<div className={styles.UserInfo}>
-					<span className={styles.Name}>{user.name}</span>
+					<span className={styles.DisplayName}>{user.displayName}</span>
 					<span className={styles.Username}>{user.username}</span>
 				</div>
 			</div>

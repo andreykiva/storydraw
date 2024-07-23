@@ -20,3 +20,8 @@ export const highlightText = (text: string, searchTerm: string, className: strin
 		),
 	);
 };
+
+export const isEmail = (text: string) => {
+	if (text.includes('@')) return true;
+	return false;
+};

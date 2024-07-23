@@ -2,9 +2,9 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LessThan, Repository } from 'typeorm';
 import { Verification } from '../entities/verification.entity';
-import { generateRandomNumber } from 'src/common/utils/numberUtils';
+import { generateRandomNumber } from 'src/common/utils/number.utils';
 import { IVerificationsService } from '../verifications.interface';
-import { INVALID_CODE_ERROR, TRY_LATER_ERROR } from '../constants/verifications.constants';
+import { INVALID_CODE_ERROR, TRY_LATER_ERROR, VERIFICATION_FAILED_ERROR } from '../constants/verifications.constants';
 
 @Injectable()
 export class VerificationsService implements IVerificationsService {
@@ -13,11 +13,11 @@ export class VerificationsService implements IVerificationsService {
 		private verificationsRepository: Repository<Verification>,
 	) {}
 
-	async create(identifier: string): Promise<Verification> {
+	async create(identifier: string, identifierType: 'phone' | 'email'): Promise<Verification> {
 		const verification = await this.findOne(identifier);
 
 		if (verification) {
-			throw new BadRequestException(TRY_LATER_ERROR);
+			throw new BadRequestException({ [identifierType]: TRY_LATER_ERROR });
 		}
 
 		const code = generateRandomNumber(6, 6);
@@ -30,13 +30,13 @@ export class VerificationsService implements IVerificationsService {
 		const verification = await this.findOne(identifier);
 
 		if (!verification) {
-			throw new BadRequestException('Verification record not found');
+			throw new BadRequestException({ code: VERIFICATION_FAILED_ERROR });
 		}
 
 		await this.delete(verification);
 
 		if (verification.code !== code) {
-			throw new BadRequestException(INVALID_CODE_ERROR);
+			throw new BadRequestException({ code: INVALID_CODE_ERROR });
 		}
 	}
 

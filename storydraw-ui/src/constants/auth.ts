@@ -21,9 +21,9 @@ export const enum RESET_PASSWORD_FIELD {
 }
 
 export const enum BIRTH_FIELD {
-	BIRTH_MONTH = 'birthMonth',
-	BIRHT_DAY = 'birthDay',
-	BIRTH_YEAR = 'birthYear',
+	MONTH = 'month',
+	DAY = 'day',
+	YEAR = 'year',
 }
 
 export const enum LOGIN_METHOD {

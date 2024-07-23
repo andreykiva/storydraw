@@ -15,10 +15,10 @@ const testStories = [
 		comments: 28,
 		share: 10,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			name: 'hey man',
-			image: '',
+			displayName: 'hey man',
+			imageUrl: '',
 		},
 	},
 	{
@@ -33,10 +33,10 @@ const testStories = [
 		comments: 28,
 		share: 10,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			name: 'hey man',
-			image: '',
+			displayName: 'hey man',
+			imageUrl: '',
 		},
 	},
 	{
@@ -51,10 +51,10 @@ const testStories = [
 		comments: 28,
 		share: 10,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			name: 'hey man',
-			image: '',
+			displayName: 'hey man',
+			imageUrl: '',
 		},
 	},
 	{
@@ -69,10 +69,10 @@ const testStories = [
 		comments: 28,
 		share: 10,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			name: 'hey man',
-			image: '',
+			displayName: 'hey man',
+			imageUrl: '',
 		},
 	},
 	{
@@ -87,10 +87,10 @@ const testStories = [
 		comments: 28,
 		share: 10,
 		user: {
-			id: '123',
+			id: '1',
 			username: 'andriikiva',
-			name: 'hey man',
-			image: '',
+			displayName: 'hey man',
+			imageUrl: '',
 		},
 	},
 ];

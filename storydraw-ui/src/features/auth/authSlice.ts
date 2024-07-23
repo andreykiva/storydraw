@@ -1,13 +1,13 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 type AuthState = {
-	isAuthOpen: boolean;
 	isAuth: boolean;
+	isAuthOpen: boolean;
 };
 
 const initialState: AuthState = {
+	isAuth: false,
 	isAuthOpen: false,
-	isAuth: true,
 };
 
 export const authSlice = createSlice({
@@ -25,13 +25,19 @@ export const authSlice = createSlice({
 			state.isAuthOpen = false;
 		},
 		logout: (state) => {
+			localStorage.removeItem('access_token');
+			localStorage.removeItem('refresh_token');
 			state.isAuth = false;
 			state.isAuthOpen = true;
+		},
+		setTokens: (state, action) => {
+			localStorage.setItem('access_token', action.payload.access_token);
+			localStorage.setItem('refresh_token', action.payload.refresh_token);
 		},
 	},
 });
 
-export const { openAuthModal, closeAuthModal, login, logout } = authSlice.actions;
+export const { openAuthModal, closeAuthModal, login, logout, setTokens } = authSlice.actions;
 
 export const selectAuthState = (state: { auth: AuthState }) => state.auth;
 

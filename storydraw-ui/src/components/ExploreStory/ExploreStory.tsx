@@ -11,7 +11,7 @@ import type Story from '@/types/Story';
 import type User from '@/types/User';
 
 type ExploreStoryProps = Pick<Story, 'id' | 'story' | 'description' | 'tags' | 'likes' | 'views'> & {
-	user: Pick<User, 'id' | 'username' | 'image'>;
+	user: Pick<User, 'id' | 'username' | 'imageUrl'>;
 	className?: string;
 };
 
@@ -37,7 +37,7 @@ const ExploreStory = (props: ExploreStoryProps) => {
 			</p>
 			<div className={styles.BottomInfo}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
-					<img src={user.image || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
+					<img src={user.imageUrl || defaultImg} alt="Profile picture" className={styles.ProfileImg} />
 					<span className={styles.Username}>{user.username}</span>
 				</Link>
 				<Link to={`/@${user.username}/story/${id}`} className={styles.LikesInfo}>

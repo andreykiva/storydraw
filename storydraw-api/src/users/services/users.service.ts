@@ -40,6 +40,10 @@ export class UsersService implements IUsersService {
 		return this.usersRepository.find();
 	}
 
+	findOneById(id: string) {
+		return this.usersRepository.findOneBy({ id });
+	}
+
 	findOneByUsername(username: string): Promise<User> {
 		return this.usersRepository.findOneBy({ username });
 	}
@@ -58,5 +62,17 @@ export class UsersService implements IUsersService {
 
 	comparePasswords(enteredPassword: string, hashedPassword: string): Promise<boolean> {
 		return compare(enteredPassword, hashedPassword);
+	}
+
+	async updateUsername(user: User, newUsername: string): Promise<User> {
+		user.username = newUsername;
+
+		return this.usersRepository.save(user);
+	}
+
+	async updatePassword(user: User, newPassword: string): Promise<User> {
+		user.password = await this.hashPassword(newPassword);
+
+		return this.usersRepository.save(user);
 	}
 }

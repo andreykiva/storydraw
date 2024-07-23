@@ -62,10 +62,11 @@
 	-webkit-box-orient: vertical;
 	text-overflow: ellipsis;
 	word-break: break-word;
+	line-clamp: 1;
 	-webkit-line-clamp: 1;
 }
 
-.Name {
+.DisplayName {
 	color: var(--light-color);
 
 	&:hover {
@@ -98,6 +99,7 @@
 	color: rgb(130, 130, 130);
 	text-overflow: ellipsis;
 	word-break: break-word;
+	line-clamp: 1;
 	-webkit-line-clamp: 1;
 
 	&::before {

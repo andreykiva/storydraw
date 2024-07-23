@@ -26,3 +26,10 @@ export const displayDate = (date: Date, divider: string = '-'): string => {
 		}
 	}
 };
+
+export const formatBirthday = (year: string, monthName: string, day: string) => {
+	const date = new Date(`${monthName} ${day}, ${year}`);
+	const month = (date.getMonth() + 1);
+
+	return `${year}-${month}-${day}`;
+};

@@ -10,3 +10,8 @@ export const INVALID_PASSWORD_ERROR = 'Invalid password.';
 export const EMAIL_NOT_FOUND_ERROR = 'User with this email was not found!';
 export const PHONE_NOT_FOUND_ERROR = 'User with this phone was not found!';
 export const USERNAME_NOT_FOUND_ERROR = 'User with this username was not found!';
+export const USER_NOT_FOUND_ERROR = 'User not found';
+
+export const TOKEN_VERIFICATION_ERROR = 'Token verification failed';
+
+export const NO_PASSWORD_FOR_PHONE_ERROR = 'No password set for this phone number.';

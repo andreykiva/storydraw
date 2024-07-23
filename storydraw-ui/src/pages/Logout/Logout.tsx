@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { logout } from '@/features/auth/authSlice';
 import { clearUser } from '@/features/user/userSlice';
 
-
 const Logout = (): null => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
