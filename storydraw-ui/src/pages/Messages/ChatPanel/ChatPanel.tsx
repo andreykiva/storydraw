@@ -25,6 +25,7 @@ const ChatPanel = () => {
 				maxValueLength={220}
 				historyLimit={11}
 				placeholder="Send a message..."
+				className={styles.InputWithEmojis}
 			/>
 		</div>
 	);

@@ -1,0 +1,53 @@
+.CreateComment {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 20px 30px;
+	border-top: 1px solid #d1d1d11a;
+}
+
+.LoginMessage {
+	width: 100%;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	padding: 0 16px;
+	border-radius: 4px;
+	background: rgb(29, 29, 29);
+	color: var(--bright-green-color);
+	cursor: pointer;
+}
+
+.RepliedComment {
+	position: absolute;
+	bottom: 100%;
+	left: 0;
+	width: 100%;
+	padding: 8px 30px;
+	display: flex;
+	justify-content: space-between;
+	background-color: rgb(44, 44, 44);
+	font-size: 15px;
+	z-index: 1;
+
+	.CommentInfo {
+		margin-right: 30px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.CommentContent {
+		font-weight: 500;
+	}
+
+	.CloseIcon {
+		width: 18px;
+		height: 18px;
+		cursor: pointer;
+
+		&:hover {
+			opacity: .7;
+		}
+	}
+}

@@ -1,7 +1,7 @@
 import type User from './User';
 
 export type MessageLikes = {
-	amount: number;
+	count: number;
 	users: Pick<User, 'id' | 'imageUrl'>[];
 };
 

@@ -1,19 +1,28 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './RelationsItem.module.scss';
-import User from '@/types/User';
 import defaultImg from '@/assets/images/default.svg?url';
-import FriendshipBtn from './FriendshipBtn/FriendshipBtn';
+import { RelationsUser } from '@/types/Profile';
+import FollowButton from '@/components/ui/buttons/FollowButton/FollowButton';
+import useFollow from '@/hooks/interaction/useFollow';
 
 type RelationsItemProps = {
-	user: Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'> & {
-		isFollowedByYou: boolean;
-		isFollowedYou: boolean;
-	};
+	user: RelationsUser;
+	isCurrentUser: boolean;
+	isAuth: boolean;
+	isFollowedBy: boolean;
+	isFollowing: boolean;
 };
 
-const RelationsItem = ({ user }: RelationsItemProps) => {
+const RelationsItem = (props: RelationsItemProps) => {
 	const navigate = useNavigate();
+	const { user, isCurrentUser, isAuth } = props;
+
+	const { handleFollow, loading, isFollowing } = useFollow({
+		isAuth,
+		userId: user.id,
+		initIsFollowing: props.isFollowing,
+	});
 
 	const handleClick = () => {
 		navigate(`/@${user.username}`);
@@ -30,7 +39,15 @@ const RelationsItem = ({ user }: RelationsItemProps) => {
 					<span className={styles.Username}>{user.username}</span>
 				</div>
 			</div>
-			<FriendshipBtn isFollowedByYou={user.isFollowedByYou} isFollowedYou={user.isFollowedYou} />
+			{!isCurrentUser && (
+				<FollowButton
+					className={styles.FollowButton}
+					isFollowedBy={props.isFollowedBy}
+					isFollowing={isFollowing}
+					onFollow={handleFollow}
+					loading={loading}
+				/>
+			)}
 		</li>
 	);
 };

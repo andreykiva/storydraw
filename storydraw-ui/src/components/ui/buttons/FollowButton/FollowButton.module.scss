@@ -1,0 +1,20 @@
+.FollowButton {
+	width: auto;
+	min-width: 120px;
+	height: 40px;
+
+	&.FriendsBtn,
+	&.FollowingBtn {
+		background: rgba(255, 255, 255, 0.08);
+		color: var(--main-color);
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.062);
+		}
+	}
+
+	&.FriendsBtn .FriendsIcon {
+		width: 16px;
+		margin-right: 6px;
+	}
+}

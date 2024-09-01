@@ -1,5 +1,6 @@
 .StoryInfo {
 	padding: 30px;
+	border-bottom: 1px solid #d1d1d11a;
 }
 
 .StoryInfoTop {
@@ -41,7 +42,7 @@
 }
 
 .FollowBtn {
-	max-width: 100px;
+	height: 36px;
 	margin-left: auto;
 }
 
@@ -81,6 +82,18 @@
 		width: 26px;
 		height: 26px;
 		margin-right: 8px;
+
+		&.Liked {
+			fill: rgb(241, 51, 51);
+		}
+	
+		&.Favorited path {
+			fill: rgb(203, 216, 23);
+		}
+	
+		&.Shared {
+			fill: rgb(182, 182, 182);
+		}
 	}
 
 	.ItemNumber {
@@ -88,3 +101,4 @@
 		font-weight: 700;
 	}
 }
+

@@ -1,59 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import cn from 'classnames';
 import styles from './StoryInfo.module.scss';
-import Button from '@/components/ui/buttons/Button/Button';
 import defaultImg from '@/assets/images/default.svg?url';
 import musicIcon from '@/assets/icons/music.svg?url';
 import LikeIcon from '@/assets/icons/like.svg';
 import ShareIcon from '@/assets/icons/share.svg';
 import FavoriteIcon from '@/assets/icons/favorites-filled.svg';
 import { formatNumber } from '@/utils/formatUtils';
-import type Story from '@/types/Story';
-import type User from '@/types/User';
-import { openAuthModal } from '@/features/auth/authSlice';
+import type { ForYouStory } from '@/types/Story';
 import { selectAuth } from '@/features/auth/authSlice';
+import { displayDate } from '@/utils/dateUtils';
+import FollowButton from '@/components/ui/buttons/FollowButton/FollowButton';
+import useFollow from '@/hooks/interaction/useFollow';
+import useStoryLike from '@/hooks/interaction/useStoryLike';
+import useFavorite from '@/hooks/interaction/useFavorite';
+import useShare from '@/hooks/interaction/useShare';
 
-type StoryInfoProps = Pick<Story, 'description' | 'date' | 'musicName' | 'likes' | 'favorites' | 'share'> & {
-	user: Pick<User, 'username' | 'displayName' | 'imageUrl'>;
+type StoryInfoProps = {
+	story: ForYouStory;
+	isCurrentUser: boolean;
 };
 
-const StoryInfo = (props: StoryInfoProps) => {
-	const dispatch = useDispatch();
+const StoryInfo = ({ story, isCurrentUser }: StoryInfoProps) => {
 	const isAuth = useSelector(selectAuth);
-	const {
-		user: { username, displayName, imageUrl },
-		description,
-		date,
-		musicName,
-		likes,
-		favorites,
-		share,
-	} = props;
+	const { description, createdAt } = story;
+	const { username, displayName, imageUrl, isFollowedBy } = story.user;
 
-	const handleFollow = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Follow
-		}
-	};
+	const { isFollowing, loading, handleFollow } = useFollow({
+		initIsFollowing: story.user.isFollowing,
+		isAuth,
+		userId: story.user.id,
+	});
 
-	const handleLike = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Like
-		}
-	};
+	const { likesCount, isLiked, handleLike } = useStoryLike({
+		initLikesCount: story.likesCount,
+		initIsLiked: story.isLiked,
+		isAuth,
+		storyId: story.id,
+	});
 
-	const handleFavorite = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Fav
-		}
-	};
+	const { favoritesCount, isFavorited, handleFavorite } = useFavorite({
+		initfavoritesCount: story.favoritesCount,
+		initIsFavorited: story.isFavorited,
+		isAuth,
+		storyId: story.id,
+	});
+
+	const { sharesCount, isShared, handleShare } = useShare({
+		initSharesCount: story.sharesCount,
+		initIsShared: story.isShared,
+		isAuth,
+		storyId: story.id,
+	});
 
 	return (
 		<div className={styles.StoryInfo}>
@@ -68,29 +68,35 @@ const StoryInfo = (props: StoryInfoProps) => {
 					<div className={styles.UserInfoBottom}>
 						<span className={styles.DisplayName}>{displayName}</span>
 						<div className={styles.Dot}></div>
-						<span className={styles.StoryDate}>{date}</span>
+						<span className={styles.StoryDate}>{displayDate(new Date(createdAt))}</span>
 					</div>
 				</div>
-				<Button className={styles.FollowBtn} onClick={handleFollow}>
-					Follow
-				</Button>
+				{!isCurrentUser && (
+					<FollowButton
+						className={styles.FollowBtn}
+						isFollowedBy={isFollowedBy}
+						isFollowing={isFollowing}
+						onFollow={handleFollow}
+						loading={loading}
+					/>
+				)}
 			</div>
 			<p className={styles.InfoDescr}>{description}</p>
 			<div className={styles.InfoMusic}>
-				<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {musicName}
+				<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {'Orbital - Halcyon And On And On'}
 			</div>
 			<div className={styles.StoryInfoBottom}>
 				<div className={styles.StoryInfoItem} onClick={handleLike}>
-					<LikeIcon className={styles.ItemIcon} />
-					<div className={styles.ItemNumber}>{formatNumber(likes)}</div>
+					<LikeIcon className={cn(styles.ItemIcon, isLiked && styles.Liked)} />
+					<div className={styles.ItemNumber}>{formatNumber(likesCount)}</div>
 				</div>
 				<div className={styles.StoryInfoItem} onClick={handleFavorite}>
-					<FavoriteIcon className={styles.ItemIcon} />
-					<div className={styles.ItemNumber}>{formatNumber(favorites)}</div>
+					<FavoriteIcon className={cn(styles.ItemIcon, isFavorited && styles.Favorited)} />
+					<div className={styles.ItemNumber}>{formatNumber(favoritesCount)}</div>
 				</div>
-				<div className={styles.StoryInfoItem}>
-					<ShareIcon className={styles.ItemIcon} />
-					<div className={styles.ItemNumber}>{formatNumber(share)}</div>
+				<div className={styles.StoryInfoItem} onClick={handleShare}>
+					<ShareIcon className={cn(styles.ItemIcon, isShared && styles.Shared)} />
+					<div className={styles.ItemNumber}>{formatNumber(sharesCount)}</div>
 				</div>
 			</div>
 		</div>

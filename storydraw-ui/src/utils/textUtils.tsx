@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { escapeRegExp } from './regexpUtils';
 
 export const highlightText = (text: string, searchTerm: string, className: string) => {
@@ -24,4 +25,22 @@ export const highlightText = (text: string, searchTerm: string, className: strin
 export const isEmail = (text: string) => {
 	if (text.includes('@')) return true;
 	return false;
+};
+
+export const wrapMentions = (text: string, className?: string) => {
+	const parts = text.split(/(\s+|[,!?.]+)/);
+
+	const jsx = parts.map((part, index) => {
+		if (part.startsWith('@')) {
+			return (
+				<Link to={`/${part}`} key={part + index} className={className}>
+					{part}
+				</Link>
+			);
+		} else {
+			return part;
+		}
+	});
+
+	return <>{jsx}</>;
 };

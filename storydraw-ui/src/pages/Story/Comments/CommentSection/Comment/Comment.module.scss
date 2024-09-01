@@ -24,6 +24,18 @@
 
 .CommentContent {
 	flex: 1;
+	margin-right: 10px;
+	word-break: break-word;
+	white-space: pre-wrap;
+
+	.Mention {
+		font-weight: 700;
+		color: rgb(101, 103, 218);
+
+		&:hover {
+			opacity: .7;
+		}
+	}
 }
 
 .UserLink {
@@ -93,5 +105,9 @@
 		height: 20px;
 		margin-bottom: 4px;
 		fill: rgb(114, 114, 114);
+
+		&.Liked {
+			fill: rgb(241, 51, 51);
+		}
 	}
 }

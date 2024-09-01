@@ -13,7 +13,8 @@ import {
 	RESET_PASSWORD_WITH_PHONE,
 } from '@/graphql/auth/mutations';
 import { transformError } from '@/utils/graphqlUtils';
-import { setupUserLogin } from '@/utils/authUtils';
+import { setupUserAndTokens } from '@/utils/authUtils';
+import { login } from '@/features/auth/authSlice';
 
 type FormData = Record<RESET_PASSWORD_FIELD, string>;
 type FormErrors = Record<RESET_PASSWORD_FIELD, string>;
@@ -44,14 +45,16 @@ const useResetPasswordForm = () => {
 	const [resetPasswordWithPhone, { loading: rppLoading, error: rppError }] = useMutation(RESET_PASSWORD_WITH_PHONE, {
 		onCompleted: (data) => {
 			const { access_token, refresh_token, user } = data.resetPasswordWithPhone;
-			setupUserLogin(dispatch, access_token, refresh_token, user);
+			setupUserAndTokens(dispatch, access_token, refresh_token, user);
+			dispatch(login());
 		},
 	});
 
 	const [resetPasswordWithEmail, { loading: rpeLoading, error: rpeError }] = useMutation(RESET_PASSWORD_WITH_EMAIL, {
 		onCompleted: (data) => {
 			const { access_token, refresh_token, user } = data.resetPasswordWithEmail;
-			setupUserLogin(dispatch, access_token, refresh_token, user);
+			setupUserAndTokens(dispatch, access_token, refresh_token, user);
+			dispatch(login());
 		},
 	});
 

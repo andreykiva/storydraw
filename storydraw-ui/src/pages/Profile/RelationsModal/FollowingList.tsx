@@ -1,19 +1,24 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { RelationsUser } from '@/types/Profile';
 import RelationsItem from './RelationsItem/RelationsItem';
 import NoRelations from './NoRelations/NoRelations';
 import personIcon from '@/assets/icons/profile/person.svg?url';
 import lockIcon from '@/assets/icons/profile/lock.svg?url';
+import { selectUser } from '@/features/user/userSlice';
 
 type FollowingListProps = {
 	following: RelationsUser[];
-	isFollowingLoaded: boolean;
-	isFollowingPrivate: boolean;
+	loading: boolean;
+	isAuth: boolean;
 	username: string;
+	isFollowingPrivate: boolean;
 };
 
-const FollowingList = ({ following, isFollowingLoaded, isFollowingPrivate, username }: FollowingListProps) => {
-	if (!isFollowingLoaded) {
+const FollowingList = ({ following, loading, isAuth, isFollowingPrivate, username }: FollowingListProps) => {
+	const currentUser = useSelector(selectUser);
+
+	if (loading) {
 		return <div>Loading</div>;
 	}
 
@@ -25,23 +30,24 @@ const FollowingList = ({ following, isFollowingLoaded, isFollowingPrivate, usern
 		/>;
 	}
 
-	if (following.length > 0) {
+	if (following && following.length > 0) {
 		return (
 			<>
-				{following.map((follow) => (
-					<RelationsItem key={follow.id} user={follow} />
+				{following.map((user) => (
+					<RelationsItem
+						key={user.id}
+						user={user}
+						isAuth={isAuth}
+						isFollowedBy={user.isFollowedBy}
+						isFollowing={user.isFollowing}
+						isCurrentUser={currentUser.id === user.id}
+					/>
 				))}
 			</>
 		);
 	}
 
-	return (
-		<NoRelations
-			icon={personIcon}
-			title="Following"
-			text="When you have followers that you follow back, you'll see them here"
-		/>
-	);
+	return <NoRelations icon={personIcon} title="Following" text="When you have followers that you follow back, you'll see them here" />;
 };
 
 export default FollowingList;

@@ -1,35 +1,92 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CommentSection.module.scss';
 import ArrowIcon from '@/assets/icons/arrow.svg';
 import Comment from './Comment/Comment';
 import Replies from './Replies/Replies';
 import { formatNumber } from '@/utils/formatUtils';
-import type CommentType from '@/types/Comment';
-import type User from '@/types/User';
+import type { Comment as CommentType, RepliedComment } from '@/types/Comment';
 
-type CommentSectionProps = CommentType & {
-	user: Omit<User, 'bio' | 'followers' | 'following' | 'likes' | 'isPrivate'>;
+type CommentSection = {
+	comment: CommentType;
+	isAuth: boolean;
+	currentUserId: string;
+	handleLikeComment: (commentId: string) => void;
+	handleLikeReply: (commentId: string, replyId: string) => void;
+	handleUnlikeComment: (commentId: string) => void;
+	handleUnlikeReply: (commentId: string, replyId: string) => void;
+	handleDeleteComment: (commentId: string) => void;
+	handleDeleteReply: (commentId: string, replyId: string) => void;
+	addReplies: (commentId: string, replies: CommentType[]) => void;
+	setRepliedComment: (repliedComment: RepliedComment | null) => void;
 };
 
-const CommentSection = (props: CommentSectionProps) => {
+const CommentSection = (props: CommentSection) => {
+	const { comment, isAuth, currentUserId } = props;
+	const {
+		handleLikeComment,
+		handleLikeReply,
+		handleUnlikeComment,
+		handleUnlikeReply,
+		handleDeleteComment,
+		handleDeleteReply,
+		addReplies,
+		setRepliedComment,
+	} = props;
 	const [showReplies, setShowReplies] = useState(false);
-	const { replies } = props;
+	const { repliesCount } = comment;
 
 	const handleToggleReplies = () => {
 		setShowReplies(!showReplies);
 	};
 
+	useEffect(() => {
+		if (!repliesCount) {
+			setShowReplies(false);
+		}
+	}, [repliesCount]);
+
+	const handleSetRepliedComment = () => {
+		setRepliedComment({
+			id: comment.id,
+			content: comment.content,
+			user: {
+				displayName: comment.user.displayName,
+			},
+			parentCommentId: comment.id,
+		});
+	};
+
 	return (
 		<div className={styles.CommentSection}>
-			<Comment reply={false} {...props} />
-			{replies && !showReplies ? (
+			<Comment
+				reply={false}
+				comment={comment}
+				isAuth={isAuth}
+				currentUserId={currentUserId}
+				handleLikeComment={() => handleLikeComment(comment.id)}
+				handleUnlikeComment={() => handleUnlikeComment(comment.id)}
+				handleDeleteComment={() => handleDeleteComment(comment.id)}
+				setRepliedComment={() => handleSetRepliedComment()}
+			/>
+			{repliesCount > 0 && !showReplies ? (
 				<div className={styles.ViewRepliesBtn} onClick={handleToggleReplies}>
-					View {formatNumber(replies)} Replies
+					View {formatNumber(repliesCount)} Replies
 					<ArrowIcon className={styles.ArrowIcon} />
 				</div>
 			) : null}
 
-			{showReplies && <Replies />}
+			{showReplies && (
+				<Replies
+					isAuth={isAuth}
+					comment={comment}
+					currentUserId={currentUserId}
+					handleLikeReply={handleLikeReply}
+					handleUnlikeReply={handleUnlikeReply}
+					handleDeleteReply={handleDeleteReply}
+					addReplies={addReplies}
+					setRepliedComment={setRepliedComment}
+				/>
+			)}
 
 			{showReplies && (
 				<div className={styles.HideReplies}>

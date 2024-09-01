@@ -1,106 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './ForYou.module.scss';
 import ForYouStory from './ForYouStory/ForYouStory';
-
-const testStories = [
-	{
-		id: '1',
-		story: '',
-		description: 'today was a good day',
-		musicName: 'Orbital - Halcyon And On And On',
-		musicId: '123',
-		tags: ['song', 'story', 'day'],
-		likes: 99142,
-		favorites: 419,
-		comments: 28,
-		share: 10,
-		user: {
-			id: '1',
-			username: 'andriikiva',
-			displayName: 'hey man',
-			imageUrl: '',
-		},
-	},
-	{
-		id: '2',
-		story: '',
-		description: 'today was a good day',
-		musicName: 'Orbital - Halcyon And On And On',
-		musicId: '123',
-		tags: ['song', 'story', 'day'],
-		likes: 99142,
-		favorites: 419,
-		comments: 28,
-		share: 10,
-		user: {
-			id: '1',
-			username: 'andriikiva',
-			displayName: 'hey man',
-			imageUrl: '',
-		},
-	},
-	{
-		id: '3',
-		story: '',
-		description: 'today was a good day',
-		musicName: 'Orbital - Halcyon And On And On',
-		musicId: '123',
-		tags: ['song', 'story', 'day'],
-		likes: 99142,
-		favorites: 419,
-		comments: 28,
-		share: 10,
-		user: {
-			id: '1',
-			username: 'andriikiva',
-			displayName: 'hey man',
-			imageUrl: '',
-		},
-	},
-	{
-		id: '4',
-		story: '',
-		description: 'today was a good day',
-		musicName: 'Orbital - Halcyon And On And On',
-		musicId: '123',
-		tags: ['song', 'story', 'day'],
-		likes: 99142,
-		favorites: 419,
-		comments: 28,
-		share: 10,
-		user: {
-			id: '1',
-			username: 'andriikiva',
-			displayName: 'hey man',
-			imageUrl: '',
-		},
-	},
-	{
-		id: '5',
-		story: '',
-		description: 'today was a good day',
-		musicName: 'Orbital - Halcyon And On And On',
-		musicId: '123',
-		tags: ['song', 'story', 'day'],
-		likes: 99142,
-		favorites: 419,
-		comments: 28,
-		share: 10,
-		user: {
-			id: '1',
-			username: 'andriikiva',
-			displayName: 'hey man',
-			imageUrl: '',
-		},
-	},
-];
+import { useQuery } from '@apollo/client';
+import { GET_FEED } from '@/graphql/stories/queries';
+import Loader from '@/components/ui/Loader/Loader';
+import { selectAuth } from '@/features/auth/authSlice';
+import { ForYouStory as ForYouStoryType } from '@/types/Story';
+import { selectUser } from '@/features/user/userSlice';
 
 const ForYou = () => {
+	const isAuth = useSelector(selectAuth);
+	const currentUser = useSelector(selectUser);
+	const [stories, setStories] = useState(null);
+	const [isLoaded, setIsLoaded] = useState(false);
+
+	const { error } = useQuery(GET_FEED, {
+		variables: {
+			isAuth,
+		},
+		fetchPolicy: 'no-cache',
+		onCompleted(data) {
+			setStories(data.getAllStories);
+			setIsLoaded(true);
+		},
+		onError() {
+			setIsLoaded(true);
+		},
+	});
+
+	if (isLoaded && error) return <div>Error: {error.graphQLErrors[0].message}</div>;
+
 	return (
 		<div className={styles.ForYou}>
-			{testStories.map((story) => (
-				<ForYouStory key={story.id} {...story} />
-			))}
+			{!isLoaded ? (
+				<Loader className={styles.Loader} />
+			) : (
+				stories.map((story: ForYouStoryType) => (
+					<ForYouStory key={story.id} isAuth={isAuth} story={story} currentUser={currentUser} />
+				))
+			)}
 		</div>
 	);
 };

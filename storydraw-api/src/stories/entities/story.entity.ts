@@ -1,7 +1,11 @@
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Drawing } from 'src/drawings/entities/drawing.entity';
 import { User } from 'src/users/entities/user.entity';
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Like } from 'src/likes/entities/like.entity';
+import { Comment } from 'src/comments/entities/comment.entity';
+import { Favorite } from 'src/favorites/entities/favorite.entity';
+import { Share } from 'src/shares/entities/share.entity';
 
 @Entity({ name: 'stories' })
 @ObjectType()
@@ -23,6 +27,7 @@ export class Story {
 	description: string;
 
 	@CreateDateColumn({ name: 'created_at' })
+	@Field()
 	createdAt: Date;
 
 	@ManyToOne(() => User, (user) => user.stories)
@@ -30,6 +35,17 @@ export class Story {
 	user: User;
 
 	@OneToMany(() => Drawing, (drawing) => drawing.story)
-	@Field(() => [Drawing])
 	drawings: Drawing[];
+
+	@OneToMany(() => Like, (like) => like.story)
+	likes: Like[];
+
+	@OneToMany(() => Comment, (comment) => comment.story)
+	comments: Comment[];
+
+	@OneToMany(() => Favorite, (favorite) => favorite.story)
+	favorites: Favorite[];
+
+	@OneToMany(() => Share, (share) => share.story)
+	shares: Share[];
 }

@@ -64,14 +64,16 @@
 
 	.FollowBtn {
 		max-width: 160px;
+		height: 36px;
 	}
 
 	.EditProfileBtn {
+		max-width: 160px;
 		background-color: #222222;
 		border-radius: 6px;
 
 		&:hover {
-			opacity: .8;
+			opacity: 0.8;
 		}
 
 		.EditIcon {
@@ -102,7 +104,7 @@
 	font-weight: 400;
 
 	&:not(:last-child):hover {
-		opacity: .7;
+		opacity: 0.7;
 		cursor: pointer;
 	}
 

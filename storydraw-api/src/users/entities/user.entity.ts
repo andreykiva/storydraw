@@ -2,6 +2,12 @@ import { ObjectType, Field } from '@nestjs/graphql';
 import { Story } from 'src/stories/entities/story.entity';
 import { Drawing } from 'src/drawings/entities/drawing.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Like } from 'src/likes/entities/like.entity';
+import { Comment } from 'src/comments/entities/comment.entity';
+import { Follow } from 'src/follows/entities/follow.entity';
+import { Favorite } from 'src/favorites/entities/favorite.entity';
+import { Share } from 'src/shares/entities/share.entity';
+import { Notification } from 'src/notifications/entities/notification.entity';
 
 @Entity({ name: 'users' })
 @ObjectType()
@@ -42,10 +48,29 @@ export class User {
 	receiveEmailUpdates: boolean;
 
 	@OneToMany(() => Story, (story) => story.user)
-	@Field(() => [Story])
 	stories: Story[];
 
+	@OneToMany(() => Like, (like) => like.user)
+	likes: Like[];
+
 	@OneToMany(() => Drawing, (drawing) => drawing.user)
-	@Field(() => [Drawing])
 	drawings: Drawing[];
+
+	@OneToMany(() => Comment, (comment) => comment.user)
+	comments: Comment[];
+
+	@OneToMany(() => Follow, (follow) => follow.follower)
+	following: Follow[];
+
+	@OneToMany(() => Follow, (follow) => follow.following)
+	followers: Follow[];
+
+	@OneToMany(() => Favorite, (favorite) => favorite.user)
+	favorites: Favorite[];
+
+	@OneToMany(() => Share, (share) => share.user)
+	shares: Share[];
+
+	@OneToMany(() => Notification, (notification) => notification.user)
+	notifications: Notification[];
 }

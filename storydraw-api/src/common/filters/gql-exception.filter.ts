@@ -21,7 +21,7 @@ export class GqlExceptionFilter implements ExceptionFilter {
 		throw new ApolloError(message, status.toString(), {
 			statusCode: status,
 			timestamp: new Date().toISOString(),
-			path: request.url,
+			path: request?.url,
 			errors,
 		});
 	}

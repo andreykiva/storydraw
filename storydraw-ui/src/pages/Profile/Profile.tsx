@@ -13,72 +13,20 @@ import BlockIcon from '@/assets/icons/block.svg';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
 import { MENU_POSITION } from '@/constants/ui';
 import { selectUser } from '@/features/user/userSlice';
-import User from '@/types/User';
 import editIcon from '@/assets/icons/profile/edit.svg?url';
 import EditProfileModal from './EditProfileModal/EditProfileModal';
 import RelationsModal from './RelationsModal/RelationsModal';
-import { RELATIONS_TYPE, PROFILE_STORIES_TYPE } from '@/constants/profile';
+import { RELATIONS_TYPE } from '@/constants/profile';
 import lockIcon from '@/assets/icons/profile/lock.svg?url';
 import ProfileStories from './ProfileStories/ProfileStories';
 import UserMessage from './UserMessage/UserMessage';
 import personIcon from '@/assets/icons/profile/person.svg?url';
-
-type FollowStatus = {
-	isFollowedByYou: boolean;
-	isFollowedYou: boolean;
-};
-
-type PrivacySettings = Record<PROFILE_STORIES_TYPE, boolean>;
-
-type UserProfileResponse = {
-	user: User;
-	followStatus: FollowStatus;
-	privacySettings: PrivacySettings;
-};
-
-const testUserProfileResponse: UserProfileResponse = {
-	user: {
-		id: '1234',
-		username: 'somestranger',
-		displayName: 'Hm',
-		bio: 'yes. I am.',
-		imageUrl: `https://lastfm.freetls.fastly.net/i/u/ar0/930705c179074033ef99a50e9456b786.jpg`,
-		following: 422,
-		followers: 9981,
-		likes: 4912,
-		isPrivate: true,
-	},
-	followStatus: {
-		isFollowedByYou: true,
-		isFollowedYou: true,
-	},
-	privacySettings: {
-		[PROFILE_STORIES_TYPE.STORIES]: false,
-		[PROFILE_STORIES_TYPE.FAVORITES]: true,
-		[PROFILE_STORIES_TYPE.LIKED]: true,
-	},
-};
-
-const testMyProfileResponse: UserProfileResponse = {
-	user: {
-		id: '123',
-		username: 'andrii747',
-		displayName: 'Real',
-		imageUrl: `https://upload.wikimedia.org/wikipedia/en/c/c1/Just_Got_Back_From_
-		the_Discomfort%E2%80%94We%27re_Alright.webp`,
-		bio: 'no. I`m not.',
-		following: 422,
-		followers: 9981,
-		likes: 4912,
-		isPrivate: true,
-	},
-	followStatus: null,
-	privacySettings: {
-		[PROFILE_STORIES_TYPE.STORIES]: false,
-		[PROFILE_STORIES_TYPE.FAVORITES]: false,
-		[PROFILE_STORIES_TYPE.LIKED]: true,
-	},
-};
+import { useQuery } from '@apollo/client';
+import { GET_USER_PROFILE } from '@/graphql/users/queries';
+import { ProfileUser } from '@/types/Profile';
+import Loader from '@/components/ui/Loader/Loader';
+import FollowButton from '@/components/ui/buttons/FollowButton/FollowButton';
+import useFollow from '@/hooks/interaction/useFollow';
 
 const Profile = () => {
 	const dispatch = useDispatch();
@@ -86,46 +34,68 @@ const Profile = () => {
 	const isAuth = useSelector(selectAuth);
 	const currentUser = useSelector(selectUser);
 	const username = params.username.slice(1);
-	const [user, setUser] = useState<User>(null);
-	const [followStatus, setFollowStatus] = useState<FollowStatus>(null);
-	const [privacySettings, setPrivacySettings] = useState<PrivacySettings>(null);
-	const [isLoading, setIsLoading] = useState(true);
-	const [isCurrentUser, setIsCurrentUser] = useState(false);
 	const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 	const [isRelationsModalOpen, setIsRelationsModalOpen] = useState(false);
 	const [relationsModalView, setRelationsModalView] = useState<RELATIONS_TYPE>(RELATIONS_TYPE.FOLLOWING);
 
-	useEffect(() => {
-		setIsLoading(true);
-		if (isAuth && username === currentUser.username) {
-			setUser(testMyProfileResponse.user);
-			setFollowStatus(testMyProfileResponse.followStatus);
-			setPrivacySettings(testMyProfileResponse.privacySettings);
-			setIsCurrentUser(true);
-		} else {
-			//fetch user
-			setUser(testUserProfileResponse.user);
-			setFollowStatus(testUserProfileResponse.followStatus);
-			setPrivacySettings(testUserProfileResponse.privacySettings);
-			setIsCurrentUser(false);
+	const [user, setUser] = useState<ProfileUser>(null);
+	const [isCurrentUser, setIsCurrentUser] = useState(false);
+	const [isLoaded, setIsLoaded] = useState(false);
+
+	useQuery(GET_USER_PROFILE, {
+		variables: {
+			usernameInput: {
+				username,
+			},
+			isAuth,
+			isCurrentUser,
+		},
+		onCompleted(data) {
+			setUser(data.findOneByUsername);
+			setIsLoaded(true);
+		},
+		onError() {
+			setIsLoaded(true);
 		}
-		setIsLoading(false);
-	}, [username, currentUser, isAuth]);
+	});
+
+	const { handleFollow, loading: followLoading } = useFollow({
+		isAuth,
+		userId: user?.id,
+		initIsFollowing: user?.isFollowing,
+		followCallback: () => {
+			setUser({
+				...user,
+				isFollowing: true,
+				followersCount: user.followersCount + 1,
+			});
+		},
+		unfollowCallback: () => {
+			setUser({
+				...user,
+				isFollowing: false,
+				followersCount: user.followersCount - 1,
+			});
+		},
+	});
 
 	useEffect(() => {
 		setIsRelationsModalOpen(false);
+		setIsLoaded(false);
 	}, [username]);
 
-	const handleFollow = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
+	useEffect(() => {
+		if (!user || !currentUser) return;
+
+		if (user.id === currentUser.id) {
+			setIsCurrentUser(true);
 		} else {
-			// Login
+			setIsCurrentUser(false);
 		}
-	};
+	}, [isAuth, currentUser, user, username]);
 
 	const handleOpenReport = () => {
-		dispatch(openReport({ type: 'account', targetId: currentUser.id }));
+		dispatch(openReport({ type: 'account', targetId: user?.id }));
 	};
 
 	const handleOpenRelationsModal = (view: RELATIONS_TYPE) => {
@@ -153,8 +123,9 @@ const Profile = () => {
 		});
 	}
 
-	if (isLoading) return <div>Loading...</div>;
-	if (!user)
+	if (!isLoaded) return <Loader />;
+
+	if (!user && isLoaded)
 		return (
 			<UserMessage
 				icon={personIcon}
@@ -172,7 +143,8 @@ const Profile = () => {
 					</div>
 					<div className={styles.InfoMain}>
 						<span className={styles.Username}>
-							{user.username} {user.isPrivate && <img src={lockIcon} alt="Private" />}
+							{user.username}
+							{false && <img src={lockIcon} alt="Private" />}
 						</span>
 						<span className={styles.DisplayName}>{user.displayName}</span>
 						{isCurrentUser ? (
@@ -181,9 +153,13 @@ const Profile = () => {
 								Edit profile
 							</Button>
 						) : (
-							<Button className={styles.FollowBtn} onClick={handleFollow}>
-								Follow
-							</Button>
+							<FollowButton
+								className={styles.FollowBtn}
+								isFollowedBy={user.isFollowedBy}
+								isFollowing={user.isFollowing}
+								onFollow={handleFollow}
+								loading={followLoading}
+							/>
 						)}
 					</div>
 					{!isCurrentUser && (
@@ -197,20 +173,14 @@ const Profile = () => {
 				</div>
 				<div className={styles.BottomInfo}>
 					<div className={styles.UserStatistics}>
-						<div
-							className={styles.StatisticsItem}
-							onClick={() => handleOpenRelationsModal(RELATIONS_TYPE.FOLLOWING)}
-						>
-							<span className={styles.ItemValue}>{formatNumber(user.following)}</span> Following
+						<div className={styles.StatisticsItem} onClick={() => handleOpenRelationsModal(RELATIONS_TYPE.FOLLOWING)}>
+							<span className={styles.ItemValue}>{formatNumber(user.followingCount)}</span> Following
 						</div>
-						<div
-							className={styles.StatisticsItem}
-							onClick={() => handleOpenRelationsModal(RELATIONS_TYPE.FOLLOWERS)}
-						>
-							<span className={styles.ItemValue}>{formatNumber(user.followers)}</span> Followers
+						<div className={styles.StatisticsItem} onClick={() => handleOpenRelationsModal(RELATIONS_TYPE.FOLLOWERS)}>
+							<span className={styles.ItemValue}>{formatNumber(user.followersCount)}</span> Followers
 						</div>
 						<div className={styles.StatisticsItem}>
-							<span className={styles.ItemValue}>{formatNumber(user.likes)}</span> Likes
+							<span className={styles.ItemValue}>{formatNumber(user.likesCount)}</span> Likes
 						</div>
 					</div>
 					<p className={styles.UserBio}>{user.bio || 'No bio yet.'}</p>
@@ -218,22 +188,24 @@ const Profile = () => {
 			</div>
 
 			<ProfileStories
+				userId={user.id}
 				username={user.username}
 				isCurrentUser={isCurrentUser}
-				isPrivate={user.isPrivate}
-				isFollowedByYou={followStatus?.isFollowedByYou}
-				privacySettings={privacySettings}
+				isPrivate={false}
+				isFollowing={user.isFollowing}
+				// privacySettings={{}}
 			/>
 
 			{isEditProfileModalOpen && (
-				<EditProfileModal user={user} onClose={() => setIsEditProfileModalOpen(false)} />
+				<EditProfileModal user={user} udpateUser={setUser} onClose={() => setIsEditProfileModalOpen(false)} />
 			)}
 
 			{isRelationsModalOpen && (
 				<RelationsModal
+					isAuth={isAuth}
 					user={user}
-					view={relationsModalView}
 					isCurrentUser={isCurrentUser}
+					view={relationsModalView}
 					onClose={() => setIsRelationsModalOpen(false)}
 					onChangeView={setRelationsModalView}
 				/>

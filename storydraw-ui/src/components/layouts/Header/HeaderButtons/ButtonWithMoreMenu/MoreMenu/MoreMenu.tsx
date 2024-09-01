@@ -59,7 +59,7 @@ const MoreMenu = ({ isAuth, className, onOpenLogoutModal }: MoreMenuProps) => {
 		{
 			title: 'Favorites',
 			icon: favoritesIcon,
-			onClick: () => navigate(`/@${currentUser.username}`),
+			onClick: () => navigate(`/@${currentUser.username}?tab=favorites`),
 		},
 		{
 			title: 'Get Premium',

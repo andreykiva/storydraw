@@ -19,7 +19,11 @@ const generateRefreshTokenLinkOnUnauthError = ({
 			if (!graphQLErrors) return;
 
 			for (const { path, extensions } of graphQLErrors) {
-				const errors = extensions.errors as CustomError;
+				let errors = extensions.errors as CustomError;
+				if (!errors) {
+					errors = extensions.originalError;
+				}
+
 				if (!errors || !errors.message || errors.message !== 'Unauthorized' || !path) continue;
 				if (path.includes(refreshTokenPathName)) break;
 

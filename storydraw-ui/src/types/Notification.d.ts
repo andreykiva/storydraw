@@ -45,7 +45,7 @@ export type LikeNotification = {
 		author: Pick<User, 'id' | 'username'>;
 	};
 	user?: LikedUser;
-	amount?: number;
+	count?: number;
 	users?: LikedUser[];
 };
 

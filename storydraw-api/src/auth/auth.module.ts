@@ -24,6 +24,6 @@ import { TokenService } from './services/token.service';
 			useFactory: getJwtConfig,
 		}),
 	],
-	providers: [AuthService, AuthResolver, JwtStrategy, SmsService, EmailService, ConfigService, TokenService],
+	providers: [AuthService, AuthResolver, JwtStrategy, SmsService, EmailService, TokenService],
 })
 export class AuthModule {}

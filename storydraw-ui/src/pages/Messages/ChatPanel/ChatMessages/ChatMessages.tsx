@@ -15,7 +15,7 @@ const testMessages: Message[] = [
 		text: 'Hey! What`s up?',
 		date: '2024-04-23T10:30:00.000Z',
 		likes: {
-			amount: 1,
+			count: 1,
 			users: [
 				{
 					id: '1',
@@ -34,7 +34,7 @@ const testMessages: Message[] = [
 		text: 'Yo, I`m fine! What about you?',
 		date: '2024-04-23T10:31:00.000Z',
 		likes: {
-			amount: 0,
+			count: 0,
 			users: [],
 		},
 	},
@@ -48,7 +48,7 @@ const testMessages: Message[] = [
 		text: 'I`m good too. Have a nice day!',
 		date: '2024-04-24T10:32:00.000Z',
 		likes: {
-			amount: 2,
+			count: 2,
 			users: [
 				{
 					id: '1',
@@ -71,7 +71,7 @@ const testMessages: Message[] = [
 		text: 'Thanks! You too.',
 		date: '2024-04-24T10:33:00.000Z',
 		likes: {
-			amount: 1,
+			count: 1,
 			users: [
 				{
 					id: '1',
@@ -90,7 +90,7 @@ const testMessages: Message[] = [
 		text: 'How`s the weather there?',
 		date: '2024-04-24T10:34:00.000Z',
 		likes: {
-			amount: 0,
+			count: 0,
 			users: [],
 		},
 	},
@@ -107,7 +107,7 @@ const testMessages: Message[] = [
 		   itaque placeat voluptates. Rerum, facilis.`,
 		date: '2024-04-25T10:39:00.000Z',
 		likes: {
-			amount: 1,
+			count: 1,
 			users: [
 				{
 					id: '2',
@@ -126,7 +126,7 @@ const testMessages: Message[] = [
 		text: 'It`s sunny and warm. Perfect day!',
 		date: '2024-04-25T10:35:00.000Z',
 		likes: {
-			amount: 2,
+			count: 2,
 			users: [
 				{
 					id: '1',
@@ -149,7 +149,7 @@ const testMessages: Message[] = [
 		text: 'Lucky you! Here it`s cloudy.',
 		date: '2024-04-25T10:36:00.000Z',
 		likes: {
-			amount: 1,
+			count: 1,
 			users: [
 				{
 					id: '2',
@@ -168,7 +168,7 @@ const testMessages: Message[] = [
 		text: 'I hope it clears up for you soon.',
 		date: '2024-04-26T10:37:00.000Z',
 		likes: {
-			amount: 0,
+			count: 0,
 			users: [],
 		},
 	},
@@ -182,7 +182,7 @@ const testMessages: Message[] = [
 		text: 'Thank you!',
 		date: '2024-04-26T10:38:00.000Z',
 		likes: {
-			amount: 1,
+			count: 1,
 			users: [
 				{
 					id: '1',
@@ -201,7 +201,7 @@ const testMessages: Message[] = [
 		text: 'You`re welcome.',
 		date: '2024-04-26T10:39:00.000Z',
 		likes: {
-			amount: 2,
+			count: 2,
 			users: [
 				{
 					id: '1',
@@ -224,7 +224,7 @@ const testMessages: Message[] = [
 		text: 'sooooo....',
 		date: '2024-04-26T12:41:00.000Z',
 		likes: {
-			amount: 0,
+			count: 0,
 			users: [],
 		},
 	},

@@ -9,13 +9,18 @@ import Loader from '@/components/ui/Loader/Loader';
 type ValidatedInputProps = React.ComponentProps<'input'> & {
 	error: string;
 	loading: boolean;
+	initialValue?: string;
 	request: (value: string) => void;
 };
 
-const ValidatedInput = ({ error, loading, request, value, onChange, ...rest }: ValidatedInputProps) => {
+const ValidatedInput = ({ error, loading, request, value, onChange, initialValue, ...rest }: ValidatedInputProps) => {
 	const [timerId, setTimerId] = useState(null);
 	const [isLoading, setIsLoading] = useState(loading);
-	const isValid = value && !error;
+	let isValid = value && !error;
+
+	if (initialValue && value === initialValue) {
+		isValid = null;
+	}
 
 	useEffect(() => {
 		setIsLoading(loading);
@@ -25,7 +30,14 @@ const ValidatedInput = ({ error, loading, request, value, onChange, ...rest }: V
 
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange(e);
-		debouncedFetchData(e.target.value);
+
+		const newValue = e.target.value;
+
+		if ((initialValue && newValue === initialValue) || !newValue) {
+			return;
+		}
+
+		debouncedFetchData(newValue);
 		setIsLoading(true);
 	};
 

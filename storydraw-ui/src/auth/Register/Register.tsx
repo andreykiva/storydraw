@@ -16,9 +16,7 @@ const Register = () => {
 			{registerView === REGISTER_VIEW.REGISTER_OPTIONS && (
 				<RegisterOptions openForm={() => setRegisterView(REGISTER_VIEW.REGISTER_FORM)} />
 			)}
-			{registerView === REGISTER_VIEW.REGISTER_FORM && (
-				<RegisterForm onShowRegisterOptions={() => setRegisterView(REGISTER_VIEW.REGISTER_OPTIONS)} />
-			)}
+			{registerView === REGISTER_VIEW.REGISTER_FORM && <RegisterForm />}
 		</div>
 	);
 };

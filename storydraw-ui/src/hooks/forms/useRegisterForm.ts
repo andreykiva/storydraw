@@ -17,7 +17,7 @@ import { formatBirthday } from '@/utils/dateUtils';
 import { login } from '@/features/auth/authSlice';
 import { ENSURE_USERNAME_NOT_EXISTS } from '@/graphql/users/queries';
 import { UPDATE_USERNAME } from '@/graphql/users/mutations';
-import { setupCreateUsername, setupUserLogin } from '@/utils/authUtils';
+import { setupCreateUsername, setupUserAndTokens } from '@/utils/authUtils';
 
 type FormData = Record<REGISTER_FIELD, string>;
 type FormErrors = Record<REGISTER_FIELD, string>;
@@ -52,7 +52,7 @@ const useRegisterForm = () => {
 	const [sendTrends, setSendTrends] = useState(false);
 	const [isPhoneMode, setIsPhoneMode] = useState(true);
 	const [showUsernameField, setShowUsernameField] = useState(false);
-	const [isUsernameBtnDisabled, setIsUsernameBtnDisabled] = useState(false);
+	const [isUsernameLoading, setIsUsernameLoading] = useState(false);
 
 	const [generatePhoneCode, { loading: gpcLoading, error: gpcError }] = useMutation(GENERATE_PHONE_CODE_FOR_SIGNUP);
 	const [generateEmailCode, { loading: gecLoading, error: gecError }] = useMutation(GENERATE_EMAIL_CODE_FOR_SIGNUP);
@@ -60,14 +60,16 @@ const useRegisterForm = () => {
 	const [signupWithPhoneAndCode, { loading: spLoading, error: spError }] = useMutation(SIGNUP_WITH_PHONE_AND_CODE, {
 		onCompleted: (data) => {
 			const { access_token, refresh_token, user } = data.signupWithPhoneAndCode;
-			setupUserLogin(dispatch, access_token, refresh_token, user);
+			setupUserAndTokens(dispatch, access_token, refresh_token, user);
+			setShowUsernameField(true);
 		},
 	});
 
 	const [signupWithEmailAndPassAndCode, { loading: seLoading, error: seError }] = useMutation(SIGNUP_WITH_EMAIL_AND_PASS_AND_CODE, {
 		onCompleted: (data) => {
 			const { access_token, refresh_token, user } = data.signupWithEmailAndPassAndCode;
-			setupUserLogin(dispatch, access_token, refresh_token, user);
+			setupUserAndTokens(dispatch, access_token, refresh_token, user);
+			setShowUsernameField(true);
 		},
 	});
 
@@ -79,6 +81,7 @@ const useRegisterForm = () => {
 					[REGISTER_FIELD.USERNAME]: '',
 				});
 			}
+			setIsUsernameLoading(false);
 		},
 		fetchPolicy: 'no-cache',
 	});
@@ -108,6 +111,8 @@ const useRegisterForm = () => {
 
 	const isUsernameError = !!formErrors[REGISTER_FIELD.USERNAME];
 
+	const isUsernameBtnDisabled = Boolean(isUsernameInvalid || findUserLoading || isUsernameError || isUsernameLoading);
+
 	useEffect(() => {
 		handleError(gpcError, [REGISTER_FIELD.PHONE, REGISTER_FIELD.CODE]);
 	}, [gpcError]);
@@ -126,19 +131,12 @@ const useRegisterForm = () => {
 
 	useEffect(() => {
 		handleError(findUserError, [REGISTER_FIELD.USERNAME]);
+		setIsUsernameLoading(false);
 	}, [findUserError]);
 
 	useEffect(() => {
 		handleError(createUsernameError, [REGISTER_FIELD.USERNAME]);
 	}, [createUsernameError]);
-
-	useEffect(() => {
-		if (isUsernameInvalid || findUserLoading || isUsernameError) {
-			setIsUsernameBtnDisabled(true);
-		} else {
-			setIsUsernameBtnDisabled(false);
-		}
-	}, [findUserLoading, isUsernameInvalid, isUsernameError]);
 
 	const handleFindUser = (value: string) => {
 		findUser({
@@ -242,7 +240,7 @@ const useRegisterForm = () => {
 		const { name, value } = e.target;
 
 		if (name === REGISTER_FIELD.USERNAME) {
-			setIsUsernameBtnDisabled(true);
+			setIsUsernameLoading(true);
 		}
 
 		setFormData({
@@ -307,7 +305,6 @@ const useRegisterForm = () => {
 		handleToggleSendTrends,
 		handleChangeBirth,
 		handleChangeIsPhoneMode: setIsPhoneMode,
-		handleChangeShowUsernameField: setShowUsernameField,
 		handleSubmit,
 		handleSendCode,
 		handleSubmitUsername,

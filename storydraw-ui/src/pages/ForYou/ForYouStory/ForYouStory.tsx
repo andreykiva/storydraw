@@ -1,77 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import styles from './ForYouStory.module.scss';
 import defaultImg from '@/assets/images/default.svg?url';
 import previewImg from '@/assets/images/preview.jpg';
 import musicIcon from '@/assets/icons/music.svg?url';
-import Button from '@/components/ui/buttons/Button/Button';
-import LikeIcon from '@/assets/icons/like.svg';
-import CommentIcon from '@/assets/icons/comment.svg';
-import FavoriteIcon from '@/assets/icons/favorites-filled.svg';
-import ShareIcon from '@/assets/icons/share.svg';
-import { formatNumber } from '@/utils/formatUtils';
-import type Story from '@/types/Story';
-import type User from '@/types/User';
-import { openAuthModal } from '@/features/auth/authSlice';
-import { selectAuth } from '@/features/auth/authSlice';
-import ReportIcon from '@/assets/icons/report.svg';
-import { openReport } from '@/features/report/reportSlice';
-import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
-import { MENU_POSITION } from '@/constants/ui';
+import { ForYouStory } from '@/types/Story';
+import InteractionPanel from './InteractionPanel/InteractionPanel';
+import { UserState } from '@/features/user/userSlice';
+import FollowButton from '@/components/ui/buttons/FollowButton/FollowButton';
+import useFollow from '@/hooks/interaction/useFollow';
 
-type ForYouStoryProps = Omit<Story, 'date' | 'views'> & {
-	user: Omit<User, 'bio' | 'followers' | 'following' | 'likes' | 'isPrivate'>;
+type ForYouStoryProps = {
+	isAuth: boolean;
+	story: ForYouStory;
+	currentUser: UserState;
 };
 
 const ForYouStory = (props: ForYouStoryProps) => {
-	const dispatch = useDispatch();
-	const isAuth = useSelector(selectAuth);
-	const { id, user, story, description, musicName, tags, likes, comments, favorites, share } = props; // + musicId
+	const { isAuth, currentUser } = props;
+	const { id, user, description, likesCount, commentsCount, favoritesCount, sharesCount, isLiked, isFavorited, isShared } =
+		props.story;
 
-	const handleFollow = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Login
-		}
-	};
-
-	const handleLike = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Like
-		}
-	};
-
-	const handleComment = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Comment
-		}
-	};
-
-	const handleFavorite = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Fav
-		}
-	};
-
-	const handleOpenReport = () => {
-		dispatch(openReport({ type: 'story', targetId: id }));
-	};
-
-	const actions = [
-		{
-			name: 'Report',
-			iconComponent: <ReportIcon />,
-			onClick: handleOpenReport,
-		},
-	];
+	const { handleFollow, loading, isFollowing } = useFollow({
+		isAuth,
+		userId: user.id,
+		initIsFollowing: user.isFollowing,
+	});
 
 	return (
 		<div className={styles.ForYouStory}>
@@ -86,47 +40,42 @@ const ForYouStory = (props: ForYouStoryProps) => {
 					</Link>
 					<p className={styles.InfoDescr}>
 						<span className={styles.DescrText}>{description}</span>
-						{tags.map((tag) => (
+						{/* {tags.map((tag) => (
 							<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
 								#{tag}
 							</Link>
-						))}
+						))} */}
 					</p>
 					<div className={styles.InfoMusic}>
-						<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {musicName}
+						<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {'Orbital - Halcyon And On And On'}
 					</div>
 				</div>
-				<Button className={styles.FollowBtn} onClick={handleFollow}>
-					Follow
-				</Button>
+				{user.id !== currentUser.id && (
+					<FollowButton
+						className={styles.FollowBtn}
+						onFollow={handleFollow}
+						isFollowedBy={user.isFollowedBy}
+						isFollowing={isFollowing}
+						loading={loading}
+					/>
+				)}
 			</div>
 			<div className={styles.StoryWrapper}>
 				<Link to={`/@${user.username}/story/${id}`} className={styles.StoryLink}>
-					<img src={story || previewImg} alt="Story" className={styles.Story} />
+					<img src={previewImg} alt="Story" className={styles.Story} />
 				</Link>
-				<div className={styles.StoryPanel}>
-					<div className={styles.PanelItem} onClick={handleLike}>
-						<LikeIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>{formatNumber(likes)}</div>
-					</div>
-					<div className={styles.PanelItem} onClick={handleComment}>
-						<CommentIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>{formatNumber(comments)}</div>
-					</div>
-					<div className={styles.PanelItem} onClick={handleFavorite}>
-						<FavoriteIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>{formatNumber(favorites)}</div>
-					</div>
-					<div className={styles.PanelItem}>
-						<ShareIcon className={styles.ItemIcon} />
-						<div className={styles.ItemNumber}>{formatNumber(share)}</div>
-					</div>
-					<ButtonWithActionsMenu
-						actions={actions}
-						menuPosition={MENU_POSITION.BOTTOM_LEFT}
-						menuClassName={styles.ActionsMenu}
-					/>
-				</div>
+				<InteractionPanel
+					storyId={id}
+					username={user.username}
+					isAuth={isAuth}
+					likesCount={likesCount}
+					commentsCount={commentsCount}
+					favoritesCount={favoritesCount}
+					sharesCount={sharesCount}
+					isLiked={isLiked}
+					isFavorited={isFavorited}
+					isShared={isShared}
+				/>
 			</div>
 		</div>
 	);

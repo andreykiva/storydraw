@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useQuery } from '@apollo/client';
 import styles from './Story.module.scss';
 import storyImg from '@/assets/images/preview.jpg';
 import closeIcon from '@/assets/icons/close.svg?url';
@@ -10,42 +11,50 @@ import Button from '@/components/ui/buttons/Button/Button';
 import StoryInfo from './StoryInfo/StoryInfo';
 import Comments from './Comments/Comments';
 import ArrowIcon from '@/assets/icons/arrow.svg';
-import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
 import { openReport } from '@/features/report/reportSlice';
-
-const testStoryInfo = {
-	user: {
-		id: 123,
-		username: 'andriikiva',
-		displayName: 'hey man',
-		imageUrl: '',
-	},
-	id: '123123',
-	description: 'I wanna be a bee',
-	date: '06-23',
-	musicId: '41',
-	musicName: 'Orbital - Halcyon And On And On',
-	likes: 723,
-	favorites: 213,
-	share: 412,
-};
+import { GET_STORY } from '@/graphql/stories/queries';
+import Loader from '@/components/ui/Loader/Loader';
+import { selectUser } from '@/features/user/userSlice';
 
 const Story = () => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
+	const currentUser = useSelector(selectUser);
+	const params = useParams();
+	const storyId = params.storyId;
 
-	const handleLogin = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Login
-		}
-	};
+	const [story, setStory] = useState(null);
+	const [isLoaded, setIsLoaded] = useState(false);
+
+	let isCurrentUser = false;
+
+	if (isLoaded && currentUser.id === story?.user.id) {
+		isCurrentUser = true;
+	}
+
+	const { loading, error } = useQuery(GET_STORY, {
+		variables: {
+			getStoryInput: {
+				storyId,
+			},
+			isAuth,
+		},
+		onCompleted(data) {
+			setStory(data.getStory);
+			setIsLoaded(true);
+		},
+	});
 
 	const handleOpenReport = () => {
-		dispatch(openReport({ type: 'story', targetId: testStoryInfo.id }));
+		dispatch(openReport({ type: 'story', targetId: story?.id }));
 	};
+
+	if (error) return <div>Error...</div>;
+
+	if (loading || !isLoaded) return <Loader />;
+
+	if (!story) return <div>Story not found!</div>;
 
 	return (
 		<div className={styles.Story}>
@@ -58,30 +67,28 @@ const Story = () => {
 						</Link>
 					</div>
 					<SearchBar light={true} />
-					<Button className={styles.ReportBtn} onClick={handleOpenReport}>
-						<ReportIcon className={styles.ReportIcon} />
-						<span>Report</span>
-					</Button>
+					<div className={styles.ReportWrapper}>
+						{!isCurrentUser && (
+							<Button className={styles.ReportBtn} onClick={handleOpenReport}>
+								<ReportIcon className={styles.ReportIcon} />
+								<span>Report</span>
+							</Button>
+						)}
+					</div>
 				</div>
 				<div className={styles.StoryNav}>
 					<Link to="/@andrey/story/777" className={styles.StoryNavLink}>
 						<ArrowIcon className={styles.NavLinkIcon} />
 					</Link>
-					<Link to="/@andrey/story/888" className={styles.StoryNavLink}>
+					<Link to="/@andrey/story/b372d330-baf0-4ed6-ab03-12c6d0ab4274" className={styles.StoryNavLink}>
 						<ArrowIcon className={styles.NavLinkIcon} />
 					</Link>
 				</div>
 				<img src={storyImg} alt="Story" className={styles.StoryBlock} />
 			</div>
 			<div className={styles.StoryPanel}>
-				<div className={styles.StoryPanelTop}>
-					<StoryInfo {...testStoryInfo} />
-					<div className={styles.Underline}></div>
-					<Comments />
-				</div>
-				<div className={styles.StoryPanelBottom} onClick={handleLogin}>
-					<div className={styles.LoginMessage}>Log in to comment</div>
-				</div>
+				<StoryInfo story={story} isCurrentUser={isCurrentUser} />
+				<Comments storyId={storyId} isAuth={isAuth} currentUserId={currentUser.id} />
 			</div>
 		</div>
 	);

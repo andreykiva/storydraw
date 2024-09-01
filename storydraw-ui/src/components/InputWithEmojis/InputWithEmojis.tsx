@@ -17,6 +17,8 @@ type InputWithEmojisProps = {
 	maxValueLength: number;
 	historyLimit: number;
 	placeholder: string;
+	className?: string;
+	menuPosition?: MENU_POSITION;
 };
 
 const InputWithEmojis = (props: InputWithEmojisProps) => {
@@ -26,7 +28,7 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 	const emojiPickerSectionRef = useRef<HTMLDivElement>(null);
 	const [history, setHistory] = useState([{ text: '', caretPos: 0 }]);
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const { value, onChange, onEnter, maxValueLength, historyLimit, placeholder } = props;
+	const { value, onChange, onEnter, maxValueLength, historyLimit, placeholder, className, menuPosition } = props;
 	const valueLength = value.length;
 	const isValueNotEmpty = valueLength > 0;
 
@@ -177,7 +179,7 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 	};
 
 	return (
-		<div className={styles.InputWithEmojisForm}>
+		<div className={cn(styles.InputWithEmojisForm, className)}>
 			<div className={cn(styles.InputContainer, isValueNotEmpty && styles.Constrained)}>
 				{!isValueNotEmpty && <div className={styles.Placeholder}>{placeholder}</div>}
 				<div className={styles.InputSection}>
@@ -200,14 +202,11 @@ const InputWithEmojis = (props: InputWithEmojisProps) => {
 						</div>
 					)}
 				</div>
-				<div
-					className={cn(styles.TogglePickerSection, isEmojiPickerOpen && styles.Active)}
-					ref={emojiPickerSectionRef}
-				>
+				<div className={cn(styles.TogglePickerSection, isEmojiPickerOpen && styles.Active)} ref={emojiPickerSectionRef}>
 					<button className={styles.TogglePickerBtn} onClick={handleToggleEmojiPicker}>
 						<img src={emojiIcon} alt="Emoji" className={styles.EmojiIcon} />
 					</button>
-					<Prompt position={MENU_POSITION.TOP_CENTER} className={styles.Prompt}>
+					<Prompt position={menuPosition || MENU_POSITION.TOP_CENTER} className={styles.Prompt}>
 						Click to add emojis
 					</Prompt>
 				</div>

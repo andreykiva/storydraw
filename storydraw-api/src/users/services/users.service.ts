@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { hash, compare } from 'bcryptjs';
@@ -6,6 +6,8 @@ import { User } from '../entities/user.entity';
 import { CreateUserInput } from '../dto/create-user.input';
 import { IUsersService } from '../users.interface';
 import { UsernameService } from './username.service';
+import { USERNAME_EXISTS_ERROR } from 'src/common/constants/errors.constants';
+import { UpdateUserInput } from '../dto/update-user.input';
 
 @Injectable()
 export class UsersService implements IUsersService {
@@ -65,6 +67,8 @@ export class UsersService implements IUsersService {
 	}
 
 	async updateUsername(user: User, newUsername: string): Promise<User> {
+		await this.ensureUsernameNotExists(newUsername);
+
 		user.username = newUsername;
 
 		return this.usersRepository.save(user);
@@ -72,6 +76,34 @@ export class UsersService implements IUsersService {
 
 	async updatePassword(user: User, newPassword: string): Promise<User> {
 		user.password = await this.hashPassword(newPassword);
+
+		return this.usersRepository.save(user);
+	}
+
+	async ensureUsernameNotExists(username: string): Promise<boolean> {
+		const user = await this.findOneByUsername(username);
+
+		if (user) {
+			throw new ConflictException({ username: USERNAME_EXISTS_ERROR });
+		}
+
+		return false;
+	}
+
+	async updateUser(user: User, updateUserInput: UpdateUserInput): Promise<User> {
+		if (updateUserInput.username && user.username !== updateUserInput.username) {
+			await this.ensureUsernameNotExists(updateUserInput.username);
+
+			user.username = updateUserInput.username;
+		}
+
+		if (updateUserInput.displayName) {
+			user.displayName = updateUserInput.displayName;
+		}
+
+		if (updateUserInput.bio !== undefined) {
+			user.bio = updateUserInput.bio;
+		}
 
 		return this.usersRepository.save(user);
 	}

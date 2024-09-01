@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './HeaderButtons.module.scss';
 import createIcon from '@/assets/icons/create.svg?url';
@@ -10,21 +11,18 @@ import ActionButtons from './ActionButtons/ActionButtons';
 
 const HeaderButtons = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const isAuth = useSelector(selectAuth);
 
 	const handleLogin = () => {
-		if (!isAuth) {
-			dispatch(openAuthModal());
-		} else {
-			// Login
-		}
+		dispatch(openAuthModal());
 	};
 
 	const handleCreate = () => {
 		if (!isAuth) {
 			dispatch(openAuthModal());
 		} else {
-			// create
+			navigate('/create');
 		}
 	};
 

@@ -10,11 +10,11 @@ type FavoritesListProps = {
 	username: string;
 	isCurrentUser: boolean;
 	isPrivate: boolean;
-	isFavoritesLoaded: boolean;
+	loading: boolean;
 };
 
 const FavoritesList = (props: FavoritesListProps) => {
-	const { favorites, username, isCurrentUser, isPrivate, isFavoritesLoaded } = props;
+	const { favorites, username, isCurrentUser, isPrivate, loading } = props;
 
 	if (isPrivate && !isCurrentUser) {
 		return (
@@ -26,11 +26,11 @@ const FavoritesList = (props: FavoritesListProps) => {
 		);
 	}
 
-	if (!isFavoritesLoaded) {
+	if (loading) {
 		return <div>Loading</div>;
 	}
 
-	if (favorites.length > 0) {
+	if (favorites && favorites.length > 0) {
 		return (
 			<>
 				{favorites.map((story) => (
@@ -42,23 +42,11 @@ const FavoritesList = (props: FavoritesListProps) => {
 
 	//no content (me)
 	if (isCurrentUser) {
-		return (
-			<UserMessage
-				icon={favoritesIcon}
-				title="Favorite posts"
-				text="Your favorite posts will appear here"
-			/>
-		);
+		return <UserMessage icon={favoritesIcon} title="Favorite posts" text="Your favorite posts will appear here" />;
 	}
 
 	//no content (user)
-	return (
-		<UserMessage
-			icon={favoritesIcon}
-			title="No content"
-			text="This user has not added any stories to Favorites yet."
-		/>
-	);
+	return <UserMessage icon={favoritesIcon} title="No content" text="This user has not added any stories to Favorites yet." />;
 };
 
 export default FavoritesList;

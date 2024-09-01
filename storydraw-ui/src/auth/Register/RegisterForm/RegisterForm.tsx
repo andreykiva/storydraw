@@ -9,18 +9,12 @@ import HTag from '@/components/ui/HTag/HTag';
 import Checkbox from '@/components/ui/inputs/Checkbox/Checkbox';
 import BirthdaySelector from './BirthdaySelector/BirthdaySelector';
 import FormHeader from './FormHeader/FormHeader';
-import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import ArrowIcon from '@/assets/icons/arrow.svg';
 import { REGISTER_FIELD, BIRTH_FIELD } from '@/constants/auth';
 import useRegisterForm from '@/hooks/forms/useRegisterForm';
 import { INPUT_MODE } from '@/constants/ui';
 import ValidatedInput from '@/components/ui/inputs/ValidatedInput/ValidatedInput';
 
-type RegisterFormProps = {
-	onShowRegisterOptions: () => void;
-};
-
-const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
+const RegisterForm = () => {
 	const {
 		formData,
 		formErrors,
@@ -42,7 +36,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 		handleToggleSendTrends,
 		handleChangeBirth,
 		handleChangeIsPhoneMode,
-		handleChangeShowUsernameField,
 		handleSubmit,
 		handleSendCode,
 		handleSubmitUsername,
@@ -52,12 +45,6 @@ const RegisterForm = ({ onShowRegisterOptions }: RegisterFormProps) => {
 
 	return (
 		<>
-			<RoundButton
-				className={authSharedStyles.BackBtn}
-				onClick={showUsernameField ? () => handleChangeShowUsernameField(false) : onShowRegisterOptions}
-			>
-				<ArrowIcon className={authSharedStyles.BackIcon} />
-			</RoundButton>
 			<HTag tag="h2" className={authSharedStyles.Title}>
 				Sign up
 			</HTag>

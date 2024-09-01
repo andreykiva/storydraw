@@ -215,7 +215,7 @@ const testAll: Notification[] = [
 				username: 'andrew',
 			},
 		},
-		amount: 193,
+		count: 193,
 		users: [
 			{
 				id: '1234',

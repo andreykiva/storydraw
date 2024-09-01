@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { UsersService } from 'src/users/services/users.service';
-import { TOKEN_VERIFICATION_ERROR, USER_NOT_FOUND_ERROR } from '../constants/auth.constants';
+import { TOKEN_VERIFICATION_ERROR, USER_NOT_FOUND_ERROR } from 'src/common/constants/errors.constants';
 
 @Injectable()
 export class TokenService {

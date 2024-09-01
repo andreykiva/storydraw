@@ -8,6 +8,8 @@ type User = {
 	following: number;
 	likes: number;
 	isPrivate: boolean;
+	isFollowedBy?: boolean;
+	isFollowing?: boolean;
 };
 
 export default User;

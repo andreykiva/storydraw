@@ -16,11 +16,11 @@ export class CreateStoryInput {
 	@IsString()
 	musicId?: string;
 
-	@Field({ nullable: true })
-	@IsOptional()
+	@Field()
+	@IsNotEmpty()
 	@IsString()
 	@MaxLength(36)
-	title?: string;
+	title: string;
 
 	@Field({ nullable: true })
 	@IsOptional()

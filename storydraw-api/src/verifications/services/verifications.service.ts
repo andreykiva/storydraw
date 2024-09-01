@@ -4,7 +4,7 @@ import { LessThan, Repository } from 'typeorm';
 import { Verification } from '../entities/verification.entity';
 import { generateRandomNumber } from 'src/common/utils/number.utils';
 import { IVerificationsService } from '../verifications.interface';
-import { INVALID_CODE_ERROR, TRY_LATER_ERROR, VERIFICATION_FAILED_ERROR } from '../constants/verifications.constants';
+import { INVALID_CODE_ERROR, TRY_LATER_ERROR, VERIFICATION_FAILED_ERROR } from 'src/common/constants/errors.constants';
 
 @Injectable()
 export class VerificationsService implements IVerificationsService {

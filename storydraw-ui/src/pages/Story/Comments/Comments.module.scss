@@ -1,4 +1,25 @@
+.CommentsPanel {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+}
+
 .Comments {
 	flex: 1;
 	padding: 30px;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #09483549;
+		border-radius: 4px;
+	}
 }

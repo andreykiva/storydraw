@@ -1,42 +1,36 @@
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/users/services/users.service';
 import { User } from 'src/users/entities/user.entity';
-import { JwtService } from '@nestjs/jwt';
 import { SignupWithEmailAndPassAndCodeInput, SignupWithPhoneAndCodeInput } from '../dto/signup-user.input';
 import { VerificationsService } from 'src/verifications/services/verifications.service';
 import { SmsService } from './sms.service';
 import { EmailService } from 'src/auth/services/email.service';
-import {
-	PHONE_EXISTS_ERROR,
-	EMAIL_EXISTS_ERROR,
-	EMAIL_NOT_FOUND_ERROR,
-	PHONE_NOT_FOUND_ERROR,
-	USERNAME_NOT_FOUND_ERROR,
-	GENERATE_CODE_EMAIL_MESSAGE,
-	GENERATE_CODE_PHONE_MESSAGE,
-	INVALID_PASSWORD_ERROR,
-	NO_PASSWORD_FOR_PHONE_ERROR,
-} from '../constants/auth.constants';
 import { IAuthService } from '../auth.interface';
 import { AuthResponse, RefreshTokenResponse } from '../dto/auth-response';
 import { GenerateCodeResponse } from '../dto/generate-code-response';
-import { ConfigService } from '@nestjs/config';
 import { TokenService } from './token.service';
 import { ResetWithEmailInput, ResetWithPhoneInput } from '../dto/reset-password.input';
+import {
+	EMAIL_EXISTS_ERROR,
+	EMAIL_NOT_FOUND_ERROR,
+	INVALID_PASSWORD_ERROR,
+	NO_PASSWORD_FOR_PHONE_ERROR,
+	PHONE_EXISTS_ERROR,
+	PHONE_NOT_FOUND_ERROR,
+	USERNAME_NOT_FOUND_ERROR,
+} from 'src/common/constants/errors.constants';
+import { GENERATE_CODE_EMAIL_MESSAGE, GENERATE_CODE_PHONE_MESSAGE } from 'src/common/constants/messages.constants';
 
 @Injectable()
 export class AuthService implements IAuthService {
 	constructor(
 		private usersService: UsersService,
-		private jwtService: JwtService,
 		private smsService: SmsService,
 		private emailService: EmailService,
 		private verificationsService: VerificationsService,
-		private configService: ConfigService,
 		private tokenService: TokenService,
 	) {}
 
-	//?DONE LOGIN validate password
 	async validatePassword(user: User, enteredPassword: string): Promise<User> {
 		const passwordHasMatch = await this.usersService.comparePasswords(enteredPassword, user.password);
 
@@ -48,7 +42,6 @@ export class AuthService implements IAuthService {
 		return result;
 	}
 
-	//?DONE GENERATE code for phone
 	async generatePhoneCode(phone: string): Promise<GenerateCodeResponse> {
 		const newVerification = await this.verificationsService.create(phone, 'phone');
 		// await this.smsService.sendSms(phone, `Your verification code: ${newVerification.code}`);
@@ -59,7 +52,6 @@ export class AuthService implements IAuthService {
 		};
 	}
 
-	//?DONE GENERATE code for email
 	async generateEmailCode(email: string): Promise<GenerateCodeResponse> {
 		const newVerification = await this.verificationsService.create(email, 'email');
 		// await this.emailService.sendVerificationCode(email, newVerification.code);
@@ -70,7 +62,6 @@ export class AuthService implements IAuthService {
 		};
 	}
 
-	//?DONE SIGNUP generate code for phone
 	async generatePhoneCodeForSignup(phone: string): Promise<GenerateCodeResponse> {
 		const user = await this.usersService.findOneByPhone(phone);
 
@@ -81,7 +72,6 @@ export class AuthService implements IAuthService {
 		return this.generatePhoneCode(phone);
 	}
 
-	//?DONE SIGNUP generate code for email
 	async generateEmailCodeForSignup(email: string): Promise<GenerateCodeResponse> {
 		const user = await this.usersService.findOneByEmail(email);
 
@@ -92,7 +82,6 @@ export class AuthService implements IAuthService {
 		return this.generateEmailCode(email);
 	}
 
-	//?DONE SIGNUP phone and code
 	async signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput): Promise<User> {
 		const user = await this.usersService.findOneByPhone(signupInput.phone);
 
@@ -107,7 +96,6 @@ export class AuthService implements IAuthService {
 		return this.usersService.create(userDetails);
 	}
 
-	//?DONE SIGNUP email and password and code
 	async signupWithEmailAndPassAndCode(signupInput: SignupWithEmailAndPassAndCodeInput): Promise<User> {
 		const user = await this.usersService.findOneByEmail(signupInput.email);
 
@@ -122,7 +110,6 @@ export class AuthService implements IAuthService {
 		return this.usersService.create(userDetails);
 	}
 
-	//?DONE LOGIN login
 	async login(user: User): Promise<AuthResponse> {
 		const payload = { sub: user.id };
 
@@ -135,7 +122,6 @@ export class AuthService implements IAuthService {
 		return response;
 	}
 
-	//?DONE LOGIN generate code for phone
 	async generatePhoneCodeForLogin(phone: string): Promise<GenerateCodeResponse> {
 		const user = await this.usersService.findOneByPhone(phone);
 
@@ -146,7 +132,6 @@ export class AuthService implements IAuthService {
 		return this.generatePhoneCode(phone);
 	}
 
-	//?DONE LOGIN phone and code
 	async loginWithPhoneAndCode(phone: string, code: string): Promise<AuthResponse> {
 		const user = await this.usersService.findOneByPhone(phone);
 
@@ -159,7 +144,6 @@ export class AuthService implements IAuthService {
 		return this.login(user);
 	}
 
-	//?DONE LOGIN phone and password
 	async loginWithPhoneAndPass(phone: string, password: string): Promise<AuthResponse> {
 		const existingUser = await this.usersService.findOneByPhone(phone);
 
@@ -172,7 +156,6 @@ export class AuthService implements IAuthService {
 		return this.login(validatedUser);
 	}
 
-	//?DONE LOGIN email and password
 	async loginWithEmailAndPass(email: string, password: string): Promise<AuthResponse> {
 		const existingUser = await this.usersService.findOneByEmail(email);
 
@@ -185,7 +168,6 @@ export class AuthService implements IAuthService {
 		return this.login(validatedUser);
 	}
 
-	//?DONE LOGIN username and password
 	async loginWithUsernameAndPass(username: string, password: string): Promise<AuthResponse> {
 		const existingUser = await this.usersService.findOneByUsername(username);
 

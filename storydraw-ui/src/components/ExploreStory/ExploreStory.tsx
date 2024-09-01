@@ -7,33 +7,33 @@ import previewImg from '@/assets/images/preview.jpg';
 import LikeIcon from '@/assets/icons/like.svg';
 import viewsIcon from '@/assets/icons/views.svg?url';
 import { formatNumber } from '@/utils/formatUtils';
-import type Story from '@/types/Story';
+import type { Story } from '@/types/Story';
 import type User from '@/types/User';
 
-type ExploreStoryProps = Pick<Story, 'id' | 'story' | 'description' | 'tags' | 'likes' | 'views'> & {
+type ExploreStoryProps = Pick<Story, 'id' | 'description' | 'likesCount' | 'viewsCount'> & {
 	user: Pick<User, 'id' | 'username' | 'imageUrl'>;
 	className?: string;
 };
 
 const ExploreStory = (props: ExploreStoryProps) => {
-	const { id, user, story, description, tags, likes, views, className } = props;
+	const { id, user, description, likesCount, viewsCount, className } = props;
 
 	return (
 		<div className={cn(styles.ExploreStory, className)}>
 			<Link className={styles.ExploreStoryContent} to={`/@${user.username}/story/${id}`}>
-				<img src={story || previewImg} alt="Story" className={styles.Story} />
+				<img src={previewImg} alt="Story" className={styles.Story} />
 				<div className={styles.ViewsInfo}>
 					<img src={viewsIcon} alt="Views" className={styles.ViewsIcon} />
-					<span className={styles.Views}>{formatNumber(views)}</span>
+					<span className={styles.Views}>{formatNumber(viewsCount)}</span>
 				</div>
 			</Link>
 			<p className={styles.StoryDescr}>
 				<span className={styles.DescrText}>{description}</span>
-				{tags.map((tag) => (
+				{/* {tags.map((tag) => (
 					<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
 						#{tag}
 					</Link>
-				))}
+				))} */}
 			</p>
 			<div className={styles.BottomInfo}>
 				<Link to={`/@${user.username}`} className={styles.UserLink}>
@@ -42,7 +42,7 @@ const ExploreStory = (props: ExploreStoryProps) => {
 				</Link>
 				<Link to={`/@${user.username}/story/${id}`} className={styles.LikesInfo}>
 					<LikeIcon className={styles.LikeIcon} />
-					<span className={styles.Likes}>{formatNumber(likes)}</span>
+					<span className={styles.Likes}>{formatNumber(likesCount)}</span>
 				</Link>
 			</div>
 		</div>

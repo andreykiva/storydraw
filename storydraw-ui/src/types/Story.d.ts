@@ -1,16 +1,33 @@
-type Story = {
+import User from './User';
+
+export type Story = {
 	id: string;
-	story: string;
-	date: string;
-	description: string;
-	musicName: string;
-	musicId: string;
-	tags: string[];
-	likes: number;
-	views: number;
-	comments: number;
-	favorites: number;
-	share: number;
+	title: string;
+	description?: string;
+	musicId?: string;
+	createdAt: Date;
+	likesCount?: number;
+	viewsCount?: number;
+	commentsCount?: number;
+	favoritesCount?: number;
+	sharesCount?: number;
 };
 
-export default Story;
+type ForYouStoryUser = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl' | 'isFollowedBy' | 'isFollowing'>;
+
+export type ForYouStory = {
+	id: string;
+	title: string;
+	description?: string;
+	musicId?: string;
+	createdAt: Date;
+	likesCount: number;
+	commentsCount: number;
+	favoritesCount: number;
+	sharesCount: number;
+	user: ForYouStoryUser;
+
+	isLiked?: boolean;
+	isFavorited?: boolean;
+	isShared?: boolean;
+};

@@ -4,30 +4,38 @@ import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import HTag from '@/components/ui/HTag/HTag';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 import Button from '@/components/ui/buttons/Button/Button';
-import User from '@/types/User';
 import defaultImg from '@/assets/images/default.svg?url';
 import editPfpIcon from '@/assets/icons/profile/edit-pfp.svg?url';
 import Input from '@/components/ui/inputs/Input/Input';
 import useEditProfileForm from '@/hooks/forms/useEditProfileForm';
 import { EDIT_PROFILE_FIELD } from '@/constants/profile';
 import Textarea from '@/components/ui/inputs/Textarea/Textarea';
+import { ProfileUser } from '@/types/Profile';
+import ValidatedInput from '@/components/ui/inputs/ValidatedInput/ValidatedInput';
 
 type EditProfileModalProps = {
-	user: User;
+	user: ProfileUser;
 	onClose: () => void;
+	udpateUser: (user: ProfileUser) => void;
 };
 
-const EditProfileModal = ({ user, onClose }: EditProfileModalProps) => {
-	const { formData, formErrors, isFormBtnDisabled, handleChangeInput, handleChangeBio, handleBlurInput } =
-		useEditProfileForm(user);
-
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		console.log('Submit');
-		onClose();
-	};
-
-	if (!user) return null;
+const EditProfileModal = ({ user, udpateUser, onClose }: EditProfileModalProps) => {
+	const {
+		formData,
+		formErrors,
+		isFormBtnDisabled,
+		handleChangeInput,
+		handleChangeBio,
+		handleBlurInput,
+		handleSubmit,
+		handleFindUser,
+		isUsernameInputLoading,
+		isFormBtnLoading,
+	} = useEditProfileForm({
+		user,
+		udpateUser,
+		onClose,
+	});
 
 	return (
 		<ModalOverlay>
@@ -51,23 +59,21 @@ const EditProfileModal = ({ user, onClose }: EditProfileModalProps) => {
 					<div className={styles.EditProfileItem}>
 						<span className={styles.ItemTitle}>Username</span>
 						<div className={styles.ItemContent}>
-							<Input
+							<ValidatedInput
 								type="text"
 								name={EDIT_PROFILE_FIELD.USERNAME}
 								placeholder="Username"
 								value={formData[EDIT_PROFILE_FIELD.USERNAME]}
 								error={formErrors[EDIT_PROFILE_FIELD.USERNAME]}
-								maxLength={32}
+								initialValue={user.username}
+								loading={isUsernameInputLoading}
 								onChange={handleChangeInput}
-								onBlur={() => handleBlurInput(EDIT_PROFILE_FIELD.USERNAME)}
-								required
+								request={handleFindUser}
 							/>
-							<span className={styles.Username}>
-								www.storydraw.com/@{formData[EDIT_PROFILE_FIELD.USERNAME]}
-							</span>
+							<span className={styles.Username}>www.storydraw.com/@{formData[EDIT_PROFILE_FIELD.USERNAME]}</span>
 							<p className={styles.ContentDescr}>
-								Usernames can only contain letters, numbers, underscores, and periods. Changing your
-								username will also change your profile link.
+								Usernames can only contain letters, numbers, underscores, and periods. Changing your username will also
+								change your profile link.
 							</p>
 						</div>
 					</div>
@@ -110,7 +116,7 @@ const EditProfileModal = ({ user, onClose }: EditProfileModalProps) => {
 					<Button className={styles.CancelBtn} onClick={onClose}>
 						Cancel
 					</Button>
-					<Button className={styles.SaveBtn} type="submit" disabled={isFormBtnDisabled}>
+					<Button className={styles.SaveBtn} type="submit" disabled={isFormBtnDisabled} loading={isFormBtnLoading}>
 						Save
 					</Button>
 				</div>

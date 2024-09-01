@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { IsNotEmpty, IsEmail, IsPhoneNumber, IsString, Length, Matches } from 'class-validator';
-import { passwordPattern, usernamePattern } from '../constants/regexp.constants';
+import { PASSWORD_PATTERN, USERNAME_PATTERN } from 'src/common/constants/regexp.constants';
 
 @InputType()
 export class LoginWithPhoneAndCodeInput {
@@ -29,7 +29,7 @@ export class LoginWithPhoneAndPassInput {
 	@IsString()
 	@IsNotEmpty()
 	@Length(8, 24)
-	@Matches(passwordPattern, { message: 'Invalid password format' })
+	@Matches(PASSWORD_PATTERN, { message: 'Invalid password format' })
 	password: string;
 }
 
@@ -45,7 +45,7 @@ export class LoginWithEmailAndPassInput {
 	@IsString()
 	@IsNotEmpty()
 	@Length(8, 24)
-	@Matches(passwordPattern, { message: 'Invalid password format' })
+	@Matches(PASSWORD_PATTERN, { message: 'Invalid password format' })
 	password: string;
 }
 
@@ -55,13 +55,13 @@ export class LoginWithUsernameAndPassInput {
 	@IsString()
 	@IsNotEmpty()
 	@Length(5, 24)
-	@Matches(usernamePattern, { message: 'Invalid username format' })
+	@Matches(USERNAME_PATTERN, { message: 'Invalid username format' })
 	username: string;
 
 	@Field()
 	@IsString()
 	@IsNotEmpty()
 	@Length(8, 24)
-	@Matches(passwordPattern, { message: 'Invalid password format' })
+	@Matches(PASSWORD_PATTERN, { message: 'Invalid password format' })
 	password: string;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useQuery } from '@apollo/client';
 import Layout from '@/components/layouts/Layout/Layout';
 import ForYou from '@/pages/ForYou/ForYou';
 import Following from '@/pages/Following/Following';
@@ -15,10 +16,10 @@ import Settings from '@/pages/Settings/Settings';
 import Subscribe from '@/pages/Subscribe/Subscribe';
 import Logout from '@/pages/Logout/Logout';
 import { selectAuth } from '@/features/auth/authSlice';
-import { useQuery } from '@apollo/client';
 import { GET_ME } from './graphql/users/queries';
 import { login } from '@/features/auth/authSlice';
 import { setUser } from '@/features/user/userSlice';
+import Create from './pages/Create/Create';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -26,6 +27,10 @@ const App = () => {
 
 	const { data } = useQuery(GET_ME, {
 		onCompleted: () => {
+			// setTimeout(() => {
+			// 	dispatch(setUser(data.getMe));
+			// 	dispatch(login());
+			// }, 3000);
 			dispatch(setUser(data.getMe));
 			dispatch(login());
 		},
@@ -44,6 +49,7 @@ const App = () => {
 
 					{isAuth && (
 						<>
+							<Route path="/create" element={<Create />} />
 							<Route path="/messages" element={<Messages />} />
 							<Route path="/subscribe" element={<Subscribe />} />
 							<Route path="/settings" element={<Settings />} />

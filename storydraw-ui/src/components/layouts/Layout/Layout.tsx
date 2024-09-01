@@ -14,6 +14,8 @@ type LayoutProps = {
 	children: React.ReactNode;
 };
 
+// add /create
+
 const Layout = ({ children }: LayoutProps) => {
 	const isAuthOpen = useSelector(selectAuthModalStatus);
 	const isReportOpen = useSelector(selectReportStatus);

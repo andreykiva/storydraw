@@ -1,9 +1,26 @@
-import type User from '@/types/User';
-import type Story from '@/types/Story';
+import type { Story } from '@/types/Story';
 
-export type RelationsUser = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'> & {
-	isFollowedByYou: boolean;
-	isFollowedYou: boolean;
+export type ProfileStory = Pick<Story, 'id' | 'description'>;
+
+export type ProfileUser = {
+	id: string;
+	username: string;
+	displayName: string;
+	bio: string;
+	imageUrl: string;
+	followersCount: number;
+	followingCount: number;
+	friendsCount?: number; 
+	likesCount: number;
+	isFollowedBy?: boolean;
+	isFollowing?: boolean;
 };
 
-export type ProfileStory = Pick<Story, 'id' | 'story' | 'description' | 'tags' | 'views'>;
+export type RelationsUser = {
+	id: string;
+	username: string;
+	displayName: string;
+	imageUrl: string;
+	isFollowedBy?: boolean;
+	isFollowing?: boolean;
+};

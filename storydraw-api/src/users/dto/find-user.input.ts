@@ -1,6 +1,6 @@
 import { InputType, Field } from '@nestjs/graphql';
 import { IsNotEmpty, IsString, Length, Matches } from 'class-validator';
-import { usernamePattern } from 'src/auth/constants/regexp.constants';
+import { USERNAME_PATTERN } from 'src/common/constants/regexp.constants';
 
 @InputType()
 export class FindOneByUsernameInput {
@@ -8,6 +8,6 @@ export class FindOneByUsernameInput {
 	@IsString()
 	@IsNotEmpty()
 	@Length(5, 24)
-	@Matches(usernamePattern, { message: 'Invalid username format' })
+	@Matches(USERNAME_PATTERN, { message: 'Invalid username format' })
 	username: string;
 }

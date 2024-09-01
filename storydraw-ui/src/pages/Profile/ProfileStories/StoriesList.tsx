@@ -10,11 +10,11 @@ type StoriesListProps = {
 	username: string;
 	isCurrentUser: boolean;
 	isPrivate: boolean;
-	isStoriesLoaded: boolean;
+	loading: boolean;
 };
 
 const StoriesList = (props: StoriesListProps) => {
-	const { stories, username, isCurrentUser, isPrivate, isStoriesLoaded } = props;
+	const { stories, username, isCurrentUser, isPrivate, loading } = props;
 
 	if (isPrivate && !isCurrentUser) {
 		return (
@@ -26,11 +26,11 @@ const StoriesList = (props: StoriesListProps) => {
 		);
 	}
 
-	if (!isStoriesLoaded) {
+	if (loading) {
 		return <div>Loading</div>;
 	}
 
-	if (stories.length > 0) {
+	if (stories && stories.length > 0) {
 		return (
 			<>
 				{stories.map((story) => (
@@ -42,23 +42,11 @@ const StoriesList = (props: StoriesListProps) => {
 
 	//no content (me)
 	if (isCurrentUser) {
-		return (
-			<UserMessage
-				icon={personIcon}
-				title="Upload your first story"
-				text="Your stories will appear here"
-			/>
-		);
+		return <UserMessage icon={personIcon} title="Upload your first story" text="Your stories will appear here" />;
 	}
 
 	//no content (user)
-	return (
-		<UserMessage
-			icon={personIcon}
-			title="No content"
-			text="This user has not published any stories"
-		/>
-	);
+	return <UserMessage icon={personIcon} title="No content" text="This user has not published any stories" />;
 };
 
 export default StoriesList;

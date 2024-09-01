@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
 import styles from './RelationsModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import { RELATIONS_TYPE } from '@/constants/profile';
-import User from '@/types/User';
-import type { RelationsUser } from '@/types/Profile';
+import type { ProfileUser } from '@/types/Profile';
 import HTag from '@/components/ui/HTag/HTag';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 import ViewsMenuItem from './ViewsMenuItem/ViewsMenuItem';
@@ -11,106 +11,43 @@ import { formatNumber } from '@/utils/formatUtils';
 import FollowingList from './FollowingList';
 import FollowersList from './FollowersList';
 import FriendsList from './FriendsList';
+import { GET_FOLLOWERS, GET_FOLLOWING, GET_FRIENDS } from '@/graphql/users/queries';
 
 type RelationsModalProps = {
-	user: User;
+	isAuth: boolean;
+	user: ProfileUser;
 	view: RELATIONS_TYPE;
 	isCurrentUser: boolean;
 	onClose: () => void;
 	onChangeView: (view: RELATIONS_TYPE) => void;
 };
 
-const testFollowing: RelationsUser[] = [
-	{
-		id: '123',
-		username: 'andriydd21123',
-		displayName: 'андрій',
-		imageUrl: '',
-		isFollowedByYou: true,
-		isFollowedYou: false,
-	},
-	{
-		id: '124',
-		username: 'viktodwd12d',
-		displayName: 'віктор',
-		imageUrl: '',
-		isFollowedByYou: true,
-		isFollowedYou: true,
-	},
-];
-const testFollowers: RelationsUser[] = [
-	{
-		id: '125',
-		username: 'dimaasdasd',
-		displayName: 'діма',
-		imageUrl: '',
-		isFollowedByYou: false,
-		isFollowedYou: true,
-	},
-	{
-		id: '126',
-		username: 'pavlowdqwd',
-		displayName: 'павло',
-		imageUrl: '',
-		isFollowedByYou: true,
-		isFollowedYou: true,
-	},
-];
-
-const testFriends: RelationsUser[] = [
-	{
-		id: '125',
-		username: 'dimaqwdqd',
-		displayName: 'діма',
-		imageUrl: '',
-		isFollowedByYou: true,
-		isFollowedYou: true,
-	},
-];
-
-type RelationsData = Record<RELATIONS_TYPE, RelationsUser[]>;
-type LoadedData = Record<RELATIONS_TYPE, boolean>;
-
 const RelationsModal = (props: RelationsModalProps) => {
-	const { user, view, isCurrentUser, onClose, onChangeView } = props;
-	const [relationsData, setRelationsData] = useState<RelationsData>({
-		[RELATIONS_TYPE.FOLLOWING]: null,
-		[RELATIONS_TYPE.FOLLOWERS]: null,
-		[RELATIONS_TYPE.FRIENDS]: null,
-	});
+	const { isAuth, user, view, isCurrentUser, onClose, onChangeView } = props;
 	const [isFollowingPrivate, setIsFollowingPrivate] = useState(false);
 
-	const [loadedData, setLoadedData] = useState<LoadedData>({
-		[RELATIONS_TYPE.FOLLOWING]: false,
-		[RELATIONS_TYPE.FOLLOWERS]: false,
-		[RELATIONS_TYPE.FRIENDS]: false,
+	const { data: following, loading: followingLoading } = useQuery(GET_FOLLOWING, {
+		variables: { followingInput: { userId: user.id }, isAuth },
+		skip: view !== RELATIONS_TYPE.FOLLOWING,
+		onError(error) {
+			console.log(error);
+		},
 	});
 
-	useEffect(() => {
-		if (loadedData[view]) {
-			return;
-		}
+	const { data: followers, loading: followersLoading } = useQuery(GET_FOLLOWERS, {
+		variables: { followersInput: { userId: user.id }, isAuth },
+		skip: view !== RELATIONS_TYPE.FOLLOWERS,
+		onError(error) {
+			console.log(error);
+		},
+	});
 
-		const timeoutId = setTimeout(() => {
-			if (view === RELATIONS_TYPE.FOLLOWING) {
-				setRelationsData((prev) => ({ ...prev, [RELATIONS_TYPE.FOLLOWING]: testFollowing }));
-				if (testFollowing.length === 0 && user.following > 0) {
-					setIsFollowingPrivate(true);
-				}
-				setLoadedData({ ...loadedData, [RELATIONS_TYPE.FOLLOWING]: true });
-			} else if (view === RELATIONS_TYPE.FOLLOWERS) {
-				setRelationsData((prev) => ({ ...prev, [RELATIONS_TYPE.FOLLOWERS]: testFollowers }));
-				setLoadedData({ ...loadedData, [RELATIONS_TYPE.FOLLOWERS]: true });
-			} else if (view === RELATIONS_TYPE.FRIENDS) {
-				setRelationsData((prev) => ({ ...prev, [RELATIONS_TYPE.FRIENDS]: testFriends }));
-				setLoadedData({ ...loadedData, [RELATIONS_TYPE.FRIENDS]: true });
-			}
-		}, 500);
-
-		return () => clearTimeout(timeoutId);
-	}, [view, user, loadedData]);
-
-	if (!user || !Object.keys(user).length) return null;
+	const { data: friends, loading: friendsLoading } = useQuery(GET_FRIENDS, {
+		skip: view !== RELATIONS_TYPE.FRIENDS,
+		onError(error) {
+			console.log(error);
+		},
+	});
 
 	return (
 		<ModalOverlay>
@@ -122,47 +59,37 @@ const RelationsModal = (props: RelationsModalProps) => {
 					<CloseButton className={styles.CloseBtn} onClick={onClose} />
 				</div>
 				<div className={styles.ModalViewsMenu}>
-					<ViewsMenuItem
-						active={view === RELATIONS_TYPE.FOLLOWING}
-						onClick={() => onChangeView(RELATIONS_TYPE.FOLLOWING)}
-					>
-						Following {formatNumber(user.following)}
+					<ViewsMenuItem active={view === RELATIONS_TYPE.FOLLOWING} onClick={() => onChangeView(RELATIONS_TYPE.FOLLOWING)}>
+						Following {formatNumber(user.followingCount)}
 					</ViewsMenuItem>
-					<ViewsMenuItem
-						active={view === RELATIONS_TYPE.FOLLOWERS}
-						onClick={() => onChangeView(RELATIONS_TYPE.FOLLOWERS)}
-					>
-						Followers {formatNumber(user.followers)}
+					<ViewsMenuItem active={view === RELATIONS_TYPE.FOLLOWERS} onClick={() => onChangeView(RELATIONS_TYPE.FOLLOWERS)}>
+						Followers {formatNumber(user.followersCount)}
 					</ViewsMenuItem>
 					{isCurrentUser && (
-						<ViewsMenuItem
-							active={view === RELATIONS_TYPE.FRIENDS}
-							onClick={() => onChangeView(RELATIONS_TYPE.FRIENDS)}
-						>
-							Friends {formatNumber(user.followers)}
+						<ViewsMenuItem active={view === RELATIONS_TYPE.FRIENDS} onClick={() => onChangeView(RELATIONS_TYPE.FRIENDS)}>
+							Friends {formatNumber(user.friendsCount)}
 						</ViewsMenuItem>
 					)}
 				</div>
 				<ul className={styles.RelationsList}>
 					{view === RELATIONS_TYPE.FOLLOWING && (
 						<FollowingList
-							following={relationsData[RELATIONS_TYPE.FOLLOWING]}
-							isFollowingLoaded={loadedData[RELATIONS_TYPE.FOLLOWING]}
-							isFollowingPrivate={isFollowingPrivate}
+							following={following?.following}
+							loading={followingLoading}
+							isAuth={isAuth}
 							username={user.username}
+							isFollowingPrivate={isFollowingPrivate}
 						/>
 					)}
 					{view === RELATIONS_TYPE.FOLLOWERS && (
 						<FollowersList
-							followers={relationsData[RELATIONS_TYPE.FOLLOWERS]}
-							isFollowersLoaded={loadedData[RELATIONS_TYPE.FOLLOWERS]}
+							followers={followers?.followers}
+							loading={followersLoading}
+							isAuth={isAuth}
 						/>
 					)}
 					{view === RELATIONS_TYPE.FRIENDS && (
-						<FriendsList
-							friends={relationsData[RELATIONS_TYPE.FRIENDS]}
-							isFriendsLoaded={loadedData[RELATIONS_TYPE.FRIENDS]}
-						/>
+						<FriendsList friends={friends?.friends} loading={friendsLoading} isAuth={isAuth} />
 					)}
 				</ul>
 			</div>

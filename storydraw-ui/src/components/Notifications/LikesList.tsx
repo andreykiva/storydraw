@@ -97,7 +97,7 @@ const testLikes: LikeNotification[] = [
 				username: 'andrew',
 			},
 		},
-		amount: 193,
+		count: 193,
 		users: [
 			{
 				id: '6',

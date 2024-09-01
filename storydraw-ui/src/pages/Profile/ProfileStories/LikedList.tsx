@@ -10,11 +10,11 @@ type LikedListProps = {
 	username: string;
 	isCurrentUser: boolean;
 	isPrivate: boolean;
-	isLikedLoaded: boolean;
+	loading: boolean;
 };
 
 const LikedList = (props: LikedListProps) => {
-	const { liked, username, isCurrentUser, isPrivate, isLikedLoaded } = props;
+	const { liked, username, isCurrentUser, isPrivate, loading } = props;
 
 	if (isPrivate && !isCurrentUser) {
 		return (
@@ -26,11 +26,11 @@ const LikedList = (props: LikedListProps) => {
 		);
 	}
 
-	if (!isLikedLoaded) {
+	if (loading) {
 		return <div>Loading</div>;
 	}
 
-	if (liked.length > 0) {
+	if (liked && liked.length > 0) {
 		return (
 			<>
 				{liked.map((story) => (
@@ -42,23 +42,11 @@ const LikedList = (props: LikedListProps) => {
 
 	//no content (me)
 	if (isCurrentUser) {
-		return (
-			<UserMessage
-				icon={personIcon}
-				title="No liked stories yet"
-				text="Stories you liked will appear here"
-			/>
-		);
+		return <UserMessage icon={personIcon} title="No liked stories yet" text="Stories you liked will appear here" />;
 	}
 
 	//no content (user)
-	return (
-		<UserMessage
-			icon={personIcon}
-			title="No content"
-			text="This user has not liked any stories"
-		/>
-	);
+	return <UserMessage icon={personIcon} title="No content" text="This user has not liked any stories" />;
 };
 
 export default LikedList;

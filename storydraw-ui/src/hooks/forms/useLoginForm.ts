@@ -14,7 +14,8 @@ import {
 	LOGIN_WITH_PHONE_AND_CODE,
 } from '@/graphql/auth/mutations';
 import { isEmail } from '@/utils/textUtils';
-import { setupUserLogin } from '@/utils/authUtils';
+import { setupUserAndTokens } from '@/utils/authUtils';
+import { login } from '@/features/auth/authSlice';
 
 type FormData = Record<LOGIN_FIELD, string>;
 type FormErrors = Record<LOGIN_FIELD, string>;
@@ -44,19 +45,22 @@ const useLoginForm = () => {
 	const [loginWithEmailAndPass, { loading: elLoading, error: elError }] = useMutation(LOGIN_WITH_EMAIL_AND_PASSWORD, {
 		onCompleted: (data) => {
 			const { access_token, refresh_token, user } = data.loginWithEmailAndPass;
-			setupUserLogin(dispatch, access_token, refresh_token, user);
+			setupUserAndTokens(dispatch, access_token, refresh_token, user);
+			dispatch(login());
 		},
 	});
 	const [loginWithUsernameAndPass, { loading: ulLoading, error: ulError }] = useMutation(LOGIN_WITH_USERNAME_AND_PASSWORD, {
 		onCompleted: (data) => {
 			const { access_token, refresh_token, user } = data.loginWithUsernameAndPass;
-			setupUserLogin(dispatch, access_token, refresh_token, user);
+			setupUserAndTokens(dispatch, access_token, refresh_token, user);
+			dispatch(login());
 		},
 	});
 	const [loginWithPhoneAndCode, { loading: lpcLoading, error: lpcError }] = useMutation(LOGIN_WITH_PHONE_AND_CODE, {
 		onCompleted: (data) => {
 			const { access_token, refresh_token, user } = data.loginWithPhoneAndCode;
-			setupUserLogin(dispatch, access_token, refresh_token, user);
+			setupUserAndTokens(dispatch, access_token, refresh_token, user);
+			dispatch(login());
 		},
 	});
 

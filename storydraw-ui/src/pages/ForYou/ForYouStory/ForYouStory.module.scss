@@ -1,5 +1,3 @@
-@import '@/utils/_mixins';
-
 .ForYouStory {
 	max-width: 1000px;
 	width: 100%;
@@ -80,8 +78,6 @@
 
 .FollowBtn {
 	margin-left: auto;
-	max-width: 120px;
-	height: 40px;
 	margin-top: 8px;
 }
 
@@ -98,33 +94,4 @@
 		height: 100%;
 		border-radius: 12px;
 	}
-}
-
-.StoryPanel {
-	position: absolute;
-	right: 20px;
-	top: 50%;
-	width: 70px;
-	padding: 24px 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 20px;
-	border-radius: 35px;
-	background-color: rgba(0, 3, 1, 0.336);
-	transform: translateY(-50%);
-}
-
-.PanelItem {
-	text-align: center;
-
-	.ItemIcon {
-		width: 32px;
-		height: 32px;
-		cursor: pointer;
-	}
-}
-
-.ActionsMenu::after {
-	@include addTriangleStyles('top', rgb(36, 36, 36));
 }
