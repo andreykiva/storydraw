@@ -1,4 +1,3 @@
-import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import userIcon from '@/assets/icons/auth/user.svg';
 import googleIcon from '@/assets/icons/auth/google.svg';

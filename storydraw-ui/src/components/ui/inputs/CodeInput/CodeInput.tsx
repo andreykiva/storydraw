@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './CodeInput.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
 import Input from '@/components/ui/inputs/Input/Input';

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ChatMessages.module.scss';
 import ChatMessage from './ChatMessage/ChatMessage';
 import type { Message } from '@/types/Message';

@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './ButtonWithActionsMenu.module.scss';
 import moreIcon from '@/assets/icons/more-horizontal.svg';

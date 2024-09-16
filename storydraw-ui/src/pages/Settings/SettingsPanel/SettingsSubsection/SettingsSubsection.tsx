@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './SettingsSubsection.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 

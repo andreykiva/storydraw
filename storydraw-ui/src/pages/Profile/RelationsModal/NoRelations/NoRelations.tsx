@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './NoRelations.module.scss';
 
 type NoRelationsProps = {

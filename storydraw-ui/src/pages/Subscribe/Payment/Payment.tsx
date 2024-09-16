@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Payment.module.scss';
 import type { Plan } from '@/types/Subscription';
 import PlanSection from './PlanSection/PlanSection';

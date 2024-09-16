@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './TrialInfoItem.module.scss';
 import { TRIAL_INFO_SIZE } from '@/constants/subscription';

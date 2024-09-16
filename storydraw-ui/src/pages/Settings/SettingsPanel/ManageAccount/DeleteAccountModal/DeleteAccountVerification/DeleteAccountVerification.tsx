@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './DeleteAccountVerification.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
 import { ReactComponent as ArrowIcon } from '@/assets/icons/arrow.svg';

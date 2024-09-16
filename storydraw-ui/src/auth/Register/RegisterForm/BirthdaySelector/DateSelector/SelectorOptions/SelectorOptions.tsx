@@ -1,4 +1,3 @@
-import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import SelectorOption from './SelectorOption/SelectorOption';
 
@@ -12,11 +11,7 @@ const SelectorOptions = ({ options, selectedOption, onChangeSelect }: SelectorOp
 	return (
 		<ul className={authSharedStyles.SelectorOptions}>
 			{options.map((option) => (
-				<SelectorOption
-					key={option}
-					selected={option === selectedOption}
-					onClick={() => onChangeSelect(option)}
-				>
+				<SelectorOption key={option} selected={option === selectedOption} onClick={() => onChangeSelect(option)}>
 					{option}
 				</SelectorOption>
 			))}

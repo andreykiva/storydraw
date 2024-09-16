@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './ViewsMenuItem.module.scss';
 import { ReactComponent as LockIcon } from '@/assets/icons/profile/lock.svg';

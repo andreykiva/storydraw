@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Comments.module.scss';
 import CommentSection from './CommentSection/CommentSection';
 import Loader from '@/components/ui/Loader/Loader';

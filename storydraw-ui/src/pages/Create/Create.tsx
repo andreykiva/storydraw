@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Create.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';
 import Button from '@/components/ui/buttons/Button/Button';

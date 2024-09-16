@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './SidebarAccounts.module.scss';
 import SidebarAccount from './SidebarAccount/SidebarAccount';
 import HTag from '@/components/ui/HTag/HTag';

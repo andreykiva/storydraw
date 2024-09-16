@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './CountriesWithSearchBar.module.scss';
 import { searchAndSortCountries } from '@/utils/countriesUtils';
 import SelectorSearchBar from './SelectorSearchBar/SelectorSearchBar';

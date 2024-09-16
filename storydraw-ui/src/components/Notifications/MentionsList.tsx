@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import tagIcon from '@/assets/icons/notifications/tag.svg';
 import NotificationsList from './NotificationsList/NotificationsList';

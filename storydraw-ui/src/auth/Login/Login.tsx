@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import LoginOptions from './LoginOptions/LoginOptions';
 import LoginWithQR from './LoginWithQR/LoginWithQR';

@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './Input.module.scss';
 import warningIcon from '@/assets/icons/auth/warning.svg';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './CreateComment.module.scss';
 import InputWithEmojis from '@/components/InputWithEmojis/InputWithEmojis';

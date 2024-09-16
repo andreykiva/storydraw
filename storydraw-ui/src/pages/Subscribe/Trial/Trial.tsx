@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Trial.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 import TrialInfoBox from '@/pages/Subscribe/TrialInfoBox/TrialInfoBox';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './ManageAccount.module.scss';
 import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.scss';
 import SettingsSection from '@/pages/Settings/SettingsPanel/SettingsSection/SettingsSection';
@@ -16,9 +16,7 @@ const ManageAccount = () => {
 					<div className={styles.DeleteBtn} onClick={() => setIsDeleteAccountModalOpen(true)}>
 						Delete
 					</div>
-					{isDeleteAccountModalOpen && (
-						<DeleteAccountModal onClose={() => setIsDeleteAccountModalOpen(false)} />
-					)}
+					{isDeleteAccountModalOpen && <DeleteAccountModal onClose={() => setIsDeleteAccountModalOpen(false)} />}
 				</div>
 			</SettingsSubsection>
 		</SettingsSection>

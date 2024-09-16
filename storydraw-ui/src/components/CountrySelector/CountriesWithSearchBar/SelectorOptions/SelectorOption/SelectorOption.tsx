@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './SelectorOption.module.scss';
 import { ReactComponent as CheckIcon } from '@/assets/icons/check.svg';

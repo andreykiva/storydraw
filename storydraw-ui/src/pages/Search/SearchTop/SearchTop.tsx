@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './SearchTop.module.scss';
 import SearchAccount from '@/pages/Search/SearchAccounts/SearchAccount/SearchAccount';
 import ExploreStory from '@/components/ExploreStory/ExploreStory';

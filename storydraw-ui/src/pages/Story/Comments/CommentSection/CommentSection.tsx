@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './CommentSection.module.scss';
 import { ReactComponent as ArrowIcon } from '@/assets/icons/arrow.svg';
 import Comment from './Comment/Comment';

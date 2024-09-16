@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 import styles from './PushNotifications.module.scss';
 import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.scss';

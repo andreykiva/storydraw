@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './SubscriptionPlan.module.scss';
 import checkIcon from '@/assets/icons/subscribe/check.svg';

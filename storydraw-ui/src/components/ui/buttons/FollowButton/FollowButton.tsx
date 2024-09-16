@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './FollowButton.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';

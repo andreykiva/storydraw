@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './PaymentMethodSelection.module.scss';
 import Radio from '@/components/ui/inputs/Radio/Radio';
 import { PAYMENT_METHOD } from '@/constants/subscription';

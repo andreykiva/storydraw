@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './CardNumberInput.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';

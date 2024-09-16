@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './SelectorSearchBar.module.scss';
 import searchIcon from '@/assets/icons/search.svg';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MessagesBtn.module.scss';
 import { ReactComponent as SendIcon } from '@/assets/icons/send.svg';

@@ -1,4 +1,3 @@
-import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import qrCodeIcon from '@/assets/icons/auth/qr-code.svg';
 import userIcon from '@/assets/icons/auth/user.svg';

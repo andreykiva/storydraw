@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Checkbox.module.scss';
 import { ReactComponent as CheckIcon } from '@/assets/icons/check.svg';
 

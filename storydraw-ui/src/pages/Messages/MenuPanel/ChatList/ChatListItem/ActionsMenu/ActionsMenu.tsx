@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './ActionsMenu.module.scss';
 import ActionItem from './ActionItem/ActionItem';

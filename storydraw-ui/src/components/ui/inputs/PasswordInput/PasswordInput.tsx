@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './PasswordInput.module.scss';
 import eyeOpenedIcon from '@/assets/icons/auth/eye-opened.svg';
 import eyeClosedIcon from '@/assets/icons/auth/eye-closed.svg';

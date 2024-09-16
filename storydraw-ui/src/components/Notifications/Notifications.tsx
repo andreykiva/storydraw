@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import styles from './Notifications.module.scss';
@@ -55,10 +54,7 @@ const Notifications = () => {
 					{categories.map((category) => (
 						<Button
 							key={category.type}
-							className={cn(
-								styles.NotifCategory,
-								category.type === notificationsCategory && styles.Active,
-							)}
+							className={cn(styles.NotifCategory, category.type === notificationsCategory && styles.Active)}
 							onClick={() => handleCategoryChange(category.type)}
 						>
 							{category.title}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import styles from './RelationsModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
@@ -82,15 +82,9 @@ const RelationsModal = (props: RelationsModalProps) => {
 						/>
 					)}
 					{view === RELATIONS_TYPE.FOLLOWERS && (
-						<FollowersList
-							followers={followers?.followers}
-							loading={followersLoading}
-							isAuth={isAuth}
-						/>
+						<FollowersList followers={followers?.followers} loading={followersLoading} isAuth={isAuth} />
 					)}
-					{view === RELATIONS_TYPE.FRIENDS && (
-						<FriendsList friends={friends?.friends} loading={friendsLoading} isAuth={isAuth} />
-					)}
+					{view === RELATIONS_TYPE.FRIENDS && <FriendsList friends={friends?.friends} loading={friendsLoading} isAuth={isAuth} />}
 				</ul>
 			</div>
 		</ModalOverlay>

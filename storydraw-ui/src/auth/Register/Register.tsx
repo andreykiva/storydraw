@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import RegisterOptions from './RegisterOptions/RegisterOptions';
 import RegisterForm from './RegisterForm/RegisterForm';

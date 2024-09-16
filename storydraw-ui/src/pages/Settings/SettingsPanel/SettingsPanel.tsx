@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './SettingsPanel.module.scss';
 import ManageAccount from './ManageAccount/ManageAccount';
 import Privacy from './Privacy/Privacy';

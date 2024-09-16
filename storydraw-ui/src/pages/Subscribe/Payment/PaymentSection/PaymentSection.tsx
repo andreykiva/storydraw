@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './PaymentSection.module.scss';
 import type { Plan } from '@/types/Subscription';
 import { PAYMENT_METHOD } from '@/constants/subscription';

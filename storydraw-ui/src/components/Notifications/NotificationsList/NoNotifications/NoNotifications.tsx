@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './NoNotifications.module.scss';
 
 type NoNotificationsProps = {

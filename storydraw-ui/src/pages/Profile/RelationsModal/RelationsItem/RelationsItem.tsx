@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './RelationsItem.module.scss';
 import defaultImg from '@/assets/images/default.svg';

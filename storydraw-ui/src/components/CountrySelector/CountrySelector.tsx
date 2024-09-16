@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import cn from 'classnames';
 import styles from './CountrySelector.module.scss';
 import useClickOutside from '@/hooks/useClickOutside';

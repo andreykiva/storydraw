@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './EditProfileModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import HTag from '@/components/ui/HTag/HTag';

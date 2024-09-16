@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './InteractionsMenu.module.scss';
 import InteractionsItem from './InteractionsItem/InteractionsItem';
 
@@ -10,26 +10,14 @@ const InteractionsMenu = () => {
 
 	return (
 		<div className={styles.InteractionsMenu}>
-			<InteractionsItem
-				title="Likes"
-				checked={isLikesActive}
-				onChange={() => setIsLikesActive(!isLikesActive)}
-			/>
-			<InteractionsItem
-				title="Comments"
-				checked={isCommentsActive}
-				onChange={() => setIsCommentsActive(!isCommentsActive)}
-			/>
+			<InteractionsItem title="Likes" checked={isLikesActive} onChange={() => setIsLikesActive(!isLikesActive)} />
+			<InteractionsItem title="Comments" checked={isCommentsActive} onChange={() => setIsCommentsActive(!isCommentsActive)} />
 			<InteractionsItem
 				title="New followers"
 				checked={isNewFollowersActive}
 				onChange={() => setIsNewFollowersActive(!isNewFollowersActive)}
 			/>
-			<InteractionsItem
-				title="Mentions"
-				checked={isMentionsActive}
-				onChange={() => setIsMentionsActive(!isMentionsActive)}
-			/>
+			<InteractionsItem title="Mentions" checked={isMentionsActive} onChange={() => setIsMentionsActive(!isMentionsActive)} />
 		</div>
 	);
 };

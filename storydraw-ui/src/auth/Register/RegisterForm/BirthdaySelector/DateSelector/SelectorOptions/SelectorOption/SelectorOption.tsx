@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './SelectorOption.module.scss';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
@@ -12,14 +11,7 @@ type SelectorOptionProps = {
 
 const SelectorOption = ({ children, selected, onClick }: SelectorOptionProps) => {
 	return (
-		<li
-			className={cn(
-				styles.SelectorOption,
-				authSharedStyles.SelectorOption,
-				selected && authSharedStyles.Selected,
-			)}
-			onClick={onClick}
-		>
+		<li className={cn(styles.SelectorOption, authSharedStyles.SelectorOption, selected && authSharedStyles.Selected)} onClick={onClick}>
 			<span>{children}</span>
 			{selected && <CheckIcon className={authSharedStyles.SelectedIcon} />}
 		</li>

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ReportCategory.module.scss';
 import { ReactComponent as ArrowIcon } from '@/assets/icons/arrow.svg';
 import { ReactComponent as CheckIcon } from '@/assets/icons/check.svg';

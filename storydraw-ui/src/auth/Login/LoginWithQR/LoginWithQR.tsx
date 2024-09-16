@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './LoginWithQR.module.scss';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import HTag from '@/components/ui/HTag/HTag';

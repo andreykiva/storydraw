@@ -1,4 +1,3 @@
-import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 
 type FormHeaderProps = {
@@ -10,9 +9,7 @@ type FormHeaderProps = {
 const FormHeader = ({ isPhoneMode, onEnablePhoneMode, onDisablePhoneMode }: FormHeaderProps) => {
 	return (
 		<div className={authSharedStyles.FormHeader}>
-			<span className={authSharedStyles.HeaderTitle}>
-				{isPhoneMode ? 'Enter phone number' : 'Enter email address'}
-			</span>
+			<span className={authSharedStyles.HeaderTitle}>{isPhoneMode ? 'Enter phone number' : 'Enter email address'}</span>
 			{isPhoneMode ? (
 				<span className={authSharedStyles.HeaderBtn} onClick={onDisablePhoneMode}>
 					Reset with email

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Settings.module.scss';
 import NavPanel from './NavPanel/NavPanel';
 import SettingsPanel from './SettingsPanel/SettingsPanel';

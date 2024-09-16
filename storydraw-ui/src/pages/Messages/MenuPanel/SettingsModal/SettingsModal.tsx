@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './SettingsModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import Button from '@/components/ui/buttons/Button/Button';
@@ -37,8 +37,8 @@ const SettingsModal = ({ onClose }: SettingsModalProps) => {
 					<fieldset className={styles.AllowedSendersFieldset}>
 						<legend className={styles.AllowedSendersTitle}>Who can send you direct messages</legend>
 						<p className={styles.AllowedSendersDescr}>
-							With any option, you can receive messages from users that you've sent messages to. Friends
-							are your followers that you follow back.
+							With any option, you can receive messages from users that you've sent messages to. Friends are your followers
+							that you follow back.
 						</p>
 						<div className={styles.AllowedMessageSenders}>
 							<Radio
@@ -63,10 +63,7 @@ const SettingsModal = ({ onClose }: SettingsModalProps) => {
 						<Button className={styles.CancelBtn} onClick={onClose}>
 							Cancel
 						</Button>
-						<Button
-							className={styles.SaveBtn}
-							disabled={testAllowedMessageSenders === allowedMessageSenders}
-						>
+						<Button className={styles.SaveBtn} disabled={testAllowedMessageSenders === allowedMessageSenders}>
 							Save
 						</Button>
 					</div>

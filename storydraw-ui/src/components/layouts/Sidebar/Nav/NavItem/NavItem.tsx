@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './NavItem.module.scss';
 import { NavLink } from 'react-router-dom';
 
@@ -11,10 +10,7 @@ type NavItemProps = {
 const NavItem = ({ title, to, iconComponent }: NavItemProps) => {
 	return (
 		<li className={styles.NavItem}>
-			<NavLink
-				to={to}
-				className={(isActive) => styles.NavLink + (isActive.isActive ? ` ${styles.ActiveLink}` : '')}
-			>
+			<NavLink to={to} className={(isActive) => styles.NavLink + (isActive.isActive ? ` ${styles.ActiveLink}` : '')}>
 				{iconComponent}
 				<span>{title}</span>
 			</NavLink>

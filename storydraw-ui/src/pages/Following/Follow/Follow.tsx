@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Follow.module.scss';
 import defaultImg from '@/assets/images/default.svg';

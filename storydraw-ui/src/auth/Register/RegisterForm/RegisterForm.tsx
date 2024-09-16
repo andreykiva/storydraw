@@ -1,4 +1,3 @@
-import React from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import Input from '@/components/ui/inputs/Input/Input';
 import PasswordInput from '@/components/ui/inputs/PasswordInput/PasswordInput';

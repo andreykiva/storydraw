@@ -1,4 +1,3 @@
-import React from 'react';
 import ProfileStory from './ProfileStory/ProfileStory';
 import UserMessage from '@/pages/Profile/UserMessage/UserMessage';
 import personIcon from '@/assets/icons/profile/person.svg';

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import cn from 'classnames';
 import styles from './InputWithEmojis.module.scss';
 import EmojiPicker from './EmojiPicker/EmojiPicker';

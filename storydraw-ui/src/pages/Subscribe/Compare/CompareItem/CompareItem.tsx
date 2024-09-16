@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './CompareItem.module.scss';
 import checkIcon from '@/assets/icons/subscribe/check.svg';
 import minusIcon from '@/assets/icons/subscribe/minus.svg';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Replies.module.scss';
 import Comment from '@/pages/Story/Comments/CommentSection/Comment/Comment';
 import type { Comment as CommentType, RepliedComment } from '@/types/Comment';

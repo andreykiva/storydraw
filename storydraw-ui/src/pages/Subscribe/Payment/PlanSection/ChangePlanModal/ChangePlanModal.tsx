@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './ChangePlanModal.module.scss';
 import type { Plan } from '@/types/Subscription';
 import HTag from '@/components/ui/HTag/HTag';

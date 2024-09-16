@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ProfileStory.module.scss';
 import previewImg from '@/assets/images/preview.jpg';

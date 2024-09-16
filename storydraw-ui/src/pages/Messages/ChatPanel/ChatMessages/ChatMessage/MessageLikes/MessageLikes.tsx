@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './MessageLikes.module.scss';
 import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg';

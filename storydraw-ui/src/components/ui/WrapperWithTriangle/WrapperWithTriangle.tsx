@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './WrapperWithTriangle.module.scss';
 import { MENU_POSITION } from '@/constants/ui';

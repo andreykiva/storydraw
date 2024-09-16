@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './Prompt.module.scss';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';

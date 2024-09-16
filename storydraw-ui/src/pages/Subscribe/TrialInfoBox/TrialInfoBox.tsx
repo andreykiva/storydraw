@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './TrialInfoBox.module.scss';
 import TrialInfoItem from './TrialInfoItem/TrialInfoItem';

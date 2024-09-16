@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './DeleteAccountModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
@@ -41,12 +41,8 @@ const DeleteAccountModal = ({ onClose }: DeleteAccountModalProps) => {
 		<ModalOverlay>
 			<div className={styles.DeleteAccountModal}>
 				<CloseButton className={styles.CloseBtn} onClick={onClose} />
-				{deleteAccountStep === DELETE_ACCOUNT_STEP.INFORMATION && (
-					<DeleteAccountInformation onContinue={handleNextStep} />
-				)}
-				{deleteAccountStep === DELETE_ACCOUNT_STEP.VERIFICATION && (
-					<DeleteAccountVerification onBack={handlePrevStep} />
-				)}
+				{deleteAccountStep === DELETE_ACCOUNT_STEP.INFORMATION && <DeleteAccountInformation onContinue={handleNextStep} />}
+				{deleteAccountStep === DELETE_ACCOUNT_STEP.VERIFICATION && <DeleteAccountVerification onBack={handlePrevStep} />}
 			</div>
 		</ModalOverlay>
 	);

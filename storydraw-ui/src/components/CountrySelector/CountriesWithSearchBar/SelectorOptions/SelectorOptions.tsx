@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './SelectorOptions.module.scss';
 import SelectorOption from './SelectorOption/SelectorOption';
 import { highlightText } from '@/utils/textUtils';
@@ -26,11 +25,7 @@ const SelectorOptions = (props: SelectorOptionsProps) => {
 					}
 
 					return (
-						<SelectorOption
-							key={option.id}
-							selected={option.id === selectedOptionId}
-							onClick={() => onChangeSelect(option)}
-						>
+						<SelectorOption key={option.id} selected={option.id === selectedOptionId} onClick={() => onChangeSelect(option)}>
 							{highlightText(value, searchValue, styles.Highlight)}
 						</SelectorOption>
 					);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 // import styles from './Privacy.module.scss';
 import settingsSharedStyles from '@/pages/Settings/SettingsSharedStyles.module.scss';
 import SettingsSection from '@/pages/Settings/SettingsPanel/SettingsSection/SettingsSection';
@@ -30,8 +30,8 @@ const Privacy = () => {
 					<div className={settingsSharedStyles.SettingsItemInfo}>
 						<span className={settingsSharedStyles.SettingsItemTitle}>Private account</span>
 						<p className={settingsSharedStyles.SettingsItemDescr}>
-							With a private account, only users you approve can follow you and watch your stories. Your
-							existing followers won't be affected.
+							With a private account, only users you approve can follow you and watch your stories. Your existing followers
+							won't be affected.
 						</p>
 					</div>
 					<ToggleSwitch checked={isAccountPrivate} onChange={handleToggleSwitch} />
@@ -42,10 +42,9 @@ const Privacy = () => {
 							onClose={() => setIsSwitchModalOpen(false)}
 							onConfirm={handleCancelPrivateAccount}
 						>
-							If you switch to a public account, anyone can watch your stories. Users may be able to Duet,
-							Stitch, or download your stories depending on what you choose in Settings and privacy. You
-							won't need to approve followers and all pending follow requests will be automatically
-							approved.
+							If you switch to a public account, anyone can watch your stories. Users may be able to Duet, Stitch, or download
+							your stories depending on what you choose in Settings and privacy. You won't need to approve followers and all
+							pending follow requests will be automatically approved.
 						</ConfirmationModal>
 					)}
 				</div>

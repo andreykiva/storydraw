@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ChatList.module.scss';
 import ChatListItem from './ChatListItem/ChatListItem';
 

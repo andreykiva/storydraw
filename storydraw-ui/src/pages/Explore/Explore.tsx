@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Explore.module.scss';
 import drawnIcon from '@/assets/icons/brush.svg';
 import pixelIcon from '@/assets/icons/pixelated.svg';

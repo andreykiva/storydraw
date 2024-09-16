@@ -1,4 +1,3 @@
-import React from 'react';
 import Input from '@/components/ui/inputs/Input/Input';
 
 type ExpirationDateInputProps = React.ComponentProps<'input'> & {

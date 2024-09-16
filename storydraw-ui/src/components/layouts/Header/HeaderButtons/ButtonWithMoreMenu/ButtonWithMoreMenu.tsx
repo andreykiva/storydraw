@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import styles from './ButtonWithMoreMenu.module.scss';
