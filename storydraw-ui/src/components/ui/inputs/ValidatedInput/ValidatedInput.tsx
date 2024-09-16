@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './ValidatedInput.module.scss';
-import warningIcon from '@/assets/icons/auth/warning.svg?url';
-import CheckIcon from '@/assets/icons/check.svg';
+import warningIcon from '@/assets/icons/auth/warning.svg';
+import { ReactComponent as CheckIcon } from '@/assets/icons/check.svg';
 import { debounce } from '@/utils/timeUtils';
 import Loader from '@/components/ui/Loader/Loader';
 

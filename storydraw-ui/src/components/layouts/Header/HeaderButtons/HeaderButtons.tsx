@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './HeaderButtons.module.scss';
-import createIcon from '@/assets/icons/create.svg?url';
+import createIcon from '@/assets/icons/create.svg';
 import ButtonWithMoreMenu from './ButtonWithMoreMenu/ButtonWithMoreMenu';
 import Button from '@/components/ui/buttons/Button/Button';
 import { openAuthModal } from '@/features/auth/authSlice';

@@ -29,7 +29,7 @@ const ForYou = () => {
 		},
 	});
 
-	if (isLoaded && error) return <div>Error: {error.graphQLErrors[0].message}</div>;
+	if (isLoaded && error) return <div>Error: {error.graphQLErrors[0]?.message || error.message}</div>;
 
 	return (
 		<div className={styles.ForYou}>

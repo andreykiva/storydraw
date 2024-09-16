@@ -1,19 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './ProfileStory.module.scss';
 import previewImg from '@/assets/images/preview.jpg';
-import viewsIcon from '@/assets/icons/views.svg?url';
+import viewsIcon from '@/assets/icons/views.svg';
 import { formatNumber } from '@/utils/formatUtils';
 import type { Story } from '@/types/Story';
+import { wrapMentions } from '@/utils/textUtils';
 
 type ProfileStoryProps = Pick<Story, 'id' | 'description'>;
 
 const ProfileStory = (props: ProfileStoryProps) => {
 	const { id, description } = props;
+	const navigate = useNavigate();
 
 	return (
-		<Link className={styles.ProfileStory} to={`story/${id}`}>
-			<div className={styles.ProfileStoryContent}>
+		<div className={styles.ProfileStory}>
+			<div className={styles.ProfileStoryContent} onClick={() => navigate(`story/${id}`)}>
 				<img src={previewImg} alt="Story" className={styles.Story} />
 				<div className={styles.ViewsInfo}>
 					<img src={viewsIcon} alt="Views" className={styles.ViewsIcon} />
@@ -21,10 +23,10 @@ const ProfileStory = (props: ProfileStoryProps) => {
 				</div>
 			</div>
 			<p className={styles.InfoDescr}>
-				{description}
+				{wrapMentions(description, styles.Mention)}
 				{/* #{tags.join(' #')} */}
 			</p>
-		</Link>
+		</div>
 	);
 };
 

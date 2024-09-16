@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SearchAccount.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
+import defaultImg from '@/assets/images/default.svg';
 import { formatNumber } from '@/utils/formatUtils';
 import type User from '@/types/User';
 

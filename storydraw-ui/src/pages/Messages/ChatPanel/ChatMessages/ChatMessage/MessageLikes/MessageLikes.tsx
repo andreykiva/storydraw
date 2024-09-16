@@ -1,8 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './MessageLikes.module.scss';
-import LikeIcon from '@/assets/icons/like.svg';
-import defaultImg from '@/assets/images/default.svg?url';
+import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg';
+import defaultImg from '@/assets/images/default.svg';
 import type { MessageLikes } from '@/types/Message';
 
 type MessageLikesProps = {

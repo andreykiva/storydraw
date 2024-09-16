@@ -8,6 +8,18 @@ type Drawing {
   user: User!
 }
 
+type Follow {
+  id: String!
+  follower: User!
+  following: User!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Comment {
   id: String!
   content: String!
@@ -17,12 +29,9 @@ type Comment {
   likesCount: Float!
   repliesCount: Float!
   isLiked: Boolean!
+  parentComment: Comment
+  parentReply: Comment
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type Like {
   id: String!
@@ -65,11 +74,8 @@ type Story {
   isFollowing: Boolean!
 }
 
-type Follow {
+type UserMetadata {
   id: String!
-  follower: User!
-  following: User!
-  createdAt: DateTime!
 }
 
 type User {
@@ -145,6 +151,57 @@ type SharesCountResponse {
   count: Float!
 }
 
+type LikeNotification {
+  id: String!
+  type: NotificationType!
+  initiator: User!
+  createdAt: DateTime!
+  story: Story!
+  like: Like!
+}
+
+enum NotificationType {
+  COMMENT
+  LIKE
+  MENTION
+  FOLLOW
+}
+
+type CommentNotification {
+  id: String!
+  type: NotificationType!
+  initiator: User!
+  createdAt: DateTime!
+  story: Story!
+  comment: Comment
+}
+
+type MentionNotification {
+  id: String!
+  type: NotificationType!
+  initiator: User!
+  createdAt: DateTime!
+  story: Story!
+  comment: Comment
+}
+
+type FollowNotification {
+  id: String!
+  type: NotificationType!
+  initiator: User!
+  createdAt: DateTime!
+  follow: Follow!
+}
+
+type NotificationsCountSubscribe {
+  count: Int!
+  userId: String!
+}
+
+type UpdateLastViewedDateResponse {
+  success: Boolean!
+}
+
 type Query {
   findOneByUsername(usernameInput: FindOneByUsernameInput!): User
   getMe: User!
@@ -153,7 +210,6 @@ type Query {
   commentLikesCount(likesCountInput: LikeCommentInput!): LikesCountResponse!
   hasStoryLiked(hasStoryLikedInput: LikeStoryInput!): HasLikedResponse!
   hasCommentLiked(hasCommentLikedInput: LikeCommentInput!): HasLikedResponse!
-  notifications(notificationsInput: GetNotificationsInput!): [NotificationUnion!]
   followers(followersInput: FollowInput!): [User!]!
   following(followingInput: FollowInput!): [User!]!
   friends: [User!]!
@@ -170,6 +226,12 @@ type Query {
   favorites(favoritesInput: GetFavoritesInput!): [Favorite!]!
   favoritesCount(favoritesCountInput: FavoritesCountInput!): FavoritesCountResponse!
   sharesCount(favoritesCountInput: SharesCountInput!): SharesCountResponse!
+  allNotifications: [NotificationUnion!]
+  likesNotifications: [LikeNotification!]
+  commentsNotifications: [CommentNotification!]
+  mentionsNotifications: [MentionNotification!]
+  followsNotifications: [FollowNotification!]
+  newNotificationsCount: Float!
 }
 
 input FindOneByUsernameInput {
@@ -182,27 +244,6 @@ input LikeStoryInput {
 
 input LikeCommentInput {
   commentId: String!
-}
-
-union NotificationUnion = LikeNotification
-
-type LikeNotification {
-  id: String!
-  type: NotificationType!
-  createdAt: DateTime!
-  isRead: Boolean!
-  like: Like!
-}
-
-"""The type of notification"""
-enum NotificationType {
-  COMMENT
-  LIKE
-  FOLLOW
-}
-
-input GetNotificationsInput {
-  type: NotificationType!
 }
 
 input FollowInput {
@@ -241,6 +282,8 @@ input SharesCountInput {
   storyId: String!
 }
 
+union NotificationUnion = LikeNotification | CommentNotification | MentionNotification | FollowNotification
+
 type Mutation {
   updateUser(updateUserInput: UpdateUserInput!): User!
   updateUsername(usernameInput: UpdateUsernameInput!): User!
@@ -250,6 +293,7 @@ type Mutation {
   unlikeComment(unlikeCommentInput: LikeCommentInput!): UnlikeResponse!
   follow(followInput: FollowInput!): Follow!
   unfollow(unfollowInput: FollowInput!): UnfollowResponse!
+  updateLastNotificationsViewed: UpdateLastViewedDateResponse!
   generatePhoneCodeForSignup(generateCodeInput: GeneratePhoneCodeInput!): GenerateCodeResponse!
   generateEmailCodeForSignup(generateCodeInput: GenerateEmailCodeInput!): GenerateCodeResponse!
   signupWithPhoneAndCode(signupInput: SignupWithPhoneAndCodeInput!): AuthResponse!
@@ -374,4 +418,8 @@ input AddFavoriteInput {
 
 input ShareInput {
   storyId: String!
+}
+
+type Subscription {
+  newNotificationsCountUpdated: NotificationsCountSubscribe!
 }

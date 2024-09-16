@@ -2,10 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './NavPanel.module.scss';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import arrowIcon from '@/assets/icons/arrow-left.svg?url';
-import PersonIcon from '@/assets/icons/settings/person.svg';
-import LockIcon from '@/assets/icons/settings/lock.svg';
-import BellIcon from '@/assets/icons/settings/bell.svg';
+import arrowIcon from '@/assets/icons/arrow-left.svg';
+import { ReactComponent as PersonIcon } from '@/assets/icons/settings/person.svg';
+import { ReactComponent as LockIcon } from '@/assets/icons/settings/lock.svg';
+import { ReactComponent as BellIcon } from '@/assets/icons/settings/bell.svg';
 import NavItem from './NavItem/NavItem';
 import { SETTINGS_SECTION } from '@/constants/settings';
 

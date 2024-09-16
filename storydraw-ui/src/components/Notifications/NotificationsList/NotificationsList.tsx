@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styles from './NotificationsList.module.scss';
 import Follow from '@/components/Notifications/Follow/Follow';
 import Like from '@/components/Notifications/Like/Like';
@@ -6,6 +7,9 @@ import Comment from '@/components/Notifications/Comment/Comment';
 import NoNotifications from './NoNotifications/NoNotifications';
 import type { Notification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
+import { NOTIFICATIONS_TYPE } from '@/constants/notification';
+import { selectUser } from '@/features/user/userSlice';
+import Mention from '../Mention/Mention';
 
 type NotificationsListProps = {
 	notifications: Notification[];
@@ -17,6 +21,7 @@ type NotificationsListProps = {
 const NotificationsList = (props: NotificationsListProps) => {
 	const { notifications, noNotificationsTitle, noNotificationsIcon, noNotificationsDescr } = props;
 	const { thisWeek, thisMonth, previous } = categorizeNotificationsByDate(notifications);
+	const currentUser = useSelector(selectUser);
 
 	const renderNotifications = (notifications: Notification[], title: string) => {
 		return (
@@ -24,13 +29,22 @@ const NotificationsList = (props: NotificationsListProps) => {
 				<div className={styles.DateText}>{title}</div>
 				<ul>
 					{notifications.map((notification: Notification) => {
-						if (notification.type === 'follow') {
-							return <Follow key={notification.id} {...notification} />;
-						} else if (notification.type === 'like') {
-							return <Like key={notification.id} {...notification} />;
-						}
+						switch (notification.type) {
+							case NOTIFICATIONS_TYPE.FOLLOW:
+								return <Follow key={notification.id} notification={notification} />;
 
-						return <Comment key={notification.id} {...notification} />;
+							case NOTIFICATIONS_TYPE.LIKE:
+								return <Like key={notification.id} notification={notification} currentUser={currentUser} />;
+
+							case NOTIFICATIONS_TYPE.COMMENT:
+								return <Comment key={notification.id} notification={notification} currentUser={currentUser} />;
+
+							case NOTIFICATIONS_TYPE.MENTION:
+								return <Mention key={notification.id} notification={notification} />;
+
+							default:
+								return null;
+						}
 					})}
 				</ul>
 			</>

@@ -2,25 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Profile.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
+import defaultImg from '@/assets/images/default.svg';
 import Button from '@/components/ui/buttons/Button/Button';
 import { formatNumber } from '@/utils/formatUtils';
 import { openAuthModal } from '@/features/auth/authSlice';
 import { selectAuth } from '@/features/auth/authSlice';
 import { openReport } from '@/features/report/reportSlice';
-import ReportIcon from '@/assets/icons/report.svg';
-import BlockIcon from '@/assets/icons/block.svg';
+import { ReactComponent as ReportIcon } from '@/assets/icons/report.svg';
+import { ReactComponent as BlockIcon } from '@/assets/icons/block.svg';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
 import { MENU_POSITION } from '@/constants/ui';
 import { selectUser } from '@/features/user/userSlice';
-import editIcon from '@/assets/icons/profile/edit.svg?url';
+import editIcon from '@/assets/icons/profile/edit.svg';
 import EditProfileModal from './EditProfileModal/EditProfileModal';
 import RelationsModal from './RelationsModal/RelationsModal';
 import { RELATIONS_TYPE } from '@/constants/profile';
-import lockIcon from '@/assets/icons/profile/lock.svg?url';
+import lockIcon from '@/assets/icons/profile/lock.svg';
 import ProfileStories from './ProfileStories/ProfileStories';
 import UserMessage from './UserMessage/UserMessage';
-import personIcon from '@/assets/icons/profile/person.svg?url';
+import personIcon from '@/assets/icons/profile/person.svg';
 import { useQuery } from '@apollo/client';
 import { GET_USER_PROFILE } from '@/graphql/users/queries';
 import { ProfileUser } from '@/types/Profile';
@@ -56,7 +56,7 @@ const Profile = () => {
 		},
 		onError() {
 			setIsLoaded(true);
-		}
+		},
 	});
 
 	const { handleFollow, loading: followLoading } = useFollow({

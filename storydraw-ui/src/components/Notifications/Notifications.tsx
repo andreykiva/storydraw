@@ -7,7 +7,7 @@ import Button from '@/components/ui/buttons/Button/Button';
 import AllNotificationsList from './AllNotificationsList';
 import LikesList from './LikesList';
 import CommentsList from './CommentsList';
-import MentionsAndTagsList from './MentionsAndTagsList';
+import MentionsList from './MentionsList';
 import FollowsList from './FollowsList';
 import { changeNotificationsCategory, selectNotificationsCategory } from '@/features/notifications/notificationsSlice';
 import WrapperWithTriangle from '@/components/ui/WrapperWithTriangle/WrapperWithTriangle';
@@ -28,8 +28,8 @@ const categories = [
 		type: NOTIFICATIONS_CATEGORY.COMMENTS,
 	},
 	{
-		title: 'Mentions and tags',
-		type: NOTIFICATIONS_CATEGORY.MENTIONS_AND_TAGS,
+		title: 'Mentions',
+		type: NOTIFICATIONS_CATEGORY.MENTIONS,
 	},
 	{
 		title: 'Followers',
@@ -70,7 +70,7 @@ const Notifications = () => {
 				{notificationsCategory === NOTIFICATIONS_CATEGORY.ALL && <AllNotificationsList />}
 				{notificationsCategory === NOTIFICATIONS_CATEGORY.LIKES && <LikesList />}
 				{notificationsCategory === NOTIFICATIONS_CATEGORY.COMMENTS && <CommentsList />}
-				{notificationsCategory === NOTIFICATIONS_CATEGORY.MENTIONS_AND_TAGS && <MentionsAndTagsList />}
+				{notificationsCategory === NOTIFICATIONS_CATEGORY.MENTIONS && <MentionsList />}
 				{notificationsCategory === NOTIFICATIONS_CATEGORY.FOLLOWERS && <FollowsList />}
 			</div>
 		</WrapperWithTriangle>

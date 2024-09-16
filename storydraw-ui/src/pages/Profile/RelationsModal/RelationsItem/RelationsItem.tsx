@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './RelationsItem.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
+import defaultImg from '@/assets/images/default.svg';
 import { RelationsUser } from '@/types/Profile';
 import FollowButton from '@/components/ui/buttons/FollowButton/FollowButton';
 import useFollow from '@/hooks/interaction/useFollow';

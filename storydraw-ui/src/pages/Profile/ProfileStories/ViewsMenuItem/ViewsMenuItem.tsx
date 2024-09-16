@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './ViewsMenuItem.module.scss';
-import LockIcon from '@/assets/icons/profile/lock.svg';
+import { ReactComponent as LockIcon } from '@/assets/icons/profile/lock.svg';
 
 type ViewsMenuItemProps = {
 	children: React.ReactNode;

@@ -1,4 +1,5 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Follow } from '../entities/follow.entity';
@@ -18,6 +19,7 @@ export class FollowsService {
 		@InjectRepository(Follow)
 		private readonly followsRepository: Repository<Follow>,
 		private readonly repositoryService: RepositoryService,
+		private readonly eventEmitter: EventEmitter2,
 	) {}
 
 	async follow(followingUserId: string, follower: User): Promise<Follow> {
@@ -42,7 +44,15 @@ export class FollowsService {
 			following: followingUser,
 		});
 
-		return this.followsRepository.save(newFollow);
+		const createdFollow = await this.followsRepository.save(newFollow);
+
+		this.eventEmitter.emit('follow.created', {
+			user: followingUser,
+			initiator: follower,
+			follow: createdFollow,
+		});
+
+		return createdFollow;
 	}
 
 	async unfollow(unfollowingUserId: string, unfollower: User): Promise<Follow> {

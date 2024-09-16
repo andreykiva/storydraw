@@ -8,15 +8,17 @@ import { IUsersService } from '../users.interface';
 import { UsernameService } from './username.service';
 import { USERNAME_EXISTS_ERROR } from 'src/common/constants/errors.constants';
 import { UpdateUserInput } from '../dto/update-user.input';
+import { UserMetadataService } from 'src/user-metadata/services/user-metadata.service';
 
 @Injectable()
 export class UsersService implements IUsersService {
 	constructor(
-		@InjectRepository(User) private usersRepository: Repository<User>,
-		private usernameService: UsernameService,
+		@InjectRepository(User) private readonly usersRepository: Repository<User>,
+		private readonly usernameService: UsernameService,
+		private readonly userMetadataService: UserMetadataService,
 	) {}
 
-	async create(createUserInput: CreateUserInput): Promise<User> {
+	async createUser(createUserInput: CreateUserInput): Promise<User> {
 		let hashedPassword = null;
 		let username = null;
 
@@ -35,7 +37,11 @@ export class UsersService implements IUsersService {
 			password: hashedPassword,
 		});
 
-		return this.usersRepository.save(newUser);
+		const savedUser = await this.usersRepository.save(newUser);
+
+		await this.userMetadataService.createUserMetadata(savedUser);
+
+		return savedUser;
 	}
 
 	findAll(): Promise<User[]> {

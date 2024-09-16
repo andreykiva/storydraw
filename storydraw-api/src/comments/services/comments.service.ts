@@ -1,4 +1,5 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IsNull, Repository } from 'typeorm';
 import { User } from 'src/users/entities/user.entity';
@@ -10,12 +11,14 @@ import {
 import { Comment } from '../entities/comment.entity';
 import { CreateCommentInput, CreateReplyInput } from '../dto/create-comment.input';
 import { RepositoryService } from 'src/common/services/repository.service';
+import { Story } from 'src/stories/entities/story.entity';
 
 @Injectable()
 export class CommentsService {
 	constructor(
 		@InjectRepository(Comment) private readonly commentsRepository: Repository<Comment>,
 		private readonly repositoryService: RepositoryService,
+		private readonly eventEmitter: EventEmitter2,
 	) {}
 
 	async createComment(createCommentInput: CreateCommentInput, user: User): Promise<Comment> {
@@ -32,7 +35,16 @@ export class CommentsService {
 			story,
 		});
 
-		return this.commentsRepository.save(newComment);
+		const savedComment = await this.commentsRepository.save(newComment);
+
+		this.eventEmitter.emit('comment.created', {
+			user: story.user,
+			initiator: user,
+			comment: savedComment,
+			story,
+		});
+
+		return savedComment;
 	}
 
 	async createReply(createReplyInput: CreateReplyInput, user: User): Promise<Comment> {
@@ -42,7 +54,7 @@ export class CommentsService {
 			where: {
 				id: commentId,
 			},
-			relations: ['story', 'parentComment'],
+			relations: ['story', 'parentComment', 'user'],
 		});
 
 		if (!comment) {
@@ -61,7 +73,16 @@ export class CommentsService {
 			newReply.parentReply = comment;
 		}
 
-		return this.commentsRepository.save(newReply);
+		const savedReply = await this.commentsRepository.save(newReply);
+
+		this.eventEmitter.emit('comment.created', {
+			user: comment.user,
+			initiator: user,
+			comment: savedReply,
+			story: comment.story,
+		});
+
+		return savedReply;
 	}
 
 	async deleteComment(commentId: string, userId: string): Promise<Comment> {
@@ -132,7 +153,41 @@ export class CommentsService {
 			},
 			relations: ['user'],
 		});
+
 		return comment.user;
+	}
+
+	async getParentComment(commentId: string): Promise<Comment> {
+		const comment = await this.commentsRepository.findOne({
+			where: {
+				id: commentId,
+			},
+			relations: ['parentComment'],
+		});
+
+		return comment.parentComment;
+	}
+
+	async getParenReply(commentId: string): Promise<Comment> {
+		const comment = await this.commentsRepository.findOne({
+			where: {
+				id: commentId,
+			},
+			relations: ['parentReply'],
+		});
+
+		return comment.parentReply;
+	}
+
+	async getCommentStory(commentId: string): Promise<Story> {
+		const comment = await this.commentsRepository.findOne({
+			where: {
+				id: commentId,
+			},
+			relations: ['story'],
+		});
+
+		return comment.story;
 	}
 
 	async findOneById(id: string): Promise<Comment> {

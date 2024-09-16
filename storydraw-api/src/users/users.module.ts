@@ -6,9 +6,10 @@ import { User } from './entities/user.entity';
 import { UsernameService } from './services/username.service';
 import { LikesModule } from 'src/likes/likes.module';
 import { FollowsModule } from 'src/follows/follows.module';
+import { UserMetadataModule } from 'src/user-metadata/user-metadata.module';
 
 @Module({
-	imports: [TypeOrmModule.forFeature([User]), LikesModule, FollowsModule],
+	imports: [TypeOrmModule.forFeature([User]), LikesModule, FollowsModule, UserMetadataModule],
 	providers: [UsersResolver, UsersService, UsernameService],
 	exports: [UsersService],
 })

@@ -5,12 +5,18 @@
 		"paths": {
 			"@/*": ["*"]
 		},
+		"types": ["vitest/globals"],
 		"noImplicitAny": true,
-		"module": "es6",
-		"target": "es5",
-		"jsx": "react",
+		"module": "esnext",
+		"target": "es6",
+		"jsx": "react-jsx",
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
-		"moduleResolution": "Node"
-	}
+		"moduleResolution": "Node",
+		"strict": false,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": ["src", "tests"]
 }

@@ -1,25 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ForYouStory.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
+import defaultImg from '@/assets/images/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
-import musicIcon from '@/assets/icons/music.svg?url';
-import { ForYouStory } from '@/types/Story';
+import musicIcon from '@/assets/icons/music.svg';
+import { ForYouStory as ForYouStoryType } from '@/types/Story';
 import InteractionPanel from './InteractionPanel/InteractionPanel';
 import { UserState } from '@/features/user/userSlice';
 import FollowButton from '@/components/ui/buttons/FollowButton/FollowButton';
 import useFollow from '@/hooks/interaction/useFollow';
+import { wrapMentions } from '@/utils/textUtils';
 
 type ForYouStoryProps = {
 	isAuth: boolean;
-	story: ForYouStory;
+	story: ForYouStoryType;
 	currentUser: UserState;
 };
 
 const ForYouStory = (props: ForYouStoryProps) => {
 	const { isAuth, currentUser } = props;
-	const { id, user, description, likesCount, commentsCount, favoritesCount, sharesCount, isLiked, isFavorited, isShared } =
-		props.story;
+	const { id, user, description, likesCount, commentsCount, favoritesCount, sharesCount, isLiked, isFavorited, isShared } = props.story;
 
 	const { handleFollow, loading, isFollowing } = useFollow({
 		isAuth,
@@ -39,7 +39,7 @@ const ForYouStory = (props: ForYouStoryProps) => {
 						<span className={styles.InfoDisplayName}>{user.displayName}</span>
 					</Link>
 					<p className={styles.InfoDescr}>
-						<span className={styles.DescrText}>{description}</span>
+						<span className={styles.DescrText}>{wrapMentions(description, styles.Mention)}</span>
 						{/* {tags.map((tag) => (
 							<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
 								#{tag}

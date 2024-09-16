@@ -34,6 +34,10 @@
 
 	.DisplayName {
 		color: var(--light-color);
+		max-width: 180px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 
 		&:hover {
 			opacity: .8;
@@ -44,4 +48,18 @@
 		font-size: 15px;
 		color: rgb(130, 130, 130);
 	}
+}
+
+.Follow .FollowButton {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 16px;
+	min-width: auto;
+	width: 96px;
+	height: 32px;
+	padding: 0;
+	border-radius: 10px;
+	font-size: 15px;
+	letter-spacing: -0.5px;
 }

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import styles from './StoryInfo.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
-import musicIcon from '@/assets/icons/music.svg?url';
-import LikeIcon from '@/assets/icons/like.svg';
-import ShareIcon from '@/assets/icons/share.svg';
-import FavoriteIcon from '@/assets/icons/favorites-filled.svg';
+import defaultImg from '@/assets/images/default.svg';
+import musicIcon from '@/assets/icons/music.svg';
+import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg';
+import { ReactComponent as ShareIcon } from '@/assets/icons/share.svg';
+import { ReactComponent as FavoriteIcon } from '@/assets/icons/favorites-filled.svg';
 import { formatNumber } from '@/utils/formatUtils';
 import type { ForYouStory } from '@/types/Story';
 import { selectAuth } from '@/features/auth/authSlice';
@@ -17,6 +17,7 @@ import useFollow from '@/hooks/interaction/useFollow';
 import useStoryLike from '@/hooks/interaction/useStoryLike';
 import useFavorite from '@/hooks/interaction/useFavorite';
 import useShare from '@/hooks/interaction/useShare';
+import { wrapMentions } from '@/utils/textUtils';
 
 type StoryInfoProps = {
 	story: ForYouStory;
@@ -68,7 +69,7 @@ const StoryInfo = ({ story, isCurrentUser }: StoryInfoProps) => {
 					<div className={styles.UserInfoBottom}>
 						<span className={styles.DisplayName}>{displayName}</span>
 						<div className={styles.Dot}></div>
-						<span className={styles.StoryDate}>{displayDate(new Date(createdAt))}</span>
+						<span className={styles.StoryDate}>{displayDate(createdAt)}</span>
 					</div>
 				</div>
 				{!isCurrentUser && (
@@ -81,7 +82,7 @@ const StoryInfo = ({ story, isCurrentUser }: StoryInfoProps) => {
 					/>
 				)}
 			</div>
-			<p className={styles.InfoDescr}>{description}</p>
+			<p className={styles.InfoDescr}>{wrapMentions(description, styles.Mention)}</p>
 			<div className={styles.InfoMusic}>
 				<img src={musicIcon} alt="Music" className={styles.MusicIcon} /> {'Orbital - Halcyon And On And On'}
 			</div>

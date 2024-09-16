@@ -8,7 +8,7 @@ import HTag from '@/components/ui/HTag/HTag';
 import Button from '@/components/ui/buttons/Button/Button';
 import ReportCategory from './ReportCategory/ReportCategory';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import ArrowIcon from '@/assets/icons/arrow.svg';
+import { ReactComponent as ArrowIcon } from '@/assets/icons/arrow.svg';
 import { selectReportType, selectReportTargetId, closeReport } from '@/features/report/reportSlice';
 
 type ReportCategory = {

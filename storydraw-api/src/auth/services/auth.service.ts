@@ -93,7 +93,7 @@ export class AuthService implements IAuthService {
 
 		const { code, ...userDetails } = signupInput;
 
-		return this.usersService.create(userDetails);
+		return this.usersService.createUser(userDetails);
 	}
 
 	async signupWithEmailAndPassAndCode(signupInput: SignupWithEmailAndPassAndCodeInput): Promise<User> {
@@ -107,7 +107,7 @@ export class AuthService implements IAuthService {
 
 		const { code, ...userDetails } = signupInput;
 
-		return this.usersService.create(userDetails);
+		return this.usersService.createUser(userDetails);
 	}
 
 	async login(user: User): Promise<AuthResponse> {

@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import styles from './ChatListItem.module.scss';
 import type User from '@/types/User';
-import defaultImg from '@/assets/images/default.svg?url';
+import defaultImg from '@/assets/images/default.svg';
 import { displayDate } from '@/utils/dateUtils';
-import MoreIcon from '@/assets/icons/more-horizontal.svg';
+import { ReactComponent as MoreIcon } from '@/assets/icons/more-horizontal.svg';
 import ActionsMenu from './ActionsMenu/ActionsMenu';
 import useClickOutside from '@/hooks/useClickOutside';
 import { setActiveChatmateId, selectActiveChatmateId } from '@/features/chat/chatSlice';
@@ -44,7 +44,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 					<span className={styles.ChatmateUsername}>{username}</span>
 					<p className={styles.MessageContent}>
 						<span className={styles.MessageText}>{lastMessage}</span>
-						<span className={styles.MessageDate}>{displayDate(date, '/')}</span>
+						<span className={styles.MessageDate}>{displayDate(date.toString(), '/')}</span>
 					</p>
 				</div>
 			</div>

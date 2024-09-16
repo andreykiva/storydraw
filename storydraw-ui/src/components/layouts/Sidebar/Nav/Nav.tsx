@@ -1,7 +1,7 @@
 import React from 'react';
-import LikeIcon from '@/assets/icons/like.svg';
-import PersonIcon from '@/assets/icons/person.svg';
-import ExploreIcon from '@/assets/icons/explore.svg';
+import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg';
+import { ReactComponent as PersonIcon } from '@/assets/icons/person.svg';
+import { ReactComponent as ExploreIcon } from '@/assets/icons/explore.svg';
 import NavItem from './NavItem/NavItem';
 
 const links = [

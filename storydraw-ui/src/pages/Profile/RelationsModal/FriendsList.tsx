@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RelationsUser } from '@/types/Profile';
 import RelationsItem from './RelationsItem/RelationsItem';
 import NoRelations from './NoRelations/NoRelations';
-import personIcon from '@/assets/icons/profile/person.svg?url';
+import personIcon from '@/assets/icons/profile/person.svg';
 import { selectUser } from '@/features/user/userSlice';
 
 type FriendsListProps = {

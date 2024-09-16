@@ -7,7 +7,7 @@ import { MENU_POSITION } from '@/constants/ui';
 import { useMutation } from '@apollo/client';
 import { CREATE_COMMENT, CREATE_REPLY } from '@/graphql/comments/mutations';
 import { Comment, RepliedComment } from '@/types/Comment';
-import closeIcon from '@/assets/icons/comments/close.svg?url';
+import closeIcon from '@/assets/icons/comments/close.svg';
 
 type CreateCommentProps = {
 	isAuth: boolean;

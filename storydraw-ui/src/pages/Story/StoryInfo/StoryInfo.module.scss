@@ -48,6 +48,15 @@
 
 .InfoDescr {
 	margin-bottom: 10px;
+
+	.Mention {
+		font-weight: 700;
+		color: rgb(101, 103, 218);
+
+		&:hover {
+			opacity: .7;
+		}
+	}
 }
 
 .InfoMusic {

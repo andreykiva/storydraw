@@ -9,6 +9,7 @@ import { RepositoryService } from 'src/common/services/repository.service';
 import { USER_NOT_FOUND_ERROR } from 'src/common/constants/errors.constants';
 import { FavoritesService } from 'src/favorites/services/favorites.service';
 import { LikesService } from 'src/likes/services/likes.service';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Injectable()
 export class StoriesService {
@@ -18,6 +19,7 @@ export class StoriesService {
 		private readonly repositoryService: RepositoryService,
 		private readonly favoritesService: FavoritesService,
 		private readonly likesService: LikesService,
+		private readonly eventEmitter: EventEmitter2,
 	) {}
 
 	async create(createStoryInput: CreateStoryInput, user: User): Promise<Story> {
@@ -26,16 +28,21 @@ export class StoriesService {
 			user,
 		});
 
-		await this.storiesRepository.save(newStory);
+		const savedStory = await this.storiesRepository.save(newStory);
 
 		const newDrawing = {
 			imageUrl: createStoryInput.drawing.imageUrl,
-			storyId: newStory.id,
+			storyId: savedStory.id,
 		};
+
+		this.eventEmitter.emit('story.created', {
+			story: savedStory,
+			user,
+		});
 
 		await this.drawingsService.create(newDrawing, user);
 
-		return newStory;
+		return savedStory;
 	}
 
 	async findAll(): Promise<Story[]> {

@@ -29,6 +29,7 @@ export const TRY_LATER_ERROR = 'Please try later.';
 // Auth
 export const INVALID_PASSWORD_ERROR = 'Invalid password.';
 export const NO_PASSWORD_FOR_PHONE_ERROR = 'No password set for this phone number.';
+export const MISSING_AUTH_TOKEN = 'Missing auth token!';
 
 // Follows
 export const ALREADY_FOLLOWING_ERROR = 'You are already following this user!';
@@ -40,3 +41,6 @@ export const USER_CANNOT_FOLLOW_SELF_ERROR = 'A user cannot be followed by thems
 // Favorites
 export const ALREADY_FAVORITED_STORY_ERROR = 'This story is already in your favorites!';
 export const FAVORITE_NOT_FOUND_ERROR = 'This story is not in your favorites!';
+
+// UserMetadata
+export const USER_METADATA_NOT_FOUND = 'User metadata was not found!';

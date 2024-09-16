@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ReportCategory.module.scss';
-import ArrowIcon from '@/assets/icons/arrow.svg';
-import CheckIcon from '@/assets/icons/check.svg';
+import { ReactComponent as ArrowIcon } from '@/assets/icons/arrow.svg';
+import { ReactComponent as CheckIcon } from '@/assets/icons/check.svg';
 
 type ReportCategoryProps = {
 	name: string;

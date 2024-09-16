@@ -5,7 +5,7 @@ import styles from './ProfileStories.module.scss';
 import UserMessage from '../UserMessage/UserMessage';
 import { PROFILE_STORIES_TYPE } from '@/constants/profile';
 import ViewsMenuItem from './ViewsMenuItem/ViewsMenuItem';
-import personIcon from '@/assets/icons/profile/person.svg?url';
+import personIcon from '@/assets/icons/profile/person.svg';
 import StoriesList from './StoriesList';
 import FavoritesList from './FavoritesList';
 import LikedList from './LikedList';

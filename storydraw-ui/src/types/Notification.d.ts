@@ -1,52 +1,72 @@
 import type User from './User';
+import type { Comment as CommentType } from './Comment';
+import { NOTIFICATIONS_TYPE } from '@/constants/notification';
 
-type ParentComment = {
+type NotificationInitiator = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'>;
+
+type Story = {
 	id: string;
-	user: Pick<User, 'id' | 'displayName'>;
-	text: string;
+	description?: string;
+	user: Pick<User, 'username'>;
 };
 
-type StoryImages = {
-	image: string;
+type Like = {
+	comment: Pick<CommentType, 'content'>;
+};
+
+type ParentComment = {
+	content: string;
+	user: Pick<User, 'id'>;
+};
+
+type Comment = {
+	content: string;
+	parentComment?: ParentComment;
+	parentReply?: ParentComment;
+};
+
+export type LikeNotification = {
+	id: string;
+	type: NOTIFICATIONS_TYPE;
+	createdAt: string;
+	initiator: NotificationInitiator;
+	like: Like;
+	story: Story;
 };
 
 export type CommentNotification = {
 	id: string;
-	type: 'comment';
-	text: string;
-	date: Date;
-	parentComment?: ParentComment;
-	story: {
-		id: string;
-		preview: StoryImages;
-	};
-	user: Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'>;
+	type: NOTIFICATIONS_TYPE;
+	createdAt: string;
+	initiator: NotificationInitiator;
+	comment: Comment;
+	story: Story;
+};
+
+export type MentionNotification = {
+	id: string;
+	type: NOTIFICATIONS_TYPE;
+	createdAt: string;
+	initiator: NotificationInitiator;
+	comment?: Comment | null;
+	story: Story;
 };
 
 export type FollowNotification = {
 	id: string;
-	type: 'follow';
-	date: Date;
-	user: Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'> & {
-		isFollowedByYou: boolean;
+	type: NOTIFICATIONS_TYPE;
+	createdAt: string;
+	initiator: NotificationInitiator & {
+		isFollowing?: boolean;
 	};
 };
 
-type LikedUser = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'>;
-
-export type LikeNotification = {
+export type Notification = {
 	id: string;
-	type: 'like';
-	date: Date;
-	parentComment?: ParentComment;
-	story: {
-		id: string;
-		preview: StoryImages;
-		author: Pick<User, 'id' | 'username'>;
-	};
-	user?: LikedUser;
-	count?: number;
-	users?: LikedUser[];
+	type: NOTIFICATIONS_TYPE;
+	createdAt: string;
+	initiator: NotificationInitiator & { isFollowing?: boolean };
+	like: Like | null;
+	comment: Comment | null;
+	story: Story | null;
 };
-
-export type Notification = CommentNotification | FollowNotification | LikeNotification;

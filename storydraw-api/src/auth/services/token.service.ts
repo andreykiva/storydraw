@@ -7,9 +7,9 @@ import { TOKEN_VERIFICATION_ERROR, USER_NOT_FOUND_ERROR } from 'src/common/const
 @Injectable()
 export class TokenService {
 	constructor(
-		private jwtService: JwtService,
-		private configService: ConfigService,
-		private usersService: UsersService,
+		private readonly jwtService: JwtService,
+		private readonly configService: ConfigService,
+		private readonly usersService: UsersService,
 	) {}
 
 	generateAccessToken(payload: { sub: string }): string {

@@ -6,7 +6,7 @@ const InteractionsMenu = () => {
 	const [isLikesActive, setIsLikesActive] = useState(true);
 	const [isCommentsActive, setIsCommentsActive] = useState(true);
 	const [isNewFollowersActive, setIsNewFollowersActive] = useState(true);
-	const [isMentionsAndTagsActive, setIsMentionsAndTagsActive] = useState(true);
+	const [isMentionsActive, setIsMentionsActive] = useState(true);
 
 	return (
 		<div className={styles.InteractionsMenu}>
@@ -26,9 +26,9 @@ const InteractionsMenu = () => {
 				onChange={() => setIsNewFollowersActive(!isNewFollowersActive)}
 			/>
 			<InteractionsItem
-				title="Mentions and tags"
-				checked={isMentionsAndTagsActive}
-				onChange={() => setIsMentionsAndTagsActive(!isMentionsAndTagsActive)}
+				title="Mentions"
+				checked={isMentionsActive}
+				onChange={() => setIsMentionsActive(!isMentionsActive)}
 			/>
 		</div>
 	);

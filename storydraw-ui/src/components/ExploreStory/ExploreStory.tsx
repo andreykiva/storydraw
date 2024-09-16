@@ -2,13 +2,14 @@ import React from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import styles from './ExploreStory.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
+import defaultImg from '@/assets/images/default.svg';
 import previewImg from '@/assets/images/preview.jpg';
-import LikeIcon from '@/assets/icons/like.svg';
-import viewsIcon from '@/assets/icons/views.svg?url';
+import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg';
+import viewsIcon from '@/assets/icons/views.svg';
 import { formatNumber } from '@/utils/formatUtils';
 import type { Story } from '@/types/Story';
 import type User from '@/types/User';
+import { wrapMentions } from '@/utils/textUtils';
 
 type ExploreStoryProps = Pick<Story, 'id' | 'description' | 'likesCount' | 'viewsCount'> & {
 	user: Pick<User, 'id' | 'username' | 'imageUrl'>;
@@ -28,7 +29,7 @@ const ExploreStory = (props: ExploreStoryProps) => {
 				</div>
 			</Link>
 			<p className={styles.StoryDescr}>
-				<span className={styles.DescrText}>{description}</span>
+				<span className={styles.DescrText}>{wrapMentions(description, styles.Mention)}</span>
 				{/* {tags.map((tag) => (
 					<Link to={'/tag/' + tag} key={tag} className={styles.Tag}>
 						#{tag}

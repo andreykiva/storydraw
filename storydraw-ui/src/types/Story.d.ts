@@ -5,7 +5,7 @@ export type Story = {
 	title: string;
 	description?: string;
 	musicId?: string;
-	createdAt: Date;
+	createdAt: string;
 	likesCount?: number;
 	viewsCount?: number;
 	commentsCount?: number;
@@ -20,7 +20,7 @@ export type ForYouStory = {
 	title: string;
 	description?: string;
 	musicId?: string;
-	createdAt: Date;
+	createdAt: string;
 	likesCount: number;
 	commentsCount: number;
 	favoritesCount: number;

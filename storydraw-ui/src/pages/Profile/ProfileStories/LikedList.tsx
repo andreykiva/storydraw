@@ -1,8 +1,8 @@
 import React from 'react';
 import ProfileStory from './ProfileStory/ProfileStory';
 import UserMessage from '@/pages/Profile/UserMessage/UserMessage';
-import personIcon from '@/assets/icons/profile/person.svg?url';
-import lockIcon from '@/assets/icons/profile/lock.svg?url';
+import personIcon from '@/assets/icons/profile/person.svg';
+import lockIcon from '@/assets/icons/profile/lock.svg';
 import type { ProfileStory as ProfileStoryType } from '@/types/Profile';
 
 type LikedListProps = {

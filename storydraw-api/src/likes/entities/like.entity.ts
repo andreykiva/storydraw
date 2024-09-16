@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, OneToOne } from 'typeorm';
 import { EntityType } from '../enums/entity-type.enum';
 import { User } from 'src/users/entities/user.entity';
 import { Story } from 'src/stories/entities/story.entity';
@@ -37,6 +37,6 @@ export class Like {
 	@Field(() => Comment, { nullable: true })
 	comment: Comment;
 
-	@OneToMany(() => Notification, (notification) => notification.like)
-	notifications: Comment[];
+	@OneToOne(() => Notification, (notification) => notification.like, { cascade: true, onDelete: 'CASCADE' })
+	notification: Notification;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ChatPanelHeader.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
+import defaultImg from '@/assets/images/default.svg';
 import { Link } from 'react-router-dom';
 
 const testChatmate = {

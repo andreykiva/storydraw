@@ -3,8 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Story } from 'src/stories/entities/story.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Like } from 'src/likes/entities/like.entity';
+import { Follow } from 'src/follows/entities/follow.entity';
 
 @Injectable()
 export class RepositoryService {
@@ -17,6 +18,8 @@ export class RepositoryService {
 		private readonly commentsRepository: Repository<Comment>,
 		@InjectRepository(Like)
 		private readonly likesRepository: Repository<Like>,
+		@InjectRepository(Follow)
+		private readonly followsRepository: Repository<Follow>,
 	) {}
 
 	async getStoryById(storyId: string): Promise<Story> {
@@ -27,11 +30,23 @@ export class RepositoryService {
 		return this.usersRepository.findOneBy({ id: userId });
 	}
 
+	async getUsersByUsernames(usernames: string[]): Promise<User[]> {
+		return this.usersRepository.find({
+			where: {
+				username: In(usernames),
+			},
+		});
+	}
+
 	async getCommentById(commentId: string): Promise<Comment> {
-		return this.commentsRepository.findOneBy({ id: commentId });
+		return this.commentsRepository.findOne({ where: { id: commentId }, relations: ['user', 'story'] });
 	}
 
 	async getLikeById(likeId: string): Promise<Like> {
 		return this.likesRepository.findOneBy({ id: likeId });
+	}
+
+	async getFollowById(followId: string): Promise<Follow> {
+		return this.followsRepository.findOneBy({ id: followId });
 	}
 }

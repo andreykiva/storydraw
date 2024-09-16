@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './FollowButton.module.scss';
 import Button from '@/components/ui/buttons/Button/Button';
-import swapIcon from '@/assets/icons/notifications/swap.svg?url';
+import swapIcon from '@/assets/icons/notifications/swap.svg';
 
 type FollowButtonProps = {
 	className?: string;

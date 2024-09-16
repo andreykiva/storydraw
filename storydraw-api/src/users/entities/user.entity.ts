@@ -1,13 +1,14 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Story } from 'src/stories/entities/story.entity';
 import { Drawing } from 'src/drawings/entities/drawing.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Like } from 'src/likes/entities/like.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
 import { Follow } from 'src/follows/entities/follow.entity';
 import { Favorite } from 'src/favorites/entities/favorite.entity';
 import { Share } from 'src/shares/entities/share.entity';
 import { Notification } from 'src/notifications/entities/notification.entity';
+import { UserMetadata } from 'src/user-metadata/entities/user-metadata.entity';
 
 @Entity({ name: 'users' })
 @ObjectType()
@@ -71,6 +72,12 @@ export class User {
 	@OneToMany(() => Share, (share) => share.user)
 	shares: Share[];
 
-	@OneToMany(() => Notification, (notification) => notification.user)
+	@OneToMany(() => Notification, (notification) => notification.user, { cascade: true, onDelete: 'CASCADE' })
 	notifications: Notification[];
+
+	@OneToMany(() => Notification, (notification) => notification.initiator, { cascade: true, onDelete: 'CASCADE' })
+	initiatedNotifications: Notification[];
+
+	@OneToOne(() => UserMetadata, (metadata) => metadata.user, { cascade: true, onDelete: 'CASCADE' })
+	metadata: UserMetadata;
 }

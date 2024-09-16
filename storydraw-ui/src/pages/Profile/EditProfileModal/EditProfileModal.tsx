@@ -4,8 +4,8 @@ import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import HTag from '@/components/ui/HTag/HTag';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
 import Button from '@/components/ui/buttons/Button/Button';
-import defaultImg from '@/assets/images/default.svg?url';
-import editPfpIcon from '@/assets/icons/profile/edit-pfp.svg?url';
+import defaultImg from '@/assets/images/default.svg';
+import editPfpIcon from '@/assets/icons/profile/edit-pfp.svg';
 import Input from '@/components/ui/inputs/Input/Input';
 import useEditProfileForm from '@/hooks/forms/useEditProfileForm';
 import { EDIT_PROFILE_FIELD } from '@/constants/profile';
@@ -44,7 +44,7 @@ const EditProfileModal = ({ user, udpateUser, onClose }: EditProfileModalProps) 
 					<HTag tag="h3" className={styles.ModalTitle}>
 						Edit profile
 					</HTag>
-					<CloseButton onClick={onClose} />
+					<CloseButton onClick={onClose} type="button" />
 				</div>
 				<div className={styles.ModalBody}>
 					<div className={styles.EditProfileItem}>
@@ -113,7 +113,7 @@ const EditProfileModal = ({ user, udpateUser, onClose }: EditProfileModalProps) 
 					</div>
 				</div>
 				<div className={styles.ModalFooter}>
-					<Button className={styles.CancelBtn} onClick={onClose}>
+					<Button className={styles.CancelBtn} type="button" onClick={onClose}>
 						Cancel
 					</Button>
 					<Button className={styles.SaveBtn} type="submit" disabled={isFormBtnDisabled} loading={isFormBtnLoading}>

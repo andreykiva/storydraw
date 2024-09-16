@@ -1,6 +1,7 @@
 import {
 	emailPattern,
 	stringPattern,
+	usernamePattern,
 	passwordPattern,
 	phonePattern,
 	codePattern,
@@ -20,8 +21,8 @@ export const validateEmail: ValidatorFunction = (email) => {
 
 export const validateUsername: ValidatorFunction = (username) => {
 	if (!username) return 'Username is required';
-	if (username.length < 5 || username.length > 24) return 'Username must be between 5 and 32 characters';
-	if (!stringPattern.test(username)) return 'Username must contain only letters and numbers';
+	if (username.length < 5 || username.length > 24) return 'Username must be between 5 and 24 characters';
+	if (!usernamePattern.test(username)) return 'Username must contain only letters and numbers';
 
 	return null;
 };

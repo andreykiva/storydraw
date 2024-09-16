@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './SubscriptionPlan.module.scss';
-import checkIcon from '@/assets/icons/subscribe/check.svg?url';
+import checkIcon from '@/assets/icons/subscribe/check.svg';
 
 type SubscriptionPlanProps = {
 	name: string;
@@ -14,10 +14,7 @@ type SubscriptionPlanProps = {
 const SubscriptionPlan = (props: SubscriptionPlanProps) => {
 	const { name, category, pricePerMonth, selected, onClick } = props;
 	return (
-		<div
-			className={cn(styles.SubscriptionPlan, selected && styles.Selected, category && styles.WithCategory)}
-			onClick={onClick}
-		>
+		<div className={cn(styles.SubscriptionPlan, selected && styles.Selected, category && styles.WithCategory)} onClick={onClick}>
 			{category && <div className={styles.PlanCategory}>{category}</div>}
 			<div className={styles.Check}>
 				<img src={checkIcon} alt="Selected" className={styles.CheckIcon} />

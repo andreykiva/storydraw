@@ -3,6 +3,7 @@ import { ObjectType, Field } from '@nestjs/graphql';
 import { Story } from 'src/stories/entities/story.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Like } from 'src/likes/entities/like.entity';
+import { Notification } from 'src/notifications/entities/notification.entity';
 
 @Entity({ name: 'comments' })
 @ObjectType()
@@ -41,4 +42,7 @@ export class Comment {
 
 	@OneToMany(() => Like, (like) => like.comment, { cascade: true, onDelete: 'CASCADE' })
 	likes: Like[];
+
+	@OneToMany(() => Notification, (notification) => notification.comment, { cascade: true, onDelete: 'CASCADE' })
+	notifications: Notification[];
 }

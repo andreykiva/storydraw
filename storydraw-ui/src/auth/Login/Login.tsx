@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import authSharedStyles from '@/auth/AuthSharedStyles.module.scss';
 import LoginOptions from './LoginOptions/LoginOptions';
 import LoginWithQR from './LoginWithQR/LoginWithQR';
-import ArrowIcon from '@/assets/icons/arrow.svg';
+import { ReactComponent as ArrowIcon } from '@/assets/icons/arrow.svg';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
 import LoginForm from './LoginForm/LoginForm';
 import ResetPasswordForm from './ResetPasswordForm/ResetPasswordForm';

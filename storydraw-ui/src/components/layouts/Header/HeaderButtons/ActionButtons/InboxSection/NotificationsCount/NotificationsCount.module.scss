@@ -1,0 +1,17 @@
+.NotificationsCount {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 19px;
+	height: 19px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: #c71c1c;
+	color: var(--white-color);
+	line-height: 1;
+	font-size: 12px;
+	z-index: 1;
+	pointer-events: none;
+}

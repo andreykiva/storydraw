@@ -2,9 +2,9 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './TrialInfoBox.module.scss';
 import TrialInfoItem from './TrialInfoItem/TrialInfoItem';
-import lockIcon from '@/assets/icons/subscribe/lock.svg?url';
-import bellIcon from '@/assets/icons/subscribe/bell.svg?url';
-import checkIcon from '@/assets/icons/subscribe/check.svg?url';
+import lockIcon from '@/assets/icons/subscribe/lock.svg';
+import bellIcon from '@/assets/icons/subscribe/bell.svg';
+import checkIcon from '@/assets/icons/subscribe/check.svg';
 import { Plan } from '@/types/Subscription';
 import { TRIAL_INFO_SIZE } from '@/constants/subscription';
 
@@ -18,12 +18,7 @@ const TrialInfoBox = ({ currentPlan, size = TRIAL_INFO_SIZE.LARGE }: TrialInfoBo
 
 	return (
 		<div className={cn(styles.TrialInfoBox, sizeClass)}>
-			<TrialInfoItem
-				title="Today"
-				descr="Full access to all Super StoryDraw features"
-				icon={lockIcon}
-				size={size}
-			/>
+			<TrialInfoItem title="Today" descr="Full access to all Super StoryDraw features" icon={lockIcon} size={size} />
 			<TrialInfoItem
 				title={`Day ${currentPlan.trialDays - 2}`}
 				descr="Reminder about the end of the trial period"

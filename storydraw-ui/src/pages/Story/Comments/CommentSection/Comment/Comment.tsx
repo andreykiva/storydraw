@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import cn from 'classnames';
 import styles from './Comment.module.scss';
-import defaultImg from '@/assets/images/default.svg?url';
-import LikeIcon from '@/assets/icons/like.svg';
+import defaultImg from '@/assets/images/default.svg';
+import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg';
 import { formatNumber } from '@/utils/formatUtils';
 import type { Comment as CommentType } from '@/types/Comment';
 import { openAuthModal } from '@/features/auth/authSlice';
-import ReportIcon from '@/assets/icons/report.svg';
-import DeleteIcon from '@/assets/icons/comments/delete.svg';
+import { ReactComponent as ReportIcon } from '@/assets/icons/report.svg';
+import { ReactComponent as DeleteIcon } from '@/assets/icons/comments/delete.svg';
 import { openReport } from '@/features/report/reportSlice';
 import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWithActionsMenu';
 import { MENU_POSITION } from '@/constants/ui';
@@ -98,7 +98,7 @@ const Comment = (props: CommentProps) => {
 				</Link>
 				<p className={styles.CommentText}>{wrapMentions(content, styles.Mention)}</p>
 				<div className={styles.BottomInfo}>
-					<span className={styles.CommentDate}>{displayDate(new Date(createdAt))}</span>
+					<span className={styles.CommentDate}>{displayDate(createdAt)}</span>
 					<span className={styles.ReplyBtn} onClick={handleReply}>
 						Reply
 					</span>

@@ -6,6 +6,7 @@ import { Like } from 'src/likes/entities/like.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
 import { Favorite } from 'src/favorites/entities/favorite.entity';
 import { Share } from 'src/shares/entities/share.entity';
+import { Notification } from 'src/notifications/entities/notification.entity';
 
 @Entity({ name: 'stories' })
 @ObjectType()
@@ -48,4 +49,7 @@ export class Story {
 
 	@OneToMany(() => Share, (share) => share.story)
 	shares: Share[];
+
+	@OneToMany(() => Notification, (notification) => notification.story, { cascade: true, onDelete: 'CASCADE' })
+	notifications: Notification[];
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Compare.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 import CompareItem from './CompareItem/CompareItem';
-import premiumIcon from '@/assets/icons/premium.svg?url';
+import premiumIcon from '@/assets/icons/premium.svg';
 
 const compareItems = [
 	{

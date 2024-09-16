@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './CloseButton.module.scss';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import closeIcon from '@/assets/icons/close.svg?url';
+import closeIcon from '@/assets/icons/close.svg';
 
 const CloseButton = ({ className, ...rest }: React.ComponentProps<'button'>) => {
 	return (

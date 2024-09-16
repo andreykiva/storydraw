@@ -10,6 +10,8 @@ import { Comment } from './entities/comment.entity';
 import { CommentsCountResponse } from './dto/comments-count-response';
 import { LikesService } from 'src/likes/services/likes.service';
 import { DeleteCommentResponse } from './dto/delete-comment-response';
+import { Story } from 'src/stories/entities/story.entity';
+import { User } from 'src/users/entities/user.entity';
 
 @Resolver(() => Comment)
 export class CommentsResolver {
@@ -66,7 +68,7 @@ export class CommentsResolver {
 		return this.commentsService.getRepliesCount(comment.id);
 	}
 
-	@ResolveField()
+	@ResolveField(() => User)
 	async user(@Parent() comment: Comment) {
 		return this.commentsService.getCommentAuthor(comment.id);
 	}
@@ -76,5 +78,20 @@ export class CommentsResolver {
 	async isLiked(@Parent() comment: Comment, @Context() context) {
 		const userId = context.req.user.id;
 		return this.likesService.hasCommentLiked(comment.id, userId);
+	}
+
+	@ResolveField(() => Comment, { nullable: true })
+	async parentComment(@Parent() comment: Comment) {
+		return this.commentsService.getParentComment(comment.id);
+	}
+
+	@ResolveField(() => Comment, { nullable: true })
+	async parentReply(@Parent() comment: Comment) {
+		return this.commentsService.getParenReply(comment.id);
+	}
+
+	@ResolveField(() => Story)
+	async story(@Parent() comment: Comment) {
+		return this.commentsService.getCommentStory(comment.id);
 	}
 }

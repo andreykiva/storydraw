@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { escapeRegExp } from './regexpUtils';
+import { escapeRegExp, mentionPattern } from './regexpUtils';
 
 export const highlightText = (text: string, searchTerm: string, className: string) => {
 	if (!searchTerm) {
@@ -28,17 +28,17 @@ export const isEmail = (text: string) => {
 };
 
 export const wrapMentions = (text: string, className?: string) => {
-	const parts = text.split(/(\s+|[,!?.]+)/);
+	const parts = text.split(mentionPattern);
 
 	const jsx = parts.map((part, index) => {
-		if (part.startsWith('@')) {
+		if (index % 2 === 1) {
 			return (
-				<Link to={`/${part}`} key={part + index} className={className}>
-					{part}
+				<Link to={`/@${part}`} key={index} className={className}>
+					{`@${part}`}
 				</Link>
 			);
 		} else {
-			return part;
+			return <React.Fragment key={index}>{part}</React.Fragment>;
 		}
 	});
 

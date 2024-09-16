@@ -1,4 +1,5 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Like } from '../entities/like.entity';
@@ -13,8 +14,6 @@ import {
 } from 'src/common/constants/errors.constants';
 import { EntityType } from '../enums/entity-type.enum';
 import { RepositoryService } from 'src/common/services/repository.service';
-import { NotificationsService } from 'src/notifications/services/notifications.service';
-import { NotificationType } from 'src/notifications/enums/entity-type.enum';
 import { Story } from 'src/stories/entities/story.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
 
@@ -24,7 +23,7 @@ export class LikesService {
 		@InjectRepository(Like)
 		private readonly likesRepository: Repository<Like>,
 		private readonly repositoryService: RepositoryService,
-		private readonly notificationsService: NotificationsService,
+		private readonly eventEmitter: EventEmitter2,
 	) {}
 
 	async likeStory(storyId: string, user: User): Promise<Like> {
@@ -48,10 +47,11 @@ export class LikesService {
 
 		const createdLike = await this.likesRepository.save(newLike);
 
-		await this.notificationsService.createNotification({
-			type: NotificationType.LIKE,
+		this.eventEmitter.emit('like.created', {
 			user: story.user,
-			entityId: createdLike.id,
+			initiator: user,
+			like: createdLike,
+			story,
 		});
 
 		return createdLike;
@@ -76,7 +76,16 @@ export class LikesService {
 			comment,
 		});
 
-		return this.likesRepository.save(newLike);
+		const createdLike = await this.likesRepository.save(newLike);
+
+		this.eventEmitter.emit('like.created', {
+			user: comment.user,
+			initiator: user,
+			like: createdLike,
+			story: comment.story,
+		});
+
+		return this.likesRepository.save(createdLike);
 	}
 
 	async unlikeStory(storyId: string, userId: string): Promise<Like> {

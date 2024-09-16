@@ -18,7 +18,7 @@ export const categorizeNotificationsByDate = <T extends Notification>(
 	const previous: T[] = [];
 
 	notifications.forEach((notification) => {
-		const objDate = notification.date;
+		const objDate = new Date(notification.createdAt);
 		const objMonth = objDate.getMonth();
 		const objYear = objDate.getFullYear();
 
@@ -34,9 +34,9 @@ export const categorizeNotificationsByDate = <T extends Notification>(
 		}
 	});
 
-	thisWeek.sort((a, b) => b.date.getTime() - a.date.getTime());
-	thisMonth.sort((a, b) => b.date.getTime() - a.date.getTime());
-	previous.sort((a, b) => b.date.getTime() - a.date.getTime());
+	thisWeek.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+	thisMonth.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+	previous.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
 	return { thisWeek, thisMonth, previous };
 };

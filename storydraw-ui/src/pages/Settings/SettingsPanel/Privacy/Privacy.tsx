@@ -30,7 +30,7 @@ const Privacy = () => {
 					<div className={settingsSharedStyles.SettingsItemInfo}>
 						<span className={settingsSharedStyles.SettingsItemTitle}>Private account</span>
 						<p className={settingsSharedStyles.SettingsItemDescr}>
-							With a private account, only users you approve can follow you and watch your videos. Your
+							With a private account, only users you approve can follow you and watch your stories. Your
 							existing followers won't be affected.
 						</p>
 					</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './Textarea.module.scss';
-import warningIcon from '@/assets/icons/auth/warning.svg?url';
+import warningIcon from '@/assets/icons/auth/warning.svg';
 
 type TextareaProps = React.ComponentProps<'textarea'> & {
 	error: string;

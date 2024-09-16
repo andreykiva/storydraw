@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import styles from './MenuPanel.module.scss';
 import HTag from '@/components/ui/HTag/HTag';
 import RoundButton from '@/components/ui/buttons/RoundButton/RoundButton';
-import settingsIcon from '@/assets/icons/settings.svg?url';
-import arrowIcon from '@/assets/icons/arrow-left.svg?url';
+import settingsIcon from '@/assets/icons/settings.svg';
+import arrowIcon from '@/assets/icons/arrow-left.svg';
 import SettingsModal from './SettingsModal/SettingsModal';
 import ChatList from './ChatList/ChatList';
 

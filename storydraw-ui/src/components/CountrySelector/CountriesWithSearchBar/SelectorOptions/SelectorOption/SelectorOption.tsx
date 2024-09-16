@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './SelectorOption.module.scss';
-import CheckIcon from '@/assets/icons/check.svg';
+import { ReactComponent as CheckIcon } from '@/assets/icons/check.svg';
 
 type SelectorOptionProps = {
 	selected: boolean;

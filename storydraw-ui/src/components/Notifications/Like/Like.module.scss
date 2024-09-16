@@ -68,9 +68,14 @@
 
 .DisplayName {
 	color: var(--light-color);
+	display: block;
+	max-width: 220px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 
 	&:hover {
-		opacity: .8;
+		opacity: 0.8;
 	}
 }
 
@@ -103,7 +108,7 @@
 	-webkit-line-clamp: 1;
 
 	&::before {
-		content: "";
+		content: '';
 		display: block;
 		position: absolute;
 		width: 2px;
@@ -119,6 +124,9 @@
 	width: 100%;
 	height: 56px;
 	margin-left: auto;
-	background-color: blueviolet;
-	border-radius: 2px;
+
+	&Img {
+		width: 100%;
+		border-radius: 2px;
+	}
 }

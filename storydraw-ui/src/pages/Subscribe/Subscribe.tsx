@@ -7,7 +7,7 @@ import Trial from './Trial/Trial';
 import ChoosePlan from './ChoosePlan/ChoosePlan';
 import Payment from './Payment/Payment';
 import CloseButton from '@/components/ui/buttons/CloseButton/CloseButton';
-import premiumIcon from '@/assets/icons/premium.svg?url';
+import premiumIcon from '@/assets/icons/premium.svg';
 import type { Plan } from '@/types/Subscription';
 import { SUBSCRIPTION_PLAN } from '@/constants/subscription';
 

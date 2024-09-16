@@ -41,6 +41,15 @@
 
 	.DescrText {
 		margin-right: 2px;
+
+		.Mention {
+			font-weight: 700;
+			color: rgb(101, 103, 218);
+	
+			&:hover {
+				opacity: .7;
+			}
+		}
 	}
 
 	.Tag {

@@ -1,5 +1,6 @@
-export const displayDate = (date: Date, divider: string = '-'): string => {
+export const displayDate = (dateString: string, divider: string = '-'): string => {
 	const now = new Date();
+	const date = new Date(dateString);
 	const diff = now.getTime() - date.getTime();
 	const seconds = Math.floor(diff / 1000);
 	const minutes = Math.floor(seconds / 60);

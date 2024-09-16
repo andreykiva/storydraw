@@ -1,6 +1,10 @@
-import { createUnionType, Field, ObjectType } from '@nestjs/graphql';
+import { createUnionType, Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { Like } from 'src/likes/entities/like.entity';
 import { NotificationType } from '../enums/entity-type.enum';
+import { User } from 'src/users/entities/user.entity';
+import { Follow } from 'src/follows/entities/follow.entity';
+import { Comment } from 'src/comments/entities/comment.entity';
+import { Story } from 'src/stories/entities/story.entity';
 
 @ObjectType()
 export class LikeNotification {
@@ -10,44 +14,103 @@ export class LikeNotification {
 	@Field(() => NotificationType)
 	type: NotificationType;
 
+	@Field(() => User)
+	initiator: User;
+
 	@Field(() => Date)
 	createdAt: Date;
 
-	@Field()
-	isRead: boolean;
+	@Field(() => Story)
+	story: Story;
 
 	@Field(() => Like)
 	like: Like;
 }
 
-// @ObjectType()
-// export class CommentNotification {
-// 	@Field(() => ID)
-// 	id: string;
+@ObjectType()
+export class CommentNotification {
+	@Field()
+	id: string;
 
-// 	@Field()
-// 	createdAt: Date;
+	@Field(() => NotificationType)
+	type: NotificationType;
 
-// 	@Field()
-// 	isRead: boolean;
+	@Field(() => User)
+	initiator: User;
 
-// 	@Field(() => User)
-// 	user: User;
+	@Field(() => Date)
+	createdAt: Date;
 
-// 	@Field(() => Comment)
-// 	comment: Comment;
-// }
+	@Field(() => Story)
+	story: Story;
+
+	@Field(() => Comment, { nullable: true })
+	comment?: Comment;
+}
+
+@ObjectType()
+export class MentionNotification {
+	@Field()
+	id: string;
+
+	@Field(() => NotificationType)
+	type: NotificationType;
+
+	@Field(() => User)
+	initiator: User;
+
+	@Field(() => Date)
+	createdAt: Date;
+
+	@Field(() => Story)
+	story: Story;
+
+	@Field(() => Comment, { nullable: true })
+	comment?: Comment;
+}
+
+@ObjectType()
+export class FollowNotification {
+	@Field()
+	id: string;
+
+	@Field(() => NotificationType)
+	type: NotificationType;
+
+	@Field(() => User)
+	initiator: User;
+
+	@Field(() => Date)
+	createdAt: Date;
+
+	@Field(() => Follow)
+	follow: Follow;
+}
+
+registerEnumType(NotificationType, {
+	name: 'NotificationType',
+});
 
 export const NotificationUnion = createUnionType({
 	name: 'NotificationUnion',
-	types: () => [LikeNotification],
+	types: () => [LikeNotification, CommentNotification, MentionNotification, FollowNotification],
 	resolveType(value) {
-		console.log(value.typr);
-		console.log(NotificationType.LIKE);
 		if (value.type === NotificationType.LIKE) {
-			console.log(value);
 			return LikeNotification;
 		}
+
+		if (value.type === NotificationType.COMMENT) {
+			return CommentNotification;
+		}
+
+		if (value.type === NotificationType.MENTION) {
+			return MentionNotification;
+		}
+
+		if (value.type === NotificationType.FOLLOW) {
+			return FollowNotification;
+		}
+
 		return null;
 	},
 });
