@@ -86,7 +86,7 @@ const createWsClient = () => {
 
 const wsLink = new GraphQLWsLink(createWsClient());
 
-//_____________________________WEBSOCKETS__________________________________________________________________________
+//_________________________________________________________________________________________________________________
 
 const authLink = setContext((_, previousContext) => {
 	const token = localStorage.getItem('access_token');
