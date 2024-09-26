@@ -15,56 +15,50 @@ import { openAuthModal } from '@/features/auth/authSlice';
 import useStoryLike from '@/hooks/interaction/useStoryLike';
 import useFavorite from '@/hooks/interaction/useFavorite';
 import useShare from '@/hooks/interaction/useShare';
+import type { ForYouStory } from '@/types/Story';
 
 type InteractionPanelProps = {
-	storyId: string;
+	story: ForYouStory;
 	username: string;
 	isAuth: boolean;
-	likesCount: number;
-	commentsCount: number;
-	favoritesCount: number;
-	sharesCount: number;
-	isLiked: boolean;
-	isFavorited: boolean;
-	isShared: boolean;
 };
 
 const InteractionPanel = (props: InteractionPanelProps) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { storyId, username, commentsCount, isAuth } = props;
+	const { username, isAuth, story } = props;
 
 	const { likesCount, isLiked, handleLike } = useStoryLike({
-		initLikesCount: props.likesCount,
-		initIsLiked: props.isLiked,
+		initLikesCount: story.likesCount,
+		initIsLiked: story.isLiked,
 		isAuth,
-		storyId,
+		storyId: story.id,
 	});
 
 	const { favoritesCount, isFavorited, handleFavorite } = useFavorite({
-		initfavoritesCount: props.favoritesCount,
-		initIsFavorited: props.isFavorited,
+		initfavoritesCount: story.favoritesCount,
+		initIsFavorited: story.isFavorited,
 		isAuth,
-		storyId,
+		storyId: story.id,
 	});
 
 	const { sharesCount, isShared, handleShare } = useShare({
-		initSharesCount: props.sharesCount,
-		initIsShared: props.isShared,
+		initSharesCount: story.sharesCount,
+		initIsShared: story.isShared,
 		isAuth,
-		storyId,
+		storyId: story.id,
 	});
 
 	const handleComment = () => {
 		if (!isAuth) {
 			dispatch(openAuthModal());
 		} else {
-			navigate(`/@${username}/story/${storyId}`);
+			navigate(`/@${username}/story/${story.id}`);
 		}
 	};
 
 	const handleOpenReport = () => {
-		dispatch(openReport({ type: 'story', targetId: storyId }));
+		dispatch(openReport({ type: 'story', targetId: story.id }));
 	};
 
 	const actions = [
@@ -83,7 +77,7 @@ const InteractionPanel = (props: InteractionPanelProps) => {
 			</div>
 			<div className={styles.PanelItem} onClick={handleComment}>
 				<CommentIcon className={styles.ItemIcon} />
-				<div className={styles.ItemCount}>{formatNumber(commentsCount)}</div>
+				<div className={styles.ItemCount}>{formatNumber(story.commentsCount)}</div>
 			</div>
 			<div className={styles.PanelItem} onClick={handleFavorite}>
 				<FavoriteIcon className={cn(styles.ItemIcon, isFavorited && styles.Favorited)} />

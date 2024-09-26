@@ -21,9 +21,6 @@ const useCommentLike = (props: UseCommentLikeProps) => {
 				commentId,
 			},
 		},
-		onCompleted() {
-			likeCallback();
-		},
 		onError(error) {
 			unlikeCallback();
 			console.log(error.graphQLErrors);
@@ -35,9 +32,6 @@ const useCommentLike = (props: UseCommentLikeProps) => {
 			unlikeCommentInput: {
 				commentId,
 			},
-		},
-		onCompleted() {
-			unlikeCallback();
 		},
 		onError(error) {
 			likeCallback();
@@ -52,8 +46,10 @@ const useCommentLike = (props: UseCommentLikeProps) => {
 		}
 
 		if (isLiked) {
+			unlikeCallback();
 			unlikeComment();
 		} else {
+			likeCallback();
 			likeComment();
 		}
 	};

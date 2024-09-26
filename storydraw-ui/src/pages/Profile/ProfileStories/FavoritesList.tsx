@@ -3,6 +3,7 @@ import UserMessage from '@/pages/Profile/UserMessage/UserMessage';
 import lockIcon from '@/assets/icons/profile/lock.svg';
 import favoritesIcon from '@/assets/icons/favorites.svg';
 import type { ProfileStory as ProfileStoryType } from '@/types/Profile';
+import StoriesPlaceholder from './StoriesPlaceholder/StoriesPlaceholder';
 
 type FavoritesListProps = {
 	favorites: ProfileStoryType[];
@@ -26,7 +27,7 @@ const FavoritesList = (props: FavoritesListProps) => {
 	}
 
 	if (loading) {
-		return <div>Loading</div>;
+		return <StoriesPlaceholder length={8} />;
 	}
 
 	if (favorites && favorites.length > 0) {

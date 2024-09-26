@@ -1,7 +1,8 @@
 import { useQuery } from '@apollo/client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Comment, RepliedComment } from '@/types/Comment';
 import { GET_COMMENTS } from '@/graphql/comments/queries';
+import { COMMENTS_LIMIT } from '@/constants/pagination';
 
 type UseCommentsProps = {
 	storyId: string;
@@ -9,23 +10,48 @@ type UseCommentsProps = {
 };
 
 const useComments = ({ storyId, isAuth }: UseCommentsProps) => {
-	const [comments, setComments] = useState<Comment[]>(null);
+	const [comments, setComments] = useState<Comment[]>([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [repliedComment, setRepliedComment] = useState<RepliedComment | null>(null);
+	const [hasMore, setHasMore] = useState(true);
+	const [cursor, setCursor] = useState(null);
 
 	const { loading, error } = useQuery(GET_COMMENTS, {
 		variables: {
 			getCommentsInput: {
 				storyId,
 			},
+			paginationInput: {
+				limit: COMMENTS_LIMIT,
+				cursor,
+			},
 			isAuth,
 		},
+		notifyOnNetworkStatusChange: true,
 		fetchPolicy: 'no-cache',
 		onCompleted(data) {
-			setComments(data.getComments);
+			const newComments = data.getComments;
+			setComments((prevComments) => [...prevComments, ...newComments]);
 			setIsLoaded(true);
+
+			if (newComments.length < COMMENTS_LIMIT) {
+				setHasMore(false);
+			}
 		},
 	});
+
+	useEffect(() => {
+		setIsLoaded(false);
+		setComments([]);
+		setRepliedComment(null);
+		setHasMore(true);
+		setCursor(null);
+	}, [storyId]);
+
+	const handleChangeCursor = () => {
+		const lastComment = comments[comments.length - 1];
+		setCursor(lastComment.createdAt);
+	};
 
 	const handleDeleteComment = (commentId: string) => {
 		const updatedComments = comments.filter((comment) => comment.id !== commentId);
@@ -137,7 +163,7 @@ const useComments = ({ storyId, isAuth }: UseCommentsProps) => {
 			if (comment.id === commentId) {
 				return {
 					...comment,
-					replies,
+					replies: [...(comment.replies || []), ...replies],
 				};
 			}
 			return comment;
@@ -152,12 +178,10 @@ const useComments = ({ storyId, isAuth }: UseCommentsProps) => {
 	};
 
 	const handleCreateReply = (commentId: string, newReply: Comment) => {
-		console.log(commentId);
-		console.log(newReply);
 		const updatedComments = comments.map((comment) => {
 			if (comment.id === commentId) {
 				if (comment.replies) {
-					const updatedReplies = [...comment.replies, newReply];
+					const updatedReplies = [newReply, ...comment.replies];
 
 					return {
 						...comment,
@@ -192,6 +216,8 @@ const useComments = ({ storyId, isAuth }: UseCommentsProps) => {
 		handleCreateComment,
 		handleCreateReply,
 		setRepliedComment,
+		handleChangeCursor,
+		hasMore,
 	};
 };
 

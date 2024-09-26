@@ -1,11 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const GET_FEED = gql`
-	query GetFeed($isAuth: Boolean!) {
-		getAllStories {
+	query GetFeed($paginationInput: PaginationInput, $isAuth: Boolean!) {
+		getAllStories(paginationInput: $paginationInput) {
 			id
 			title
 			description
+			createdAt
 			musicId
 			likesCount
 			commentsCount

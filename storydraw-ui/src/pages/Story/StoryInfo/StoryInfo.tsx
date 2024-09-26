@@ -25,6 +25,7 @@ type StoryInfoProps = {
 
 const StoryInfo = ({ story, isCurrentUser }: StoryInfoProps) => {
 	const isAuth = useSelector(selectAuth);
+
 	const { description, createdAt } = story;
 	const { username, displayName, imageUrl, isFollowedBy } = story.user;
 

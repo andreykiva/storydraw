@@ -35,10 +35,6 @@ const CommentSection = (props: CommentSection) => {
 	const [showReplies, setShowReplies] = useState(false);
 	const { repliesCount } = comment;
 
-	const handleToggleReplies = () => {
-		setShowReplies(!showReplies);
-	};
-
 	useEffect(() => {
 		if (!repliesCount) {
 			setShowReplies(false);
@@ -68,8 +64,9 @@ const CommentSection = (props: CommentSection) => {
 				handleDeleteComment={() => handleDeleteComment(comment.id)}
 				setRepliedComment={() => handleSetRepliedComment()}
 			/>
+
 			{repliesCount > 0 && !showReplies ? (
-				<div className={styles.ViewRepliesBtn} onClick={handleToggleReplies}>
+				<div className={styles.ViewRepliesBtn} onClick={() => setShowReplies(true)}>
 					View {formatNumber(repliesCount)} Replies
 					<ArrowIcon className={styles.ArrowIcon} />
 				</div>
@@ -85,16 +82,8 @@ const CommentSection = (props: CommentSection) => {
 					handleDeleteReply={handleDeleteReply}
 					addReplies={addReplies}
 					setRepliedComment={setRepliedComment}
+					handleCloseReplies={() => setShowReplies(false)}
 				/>
-			)}
-
-			{showReplies && (
-				<div className={styles.HideReplies}>
-					<div className={styles.HideRepliesBtn} onClick={handleToggleReplies}>
-						Hide
-						<ArrowIcon className={styles.ArrowIcon} />
-					</div>
-				</div>
 			)}
 		</div>
 	);

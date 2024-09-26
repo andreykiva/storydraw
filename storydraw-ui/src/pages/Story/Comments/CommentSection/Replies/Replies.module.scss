@@ -6,3 +6,51 @@
 .Reply {
 	margin-bottom: 6px;
 }
+
+.Loader {
+	width: 30px;
+	margin: 10px auto;
+}
+
+.RepliesActions {
+	display: flex;
+	justify-content: flex-end;
+	padding: 6px 0 0 44px;
+	font-weight: 700;
+}
+
+.ViewMoreRepliesBtn,
+.HideRepliesBtn {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	color: rgb(114, 114, 114);
+	cursor: pointer;
+
+	.ArrowIcon {
+		width: 12px;
+		height: 12px;
+		fill: rgb(114, 114, 114);
+		margin-left: 5px;
+	}
+}
+
+.ViewMoreRepliesBtn {
+	position: relative;
+	margin-right: auto;
+
+	&::before {
+		content: "";
+		display: block;
+		width: 36px;
+		height: 0.5px;
+		position: absolute;
+		left: -44px;
+		top: 50%;
+		background-color: #363636;
+	}
+}
+
+.HideRepliesBtn .ArrowIcon {
+	transform: rotate(-180deg);
+}

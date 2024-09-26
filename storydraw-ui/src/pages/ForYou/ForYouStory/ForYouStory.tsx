@@ -18,7 +18,7 @@ type ForYouStoryProps = {
 
 const ForYouStory = (props: ForYouStoryProps) => {
 	const { isAuth, currentUser } = props;
-	const { id, user, description, likesCount, commentsCount, favoritesCount, sharesCount, isLiked, isFavorited, isShared } = props.story;
+	const { id, user, description } = props.story;
 
 	const { handleFollow, loading, isFollowing } = useFollow({
 		isAuth,
@@ -64,16 +64,9 @@ const ForYouStory = (props: ForYouStoryProps) => {
 					<img src={previewImg} alt="Story" className={styles.Story} />
 				</Link>
 				<InteractionPanel
-					storyId={id}
+					story={props.story}
 					username={user.username}
 					isAuth={isAuth}
-					likesCount={likesCount}
-					commentsCount={commentsCount}
-					favoritesCount={favoritesCount}
-					sharesCount={sharesCount}
-					isLiked={isLiked}
-					isFavorited={isFavorited}
-					isShared={isShared}
 				/>
 			</div>
 		</div>

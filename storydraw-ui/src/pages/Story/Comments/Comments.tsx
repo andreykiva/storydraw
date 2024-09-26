@@ -1,8 +1,10 @@
 import styles from './Comments.module.scss';
 import CommentSection from './CommentSection/CommentSection';
-import Loader from '@/components/ui/Loader/Loader';
 import useComments from '@/hooks/interaction/useComments';
 import CreateComment from './CreateComment/CreateComment';
+import CommentsPlaceholder from './CommentsPlaceholder/CommentsPlaceholder';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Loader from '@/components/ui/Loader/Loader';
 
 type CommentsProps = {
 	storyId: string;
@@ -13,7 +15,6 @@ type CommentsProps = {
 const Comments = ({ storyId, isAuth, currentUserId }: CommentsProps) => {
 	const {
 		comments,
-		loading,
 		error,
 		isLoaded,
 		repliedComment,
@@ -27,36 +28,45 @@ const Comments = ({ storyId, isAuth, currentUserId }: CommentsProps) => {
 		handleCreateComment,
 		handleCreateReply,
 		setRepliedComment,
+		handleChangeCursor,
+		hasMore,
 	} = useComments({ storyId, isAuth });
-
-	if (loading || !isLoaded) {
-		return <Loader />;
-	}
 
 	if (error) {
 		return <div>Error... {error.graphQLErrors[0]?.message}</div>;
 	}
 
+	if (!isLoaded) return <CommentsPlaceholder length={8} />;
+
 	return (
 		<div className={styles.CommentsPanel}>
-			<div className={styles.Comments}>
+			<div className={styles.Comments} id="commentsContainer">
 				{comments.length ? (
-					comments.map((comment) => (
-						<CommentSection
-							key={comment.id}
-							comment={comment}
-							isAuth={isAuth}
-							currentUserId={currentUserId}
-							handleLikeComment={handleLikeComment}
-							handleLikeReply={handleLikeReply}
-							handleUnlikeComment={handleUnlikeComment}
-							handleUnlikeReply={handleUnlikeReply}
-							handleDeleteComment={handleDeleteComment}
-							handleDeleteReply={handleDeleteReply}
-							addReplies={addReplies}
-							setRepliedComment={setRepliedComment}
-						/>
-					))
+					<InfiniteScroll
+						dataLength={comments.length || 0}
+						next={handleChangeCursor}
+						hasMore={hasMore}
+						loader={<Loader className={styles.Loader} />}
+						scrollableTarget="commentsContainer"
+						style={{ overflow: 'hidden' }}
+					>
+						{comments.map((comment) => (
+							<CommentSection
+								key={comment.id}
+								comment={comment}
+								isAuth={isAuth}
+								currentUserId={currentUserId}
+								handleLikeComment={handleLikeComment}
+								handleLikeReply={handleLikeReply}
+								handleUnlikeComment={handleUnlikeComment}
+								handleUnlikeReply={handleUnlikeReply}
+								handleDeleteComment={handleDeleteComment}
+								handleDeleteReply={handleDeleteReply}
+								addReplies={addReplies}
+								setRepliedComment={setRepliedComment}
+							/>
+						))}
+					</InfiniteScroll>
 				) : (
 					<div>No comments</div>
 				)}

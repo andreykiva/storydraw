@@ -6,7 +6,7 @@ type LoaderProps = {
 };
 
 const Loader = ({ className }: LoaderProps) => {
-	return <span className={cn(styles.Loader, className)}></span>;
+	return <div className={cn(styles.Loader, className)}></div>;
 };
 
 export default Loader;

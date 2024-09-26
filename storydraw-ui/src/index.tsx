@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { ApolloProvider } from '@apollo/client';
 import { setupStore } from '@/app/store';
-import '@/assets/reset.css';
+import '@/assets/styles/reset.css';
 import '@/index.scss';
 import App from '@/App';
 import client from './apolloClient';

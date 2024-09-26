@@ -22,22 +22,3 @@
 	fill: rgb(114, 114, 114);
 	margin-left: 5px;
 }
-
-.HideReplies {
-	display: flex;
-	justify-content: flex-end;
-	padding-top: 6px;
-	font-weight: 700;
-}
-
-.HideRepliesBtn {
-	display: flex;
-	align-items: center;
-	font-size: 14px;
-	color: rgb(114, 114, 114);
-	cursor: pointer;
-
-	.ArrowIcon {
-		transform: rotate(-180deg);
-	}
-}

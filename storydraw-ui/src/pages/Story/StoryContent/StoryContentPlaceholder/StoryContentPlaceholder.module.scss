@@ -1,0 +1,9 @@
+@import '@/assets/styles/_variables';
+@import '@/assets/styles/_mixins';
+
+.StoryContentPlaceholder {
+	flex: 1 0;
+	height: 100%;
+	padding: 80px 0;
+	@include shimmer($placeholder-bg-color);
+}

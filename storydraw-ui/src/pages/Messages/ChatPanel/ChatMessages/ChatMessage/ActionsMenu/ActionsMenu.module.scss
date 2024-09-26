@@ -1,4 +1,4 @@
-@import '@/utils/_mixins';
+@import '@/assets/styles/_mixins';
 
 .ActionsMenu {
 	display: flex;
@@ -21,6 +21,6 @@
 	cursor: pointer;
 
 	&:hover {
-		opacity: .7;
+		opacity: 0.7;
 	}
 }

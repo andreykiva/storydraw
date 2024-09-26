@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_COMMENTS = gql`
-	query GetComments($getCommentsInput: GetCommentsInput!, $isAuth: Boolean!) {
-		getComments(getCommentsInput: $getCommentsInput) {
+	query GetComments($getCommentsInput: GetCommentsInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
+		getComments(getCommentsInput: $getCommentsInput, paginationInput: $paginationInput) {
 			id
 			content
 			createdAt
@@ -20,8 +20,8 @@ export const GET_COMMENTS = gql`
 `;
 
 export const GET_REPLIES = gql`
-	query GetReplies($getRepliesInput: GetRepliesInput!, $isAuth: Boolean!) {
-		getReplies(getRepliesInput: $getRepliesInput) {
+	query GetReplies($getRepliesInput: GetRepliesInput!, $paginationInput: RepliesPaginationInput, $isAuth: Boolean!) {
+		getReplies(getRepliesInput: $getRepliesInput, paginationInput: $paginationInput) {
 			id
 			content
 			createdAt
