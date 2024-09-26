@@ -1,0 +1,26 @@
+@mixin addTriangleStyles($position, $color) {
+	@if ($position== 'top') {
+		border-color: transparent transparent #{$color} transparent;
+	} @else if ($position== 'bottom') {
+		border-color: #{$color} transparent transparent transparent;
+	} @else if ($position== 'left') {
+		border-color: transparent #{$color} transparent transparent;
+	} @else if ($position== 'right') {
+		border-color: transparent transparent transparent #{$color};
+	}
+}
+
+@mixin shimmer($bg-color: #e0e0e0, $light-color: rgba(255, 255, 255, 0.1), $dark-color: rgba(255, 255, 255, 0.2)) {
+	background-color: $bg-color;
+
+	background: linear-gradient(-60deg, $bg-color 40%, $light-color 45%, $dark-color 50%, $light-color 55%, $bg-color 60%) right/350% 100%;
+
+	background-size: 350% 100%;
+	animation: shimmer 1.5s infinite;
+
+	@keyframes shimmer {
+		100% {
+			background-position: left;
+		}
+	}
+}
