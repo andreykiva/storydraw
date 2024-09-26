@@ -1,0 +1,15 @@
+@import '@/assets/styles/_variables';
+@import '@/assets/styles/_mixins';
+
+.StoriesViewsMenu {
+	height: 44px;
+	border-bottom: 1px solid #d1d1d11a;
+	margin-bottom: 20px;
+	@include shimmer($placeholder-bg-color);
+}
+
+.StoriesList {
+	display: grid;
+	gap: 20px;
+	grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+}

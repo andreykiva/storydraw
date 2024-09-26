@@ -1,0 +1,58 @@
+@import '@/assets/styles/_variables';
+@import '@/assets/styles/_mixins';
+
+.StoryInfoPlaceholder {
+	padding: 30px;
+	border-bottom: 1px solid #d1d1d11a;
+}
+
+.StoryInfoTop {
+	margin-bottom: 18px;
+	display: flex;
+
+	.ProfileImg {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 12px;
+		@include shimmer($placeholder-bg-color);
+	}
+
+	.Username {
+		width: 200px;
+		height: 16px;
+		border-radius: 14px;
+		margin-bottom: 8px;
+		@include shimmer($placeholder-bg-color);
+	}
+
+	.UserInfoBottom {
+		width: 160px;
+		height: 16px;
+		border-radius: 14px;
+		@include shimmer($placeholder-bg-color);
+	}
+}
+
+.InfoDescr {
+	width: 280px;
+	height: 16px;
+	border-radius: 14px;
+	margin-bottom: 15px;
+	@include shimmer($placeholder-bg-color);
+}
+
+.InfoMusic {
+	width: 220px;
+	height: 16px;
+	border-radius: 14px;
+	margin-bottom: 25px;
+	@include shimmer($placeholder-bg-color);
+}
+
+.StoryInfoBottom {
+	width: 200px;
+	height: 26px;
+	border-radius: 14px;
+	@include shimmer($placeholder-bg-color);
+}

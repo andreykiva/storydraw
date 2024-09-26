@@ -1,0 +1,29 @@
+@import '@/assets/styles/_variables';
+@import '@/assets/styles/_mixins';
+
+.CommentsPlaceholder {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+}
+
+.Comments {
+	flex: 1;
+	padding: 30px;
+	overflow-y: hidden;
+}
+
+.CreateComment {
+	display: flex;
+	align-items: center;
+	padding: 20px 30px;
+	border-top: 1px solid #d1d1d11a;
+
+	.CreateInput {
+		width: 100%;
+		height: 52px;
+		border-radius: 12px;
+		@include shimmer($placeholder-bg-color);
+	}
+}
