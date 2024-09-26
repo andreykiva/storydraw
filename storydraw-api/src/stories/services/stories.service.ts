@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOptionsWhere, LessThan, Repository } from 'typeorm';
 import { Story } from '../entities/story.entity';
 import { DrawingsService } from 'src/drawings/services/drawings.service';
 import { CreateStoryInput } from '../dto/create-story.input';
@@ -10,6 +10,7 @@ import { USER_NOT_FOUND_ERROR } from 'src/common/constants/errors.constants';
 import { FavoritesService } from 'src/favorites/services/favorites.service';
 import { LikesService } from 'src/likes/services/likes.service';
 import { EventEmitter2 } from '@nestjs/event-emitter';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class StoriesService {
@@ -45,11 +46,16 @@ export class StoriesService {
 		return savedStory;
 	}
 
-	async findAll(): Promise<Story[]> {
+	async findAll(paginationInput: PaginationInput): Promise<Story[]> {
+		const { limit, cursor } = paginationInput;
+		const whereCondition = cursor ? { createdAt: LessThan(cursor) } : {};
+
 		return this.storiesRepository.find({
+			where: whereCondition,
 			order: {
 				createdAt: 'DESC',
 			},
+			take: limit,
 		});
 	}
 
@@ -67,27 +73,39 @@ export class StoriesService {
 		return story.user;
 	}
 
-	async getUserStories(userId: string): Promise<Story[]> {
+	async getUserStories(userId: string, paginationInput: PaginationInput): Promise<Story[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
 		if (!user) {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Story> = {
+			user: { id: userId },
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.storiesRepository.find({
-			where: {
-				user: { id: userId },
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 		});
 	}
 
-	async getFavoriteStories(userId: string): Promise<Story[]> {
-		const favorites = await this.favoritesService.getFavorites(userId);
+	async getFavoriteStories(userId: string, paginationInput: PaginationInput): Promise<Story[]> {
+		const favorites = await this.favoritesService.getFavorites(userId, paginationInput);
 		return favorites.map((favorite) => favorite.story);
 	}
 
-	async getLikedStories(userId: string): Promise<Story[]> {
-		const likes = await this.likesService.getUserStoryLikes(userId);
+	async getLikedStories(userId: string, paginationInput: PaginationInput): Promise<Story[]> {
+		const likes = await this.likesService.getUserStoryLikes(userId, paginationInput);
 		return likes.map((like) => like.story);
 	}
 }

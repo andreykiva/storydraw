@@ -8,7 +8,6 @@ import { LikesModule } from 'src/likes/likes.module';
 import { CommentsModule } from 'src/comments/comments.module';
 import { FavoritesModule } from 'src/favorites/favorites.module';
 import { SharesModule } from 'src/shares/shares.module';
-import { FollowsModule } from 'src/follows/follows.module';
 import { CommonModule } from 'src/common/common.module';
 
 @Module({
@@ -19,7 +18,6 @@ import { CommonModule } from 'src/common/common.module';
 		CommentsModule,
 		FavoritesModule,
 		SharesModule,
-		FollowsModule,
 		CommonModule,
 	],
 	providers: [StoriesResolver, StoriesService],

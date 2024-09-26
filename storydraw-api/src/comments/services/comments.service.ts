@@ -1,7 +1,7 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IsNull, Repository } from 'typeorm';
+import { FindOptionsWhere, IsNull, LessThan, Repository } from 'typeorm';
 import { User } from 'src/users/entities/user.entity';
 import {
 	COMMENT_DELETE_ERROR,
@@ -12,6 +12,7 @@ import { Comment } from '../entities/comment.entity';
 import { CreateCommentInput, CreateReplyInput } from '../dto/create-comment.input';
 import { RepositoryService } from 'src/common/services/repository.service';
 import { Story } from 'src/stories/entities/story.entity';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class CommentsService {
@@ -121,29 +122,55 @@ export class CommentsService {
 		return this.commentsRepository.count({ where: { parentComment: { id: commentId } } });
 	}
 
-	async getComments(storyId: string): Promise<Comment[]> {
+	async getComments(storyId: string, paginationInput: PaginationInput): Promise<Comment[]> {
 		const story = await this.repositoryService.getStoryById(storyId);
 
 		if (!story) {
 			throw new NotFoundException(STORY_NOT_FOUND_ERROR);
 		}
 
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Comment> = {
+			story: { id: storyId },
+			parentComment: IsNull(),
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.commentsRepository.find({
-			where: {
-				story: { id: storyId },
-				parentComment: IsNull(),
-			},
+			order: { createdAt: 'DESC' },
+			take: limit,
+			where: whereCondition,
 		});
 	}
 
-	async getReplies(commentId: string): Promise<Comment[]> {
+	async getReplies(commentId: string, paginationInput: PaginationInput): Promise<Comment[]> {
 		const comment = await this.findOneById(commentId);
 
 		if (!comment) {
 			throw new NotFoundException(COMMENT_NOT_FOUND_ERROR);
 		}
 
-		return this.commentsRepository.find({ where: { parentComment: { id: commentId } } });
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Comment> = {
+			parentComment: { id: commentId },
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
+		return this.commentsRepository.find({
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
+			},
+			take: limit,
+		});
 	}
 
 	async getCommentAuthor(commentId: string): Promise<User> {

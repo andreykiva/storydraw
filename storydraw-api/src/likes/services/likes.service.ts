@@ -1,21 +1,19 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOptionsWhere, LessThan, Repository } from 'typeorm';
 import { Like } from '../entities/like.entity';
 import { User } from 'src/users/entities/user.entity';
 import {
 	COMMENT_NOT_FOUND_ERROR,
 	STORY_NOT_FOUND_ERROR,
-	LIKE_NOT_FOUND_ERROR,
-	ALREADY_LIKED_STORY_ERROR,
-	ALREADY_LIKED_COMMENT_ERROR,
 	USER_NOT_FOUND_ERROR,
 } from 'src/common/constants/errors.constants';
 import { EntityType } from '../enums/entity-type.enum';
 import { RepositoryService } from 'src/common/services/repository.service';
 import { Story } from 'src/stories/entities/story.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class LikesService {
@@ -36,7 +34,7 @@ export class LikesService {
 		const like = await this.findStoryLike(storyId, user.id);
 
 		if (like) {
-			throw new ConflictException(ALREADY_LIKED_STORY_ERROR);
+			return like;
 		}
 
 		const newLike = this.likesRepository.create({
@@ -67,7 +65,7 @@ export class LikesService {
 		const like = await this.findCommentLike(commentId, user.id);
 
 		if (like) {
-			throw new ConflictException(ALREADY_LIKED_COMMENT_ERROR);
+			return like;
 		}
 
 		const newLike = this.likesRepository.create({
@@ -88,7 +86,7 @@ export class LikesService {
 		return this.likesRepository.save(createdLike);
 	}
 
-	async unlikeStory(storyId: string, userId: string): Promise<Like> {
+	async unlikeStory(storyId: string, userId: string): Promise<Like | boolean> {
 		const story = await this.repositoryService.getStoryById(storyId);
 
 		if (!story) {
@@ -98,13 +96,13 @@ export class LikesService {
 		const like = await this.findStoryLike(storyId, userId);
 
 		if (!like) {
-			throw new NotFoundException(LIKE_NOT_FOUND_ERROR);
+			return true;
 		}
 
 		return this.likesRepository.remove(like);
 	}
 
-	async unlikeComment(commentId: string, userId: string): Promise<Like> {
+	async unlikeComment(commentId: string, userId: string): Promise<Like | boolean> {
 		const comment = await this.repositoryService.getCommentById(commentId);
 
 		if (!comment) {
@@ -114,7 +112,7 @@ export class LikesService {
 		const like = await this.findCommentLike(commentId, userId);
 
 		if (!like) {
-			throw new NotFoundException(LIKE_NOT_FOUND_ERROR);
+			return true;
 		}
 
 		return this.likesRepository.remove(like);
@@ -204,29 +202,35 @@ export class LikesService {
 	}
 
 	async hasCommentLiked(commentId: string, userId: string): Promise<boolean> {
-		// const comment = await this.repositoryService.getCommentById(commentId);
-
-		// if (!comment) {
-		// 	throw new NotFoundException(COMMENT_NOT_FOUND_ERROR);
-		// }
-
 		const like = await this.findCommentLike(commentId, userId);
 
 		return !!like;
 	}
 
-	async getUserStoryLikes(userId: string): Promise<Like[]> {
+	async getUserStoryLikes(userId: string, paginationInput: PaginationInput): Promise<Like[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
 		if (!user) {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Like> = {
+			entityType: EntityType.STORY,
+			user: { id: userId },
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.likesRepository.find({
-			where: {
-				entityType: EntityType.STORY,
-				user: { id: userId },
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 			relations: ['story'],
 		});
 	}

@@ -70,8 +70,6 @@ type Story {
   isLiked: Boolean!
   isFavorited: Boolean!
   isShared: Boolean!
-  isFollowedBy: Boolean!
-  isFollowing: Boolean!
 }
 
 type UserMetadata {
@@ -210,20 +208,19 @@ type Query {
   commentLikesCount(likesCountInput: LikeCommentInput!): LikesCountResponse!
   hasStoryLiked(hasStoryLikedInput: LikeStoryInput!): HasLikedResponse!
   hasCommentLiked(hasCommentLikedInput: LikeCommentInput!): HasLikedResponse!
-  followers(followersInput: FollowInput!): [User!]!
-  following(followingInput: FollowInput!): [User!]!
-  friends: [User!]!
+  followers(followersInput: FollowInput!, paginationInput: PaginationInput): [User!]!
+  following(followingInput: FollowInput!, paginationInput: PaginationInput): [User!]!
+  friends(paginationInput: PaginationInput): [User!]!
   followersCount(followersCountInput: FollowInput!): FollowsCountResponse!
   followingCount(followingCountInput: FollowInput!): FollowsCountResponse!
   getStory(getStoryInput: GetStoryInput!): Story
-  getAllStories: [Story!]!
-  getUserStories(getUserStoriesInput: GetUserStoriesInput!): [Story!]!
-  getFavoriteStories(getFavoriteStoriesInput: GetUserStoriesInput!): [Story!]!
-  getLikedStories(getLikedStoriesInput: GetUserStoriesInput!): [Story!]!
-  getComments(getCommentsInput: GetCommentsInput!): [Comment!]!
-  getReplies(getRepliesInput: GetRepliesInput!): [Comment!]!
+  getAllStories(paginationInput: PaginationInput): [Story!]!
+  getUserStories(getUserStoriesInput: GetUserStoriesInput!, paginationInput: PaginationInput): [Story!]!
+  getFavoriteStories(getFavoriteStoriesInput: GetUserStoriesInput!, paginationInput: PaginationInput): [Story!]!
+  getLikedStories(getLikedStoriesInput: GetUserStoriesInput!, paginationInput: PaginationInput): [Story!]!
+  getComments(getCommentsInput: GetCommentsInput!, paginationInput: PaginationInput): [Comment!]!
+  getReplies(getRepliesInput: GetRepliesInput!, paginationInput: RepliesPaginationInput): [Comment!]!
   commentsCount(commentsCountInput: CommentsCountInput!): CommentsCountResponse!
-  favorites(favoritesInput: GetFavoritesInput!): [Favorite!]!
   favoritesCount(favoritesCountInput: FavoritesCountInput!): FavoritesCountResponse!
   sharesCount(favoritesCountInput: SharesCountInput!): SharesCountResponse!
   allNotifications: [NotificationUnion!]
@@ -250,6 +247,11 @@ input FollowInput {
   userId: String!
 }
 
+input PaginationInput {
+  limit: Int! = 10
+  cursor: DateTime
+}
+
 input GetStoryInput {
   storyId: String!
 }
@@ -266,12 +268,13 @@ input GetRepliesInput {
   commentId: String!
 }
 
-input CommentsCountInput {
-  storyId: String!
+input RepliesPaginationInput {
+  limit: Int! = 3
+  cursor: DateTime
 }
 
-input GetFavoritesInput {
-  userId: String!
+input CommentsCountInput {
+  storyId: String!
 }
 
 input FavoritesCountInput {

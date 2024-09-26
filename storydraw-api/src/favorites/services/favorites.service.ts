@@ -1,6 +1,6 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOptionsWhere, LessThan, Repository } from 'typeorm';
 import { Favorite } from '../entities/favorite.entity';
 import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/services/users.service';
@@ -11,6 +11,7 @@ import {
 	USER_NOT_FOUND_ERROR,
 } from 'src/common/constants/errors.constants';
 import { RepositoryService } from 'src/common/services/repository.service';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class FavoritesService {
@@ -57,17 +58,29 @@ export class FavoritesService {
 		return this.favoritesRepository.remove(favorite);
 	}
 
-	async getFavorites(userId: string): Promise<Favorite[]> {
+	async getFavorites(userId: string, paginationInput: PaginationInput): Promise<Favorite[]> {
 		const user = await this.usersService.findOneById(userId);
 
 		if (!user) {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Favorite> = {
+			user: { id: userId },
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.favoritesRepository.find({
-			where: {
-				user: { id: userId },
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 			relations: ['story'],
 		});
 	}

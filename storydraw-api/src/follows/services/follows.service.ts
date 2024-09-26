@@ -1,17 +1,16 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOptionsWhere, MoreThan, Repository } from 'typeorm';
 import { Follow } from '../entities/follow.entity';
 import { User } from 'src/users/entities/user.entity';
 import {
-	ALREADY_FOLLOWING_ERROR,
 	CANNOT_FOLLOW_SELF_ERROR,
 	CANNOT_UNFOLLOW_SELF_ERROR,
-	NOT_FOLLOWING_ERROR,
 	USER_NOT_FOUND_ERROR,
 } from 'src/common/constants/errors.constants';
 import { RepositoryService } from 'src/common/services/repository.service';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class FollowsService {
@@ -36,7 +35,7 @@ export class FollowsService {
 		const follow = await this.findOne(follower.id, followingUserId);
 
 		if (follow) {
-			throw new ConflictException(ALREADY_FOLLOWING_ERROR);
+			return follow;
 		}
 
 		const newFollow = this.followsRepository.create({
@@ -55,7 +54,7 @@ export class FollowsService {
 		return createdFollow;
 	}
 
-	async unfollow(unfollowingUserId: string, unfollower: User): Promise<Follow> {
+	async unfollow(unfollowingUserId: string, unfollower: User): Promise<Follow | boolean> {
 		if (unfollowingUserId === unfollower.id) {
 			throw new ConflictException(CANNOT_UNFOLLOW_SELF_ERROR);
 		}
@@ -69,53 +68,87 @@ export class FollowsService {
 		const follow = await this.findOne(unfollower.id, unfollowingUserId);
 
 		if (!follow) {
-			throw new NotFoundException(NOT_FOLLOWING_ERROR);
+			return true;
 		}
 
 		return this.followsRepository.remove(follow);
 	}
 
-	async getFollowers(userId: string): Promise<User[]> {
+	async getFollowers(userId: string, paginationInput: PaginationInput): Promise<User[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
 		if (!user) {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Follow> = {
+			following: { id: userId },
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = MoreThan(cursor);
+		}
+
 		const follows = await this.followsRepository.find({
-			where: {
-				following: { id: userId },
+			where: whereCondition,
+			order: {
+				createdAt: 'ASC',
 			},
+			take: limit,
 			relations: ['follower'],
 		});
 
 		return follows.map((follow) => follow.follower);
 	}
 
-	async getFollowing(userId: string): Promise<User[]> {
+	async getFollowing(userId: string, paginationInput: PaginationInput): Promise<User[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
 		if (!user) {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Follow> = {
+			follower: { id: userId },
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = MoreThan(cursor);
+		}
+
 		const follows = await this.followsRepository.find({
-			where: {
-				follower: { id: userId },
+			where: whereCondition,
+			order: {
+				createdAt: 'ASC',
 			},
+			take: limit,
 			relations: ['following'],
 		});
 
 		return follows.map((follow) => follow.following);
 	}
 
-	async getFriends(userId: string): Promise<User[]> {
-		const friends = await this.followsRepository
+	async getFriends(userId: string, paginationInput: PaginationInput): Promise<User[]> {
+		const { limit, cursor } = paginationInput;
+
+		const friendsQuery = this.followsRepository
 			.createQueryBuilder('f1')
 			.innerJoinAndSelect('f1.following', 'following')
 			.innerJoin('follows', 'f2', 'f1.followerId = f2.followingId AND f1.followingId = f2.followerId')
-			.where('f1.followerId = :userId', { userId })
-			.getMany();
+			.where('f1.followerId = :userId', { userId });
+
+		if (cursor) {
+			friendsQuery.andWhere('f1.createdAt > :cursor', { cursor });
+		}
+
+		friendsQuery.orderBy('f1.createdAt', 'ASC');
+		friendsQuery.take(limit);
+
+		const friends = await friendsQuery.getMany();
 
 		return friends.map((follow) => follow.following);
 	}

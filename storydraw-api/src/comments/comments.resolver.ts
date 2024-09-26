@@ -12,6 +12,8 @@ import { LikesService } from 'src/likes/services/likes.service';
 import { DeleteCommentResponse } from './dto/delete-comment-response';
 import { Story } from 'src/stories/entities/story.entity';
 import { User } from 'src/users/entities/user.entity';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
+import { RepliesPaginationInput } from './dto/replies-pagination.input';
 
 @Resolver(() => Comment)
 export class CommentsResolver {
@@ -21,13 +23,21 @@ export class CommentsResolver {
 	) {}
 
 	@Query(() => [Comment])
-	async getComments(@Args('getCommentsInput') getCommentsInput: GetCommentsInput) {
-		return this.commentsService.getComments(getCommentsInput.storyId);
+	async getComments(
+		@Args('getCommentsInput') getCommentsInput: GetCommentsInput,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.commentsService.getComments(getCommentsInput.storyId, { limit, cursor });
 	}
 
 	@Query(() => [Comment])
-	async getReplies(@Args('getRepliesInput') getRepliesInput: GetRepliesInput) {
-		return this.commentsService.getReplies(getRepliesInput.commentId);
+	async getReplies(
+		@Args('getRepliesInput') getRepliesInput: GetRepliesInput,
+		@Args('paginationInput', { nullable: true }) paginationInput?: RepliesPaginationInput,
+	) {
+		const { limit = 3, cursor = null } = paginationInput || {};
+		return this.commentsService.getReplies(getRepliesInput.commentId, { limit, cursor });
 	}
 
 	@Mutation(() => Comment)

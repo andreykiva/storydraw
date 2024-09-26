@@ -4,7 +4,6 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { Favorite } from './entities/favorite.entity';
 import { FavoritesService } from './services/favorites.service';
 import { AddFavoriteInput } from './dto/add-to-favorites.input';
-import { GetFavoritesInput } from './dto/get-favorites';
 import { FavoritesCountInput } from './dto/favorites-count.input';
 import { FavoritesCountResponse } from './dto/favorites-count-response';
 import { RemoveFavoriteResponse } from './dto/remove-favorite-response';
@@ -26,11 +25,6 @@ export class FavoritesResolver {
 		const userId = context.req.user.id;
 		await this.favoritesService.removeFavorite(removeFavoriteInput.storyId, userId);
 		return { success: true };
-	}
-
-	@Query(() => [Favorite])
-	async favorites(@Args('favoritesInput') favoritesInput: GetFavoritesInput) {
-		return this.favoritesService.getFavorites(favoritesInput.userId);
 	}
 
 	@Query(() => FavoritesCountResponse)

@@ -9,8 +9,8 @@ import { LikesService } from 'src/likes/services/likes.service';
 import { CommentsService } from 'src/comments/services/comments.service';
 import { FavoritesService } from 'src/favorites/services/favorites.service';
 import { SharesService } from 'src/shares/services/shares.service';
-import { FollowsService } from 'src/follows/services/follows.service';
 import { GetUserStoriesInput } from './dto/get-user-stories.input';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Resolver(() => Story)
 export class StoriesResolver {
@@ -20,7 +20,6 @@ export class StoriesResolver {
 		private readonly commentsService: CommentsService,
 		private readonly favoritesService: FavoritesService,
 		private readonly sharesService: SharesService,
-		private readonly followsService: FollowsService,
 	) {}
 
 	@Mutation(() => Story)
@@ -36,23 +35,36 @@ export class StoriesResolver {
 	}
 
 	@Query(() => [Story])
-	async getAllStories() {
-		return this.storiesService.findAll();
+	async getAllStories(@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput) {
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.storiesService.findAll({ limit, cursor });
 	}
 
 	@Query(() => [Story])
-	async getUserStories(@Args('getUserStoriesInput') getUserStoriesInput: GetUserStoriesInput) {
-		return this.storiesService.getUserStories(getUserStoriesInput.userId);
+	async getUserStories(
+		@Args('getUserStoriesInput') getUserStoriesInput: GetUserStoriesInput,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.storiesService.getUserStories(getUserStoriesInput.userId, { limit, cursor });
 	}
 
 	@Query(() => [Story])
-	async getFavoriteStories(@Args('getFavoriteStoriesInput') getFavoriteStoriesInput: GetUserStoriesInput) {
-		return this.storiesService.getFavoriteStories(getFavoriteStoriesInput.userId);
+	async getFavoriteStories(
+		@Args('getFavoriteStoriesInput') getFavoriteStoriesInput: GetUserStoriesInput,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.storiesService.getFavoriteStories(getFavoriteStoriesInput.userId, { limit, cursor });
 	}
 
 	@Query(() => [Story])
-	async getLikedStories(@Args('getLikedStoriesInput') getLikedStoriesInput: GetUserStoriesInput) {
-		return this.storiesService.getLikedStories(getLikedStoriesInput.userId);
+	async getLikedStories(
+		@Args('getLikedStoriesInput') getLikedStoriesInput: GetUserStoriesInput,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.storiesService.getLikedStories(getLikedStoriesInput.userId, { limit, cursor });
 	}
 
 	@ResolveField(() => Number)
@@ -99,21 +111,5 @@ export class StoriesResolver {
 	async isShared(@Parent() story: Story, @Context() context) {
 		const userId = context.req.user.id;
 		return this.sharesService.hasShared(story.id, userId);
-	}
-
-	@ResolveField(() => Boolean)
-	@UseGuards(JwtAuthGuard)
-	async isFollowedBy(@Parent() story: Story, @Context() context) {
-		const userId = context.req.user.id;
-		const author = await this.storiesService.getStoryAuthor(story.id);
-		return this.followsService.hasFollowed(author.id, userId);
-	}
-
-	@ResolveField(() => Boolean)
-	@UseGuards(JwtAuthGuard)
-	async isFollowing(@Parent() story: Story, @Context() context) {
-		const userId = context.req.user.id;
-		const author = await this.storiesService.getStoryAuthor(story.id);
-		return this.followsService.hasFollowed(userId, author.id);
 	}
 }
