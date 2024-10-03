@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -28,8 +28,6 @@ const ForYou = () => {
 				cursor,
 			},
 		},
-		notifyOnNetworkStatusChange: true,
-		fetchPolicy: 'no-cache',
 		onCompleted(data) {
 			const newStories = data.getAllStories;
 
@@ -43,7 +41,16 @@ const ForYou = () => {
 		onError() {
 			setIsLoaded(true);
 		},
+		notifyOnNetworkStatusChange: true,
+		fetchPolicy: 'no-cache',
 	});
+
+	useEffect(() => {
+		setStories([]);
+		setIsLoaded(false);
+		setHasMore(true);
+		setCursor(null);
+	}, [isAuth]);
 
 	const handleChangeCursor = () => {
 		const lastStory = stories[stories.length - 1];
@@ -64,7 +71,7 @@ const ForYou = () => {
 				scrollableTarget="forYouContainer"
 				style={{ overflow: 'hidden' }}
 			>
-				{stories.map((story: ForYouStoryType) => (
+				{stories.map((story) => (
 					<ForYouStory key={story.id} isAuth={isAuth} story={story} currentUser={currentUser} />
 				))}
 			</InfiniteScroll>
