@@ -5,6 +5,7 @@ import CreateComment from './CreateComment/CreateComment';
 import CommentsPlaceholder from './CommentsPlaceholder/CommentsPlaceholder';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '@/components/ui/Loader/Loader';
+import { COMMENTS_LIMIT } from '@/constants/pagination';
 
 type CommentsProps = {
 	storyId: string;
@@ -36,7 +37,7 @@ const Comments = ({ storyId, isAuth, currentUserId }: CommentsProps) => {
 		return <div>Error... {error.graphQLErrors[0]?.message}</div>;
 	}
 
-	if (!isLoaded) return <CommentsPlaceholder length={8} />;
+	if (!isLoaded) return <CommentsPlaceholder length={COMMENTS_LIMIT} />;
 
 	return (
 		<div className={styles.CommentsPanel}>
