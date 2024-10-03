@@ -1,4 +1,4 @@
-import { Resolver, Context, Query, Subscription, Mutation } from '@nestjs/graphql';
+import { Resolver, Context, Query, Subscription, Mutation, Args } from '@nestjs/graphql';
 import { Inject, UseGuards } from '@nestjs/common';
 import { PubSub } from 'graphql-subscriptions';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
@@ -13,6 +13,7 @@ import {
 } from './types/notification.type';
 import { NotificationsCountSubscribe } from './dto/notifications-count.subscribe';
 import { UpdateLastViewedDateResponse } from './dto/update-last-viewed-date-response';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Resolver(() => NotificationUnion)
 export class NotificationsResolver {
@@ -23,37 +24,57 @@ export class NotificationsResolver {
 
 	@Query(() => [NotificationUnion], { nullable: true })
 	@UseGuards(JwtAuthGuard)
-	async allNotifications(@Context() context) {
+	async allNotifications(
+		@Context() context,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
 		const userId = context.req.user.id;
-		return this.notificationsService.getAllNotifications(userId);
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.notificationsService.getAllNotifications(userId, { limit, cursor });
 	}
 
 	@Query(() => [LikeNotification], { nullable: true })
 	@UseGuards(JwtAuthGuard)
-	async likesNotifications(@Context() context) {
+	async likesNotifications(
+		@Context() context,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
 		const userId = context.req.user.id;
-		return this.notificationsService.getLikesNotifications(userId);
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.notificationsService.getLikesNotifications(userId, { limit, cursor });
 	}
 
 	@Query(() => [CommentNotification], { nullable: true })
 	@UseGuards(JwtAuthGuard)
-	async commentsNotifications(@Context() context) {
+	async commentsNotifications(
+		@Context() context,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
 		const userId = context.req.user.id;
-		return this.notificationsService.getCommentsNotifications(userId);
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.notificationsService.getCommentsNotifications(userId, { limit, cursor });
 	}
 
 	@Query(() => [MentionNotification], { nullable: true })
 	@UseGuards(JwtAuthGuard)
-	async mentionsNotifications(@Context() context) {
+	async mentionsNotifications(
+		@Context() context,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
 		const userId = context.req.user.id;
-		return this.notificationsService.getMentionsNotifications(userId);
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.notificationsService.getMentionsNotifications(userId, { limit, cursor });
 	}
 
 	@Query(() => [FollowNotification], { nullable: true })
 	@UseGuards(JwtAuthGuard)
-	async followsNotifications(@Context() context) {
+	async followsNotifications(
+		@Context() context,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
 		const userId = context.req.user.id;
-		return this.notificationsService.getFollowsNotifications(userId);
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.notificationsService.getFollowsNotifications(userId, { limit, cursor });
 	}
 
 	@Query(() => Number)

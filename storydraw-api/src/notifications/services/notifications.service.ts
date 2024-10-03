@@ -1,12 +1,13 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MoreThan, Repository } from 'typeorm';
+import { FindOptionsWhere, LessThan, MoreThan, Repository } from 'typeorm';
 import { PubSub } from 'graphql-subscriptions';
 import { Notification } from '../entities/notification.entity';
 import { NotificationType } from '../enums/entity-type.enum';
 import { CreateNotificationDto } from '../dto/create-notification.dto';
 import { UserMetadataService } from 'src/user-metadata/services/user-metadata.service';
 import { USER_METADATA_NOT_FOUND } from 'src/common/constants/errors.constants';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class NotificationsService {
@@ -17,51 +18,111 @@ export class NotificationsService {
 		@Inject('PUB_SUB') private readonly pubSub: PubSub,
 	) {}
 
-	async getAllNotifications(userId: string): Promise<Notification[]> {
+	async getAllNotifications(userId: string, paginationInput: PaginationInput): Promise<Notification[]> {
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Notification> = {
+			user: { id: userId },
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.notificationsRepository.find({
-			where: {
-				user: { id: userId },
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 			relations: ['initiator', 'story', 'like', 'comment', 'follow'],
 		});
 	}
 
-	async getLikesNotifications(userId: string): Promise<Notification[]> {
+	async getLikesNotifications(userId: string, paginationInput: PaginationInput): Promise<Notification[]> {
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Notification> = {
+			user: { id: userId },
+			type: NotificationType.LIKE,
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.notificationsRepository.find({
-			where: {
-				user: { id: userId },
-				type: NotificationType.LIKE,
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 			relations: ['initiator', 'story', 'like'],
 		});
 	}
 
-	async getCommentsNotifications(userId: string): Promise<Notification[]> {
+	async getCommentsNotifications(userId: string, paginationInput: PaginationInput): Promise<Notification[]> {
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Notification> = {
+			user: { id: userId },
+			type: NotificationType.COMMENT,
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.notificationsRepository.find({
-			where: {
-				user: { id: userId },
-				type: NotificationType.COMMENT,
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 			relations: ['initiator', 'story', 'comment'],
 		});
 	}
 
-	async getMentionsNotifications(userId: string): Promise<Notification[]> {
+	async getMentionsNotifications(userId: string, paginationInput: PaginationInput): Promise<Notification[]> {
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Notification> = {
+			user: { id: userId },
+			type: NotificationType.MENTION,
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.notificationsRepository.find({
-			where: {
-				user: { id: userId },
-				type: NotificationType.MENTION,
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 			relations: ['initiator', 'story', 'comment'],
 		});
 	}
 
-	async getFollowsNotifications(userId: string): Promise<Notification[]> {
+	async getFollowsNotifications(userId: string, paginationInput: PaginationInput): Promise<Notification[]> {
+		const { limit, cursor } = paginationInput;
+
+		const whereCondition: FindOptionsWhere<Notification> = {
+			user: { id: userId },
+			type: NotificationType.FOLLOW,
+		};
+
+		if (cursor) {
+			whereCondition.createdAt = LessThan(cursor);
+		}
+
 		return this.notificationsRepository.find({
-			where: {
-				user: { id: userId },
-				type: NotificationType.FOLLOW,
+			where: whereCondition,
+			order: {
+				createdAt: 'DESC',
 			},
+			take: limit,
 			relations: ['initiator', 'follow'],
 		});
 	}
