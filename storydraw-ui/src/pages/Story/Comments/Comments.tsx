@@ -6,6 +6,7 @@ import CommentsPlaceholder from './CommentsPlaceholder/CommentsPlaceholder';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '@/components/ui/Loader/Loader';
 import { COMMENTS_LIMIT } from '@/constants/pagination';
+import commentIcon from '@/assets/icons/comments/comment.svg';
 
 type CommentsProps = {
 	storyId: string;
@@ -69,7 +70,10 @@ const Comments = ({ storyId, isAuth, currentUserId }: CommentsProps) => {
 						))}
 					</InfiniteScroll>
 				) : (
-					<div>No comments</div>
+					<div className={styles.NoComments}>
+						<img src={commentIcon} alt="Not comments" className={styles.NoCommentsIcon} />
+						<span className={styles.NoCommentsText}>Be the first to comment!</span>
+					</div>
 				)}
 			</div>
 			<CreateComment
