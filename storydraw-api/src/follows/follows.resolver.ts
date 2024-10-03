@@ -6,7 +6,6 @@ import { FollowsService } from './services/follows.service';
 import { FollowInput } from './dto/follow.input';
 import { FollowsCountResponse } from './dto/follows-count-response';
 import { UnfollowResponse } from './dto/unfollow-response';
-import { User } from 'src/users/entities/user.entity';
 import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Resolver(() => Follow)
@@ -28,7 +27,7 @@ export class FollowsResolver {
 		return { success: true };
 	}
 
-	@Query(() => [User])
+	@Query(() => [Follow])
 	async followers(
 		@Args('followersInput') followersInput: FollowInput,
 		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
@@ -37,7 +36,7 @@ export class FollowsResolver {
 		return this.followsService.getFollowers(followersInput.userId, { limit, cursor });
 	}
 
-	@Query(() => [User])
+	@Query(() => [Follow])
 	async following(
 		@Args('followingInput') followingInput: FollowInput,
 		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
@@ -46,7 +45,7 @@ export class FollowsResolver {
 		return this.followsService.getFollowing(followingInput.userId, { limit, cursor });
 	}
 
-	@Query(() => [User])
+	@Query(() => [Follow])
 	@UseGuards(JwtAuthGuard)
 	async friends(@Context() context, @Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput) {
 		const userId = context.req.user.id;

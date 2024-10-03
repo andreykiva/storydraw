@@ -1,7 +1,7 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOptionsWhere, MoreThan, Repository } from 'typeorm';
+import { FindOptionsWhere, LessThan, Repository } from 'typeorm';
 import { Follow } from '../entities/follow.entity';
 import { User } from 'src/users/entities/user.entity';
 import {
@@ -74,7 +74,7 @@ export class FollowsService {
 		return this.followsRepository.remove(follow);
 	}
 
-	async getFollowers(userId: string, paginationInput: PaginationInput): Promise<User[]> {
+	async getFollowers(userId: string, paginationInput: PaginationInput): Promise<Follow[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
 		if (!user) {
@@ -88,22 +88,20 @@ export class FollowsService {
 		};
 
 		if (cursor) {
-			whereCondition.createdAt = MoreThan(cursor);
+			whereCondition.createdAt = LessThan(cursor);
 		}
 
-		const follows = await this.followsRepository.find({
+		return this.followsRepository.find({
 			where: whereCondition,
 			order: {
-				createdAt: 'ASC',
+				createdAt: 'DESC',
 			},
 			take: limit,
 			relations: ['follower'],
 		});
-
-		return follows.map((follow) => follow.follower);
 	}
 
-	async getFollowing(userId: string, paginationInput: PaginationInput): Promise<User[]> {
+	async getFollowing(userId: string, paginationInput: PaginationInput): Promise<Follow[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
 		if (!user) {
@@ -117,22 +115,20 @@ export class FollowsService {
 		};
 
 		if (cursor) {
-			whereCondition.createdAt = MoreThan(cursor);
+			whereCondition.createdAt = LessThan(cursor);
 		}
 
-		const follows = await this.followsRepository.find({
+		return this.followsRepository.find({
 			where: whereCondition,
 			order: {
-				createdAt: 'ASC',
+				createdAt: 'DESC',
 			},
 			take: limit,
 			relations: ['following'],
 		});
-
-		return follows.map((follow) => follow.following);
 	}
 
-	async getFriends(userId: string, paginationInput: PaginationInput): Promise<User[]> {
+	async getFriends(userId: string, paginationInput: PaginationInput): Promise<Follow[]> {
 		const { limit, cursor } = paginationInput;
 
 		const friendsQuery = this.followsRepository
@@ -142,15 +138,13 @@ export class FollowsService {
 			.where('f1.followerId = :userId', { userId });
 
 		if (cursor) {
-			friendsQuery.andWhere('f1.createdAt > :cursor', { cursor });
+			friendsQuery.andWhere('f1.createdAt < :cursor', { cursor });
 		}
 
-		friendsQuery.orderBy('f1.createdAt', 'ASC');
+		friendsQuery.orderBy('f1.createdAt', 'DESC');
 		friendsQuery.take(limit);
 
-		const friends = await friendsQuery.getMany();
-
-		return friends.map((follow) => follow.following);
+		return friendsQuery.getMany();
 	}
 
 	async getFollowersCount(userId: string): Promise<number> {
