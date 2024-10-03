@@ -67,7 +67,12 @@
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: #09483549;
+		background: rgb(30, 30, 30);
 		border-radius: 4px;
 	}
+}
+
+.Loader {
+	width: 40px;
+	margin: 10px auto;
 }

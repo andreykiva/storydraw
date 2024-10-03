@@ -62,7 +62,7 @@ const Notifications = () => {
 					))}
 				</div>
 			</div>
-			<div className={styles.NotificationsListWr}>
+			<div className={styles.NotificationsListWr} id='notificationsContainer'>
 				{notificationsCategory === NOTIFICATIONS_CATEGORY.ALL && <AllNotificationsList />}
 				{notificationsCategory === NOTIFICATIONS_CATEGORY.LIKES && <LikesList />}
 				{notificationsCategory === NOTIFICATIONS_CATEGORY.COMMENTS && <CommentsList />}
