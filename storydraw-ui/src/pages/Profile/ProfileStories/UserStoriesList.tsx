@@ -3,24 +3,24 @@ import { useQuery } from '@apollo/client';
 import profileSharedStyles from '@/pages/Profile/ProfileSharedStyles.module.scss';
 import ProfileStory from './ProfileStory/ProfileStory';
 import UserMessage from '@/pages/Profile/UserMessage/UserMessage';
+import personIcon from '@/assets/icons/profile/person.svg';
 import lockIcon from '@/assets/icons/profile/lock.svg';
-import favoritesIcon from '@/assets/icons/favorites.svg';
-import type { UserFavorite } from '@/types/Profile';
 import StoriesPlaceholder from './StoriesPlaceholder/StoriesPlaceholder';
-import { GET_USER_FAVORITES } from '@/graphql/stories/queries';
-import { FAVORITE_STORIES_LIMIT } from '@/constants/pagination';
+import { GET_USER_STORIES } from '@/graphql/stories/queries';
+import type { ProfileStory as ProfileStoryType } from '@/types/Profile';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from '@/components/ui/Loader/Loader';
+import { USER_STORIES_LIMIT } from '@/constants/pagination';
 
-type FavoritesListProps = {
+type UserStoriesListProps = {
 	userId: string;
 	username: string;
 	isCurrentUser: boolean;
 	active: boolean;
 };
 
-const FavoritesList = ({ userId, username, isCurrentUser, active }: FavoritesListProps) => {
-	const [favorites, setFavorites] = useState<UserFavorite[]>([]);
+const UserStoriesList = ({ userId, username, isCurrentUser, active }: UserStoriesListProps) => {
+	const [stories, setStories] = useState<ProfileStoryType[]>([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [hasMore, setHasMore] = useState(true);
 	const [cursor, setCursor] = useState(null);
@@ -28,22 +28,22 @@ const FavoritesList = ({ userId, username, isCurrentUser, active }: FavoritesLis
 	//test
 	const isPrivate = false;
 
-	const { error } = useQuery(GET_USER_FAVORITES, {
+	const { error } = useQuery(GET_USER_STORIES, {
 		variables: {
-			getUserFavoritesInput: { userId },
+			getUserStoriesInput: { userId },
 			paginationInput: {
-				limit: FAVORITE_STORIES_LIMIT,
+				limit: USER_STORIES_LIMIT,
 				cursor,
 			},
 		},
 		onCompleted(data) {
-			const newFavorites = data.getUserFavorites || [];
+			const newStories = data.getUserStories || [];
 
-			setFavorites((prevFavorites) => [...prevFavorites, ...newFavorites]);
+			setStories((prevStories) => [...prevStories, ...newStories]);
 			setIsLoaded(true);
 			setSkip(true);
 
-			if (newFavorites.length < FAVORITE_STORIES_LIMIT) {
+			if (newStories.length < USER_STORIES_LIMIT) {
 				setHasMore(false);
 			}
 		},
@@ -56,10 +56,11 @@ const FavoritesList = ({ userId, username, isCurrentUser, active }: FavoritesLis
 	});
 
 	const handleChangeCursor = () => {
-		const lastFavorite = favorites[favorites.length - 1];
-		setCursor(lastFavorite.createdAt);
+		const lastStory = stories[stories.length - 1];
+		setCursor(lastStory.createdAt);
 		setSkip(false);
 	};
+
 
 	if (!active) return null;
 
@@ -67,8 +68,8 @@ const FavoritesList = ({ userId, username, isCurrentUser, active }: FavoritesLis
 		return (
 			<UserMessage
 				icon={lockIcon}
-				title="This user's favorite posts are private"
-				text={`${username}'s favorite posts are currently hidden`}
+				title="This user's stories are private"
+				text={`Stories published by ${username} are currently hidden`}
 			/>
 		);
 	}
@@ -81,10 +82,10 @@ const FavoritesList = ({ userId, username, isCurrentUser, active }: FavoritesLis
 		return <div>Error...</div>;
 	}
 
-	if (favorites && favorites.length > 0) {
+	if (stories && stories.length > 0) {
 		return (
 			<InfiniteScroll
-				dataLength={favorites.length}
+				dataLength={stories.length}
 				next={handleChangeCursor}
 				hasMore={hasMore}
 				loader={<Loader className={profileSharedStyles.StoriesLoader} />}
@@ -92,8 +93,8 @@ const FavoritesList = ({ userId, username, isCurrentUser, active }: FavoritesLis
 				style={{ overflow: 'hidden' }}
 			>
 				<div className={profileSharedStyles.StoriesList}>
-					{favorites.map((favorite) => (
-						<ProfileStory key={favorite.story.id} story={favorite.story} />
+					{stories.map((story) => (
+						<ProfileStory key={story.id} story={story} />
 					))}
 				</div>
 			</InfiniteScroll>
@@ -102,11 +103,11 @@ const FavoritesList = ({ userId, username, isCurrentUser, active }: FavoritesLis
 
 	//no content (me)
 	if (isCurrentUser) {
-		return <UserMessage icon={favoritesIcon} title="Favorite posts" text="Your favorite posts will appear here" />;
+		return <UserMessage icon={personIcon} title="Upload your first story" text="Your stories will appear here" />;
 	}
 
 	//no content (user)
-	return <UserMessage icon={favoritesIcon} title="No content" text="This user has not added any stories to Favorites yet." />;
+	return <UserMessage icon={personIcon} title="No content" text="This user has not published any stories" />;
 };
 
-export default FavoritesList;
+export default UserStoriesList;

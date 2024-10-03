@@ -5,9 +5,3 @@
 	background-color: rgb(18, 18, 18);
 	margin-bottom: 20px;
 }
-
-.StoriesList {
-	display: grid;
-	gap: 20px;
-	grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-}

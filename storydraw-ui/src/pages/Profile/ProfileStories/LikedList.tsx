@@ -1,20 +1,67 @@
+import { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import profileSharedStyles from '@/pages/Profile/ProfileSharedStyles.module.scss';
 import ProfileStory from './ProfileStory/ProfileStory';
 import UserMessage from '@/pages/Profile/UserMessage/UserMessage';
 import personIcon from '@/assets/icons/profile/person.svg';
 import lockIcon from '@/assets/icons/profile/lock.svg';
-import type { ProfileStory as ProfileStoryType } from '@/types/Profile';
+import type { UserStoryLike } from '@/types/Profile';
 import StoriesPlaceholder from './StoriesPlaceholder/StoriesPlaceholder';
+import { GET_USER_STORY_LIKES } from '@/graphql/stories/queries';
+import { LIKED_STORIES_LIMIT } from '@/constants/pagination';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Loader from '@/components/ui/Loader/Loader';
 
 type LikedListProps = {
-	liked: ProfileStoryType[];
+	userId: string;
 	username: string;
 	isCurrentUser: boolean;
-	isPrivate: boolean;
-	loading: boolean;
+	active: boolean;
 };
 
-const LikedList = (props: LikedListProps) => {
-	const { liked, username, isCurrentUser, isPrivate, loading } = props;
+const LikedList = ({ userId, username, isCurrentUser, active }: LikedListProps) => {
+	const [likes, setLikes] = useState<UserStoryLike[]>([]);
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [hasMore, setHasMore] = useState(true);
+	const [cursor, setCursor] = useState(null);
+	const [skip, setSkip] = useState(false);
+	//test
+	const isPrivate = false;
+
+	const { error } = useQuery(GET_USER_STORY_LIKES, {
+		variables: {
+			getUserStoryLikesInput: { userId },
+			paginationInput: {
+				limit: LIKED_STORIES_LIMIT,
+				cursor,
+			},
+		},
+		onCompleted(data) {
+			const newLikes = data.getUserStoryLikes || [];
+
+			setLikes((prevLikes) => [...prevLikes, ...newLikes]);
+			setIsLoaded(true);
+			setSkip(true);
+
+			if (newLikes.length < LIKED_STORIES_LIMIT) {
+				setHasMore(false);
+			}
+		},
+		onError() {
+			setIsLoaded(true);
+		},
+		skip: !active || skip,
+		notifyOnNetworkStatusChange: true,
+		fetchPolicy: 'no-cache',
+	});
+
+	const handleChangeCursor = () => {
+		const lastLike = likes[likes.length - 1];
+		setCursor(lastLike.createdAt);
+		setSkip(false);
+	};
+
+	if (!active) return null;
 
 	if (isPrivate && !isCurrentUser) {
 		return (
@@ -26,17 +73,30 @@ const LikedList = (props: LikedListProps) => {
 		);
 	}
 
-	if (loading) {
+	if (!isLoaded) {
 		return <StoriesPlaceholder length={8} />;
 	}
 
-	if (liked && liked.length > 0) {
+	if (error) {
+		return <div>Error...</div>;
+	}
+
+	if (likes && likes.length > 0) {
 		return (
-			<>
-				{liked.map((story) => (
-					<ProfileStory key={story.id} {...story} />
-				))}
-			</>
+			<InfiniteScroll
+				dataLength={likes.length}
+				next={handleChangeCursor}
+				hasMore={hasMore}
+				loader={<Loader className={profileSharedStyles.StoriesLoader} />}
+				scrollableTarget="profileContainer"
+				style={{ overflow: 'hidden' }}
+			>
+				<div className={profileSharedStyles.StoriesList}>
+					{likes.map((like) => (
+						<ProfileStory key={like.story.id} story={like.story} />
+					))}
+				</div>
+			</InfiniteScroll>
 		);
 	}
 

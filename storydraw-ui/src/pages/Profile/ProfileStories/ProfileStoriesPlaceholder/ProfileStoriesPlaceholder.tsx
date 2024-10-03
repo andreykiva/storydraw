@@ -9,9 +9,7 @@ const ProfileStoriesPlaceholder = ({ length }: ProfileStoriesPlaceholderProps) =
 	return (
 		<div className={styles.ProfileStoriesPlaceholder}>
 			<div className={styles.StoriesViewsMenu}></div>
-			<div className={styles.StoriesList}>
-				<StoriesPlaceholder length={length} />
-			</div>
+			<StoriesPlaceholder length={length} />
 		</div>
 	);
 };

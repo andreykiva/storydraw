@@ -6,10 +6,12 @@ import { formatNumber } from '@/utils/formatUtils';
 import type { Story } from '@/types/Story';
 import { wrapMentions } from '@/utils/textUtils';
 
-type ProfileStoryProps = Pick<Story, 'id' | 'description'>;
+type ProfileStoryProps = {
+	story: Pick<Story, 'id' | 'description'>;
+};
 
-const ProfileStory = (props: ProfileStoryProps) => {
-	const { id, description } = props;
+const ProfileStory = ({ story }: ProfileStoryProps) => {
+	const { id, description } = story;
 	const navigate = useNavigate();
 
 	return (
