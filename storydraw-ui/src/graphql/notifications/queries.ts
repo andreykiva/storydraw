@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_LIKES_NOTIFICATIONS = gql`
-	query GetLikesNotifications {
-		likesNotifications {
+	query GetLikesNotifications($paginationInput: PaginationInput) {
+		likesNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -28,8 +28,8 @@ export const GET_LIKES_NOTIFICATIONS = gql`
 `;
 
 export const GET_COMMENTS_NOTIFICATIONS = gql`
-	query GetCommentsNotifications {
-		commentsNotifications {
+	query GetCommentsNotifications($paginationInput: PaginationInput) {
+		commentsNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -65,8 +65,8 @@ export const GET_COMMENTS_NOTIFICATIONS = gql`
 `;
 
 export const GET_MENTIONS_NOTIFICATIONS = gql`
-	query GetMentionsNotifications {
-		mentionsNotifications {
+	query GetMentionsNotifications($paginationInput: PaginationInput) {
+		mentionsNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -91,8 +91,8 @@ export const GET_MENTIONS_NOTIFICATIONS = gql`
 `;
 
 export const GET_FOLLOWS_NOTIFICATIONS = gql`
-	query GetFollowsNotifications {
-		followsNotifications {
+	query GetFollowsNotifications($paginationInput: PaginationInput) {
+		followsNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -108,8 +108,8 @@ export const GET_FOLLOWS_NOTIFICATIONS = gql`
 `;
 
 export const GET_ALL_NOTIFICATIONS = gql`
-	query GetAllNotifications {
-		allNotifications {
+	query GetAllNotifications($paginationInput: PaginationInput) {
+		allNotifications(paginationInput: $paginationInput) {
 			... on LikeNotification {
 				id
 				type

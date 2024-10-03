@@ -47,38 +47,47 @@ export const GET_USER_PROFILE = gql`
 `;
 
 export const GET_FOLLOWING = gql`
-	query GetFollowing($followingInput: FollowInput!, $isAuth: Boolean!) {
-		following(followingInput: $followingInput) {
-			id
-			username
-			displayName
-			imageUrl
-			isFollowing @include(if: $isAuth)
-			isFollowedBy @include(if: $isAuth)
+	query GetFollowing($followingInput: FollowInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
+		following(followingInput: $followingInput, paginationInput: $paginationInput) {
+			createdAt
+			following {
+				id
+				username
+				displayName
+				imageUrl
+				isFollowing @include(if: $isAuth)
+				isFollowedBy @include(if: $isAuth)
+			}
 		}
 	}
 `;
 
 export const GET_FOLLOWERS = gql`
-	query GetFollowers($followersInput: FollowInput!, $isAuth: Boolean!) {
-		followers(followersInput: $followersInput) {
-			id
-			username
-			displayName
-			imageUrl
-			isFollowing @include(if: $isAuth)
-			isFollowedBy @include(if: $isAuth)
+	query GetFollowers($followersInput: FollowInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
+		followers(followersInput: $followersInput, paginationInput: $paginationInput) {
+			createdAt
+			follower {
+				id
+				username
+				displayName
+				imageUrl
+				isFollowing @include(if: $isAuth)
+				isFollowedBy @include(if: $isAuth)
+			}
 		}
 	}
 `;
 
 export const GET_FRIENDS = gql`
-	query GetFriends {
-		friends {
-			id
-			username
-			displayName
-			imageUrl
+	query GetFriends($paginationInput: PaginationInput) {
+		friends(paginationInput: $paginationInput) {
+			createdAt
+			following {
+				id
+				username
+				displayName
+				imageUrl
+			}
 		}
 	}
 `;

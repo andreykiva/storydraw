@@ -54,28 +54,35 @@ export const GET_STORY = gql`
 `;
 
 export const GET_USER_STORIES = gql`
-	query GetUserStories($getUserStoriesInput: GetUserStoriesInput!) {
-		getUserStories(getUserStoriesInput: $getUserStoriesInput) {
+	query GetUserStories($getUserStoriesInput: GetUserStoriesInput!, $paginationInput: PaginationInput) {
+		getUserStories(getUserStoriesInput: $getUserStoriesInput, paginationInput: $paginationInput) {
 			id
 			description
+			createdAt
 		}
 	}
 `;
 
-export const GET_FAVORITE_STORIES = gql`
-	query GetFavoriteStories($getFavoriteStoriesInput: GetUserStoriesInput!) {
-		getFavoriteStories(getFavoriteStoriesInput: $getFavoriteStoriesInput) {
-			id
-			description
+export const GET_USER_FAVORITES = gql`
+	query GetUserFavorites($getUserFavoritesInput: GetUserFavoritesInput!, $paginationInput: PaginationInput) {
+		getUserFavorites(getUserFavoritesInput: $getUserFavoritesInput, paginationInput: $paginationInput) {
+			createdAt
+			story {
+				id
+				description
+			}
 		}
 	}
 `;
 
-export const GET_LIKED_STORIES = gql`
-	query GetLikedStories($getLikedStoriesInput: GetUserStoriesInput!) {
-		getLikedStories(getLikedStoriesInput: $getLikedStoriesInput) {
-			id
-			description
+export const GET_USER_STORY_LIKES = gql`
+	query GetUserStoryLikes($getUserStoryLikesInput: GetUserStoryLikesInput!, $paginationInput: PaginationInput) {
+		getUserStoryLikes(getUserStoryLikesInput: $getUserStoryLikesInput, paginationInput: $paginationInput) {
+			createdAt
+			story {
+				id
+				description
+			}
 		}
 	}
 `;
