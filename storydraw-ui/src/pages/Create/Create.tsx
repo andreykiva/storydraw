@@ -11,7 +11,7 @@ const Create = () => {
 	const [imageUrl, setImageUrl] = useState('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg');
 
 	const [createStory] = useMutation(CREATE_STORY, {
-		onCompleted: (data) => {
+		onCompleted(data) {
 			console.log(data);
 		},
 	});
