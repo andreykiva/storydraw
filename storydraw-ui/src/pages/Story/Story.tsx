@@ -10,6 +10,7 @@ import { GET_STORY } from '@/graphql/stories/queries';
 import { selectUser } from '@/features/user/userSlice';
 import StoryContent from './StoryContent/StoryContent';
 import StoryInfoPlaceholder from './StoryInfo/StoryInfoPlaceholder/StoryInfoPlaceholder';
+import { ForYouStory } from '@/types/Story';
 
 const Story = () => {
 	const isAuth = useSelector(selectAuth);
@@ -17,7 +18,7 @@ const Story = () => {
 	const params = useParams();
 	const storyId = params.storyId;
 
-	const [story, setStory] = useState(null);
+	const [story, setStory] = useState<ForYouStory>(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	let isCurrentUser = false;
