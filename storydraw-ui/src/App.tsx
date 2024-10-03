@@ -24,8 +24,8 @@ const App = () => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
 
-	const { data } = useQuery(GET_ME, {
-		onCompleted: () => {
+	useQuery(GET_ME, {
+		onCompleted(data) {
 			// setTimeout(() => {
 			// 	dispatch(setUser(data.getMe));
 			// 	dispatch(login());
