@@ -1,0 +1,37 @@
+@import '@/assets/styles/_variables';
+@import '@/assets/styles/_mixins';
+
+.NotificationPlaceholder {
+	display: flex;
+	align-items: center;
+	padding: 8px 16px;
+}
+
+.UserImg {
+	max-width: 48px;
+	width: 100%;
+	height: 48px;
+	margin-right: 12px;
+	border-radius: 50%;
+	@include shimmer($placeholder-bg-color);
+}
+
+.UserInfo {
+	display: flex;
+	flex-direction: column;
+
+	.DisplayName {
+		width: 220px;
+		height: 14px;
+		border-radius: 14px;
+		margin-bottom: 8px;
+		@include shimmer($placeholder-bg-color);
+	}
+
+	.FollowDate {
+		width: 160px;
+		height: 14px;
+		border-radius: 14px;
+		@include shimmer($placeholder-bg-color);
+	}
+}
