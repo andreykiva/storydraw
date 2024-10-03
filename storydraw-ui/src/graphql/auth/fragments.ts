@@ -7,6 +7,7 @@ export const AUTH_RESPONSE_FIELDS = gql`
 		user {
 			id
 			username
+			displayName
 			imageUrl
 		}
 	}
