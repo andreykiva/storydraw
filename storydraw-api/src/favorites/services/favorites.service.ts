@@ -58,7 +58,7 @@ export class FavoritesService {
 		return this.favoritesRepository.remove(favorite);
 	}
 
-	async getFavorites(userId: string, paginationInput: PaginationInput): Promise<Favorite[]> {
+	async getUserFavorites(userId: string, paginationInput: PaginationInput): Promise<Favorite[]> {
 		const user = await this.usersService.findOneById(userId);
 
 		if (!user) {
