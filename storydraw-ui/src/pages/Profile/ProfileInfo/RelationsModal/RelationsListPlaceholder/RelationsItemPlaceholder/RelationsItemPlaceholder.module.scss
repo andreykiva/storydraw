@@ -1,0 +1,37 @@
+@import '@/assets/styles/_variables';
+@import '@/assets/styles/_mixins';
+
+.RelationsItemPlaceholder {
+	display: flex;
+	align-items: center;
+	padding: 16px 40px;
+}
+
+.UserImg {
+	max-width: 48px;
+	width: 100%;
+	height: 48px;
+	margin-right: 12px;
+	border-radius: 50%;
+	@include shimmer($bright-placeholder-bg-color);
+}
+
+.UserInfo {
+	display: flex;
+	flex-direction: column;
+
+	.DisplayName {
+		width: 160px;
+		height: 16px;
+		border-radius: 14px;
+		margin-bottom: 8px;
+		@include shimmer($bright-placeholder-bg-color);
+	}
+
+	.Username {
+		width: 220px;
+		height: 12px;
+		border-radius: 14px;
+		@include shimmer($bright-placeholder-bg-color);
+	}
+}

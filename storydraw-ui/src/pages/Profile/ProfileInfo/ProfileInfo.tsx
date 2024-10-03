@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './ProfileInfo.module.scss';
 import defaultImg from '@/assets/images/default.svg';
@@ -51,6 +51,10 @@ const ProfileInfo = ({ isAuth, user, setUser, isCurrentUser }: ProfileInfoProps)
 			});
 		},
 	});
+
+	useEffect(() => {
+		setIsRelationsModalOpen(false);
+	}, [user.username]);
 
 	const handleOpenRelationsModal = (view: RELATIONS_TYPE) => {
 		if (isAuth) {

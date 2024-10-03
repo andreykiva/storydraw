@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { useQuery } from '@apollo/client';
 import styles from './RelationsModal.module.scss';
 import ModalOverlay from '@/components/ui/ModalOverlay/ModalOverlay';
 import { RELATIONS_TYPE } from '@/constants/profile';
@@ -11,7 +9,6 @@ import { formatNumber } from '@/utils/formatUtils';
 import FollowingList from './FollowingList';
 import FollowersList from './FollowersList';
 import FriendsList from './FriendsList';
-import { GET_FOLLOWERS, GET_FOLLOWING, GET_FRIENDS } from '@/graphql/users/queries';
 
 type RelationsModalProps = {
 	isAuth: boolean;
@@ -24,30 +21,8 @@ type RelationsModalProps = {
 
 const RelationsModal = (props: RelationsModalProps) => {
 	const { isAuth, user, view, isCurrentUser, onClose, onChangeView } = props;
-	const [isFollowingPrivate, setIsFollowingPrivate] = useState(false);
-
-	const { data: following, loading: followingLoading } = useQuery(GET_FOLLOWING, {
-		variables: { followingInput: { userId: user.id }, isAuth },
-		skip: view !== RELATIONS_TYPE.FOLLOWING,
-		onError(error) {
-			console.log(error);
-		},
-	});
-
-	const { data: followers, loading: followersLoading } = useQuery(GET_FOLLOWERS, {
-		variables: { followersInput: { userId: user.id }, isAuth },
-		skip: view !== RELATIONS_TYPE.FOLLOWERS,
-		onError(error) {
-			console.log(error);
-		},
-	});
-
-	const { data: friends, loading: friendsLoading } = useQuery(GET_FRIENDS, {
-		skip: view !== RELATIONS_TYPE.FRIENDS,
-		onError(error) {
-			console.log(error);
-		},
-	});
+	//temp
+	const isFollowingPrivate = false;
 
 	return (
 		<ModalOverlay>
@@ -71,21 +46,16 @@ const RelationsModal = (props: RelationsModalProps) => {
 						</ViewsMenuItem>
 					)}
 				</div>
-				<ul className={styles.RelationsList}>
-					{view === RELATIONS_TYPE.FOLLOWING && (
-						<FollowingList
-							following={following?.following}
-							loading={followingLoading}
-							isAuth={isAuth}
-							username={user.username}
-							isFollowingPrivate={isFollowingPrivate}
-						/>
-					)}
-					{view === RELATIONS_TYPE.FOLLOWERS && (
-						<FollowersList followers={followers?.followers} loading={followersLoading} isAuth={isAuth} />
-					)}
-					{view === RELATIONS_TYPE.FRIENDS && <FriendsList friends={friends?.friends} loading={friendsLoading} isAuth={isAuth} />}
-				</ul>
+				<div className={styles.RelationsListWrapper}>
+					<FollowingList
+						isAuth={isAuth}
+						user={user}
+						isFollowingPrivate={isFollowingPrivate}
+						active={view === RELATIONS_TYPE.FOLLOWING}
+					/>
+					<FollowersList isAuth={isAuth} user={user} active={view === RELATIONS_TYPE.FOLLOWERS} />
+					<FriendsList isAuth={isAuth} user={user} active={view === RELATIONS_TYPE.FRIENDS} />
+				</div>
 			</div>
 		</ModalOverlay>
 	);

@@ -31,23 +31,6 @@
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
 }
 
-.RelationsList {
+.RelationsListWrapper {
 	height: 560px;
-	display: flex;
-	flex-direction: column;
-	padding-bottom: 10px;
-	overflow-y: auto;
-
-	&::-webkit-scrollbar {
-		width: 8px;
-	}
-
-	&::-webkit-scrollbar-track {
-		background: transparent;
-	}
-
-	&::-webkit-scrollbar-thumb {
-		background: rgb(50, 50, 50);
-		border-radius: 4px;
-	}
 }
