@@ -1,14 +1,19 @@
 .Loader {
 	width: 50px;
 	aspect-ratio: 1;
+	border: 5px solid var(--bright-green-color);
+	border-bottom-color: transparent;
 	border-radius: 50%;
-	background: radial-gradient(farthest-side, var(--bright-green-color) 94%, #0000) top/8px 8px no-repeat,
-		conic-gradient(#0000 30%, var(--bright-green-color));
-	-webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
-	animation: l13 1s infinite linear;
+	display: block;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
 }
-@keyframes l13 {
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
 	100% {
-		transform: rotate(1turn);
+		transform: rotate(360deg);
 	}
 }
