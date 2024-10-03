@@ -65,7 +65,7 @@ const Profile = () => {
 		);
 
 	return (
-		<div className={styles.Profile}>
+		<div className={styles.Profile} id='profileContainer'>
 			{isLoaded ? (
 				<>
 					<ProfileInfo isAuth={isAuth} user={user} setUser={setUser} isCurrentUser={isCurrentUser} />
