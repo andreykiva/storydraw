@@ -7,6 +7,8 @@ import { AddFavoriteInput } from './dto/add-to-favorites.input';
 import { FavoritesCountInput } from './dto/favorites-count.input';
 import { FavoritesCountResponse } from './dto/favorites-count-response';
 import { RemoveFavoriteResponse } from './dto/remove-favorite-response';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
+import { GetUserFavoritesInput } from './dto/get-user-favorites.input';
 
 @Resolver(() => Favorite)
 export class FavoritesResolver {
@@ -25,6 +27,15 @@ export class FavoritesResolver {
 		const userId = context.req.user.id;
 		await this.favoritesService.removeFavorite(removeFavoriteInput.storyId, userId);
 		return { success: true };
+	}
+
+	@Query(() => [Favorite])
+	async getUserFavorites(
+		@Args('getUserFavoritesInput') getUserFavoritesInput: GetUserFavoritesInput,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.favoritesService.getUserFavorites(getUserFavoritesInput.userId, { limit, cursor });
 	}
 
 	@Query(() => FavoritesCountResponse)
