@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { validateResetPasswordForm } from '@/utils/validators/authValidators';
 import { RESET_PASSWORD_FIELD } from '@/constants/auth';
@@ -39,22 +39,36 @@ const useResetPasswordForm = () => {
 	const [country, setCountry] = useState(countries[0]);
 	const [isPhoneMode, setIsPhoneMode] = useState(false);
 
-	const [generatePhoneCode, { loading: gpcLoading, error: gpcError }] = useMutation(GENERATE_PHONE_CODE_FOR_RESET);
-	const [generateEmailCode, { loading: gecLoading, error: gecError }] = useMutation(GENERATE_EMAIL_CODE_FOR_RESET);
+	const [generatePhoneCode, { loading: gpcLoading }] = useMutation(GENERATE_PHONE_CODE_FOR_RESET, {
+		onError(error) {
+			handleError(error, [RESET_PASSWORD_FIELD.PHONE, RESET_PASSWORD_FIELD.CODE]);
+		},
+	});
+	const [generateEmailCode, { loading: gecLoading }] = useMutation(GENERATE_EMAIL_CODE_FOR_RESET, {
+		onError(error) {
+			handleError(error, [RESET_PASSWORD_FIELD.EMAIL, RESET_PASSWORD_FIELD.CODE]);
+		},
+	});
 
-	const [resetPasswordWithPhone, { loading: rppLoading, error: rppError }] = useMutation(RESET_PASSWORD_WITH_PHONE, {
-		onCompleted: (data) => {
+	const [resetPasswordWithPhone, { loading: rppLoading }] = useMutation(RESET_PASSWORD_WITH_PHONE, {
+		onCompleted(data) {
 			const { access_token, refresh_token, user } = data.resetPasswordWithPhone;
 			setupUserAndTokens(dispatch, access_token, refresh_token, user);
 			dispatch(login());
 		},
+		onError(error) {
+			handleError(error, [RESET_PASSWORD_FIELD.PHONE, RESET_PASSWORD_FIELD.CODE, RESET_PASSWORD_FIELD.PASSWORD]);
+		},
 	});
 
-	const [resetPasswordWithEmail, { loading: rpeLoading, error: rpeError }] = useMutation(RESET_PASSWORD_WITH_EMAIL, {
-		onCompleted: (data) => {
+	const [resetPasswordWithEmail, { loading: rpeLoading }] = useMutation(RESET_PASSWORD_WITH_EMAIL, {
+		onCompleted(data) {
 			const { access_token, refresh_token, user } = data.resetPasswordWithEmail;
 			setupUserAndTokens(dispatch, access_token, refresh_token, user);
 			dispatch(login());
+		},
+		onError(error) {
+			handleError(error, [RESET_PASSWORD_FIELD.EMAIL, RESET_PASSWORD_FIELD.CODE, RESET_PASSWORD_FIELD.PASSWORD]);
 		},
 	});
 
@@ -70,22 +84,6 @@ const useResetPasswordForm = () => {
 
 	const isFormBtnLoading = rppLoading || rpeLoading;
 	const isCodeBtnLoading = gpcLoading || gecLoading;
-
-	useEffect(() => {
-		handleError(gpcError, [RESET_PASSWORD_FIELD.PHONE, RESET_PASSWORD_FIELD.CODE]);
-	}, [gpcError]);
-
-	useEffect(() => {
-		handleError(gecError, [RESET_PASSWORD_FIELD.EMAIL, RESET_PASSWORD_FIELD.CODE]);
-	}, [gecError]);
-
-	useEffect(() => {
-		handleError(rppError, [RESET_PASSWORD_FIELD.PHONE, RESET_PASSWORD_FIELD.CODE, RESET_PASSWORD_FIELD.PASSWORD]);
-	}, [rppError]);
-
-	useEffect(() => {
-		handleError(rpeError, [RESET_PASSWORD_FIELD.EMAIL, RESET_PASSWORD_FIELD.CODE, RESET_PASSWORD_FIELD.PASSWORD]);
-	}, [rpeError]);
 
 	const handleError = (error: ApolloError | undefined, fields: RESET_PASSWORD_FIELD[]) => {
 		const errors = transformError(error);

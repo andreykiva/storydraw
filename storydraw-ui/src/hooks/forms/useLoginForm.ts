@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { validateLoginForm } from '@/utils/validators/authValidators';
 import { LOGIN_FIELD, LOGIN_METHOD } from '@/constants/auth';
@@ -40,27 +40,40 @@ const useLoginForm = () => {
 	const [country, setCountry] = useState(countries[0]);
 	const [loginMethod, setLoginMethod] = useState<LOGIN_METHOD>(LOGIN_METHOD.PHONE_AND_CODE);
 
-	const [generatePhoneCode, { loading: gpcLoading, error: gpcError }] = useMutation(GENERATE_PHONE_CODE_FOR_LOGIN);
+	const [generatePhoneCode, { loading: gpcLoading }] = useMutation(GENERATE_PHONE_CODE_FOR_LOGIN, {
+		onError(error) {
+			handleError(error, [LOGIN_FIELD.PHONE, LOGIN_FIELD.CODE]);
+		},
+	});
 
-	const [loginWithEmailAndPass, { loading: elLoading, error: elError }] = useMutation(LOGIN_WITH_EMAIL_AND_PASSWORD, {
-		onCompleted: (data) => {
+	const [loginWithEmailAndPass, { loading: elLoading }] = useMutation(LOGIN_WITH_EMAIL_AND_PASSWORD, {
+		onCompleted(data) {
 			const { access_token, refresh_token, user } = data.loginWithEmailAndPass;
 			setupUserAndTokens(dispatch, access_token, refresh_token, user);
 			dispatch(login());
 		},
+		onError(error) {
+			handleError(error, [LOGIN_FIELD.LOGIN, LOGIN_FIELD.PASSWORD]);
+		},
 	});
-	const [loginWithUsernameAndPass, { loading: ulLoading, error: ulError }] = useMutation(LOGIN_WITH_USERNAME_AND_PASSWORD, {
-		onCompleted: (data) => {
+	const [loginWithUsernameAndPass, { loading: ulLoading }] = useMutation(LOGIN_WITH_USERNAME_AND_PASSWORD, {
+		onCompleted(data) {
 			const { access_token, refresh_token, user } = data.loginWithUsernameAndPass;
 			setupUserAndTokens(dispatch, access_token, refresh_token, user);
 			dispatch(login());
 		},
+		onError(error) {
+			handleError(error, [LOGIN_FIELD.LOGIN, LOGIN_FIELD.PASSWORD]);
+		},
 	});
-	const [loginWithPhoneAndCode, { loading: lpcLoading, error: lpcError }] = useMutation(LOGIN_WITH_PHONE_AND_CODE, {
-		onCompleted: (data) => {
+	const [loginWithPhoneAndCode, { loading: lpcLoading }] = useMutation(LOGIN_WITH_PHONE_AND_CODE, {
+		onCompleted(data) {
 			const { access_token, refresh_token, user } = data.loginWithPhoneAndCode;
 			setupUserAndTokens(dispatch, access_token, refresh_token, user);
 			dispatch(login());
+		},
+		onError(error) {
+			handleError(error, [LOGIN_FIELD.PHONE, LOGIN_FIELD.CODE]);
 		},
 	});
 
@@ -80,22 +93,6 @@ const useLoginForm = () => {
 
 	const isFormBtnLoading = elLoading || ulLoading || lpcLoading;
 	const isCodeBtnLoading = gpcLoading;
-
-	useEffect(() => {
-		handleError(elError, [LOGIN_FIELD.LOGIN, LOGIN_FIELD.PASSWORD]);
-	}, [elError]);
-
-	useEffect(() => {
-		handleError(ulError, [LOGIN_FIELD.LOGIN, LOGIN_FIELD.PASSWORD]);
-	}, [ulError]);
-
-	useEffect(() => {
-		handleError(gpcError, [LOGIN_FIELD.PHONE, LOGIN_FIELD.CODE]);
-	}, [gpcError]);
-
-	useEffect(() => {
-		handleError(lpcError, [LOGIN_FIELD.PHONE, LOGIN_FIELD.CODE]);
-	}, [lpcError]);
 
 	const handleError = (error: ApolloError | undefined, fields: LOGIN_FIELD[]) => {
 		const errors = transformError(error);

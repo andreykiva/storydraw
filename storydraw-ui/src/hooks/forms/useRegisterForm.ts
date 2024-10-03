@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { validateRegisterForm } from '@/utils/validators/authValidators';
 import { REGISTER_FIELD, BIRTH_FIELD } from '@/constants/auth';
@@ -54,27 +54,41 @@ const useRegisterForm = () => {
 	const [showUsernameField, setShowUsernameField] = useState(false);
 	const [isUsernameLoading, setIsUsernameLoading] = useState(false);
 
-	const [generatePhoneCode, { loading: gpcLoading, error: gpcError }] = useMutation(GENERATE_PHONE_CODE_FOR_SIGNUP);
-	const [generateEmailCode, { loading: gecLoading, error: gecError }] = useMutation(GENERATE_EMAIL_CODE_FOR_SIGNUP);
+	const [generatePhoneCode, { loading: gpcLoading }] = useMutation(GENERATE_PHONE_CODE_FOR_SIGNUP, {
+		onError(error) {
+			handleError(error, [REGISTER_FIELD.PHONE, REGISTER_FIELD.CODE]);
+		},
+	});
+	const [generateEmailCode, { loading: gecLoading }] = useMutation(GENERATE_EMAIL_CODE_FOR_SIGNUP, {
+		onError(error) {
+			handleError(error, [REGISTER_FIELD.EMAIL, REGISTER_FIELD.CODE]);
+		},
+	});
 
-	const [signupWithPhoneAndCode, { loading: spLoading, error: spError }] = useMutation(SIGNUP_WITH_PHONE_AND_CODE, {
-		onCompleted: (data) => {
+	const [signupWithPhoneAndCode, { loading: spLoading}] = useMutation(SIGNUP_WITH_PHONE_AND_CODE, {
+		onCompleted(data) {
 			const { access_token, refresh_token, user } = data.signupWithPhoneAndCode;
 			setupUserAndTokens(dispatch, access_token, refresh_token, user);
 			setShowUsernameField(true);
 		},
+		onError(error) {
+			handleError(error, [REGISTER_FIELD.PHONE, REGISTER_FIELD.CODE]);
+		},
 	});
 
-	const [signupWithEmailAndPassAndCode, { loading: seLoading, error: seError }] = useMutation(SIGNUP_WITH_EMAIL_AND_PASS_AND_CODE, {
-		onCompleted: (data) => {
+	const [signupWithEmailAndPassAndCode, { loading: seLoading }] = useMutation(SIGNUP_WITH_EMAIL_AND_PASS_AND_CODE, {
+		onCompleted(data) {
 			const { access_token, refresh_token, user } = data.signupWithEmailAndPassAndCode;
 			setupUserAndTokens(dispatch, access_token, refresh_token, user);
 			setShowUsernameField(true);
 		},
+		onError(error) {
+			handleError(error, [REGISTER_FIELD.EMAIL, REGISTER_FIELD.PASSWORD, REGISTER_FIELD.CODE]);
+		},
 	});
 
-	const [findUser, { loading: findUserLoading, error: findUserError }] = useLazyQuery(ENSURE_USERNAME_NOT_EXISTS, {
-		onCompleted: (data) => {
+	const [findUser, { loading: findUserLoading }] = useLazyQuery(ENSURE_USERNAME_NOT_EXISTS, {
+		onCompleted(data) {
 			if (data.ensureUsernameNotExists.exists === false) {
 				setFormErrors({
 					...formErrors,
@@ -83,12 +97,19 @@ const useRegisterForm = () => {
 			}
 			setIsUsernameLoading(false);
 		},
+		onError(error) {
+			handleError(error, [REGISTER_FIELD.USERNAME]);
+			setIsUsernameLoading(false);
+		},
 		fetchPolicy: 'no-cache',
 	});
 
-	const [createUsername, { loading: createUsernameLoading, error: createUsernameError }] = useMutation(UPDATE_USERNAME, {
-		onCompleted: (data) => {
+	const [createUsername, { loading: createUsernameLoading }] = useMutation(UPDATE_USERNAME, {
+		onCompleted(data) {
 			setupCreateUsername(dispatch, data.updateUsername);
+		},
+		onError(error) {
+			handleError(error, [REGISTER_FIELD.USERNAME]);
 		},
 	});
 
@@ -112,31 +133,6 @@ const useRegisterForm = () => {
 	const isUsernameError = !!formErrors[REGISTER_FIELD.USERNAME];
 
 	const isUsernameBtnDisabled = Boolean(isUsernameInvalid || findUserLoading || isUsernameError || isUsernameLoading);
-
-	useEffect(() => {
-		handleError(gpcError, [REGISTER_FIELD.PHONE, REGISTER_FIELD.CODE]);
-	}, [gpcError]);
-
-	useEffect(() => {
-		handleError(gecError, [REGISTER_FIELD.EMAIL, REGISTER_FIELD.CODE]);
-	}, [gecError]);
-
-	useEffect(() => {
-		handleError(spError, [REGISTER_FIELD.PHONE, REGISTER_FIELD.CODE]);
-	}, [spError]);
-
-	useEffect(() => {
-		handleError(seError, [REGISTER_FIELD.EMAIL, REGISTER_FIELD.PASSWORD, REGISTER_FIELD.CODE]);
-	}, [seError]);
-
-	useEffect(() => {
-		handleError(findUserError, [REGISTER_FIELD.USERNAME]);
-		setIsUsernameLoading(false);
-	}, [findUserError]);
-
-	useEffect(() => {
-		handleError(createUsernameError, [REGISTER_FIELD.USERNAME]);
-	}, [createUsernameError]);
 
 	const handleFindUser = (value: string) => {
 		findUser({

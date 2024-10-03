@@ -47,8 +47,8 @@ const useEditProfileForm = ({ user, udpateUser, onClose }: UseEditProfileFormPro
 
 	const [isUsernameLoading, setIsUsernameLoading] = useState(false);
 
-	const [findUser, { loading: findUserLoading, error: findUserError }] = useLazyQuery(ENSURE_USERNAME_NOT_EXISTS, {
-		onCompleted: (data) => {
+	const [findUser, { loading: findUserLoading }] = useLazyQuery(ENSURE_USERNAME_NOT_EXISTS, {
+		onCompleted(data) {
 			if (data.ensureUsernameNotExists.exists === false) {
 				setFormErrors({
 					...formErrors,
@@ -57,11 +57,15 @@ const useEditProfileForm = ({ user, udpateUser, onClose }: UseEditProfileFormPro
 				setIsUsernameLoading(false);
 			}
 		},
+		onError(error) {
+			handleError(error, [EDIT_PROFILE_FIELD.USERNAME]);
+			setIsUsernameLoading(false);
+		},
 		fetchPolicy: 'no-cache',
 	});
 
-	const [updateUser, { loading: updateUserLoading, error: updateUserError }] = useMutation(UPDATE_USER, {
-		onCompleted: (data) => {
+	const [updateUser, { loading: updateUserLoading }] = useMutation(UPDATE_USER, {
+		onCompleted(data) {
 			udpateUser({
 				...user,
 				...data.updateUser,
@@ -69,6 +73,9 @@ const useEditProfileForm = ({ user, udpateUser, onClose }: UseEditProfileFormPro
 			dispatch(setUser(data.updateUser));
 			navigate(`/@${data.updateUser.username}`);
 			onClose();
+		},
+		onError(error) {
+			handleError(error, [EDIT_PROFILE_FIELD.USERNAME, EDIT_PROFILE_FIELD.DISPLAYNAME, EDIT_PROFILE_FIELD.BIO]);
 		},
 	});
 
@@ -88,15 +95,6 @@ const useEditProfileForm = ({ user, udpateUser, onClose }: UseEditProfileFormPro
 	const isUsernameError = !!formErrors[EDIT_PROFILE_FIELD.USERNAME];
 
 	const isFormBtnDisabled = Boolean(isUsernameInvalid || findUserLoading || isUsernameError || isSaveBtnDisabled || isUsernameLoading);
-
-	useEffect(() => {
-		handleError(updateUserError, [EDIT_PROFILE_FIELD.USERNAME, EDIT_PROFILE_FIELD.DISPLAYNAME, EDIT_PROFILE_FIELD.BIO]);
-	}, [updateUserError]);
-
-	useEffect(() => {
-		handleError(findUserError, [EDIT_PROFILE_FIELD.USERNAME]);
-		setIsUsernameLoading(false);
-	}, [findUserError]);
 
 	const handleFindUser = (value: string) => {
 		findUser({
