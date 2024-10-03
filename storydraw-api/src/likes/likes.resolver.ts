@@ -10,6 +10,8 @@ import { UnlikeResponse } from './dto/unlike-response';
 import { Story } from 'src/stories/entities/story.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
+import { GetUserStoryLikesInput } from './dto/get-user-story-likes.input';
+import { PaginationInput } from 'src/common/dto/pagination.dto';
 
 @Resolver(() => Like)
 export class LikesResolver {
@@ -43,6 +45,15 @@ export class LikesResolver {
 		const userId = context.req.user.id;
 		await this.likesService.unlikeComment(unlikeCommentInput.commentId, userId);
 		return { success: true };
+	}
+
+	@Query(() => [Like])
+	async getUserStoryLikes(
+		@Args('getUserStoryLikesInput') getUserStoryLikesInput: GetUserStoryLikesInput,
+		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
+	) {
+		const { limit = 10, cursor = null } = paginationInput || {};
+		return this.likesService.getUserStoryLikes(getUserStoryLikesInput.userId, { limit, cursor });
 	}
 
 	@Query(() => LikesCountResponse)
