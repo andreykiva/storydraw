@@ -98,14 +98,4 @@ export class StoriesService {
 			take: limit,
 		});
 	}
-
-	async getFavoriteStories(userId: string, paginationInput: PaginationInput): Promise<Story[]> {
-		const favorites = await this.favoritesService.getFavorites(userId, paginationInput);
-		return favorites.map((favorite) => favorite.story);
-	}
-
-	async getLikedStories(userId: string, paginationInput: PaginationInput): Promise<Story[]> {
-		const likes = await this.likesService.getUserStoryLikes(userId, paginationInput);
-		return likes.map((like) => like.story);
-	}
 }

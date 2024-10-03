@@ -49,24 +49,6 @@ export class StoriesResolver {
 		return this.storiesService.getUserStories(getUserStoriesInput.userId, { limit, cursor });
 	}
 
-	@Query(() => [Story])
-	async getFavoriteStories(
-		@Args('getFavoriteStoriesInput') getFavoriteStoriesInput: GetUserStoriesInput,
-		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
-	) {
-		const { limit = 10, cursor = null } = paginationInput || {};
-		return this.storiesService.getFavoriteStories(getFavoriteStoriesInput.userId, { limit, cursor });
-	}
-
-	@Query(() => [Story])
-	async getLikedStories(
-		@Args('getLikedStoriesInput') getLikedStoriesInput: GetUserStoriesInput,
-		@Args('paginationInput', { nullable: true }) paginationInput?: PaginationInput,
-	) {
-		const { limit = 10, cursor = null } = paginationInput || {};
-		return this.storiesService.getLikedStories(getLikedStoriesInput.userId, { limit, cursor });
-	}
-
 	@ResolveField(() => Number)
 	async likesCount(@Parent() story: Story) {
 		return this.likesService.getStoryLikesCount(story.id);
