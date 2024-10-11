@@ -3,14 +3,20 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersService } from './services/users.service';
 import { UsersResolver } from './users.resolver';
 import { User } from './entities/user.entity';
-import { UsernameService } from './services/username.service';
 import { LikesModule } from 'src/likes/likes.module';
 import { FollowsModule } from 'src/follows/follows.module';
 import { UserMetadataModule } from 'src/user-metadata/user-metadata.module';
+import { USERS_SERVICE } from 'src/common/constants/providers.constants';
 
 @Module({
 	imports: [TypeOrmModule.forFeature([User]), LikesModule, FollowsModule, UserMetadataModule],
-	providers: [UsersResolver, UsersService, UsernameService],
-	exports: [UsersService],
+	providers: [
+		UsersResolver,
+		{
+			provide: USERS_SERVICE,
+			useClass: UsersService,
+		},
+	],
+	exports: [USERS_SERVICE],
 })
 export class UsersModule {}

@@ -11,6 +11,7 @@ import { VerificationsModule } from 'src/verifications/verifications.module';
 import { SmsService } from './services/sms.service';
 import { EmailService } from './services/email.service';
 import { TokenService } from './services/token.service';
+import { AUTH_SERVICE, EMAIL_SERVICE, SMS_SERVICE, TOKEN_SERVICE } from 'src/common/constants/providers.constants';
 
 @Module({
 	imports: [
@@ -24,6 +25,25 @@ import { TokenService } from './services/token.service';
 			useFactory: getJwtConfig,
 		}),
 	],
-	providers: [AuthService, AuthResolver, JwtStrategy, SmsService, EmailService, TokenService],
+	providers: [
+		AuthResolver,
+		JwtStrategy,
+		{
+			provide: AUTH_SERVICE,
+			useClass: AuthService,
+		},
+		{
+			provide: SMS_SERVICE,
+			useClass: SmsService,
+		},
+		{
+			provide: EMAIL_SERVICE,
+			useClass: EmailService,
+		},
+		{
+			provide: TOKEN_SERVICE,
+			useClass: TokenService,
+		},
+	],
 })
 export class AuthModule {}

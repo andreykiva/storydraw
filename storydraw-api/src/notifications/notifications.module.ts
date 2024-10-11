@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from '@nestjs/config';
 import { PubSub } from 'graphql-subscriptions';
 import { Notification } from './entities/notification.entity';
 import { NotificationsResolver } from './notifications.resolver';
@@ -12,8 +14,7 @@ import { StoryCreatedListener } from './events/story-created.listener';
 import { StoriesModule } from 'src/stories/stories.module';
 import { CommonModule } from 'src/common/common.module';
 import { UserMetadataModule } from 'src/user-metadata/user-metadata.module';
-import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule } from '@nestjs/config';
+import { PUB_SUB } from 'src/common/constants/providers.constants';
 
 @Module({
 	imports: [
@@ -33,7 +34,7 @@ import { ConfigModule } from '@nestjs/config';
 		MentionCreatedListener,
 		StoryCreatedListener,
 		{
-			provide: 'PUB_SUB',
+			provide: PUB_SUB,
 			useValue: new PubSub(),
 		},
 	],
