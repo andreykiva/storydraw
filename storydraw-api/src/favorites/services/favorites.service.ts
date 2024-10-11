@@ -1,9 +1,10 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOptionsWhere, LessThan, Repository } from 'typeorm';
 import { Favorite } from '../entities/favorite.entity';
 import { User } from 'src/users/entities/user.entity';
-import { UsersService } from 'src/users/services/users.service';
+import { USERS_SERVICE } from 'src/common/constants/providers.constants';
+import { UsersServiceInterface } from 'src/users/users.service.interface';
 import {
 	ALREADY_FAVORITED_STORY_ERROR,
 	FAVORITE_NOT_FOUND_ERROR,
@@ -18,7 +19,7 @@ export class FavoritesService {
 	constructor(
 		@InjectRepository(Favorite) private readonly favoritesRepository: Repository<Favorite>,
 		private readonly repositoryService: RepositoryService,
-		private readonly usersService: UsersService,
+		@Inject(USERS_SERVICE) private readonly usersService: UsersServiceInterface,
 	) {}
 
 	async addFavorite(storyId: string, user: User): Promise<Favorite> {
