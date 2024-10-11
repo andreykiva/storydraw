@@ -2,8 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from 'src/users/entities/user.entity';
-import { UsersService } from 'src/users/services/users.service';
-import { STORY_NOT_FOUND_ERROR, USER_NOT_FOUND_ERROR } from 'src/common/constants/errors.constants';
+import { STORY_NOT_FOUND_ERROR } from 'src/common/constants/errors.constants';
 import { Share } from '../entities/share.entity';
 import { RepositoryService } from 'src/common/services/repository.service';
 
@@ -12,7 +11,6 @@ export class SharesService {
 	constructor(
 		@InjectRepository(Share) private readonly sharesRepository: Repository<Share>,
 		private readonly repositoryService: RepositoryService,
-		private readonly usersService: UsersService,
 	) {}
 
 	async share(storyId: string, user: User): Promise<Share> {
