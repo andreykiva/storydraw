@@ -6,12 +6,12 @@ export const graphqlConfig: ApolloDriverConfig = {
 	autoSchemaFile: 'src/schema.gql',
 	validationRules: [depthLimit(4)],
 	fieldResolverEnhancers: ['guards'],
-	context: ({ connection }) => {
+	context: ({ req, res, connection }) => {
 		if (connection) {
 			const token = connection.context.token;
 			return { token };
 		}
-		return {};
+		return { req, res };
 	},
 	subscriptions: {
 		'graphql-ws': {
