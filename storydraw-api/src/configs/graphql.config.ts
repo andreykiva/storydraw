@@ -11,6 +11,7 @@ export const graphqlConfig: ApolloDriverConfig = {
 			const token = connection.context.token;
 			return { token };
 		}
+
 		return { req, res };
 	},
 	subscriptions: {
