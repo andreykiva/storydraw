@@ -14,12 +14,13 @@ import {
 import { NotificationsCountSubscribe } from './dto/notifications-count.subscribe';
 import { UpdateLastViewedDateResponse } from './dto/update-last-viewed-date-response';
 import { PaginationInput } from 'src/common/dto/pagination.dto';
+import { PUB_SUB } from 'src/common/constants/providers.constants';
 
 @Resolver(() => NotificationUnion)
 export class NotificationsResolver {
 	constructor(
 		private readonly notificationsService: NotificationsService,
-		@Inject('PUB_SUB') private readonly pubSub: PubSub,
+		@Inject(PUB_SUB) private readonly pubSub: PubSub,
 	) {}
 
 	@Query(() => [NotificationUnion], { nullable: true })

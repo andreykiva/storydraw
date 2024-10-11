@@ -5,7 +5,8 @@ import { PubSub } from 'graphql-subscriptions';
 import { Notification } from '../entities/notification.entity';
 import { NotificationType } from '../enums/entity-type.enum';
 import { CreateNotificationDto } from '../dto/create-notification.dto';
-import { UserMetadataService } from 'src/user-metadata/services/user-metadata.service';
+import { PUB_SUB, USER_METADATA_SERVICE } from 'src/common/constants/providers.constants';
+import { UserMetadataServiceInterface } from 'src/user-metadata/user-metadata.service.interface';
 import { USER_METADATA_NOT_FOUND } from 'src/common/constants/errors.constants';
 import { PaginationInput } from 'src/common/dto/pagination.dto';
 
@@ -14,8 +15,8 @@ export class NotificationsService {
 	constructor(
 		@InjectRepository(Notification)
 		private readonly notificationsRepository: Repository<Notification>,
-		private readonly userMetadataService: UserMetadataService,
-		@Inject('PUB_SUB') private readonly pubSub: PubSub,
+		@Inject(USER_METADATA_SERVICE) private readonly userMetadataService: UserMetadataServiceInterface,
+		@Inject(PUB_SUB) private readonly pubSub: PubSub,
 	) {}
 
 	async getAllNotifications(userId: string, paginationInput: PaginationInput): Promise<Notification[]> {
@@ -144,7 +145,7 @@ export class NotificationsService {
 	}
 
 	async getNewNotificationsCount(userId: string): Promise<number> {
-		const userMetadata = await this.userMetadataService.getUserMetadata(userId);
+		const userMetadata = await this.userMetadataService.findOneByUserId(userId);
 
 		if (!userMetadata) {
 			throw new NotFoundException(USER_METADATA_NOT_FOUND);
