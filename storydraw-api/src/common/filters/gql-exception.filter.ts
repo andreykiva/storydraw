@@ -5,7 +5,7 @@ import { ApolloError } from 'apollo-server-errors';
 @Catch(HttpException)
 export class GqlExceptionFilter implements ExceptionFilter {
 	catch(exception: HttpException, host: ArgumentsHost) {
-		// Проверка на GraphQL контекст
+		//  Check for GraphQL context
 		const gqlHost = GqlArgumentsHost.create(host);
 		const info = gqlHost.getInfo();
 		if (!info) {
