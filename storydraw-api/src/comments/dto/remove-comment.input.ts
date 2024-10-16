@@ -2,16 +2,16 @@ import { Field, InputType } from '@nestjs/graphql';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 
 /**
- * Input Data Transfer Object for sharing a story.
+ * Input Data Transfer Object for removing a comment.
  */
 @InputType()
-export class ShareInput {
+export class RemoveCommentInput {
 	/**
-	 * The ID of the story to be shared.
+	 * The unique identifier of the comment to be removed.
 	 * Must be a non-empty UUID string.
 	 */
 	@Field()
 	@IsNotEmpty()
 	@IsUUID()
-	storyId: string;
+	commentId: string;
 }

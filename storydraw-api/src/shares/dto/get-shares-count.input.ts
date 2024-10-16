@@ -2,12 +2,12 @@ import { Field, InputType } from '@nestjs/graphql';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 
 /**
- * Input Data Transfer Object for sharing a story.
+ * Input Data Transfer Object for retrieving the shares count of a story.
  */
 @InputType()
-export class ShareInput {
+export class GetSharesCountInput {
 	/**
-	 * The ID of the story to be shared.
+	 * The ID of the story for which to count shares.
 	 * Must be a non-empty UUID string.
 	 */
 	@Field()
