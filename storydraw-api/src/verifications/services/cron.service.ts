@@ -1,7 +1,6 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { VerificationsServiceInterface } from '../verifications.service.interface';
-import { VERIFICATIONS_SERVICE } from 'src/common/constants/providers.constants';
+import { VerificationsService } from './verifications.service';
 
 /**
  * Service that manages scheduled tasks related to verifications.
@@ -9,7 +8,7 @@ import { VERIFICATIONS_SERVICE } from 'src/common/constants/providers.constants'
  */
 @Injectable()
 export class CronService {
-	constructor(@Inject(VERIFICATIONS_SERVICE) private readonly verificationsService: VerificationsServiceInterface) {}
+	constructor(private readonly verificationsService: VerificationsService) {}
 
 	/**
 	 * Cron job that runs every minute to delete old verification entries.

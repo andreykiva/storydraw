@@ -1,16 +1,15 @@
 import { Resolver, Mutation, Context } from '@nestjs/graphql';
-import { Inject, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { USER_METADATA_SERVICE } from 'src/common/constants/providers.constants';
-import { UserMetadataServiceInterface } from './user-metadata.service.interface';
 import { UserMetadata } from './entities/user-metadata.entity';
+import { UserMetadataService } from './services/user-metadata.service';
 
 /**
  * Resolver for GraphQL queries and mutations related to user metadata.
  */
 @Resolver(() => UserMetadata)
 export class UserMetadataResolver {
-	constructor(@Inject(USER_METADATA_SERVICE) private readonly userMetadataService: UserMetadataServiceInterface) {}
+	constructor(private readonly userMetadataService: UserMetadataService) {}
 
 	/**
 	 * Updates the timestamp for the last notifications viewed by the authenticated user.
