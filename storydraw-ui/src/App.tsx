@@ -15,7 +15,7 @@ import Settings from '@/pages/Settings/Settings';
 import Subscribe from '@/pages/Subscribe/Subscribe';
 import Logout from '@/pages/Logout/Logout';
 import { selectAuth } from '@/features/auth/authSlice';
-import { GET_ME } from './graphql/users/queries';
+import { GET_CURRENT_USER } from './graphql/users/queries';
 import { login } from '@/features/auth/authSlice';
 import { setUser } from '@/features/user/userSlice';
 import Create from './pages/Create/Create';
@@ -24,13 +24,13 @@ const App = () => {
 	const dispatch = useDispatch();
 	const isAuth = useSelector(selectAuth);
 
-	useQuery(GET_ME, {
+	useQuery(GET_CURRENT_USER, {
 		onCompleted(data) {
 			// setTimeout(() => {
-			// 	dispatch(setUser(data.getMe));
+			// 	dispatch(setUser(data.getCurrentUser));
 			// 	dispatch(login());
 			// }, 3000);
-			dispatch(setUser(data.getMe));
+			dispatch(setUser(data.getCurrentUser));
 			dispatch(login());
 		},
 	});
