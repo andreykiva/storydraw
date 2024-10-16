@@ -1,8 +1,7 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { USERS_SERVICE } from 'src/common/constants/providers.constants';
-import { UsersServiceInterface } from 'src/users/users.service.interface';
+import { UsersService } from 'src/users/services/users.service';
 import { TOKEN_VERIFICATION_ERROR, USER_NOT_FOUND_ERROR } from 'src/common/constants/errors.constants';
 import { TokenServiceInterface } from '../interfaces/token.service.interface';
 
@@ -15,7 +14,7 @@ export class TokenService implements TokenServiceInterface {
 	constructor(
 		private readonly jwtService: JwtService,
 		private readonly configService: ConfigService,
-		@Inject(USERS_SERVICE) private readonly usersService: UsersServiceInterface,
+		private readonly usersService: UsersService,
 	) {}
 
 	/**

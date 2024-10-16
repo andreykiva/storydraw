@@ -1,5 +1,5 @@
-import { BadRequestException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersServiceInterface } from 'src/users/users.service.interface';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { UsersService } from 'src/users/services/users.service';
 import { User } from 'src/users/entities/user.entity';
 import { SignupWithEmailAndPassAndCodeInput, SignupWithPhoneAndCodeInput } from '../dto/signup-user.input';
 import { AuthServiceInterface } from '../interfaces/auth.service.interface';
@@ -16,18 +16,11 @@ import {
 	USERNAME_NOT_FOUND_ERROR,
 } from 'src/common/constants/errors.constants';
 import { GENERATE_CODE_EMAIL_MESSAGE, GENERATE_CODE_PHONE_MESSAGE } from 'src/common/constants/messages.constants';
-import { SmsServiceInterface } from '../interfaces/sms.service.interface';
-import { EmailServiceInterface } from '../interfaces/email.service.interface';
-import { TokenServiceInterface } from '../interfaces/token.service.interface';
 import { IdentifierType } from 'src/verifications/enums/Identifier-type.enum';
-import { VerificationsServiceInterface } from 'src/verifications/verifications.service.interface';
-import {
-	EMAIL_SERVICE,
-	SMS_SERVICE,
-	TOKEN_SERVICE,
-	USERS_SERVICE,
-	VERIFICATIONS_SERVICE,
-} from 'src/common/constants/providers.constants';
+import { SmsService } from './sms.service';
+import { EmailService } from './email.service';
+import { VerificationsService } from 'src/verifications/services/verifications.service';
+import { TokenService } from './token.service';
 
 /**
  * AuthService defines the authentication-related operations.
@@ -35,11 +28,11 @@ import {
 @Injectable()
 export class AuthService implements AuthServiceInterface {
 	constructor(
-		@Inject(USERS_SERVICE) private readonly usersService: UsersServiceInterface,
-		@Inject(SMS_SERVICE) private readonly smsService: SmsServiceInterface,
-		@Inject(EMAIL_SERVICE) private readonly emailService: EmailServiceInterface,
-		@Inject(VERIFICATIONS_SERVICE) private readonly verificationsService: VerificationsServiceInterface,
-		@Inject(TOKEN_SERVICE) private readonly tokenService: TokenServiceInterface,
+		private readonly usersService: UsersService,
+		private readonly smsService: SmsService,
+		private readonly emailService: EmailService,
+		private readonly verificationsService: VerificationsService,
+		private readonly tokenService: TokenService,
 	) {}
 
 	/**

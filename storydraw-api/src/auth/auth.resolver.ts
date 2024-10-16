@@ -10,16 +10,14 @@ import {
 	LoginWithUsernameAndPassInput,
 } from './dto/login-user.input';
 import { ResetWithEmailInput, ResetWithPhoneInput } from './dto/reset-password.input';
-import { AuthServiceInterface } from './interfaces/auth.service.interface';
-import { Inject } from '@nestjs/common';
-import { AUTH_SERVICE } from 'src/common/constants/providers.constants';
+import { AuthService } from './services/auth.service';
 
 /**
  * Resolver for handling authentication-related GraphQL queries and mutations.
  */
 @Resolver()
 export class AuthResolver {
-	constructor(@Inject(AUTH_SERVICE) private readonly authService: AuthServiceInterface) {}
+	constructor(private readonly authService: AuthService) {}
 
 	/**
 	 * Generates a phone verification code for signup.
