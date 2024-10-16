@@ -11,9 +11,13 @@ import {
 } from 'src/common/constants/errors.constants';
 import { RepositoryService } from 'src/common/services/repository.service';
 import { PaginationInput } from 'src/common/dto/pagination.dto';
+import { FollowsServiceInterface } from '../follows.service.interface';
 
+/**
+ * Service for managing user follow relationships.
+ */
 @Injectable()
-export class FollowsService {
+export class FollowsService implements FollowsServiceInterface {
 	constructor(
 		@InjectRepository(Follow)
 		private readonly followsRepository: Repository<Follow>,
@@ -21,7 +25,16 @@ export class FollowsService {
 		private readonly eventEmitter: EventEmitter2,
 	) {}
 
-	async follow(followingUserId: string, follower: User): Promise<Follow> {
+	/**
+	 * Creates a new follow relationship.
+	 *
+	 * @param followingUserId - The ID of the user to be followed.
+	 * @param follower - The user who is following.
+	 * @returns The created Follow entity.
+	 * @throws ConflictException if a user tries to follow themselves.
+	 * @throws NotFoundException if the user to be followed does not exist.
+	 */
+	async create(followingUserId: string, follower: User): Promise<Follow> {
 		if (followingUserId === follower.id) {
 			throw new ConflictException(CANNOT_FOLLOW_SELF_ERROR);
 		}
@@ -32,7 +45,7 @@ export class FollowsService {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
-		const follow = await this.findOne(follower.id, followingUserId);
+		const follow = await this.findOneByFollowerAndFollowing(follower.id, followingUserId);
 
 		if (follow) {
 			return follow;
@@ -54,7 +67,16 @@ export class FollowsService {
 		return createdFollow;
 	}
 
-	async unfollow(unfollowingUserId: string, unfollower: User): Promise<Follow | boolean> {
+	/**
+	 * Removes an existing follow relationship.
+	 *
+	 * @param unfollowingUserId - The ID of the user to be unfollowed.
+	 * @param unfollower - The user who is unfollowing.
+	 * @returns The removed Follow entity or true if it didn't exist.
+	 * @throws ConflictException if a user tries to unfollow themselves.
+	 * @throws NotFoundException if the user to be unfollowed does not exist.
+	 */
+	async remove(unfollowingUserId: string, unfollower: User): Promise<Follow | boolean> {
 		if (unfollowingUserId === unfollower.id) {
 			throw new ConflictException(CANNOT_UNFOLLOW_SELF_ERROR);
 		}
@@ -65,7 +87,7 @@ export class FollowsService {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
-		const follow = await this.findOne(unfollower.id, unfollowingUserId);
+		const follow = await this.findOneByFollowerAndFollowing(unfollower.id, unfollowingUserId);
 
 		if (!follow) {
 			return true;
@@ -74,6 +96,14 @@ export class FollowsService {
 		return this.followsRepository.remove(follow);
 	}
 
+	/**
+	 * Retrieves all followers of a user.
+	 *
+	 * @param userId - The ID of the user whose followers are to be retrieved.
+	 * @param paginationInput - Pagination parameters (limit and cursor).
+	 * @returns A list of Follow entities representing the followers.
+	 * @throws NotFoundException if the user does not exist.
+	 */
 	async getFollowers(userId: string, paginationInput: PaginationInput): Promise<Follow[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
@@ -101,6 +131,14 @@ export class FollowsService {
 		});
 	}
 
+	/**
+	 * Retrieves all users that a specified user is following.
+	 *
+	 * @param userId - The ID of the user whose following list is to be retrieved.
+	 * @param paginationInput - Pagination parameters (limit and cursor).
+	 * @returns A list of Follow entities representing the following users.
+	 * @throws NotFoundException if the user does not exist.
+	 */
 	async getFollowing(userId: string, paginationInput: PaginationInput): Promise<Follow[]> {
 		const user = await this.repositoryService.getUserById(userId);
 
@@ -128,6 +166,13 @@ export class FollowsService {
 		});
 	}
 
+	/**
+	 * Retrieves friends of a user, i.e., users who follow each other.
+	 *
+	 * @param userId - The ID of the user whose friends are to be retrieved.
+	 * @param paginationInput - Pagination parameters (limit and cursor).
+	 * @returns A list of Follow entities representing mutual follow relationships.
+	 */
 	async getFriends(userId: string, paginationInput: PaginationInput): Promise<Follow[]> {
 		const { limit, cursor } = paginationInput;
 
@@ -147,6 +192,13 @@ export class FollowsService {
 		return friendsQuery.getMany();
 	}
 
+	/**
+	 * Counts the number of followers for a specified user.
+	 *
+	 * @param userId - The ID of the user whose follower count is to be retrieved.
+	 * @returns The number of followers.
+	 * @throws NotFoundException if the user does not exist.
+	 */
 	async getFollowersCount(userId: string): Promise<number> {
 		const user = await this.repositoryService.getUserById(userId);
 
@@ -161,6 +213,13 @@ export class FollowsService {
 		});
 	}
 
+	/**
+	 * Counts the number of users that a specified user is following.
+	 *
+	 * @param userId - The ID of the user whose following count is to be retrieved.
+	 * @returns The number of users followed.
+	 * @throws NotFoundException if the user does not exist.
+	 */
 	async getFollowingCount(userId: string): Promise<number> {
 		const user = await this.repositoryService.getUserById(userId);
 
@@ -175,6 +234,12 @@ export class FollowsService {
 		});
 	}
 
+	/**
+	 * Counts the number of mutual friends for a specified user.
+	 *
+	 * @param userId - The ID of the user whose friends count is to be retrieved.
+	 * @returns The number of mutual friends.
+	 */
 	async getFriendsCount(userId: string): Promise<number> {
 		const friendsCount = await this.followsRepository
 			.createQueryBuilder('f1')
@@ -186,6 +251,13 @@ export class FollowsService {
 		return friendsCount;
 	}
 
+	/**
+	 * Checks if a follower has followed a specific user.
+	 *
+	 * @param followerId - The ID of the user who is following.
+	 * @param followingUserId - The ID of the user being followed.
+	 * @returns True if the follower has followed the user, otherwise false.
+	 */
 	async hasFollowed(followerId: string, followingUserId: string): Promise<boolean> {
 		if (followerId === followingUserId) {
 			return false;
@@ -198,12 +270,19 @@ export class FollowsService {
 			throw new NotFoundException(USER_NOT_FOUND_ERROR);
 		}
 
-		const follow = await this.findOne(followerId, followingUserId);
+		const follow = await this.findOneByFollowerAndFollowing(followerId, followingUserId);
 
 		return !!follow;
 	}
 
-	async findOne(followerId: string, followingUserId: string): Promise<Follow> {
+	/**
+	 * Finds a follow relationship by follower and following user IDs.
+	 *
+	 * @param followerId - The ID of the follower.
+	 * @param followingUserId - The ID of the user being followed.
+	 * @returns The Follow entity or null if not found.
+	 */
+	async findOneByFollowerAndFollowing(followerId: string, followingUserId: string): Promise<Follow | null> {
 		return this.followsRepository.findOne({
 			where: {
 				follower: { id: followerId },
