@@ -59,6 +59,7 @@ const useRegisterForm = () => {
 			handleError(error, [REGISTER_FIELD.PHONE, REGISTER_FIELD.CODE]);
 		},
 	});
+
 	const [generateEmailCode, { loading: gecLoading }] = useMutation(GENERATE_EMAIL_CODE_FOR_SIGNUP, {
 		onError(error) {
 			handleError(error, [REGISTER_FIELD.EMAIL, REGISTER_FIELD.CODE]);

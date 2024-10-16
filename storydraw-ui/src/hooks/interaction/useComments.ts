@@ -53,12 +53,12 @@ const useComments = ({ storyId, isAuth }: UseCommentsProps) => {
 		setCursor(lastComment.createdAt);
 	};
 
-	const handleDeleteComment = (commentId: string) => {
+	const handleRemoveComment = (commentId: string) => {
 		const updatedComments = comments.filter((comment) => comment.id !== commentId);
 		setComments(updatedComments);
 	};
 
-	const handleDeleteReply = (commentId: string, replyId: string) => {
+	const handleRemoveReply = (commentId: string, replyId: string) => {
 		const updatedComments = comments.map((comment) => {
 			if (comment.id === commentId) {
 				const updatedReplies = comment.replies?.filter((reply) => reply.id !== replyId) || [];
@@ -210,8 +210,8 @@ const useComments = ({ storyId, isAuth }: UseCommentsProps) => {
 		handleLikeReply,
 		handleUnlikeComment,
 		handleUnlikeReply,
-		handleDeleteComment,
-		handleDeleteReply,
+		handleRemoveComment,
+		handleRemoveReply,
 		addReplies,
 		handleCreateComment,
 		handleCreateReply,
