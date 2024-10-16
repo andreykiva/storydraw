@@ -4,9 +4,9 @@ import Follow from '@/components/Notifications/Follow/Follow';
 import Like from '@/components/Notifications/Like/Like';
 import Comment from '@/components/Notifications/Comment/Comment';
 import NoNotifications from './NoNotifications/NoNotifications';
-import type { Notification } from '@/types/Notification';
+import type { CommentNotification, FollowNotification, LikeNotification, MentionNotification, Notification } from '@/types/Notification';
 import { categorizeNotificationsByDate } from '@/utils/notificationsUtils';
-import { NOTIFICATIONS_TYPE } from '@/constants/notification';
+import { NotificationType } from '@/__generated__/graphql';
 import { selectUser } from '@/features/user/userSlice';
 import Mention from '../Mention/Mention';
 
@@ -29,17 +29,25 @@ const NotificationsList = (props: NotificationsListProps) => {
 				<ul>
 					{notifications.map((notification: Notification) => {
 						switch (notification.type) {
-							case NOTIFICATIONS_TYPE.FOLLOW:
-								return <Follow key={notification.id} notification={notification} />;
+							case NotificationType.Follow:
+								return <Follow key={notification.id} notification={notification as FollowNotification} />;
 
-							case NOTIFICATIONS_TYPE.LIKE:
-								return <Like key={notification.id} notification={notification} currentUser={currentUser} />;
+							case NotificationType.Like:
+								return (
+									<Like key={notification.id} notification={notification as LikeNotification} currentUser={currentUser} />
+								);
 
-							case NOTIFICATIONS_TYPE.COMMENT:
-								return <Comment key={notification.id} notification={notification} currentUser={currentUser} />;
+							case NotificationType.Comment:
+								return (
+									<Comment
+										key={notification.id}
+										notification={notification as CommentNotification}
+										currentUser={currentUser}
+									/>
+								);
 
-							case NOTIFICATIONS_TYPE.MENTION:
-								return <Mention key={notification.id} notification={notification} />;
+							case NotificationType.Mention:
+								return <Mention key={notification.id} notification={notification as MentionNotification} />;
 
 							default:
 								return null;

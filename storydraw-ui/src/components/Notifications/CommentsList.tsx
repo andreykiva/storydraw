@@ -7,11 +7,11 @@ import NotificationsList from './NotificationsList/NotificationsList';
 import { GET_COMMENTS_NOTIFICATIONS } from '@/graphql/notifications/queries';
 import NotificationsPlaceholder from './NotificationsPlaceholder/NotificationsPlaceholder';
 import { COMMENTS_NOTIFICATIONS_LIMIT } from '@/constants/pagination';
-import type { Notification } from '@/types/Notification';
+import type { CommentNotification } from '@/types/Notification';
 import Loader from '@/components/ui/Loader/Loader';
 
 const CommentsList = () => {
-	const [notifications, setNotifications] = useState<Notification[]>([]);
+	const [notifications, setNotifications] = useState<CommentNotification[]>([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [hasMore, setHasMore] = useState(true);
 	const [cursor, setCursor] = useState(null);
@@ -24,7 +24,7 @@ const CommentsList = () => {
 			},
 		},
 		onCompleted(data) {
-			const newNotifications = data.commentsNotifications;
+			const newNotifications = data.getCommentsNotifications;
 
 			setNotifications((prevNotifications) => [...prevNotifications, ...newNotifications]);
 			setIsLoaded(true);

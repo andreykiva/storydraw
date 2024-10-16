@@ -6,12 +6,12 @@ import personIcon from '@/assets/icons/notifications/person.svg';
 import NotificationsList from './NotificationsList/NotificationsList';
 import { GET_FOLLOWS_NOTIFICATIONS } from '@/graphql/notifications/queries';
 import NotificationsPlaceholder from './NotificationsPlaceholder/NotificationsPlaceholder';
-import type { Notification } from '@/types/Notification';
+import type { FollowNotification } from '@/types/Notification';
 import Loader from '@/components/ui/Loader/Loader';
 import { FOLLOWS_NOTIFICATIONS_LIMIT } from '@/constants/pagination';
 
 const FollowsList = () => {
-	const [notifications, setNotifications] = useState<Notification[]>([]);
+	const [notifications, setNotifications] = useState<FollowNotification[]>([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [hasMore, setHasMore] = useState(true);
 	const [cursor, setCursor] = useState(null);
@@ -24,7 +24,7 @@ const FollowsList = () => {
 			},
 		},
 		onCompleted(data) {
-			const newNotifications = data.followsNotifications;
+			const newNotifications = data.getFollowsNotifications;
 
 			setNotifications((prevNotifications) => [...prevNotifications, ...newNotifications]);
 			setIsLoaded(true);

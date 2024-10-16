@@ -6,12 +6,12 @@ import heartIcon from '@/assets/icons/notifications/heart.svg';
 import NotificationsList from './NotificationsList/NotificationsList';
 import { GET_LIKES_NOTIFICATIONS } from '@/graphql/notifications/queries';
 import NotificationsPlaceholder from './NotificationsPlaceholder/NotificationsPlaceholder';
-import type { Notification } from '@/types/Notification';
+import type { LikeNotification } from '@/types/Notification';
 import Loader from '@/components/ui/Loader/Loader';
 import { LIKES_NOTIFICATIONS_LIMIT } from '@/constants/pagination';
 
 const LikesList = () => {
-	const [notifications, setNotifications] = useState<Notification[]>([]);
+	const [notifications, setNotifications] = useState<LikeNotification[]>([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [hasMore, setHasMore] = useState(true);
 	const [cursor, setCursor] = useState(null);
@@ -24,7 +24,7 @@ const LikesList = () => {
 			},
 		},
 		onCompleted(data) {
-			const newNotifications = data.likesNotifications;
+			const newNotifications = data.getLikesNotifications;
 
 			setNotifications((prevNotifications) => [...prevNotifications, ...newNotifications]);
 			setIsLoaded(true);

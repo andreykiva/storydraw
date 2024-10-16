@@ -24,7 +24,7 @@ const AllNotificationsList = () => {
 			},
 		},
 		onCompleted(data) {
-			const newNotifications = data.allNotifications;
+			const newNotifications = data.getAllNotifications;
 
 			setNotifications((prevNotifications) => [...prevNotifications, ...newNotifications]);
 			setIsLoaded(true);

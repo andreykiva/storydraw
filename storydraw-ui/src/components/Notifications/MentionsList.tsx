@@ -6,12 +6,12 @@ import tagIcon from '@/assets/icons/notifications/tag.svg';
 import NotificationsList from './NotificationsList/NotificationsList';
 import { GET_MENTIONS_NOTIFICATIONS } from '@/graphql/notifications/queries';
 import NotificationsPlaceholder from './NotificationsPlaceholder/NotificationsPlaceholder';
-import type { Notification } from '@/types/Notification';
 import Loader from '@/components/ui/Loader/Loader';
 import { MENTIONS_NOTIFICATIONS_LIMIT } from '@/constants/pagination';
+import { MentionNotification } from '@/types/Notification';
 
 const MentionsList = () => {
-	const [notifications, setNotifications] = useState<Notification[]>([]);
+	const [notifications, setNotifications] = useState<MentionNotification[]>([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [hasMore, setHasMore] = useState(true);
 	const [cursor, setCursor] = useState(null);
@@ -24,7 +24,7 @@ const MentionsList = () => {
 			},
 		},
 		onCompleted(data) {
-			const newNotifications = data.mentionsNotifications;
+			const newNotifications = data.getMentionsNotifications;
 
 			setNotifications((prevNotifications) => [...prevNotifications, ...newNotifications]);
 			setIsLoaded(true);
