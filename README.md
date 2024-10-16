@@ -25,19 +25,28 @@ Stay tuned as we build the next exciting platform for collaborative art! More fe
 
 Follow these steps to run the project locally.
 
-### 1. Install dependencies and start the frontend & backend:
+### 1. Install Dependencies and Start the Frontend & Backend
 
-# Frontend (storydraw-ui)
+#### Frontend: `storydraw-ui`
+
+```bash
 cd storydraw-ui
 npm install
 npm run start
+```
+#### Backend: `storydraw-api`
 
-# Backend (storydraw-api)
+```bash
 cd ../storydraw-api
 npm install
+```
 
-Fill in the required .env variables for the backend
-Start the backend:
+### 2. Fill in the Required .env Variables for the Backend
+
+### 3. Start the Backend
+
+```bash
 npm run start
+```
 
 Now you're all set! 🎉 The frontend and backend should now be running locally.
