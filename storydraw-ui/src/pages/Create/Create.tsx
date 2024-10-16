@@ -4,6 +4,7 @@ import Input from '@/components/ui/inputs/Input/Input';
 import Button from '@/components/ui/buttons/Button/Button';
 import { useMutation } from '@apollo/client';
 import { CREATE_STORY } from '@/graphql/stories/mutations';
+// import DrawingCanvas from './DrawingCanvas/DrawingCanvas';
 
 const Create = () => {
 	const [title, setTitle] = useState('');
@@ -44,11 +45,11 @@ const Create = () => {
 			<Input value={description} error="" placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
 			<p>Image Url</p>
 			<Input value={imageUrl} error="" placeholder="Image Url" onChange={(e) => setImageUrl(e.target.value)} />
-
 			<Button type="submit" className={styles.CreateBtn}>
 				Create
 			</Button>
 		</form>
+		// <DrawingCanvas />
 	);
 };
 
