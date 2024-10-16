@@ -54,13 +54,13 @@ const generateRefreshTokenLinkOnUnauthError = ({
 	];
 };
 
-const httpLink = new HttpLink({ uri: 'http://localhost:3000/graphql' });
+const httpLink = new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_HTTP });
 
 //_____________________________WEBSOCKETS__________________________________________________________________________
 
 const createWsClient = () => {
 	return createClient({
-		url: 'ws://localhost:3000/graphql',
+		url: import.meta.env.VITE_GRAPHQL_WS,
 		connectionParams: async () => {
 			const token = localStorage.getItem('access_token');
 			return {
