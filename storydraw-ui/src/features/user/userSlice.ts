@@ -1,5 +1,5 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
-import User from '@/types/User';
+import { User } from '@/__generated__/schema-types';
 
 export type UserState = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'>;
 
