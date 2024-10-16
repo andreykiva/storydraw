@@ -1,10 +1,9 @@
 import { Resolver, Query, Args, Mutation, Context, ResolveField, Parent } from '@nestjs/graphql';
-import { Inject, UseGuards } from '@nestjs/common';
-import { USERS_SERVICE } from 'src/common/constants/providers.constants';
-import { UsersServiceInterface } from './users.service.interface';
+import { UseGuards } from '@nestjs/common';
+import { UsersService } from './services/users.service';
 import { User } from './entities/user.entity';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { FindOneByUsernameInput } from './dto/find-user.input';
+import { GetUserByUsernameInput } from './dto/get-user.input';
 import { UpdateUserInput, UpdateUsernameInput } from './dto/update-user.input';
 import { UserExistsResponse } from './dto/user-exists-response';
 import { FollowsService } from 'src/follows/services/follows.service';
@@ -16,7 +15,7 @@ import { LikesService } from 'src/likes/services/likes.service';
 @Resolver(() => User)
 export class UsersResolver {
 	constructor(
-		@Inject(USERS_SERVICE) private readonly usersService: UsersServiceInterface,
+		private readonly usersService: UsersService,
 		private readonly followsService: FollowsService,
 		private readonly likesService: LikesService,
 	) {}
@@ -28,7 +27,7 @@ export class UsersResolver {
 	 * @returns The User object or null if not found.
 	 */
 	@Query(() => User, { nullable: true })
-	async getUserByUsername(@Args('usernameInput') usernameInput: FindOneByUsernameInput) {
+	async getUserByUsername(@Args('usernameInput') usernameInput: GetUserByUsernameInput) {
 		return this.usersService.findOneByUsername(usernameInput.username);
 	}
 
@@ -153,7 +152,7 @@ export class UsersResolver {
 	 * @returns An object indicating whether the username exists.
 	 */
 	@Query(() => UserExistsResponse)
-	async ensureUsernameNotExists(@Args('usernameInput') usernameInput: FindOneByUsernameInput) {
+	async ensureUsernameNotExists(@Args('usernameInput') usernameInput: GetUserByUsernameInput) {
 		const exists = await this.usersService.ensureUsernameNotExists(usernameInput.username);
 		return { exists };
 	}

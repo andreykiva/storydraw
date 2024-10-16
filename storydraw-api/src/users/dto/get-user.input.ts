@@ -6,7 +6,7 @@ import { USERNAME_PATTERN } from 'src/common/constants/regexp.constants';
  * Input Data Transfer Object for finding a user by username.
  */
 @InputType()
-export class FindOneByUsernameInput {
+export class GetUserByUsernameInput {
 	/**
 	 * The username of the user to be found.
 	 * Must be a non-empty string, between 5 and 24 characters,

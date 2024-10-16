@@ -1,4 +1,4 @@
-import { ConflictException, Inject, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { hash, compare } from 'bcryptjs';
@@ -8,8 +8,7 @@ import { UsersServiceInterface } from '../users.service.interface';
 import { USERNAME_EXISTS_ERROR } from 'src/common/constants/errors.constants';
 import { generateUsername } from 'src/common/utils/username.utils';
 import { UpdateUserInput } from '../dto/update-user.input';
-import { USER_METADATA_SERVICE } from 'src/common/constants/providers.constants';
-import { UserMetadataServiceInterface } from 'src/user-metadata/user-metadata.service.interface';
+import { UserMetadataService } from 'src/user-metadata/services/user-metadata.service';
 
 /**
  * Service for managing user accounts, including creation, retrieval, and updates.
@@ -18,7 +17,7 @@ import { UserMetadataServiceInterface } from 'src/user-metadata/user-metadata.se
 export class UsersService implements UsersServiceInterface {
 	constructor(
 		@InjectRepository(User) private readonly usersRepository: Repository<User>,
-		@Inject(USER_METADATA_SERVICE) private readonly userMetadataService: UserMetadataServiceInterface,
+		private readonly userMetadataService: UserMetadataService,
 	) {}
 
 	/**
