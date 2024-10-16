@@ -10,15 +10,28 @@ type Drawing {
 
 type Follow {
   id: String!
+  createdAt: DateTime!
   follower: User!
   following: User!
-  createdAt: DateTime!
+  notification: Notification
 }
 
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type Notification {
+  id: String!
+  type: String!
+  createdAt: DateTime!
+  user: User!
+  initiator: User
+  story: Story
+  like: Like
+  comment: Comment
+  follow: Follow
+}
 
 type Comment {
   id: String!
@@ -44,16 +57,16 @@ type Like {
 
 type Favorite {
   id: String!
+  createdAt: DateTime!
   user: User!
   story: Story!
-  createdAt: DateTime!
 }
 
 type Share {
   id: String!
+  createdAt: DateTime!
   user: User!
   story: Story!
-  createdAt: DateTime!
 }
 
 type Story {
@@ -82,6 +95,7 @@ type User {
   displayName: String!
   bio: String!
   imageUrl: String
+  createdAt: DateTime!
   followingCount: Float!
   followersCount: Float!
   friendsCount: Float!
@@ -90,12 +104,8 @@ type User {
   isFollowing: Boolean!
 }
 
-type CheckUserExistsResponse {
+type UserExistsResponse {
   exists: Boolean!
-}
-
-type HasLikedResponse {
-  liked: Boolean!
 }
 
 type LikesCountResponse {
@@ -133,7 +143,7 @@ type CommentsCountResponse {
   count: Float!
 }
 
-type DeleteCommentResponse {
+type RemoveCommentResponse {
   success: Boolean!
 }
 
@@ -201,37 +211,35 @@ type UpdateLastViewedDateResponse {
 }
 
 type Query {
-  findOneByUsername(usernameInput: FindOneByUsernameInput!): User
+  getUserByUsername(usernameInput: GetUserByUsernameInput!): User
   getCurrentUser: User!
-  ensureUsernameNotExists(usernameInput: FindOneByUsernameInput!): CheckUserExistsResponse!
+  ensureUsernameNotExists(usernameInput: GetUserByUsernameInput!): UserExistsResponse!
   getUserStoryLikes(getUserStoryLikesInput: GetUserStoryLikesInput!, paginationInput: PaginationInput): [Like!]!
-  storyLikesCount(likesCountInput: LikeStoryInput!): LikesCountResponse!
-  commentLikesCount(likesCountInput: LikeCommentInput!): LikesCountResponse!
-  hasStoryLiked(hasStoryLikedInput: LikeStoryInput!): HasLikedResponse!
-  hasCommentLiked(hasCommentLikedInput: LikeCommentInput!): HasLikedResponse!
-  followers(followersInput: FollowInput!, paginationInput: PaginationInput): [Follow!]!
-  following(followingInput: FollowInput!, paginationInput: PaginationInput): [Follow!]!
-  friends(paginationInput: PaginationInput): [Follow!]!
-  followersCount(followersCountInput: FollowInput!): FollowsCountResponse!
-  followingCount(followingCountInput: FollowInput!): FollowsCountResponse!
+  getStoryLikesCount(likesCountInput: LikeStoryInput!): LikesCountResponse!
+  getCommentLikesCount(likesCountInput: LikeCommentInput!): LikesCountResponse!
+  getFollowers(getFollowersInput: FollowInput!, paginationInput: PaginationInput): [Follow!]!
+  getFollowing(getFollowingInput: FollowInput!, paginationInput: PaginationInput): [Follow!]!
+  getFriends(paginationInput: PaginationInput): [Follow!]!
+  getFollowersCount(getFollowersCountInput: FollowInput!): FollowsCountResponse!
+  getFollowingCount(getFollowingCountInput: FollowInput!): FollowsCountResponse!
   getStory(getStoryInput: GetStoryInput!): Story
   getAllStories(paginationInput: PaginationInput): [Story!]!
   getUserStories(getUserStoriesInput: GetUserStoriesInput!, paginationInput: PaginationInput): [Story!]!
   getComments(getCommentsInput: GetCommentsInput!, paginationInput: PaginationInput): [Comment!]!
   getReplies(getRepliesInput: GetRepliesInput!, paginationInput: RepliesPaginationInput): [Comment!]!
-  commentsCount(commentsCountInput: CommentsCountInput!): CommentsCountResponse!
+  getCmmentsCount(getCmmentsCountInput: GetCommentsCountInput!): CommentsCountResponse!
   getUserFavorites(getUserFavoritesInput: GetUserFavoritesInput!, paginationInput: PaginationInput): [Favorite!]!
-  favoritesCount(favoritesCountInput: FavoritesCountInput!): FavoritesCountResponse!
-  sharesCount(favoritesCountInput: SharesCountInput!): SharesCountResponse!
-  allNotifications(paginationInput: PaginationInput): [NotificationUnion!]
-  likesNotifications(paginationInput: PaginationInput): [LikeNotification!]
-  commentsNotifications(paginationInput: PaginationInput): [CommentNotification!]
-  mentionsNotifications(paginationInput: PaginationInput): [MentionNotification!]
-  followsNotifications(paginationInput: PaginationInput): [FollowNotification!]
-  newNotificationsCount: Float!
+  getFavoritesCount(getFavoritesCountInput: GetFavoritesCountInput!): FavoritesCountResponse!
+  getSharesCount(getSharesCountInput: GetSharesCountInput!): SharesCountResponse!
+  getAllNotifications(paginationInput: PaginationInput): [NotificationUnion!]
+  getLikesNotifications(paginationInput: PaginationInput): [LikeNotification!]
+  getCommentsNotifications(paginationInput: PaginationInput): [CommentNotification!]
+  getMentionsNotifications(paginationInput: PaginationInput): [MentionNotification!]
+  getFollowsNotifications(paginationInput: PaginationInput): [FollowNotification!]
+  getNewNotificationsCount: Float!
 }
 
-input FindOneByUsernameInput {
+input GetUserByUsernameInput {
   username: String!
 }
 
@@ -277,7 +285,7 @@ input RepliesPaginationInput {
   cursor: DateTime
 }
 
-input CommentsCountInput {
+input GetCommentsCountInput {
   storyId: String!
 }
 
@@ -285,11 +293,11 @@ input GetUserFavoritesInput {
   userId: String!
 }
 
-input FavoritesCountInput {
+input GetFavoritesCountInput {
   storyId: String!
 }
 
-input SharesCountInput {
+input GetSharesCountInput {
   storyId: String!
 }
 
@@ -323,7 +331,7 @@ type Mutation {
   createDrawing(createDrawingInput: CreateDrawingInput!): Drawing!
   createComment(createCommentInput: CreateCommentInput!): Comment!
   createReply(createReplyInput: CreateReplyInput!): Comment!
-  deleteComment(deleteCommentInput: DeleteCommentInput!): DeleteCommentResponse!
+  removeComment(removeCommentInput: RemoveCommentInput!): RemoveCommentResponse!
   addFavorite(addFavoriteInput: AddFavoriteInput!): Favorite!
   removeFavorite(removeFavoriteInput: AddFavoriteInput!): RemoveFavoriteResponse!
   share(shareInput: ShareInput!): Share!
@@ -419,7 +427,7 @@ input CreateReplyInput {
   content: String!
 }
 
-input DeleteCommentInput {
+input RemoveCommentInput {
   commentId: String!
 }
 
