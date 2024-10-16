@@ -32,7 +32,7 @@ const Profile = () => {
 			isCurrentUser,
 		},
 		onCompleted(data) {
-			setUser(data.findOneByUsername);
+			setUser(data.getUserByUsername);
 			setIsLoaded(true);
 		},
 		onError() {

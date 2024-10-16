@@ -31,7 +31,7 @@ const FollowingList = ({ user, isFollowingPrivate, isAuth, active }: FollowingLi
 
 	const { error } = useQuery(GET_FOLLOWING, {
 		variables: {
-			followingInput: { userId: user.id },
+			getFollowingInput: { userId: user.id },
 			paginationInput: {
 				limit: FOLLOWING_LIMIT,
 				cursor,
@@ -39,7 +39,7 @@ const FollowingList = ({ user, isFollowingPrivate, isAuth, active }: FollowingLi
 			isAuth,
 		},
 		onCompleted(data) {
-			const newFollowing = data.following || [];
+			const newFollowing = data.getFollowing || [];
 
 			setFollowing((prevFollowing) => [...prevFollowing, ...newFollowing]);
 			setIsLoaded(true);

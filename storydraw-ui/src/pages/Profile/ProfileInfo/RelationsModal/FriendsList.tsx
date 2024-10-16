@@ -35,7 +35,7 @@ const FriendsList = ({ user, isAuth, active }: FriendsListProps) => {
 			},
 		},
 		onCompleted(data) {
-			const newFriends = data.friends || [];
+			const newFriends = data.getFriends || [];
 
 			setFriends((prevFriends) => [...prevFriends, ...newFriends]);
 			setIsLoaded(true);

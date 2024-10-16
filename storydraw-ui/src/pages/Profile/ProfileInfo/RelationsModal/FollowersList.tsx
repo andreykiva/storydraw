@@ -29,7 +29,7 @@ const FollowersList = ({ user, isAuth, active }: FollowersListProps) => {
 
 	const { error } = useQuery(GET_FOLLOWERS, {
 		variables: {
-			followersInput: { userId: user.id },
+			getFollowersInput: { userId: user.id },
 			paginationInput: {
 				limit: FOLLOWERS_LIMIT,
 				cursor,
@@ -37,7 +37,7 @@ const FollowersList = ({ user, isAuth, active }: FollowersListProps) => {
 			isAuth,
 		},
 		onCompleted(data) {
-			const newFollowers = data.followers || [];
+			const newFollowers = data.getFollowers || [];
 
 			setFollowers((prevFollowers) => [...prevFollowers, ...newFollowers]);
 			setIsLoaded(true);
