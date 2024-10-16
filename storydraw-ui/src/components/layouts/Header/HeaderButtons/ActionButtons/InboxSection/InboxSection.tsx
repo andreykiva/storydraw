@@ -37,7 +37,7 @@ const InboxSection = () => {
 		}
 	};
 
-	let notificationsCount = queryData?.newNotificationsCount;
+	let notificationsCount = queryData?.getNewNotificationsCount;
 	const subscribeNotificationsCount = subscribeData?.newNotificationsCountUpdated.count;
 
 	if (isFinite(subscribeNotificationsCount)) {

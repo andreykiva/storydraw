@@ -24,8 +24,8 @@ const Comments = ({ storyId, isAuth, currentUserId }: CommentsProps) => {
 		handleLikeReply,
 		handleUnlikeComment,
 		handleUnlikeReply,
-		handleDeleteComment,
-		handleDeleteReply,
+		handleRemoveComment,
+		handleRemoveReply,
 		addReplies,
 		handleCreateComment,
 		handleCreateReply,
@@ -62,8 +62,8 @@ const Comments = ({ storyId, isAuth, currentUserId }: CommentsProps) => {
 								handleLikeReply={handleLikeReply}
 								handleUnlikeComment={handleUnlikeComment}
 								handleUnlikeReply={handleUnlikeReply}
-								handleDeleteComment={handleDeleteComment}
-								handleDeleteReply={handleDeleteReply}
+								handleRemoveComment={handleRemoveComment}
+								handleRemoveReply={handleRemoveReply}
 								addReplies={addReplies}
 								setRepliedComment={setRepliedComment}
 							/>

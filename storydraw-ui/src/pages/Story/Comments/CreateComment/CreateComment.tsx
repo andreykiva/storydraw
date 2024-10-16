@@ -33,7 +33,7 @@ const CreateComment = (props: CreateCommentProps) => {
 		},
 		onCompleted(data) {
 			handleCreateComment({
-				...data.createComment,
+				... data.createComment,
 				likesCount: 0,
 				isLiked: false,
 				repliesCount: 0,

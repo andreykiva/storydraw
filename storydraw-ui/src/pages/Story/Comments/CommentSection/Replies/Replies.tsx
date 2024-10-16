@@ -14,7 +14,7 @@ type RepliesProps = {
 	currentUserId: string;
 	handleLikeReply: (commentId: string, replyId: string) => void;
 	handleUnlikeReply: (commentId: string, replyId: string) => void;
-	handleDeleteReply: (commentId: string, replyId: string) => void;
+	handleRemoveReply: (commentId: string, replyId: string) => void;
 	addReplies: (commentId: string, replies: CommentType[]) => void;
 	setRepliedComment: (repliedComment: RepliedComment | null) => void;
 	handleCloseReplies: () => void;
@@ -22,7 +22,7 @@ type RepliesProps = {
 
 const Replies = (props: RepliesProps) => {
 	const { isAuth, comment, currentUserId } = props;
-	const { handleLikeReply, handleUnlikeReply, handleDeleteReply, addReplies, setRepliedComment, handleCloseReplies } = props;
+	const { handleLikeReply, handleUnlikeReply, handleRemoveReply, addReplies, setRepliedComment, handleCloseReplies } = props;
 	const isAllRepliesLoaded = comment.replies && comment.replies.length >= comment.repliesCount;
 	const hasReplies = comment.replies && comment.replies.length >= 0;
 	const [cursor, setCursor] = useState(null);
@@ -76,7 +76,7 @@ const Replies = (props: RepliesProps) => {
 						currentUserId={currentUserId}
 						handleLikeComment={() => handleLikeReply(comment.id, reply.id)}
 						handleUnlikeComment={() => handleUnlikeReply(comment.id, reply.id)}
-						handleDeleteComment={() => handleDeleteReply(comment.id, reply.id)}
+						handleRemoveComment={() => handleRemoveReply(comment.id, reply.id)}
 						setRepliedComment={() => handleSetRepliedComment(reply)}
 					/>
 				</div>

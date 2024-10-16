@@ -15,7 +15,7 @@ import ButtonWithActionsMenu from '@/components/ButtonWithActionsMenu/ButtonWith
 import { MENU_POSITION } from '@/constants/ui';
 import { displayDate } from '@/utils/dateUtils';
 import useCommentLike from '@/hooks/interaction/useCommentLike';
-import { DELETE_COMMENT } from '@/graphql/comments/mutations';
+import { REMOVE_COMMENT } from '@/graphql/comments/mutations';
 import { wrapMentions } from '@/utils/textUtils';
 
 type CommentProps = {
@@ -25,24 +25,24 @@ type CommentProps = {
 	currentUserId: string;
 	handleLikeComment: () => void;
 	handleUnlikeComment: () => void;
-	handleDeleteComment: () => void;
+	handleRemoveComment: () => void;
 	setRepliedComment: () => void;
 };
 
 const Comment = (props: CommentProps) => {
 	const dispatch = useDispatch();
 	const { comment, reply, isAuth, currentUserId } = props;
-	const { handleLikeComment, handleUnlikeComment, handleDeleteComment, setRepliedComment } = props;
+	const { handleLikeComment, handleUnlikeComment, handleRemoveComment, setRepliedComment } = props;
 	const { id, user, content, createdAt, isLiked, likesCount } = comment;
 
-	const [deleteComment] = useMutation(DELETE_COMMENT, {
+	const [removeComment] = useMutation(REMOVE_COMMENT, {
 		variables: {
-			deleteCommentInput: {
+			removeCommentInput: {
 				commentId: id,
 			},
 		},
 		onCompleted() {
-			handleDeleteComment();
+			handleRemoveComment();
 		},
 	});
 
@@ -79,7 +79,7 @@ const Comment = (props: CommentProps) => {
 			{
 				name: 'Delete',
 				iconComponent: <DeleteIcon />,
-				onClick: deleteComment,
+				onClick: removeComment,
 			},
 		];
 	}

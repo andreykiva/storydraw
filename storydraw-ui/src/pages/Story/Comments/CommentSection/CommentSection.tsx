@@ -14,8 +14,8 @@ type CommentSection = {
 	handleLikeReply: (commentId: string, replyId: string) => void;
 	handleUnlikeComment: (commentId: string) => void;
 	handleUnlikeReply: (commentId: string, replyId: string) => void;
-	handleDeleteComment: (commentId: string) => void;
-	handleDeleteReply: (commentId: string, replyId: string) => void;
+	handleRemoveComment: (commentId: string) => void;
+	handleRemoveReply: (commentId: string, replyId: string) => void;
 	addReplies: (commentId: string, replies: CommentType[]) => void;
 	setRepliedComment: (repliedComment: RepliedComment | null) => void;
 };
@@ -27,8 +27,8 @@ const CommentSection = (props: CommentSection) => {
 		handleLikeReply,
 		handleUnlikeComment,
 		handleUnlikeReply,
-		handleDeleteComment,
-		handleDeleteReply,
+		handleRemoveComment,
+		handleRemoveReply,
 		addReplies,
 		setRepliedComment,
 	} = props;
@@ -61,7 +61,7 @@ const CommentSection = (props: CommentSection) => {
 				currentUserId={currentUserId}
 				handleLikeComment={() => handleLikeComment(comment.id)}
 				handleUnlikeComment={() => handleUnlikeComment(comment.id)}
-				handleDeleteComment={() => handleDeleteComment(comment.id)}
+				handleRemoveComment={() => handleRemoveComment(comment.id)}
 				setRepliedComment={() => handleSetRepliedComment()}
 			/>
 
@@ -79,7 +79,7 @@ const CommentSection = (props: CommentSection) => {
 					currentUserId={currentUserId}
 					handleLikeReply={handleLikeReply}
 					handleUnlikeReply={handleUnlikeReply}
-					handleDeleteReply={handleDeleteReply}
+					handleRemoveReply={handleRemoveReply}
 					addReplies={addReplies}
 					setRepliedComment={setRepliedComment}
 					handleCloseReplies={() => setShowReplies(false)}
