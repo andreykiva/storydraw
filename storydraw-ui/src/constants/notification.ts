@@ -5,10 +5,3 @@ export const enum NOTIFICATIONS_CATEGORY {
 	MENTIONS = 'mentions',
 	FOLLOWERS = 'followers',
 }
-
-export const enum NOTIFICATIONS_TYPE {
-	LIKE = 'LIKE',
-	COMMENT = 'COMMENT',
-	MENTION = 'MENTION',
-	FOLLOW = 'FOLLOW',
-}
