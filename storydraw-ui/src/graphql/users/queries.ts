@@ -1,36 +1,27 @@
-import { gql } from '@apollo/client';
+import { gql } from '@/__generated__/gql';
 
-export const GET_ME = gql`
-	query GetMe {
-		getMe {
+export const GET_CURRENT_USER = gql(`
+	query GetCurrentUser {
+		getCurrentUser {
 			id
 			username
 			displayName
 			imageUrl
 		}
 	}
-`;
+`);
 
-export const FIND_USER_BY_USERNAME = gql`
-	query FindOneByUsername {
-		findOneByUsername {
-			id
-			username
-		}
-	}
-`;
-
-export const ENSURE_USERNAME_NOT_EXISTS = gql`
-	query EnsureUsernameNotExists($usernameInput: FindOneByUsernameInput!) {
+export const ENSURE_USERNAME_NOT_EXISTS = gql(`
+	query EnsureUsernameNotExists($usernameInput: GetUserByUsernameInput!) {
 		ensureUsernameNotExists(usernameInput: $usernameInput) {
 			exists
 		}
 	}
-`;
+`);
 
-export const GET_USER_PROFILE = gql`
-	query GetUserProfile($usernameInput: FindOneByUsernameInput!, $isAuth: Boolean!, $isCurrentUser: Boolean!) {
-		findOneByUsername(usernameInput: $usernameInput) {
+export const GET_USER_PROFILE = gql(`
+	query GetUserProfile($usernameInput: GetUserByUsernameInput!, $isAuth: Boolean!, $isCurrentUser: Boolean!) {
+		getUserByUsername(usernameInput: $usernameInput) {
 			id
 			username
 			displayName
@@ -44,11 +35,11 @@ export const GET_USER_PROFILE = gql`
 			isFollowing @include(if: $isAuth)
 		}
 	}
-`;
+`);
 
-export const GET_FOLLOWING = gql`
-	query GetFollowing($followingInput: FollowInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
-		following(followingInput: $followingInput, paginationInput: $paginationInput) {
+export const GET_FOLLOWING = gql(`
+	query GetFollowing($getFollowingInput: FollowInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
+		getFollowing(getFollowingInput: $getFollowingInput, paginationInput: $paginationInput) {
 			createdAt
 			following {
 				id
@@ -60,11 +51,11 @@ export const GET_FOLLOWING = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_FOLLOWERS = gql`
-	query GetFollowers($followersInput: FollowInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
-		followers(followersInput: $followersInput, paginationInput: $paginationInput) {
+export const GET_FOLLOWERS = gql(`
+	query GetFollowers($getFollowersInput: FollowInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
+		getFollowers(getFollowersInput: $getFollowersInput, paginationInput: $paginationInput) {
 			createdAt
 			follower {
 				id
@@ -76,11 +67,11 @@ export const GET_FOLLOWERS = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_FRIENDS = gql`
+export const GET_FRIENDS = gql(`
 	query GetFriends($paginationInput: PaginationInput) {
-		friends(paginationInput: $paginationInput) {
+		getFriends(paginationInput: $paginationInput) {
 			createdAt
 			following {
 				id
@@ -90,4 +81,4 @@ export const GET_FRIENDS = gql`
 			}
 		}
 	}
-`;
+`);

@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from '@/__generated__/gql';
 
-export const GET_FEED = gql`
+export const GET_FEED = gql(`
 	query GetFeed($paginationInput: PaginationInput, $isAuth: Boolean!) {
 		getAllStories(paginationInput: $paginationInput) {
 			id
@@ -25,9 +25,9 @@ export const GET_FEED = gql`
 			isShared @include(if: $isAuth)
 		}
 	}
-`;
+`);
 
-export const GET_STORY = gql`
+export const GET_STORY = gql(`
 	query GetStory($getStoryInput: GetStoryInput!, $isAuth: Boolean!) {
 		getStory(getStoryInput: $getStoryInput) {
 			id
@@ -51,9 +51,9 @@ export const GET_STORY = gql`
 			isShared @include(if: $isAuth)
 		}
 	}
-`;
+`);
 
-export const GET_USER_STORIES = gql`
+export const GET_USER_STORIES = gql(`
 	query GetUserStories($getUserStoriesInput: GetUserStoriesInput!, $paginationInput: PaginationInput) {
 		getUserStories(getUserStoriesInput: $getUserStoriesInput, paginationInput: $paginationInput) {
 			id
@@ -61,9 +61,9 @@ export const GET_USER_STORIES = gql`
 			createdAt
 		}
 	}
-`;
+`);
 
-export const GET_USER_FAVORITES = gql`
+export const GET_USER_FAVORITES = gql(`
 	query GetUserFavorites($getUserFavoritesInput: GetUserFavoritesInput!, $paginationInput: PaginationInput) {
 		getUserFavorites(getUserFavoritesInput: $getUserFavoritesInput, paginationInput: $paginationInput) {
 			createdAt
@@ -73,9 +73,9 @@ export const GET_USER_FAVORITES = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_USER_STORY_LIKES = gql`
+export const GET_USER_STORY_LIKES = gql(`
 	query GetUserStoryLikes($getUserStoryLikesInput: GetUserStoryLikesInput!, $paginationInput: PaginationInput) {
 		getUserStoryLikes(getUserStoryLikesInput: $getUserStoryLikesInput, paginationInput: $paginationInput) {
 			createdAt
@@ -85,4 +85,4 @@ export const GET_USER_STORY_LIKES = gql`
 			}
 		}
 	}
-`;
+`);

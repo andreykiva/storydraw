@@ -1,127 +1,113 @@
-import { gql } from '@apollo/client';
-import { AUTH_RESPONSE_FIELDS, GENERATE_CODE_RESPONSE_FIELDS } from './fragments';
+import { gql } from '@/__generated__/gql';
 
-export const GENERATE_PHONE_CODE_FOR_SIGNUP = gql`
-	${GENERATE_CODE_RESPONSE_FIELDS}
+export const GENERATE_PHONE_CODE_FOR_SIGNUP = gql(`
 	mutation GeneratePhoneCodeForSignup($generateCodeInput: GeneratePhoneCodeInput!) {
 		generatePhoneCodeForSignup(generateCodeInput: $generateCodeInput) {
-			...GenerateCodeResponseFields
+			...GenerateCodeResponseFragment
 		}
 	}
-`;
+`);
 
-export const GENERATE_EMAIL_CODE_FOR_SIGNUP = gql`
-	${GENERATE_CODE_RESPONSE_FIELDS}
+export const GENERATE_EMAIL_CODE_FOR_SIGNUP = gql(`
 	mutation GenerateEmailCodeForSignup($generateCodeInput: GenerateEmailCodeInput!) {
 		generateEmailCodeForSignup(generateCodeInput: $generateCodeInput) {
-			...GenerateCodeResponseFields
+			...GenerateCodeResponseFragment
 		}
 	}
-`;
+`);
 
-export const SIGNUP_WITH_PHONE_AND_CODE = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const SIGNUP_WITH_PHONE_AND_CODE = gql(`
 	mutation SignupWithPhoneAndCode($signupInput: SignupWithPhoneAndCodeInput!) {
 		signupWithPhoneAndCode(signupInput: $signupInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);
 
-export const SIGNUP_WITH_EMAIL_AND_PASS_AND_CODE = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const SIGNUP_WITH_EMAIL_AND_PASS_AND_CODE = gql(`
 	mutation SignupWithEmailAndPassAndCode($signupInput: SignupWithEmailAndPassAndCodeInput!) {
 		signupWithEmailAndPassAndCode(signupInput: $signupInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);
 
-export const GENERATE_PHONE_CODE_FOR_LOGIN = gql`
-	${GENERATE_CODE_RESPONSE_FIELDS}
+export const GENERATE_PHONE_CODE_FOR_LOGIN = gql(`
 	mutation GeneratePhoneCodeForLogin($generateCodeInput: GeneratePhoneCodeInput!) {
 		generatePhoneCodeForLogin(generateCodeInput: $generateCodeInput) {
-			...GenerateCodeResponseFields
+			...GenerateCodeResponseFragment
 		}
 	}
-`;
+`);
 
-export const LOGIN_WITH_PHONE_AND_CODE = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const LOGIN_WITH_PHONE_AND_CODE = gql(`
 	mutation LoginWithPhoneAndCode($loginInput: LoginWithPhoneAndCodeInput!) {
 		loginWithPhoneAndCode(loginInput: $loginInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);
 
-export const LOGIN_WITH_PHONE_AND_PASSWORD = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const LOGIN_WITH_PHONE_AND_PASSWORD = gql(`
 	mutation LoginWithPhoneAndPass($loginInput: LoginWithPhoneAndPassInput!) {
 		loginWithPhoneAndPass(loginInput: $loginInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);
 
-export const LOGIN_WITH_EMAIL_AND_PASSWORD = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const LOGIN_WITH_EMAIL_AND_PASSWORD = gql(`
 	mutation LoginWithEmailAndPass($loginInput: LoginWithEmailAndPassInput!) {
 		loginWithEmailAndPass(loginInput: $loginInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);
 
-export const LOGIN_WITH_USERNAME_AND_PASSWORD = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const LOGIN_WITH_USERNAME_AND_PASSWORD = gql(`
 	mutation LoginWithUsernameAndPass($loginInput: LoginWithUsernameAndPassInput!) {
 		loginWithUsernameAndPass(loginInput: $loginInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);
 
-export const REFRESH_TOKEN = gql`
+export const REFRESH_TOKEN = gql(`
 	mutation RefreshToken($token: String!) {
 		refreshToken(token: $token) {
 			access_token
 		}
 	}
-`;
+`);
 
-export const GENERATE_PHONE_CODE_FOR_RESET = gql`
-	${GENERATE_CODE_RESPONSE_FIELDS}
+export const GENERATE_PHONE_CODE_FOR_RESET = gql(`
 	mutation GeneratePhoneCodeForReset($generateCodeInput: GeneratePhoneCodeInput!) {
 		generatePhoneCodeForReset(generateCodeInput: $generateCodeInput) {
-			...GenerateCodeResponseFields
+			...GenerateCodeResponseFragment
 		}
 	}
-`;
+`);
 
-export const GENERATE_EMAIL_CODE_FOR_RESET = gql`
-	${GENERATE_CODE_RESPONSE_FIELDS}
+export const GENERATE_EMAIL_CODE_FOR_RESET = gql(`
 	mutation GenerateEmailCodeForReset($generateCodeInput: GenerateEmailCodeInput!) {
 		generateEmailCodeForReset(generateCodeInput: $generateCodeInput) {
-			...GenerateCodeResponseFields
+			...GenerateCodeResponseFragment
 		}
 	}
-`;
+`);
 
-export const RESET_PASSWORD_WITH_PHONE = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const RESET_PASSWORD_WITH_PHONE = gql(`
 	mutation ResetPasswordWithPhone($resetPasswordInput: ResetWithPhoneInput!) {
 		resetPasswordWithPhone(resetPasswordInput: $resetPasswordInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);
 
-export const RESET_PASSWORD_WITH_EMAIL = gql`
-	${AUTH_RESPONSE_FIELDS}
+export const RESET_PASSWORD_WITH_EMAIL = gql(`
 	mutation ResetPasswordWithEmail($resetPasswordInput: ResetWithEmailInput!) {
 		resetPasswordWithEmail(resetPasswordInput: $resetPasswordInput) {
-			...AuthResponseFields
+			...AuthResponseFragment
 		}
 	}
-`;
+`);

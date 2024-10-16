@@ -1,22 +1,22 @@
-import { gql } from '@apollo/client';
+import { gql } from '@/__generated__/gql';
 
-export const LIKE_COMMENT = gql`
+export const LIKE_COMMENT = gql(`
 	mutation LikeComment($likeCommentInput: LikeCommentInput!) {
 		likeComment(likeCommentInput: $likeCommentInput) {
 			id
 		}
 	}
-`;
+`);
 
-export const UNLIKE_COMMENT = gql`
+export const UNLIKE_COMMENT = gql(`
 	mutation UnlikeComment($unlikeCommentInput: LikeCommentInput!) {
 		unlikeComment(unlikeCommentInput: $unlikeCommentInput) {
 			success
 		}
 	}
-`;
+`);
 
-export const CREATE_COMMENT = gql`
+export const CREATE_COMMENT = gql(`
 	mutation CreateComment($createCommentInput: CreateCommentInput!) {
 		createComment(createCommentInput: $createCommentInput) {
 			id
@@ -30,9 +30,9 @@ export const CREATE_COMMENT = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const CREATE_REPLY = gql`
+export const CREATE_REPLY = gql(`
 	mutation CreateReply($createReplyInput: CreateReplyInput!) {
 		createReply(createReplyInput: $createReplyInput) {
 			id
@@ -46,12 +46,12 @@ export const CREATE_REPLY = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const DELETE_COMMENT = gql`
-	mutation DeleteComment($deleteCommentInput: DeleteCommentInput!) {
-		deleteComment(deleteCommentInput: $deleteCommentInput) {
+export const REMOVE_COMMENT = gql(`
+	mutation RemoveComment($removeCommentInput: RemoveCommentInput!) {
+		removeComment(removeCommentInput: $removeCommentInput) {
 			success
 		}
 	}
-`;
+`);

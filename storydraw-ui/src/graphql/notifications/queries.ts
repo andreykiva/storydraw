@@ -1,8 +1,8 @@
-import { gql } from '@apollo/client';
+import { gql } from '@/__generated__/gql';
 
-export const GET_LIKES_NOTIFICATIONS = gql`
+export const GET_LIKES_NOTIFICATIONS = gql(`
 	query GetLikesNotifications($paginationInput: PaginationInput) {
-		likesNotifications(paginationInput: $paginationInput) {
+		getLikesNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -25,11 +25,11 @@ export const GET_LIKES_NOTIFICATIONS = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_COMMENTS_NOTIFICATIONS = gql`
+export const GET_COMMENTS_NOTIFICATIONS = gql(`
 	query GetCommentsNotifications($paginationInput: PaginationInput) {
-		commentsNotifications(paginationInput: $paginationInput) {
+		getCommentsNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -62,11 +62,11 @@ export const GET_COMMENTS_NOTIFICATIONS = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_MENTIONS_NOTIFICATIONS = gql`
+export const GET_MENTIONS_NOTIFICATIONS = gql(`
 	query GetMentionsNotifications($paginationInput: PaginationInput) {
-		mentionsNotifications(paginationInput: $paginationInput) {
+		getMentionsNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -88,11 +88,11 @@ export const GET_MENTIONS_NOTIFICATIONS = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_FOLLOWS_NOTIFICATIONS = gql`
+export const GET_FOLLOWS_NOTIFICATIONS = gql(`
 	query GetFollowsNotifications($paginationInput: PaginationInput) {
-		followsNotifications(paginationInput: $paginationInput) {
+		getFollowsNotifications(paginationInput: $paginationInput) {
 			id
 			type
 			createdAt
@@ -105,11 +105,11 @@ export const GET_FOLLOWS_NOTIFICATIONS = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_ALL_NOTIFICATIONS = gql`
+export const GET_ALL_NOTIFICATIONS = gql(`
 	query GetAllNotifications($paginationInput: PaginationInput) {
-		allNotifications(paginationInput: $paginationInput) {
+		getAllNotifications(paginationInput: $paginationInput) {
 			... on LikeNotification {
 				id
 				type
@@ -199,10 +199,10 @@ export const GET_ALL_NOTIFICATIONS = gql`
 			}
 		}
 	}
-`;
+`);
 
-export const GET_NEW_NOTIFICATIONS_COUNT = gql`
+export const GET_NEW_NOTIFICATIONS_COUNT = gql(`
 	query GetNewNotificationsCount {
-		newNotificationsCount
+		getNewNotificationsCount
 	}
-`;
+`);

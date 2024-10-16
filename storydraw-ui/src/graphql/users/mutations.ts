@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from '@/__generated__/gql';
 
-export const UPDATE_USERNAME = gql`
+export const UPDATE_USERNAME = gql(`
 	mutation UpdateUsername($usernameInput: UpdateUsernameInput!) {
 		updateUsername(usernameInput: $usernameInput) {
 			id
@@ -9,32 +9,32 @@ export const UPDATE_USERNAME = gql`
 			imageUrl
 		}
 	}
-`;
+`);
 
-export const FOLLOW = gql`
+export const FOLLOW = gql(`
 	mutation Follow($followInput: FollowInput!) {
 		follow(followInput: $followInput) {
 			id
 		}
 	}
-`;
+`);
 
-export const UNFOLLOW = gql`
+export const UNFOLLOW = gql(`
 	mutation Unfollow($unfollowInput: FollowInput!) {
 		unfollow(unfollowInput: $unfollowInput) {
 			success
 		}
 	}
-`;
+`);
 
-export const UPDATE_USER = gql`
-mutation UpdateUser($updateUserInput: UpdateUserInput!) {
-	updateUser(updateUserInput: $updateUserInput) {
-		id
-		username
-		displayName
-		imageUrl
-		bio
+export const UPDATE_USER = gql(`
+	mutation UpdateUser($updateUserInput: UpdateUserInput!) {
+		updateUser(updateUserInput: $updateUserInput) {
+			id
+			username
+			displayName
+			imageUrl
+			bio
+		}
 	}
-}
-`;
+`);

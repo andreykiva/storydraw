@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from '@/__generated__/gql';
 
-export const GET_COMMENTS = gql`
+export const GET_COMMENTS = gql(`
 	query GetComments($getCommentsInput: GetCommentsInput!, $paginationInput: PaginationInput, $isAuth: Boolean!) {
 		getComments(getCommentsInput: $getCommentsInput, paginationInput: $paginationInput) {
 			id
@@ -17,9 +17,9 @@ export const GET_COMMENTS = gql`
 			isLiked @include(if: $isAuth)
 		}
 	}
-`;
+`);
 
-export const GET_REPLIES = gql`
+export const GET_REPLIES = gql(`
 	query GetReplies($getRepliesInput: GetRepliesInput!, $paginationInput: RepliesPaginationInput, $isAuth: Boolean!) {
 		getReplies(getRepliesInput: $getRepliesInput, paginationInput: $paginationInput) {
 			id
@@ -35,4 +35,4 @@ export const GET_REPLIES = gql`
 			isLiked @include(if: $isAuth)
 		}
 	}
-`;
+`);

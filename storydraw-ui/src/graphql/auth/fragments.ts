@@ -1,7 +1,7 @@
-import { gql } from '@apollo/client';
+import { gql } from '@/__generated__/gql';
 
-export const AUTH_RESPONSE_FIELDS = gql`
-	fragment AuthResponseFields on AuthResponse {
+export const AUTH_RESPONSE_FRAGMENT = gql(`
+	fragment AuthResponseFragment on AuthResponse {
 		access_token
 		refresh_token
 		user {
@@ -11,11 +11,11 @@ export const AUTH_RESPONSE_FIELDS = gql`
 			imageUrl
 		}
 	}
-`;
+`);
 
-export const GENERATE_CODE_RESPONSE_FIELDS = gql`
-	fragment GenerateCodeResponseFields on GenerateCodeResponse {
+export const GENERATE_CODE_RESPONSE_FRAGMENT = gql(`
+	fragment GenerateCodeResponseFragment on GenerateCodeResponse {
 		success
 		message
 	}
-`;
+`);
