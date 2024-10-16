@@ -1,3 +1,5 @@
+
+
 export type Comment = {
 	id: string;
 	content: string;
@@ -13,7 +15,7 @@ export type CommentUser = {
 	id: string;
 	username: string;
 	displayName: string;
-	imageUrl: string;
+	imageUrl?: string;
 };
 
 export type RepliedComment = {

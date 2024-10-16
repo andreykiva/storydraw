@@ -1,6 +1,6 @@
 import type User from './User';
 import type { Comment as CommentType } from './Comment';
-import { NOTIFICATIONS_TYPE } from '@/constants/notification';
+import { NotificationType } from '@/__generated__/graphql';
 
 type NotificationInitiator = Pick<User, 'id' | 'username' | 'displayName' | 'imageUrl'>;
 
@@ -11,7 +11,7 @@ type Story = {
 };
 
 type Like = {
-	comment: Pick<CommentType, 'content'>;
+	comment?: Pick<CommentType, 'content'>;
 };
 
 type ParentComment = {
@@ -27,7 +27,7 @@ type Comment = {
 
 export type LikeNotification = {
 	id: string;
-	type: NOTIFICATIONS_TYPE;
+	type: NotificationType;
 	createdAt: string;
 	initiator: NotificationInitiator;
 	like: Like;
@@ -36,37 +36,29 @@ export type LikeNotification = {
 
 export type CommentNotification = {
 	id: string;
-	type: NOTIFICATIONS_TYPE;
+	type: NotificationType;
 	createdAt: string;
 	initiator: NotificationInitiator;
-	comment: Comment;
+	comment?: Comment;
 	story: Story;
 };
 
 export type MentionNotification = {
 	id: string;
-	type: NOTIFICATIONS_TYPE;
+	type: NotificationType;
 	createdAt: string;
 	initiator: NotificationInitiator;
-	comment?: Comment | null;
+	comment?: Comment;
 	story: Story;
 };
 
 export type FollowNotification = {
 	id: string;
-	type: NOTIFICATIONS_TYPE;
+	type: NotificationType;
 	createdAt: string;
 	initiator: NotificationInitiator & {
-		isFollowing?: boolean;
+		isFollowing: boolean;
 	};
 };
 
-export type Notification = {
-	id: string;
-	type: NOTIFICATIONS_TYPE;
-	createdAt: string;
-	initiator: NotificationInitiator & { isFollowing?: boolean };
-	like: Like | null;
-	comment: Comment | null;
-	story: Story | null;
-};
+export type Notification = LikeNotification | CommentNotification | MentionNotification | FollowNotification;

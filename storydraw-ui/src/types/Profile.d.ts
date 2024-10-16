@@ -1,9 +1,10 @@
 import type { Story } from '@/types/Story';
 
 export type ProfileStory = Pick<Story, 'id' | 'description' | 'createdAt'>;
+
 export type UserStoryLike = {
 	createdAt: string;
-	story: Pick<Story, 'id' | 'description'>;
+	story?: Pick<Story, 'id' | 'description'>;
 };
 export type UserFavorite = {
 	createdAt: string;
@@ -15,7 +16,7 @@ export type ProfileUser = {
 	username: string;
 	displayName: string;
 	bio: string;
-	imageUrl: string;
+	imageUrl?: string;
 	followersCount: number;
 	followingCount: number;
 	friendsCount?: number;
@@ -28,7 +29,7 @@ export type RelationsUser = {
 	id: string;
 	username: string;
 	displayName: string;
-	imageUrl: string;
+	imageUrl?: string;
 	isFollowedBy?: boolean;
 	isFollowing?: boolean;
 };
