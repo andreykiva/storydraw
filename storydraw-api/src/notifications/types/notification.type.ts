@@ -6,6 +6,9 @@ import { Follow } from 'src/follows/entities/follow.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
 import { Story } from 'src/stories/entities/story.entity';
 
+/**
+ * Represents a notification for a like event.
+ */
 @ObjectType()
 export class LikeNotification {
 	@Field()
@@ -27,6 +30,9 @@ export class LikeNotification {
 	like: Like;
 }
 
+/**
+ * Represents a notification for a comment event.
+ */
 @ObjectType()
 export class CommentNotification {
 	@Field()
@@ -45,9 +51,12 @@ export class CommentNotification {
 	story: Story;
 
 	@Field(() => Comment, { nullable: true })
-	comment?: Comment;
+	comment?: Comment; // Comment can be null if no comment is associated
 }
 
+/**
+ * Represents a notification for a mention event.
+ */
 @ObjectType()
 export class MentionNotification {
 	@Field()
@@ -66,9 +75,12 @@ export class MentionNotification {
 	story: Story;
 
 	@Field(() => Comment, { nullable: true })
-	comment?: Comment;
+	comment?: Comment; // Comment can be null if no comment is associated
 }
 
+/**
+ * Represents a notification for a follow event.
+ */
 @ObjectType()
 export class FollowNotification {
 	@Field()
@@ -87,10 +99,15 @@ export class FollowNotification {
 	follow: Follow;
 }
 
+// Register the NotificationType enum with GraphQL
 registerEnumType(NotificationType, {
 	name: 'NotificationType',
 });
 
+/**
+ * Union type for all notification types.
+ * Allows queries to return different types of notifications.
+ */
 export const NotificationUnion = createUnionType({
 	name: 'NotificationUnion',
 	types: () => [LikeNotification, CommentNotification, MentionNotification, FollowNotification],
@@ -111,6 +128,6 @@ export const NotificationUnion = createUnionType({
 			return FollowNotification;
 		}
 
-		return null;
+		return null; // If no type matches, return null
 	},
 });
