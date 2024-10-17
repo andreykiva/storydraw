@@ -16,7 +16,7 @@ import {
 	USERNAME_NOT_FOUND_ERROR,
 } from 'src/common/constants/errors.constants';
 import { GENERATE_CODE_EMAIL_MESSAGE, GENERATE_CODE_PHONE_MESSAGE } from 'src/common/constants/messages.constants';
-import { IdentifierType } from 'src/verifications/enums/Identifier-type.enum';
+import { IdentifierType } from 'src/verifications/enums/identifier-type.enum';
 import { SmsService } from './sms.service';
 import { EmailService } from './email.service';
 import { VerificationsService } from 'src/verifications/services/verifications.service';
