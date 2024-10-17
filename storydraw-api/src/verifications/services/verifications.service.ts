@@ -5,7 +5,7 @@ import { Verification } from '../entities/verification.entity';
 import { generateRandomNumber } from 'src/common/utils/number.utils';
 import { VerificationsServiceInterface } from '../verifications.service.interface';
 import { INVALID_CODE_ERROR, TRY_LATER_ERROR, VERIFICATION_FAILED_ERROR } from 'src/common/constants/errors.constants';
-import { IdentifierType } from '../enums/Identifier-type.enum';
+import { IdentifierType } from '../enums/identifier-type.enum';
 
 /**
  * Service for managing verification codes for user identifiers (phone numbers and emails).

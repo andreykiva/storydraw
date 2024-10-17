@@ -1,5 +1,5 @@
 import { Verification } from './entities/verification.entity';
-import { IdentifierType } from './enums/Identifier-type.enum';
+import { IdentifierType } from './enums/identifier-type.enum';
 
 /**
  * VerificationsServiceInterface - Interface for managing verification codes.
