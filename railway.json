@@ -1,0 +1,17 @@
+{
+  "version": "2",
+  "services": [
+    {
+      "name": "frontend",
+      "project": "storydraw-ui",
+      "buildCommand": "npm install",
+      "startCommand": "npm run start"
+    },
+    {
+      "name": "backend",
+      "project": "storydraw-api",
+      "buildCommand": "npm install",
+      "startCommand": "npm run start"
+    }
+  ]
+}
