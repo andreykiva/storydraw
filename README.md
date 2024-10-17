@@ -35,13 +35,13 @@ npm install
 ```
 
 #### 2. Create and Fill in the Required .env Variables
-##### Copy the example file:
+Copy the example file:
 
 ```bash
 cp .env.example .env
 ```
 
-##### Fill in the necessary variables in `.env`.
+Fill in the necessary variables in `.env`.
 
 #### 3. Start the Frontend
 
@@ -59,13 +59,13 @@ npm install
 ```
 
 #### 2. Create and Fill in the Required .env Variables
-##### Copy the example file:
+Copy the example file:
 
 ```bash
 cp .env.example .env
 ```
 
-##### Fill in the necessary variables in `.env`.
+Fill in the necessary variables in `.env`.
 
 #### 3. Start the Backend
 
