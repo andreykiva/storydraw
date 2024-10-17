@@ -4,16 +4,14 @@
     {
       "name": "frontend",
       "project": "storydraw-ui",
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "buildCommand": "npm install",
+      "startCommand": "npm run start"
     },
     {
       "name": "backend",
       "project": "storydraw-api",
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "buildCommand": "npm install",
+      "startCommand": "npm run start"
     }
   ]
 }
