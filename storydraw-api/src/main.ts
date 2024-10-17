@@ -15,6 +15,6 @@ async function bootstrap() {
 	app.useGlobalFilters(new HttpErrorFilter());
 	app.useGlobalFilters(new GqlExceptionFilter());
 
-	await app.listen(3000);
+	await app.listen(process.env.PORT, '0.0.0.0');
 }
 bootstrap();
