@@ -1,0 +1,19 @@
+{
+  "version": "2",
+  "services": [
+    {
+      "name": "frontend",
+      "project": "storydraw-ui",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "backend",
+      "project": "storydraw-api",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
