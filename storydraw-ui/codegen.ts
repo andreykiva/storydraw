@@ -1,7 +1,10 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: CodegenConfig = {
-	schema: import.meta.env.VITE_GRAPHQL_HTTP,
+	schema: process.env.VITE_GRAPHQL_HTTP || '',
 	documents: ['src/**/*.{ts,tsx}'],
 	generates: {
 		'./src/__generated__/': {
